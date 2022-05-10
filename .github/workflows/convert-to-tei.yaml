@@ -11,15 +11,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-      - name: generate build instructions using herokuish
+      - name: convert ELAN to TEI
+        env:
+          SP_USERNAME: ${{ secrets.SP_USERNAME }}
+          SP_PWD: ${{ secrets.SP_PWD }}
         run: |
           python --version
-          export PYENV_ROOT="$HOME/.pyenv"
-          export PATH="$PYENV_ROOT/bin:$PATH"
-          curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-          eval "$(pyenv init -)"
-          eval "$(pyenv virtualenv-init -)"
-          pyenv install 3.10.4
+          # export PYENV_ROOT="$HOME/.pyenv"
+          # export PATH="$PYENV_ROOT/bin:$PATH"
+          # curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+          # eval "$(pyenv init -)"
+          # eval "$(pyenv virtualenv-init -)"
+          # pyenv install 3.10.4
           pip install pipenv
           cd 080_scripts_generic/080_01_ELAN2TEI
           pipenv install
