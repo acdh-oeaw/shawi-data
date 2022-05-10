@@ -5,7 +5,9 @@ This Jupyter notebook runs the full conversion workflow from source to TEI data 
 ## Setup
 
 * clone this repository
-* make sure you have python 3.10.x installed[1]
+* make sure you have python 3.8.10 installed[1]
+  The reason for this exact version is that the github actions VM has it preinstalled.
+  Later versions of Python should of course work but the code has to run in 3.8.10.
 * get the dependncies using pipenv[2]: `pipenv install`
 * set up environment variables SP_USERNAME and SP_PWD
   
