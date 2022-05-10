@@ -1,0 +1,16 @@
+name: Convert ELAN to TEI
+# env: {}
+on:
+  push: {}
+  repository_dispatch:
+    types: [run]
+# ${{ secrets.ACDH_KUBE_CONFIG }}
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: generate build instructions using herokuish
+        run: |
+          echo TBD
