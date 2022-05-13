@@ -3,6 +3,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:_="urn:shawi"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="xs tei"
     version="2.0">
@@ -46,6 +47,20 @@
     <xsl:variable name="sharePrefix">share</xsl:variable>
     <xsl:variable name="vicavGeoListPrefix">geo</xsl:variable>
     <xsl:variable name="vicavZoteroGroupPrefix">zotid</xsl:variable>
+       
+    <xsl:variable name="cn" as="map(xs:string, map(xs:string, xs:integer))">
+        <xsl:map>
+            <xsl:for-each select="//tei:table/tei:head">
+             <xsl:map-entry key="xs:string(.)">                
+                 <xsl:map>
+                     <xsl:for-each select="following-sibling::tei:row[@n='1'][1]/tei:cell[normalize-space(.) ne '']">
+                         <xsl:map-entry key="xs:string(.)" select="xs:integer(position())"/>
+                     </xsl:for-each>
+                 </xsl:map> 
+             </xsl:map-entry>
+          </xsl:for-each>
+        </xsl:map>
+    </xsl:variable>
     
     <xsl:variable name="t_Speakers" select="//tei:table[tei:head = 'Speakers']" as="element(tei:table)"/>
     <xsl:variable name="allSpeakers" select="$t_Speakers//tei:row[position() gt 1]" as="element(tei:row)*"/>
@@ -62,6 +77,9 @@
     
     <xsl:template match="/">
         <xsl:comment>THIS FILE WAS PROGRAMMATICALLY CREATED by table2corpus.xsl on/at <xsl:value-of select="current-dateTime()"/></xsl:comment>
+        <xsl:result-document method="json" href="table_cell_num_mapping.json">
+            <xsl:sequence select="$cn"/>
+        </xsl:result-document>
         <xsl:apply-templates select="//tei:table[tei:head = 'Recordings']"/>
     </xsl:template>
     
@@ -79,7 +97,7 @@
     
     <xsl:function name="_:personReferenceByName" as="element(tei:person)">
         <xsl:param name="persName" as="xs:string"/>
-        <xsl:variable name="tei:row" select="($allTeam[tei:cell[2]||' '||tei:cell[3] = $persName], $allSpeakers[tei:cell[1] = $persName])[1]"/>
+        <xsl:variable name="tei:row" select="($allTeam[tei:cell[$cn('Team')('Forename')]||' '||tei:cell[$cn('Team')('Surname')] = $persName], $allSpeakers[tei:cell[$cn('Speakers')('Speaker')] = $persName])[1]"/>
         <xsl:apply-templates select="$tei:row" mode="teiInstanceDoc"/>
     </xsl:function>
     
@@ -138,11 +156,11 @@
                 <encodingDesc>
                     <classDecl>
                         <taxonomy>
-                            <xsl:for-each select="$allSubjects[tei:cell[1] != '']">
-                                <xsl:sort select="_:sortKey(tei:cell[1])"/>
+                            <xsl:for-each select="$allSubjects[tei:cell[$cn('Subjects')('Label')] != '']">
+                                <xsl:sort select="_:sortKey(tei:cell[$cn('Subjects')('Label')])"/>
                                 <xsl:variable name="subjectID" select="_:ID(tei:cell[1])"/>
-                                <category xml:id="{$subjectID}" n="{tei:cell[1]}">
-                                    <catDesc><xsl:value-of select="(tei:cell[2][. != ''],'TODO ADD DESCRIPTION in Subjects table!')[1]"/></catDesc>
+                                <category xml:id="{$subjectID}" n="{tei:cell[$cn('Subjects')('Label')]}">
+                                    <catDesc><xsl:value-of select="(tei:cell[$cn('Subjects')('Definition')][. != ''],'TODO ADD DESCRIPTION in Subjects table!')[1]"/></catDesc>
                                 </category>
                             </xsl:for-each>
                         </taxonomy>
