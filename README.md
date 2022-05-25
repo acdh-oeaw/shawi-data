@@ -1,23 +1,31 @@
 # SHAWI Transcription Repository
 
-This git repository hosts the transcription data of the project *The Shawi-type Arabic dialects (FWF P 33574)*. 
+This git repository hosts the transcription data of the project *The Shawi-type Arabic dialects (FWF P 33574)*.
 
-PI: Stephan Procházka (University of Vienna)    
-National Cooperation Partner: Charly Mörth (Austrian Academy of Sciences) 
+PI: Stephan Procházka (University of Vienna)
+National Cooperation Partner: Charly Mörth (Austrian Academy of Sciences)
+
+## Status
+
+**THIS IS PRELIMINARY DATA AND COPYRIGHTED MATERIAL!**
+
+If you want to use any material in this repository please contact PI Stephan Procházka (University of Vienna).
+
+This will change at the end of the project.
 
 ## Directory Structure
 
-| Directory | Content | Remarks | 
-| --------- | ------- | --------| 
-| `001_src` | Original sources | Source documents (e.g. raw transcriptions) | 
-| `080_scripts_generic` | Conversion Scripts | mostly the ELAN2TEI conversion script (implemented in Python) which generates the initial TEI data prior to tokenization based on the ELAN transcription documents in [122_elan](122_elan) | 
-| `082_scripts_xsl` | XSLT scripts | XSLT scripts | 
-| `102_derived_TEI` | generated TEI-XML  | This is where ELAN2TEI puts its output. **Re-running TEI2ELAN will be overwrite all content in this directory, so do not do any manual changes here.** Dumps of the SHAWI Dictionary will (most probably) also placed in here. |
-| `010_manannot` | manually annotated TEI-XML | Tokenized TEI documents which are manually annotated. |
-| `802_tei_odd` | TEI customization (ODD)  | This is the source of truth for the SHAWI Schema and the HTML documentation generated from it. | 
-| `302_annot_ske` | NoSketch Engine Verticals | The annotated documents | 
-| `803_RNG-schematron` | Schemas | derived from the ODD in `802_tei_odd` | 
-| `850_docs` | Documentation | Further data documentation, esp. the HTML documentation of the ODD |
+| Directory             | Content                    | Remarks                                                                                                                                                                                                                     |
+| --------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `001_src`             | Original sources           | Source documents (e.g. raw transcriptions)                                                                                                                                                                                  |
+| `080_scripts_generic` | Conversion Scripts         | mostly the ELAN2TEI conversion script (implemented in Python) which generates the initial TEI data prior to tokenization based on the ELAN transcription documents in [122_elan](122_elan)                                  |
+| `082_scripts_xsl`     | XSLT scripts               | XSLT scripts                                                                                                                                                                                                                |
+| `102_derived_TEI`     | generated TEI-XML          | This is where ELAN2TEI puts its output. **Re-running TEI2ELAN will overwrite all content in this directory, so do not do any manual changes here.** Dumps of the SHAWI Dictionary will (most probably) also placed in here. |
+| `010_manannot`        | manually annotated TEI-XML | Tokenized TEI documents which are manually annotated.                                                                                                                                                                       |
+| `802_tei_odd`         | TEI customization (ODD)    | This is the source of truth for the SHAWI Schema and the HTML documentation generated from it.                                                                                                                              |
+| `302_annot_ske`       | NoSketch Engine Verticals  | The annotated documents                                                                                                                                                                                                     |
+| `803_RNG-schematron`  | Schemas                    | derived from the ODD in `802_tei_odd`                                                                                                                                                                                       |
+| `850_docs`            | Documentation              | Further data documentation, esp. the HTML documentation of the ODD                                                                                                                                                          |
 
 The oXygen project `shawi.xpr` contains the configuration for various transformation scenarios.
 
