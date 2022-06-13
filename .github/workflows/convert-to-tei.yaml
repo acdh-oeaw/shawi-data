@@ -26,4 +26,16 @@ jobs:
           pip install pipenv
           cd 080_scripts_generic/080_01_ELAN2TEI
           pipenv install
-          pipenv run python --version
+          pipenv run jupyter nbconvert --to script ELAN2TEI.ipynb
+          pipenv run python ELAN2TEI.py
+      - name: Commit auto generated files
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add 102_derived_tei/*.xml
+          git commit -m "Automatic generated TEI files" -a
+      - name: Push changes back to GitHub
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
