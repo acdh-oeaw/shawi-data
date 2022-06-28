@@ -54,10 +54,13 @@
     </xsl:template>
     
     <xsl:template match="tei:seg">
-        <xsl:analyze-string select="text()" regex="[-–_. ,?!“]">
+        <xsl:analyze-string select="text()" regex="[-–_. ,?!“…]">
             <xsl:matching-substring>
             <xsl:choose>
                 <xsl:when test=". eq ' '"/>
+                <xsl:when test=". eq '-'">
+                    <pc type="ignoreInSearchIndex"><xsl:value-of select="."/></pc>
+                </xsl:when>
                 <xsl:otherwise>
                     <pc><xsl:value-of select="."/></pc>
                 </xsl:otherwise>
