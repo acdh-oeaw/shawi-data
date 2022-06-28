@@ -188,22 +188,22 @@
         </teiCorpus>
     </xsl:template>
     
-    <xsl:template match="tei:table[tei:head = 'Recordings']/tei:row">
-        <xsl:variable name="textID" select="tei:cell[1]"/>
+    <xsl:template match="tei:table[tei:head = 'Recordings']/tei:row[normalize-space(tei:cell[$cn('Recordings')('Rec. person')]) ne '']" priority="0">
+        <xsl:variable name="textID" select="tei:cell[$cn('Recordings')('Text')]"/>
         <!-- find all rows with the matching text ID and take "the other" cell of the row, which is the speaker ID -->
         <xsl:variable name="speakerIDs" select="$t_Speakers_in_Recordings//tei:row[tei:cell = $textID]/tei:cell[. != $textID]"/>
-        <xsl:variable name="speakers_in_recording" select="$allSpeakers[tei:cell[1] = $speakerIDs]" as="element(tei:row)*"/>
+        <xsl:variable name="speakers_in_recording" select="$allSpeakers[tei:cell[$cn('Recordings')('Text')] = $speakerIDs]" as="element(tei:row)*"/>
         
         <!--  -->
         <xsl:variable name="subjectIDs" select="$t_Subjects_in_Recordings//tei:row[tei:cell = $textID]/tei:cell[. != $textID]"/>
-        <xsl:variable name="subjects_in_recording" select="$allSubjects[tei:cell[1] = $subjectIDs]" as="element(tei:row)*"/>
+        <xsl:variable name="subjects_in_recording" select="$allSubjects[tei:cell[$cn('Subjects')('Label')] = $subjectIDs]" as="element(tei:row)*"/>
         
         <!-- place -->
-        <xsl:variable name="placeName" select="tei:cell[7]"/>
-        <xsl:variable name="placeID" select="$t_Places//tei:row[tei:cell[2] = $placeName]/tei:cell[1]"/>
+        <xsl:variable name="placeName" select="tei:cell[$cn('Recordings')('Place')]"/>
+        <xsl:variable name="placeID" select="$t_Places//tei:row[tei:cell[$cn('Places')('PlaceName')] = $placeName]/tei:cell[$cn('Places')('ID')]"/>
         
         <!-- path to Audio files -->
-        <xsl:variable name="relPath" select="tei:cell[8]"/>
+        <xsl:variable name="relPath" select="tei:cell[$cn('Recordings')('Trascribed Audio-file')]"/>
         <xsl:variable name="fullPath" select="$pathToRecordings"/>
         <TEI>
             <teiHeader>
@@ -218,14 +218,14 @@
                         <!-- TODO reference source audio file to match with ELAN export. -->
                         <recordingStmt>
                             <!-- TODO parse duration and date -->
-                            <recording dur-iso="{tei:cell[5]}" type="audio">
-                                <date when="{tei:cell[4]}"/>
+                            <recording dur-iso="{tei:cell[$cn('Recordings')('Length')]}" type="audio">
+                                <date when="{tei:cell[$cn('Recordings')('Date')]}"/>
                                 <respStmt>
                                     <resp>recording</resp>
-                                    <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName(tei:cell[6])}"><xsl:value-of select="normalize-space(tei:cell[6])"/></persName>
+                                    <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName(tei:cell[$cn('Recordings')('Rec. person')])}"><xsl:value-of select="normalize-space(tei:cell[$cn('Recordings')('Rec. person')])"/></persName>
                                 </respStmt>
                                 <!-- TODO The audio files on the share need to be re-organised to match the replacementPattern in the header -->
-                                <media url="{$sharePrefix}:{tei:cell[8]}" mimeType="audio/wav" type="master"/>
+                                <media url="{$sharePrefix}:{tei:cell[$cn('Recordings')('Transcribed Audio-file')]}" mimeType="audio/wav" type="master"/>
                             </recording>
                         </recordingStmt>
                     </sourceDesc>
@@ -268,6 +268,7 @@
         </TEI>
     </xsl:template>
     
+    <xsl:template match="tei:table[tei:head = 'Recordings']/tei:row" priority="-2"/><!-- don't process rows that have no Rec. Person filled in -->    
     
     <xsl:template match="tei:table[tei:head = 'Subjects']/tei:row[tei:cell[1] != '']">
         <xsl:variable name="subjectID"/>
