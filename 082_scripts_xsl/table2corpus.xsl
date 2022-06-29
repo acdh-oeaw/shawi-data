@@ -219,7 +219,7 @@
                         <recordingStmt>
                             <!-- TODO parse duration and date -->
                             <recording dur-iso="{tei:cell[$cn('Recordings')('Length')]}" type="audio">
-                                <date when="{tei:cell[$cn('Recordings')('Date')]}"/>
+                                <date when="{_:excelSerialToISO( tei:cell[$cn('Recordings')('Date')])}"/>
                                 <respStmt>
                                     <resp>recording</resp>
                                     <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName(tei:cell[$cn('Recordings')('Rec. person')])}"><xsl:value-of select="normalize-space(tei:cell[$cn('Recordings')('Rec. person')])"/></persName>
@@ -267,6 +267,11 @@
             </text>
         </TEI>
     </xsl:template>
+    
+    <xsl:function name="_:excelSerialToISO" as="xs:date">
+        <xsl:param name="serial" required="yes" as="xs:int"/>
+        <xsl:sequence select="xs:date('1899-12-30') + xs:dayTimeDuration('P'||$serial||'D')"/>
+    </xsl:function>
     
     <xsl:template match="tei:table[tei:head = 'Recordings']/tei:row" priority="-2"/><!-- don't process rows that have no Rec. Person filled in -->    
     
@@ -317,22 +322,22 @@
         <xsl:param name="mode"/>
         <person xml:id="{tei:cell[1]}">
             <persName>
-                <forename><xsl:value-of select="tei:cell[2]"/></forename>
-                <surname><xsl:value-of select="tei:cell[3]"/></surname>
+                <forename><xsl:value-of select="tei:cell[$cn('Team')('Forename')]"/></forename>
+                <surname><xsl:value-of select="tei:cell[$cn('Team')('Surname')]"/></surname>
             </persName>
-            <state type="projectRole"><desc><xsl:value-of select="tei:cell[4]"/></desc></state>
+            <state type="projectRole"><desc><xsl:value-of select="tei:cell[$cn('Team')('Role')]"/></desc></state>
             <idno type="URI" subtype="ORCID">
                 <xsl:choose>
-                    <xsl:when test="tei:cell[5] != ''">
-                        <xsl:value-of select="concat('https://orcid.org/',tei:cell[5])"/>
+                    <xsl:when test="tei:cell[$cn('Team')('ORCID')] != ''">
+                        <xsl:value-of select="concat('https://orcid.org/',tei:cell[$cn('Team')('ORCID')])"/>
                     </xsl:when>
                     <xsl:otherwise>
                         TODO get an ORCID
                     </xsl:otherwise>
                 </xsl:choose>
             </idno>
-            <affiliation><xsl:value-of select="tei:cell[6]"/></affiliation>
-            <note><xsl:value-of select="tei:cell[7]"/></note>
+            <affiliation><xsl:value-of select="tei:cell[$cn('Team')('Affiliation')]"/></affiliation>
+            <note><xsl:value-of select="tei:cell[$cn('Team')('Note')]"/></note>
         </person>
     </xsl:template>
 
