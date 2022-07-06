@@ -5,8 +5,8 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="2.0"
                 exclude-result-prefixes="#all">
-   <xsl:include href="params.xsl"/>
-   <xsl:include href="../../xsl/xtoks2vert.xsl"/>
+   
+   <xsl:include href="xsl/xtoks2vert.xsl"/>
    <xsl:template match="tei:u" mode="extractTokens">
       <xsl:variable name="content" as="item()*">
          <xsl:apply-templates mode="#current"/>
