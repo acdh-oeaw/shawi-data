@@ -53,25 +53,6 @@
         <xsl:sequence select="$teiHeaderFromCorpus"/>
     </xsl:template>
     
-    <xsl:template match="tei:seg">
-        <xsl:analyze-string select="text()" regex="[-–_. ,?!“…]">
-            <xsl:matching-substring>
-            <xsl:choose>
-                <xsl:when test=". eq ' '"/>
-                <xsl:when test=". eq '-'">
-                    <pc type="ignoreInSearchIndex"><xsl:value-of select="."/></pc>
-                </xsl:when>
-                <xsl:otherwise>
-                    <pc><xsl:value-of select="."/></pc>
-                </xsl:otherwise>
-            </xsl:choose>
-            </xsl:matching-substring>
-            <xsl:non-matching-substring>
-                <w><xsl:value-of select="."/></w>
-            </xsl:non-matching-substring>
-        </xsl:analyze-string>
-    </xsl:template>
-    
     <xsl:template match="node() | @*">
         <xsl:copy>
             <xsl:apply-templates select="node() | @*"/>
