@@ -3,18 +3,13 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
     version="2.0">
-    
-    <xsl:template name="rmnl">
-        <xsl:apply-templates mode="rmnl"/>
-    </xsl:template>
-    
-    <xsl:template match="node() | @*" mode="rmnl">
+    <xsl:template match="node() | @*">
         <xsl:copy>
-            <xsl:apply-templates select="node() | @*" mode="#current"/>
+            <xsl:apply-templates select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="text()[matches(., '\n\s*')]" mode="rmnl">
+    <xsl:template match="text()[matches(., '\n\s*')]">
         <xsl:analyze-string select="." regex="\n\s*">
             <xsl:matching-substring/>
             <xsl:non-matching-substring>

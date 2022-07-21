@@ -4,7 +4,7 @@
     <xsl:preserve-space elements="xtoks:seg xtoks:w xtoks:pc xtoks:ws"/>
     <xsl:key name="tag-by-id" match="xtoks:*" use="@xml:id"/>
     
-    <xsl:template match="/" mode="xtoks2vert">
+    <xsl:template match="/">
         <xsl:if test="$debug !=''">
             <xsl:message select="'xtoks2vert.xsl'"/>
         </xsl:if>    
@@ -19,6 +19,7 @@
         </xsl:if>
         
         <TEI>
+            <xsl:sequence select="tei:TEI/@*"/>
             <xsl:choose>
                 <xsl:when test="exists(tei:TEI/tei:teiHeader)">
                     <xsl:sequence select="tei:TEI/tei:teiHeader"/>
