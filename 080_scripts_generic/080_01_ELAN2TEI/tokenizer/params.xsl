@@ -14,6 +14,10 @@
       <lexicon/>
    </xsl:param>
    <xsl:param name="token-namespace">tei</xsl:param>
+   <xsl:param name="pathToTokenizerLib">xsl/toks.xsl</xsl:param>
+   <xsl:param name="pathToVertXSL">xsl/xtoks2vert.xsl</xsl:param>
+   <xsl:param name="pathToVertTxtXSL">xsl/vert2txt.xsl</xsl:param>
+   <xsl:param name="pathToPLib">xsl/addP.xsl</xsl:param>
    <xsl:template match="tei:teiHeader" mode="is-copy-node">
       <xsl:sequence select="true()"/>
    </xsl:template>

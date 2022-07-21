@@ -6,5 +6,5 @@
                 version="2.0"
                 exclude-result-prefixes="#all">
    <xsl:include href="params.xsl"/>
-   <xsl:include href="../../xsl/addP.xsl"/>
+   <xsl:include href="xsl/addP.xsl"/>
 </xsl:stylesheet>
