@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
+                xmlns:xtoks="http://acdh.oeaw.ac.at/xtoks"
                 xmlns:tei="http://www.tei-c.org/ns/1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="2.0"
                 exclude-result-prefixes="#all">
-   
-   <xsl:include href="xsl/xtoks2vert.xsl"/>
+   <xsl:include href="params.xsl"/>
+   <xsl:include href="../../xsl/xtoks2vert.xsl"/>
    <xsl:template match="tei:u" mode="extractTokens">
       <xsl:variable name="content" as="item()*">
          <xsl:apply-templates mode="#current"/>
@@ -35,7 +36,7 @@
          </xsl:copy>
       </xsl:if>
    </xsl:template>
-   <xsl:template match="//tei:titleStmt/tei:title[@level='a']" mode="doc-attributes">
+   <xsl:template match="tei:TEI/@xml:id" mode="doc-attributes">
       <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                      name="id"
                      select="normalize-space(.)"/>
