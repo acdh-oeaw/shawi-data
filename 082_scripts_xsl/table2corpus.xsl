@@ -5,7 +5,7 @@
     xmlns:_="urn:shawi"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns="http://www.tei-c.org/ns/1.0"
-    exclude-result-prefixes="xs tei"
+    exclude-result-prefixes="xs tei _ map"
     version="2.0">
     <xsl:output method="xml" indent="yes"/>
     
