@@ -14,11 +14,6 @@
             <xsl:apply-templates select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
-    <xsl:template match="tei:TEI">
-        <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="{root()//tei:title[@level ='a']}">
-            <xsl:apply-templates/>
-        </TEI>
-    </xsl:template>
     <xsl:template match="tei:seg[xtoks:w|xtoks:pc]">
         <xsl:call-template name="groupTokenParts"/>
     </xsl:template>
