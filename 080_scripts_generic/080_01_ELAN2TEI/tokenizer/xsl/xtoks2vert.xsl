@@ -41,6 +41,7 @@
                 </xsl:otherwise>
             </xsl:choose>
             <text>
+                <xsl:copy-of select="tei:TEI/tei:text/* except tei:TEI/tei:text/tei:body"/>
                 <body>
                     <xsl:apply-templates mode="doc-attributes"/>
                     <xsl:apply-templates mode="extractTokens"/>
