@@ -21,6 +21,12 @@
             <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                            name="who"
                            select="parent::tei:annotationBlock/concat('#',@who)"/>
+            <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
+                           name="start"
+                           select="parent::tei:annotationBlock/@start"/>
+            <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
+                           name="end"
+                           select="parent::tei:annotationBlock/@end"/>
             <xsl:sequence select="$content"/>
          </xsl:copy>
       </xsl:if>
