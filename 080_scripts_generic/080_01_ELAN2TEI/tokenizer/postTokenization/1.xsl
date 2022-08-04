@@ -170,4 +170,8 @@
       </xsl:copy>
    </xsl:template>
    <xsl:template match="xtoks:pc[.='-']"/>
+   <xsl:template match="tei:u/tei:seg">
+      <xsl:apply-templates/>
+   </xsl:template>
+   <xsl:template match="tei:when[@xml:id = 'T0']/@absolute"/>
 </xsl:stylesheet>
