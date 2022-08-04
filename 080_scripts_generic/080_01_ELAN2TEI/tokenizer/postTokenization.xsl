@@ -9,20 +9,38 @@
     <xsl:strip-space elements="*"/>
     <xsl:param name="debug"/>
     
+    
+    <xsl:template match="/">
+        <xsl:processing-instruction name="xml-stylesheet">type="text/xsl" href="../082_scripts_xsl/tei_2_html__simple_text.xsl"</xsl:processing-instruction><xsl:text>&#10;</xsl:text>
+        <xsl:processing-instruction name="xslt">inPathSegment="\010_manannot\" outPathSegment="\106_html\"</xsl:processing-instruction><xsl:text>&#10;</xsl:text>
+        <xsl:processing-instruction name="processor">name="saxon" removePreserveFromXML="true" removePreserveFromXSLT="true"</xsl:processing-instruction><xsl:text>&#10;</xsl:text>
+        <xsl:processing-instruction name="snippets">fn="snippets_shawi_001.xml" path="{filePath}/../880_conf/"</xsl:processing-instruction><xsl:text>&#10;</xsl:text>
+        <xsl:processing-instruction name="standoff">fn="shawi_standoff.xml" path=""</xsl:processing-instruction><xsl:text>&#10;</xsl:text>
+        <xsl:processing-instruction name="attributeAssignments">fn="shawi_attributes.xml" path="{filePath}/../880_conf/"</xsl:processing-instruction><xsl:text>&#10;</xsl:text>
+        <xsl:processing-instruction name="shortCuts">fn="shawi_shortCuts" path="{filePath}/../880_conf/"</xsl:processing-instruction><xsl:text>&#10;</xsl:text>
+        <xsl:apply-templates/>
+    </xsl:template>
+    
     <xsl:template match="node() | @*">
         <xsl:copy>
             <xsl:apply-templates select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
-    <xsl:template match="tei:seg[xtoks:w|xtoks:pc]">
-        <xsl:call-template name="groupTokenParts"/>
-    </xsl:template>
-    <xsl:template match="*[not(self::tei:seg)][xtoks:w]">
-        <xsl:copy>
-            <xsl:apply-templates select="@*"/>
+    
+    <!-- 
+	   DS 2022-08-02
+       removing call to groupTokenParts template since we don't want to create token-segments any more
+        
+        <xsl:template match="tei:seg[xtoks:w|xtoks:pc]">
             <xsl:call-template name="groupTokenParts"/>
-        </xsl:copy>
-    </xsl:template>
+        </xsl:template>
+        <xsl:template match="*[not(self::tei:seg)][xtoks:w]">
+            <xsl:copy>
+                <xsl:apply-templates select="@*"/>
+                <xsl:call-template name="groupTokenParts"/>
+            </xsl:copy>
+        </xsl:template>
+    -->
     <xsl:template name="groupTokenParts">
         <xsl:for-each-group group-starting-with="xtoks:ws" select="node()">
             <xsl:variable name="first-is-ws"
@@ -115,7 +133,7 @@
         </xsl:for-each-group>
     </xsl:template>
     <xsl:template match="xtoks:w[exists(following-sibling::*) and not(following-sibling::*[1]/self::xtoks:ws)]">
-        <xsl:copy>
+        <xsl:copy copy-namespaces="no">
             <xsl:copy-of select="@* except @xml:id"/>
             <xsl:attribute name="xtoks:id"
                 select="concat(root()//tei:title[@level ='a'],'_',@xtoks:id)"/>
@@ -128,7 +146,7 @@
     </xsl:template>
     <xsl:template match="xtoks:w">
         <xsl:param tunnel="yes" name="join"/>
-        <xsl:copy>
+        <xsl:copy copy-namespaces="no">
             <xsl:copy-of select="@* except @xtoks:id"/>
             <xsl:if test="$join != ''">
                 <xsl:attribute name="join" select="$join"/>

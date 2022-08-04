@@ -1,10 +1,8 @@
 # SHAWI Transcription Repository
-Set1
-anything
-Hat
-This git repository hosts the transcription data of the project *The Shawi-type Arabic dialects (FWF P 33574)*.
-change
-PI: Stephan Procházka (University of Vienna)
+
+This git repository hosts the transcription data of the project *The Shawi-type Arabic dialects (FWF P 33574)*.    
+
+PI: Stephan Procházka (University of Vienna)     
 National Cooperation Partner: Charly Mörth (Austrian Academy of Sciences)
 
 ## Status
@@ -51,7 +49,8 @@ The following steps happen _before_ data is ingested into this repository:
 Workflow steps reflected in the data in this repository:
 
 * **Transcription and translation** – Curators segment the audio recordings into sensible sets of "utterances" and transcribe and translate them using [ELAN](https://archive.mpi.nl/tla/elan). When transcription has finished, the curator adds the ELAN document(s) to `122_elan` and pushes the changes to git.
-* This push triggers the **[ELAN2TEI conversion workflow](elan2tei)** which takes all *.eaf files in `122_ELAN` and transforms them into standalone TEI documents, storing them under `102_derived_TEI`. Additionally, a TEI Corpus file is generated which includes corpus level metadata and controlled vocabularies.
-* **Tokenization and Annotation** After transformation to TEI, curators tokenize and annotate the texts using the TEI\_enricher and store the results under ``010_manannot``.
-* **Conversion to NoSke Verticals and deployment** TBD – we have several options to transform annotated TEI to NoSke Verticals, e.g. https://github.com/acdh-oeaw/tunico-data or https://github.com/acdh-oeaw/voice-file-maker/. Processing might be triggered by a git tag (?)
+* **Tokenization**  This push triggers the **[ELAN2TEI conversion workflow](elan2tei)** which takes all *.eaf files in `122_ELAN` and transforms them into tokenized standalone TEI documents, storing them under `102_derived_TEI`. Additionally, a TEI Corpus file is generated which includes corpus level metadata and controlled vocabularies. 
+* **Annotation** After transformation to TEI, curators annotate the texts using the TEI\_enricher and store the results under ``010_manannot``. 
+* **Conversion to NoSke Verticals** During the tokenization process, a NoSke-compatible vertical is created which incorporates the annotations found in ``010_manannot` .
+* **Deployment** Inteagration of deployment in the workflow TBD
 
