@@ -59,6 +59,27 @@
         </xsl:copy>
     </xsl:template>
     
+    <xsl:template match="tei:annotationBlock">
+        <annotationBlock>
+            <xsl:apply-templates select="node()"/>
+        </annotationBlock>
+    </xsl:template>
     
+    <xsl:template match="tei:u">
+        <u xml:lang="x-vicav-shawi">
+          <xsl:apply-templates select="../@*"/>
+          <xsl:apply-templates select="tei:seg"/>
+        </u>
+    </xsl:template>
+    
+    <xsl:template match="tei:seg">
+        <xsl:apply-templates select="node()"/>
+    </xsl:template>
+    
+    <xsl:template match="tei:span">
+        <span xml:lang="en">
+            <xsl:apply-templates select="@*|node()"/>
+        </span>
+    </xsl:template>
     
 </xsl:stylesheet>
