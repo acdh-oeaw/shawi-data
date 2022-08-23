@@ -8,6 +8,17 @@
                 exclude-result-prefixes="#all">
    <xsl:include href="params.xsl"/>
    <xsl:include href="xsl/xtoks2vert.xsl"/>
+   <xsl:template match="tei:annotationBlock" mode="extractTokens">
+      <xsl:variable name="content" as="item()*">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:variable>
+      <xsl:if test="exists($content)">
+         <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:sequence select="$content"/>
+         </xsl:copy>
+      </xsl:if>
+   </xsl:template>
    <xsl:template match="tei:u" mode="extractTokens">
       <xsl:variable name="content" as="item()*">
          <xsl:apply-templates mode="#current"/>
@@ -17,16 +28,10 @@
             <xsl:copy-of select="@*"/>
             <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                            name="id"
-                           select="parent::tei:annotationBlock/concat(ancestor::tei:TEI//tei:title[@level = 'a'],'_',@xml:id)"/>
+                           select="concat(ancestor::tei:TEI//tei:title[@level = 'a'],'_',@xml:id)"/>
             <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                            name="who"
-                           select="parent::tei:annotationBlock/concat('#',@who)"/>
-            <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
-                           name="start"
-                           select="parent::tei:annotationBlock/@start"/>
-            <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
-                           name="end"
-                           select="parent::tei:annotationBlock/@end"/>
+                           select="concat('#',@who)"/>
             <xsl:sequence select="$content"/>
          </xsl:copy>
       </xsl:if>

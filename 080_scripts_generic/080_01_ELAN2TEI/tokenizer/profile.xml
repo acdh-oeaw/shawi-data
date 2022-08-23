@@ -34,22 +34,17 @@
     <in-word-tags/>
     <floating-blocks/>
     <structure>
+        <expression>tei:annotationBlock</expression>
         <expression>tei:u</expression>
         <expression>tei:seg[@type = 'token']</expression>
     </structure>
 
     <struct-attributes>
         <struct-attribute name="id" on="tei:u">
-            <expression>parent::tei:annotationBlock/concat(ancestor::tei:TEI//tei:title[@level = 'a'],'_',@xml:id)</expression>
+            <expression>concat(ancestor::tei:TEI//tei:title[@level = 'a'],'_',@xml:id)</expression>
         </struct-attribute>
         <struct-attribute name="who" on="tei:u">
-            <expression>parent::tei:annotationBlock/concat('#',@who)</expression>
-        </struct-attribute>
-        <struct-attribute name="start" on="tei:u">
-            <expression>parent::tei:annotationBlock/@start</expression>
-        </struct-attribute>
-        <struct-attribute name="end" on="tei:u">
-            <expression>parent::tei:annotationBlock/@end</expression>
+            <expression>concat('#',@who)</expression>
         </struct-attribute>
     </struct-attributes>
 

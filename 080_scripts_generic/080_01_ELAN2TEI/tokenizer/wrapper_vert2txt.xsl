@@ -9,6 +9,9 @@
    <xsl:output method="text"/>
    <xsl:include href="params.xsl"/>
    <xsl:include href="xsl/vert2txt.xsl"/>
+   <xsl:template match="tei:annotationBlock">
+      <xsl:sequence select="tei:structure(.)"/>
+   </xsl:template>
    <xsl:template match="tei:u">
       <xsl:sequence select="tei:structure(.)"/>
    </xsl:template>
