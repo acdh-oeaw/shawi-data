@@ -6,7 +6,7 @@
                 exclude-result-prefixes="#all"
                 version="2.0"
                 xml:base="postTokenization.xsl">
-   <xsl:output method="xml" indent="yes"/>
+   <xsl:output method="xml" indent="no"/>
    <xsl:strip-space elements="*"/>
    <xsl:param name="debug"/>
    <xsl:template match="/">
@@ -38,20 +38,15 @@
          <xsl:apply-templates select="node() | @*"/>
       </xsl:copy>
    </xsl:template>
-   <!-- 
-	   DS 2022-08-02
-       removing call to groupTokenParts template since we don't want to create token-segments any more
-        
-        <xsl:template match="tei:seg[xtoks:w|xtoks:pc]">
-            <xsl:call-template name="groupTokenParts"/>
-        </xsl:template>
-        <xsl:template match="*[not(self::tei:seg)][xtoks:w]">
-            <xsl:copy>
-                <xsl:apply-templates select="@*"/>
-                <xsl:call-template name="groupTokenParts"/>
-            </xsl:copy>
-        </xsl:template>
-    -->
+   <xsl:template match="tei:seg[xtoks:w|xtoks:pc]">
+      <xsl:call-template name="groupTokenParts"/>
+   </xsl:template>
+   <xsl:template match="*[not(self::tei:seg)][xtoks:w]">
+      <xsl:copy>
+         <xsl:apply-templates select="@*"/>
+         <xsl:call-template name="groupTokenParts"/>
+      </xsl:copy>
+   </xsl:template>
    <xsl:template name="groupTokenParts">
       <xsl:for-each-group group-starting-with="xtoks:ws" select="node()">
          <xsl:variable name="first-is-ws" select="exists(current-group()[1]/self::xtoks:ws)"/>
@@ -67,7 +62,7 @@
                      <xsl:variable name="parts-in-between"
                                    select="current-group()[position() gt 1][not(. is current-group()[last()])]"/>
                      <xsl:apply-templates select="current-group()[1]"/>
-                     <seg xmlns="http://www.tei-c.org/ns/1.0" type="token">
+                     <seg xmlns="http://www.tei-c.org/ns/1.0" type="connected">
                         <xsl:for-each select="$parts-in-between">
                            <xsl:apply-templates select=".">
                               <xsl:with-param tunnel="yes"
@@ -88,7 +83,7 @@
             <xsl:when test="not($first-is-ws) and $last-is-pc">
                <xsl:choose>
                   <xsl:when test="count(current-group() except current-group()[last()]) gt 1">
-                     <seg xmlns="http://www.tei-c.org/ns/1.0" type="token">
+                     <seg xmlns="http://www.tei-c.org/ns/1.0" type="connected">
                         <xsl:for-each select="current-group()[position() lt count(current-group())]">
                            <xsl:apply-templates select=".">
                               <xsl:with-param tunnel="yes"
@@ -109,7 +104,7 @@
                <xsl:choose>
                   <xsl:when test="count(current-group()[position() gt 1]) gt 1">
                      <xsl:apply-templates select="current-group()[1]"/>
-                     <seg xmlns="http://www.tei-c.org/ns/1.0" type="token">
+                     <seg xmlns="http://www.tei-c.org/ns/1.0" type="connected">
                         <xsl:for-each select="current-group()[position() gt 1]">
                            <xsl:apply-templates select=".">
                               <xsl:with-param tunnel="yes"
@@ -127,7 +122,7 @@
             <xsl:otherwise>
                <xsl:choose>
                   <xsl:when test="count(current-group()) gt 1">
-                     <seg xmlns="http://www.tei-c.org/ns/1.0" type="token">
+                     <seg xmlns="http://www.tei-c.org/ns/1.0" type="connected">
                         <xsl:for-each select="current-group()">
                            <xsl:apply-templates select=".">
                               <xsl:with-param tunnel="yes" name="join">

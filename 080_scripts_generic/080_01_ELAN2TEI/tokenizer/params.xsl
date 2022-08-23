@@ -30,4 +30,7 @@
    <xsl:template match="tei:spanGrp" mode="is-copy-node">
       <xsl:sequence select="true()"/>
    </xsl:template>
+   <xsl:template match="tei:span" mode="is-copy-node">
+      <xsl:sequence select="true()"/>
+   </xsl:template>
 </xsl:stylesheet>

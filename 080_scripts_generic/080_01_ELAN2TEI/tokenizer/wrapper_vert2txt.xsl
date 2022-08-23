@@ -15,7 +15,13 @@
    <xsl:template match="tei:u">
       <xsl:sequence select="tei:structure(.)"/>
    </xsl:template>
-   <xsl:template match="tei:seg[@type = 'token']">
+   <xsl:template match="tei:spanGrp">
+      <xsl:sequence select="tei:structure(.)"/>
+   </xsl:template>
+   <xsl:template match="tei:span">
+      <xsl:sequence select="tei:structure(.)"/>
+   </xsl:template>
+   <xsl:template match="tei:seg[@type = 'connected']">
       <xsl:sequence select="tei:structure(.)"/>
    </xsl:template>
 </xsl:stylesheet>

@@ -4,6 +4,8 @@
     xmlns:xtoks="http://acdh.oeaw.ac.at/xtoks" 
     exclude-result-prefixes="#all"
     version="2.0">
+    
+    <xsl:output indent="yes"/>
 
     <xsl:param name="preserve-ws"/>
     <xsl:param name="debug"/>
@@ -18,19 +20,26 @@
         <xsl:apply-templates/>
     </xsl:template>
     
-    <xsl:template match="node() | @*">
+    <xsl:template match="node()">
         <xsl:copy inherit-namespaces="no">
-            <xsl:apply-templates select="node() | @*" />
+            <xsl:apply-templates select="@* | node()" />
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="@xtoks:*">
-        <xsl:attribute name="{if (local-name() = ('id','space','lang','base')) then 'xml:' else ''}{local-name()}">
-            <xsl:value-of select="."/>
-        </xsl:attribute>
+    <xsl:template match="@*">
+        <xsl:choose>
+            <xsl:when test="namespace-uri() = 'http://acdh.oeaw.ac.at/xtoks'">
+                <xsl:attribute name="{if (local-name() = ('id','space','lang','base')) then 'xml:' else ''}{local-name()}">
+                    <xsl:value-of select="."/>
+                </xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:copy-of select="."/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
-    <xsl:template match="xtoks:ws">
+    <xsl:template match="text()[following-sibling::*[1]/self::xtoks:ws]|xtoks:ws">
         <xsl:choose>
             <xsl:when test="$preserve-ws = 'true'">
                 <xsl:next-match/>
@@ -53,4 +62,9 @@
             <xsl:apply-templates select="@*|node()"/>
         </xsl:element>
     </xsl:template>
+        
+    <xsl:template match="*:seg[@type='connected']">
+        <xsl:apply-templates/>
+    </xsl:template>
+
 </xsl:stylesheet>

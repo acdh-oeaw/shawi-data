@@ -36,7 +36,29 @@
          </xsl:copy>
       </xsl:if>
    </xsl:template>
-   <xsl:template match="tei:seg[@type = 'token']" mode="extractTokens">
+   <xsl:template match="tei:spanGrp" mode="extractTokens">
+      <xsl:variable name="content" as="item()*">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:variable>
+      <xsl:if test="exists($content)">
+         <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:sequence select="$content"/>
+         </xsl:copy>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template match="tei:span" mode="extractTokens">
+      <xsl:variable name="content" as="item()*">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:variable>
+      <xsl:if test="exists($content)">
+         <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:sequence select="$content"/>
+         </xsl:copy>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template match="tei:seg[@type = 'connected']" mode="extractTokens">
       <xsl:variable name="content" as="item()*">
          <xsl:apply-templates mode="#current"/>
       </xsl:variable>
@@ -72,5 +94,8 @@
       <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                      name="speakers"
                      select="normalize-space(.)"/>
+   </xsl:template>
+   <xsl:template match="text()[parent::tei:span]" mode="extractTokens">
+      <xsl:value-of select="."/>
    </xsl:template>
 </xsl:stylesheet>
