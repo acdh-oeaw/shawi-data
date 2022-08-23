@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
-                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                 xmlns:xtoks="http://acdh.oeaw.ac.at/xtoks"
-                 exclude-result-prefixes="#all"
-                 version="2.0"
-                 xml:base="postTokenization.xsl">
+<xsl:stylesheet xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xtoks="http://acdh.oeaw.ac.at/xtoks"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:tei="http://www.tei-c.org/ns/1.0"
+                exclude-result-prefixes="#all"
+                version="2.0"
+                xml:base="postTokenization.xsl">
    <xsl:output method="xml" indent="yes"/>
    <xsl:strip-space elements="*"/>
    <xsl:param name="debug"/>
@@ -56,7 +56,7 @@
       <xsl:for-each-group group-starting-with="xtoks:ws" select="node()">
          <xsl:variable name="first-is-ws" select="exists(current-group()[1]/self::xtoks:ws)"/>
          <xsl:variable name="last-is-pc"
-                        select="exists(current-group()[last()]/self::xtoks:pc)"/>
+                       select="exists(current-group()[last()]/self::xtoks:pc)"/>
          <xsl:choose>
                 <!-- first token = ws, last token = pc > fetch all in between into group -->
             <xsl:when test="$first-is-ws and $last-is-pc">
@@ -65,14 +65,14 @@
                         <!-- if there are more then 1, then wrap them ... -->
                   <xsl:when test="count(current-group())-2 gt 1">
                      <xsl:variable name="parts-in-between"
-                                    select="current-group()[position() gt 1][not(. is current-group()[last()])]"/>
+                                   select="current-group()[position() gt 1][not(. is current-group()[last()])]"/>
                      <xsl:apply-templates select="current-group()[1]"/>
                      <seg xmlns="http://www.tei-c.org/ns/1.0" type="token">
                         <xsl:for-each select="$parts-in-between">
                            <xsl:apply-templates select=".">
                               <xsl:with-param tunnel="yes"
-                                               name="join"
-                                               select="if (exists(following-sibling::*) and not(following-sibling::*[1]/self::xtoks:ws)) then 'right' else ''"/>
+                                              name="join"
+                                              select="if (exists(following-sibling::*) and not(following-sibling::*[1]/self::xtoks:ws)) then 'right' else ''"/>
                            </xsl:apply-templates>
                         </xsl:for-each>
                      </seg>
@@ -92,8 +92,8 @@
                         <xsl:for-each select="current-group()[position() lt count(current-group())]">
                            <xsl:apply-templates select=".">
                               <xsl:with-param tunnel="yes"
-                                               name="join"
-                                               select="if (exists(following-sibling::*) and not(following-sibling::*[1]/self::xtoks:ws)) then 'right' else ''"/>
+                                              name="join"
+                                              select="if (exists(following-sibling::*) and not(following-sibling::*[1]/self::xtoks:ws)) then 'right' else ''"/>
                            </xsl:apply-templates>
                         </xsl:for-each>
                      </seg>
@@ -113,8 +113,8 @@
                         <xsl:for-each select="current-group()[position() gt 1]">
                            <xsl:apply-templates select=".">
                               <xsl:with-param tunnel="yes"
-                                               name="join"
-                                               select="if (exists(following-sibling::*) and not(following-sibling::*[1]/self::xtoks:ws)) then 'right' else ''"/>
+                                              name="join"
+                                              select="if (exists(following-sibling::*) and not(following-sibling::*[1]/self::xtoks:ws)) then 'right' else ''"/>
                            </xsl:apply-templates>
                         </xsl:for-each>
                      </seg>
@@ -149,7 +149,7 @@
       <xsl:copy copy-namespaces="no">
          <xsl:copy-of select="@* except @xml:id"/>
          <xsl:attribute name="xtoks:id"
-                         select="concat(root()//tei:title[@level ='a'],'_',@xtoks:id)"/>
+                        select="concat(root()//tei:title[@level ='a'],'_',@xtoks:id)"/>
          <xsl:attribute name="join">right</xsl:attribute>
          <xsl:if test="following-sibling::*[1]/self::xtoks:pc[. = '-']">
             <xsl:attribute name="rend">withDash</xsl:attribute>
@@ -165,7 +165,7 @@
             <xsl:attribute name="join" select="$join"/>
          </xsl:if>
          <xsl:attribute name="xtoks:id"
-                         select="concat(root()//tei:title[@level ='a'],'_',@xtoks:id)"/>
+                        select="concat(root()//tei:title[@level ='a'],'_',@xtoks:id)"/>
          <xsl:apply-templates/>
       </xsl:copy>
    </xsl:template>
