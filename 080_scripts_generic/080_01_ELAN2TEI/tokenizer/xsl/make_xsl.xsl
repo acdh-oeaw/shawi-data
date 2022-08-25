@@ -217,7 +217,14 @@
                         <xsl:attribute name="name">
                             <xsl:value-of select="@name"/>
                         </xsl:attribute>
-                        <xsl:attribute name="select">normalize-space(.)</xsl:attribute>
+                        <xsl:choose>
+                            <xsl:when test="starts-with($expression, '//')">
+                                <xsl:attribute name="select">string-join(<xsl:value-of select="$expression"></xsl:value-of>/normalize-space(), ' ')</xsl:attribute>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:attribute name="select">normalize-space(.)</xsl:attribute>
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </xsl:element>
                 </xsl:element>
             </xsl:when>

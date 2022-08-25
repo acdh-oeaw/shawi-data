@@ -63,30 +63,30 @@
          </xsl:copy>
       </xsl:if>
    </xsl:template>
-   <xsl:template match="tei:TEI/@xml:id" mode="doc-attributes">
+   <xsl:template match="//tei:title[@level='a']" mode="doc-attributes">
       <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                      name="id"
-                     select="normalize-space(.)"/>
+                     select="string-join(//tei:title[@level='a']/normalize-space(), ' ')"/>
    </xsl:template>
    <xsl:template match="//tei:sourceDesc/tei:recording/tei:media/@url"
                  mode="doc-attributes">
       <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                      name="audio"
-                     select="normalize-space(.)"/>
+                     select="string-join(//tei:sourceDesc/tei:recording/tei:media/@url/normalize-space(), ' ')"/>
    </xsl:template>
    <xsl:template match="//tei:textClass/tei:catRef/@target" mode="doc-attributes">
       <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                      name="topic"
-                     select="normalize-space(.)"/>
+                     select="string-join(//tei:textClass/tei:catRef/@target/normalize-space(), ' ')"/>
    </xsl:template>
    <xsl:template match="//tei:settingDesc/tei:place" mode="doc-attributes">
       <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                      name="geo"
-                     select="normalize-space(.)"/>
+                     select="string-join(//tei:settingDesc/tei:place/normalize-space(), ' ')"/>
    </xsl:template>
    <xsl:template match="//tei:particDesc//tei:person" mode="doc-attributes">
       <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                      name="speakers"
-                     select="normalize-space(.)"/>
+                     select="string-join(//tei:particDesc//tei:person/normalize-space(), ' ')"/>
    </xsl:template>
 </xsl:stylesheet>
