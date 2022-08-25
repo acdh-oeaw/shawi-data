@@ -66,8 +66,8 @@
     </xsl:template>
     
     <xsl:template match="tei:u">
-        <u xml:lang="x-vicav-shawi">
-          <xsl:apply-templates select="../@*"/>
+        <u xml:lang="x-vicav-shawi" xml:id="{concat($recordingID,'_',../@xml:id)}" who="{concat('#', ../@who)}">
+          <xsl:apply-templates select="../@* except (../@xml:id, ../@who)"/>
           <xsl:apply-templates select="tei:seg"/>
         </u>
     </xsl:template>
@@ -77,8 +77,8 @@
     </xsl:template>
     
     <xsl:template match="tei:span">
-        <span xml:lang="en">
-            <xsl:apply-templates select="@*|node()"/>
+        <span xml:lang="en" target="{concat('#', $recordingID,'_',substring(@target, 2))}">
+            <xsl:apply-templates select="@* except @target|node()"/>
         </span>
     </xsl:template>
     
