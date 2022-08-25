@@ -17,7 +17,7 @@
             <xsl:message>Debug level: <xsl:value-of select="$debug"/>
             </xsl:message>
         </xsl:if>
-        
+        <xsl:copy-of select="processing-instruction() | comment()"/>
         <TEI>
             <xsl:sequence select="tei:TEI/@*"/>
             <xsl:choose>
