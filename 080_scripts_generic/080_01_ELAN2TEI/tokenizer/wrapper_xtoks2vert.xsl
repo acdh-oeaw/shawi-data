@@ -26,12 +26,6 @@
       <xsl:if test="exists($content)">
          <xsl:copy>
             <xsl:copy-of select="@*"/>
-            <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
-                           name="id"
-                           select="concat(ancestor::tei:TEI//tei:title[@level = 'a'],'_',@xml:id)"/>
-            <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
-                           name="who"
-                           select="concat('#',@who)"/>
             <xsl:sequence select="$content"/>
          </xsl:copy>
       </xsl:if>
@@ -94,8 +88,5 @@
       <xsl:attribute namespace="http://acdh.oeaw.ac.at/xtoks"
                      name="speakers"
                      select="normalize-space(.)"/>
-   </xsl:template>
-   <xsl:template match="text()[parent::tei:span]" mode="extractTokens">
-      <xsl:value-of select="."/>
    </xsl:template>
 </xsl:stylesheet>
