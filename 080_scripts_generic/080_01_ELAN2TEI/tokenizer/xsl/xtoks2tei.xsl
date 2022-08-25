@@ -20,23 +20,16 @@
         <xsl:apply-templates/>
     </xsl:template>
     
-    <xsl:template match="node()">
+    <xsl:template match="node() | @*">
         <xsl:copy inherit-namespaces="no">
-            <xsl:apply-templates select="@* | node()" />
+            <xsl:apply-templates select="node() | @*" />
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="@*">
-        <xsl:choose>
-            <xsl:when test="namespace-uri() = 'http://acdh.oeaw.ac.at/xtoks'">
-                <xsl:attribute name="{if (local-name() = ('id','space','lang','base')) then 'xml:' else ''}{local-name()}">
-                    <xsl:value-of select="."/>
-                </xsl:attribute>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:copy-of select="."/>
-            </xsl:otherwise>
-        </xsl:choose>
+    <xsl:template match="@xtoks:*">
+        <xsl:attribute name="{if (local-name() = ('id','space','lang','base')) then 'xml:' else ''}{local-name()}">
+            <xsl:value-of select="."/>
+        </xsl:attribute>
     </xsl:template>
     
     <xsl:template match="text()[following-sibling::*[1]/self::xtoks:ws]|xtoks:ws">
@@ -62,9 +55,4 @@
             <xsl:apply-templates select="@*|node()"/>
         </xsl:element>
     </xsl:template>
-        
-    <xsl:template match="*:seg[@type='connected']">
-        <xsl:apply-templates/>
-    </xsl:template>
-
 </xsl:stylesheet>
