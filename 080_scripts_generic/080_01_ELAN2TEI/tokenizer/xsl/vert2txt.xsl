@@ -25,7 +25,26 @@
         </xsl:choose>
         <xsl:apply-templates select="$elt/*"/>
         <xsl:text>&lt;/</xsl:text>
-        <xsl:value-of select="local-name($elt)"/>
+        <xsl:choose>
+            <xsl:when test="$elt/@type">
+                <xsl:text>&lt;</xsl:text>
+                <xsl:value-of select="concat($elt/@type, substring(local-name($elt), 1, 1))"/>
+                <xsl:for-each select="$elt/@* except $elt/@type">
+                    <xsl:value-of select="concat(' ',local-name(.),'=','&#34;',data(.),'&#34;')"/>
+                </xsl:for-each>
+                <xsl:text xml:space="preserve">&gt;
+</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:text>&lt;</xsl:text>
+                <xsl:value-of select="local-name($elt)"/>
+                <xsl:for-each select="$elt/@*">
+                    <xsl:value-of select="concat(' ',local-name(.),'=','&#34;',data(.),'&#34;')"/>
+                </xsl:for-each>
+                <xsl:text xml:space="preserve">&gt;
+</xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>
         <xsl:text xml:space="preserve">&gt;
 </xsl:text>
         <xsl:if test="exists($elt/following-sibling::*) and $elt/following-sibling::*[1]/(self::xtoks:w|self::xtoks:pc)">
