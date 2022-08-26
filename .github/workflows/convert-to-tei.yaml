@@ -56,7 +56,7 @@ jobs:
           push: true
   _3:
     needs: [build]
-    uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy-aks.yml@main
+    uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy.yml@main
     secrets: inherit
     with:
       DOCKER_TAG: "ghcr.io/acdh-oeaw/shawi-data/shawi-noske:${{ github.ref_name }}"
