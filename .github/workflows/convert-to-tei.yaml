@@ -1,6 +1,4 @@
 name: Convert ELAN to TEI
-env:
-  DOCKER_TAG: ghcr.io/acdh-oeaw/shawi-data/shawi-noske
 on:
   push: {}
   repository_dispatch:
@@ -54,14 +52,14 @@ jobs:
           context: .
           file: ./nosketchengine/Dockerfile
           tags: |
-            ${{ env.DOCKER_TAG }}:${{ github.ref_name }}
+            ghcr.io/acdh-oeaw/shawi-data/shawi-noske:${{ github.ref_name }}
           push: true
   _3:
     needs: [build]
     uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy-aks.yml@main
     secrets: inherit
     with:
-      DOCKER_TAG: ${{ env.DOCKER_TAG }}:${{ github.ref_name }}
+      DOCKER_TAG: "ghcr.io/acdh-oeaw/shawi-data/shawi-noske:${{ github.ref_name }}"
       APP_NAME: "shawi-noske"
       APP_ROOT: "/"
       SERVICE_ID: "20740"
