@@ -1,9 +1,11 @@
 name: Convert ELAN to TEI
-# env: {}
+env:
+  DOCKER_TAG: ghcr.io/acdh-oeaw/shawi-data/shawi-noske
 on:
   push: {}
   repository_dispatch:
     types: [run]
+  workflow_dispatch: {}
 # ${{ secrets.ACDH_KUBE_CONFIG }}
 jobs:
   build:
@@ -54,4 +56,3 @@ jobs:
           tags: |
             ${{ env.DOCKER_TAG }}:${{ github.ref_name }}
           push: true
-
