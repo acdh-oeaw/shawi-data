@@ -51,7 +51,8 @@
         <xsl:text xml:space="preserve">&gt;
 </xsl:text>
         <xsl:apply-templates select="//tei:body/*"/>
-        <xsl:text>&lt;/doc&gt;</xsl:text>
+        <xsl:text>&lt;/doc&gt;
+</xsl:text>
     </xsl:template>
     <xsl:template match="xtoks:ws"/>
     <xsl:template match="*">
