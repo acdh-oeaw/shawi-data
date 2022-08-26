@@ -74,10 +74,11 @@ jobs:
     uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy.yml@main
     secrets: inherit
     with:
-      DOCKER_TAG: "ghcr.io/acdh-oeaw/shawi-data/shawi-noske:${{ github.ref_name }}"
+      DOCKER_TAG: "ghcr.io/acdh-oeaw/shawi-data/shawi-noske/${{ github.ref_name }}"
       APP_NAME: "shawi-noske"
       APP_ROOT: "/"
       SERVICE_ID: "20740"
       PUBLIC_URL: "shawi-noske.acdh-dev.oeaw.ac.at"
       POSTGRES_ENABLED: false
       environment: "${{ github.ref_name }}"
+      default_port: "8080"
