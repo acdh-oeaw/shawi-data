@@ -49,7 +49,7 @@ The following steps happen _before_ data is ingested into this repository:
 Workflow steps reflected in the data in this repository:
 
 * **Transcription and translation** – Curators segment the audio recordings into sensible sets of "utterances" and transcribe and translate them using [ELAN](https://archive.mpi.nl/tla/elan). When transcription has finished, the curator adds the ELAN document(s) to `122_elan` and pushes the changes to git.
-* **Tokenization**  This push triggers the **[ELAN2TEI conversion workflow](elan2tei)** which takes all *.eaf files in `122_ELAN` and transforms them into tokenized standalone TEI documents, storing them under `102_derived_TEI`. Additionally, a TEI Corpus file is generated which includes corpus level metadata and controlled vocabularies. 
+* **Tokenization**  This push triggers the **[ELAN2TEI conversion workflow](elan2tei)** which takes all *.eaf files in `122_ELAN` and transforms them into tokenized standalone TEI documents, storing them under `103_tei_w`. Additionally, a TEI Corpus file is generated which includes corpus level metadata and controlled vocabularies. 
 * **Annotation** After transformation to TEI, curators annotate the texts using the TEI\_enricher and store the results under ``010_manannot``. 
 * **Conversion to NoSke Verticals** During the tokenization process, a NoSke-compatible vertical is created which incorporates the annotations found in ``010_manannot` .
 * **Deployment** Inteagration of deployment in the workflow TBD
