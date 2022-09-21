@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="../082_scripts_xsl/tei_2_html__simple_text.xsl"?>
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="../082_scripts_xsl/tei_2_html__shawi.xsl"?>
 <?xslt inPathSegment="\010_manannot\" outPathSegment="\106_html\"?>
 <?processor name="saxon" removePreserveFromXML="true" removePreserveFromXSLT="true"?>
 <?snippets fn="snippets_shawi_001.xml" path="{filePath}/../880_conf/"?>
@@ -7,1297 +7,1183 @@
 <?attributeAssignments fn="shawi_attributes.xml" path="{filePath}/../880_conf/"?>
 <?shortCuts fn="shawi_shortCuts" path="{filePath}/../880_conf/"?>
 <!--THIS FILE WAS PROGRAMMATICALLY CREATED by mergeHeaderAndTranscription.xsl on/at2022-09-21T07:36:37.776Z-->
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
-   <teiHeader>
-      <fileDesc>
-         <titleStmt>
-            <title level="a">URFA-125</title>
-            <title level="s">SHAWI Corpus</title>
-            <respStmt>
-               <persName ref="corpus:SP">
-                  <forename>Stephan</forename>
-                  <surname>Procházka</surname>
-               </persName>
-               <resp>Principal Investigator</resp>
-            </respStmt>
-            <respStmt>
-               <persName ref="corpus:AHu">
-                  <forename>Aozan</forename>
-                  <surname>Hussien</surname>
-               </persName>
-               <resp/>
-            </respStmt>
-            <respStmt>
-               <persName ref="corpus:MT">
-                  <forename>Miriam</forename>
-                  <surname>Al Tawil</surname>
-               </persName>
-               <resp/>
-            </respStmt>
-            <respStmt>
-               <persName ref="corpus:MA">
-                  <forename>Zsófia Maura</forename>
-                  <surname>Abraham</surname>
-               </persName>
-               <resp/>
-            </respStmt>
-            <respStmt>
-               <persName ref="corpus:CM">
-                  <forename>Charly</forename>
-                  <surname>Mörth</surname>
-               </persName>
-               <resp>National Cooperation Partner</resp>
-            </respStmt>
-            <respStmt>
-               <persName ref="corpus:DS">
-                  <forename>Daniel</forename>
-                  <surname>Schopper</surname>
-               </persName>
-               <resp/>
-            </respStmt>
-            <respStmt>
-               <persName ref="corpus:AHe">
-                  <forename>Angelika</forename>
-                  <surname>Hechtl</surname>
-               </persName>
-               <resp/>
-            </respStmt>
-            <respStmt>
-               <persName ref="corpus:ISM">
-                  <forename>Ismail</forename>
-                  <surname>Batan</surname>
-               </persName>
-               <resp/>
-            </respStmt>
-            <funder>Funded by the <orgName ref="https://ror.org/013tf3c58">FWF Austrian Science Fund</orgName> under the number <idno type="projectNumber">P 33574</idno>
-            </funder>
-         </titleStmt>
-         <publicationStmt>
-            <publisher ref="https://ror.org/03anc3s24">Austrian Academy of Sciences</publisher>
-            <publisher ref="https://ror.org/03prydq77">University of Vienna</publisher>
-            <distributor ref="https://ror.org/028bsh698">Austrian Center for Digital Humanities and Cultural Heritage</distributor>
-            <date when="????-??-??">TODO Set publication date here</date>
-            <address>
-               <addrLine>Sonnenfelsgasse 19</addrLine>
-               <addrLine>1010 Vienna</addrLine>
-               <addrLine>Austria</addrLine>
-            </address>
-            <availability status="free">
-               <licence target="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</licence>
-            </availability>
-            <idno type="SHAWICorpusID">URFA-125</idno>
-         </publicationStmt>
-         <sourceDesc>
-            <recordingStmt>
-               <recording dur-iso="04:20" type="audio">
-                  <date when="2010-05-15"/>
-                  <respStmt>
-                     <resp>recording</resp>
-                     <persName ref="corpus:SP">Stephan Procházka</persName>
-                  </respStmt>
-                  <media url="share:Urfa-125_Coffee-Harran-2010.wav"
-                         mimeType="audio/wav"
-                         type="master"/>
-               </recording>
-            </recordingStmt>
-         </sourceDesc>
-      </fileDesc>
-      <encodingDesc>
-         <listPrefixDef>
-            <prefixDef ident="corpus"
-                       matchPattern="^(.+)$"
-                       replacementPattern="shawiCorpus.xml#$1">
-               <p>Private URIs using the <code>teiCorpusHeader</code> prefix are pointers to any element in the <ref target="shawiCorpus.xml">SHAWI teiCorpus document</ref>.</p>
-            </prefixDef>
-            <prefixDef ident="share"
-                       matchPattern="^(.+)$"
-                       replacementPattern="\\share17.univie.ac.at\orientalistik\SHAWI\Recordings\*\*\$1.wav">
-               <p>Private URIs using the <code>share</code> prefix are pointers to audio file residing on the SHAWI network share.</p>
-            </prefixDef>
-            <prefixDef ident="geo"
-                       matchPattern="^(.+)$"
-                       replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml#$1">
-               <p>Private URIs using the <code>geo</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>place</gi> element in <ref target="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml">VICAV Geodata list</ref>.</p>
-            </prefixDef>
-            <prefixDef ident="zotid"
-                       matchPattern="^(.+)$"
-                       replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_biblio_tei_zotero.xml#$1">
-               <p>Private URIs using the <code>zotid</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>biblStruct</gi> element in the TEI export of the <ref target="https://www.zotero.org/groups/2165756/vicav/library">VICAV Zotero Group library</ref>.</p>
-            </prefixDef>
-         </listPrefixDef>
-      </encodingDesc>
-      <profileDesc>
-         <particDesc>
-            <listPerson>
-               <head>Speakers in URFA-125</head>
-               <person sameAs="corpus:Harran01">
-                  <name type="pseudonym">Harran01</name>
-               </person>
-               <person sameAs="corpus:Harran02">
-                  <name type="pseudonym">Harran02</name>
-               </person>
-            </listPerson>
-         </particDesc>
-         <settingDesc>
-            <place sameAs="geo:harran">
-               <placeName>Harran</placeName>
-            </place>
-         </settingDesc>
-         <textClass>
-            <catRef target="corpus:Coffee"/>
-            <catRef target="corpus:TwoBarleyGrains"/>
-         </textClass>
-      </profileDesc>
-   </teiHeader>
-   <text>
-      <timeline unit="ms">
-         <when xml:id="T0"/>
-         <when interval="17275" since="#T0" xml:id="T1"/>
-         <when interval="27517" since="#T0" xml:id="T2"/>
-         <when interval="27585" since="#T0" xml:id="T3"/>
-         <when interval="37792" since="#T0" xml:id="T4"/>
-         <when interval="37827" since="#T0" xml:id="T5"/>
-         <when interval="46620" since="#T0" xml:id="T6"/>
-         <when interval="57102" since="#T0" xml:id="T7"/>
-         <when interval="57103" since="#T0" xml:id="T8"/>
-         <when interval="62482" since="#T0" xml:id="T9"/>
-         <when interval="62551" since="#T0" xml:id="T10"/>
-         <when interval="73827" since="#T0" xml:id="T11"/>
-         <when interval="82447" since="#T0" xml:id="T12"/>
-         <when interval="92068" since="#T0" xml:id="T13"/>
-         <when interval="92103" since="#T0" xml:id="T14"/>
-         <when interval="97861" since="#T0" xml:id="T15"/>
-         <when interval="97896" since="#T0" xml:id="T16"/>
-         <when interval="109930" since="#T0" xml:id="T17"/>
-         <when interval="109999" since="#T0" xml:id="T18"/>
-         <when interval="118688" since="#T0" xml:id="T19"/>
-         <when interval="126516" since="#T0" xml:id="T20"/>
-         <when interval="141033" since="#T0" xml:id="T21"/>
-         <when interval="141068" since="#T0" xml:id="T22"/>
-         <when interval="152068" since="#T0" xml:id="T23"/>
-         <when interval="152103" since="#T0" xml:id="T24"/>
-         <when interval="160447" since="#T0" xml:id="T25"/>
-         <when interval="160481" since="#T0" xml:id="T26"/>
-         <when interval="176205" since="#T0" xml:id="T27"/>
-         <when interval="176206" since="#T0" xml:id="T28"/>
-         <when interval="186517" since="#T0" xml:id="T29"/>
-         <when interval="186551" since="#T0" xml:id="T30"/>
-         <when interval="197861" since="#T0" xml:id="T31"/>
-         <when interval="197862" since="#T0" xml:id="T32"/>
-         <when interval="206999" since="#T0" xml:id="T33"/>
-         <when interval="207033" since="#T0" xml:id="T34"/>
-         <when interval="221344" since="#T0" xml:id="T35"/>
-         <when interval="221413" since="#T0" xml:id="T36"/>
-         <when interval="229999" since="#T0" xml:id="T37"/>
-         <when interval="230068" since="#T0" xml:id="T38"/>
-         <when interval="234965" since="#T0" xml:id="T39"/>
-         <when interval="234999" since="#T0" xml:id="T40"/>
-         <when interval="242103" since="#T0" xml:id="T41"/>
-         <when interval="242137" since="#T0" xml:id="T42"/>
-         <when interval="246999" since="#T0" xml:id="T43"/>
-         <when interval="261807" since="#T0" xml:id="T44"/>
-      </timeline>
-      <body>
-         <div subtype="d0" type="Situation">
-            <head>
-               <note type="start">#T0</note>
-               <note type="end">#T44</note>
-            </head>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a1"
-                  who="#default"
-                  end="#T1"
-                  start="#T0">
-                  <w join="right" xml:id="URFA-125_xTok_000001" rend="withDash">ᵊb</w>
-                  <w xml:id="URFA-125_xTok_000003">zimānāt</w>
-                  <w xml:id="URFA-125_xTok_000004">xōǧam</w>
-                  <w xml:id="URFA-125_xTok_000005">wāḥad</w>
-                  <w xml:id="URFA-125_xTok_000006">rāˁi</w>
-                  <w xml:id="URFA-125_xTok_000007">ghawa</w>
-                  <w xml:id="URFA-125_xTok_000008">rāˁi</w>
-                  <w join="right" xml:id="URFA-125_xTok_000009">maḏ̣īfe</w>
-                  <pc xml:id="xTok_000010">,</pc>
-                  <w xml:id="URFA-125_xTok_000011">ˀawwali</w>
-                  <w join="right" xml:id="URFA-125_xTok_000012" rend="withDash">l</w>
-                  <w xml:id="URFA-125_xTok_000014">ˁarab</w>
-                  <w xml:id="URFA-125_xTok_000015">ygūlūn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000016" rend="withDash">b</w>
-                  <w join="right" xml:id="URFA-125_xTok_000018" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000020">garāye</w>
-                  <w xml:id="URFA-125_xTok_000021">yduggūn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000022">ᵊghawa</w>
-                  <pc xml:id="xTok_000023">,</pc>
-                  <w xml:id="URFA-125_xTok_000024">ᵊghawa</w>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a1" xml:id="a27">Once upon a time, my master, there was a coffee boy, who had a place, where coffee is served. In former times, the Arabs used to say in villages, they used to mill coffee, coffee</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a2"
-                  who="#default"
-                  end="#T2"
-                  start="#T1">
-                  <w join="right" xml:id="URFA-125_xTok_000025" rend="withDash">ˀaz</w>
-                  <w xml:id="URFA-125_xTok_000027">zlime</w>
-                  <w join="right" xml:id="URFA-125_xTok_000028">hāḏa</w>
-                  <pc xml:id="xTok_000029">,</pc>
-                  <w xml:id="URFA-125_xTok_000030">ydugg</w>
-                  <w xml:id="URFA-125_xTok_000031">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000032" rend="withDash">b</w>
-                  <w join="right" xml:id="URFA-125_xTok_000034" rend="withDash">an</w>
-                  <w xml:id="URFA-125_xTok_000036">nahāṛ</w>
-                  <w xml:id="URFA-125_xTok_000037">kīlow</w>
-                  <w xml:id="URFA-125_xTok_000038">ghawa</w>
-                  <w xml:id="URFA-125_xTok_000039">yṣarrif</w>
-                  <w join="right" xml:id="URFA-125_xTok_000040" rend="withDash">b</w>
-                  <w join="right" xml:id="URFA-125_xTok_000042" rend="withDash">as</w>
-                  <w xml:id="URFA-125_xTok_000044">sine</w>
-                  <w xml:id="URFA-125_xTok_000045">talaṯmiyye</w>
-                  <w join="right" xml:id="URFA-125_xTok_000046" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000048">xamsīn</w>
-                  <w xml:id="URFA-125_xTok_000049">kīlow</w>
-                  <w xml:id="URFA-125_xTok_000050">yṣarrif</w>
-                  <w xml:id="URFA-125_xTok_000051">yākul</w>
-                  <w join="right" xml:id="URFA-125_xTok_000052">ᵊghawa</w>
-                  <pc xml:id="xTok_000053">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a2" xml:id="a28">This man mills coffee, he would consume a kilo of coffee a day, he would consume three hundred and fifty kilos a year, he would eat coffee</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a3"
-                  who="#default"
-                  end="#T4"
-                  start="#T3">
-                  <w xml:id="URFA-125_xTok_000054">yaˁni</w>
-                  <w xml:id="URFA-125_xTok_000055">yṣarrif</w>
-                  <w xml:id="URFA-125_xTok_000056">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000057">sine</w>
-                  <w xml:id="URFA-125_xTok_000058">sintēn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000059" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000061">mille</w>
-                  <w xml:id="URFA-125_xTok_000062">tiǧī</w>
-                  <w join="right" xml:id="URFA-125_xTok_000063" rend="withDash">m</w>
-                  <w join="right" xml:id="URFA-125_xTok_000065" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000067" join="right">garāye</w>
-                  <pc xml:id="xTok_000068">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000069">yitharraǧ</w>
-                  <pc join="right" xml:id="xTok_000070">[</pc>
-                  <w xml:id="URFA-125_xTok_000071" join="right">ūn</w>
-                  <pc xml:id="xTok_000072">]</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000073">yišrabūn</w>
-                  <pc xml:id="xTok_000074">,</pc>
-                  <w xml:id="URFA-125_xTok_000075">bass</w>
-                  <w xml:id="URFA-125_xTok_000076">yišrabūn</w>
-                  <w xml:id="URFA-125_xTok_000077">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000078">ˁind</w>
-                  <w join="right" xml:id="URFA-125_xTok_000079" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000081">gamgūm</w>
-                  <w join="right" xml:id="URFA-125_xTok_000082" rend="withDash">w</w>
-                  <w join="right" xml:id="URFA-125_xTok_000084" rend="withDash">an</w>
-                  <w xml:id="URFA-125_xTok_000086" join="right">nafīle</w>
-                  <pc xml:id="xTok_000087">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a3" xml:id="a29">that means he consumes coffee, one-two years pass, people come from villages, get entertained and drink, they only drink coffee at the gamgūm and the nafīle (tools for making coffee?)</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a4"
-                  who="#default"
-                  end="#T6"
-                  start="#T5">
-                  <w xml:id="URFA-125_xTok_000088">yḏ̣allūn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000089" rend="withDash">l</w>
-                  <w join="right" xml:id="URFA-125_xTok_000091" rend="withDash">aṣ</w>
-                  <w xml:id="URFA-125_xTok_000093">ṣubuḥ</w>
-                  <w xml:id="URFA-125_xTok_000094">yišrabūn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000095">ᵊghawa</w>
-                  <pc xml:id="xTok_000096">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000097" rend="withDash">ˀaǧ</w>
-                  <w xml:id="URFA-125_xTok_000099">ǧīrān</w>
-                  <w join="right" xml:id="URFA-125_xTok_000100" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000102">u</w>
-                  <w xml:id="URFA-125_xTok_000103">yiǧūn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000104" rend="withDash">m</w>
-                  <w join="right" xml:id="URFA-125_xTok_000106" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000108" join="right">garāye</w>
-                  <pc xml:id="xTok_000109">,</pc>
-                  <w xml:id="URFA-125_xTok_000110">ǧarītēn</w>
-                  <w xml:id="URFA-125_xTok_000111">ṯalāṯ</w>
-                  <w join="right" xml:id="URFA-125_xTok_000112">maši</w>
-                  <pc xml:id="xTok_000113">,</pc>
-                  <w xml:id="URFA-125_xTok_000114">yiǧūn</w>
-                  <w xml:id="URFA-125_xTok_000115">ˁalē</w>
-                  <w join="right" xml:id="URFA-125_xTok_000116" rend="withDash">ta</w>
-                  <w xml:id="URFA-125_xTok_000118">yišrabūn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000119">ᵊghawa</w>
-                  <pc xml:id="xTok_000120">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a4" xml:id="a30">they keep drinking coffee till the morning, the neighbors at his place, they come from villages, two or three villages on foot, they come to him to drink coffee</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a5"
-                  who="#default"
-                  end="#T7"
-                  start="#T6">
-                  <w xml:id="URFA-125_xTok_000121">yugˁudūn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000122" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000124">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000125" rend="withDash">yōm</w>
-                  <w xml:id="URFA-125_xTok_000127">in</w>
-                  <w xml:id="URFA-125_xTok_000128">yugˁudūn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000129" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000131">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000132" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000134">yišrabūn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000135">ᵊghawa</w>
-                  <pc xml:id="xTok_000136">,</pc>
-                  <w xml:id="URFA-125_xTok_000137">sine</w>
-                  <w xml:id="URFA-125_xTok_000138">sintēn</w>
-                  <w xml:id="URFA-125_xTok_000139">ṯalāṯ</w>
-                  <w join="right" xml:id="URFA-125_xTok_000140" rend="withDash">az</w>
-                  <w xml:id="URFA-125_xTok_000142">zlime</w>
-                  <w xml:id="URFA-125_xTok_000143">hāḏa</w>
-                  <w xml:id="URFA-125_xTok_000144">ḏ̣aˁfān</w>
-                  <w xml:id="URFA-125_xTok_000145">yaˁni</w>
-                  <w xml:id="URFA-125_xTok_000146">flūs</w>
-                  <w xml:id="URFA-125_xTok_000147">mū</w>
-                  <w xml:id="URFA-125_xTok_000148">ḏ̣āll</w>
-                  <w join="right" xml:id="URFA-125_xTok_000149" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000151">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000152" rend="withDash">məṣāriyy</w>
-                  <w xml:id="URFA-125_xTok_000154">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000155">xəlṣānāt</w>
-                  <pc xml:id="xTok_000156">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a5" xml:id="a31">they sit at his place, when they sit at his place and drink coffee, a year, two years, three years later this man has become weak, that means, he has got no money left, his money is out</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a6"
-                  who="#default"
-                  end="#T9"
-                  start="#T8">
-                  <w join="right" xml:id="URFA-125_xTok_000157" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000159">gāḏ̣i</w>
-                  <w xml:id="URFA-125_xTok_000160">ˀartəq</w>
-                  <w xml:id="URFA-125_xTok_000161">mā</w>
-                  <w xml:id="URFA-125_xTok_000162">ḏ̣āll</w>
-                  <w join="right" xml:id="URFA-125_xTok_000163" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000165">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000166" rend="withDash">gūǧ</w>
-                  <w xml:id="URFA-125_xTok_000168">in</w>
-                  <w xml:id="URFA-125_xTok_000169">yāxuḏ</w>
-                  <w xml:id="URFA-125_xTok_000170">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000171">mā</w>
-                  <w xml:id="URFA-125_xTok_000172">ˁād</w>
-                  <w xml:id="URFA-125_xTok_000173">yigdar</w>
-                  <w xml:id="URFA-125_xTok_000174">yištari</w>
-                  <w join="right" xml:id="URFA-125_xTok_000175">ghawa</w>
-                  <pc xml:id="xTok_000176">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a6" xml:id="a32">and he is done, he has no power more to take coffee, he can not buy coffee anymore</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a7"
-                  who="#default"
-                  end="#T11"
-                  start="#T10">
-                  <w join="right" xml:id="URFA-125_xTok_000177" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000179">gāḏ̣ib</w>
-                  <w xml:id="URFA-125_xTok_000180">ᵊmbaṭṭil</w>
-                  <w join="right" xml:id="URFA-125_xTok_000181" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000183">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000184">məṣāri</w>
-                  <w xml:id="URFA-125_xTok_000185">mā</w>
-                  <w join="right" xml:id="URFA-125_xTok_000186" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000188">u</w>
-                  <w xml:id="URFA-125_xTok_000189">gāḏ̣ib</w>
-                  <w xml:id="URFA-125_xTok_000190">lamm</w>
-                  <w join="right" xml:id="URFA-125_xTok_000191" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000193">gamgūm</w>
-                  <w join="right" xml:id="URFA-125_xTok_000194" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000196">ᵊmmāˁīn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000197" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000199">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000200" rend="withDash">w</w>
-                  <w join="right" xml:id="URFA-125_xTok_000202" rend="withDash">ḥāṭṭ</w>
-                  <w xml:id="URFA-125_xTok_000204">hin</w>
-                  <w join="right" xml:id="URFA-125_xTok_000205" rend="withDash">b</w>
-                  <w join="right" xml:id="URFA-125_xTok_000207" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000209" join="right">kōše</w>
-                  <pc xml:id="xTok_000210">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000211" rend="withDash">rāmī</w>
-                  <w xml:id="URFA-125_xTok_000213" join="right">hin</w>
-                  <pc xml:id="xTok_000214">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a7" xml:id="a33">and he gives up coffee, he has no money, he gathers the gamgūm, the utensils of the coffee and puts them in the corner, he throws them</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a8"
-                  who="#default"
-                  end="#T12"
-                  start="#T11">
-                  <w xml:id="URFA-125_xTok_000215">wāḥad</w>
-                  <w xml:id="URFA-125_xTok_000216">zād</w>
-                  <w xml:id="URFA-125_xTok_000217">ṣāyir</w>
-                  <w xml:id="URFA-125_xTok_000218">zangīl</w>
-                  <w join="right" xml:id="URFA-125_xTok_000219">ǧidīd</w>
-                  <pc xml:id="xTok_000220">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000221" rend="withDash">yamm</w>
-                  <w xml:id="URFA-125_xTok_000223">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000224" rend="withDash">ta</w>
-                  <w xml:id="URFA-125_xTok_000226" join="right">ngūl</w>
-                  <pc xml:id="xTok_000227">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000228" rend="withDash">yamm</w>
-                  <w xml:id="URFA-125_xTok_000230">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000231" rend="withDash">b</w>
-                  <w xml:id="URFA-125_xTok_000233">ǧærye</w>
-                  <w xml:id="URFA-125_xTok_000234">ǧarītēn</w>
-                  <w xml:id="URFA-125_xTok_000235">ṣāyir</w>
-                  <w xml:id="URFA-125_xTok_000236">wāḥad</w>
-                  <w xml:id="URFA-125_xTok_000237">šabˁān</w>
-                  <w join="right" xml:id="URFA-125_xTok_000238">ǧidīd</w>
-                  <pc xml:id="xTok_000239">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a8" xml:id="a34">Someone has recently become rich, close to him, let’s say, close to him by a village or two, someone has recently become replete (rich)</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a9"
-                  who="#default"
-                  end="#T13"
-                  start="#T12">
-                  <w xml:id="URFA-125_xTok_000240">samˁān</w>
-                  <w xml:id="URFA-125_xTok_000241">in</w>
-                  <w join="right" xml:id="URFA-125_xTok_000242" rend="withDash">aš</w>
-                  <w xml:id="URFA-125_xTok_000244">šēx</w>
-                  <w xml:id="URFA-125_xTok_000245">hāḏa</w>
-                  <w xml:id="URFA-125_xTok_000246">tārič</w>
-                  <w join="right" xml:id="URFA-125_xTok_000247" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000249">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000250">gāyil</w>
-                  <pc join="right" xml:id="xTok_000251">“</pc>
-                  <w xml:id="URFA-125_xTok_000252">min</w>
-                  <w xml:id="URFA-125_xTok_000253">hēn</w>
-                  <w xml:id="URFA-125_xTok_000254">ṛāyiḥ</w>
-                  <w xml:id="URFA-125_xTok_000255">āni</w>
-                  <w xml:id="URFA-125_xTok_000256">ˀarīd</w>
-                  <w xml:id="URFA-125_xTok_000257">agḏ̣ub</w>
-                  <w xml:id="URFA-125_xTok_000258">dār</w>
-                  <w join="right" xml:id="URFA-125_xTok_000259" rend="withDash">aš</w>
-                  <w xml:id="URFA-125_xTok_000261">šēx</w>
-                  <w join="right" xml:id="URFA-125_xTok_000262" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000264">arīd</w>
-                  <w xml:id="URFA-125_xTok_000265">āni</w>
-                  <w xml:id="URFA-125_xTok_000266">ˀasāwi</w>
-                  <w join="right" xml:id="URFA-125_xTok_000267">ghawa</w>
-                  <pc xml:id="xTok_000268">.</pc>
-                  <pc xml:id="xTok_000269">”</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a9" xml:id="a35">He hears that this old man has left the coffee and says “I will leave from here, I want to go to the old man’s house and I want to make coffee”</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a10"
-                  who="#default"
-                  end="#T15"
-                  start="#T14">
-                  <w xml:id="URFA-125_xTok_000270">ᵊmdarrib</w>
-                  <w join="right" xml:id="URFA-125_xTok_000271" rend="withDash">ˁa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000273" rend="withDash">l</w>
-                  <w xml:id="URFA-125_xTok_000275">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000276">msāwi</w>
-                  <w join="right" xml:id="URFA-125_xTok_000277" rend="withDash">l</w>
-                  <w xml:id="URFA-125_xTok_000279" join="right">gamgūm</w>
-                  <pc xml:id="xTok_000280">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000281" rend="withDash">mālī</w>
-                  <w xml:id="URFA-125_xTok_000283">hin</w>
-                  <w xml:id="URFA-125_xTok_000284">ᵊflān</w>
-                  <w xml:id="URFA-125_xTok_000285">gāyim</w>
-                  <w xml:id="URFA-125_xTok_000286">ysāwi</w>
-                  <w xml:id="URFA-125_xTok_000287">ghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000288" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000290">yṣubb</w>
-                  <w join="right" xml:id="URFA-125_xTok_000291" rend="withDash">l</w>
-                  <w join="right" xml:id="URFA-125_xTok_000293" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000295" join="right">ˁālam</w>
-                  <pc xml:id="xTok_000296">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000297" rend="withDash">l</w>
-                  <w join="right" xml:id="URFA-125_xTok_000299" rend="withDash">ᵊzlimt</w>
-                  <w xml:id="URFA-125_xTok_000301">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000302">yṣubb</w>
-                  <pc xml:id="xTok_000303">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a10" xml:id="a36">He sends for coffee, he makes the gamgūm, he fills them and what not, then he starts to make coffee and pour for people, for his men</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a11"
-                  who="#default"
-                  end="#T17"
-                  start="#T16">
-                  <w join="right" xml:id="URFA-125_xTok_000304" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000306">u</w>
-                  <w xml:id="URFA-125_xTok_000307">zlime</w>
-                  <w xml:id="URFA-125_xTok_000308">wāḥad</w>
-                  <w xml:id="URFA-125_xTok_000309">min</w>
-                  <w join="right" xml:id="URFA-125_xTok_000310" rend="withDash">zilm</w>
-                  <w xml:id="URFA-125_xTok_000312">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000313" rend="withDash">mdarrb</w>
-                  <w xml:id="URFA-125_xTok_000315">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000316" rend="withDash">ˁa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000318" rend="withDash">š</w>
-                  <w xml:id="URFA-125_xTok_000320">šēx</w>
-                  <w join="right" xml:id="URFA-125_xTok_000321" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000323" join="right">awwali</w>
-                  <pc xml:id="xTok_000324">,</pc>
-                  <w xml:id="URFA-125_xTok_000325">ˁala</w>
-                  <w xml:id="URFA-125_xTok_000326">ṣāḥb</w>
-                  <w join="right" xml:id="URFA-125_xTok_000327" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000329" join="right">ᵊghawa</w>
-                  <pc xml:id="xTok_000330">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000331" rend="withDash">gāyil</w>
-                  <w xml:id="URFA-125_xTok_000333">lu</w>
-                  <pc join="right" xml:id="xTok_000334">“</pc>
-                  <w xml:id="URFA-125_xTok_000335">rūḥ</w>
-                  <w join="right" xml:id="URFA-125_xTok_000336" rend="withDash">ṣiḥ</w>
-                  <w xml:id="URFA-125_xTok_000338">inne</w>
-                  <w join="right" xml:id="URFA-125_xTok_000339" rend="withDash">la</w>
-                  <w join="right" xml:id="URFA-125_xTok_000341" rend="withDash">š</w>
-                  <w xml:id="URFA-125_xTok_000343" join="right">šēx</w>
-                  <pc xml:id="xTok_000344">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000345" rend="withDash">gul</w>
-                  <w xml:id="URFA-125_xTok_000347">illu</w>
-                  <w xml:id="URFA-125_xTok_000348">ˀIsmāˁīn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000349" rend="withDash">ˁāzm</w>
-                  <w xml:id="URFA-125_xTok_000351" join="right">ak</w>
-                  <pc xml:id="xTok_000352">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000353" rend="withDash">ˁāzim</w>
-                  <w xml:id="URFA-125_xTok_000355">ak</w>
-                  <w join="right" xml:id="URFA-125_xTok_000356" rend="withDash">ˁa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000358" rend="withDash">l</w>
-                  <w join="right" xml:id="URFA-125_xTok_000360">ᵊghawa</w>
-                  <pc xml:id="xTok_000361">.</pc>
-                  <pc xml:id="xTok_000362">”</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a11" xml:id="a37">he has a man, he sends one of his men to the first old man, to the coffee guy, he says to him “Go and call the old man for us, tell him that ˀIsmāˁīn is inviting you, he is inviting you for  coffee”</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a12"
-                  who="#default"
-                  end="#T19"
-                  start="#T18">
-                  <w xml:id="URFA-125_xTok_000363">ygūl</w>
-                  <w join="right" xml:id="URFA-125_xTok_000364" rend="withDash">ta</w>
-                  <w xml:id="URFA-125_xTok_000366">yiǧi</w>
-                  <w join="right" xml:id="URFA-125_xTok_000367" rend="withDash">ˁind</w>
-                  <w join="right" xml:id="URFA-125_xTok_000369" rend="withDash">inn</w>
-                  <w xml:id="URFA-125_xTok_000371">u</w>
-                  <w xml:id="URFA-125_xTok_000372">huwwa</w>
-                  <w xml:id="URFA-125_xTok_000373">mbaṭṭil</w>
-                  <w join="right" xml:id="URFA-125_xTok_000374" rend="withDash">ᵊghawt</w>
-                  <w xml:id="URFA-125_xTok_000376" join="right">u</w>
-                  <pc xml:id="xTok_000377">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000378" rend="withDash">ta</w>
-                  <w xml:id="URFA-125_xTok_000380">yiǧi</w>
-                  <w xml:id="URFA-125_xTok_000381">yḏ̣all</w>
-                  <w xml:id="URFA-125_xTok_000382">yišrab</w>
-                  <w join="right" xml:id="URFA-125_xTok_000383" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000385">i</w>
-                  <w join="right" xml:id="URFA-125_xTok_000386">ghawa</w>
-                  <pc xml:id="xTok_000387">,</pc>
-                  <w xml:id="URFA-125_xTok_000388">lā</w>
-                  <w xml:id="URFA-125_xTok_000389">yḏ̣all</w>
-                  <w join="right" xml:id="URFA-125_xTok_000390" rend="withDash">ᵊb</w>
-                  <w xml:id="URFA-125_xTok_000392">qēr</w>
-                  <w join="right" xml:id="URFA-125_xTok_000393">ᵊghawa</w>
-                  <pc xml:id="xTok_000394">,</pc>
-                  <w xml:id="URFA-125_xTok_000395">kahvesiz</w>
-                  <w join="right" xml:id="URFA-125_xTok_000396">kalmasın</w>
-                  <pc xml:id="xTok_000397">!</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a12" xml:id="a38">he says, so he can come, since he has given up his coffee, so he can come and keep drinking coffee at my place, so he would not stay without coffee, he should not stay without coffee!</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a13"
-                  who="#default"
-                  end="#T20"
-                  start="#T19">
-                  <w join="right" xml:id="URFA-125_xTok_000398" rend="withDash">yōm</w>
-                  <w join="right" xml:id="URFA-125_xTok_000400" rend="withDash">inn</w>
-                  <w xml:id="URFA-125_xTok_000402">u</w>
-                  <w xml:id="URFA-125_xTok_000403">ṛāyiḥ</w>
-                  <w join="right" xml:id="URFA-125_xTok_000404" rend="withDash">ṣāyiḥ</w>
-                  <w xml:id="URFA-125_xTok_000406">illu</w>
-                  <w xml:id="URFA-125_xTok_000407">gāyil</w>
-                  <pc join="right" xml:id="xTok_000408">“</pc>
-                  <w xml:id="URFA-125_xTok_000409" join="right">tamām</w>
-                  <pc xml:id="xTok_000410">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000411" rend="withDash">aš</w>
-                  <w xml:id="URFA-125_xTok_000413">šēx</w>
-                  <w join="right" xml:id="URFA-125_xTok_000414" rend="withDash">yṣīḥ</w>
-                  <w xml:id="URFA-125_xTok_000416" join="right">lak</w>
-                  <pc xml:id="xTok_000417">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000418">ugḏ̣ub</w>
-                  <pc xml:id="xTok_000419">”</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000420" rend="withDash">w</w>
-                  <w join="right" xml:id="URFA-125_xTok_000422" rend="withDash">gabəl</w>
-                  <w xml:id="URFA-125_xTok_000424">ma</w>
-                  <w xml:id="URFA-125_xTok_000425">yiǧi</w>
-                  <w join="right" xml:id="URFA-125_xTok_000426" rend="withDash">ˀaz</w>
-                  <w xml:id="URFA-125_xTok_000428">zlime</w>
-                  <w xml:id="URFA-125_xTok_000429">ḏāk</w>
-                  <w xml:id="URFA-125_xTok_000430">gāyil</w>
-                  <w join="right" xml:id="URFA-125_xTok_000431" rend="withDash">li</w>
-                  <w join="right" xml:id="URFA-125_xTok_000433" rend="withDash">zlimt</w>
-                  <w xml:id="URFA-125_xTok_000435">u</w>
-                  <w xml:id="URFA-125_xTok_000436">al</w>
-                  <w xml:id="URFA-125_xTok_000437">ysāwi</w>
-                  <w join="right" xml:id="URFA-125_xTok_000438" rend="withDash">l</w>
-                  <w xml:id="URFA-125_xTok_000440">ᵊghawa</w>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a13" xml:id="a39">When he goes and calls him, he says “fine, the old man is asking for you, there you go” and before that man has arrived, the man who is making coffee says to his men</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a14"
-                  who="#default"
-                  end="#T21"
-                  start="#T20">
-                  <w xml:id="URFA-125_xTok_000441">gāyil</w>
-                  <pc join="right" xml:id="xTok_000442">“</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000443" rend="withDash">aš</w>
-                  <w xml:id="URFA-125_xTok_000445">šēx</w>
-                  <w join="right" xml:id="URFA-125_xTok_000446" rend="withDash">ǧaˁ</w>
-                  <w xml:id="URFA-125_xTok_000448" join="right">yiǧi</w>
-                  <pc xml:id="xTok_000449">,</pc>
-                  <w xml:id="URFA-125_xTok_000450">ˀimil</w>
-                  <w join="right" xml:id="URFA-125_xTok_000451" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000453">imle</w>
-                  <w join="right" xml:id="URFA-125_xTok_000454" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000456">gamgūm</w>
-                  <w join="right" xml:id="URFA-125_xTok_000457" rend="withDash">ač</w>
-                  <w xml:id="URFA-125_xTok_000459">čibīre</w>
-                  <w join="right" xml:id="URFA-125_xTok_000460" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000462">gamgūm</w>
-                  <w join="right" xml:id="URFA-125_xTok_000463" rend="withDash">ač</w>
-                  <w join="right" xml:id="URFA-125_xTok_000465">čibīr</w>
-                  <pc xml:id="xTok_000466">!</pc>
-                  <pc xml:id="xTok_000467">”</pc>
-                  <w xml:id="URFA-125_xTok_000468">malyāne</w>
-                  <w join="right" xml:id="URFA-125_xTok_000469" rend="withDash">bī</w>
-                  <w xml:id="URFA-125_xTok_000471">he</w>
-                  <w xml:id="URFA-125_xTok_000472">dabbītēn</w>
-                  <w xml:id="URFA-125_xTok_000473">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000474" rend="withDash">ǧaˁ</w>
-                  <w xml:id="URFA-125_xTok_000476">ᵊtfūr</w>
-                  <w join="right" xml:id="URFA-125_xTok_000477" rend="withDash">gāyl</w>
-                  <w xml:id="URFA-125_xTok_000479">illu</w>
-                  <pc join="right" xml:id="xTok_000480">“</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000481" rend="withDash">ḥuṭṭ</w>
-                  <w xml:id="URFA-125_xTok_000483">ullak</w>
-                  <w join="right" xml:id="URFA-125_xTok_000484" rend="withDash">bī</w>
-                  <w xml:id="URFA-125_xTok_000486">he</w>
-                  <w xml:id="URFA-125_xTok_000487">ḥabbtēn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000488">šiˁīr</w>
-                  <pc xml:id="xTok_000489">!</pc>
-                  <w xml:id="URFA-125_xTok_000490">ḥuṭṭ</w>
-                  <w join="right" xml:id="URFA-125_xTok_000491" rend="withDash">ᵊb</w>
-                  <w xml:id="URFA-125_xTok_000493">gaḷb</w>
-                  <w join="right" xml:id="URFA-125_xTok_000494" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000496">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000497">ḥabbt¬ēn</w>
-                  <w xml:id="URFA-125_xTok_000498">šiˁīr</w>
-                  <w join="right" xml:id="URFA-125_xTok_000499" rend="withDash">w</w>
-                  <w join="right" xml:id="URFA-125_xTok_000501" rend="withDash">xall</w>
-                  <w xml:id="URFA-125_xTok_000503">ha</w>
-                  <w join="right" xml:id="URFA-125_xTok_000504">təṭbax</w>
-                  <pc xml:id="xTok_000505">!</pc>
-                  <pc xml:id="xTok_000506">”</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a14" xml:id="a40">he says “The old man is coming, fill the big gamgūm! The big gamgūm is full and has two cans of coffee in it, which are evaporating, he says to him “Put into it two grains of barley! Put two grains of barley into the coffee and let it boil!”</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a15"
-                  who="#default"
-                  end="#T23"
-                  start="#T22">
-                  <w xml:id="URFA-125_xTok_000507">gāyil</w>
-                  <pc join="right" xml:id="xTok_000508">“</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000509">tamām</w>
-                  <pc xml:id="xTok_000510">!</pc>
-                  <pc xml:id="xTok_000511">”</pc>
-                  <w xml:id="URFA-125_xTok_000512">ḥāṭṭ</w>
-                  <w xml:id="URFA-125_xTok_000513">ḥabbtēn</w>
-                  <w xml:id="URFA-125_xTok_000514">šiˁīr</w>
-                  <w join="right" xml:id="URFA-125_xTok_000515" rend="withDash">w</w>
-                  <w join="right" xml:id="URFA-125_xTok_000517" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000519">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000520" rend="withDash">gaˁa</w>
-                  <w xml:id="URFA-125_xTok_000522">təṭbax</w>
-                  <w xml:id="URFA-125_xTok_000523">ᵊ</w>
-                  <w join="right" xml:id="URFA-125_xTok_000524" rend="withDash">yihnī</w>
-                  <w xml:id="URFA-125_xTok_000526">he</w>
-                  <w join="right" xml:id="URFA-125_xTok_000527" rend="withDash">ssāwī</w>
-                  <w xml:id="URFA-125_xTok_000529">he</w>
-                  <w xml:id="URFA-125_xTok_000530">ˀaxtar</w>
-                  <w xml:id="URFA-125_xTok_000531">dönder</w>
-                  <w xml:id="URFA-125_xTok_000532">yaˁni</w>
-                  <w join="right" xml:id="URFA-125_xTok_000533" rend="withDash">b</w>
-                  <w join="right" xml:id="URFA-125_xTok_000535" rend="withDash">aǧ</w>
-                  <w xml:id="URFA-125_xTok_000537">ǧæzwit</w>
-                  <w join="right" xml:id="URFA-125_xTok_000538" rend="withDash">az</w>
-                  <w xml:id="URFA-125_xTok_000540">ziqīre</w>
-                  <w join="right" xml:id="URFA-125_xTok_000541" rend="withDash">m</w>
-                  <w join="right" xml:id="URFA-125_xTok_000543" rend="withDash">ač</w>
-                  <w xml:id="URFA-125_xTok_000545" join="right">čibīre</w>
-                  <pc xml:id="xTok_000546">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a15" xml:id="a41">He says “Alright!” He puts two grains of barley while the coffee is boiling, he does something with it, he makes it bruise, he stirs it, I mean, in the small pot no the big one</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a16"
-                  who="#default"
-                  end="#T25"
-                  start="#T24">
-                  <w join="right" xml:id="URFA-125_xTok_000547" rend="withDash">yōm</w>
-                  <w join="right" xml:id="URFA-125_xTok_000549" rend="withDash">inn</w>
-                  <w xml:id="URFA-125_xTok_000551">u</w>
-                  <w xml:id="URFA-125_xTok_000552">ǧāy</w>
-                  <w join="right" xml:id="URFA-125_xTok_000553" rend="withDash">aš</w>
-                  <w xml:id="URFA-125_xTok_000555" join="right">šēx</w>
-                  <pc xml:id="xTok_000556">,</pc>
-                  <w xml:id="URFA-125_xTok_000557">ˀabu</w>
-                  <w xml:id="URFA-125_xTok_000558">al</w>
-                  <w xml:id="URFA-125_xTok_000559">ghawt</w>
-                  <w join="right" xml:id="URFA-125_xTok_000560" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000562" join="right">ˁatīǧe</w>
-                  <pc xml:id="xTok_000563">,</pc>
-                  <w xml:id="URFA-125_xTok_000564">gāyil</w>
-                  <pc join="right" xml:id="xTok_000565">“</pc>
-                  <w xml:id="URFA-125_xTok_000566" join="right">ahlan</w>
-                  <pc xml:id="xTok_000567">,</pc>
-                  <w xml:id="URFA-125_xTok_000568">ahlan</w>
-                  <w join="right" xml:id="URFA-125_xTok_000569" rend="withDash">b</w>
-                  <w xml:id="URFA-125_xTok_000571">abu</w>
-                  <w join="right" xml:id="URFA-125_xTok_000572">flān</w>
-                  <pc xml:id="xTok_000573">,</pc>
-                  <w xml:id="URFA-125_xTok_000574">ahlan</w>
-                  <w join="right" xml:id="URFA-125_xTok_000575" rend="withDash">b</w>
-                  <w xml:id="URFA-125_xTok_000577">abu</w>
-                  <w join="right" xml:id="URFA-125_xTok_000578">flān</w>
-                  <pc xml:id="xTok_000579">!</pc>
-                  <pc xml:id="xTok_000580">”</pc>
-                  <w xml:id="URFA-125_xTok_000581">gāyim</w>
-                  <w xml:id="URFA-125_xTok_000582">yhalli</w>
-                  <w join="right" xml:id="URFA-125_xTok_000583">bī</w>
-                  <pc xml:id="xTok_000584">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a16" xml:id="a42">When the old man has arrived, the one with the old coffee says “Welcome ˀabu flān (literally father of someone), welcome ˀabu flān!” He starts to welcome him</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a17"
-                  who="#default"
-                  end="#T27"
-                  start="#T26">
-                  <w xml:id="URFA-125_xTok_000585">gāyil</w>
-                  <pc join="right" xml:id="xTok_000586">“</pc>
-                  <w xml:id="URFA-125_xTok_000587">ᵊtfaḏ̣ḏ̣al</w>
-                  <w join="right" xml:id="URFA-125_xTok_000588">ugˁud</w>
-                  <pc xml:id="xTok_000589">!</pc>
-                  <pc xml:id="xTok_000590">”</pc>
-                  <w xml:id="URFA-125_xTok_000591">gāˁid</w>
-                  <w xml:id="URFA-125_xTok_000592">gāyil</w>
-                  <w join="right" xml:id="URFA-125_xTok_000593" rend="withDash">l</w>
-                  <w join="right" xml:id="URFA-125_xTok_000595" rend="withDash">zlimt</w>
-                  <w xml:id="URFA-125_xTok_000597">u</w>
-                  <pc join="right" xml:id="xTok_000598">“</pc>
-                  <w xml:id="URFA-125_xTok_000599">ṣubb</w>
-                  <w join="right" xml:id="URFA-125_xTok_000600" rend="withDash">l</w>
-                  <w join="right" xml:id="URFA-125_xTok_000602" rend="withDash">aš</w>
-                  <w xml:id="URFA-125_xTok_000604">šēx</w>
-                  <w xml:id="URFA-125_xTok_000605">finǧān</w>
-                  <w join="right" xml:id="URFA-125_xTok_000606">ᵊghawa</w>
-                  <pc xml:id="xTok_000607">!</pc>
-                  <pc xml:id="xTok_000608">”</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000609" rend="withDash">ṣābb</w>
-                  <w xml:id="URFA-125_xTok_000611">illu</w>
-                  <w xml:id="URFA-125_xTok_000612">finǧāl</w>
-                  <w xml:id="URFA-125_xTok_000613">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000614">šārib</w>
-                  <w join="right" xml:id="URFA-125_xTok_000615" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000617" join="right">ᵊghawa</w>
-                  <pc xml:id="xTok_000618">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000619" rend="withDash">yōm</w>
-                  <w join="right" xml:id="URFA-125_xTok_000621" rend="withDash">inn</w>
-                  <w xml:id="URFA-125_xTok_000623">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000624">šārib</w>
-                  <pc xml:id="xTok_000625">,</pc>
-                  <w xml:id="URFA-125_xTok_000626">gāyim</w>
-                  <w xml:id="URFA-125_xTok_000627">yrīd</w>
-                  <w join="right" xml:id="URFA-125_xTok_000628" rend="withDash">ta</w>
-                  <w xml:id="URFA-125_xTok_000630">yḥamid</w>
-                  <w join="right" xml:id="URFA-125_xTok_000631" rend="withDash">ᵊb</w>
-                  <w join="right" xml:id="URFA-125_xTok_000633" rend="withDash">ghawt</w>
-                  <w xml:id="URFA-125_xTok_000635" join="right">u</w>
-                  <pc xml:id="xTok_000636">,</pc>
-                  <w xml:id="URFA-125_xTok_000637">yaˁni</w>
-                  <w xml:id="URFA-125_xTok_000638">kahvesini</w>
-                  <w xml:id="URFA-125_xTok_000639">övmek</w>
-                  <w join="right" xml:id="URFA-125_xTok_000640">istiyor</w>
-                  <pc xml:id="xTok_000641">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a17" xml:id="a43">He says “Please have a seat!” He sits. He says to his man “Pour a cup of coffee for the old man!” He pours a cup of coffee for him. He drinks the coffee, after he has drunk, he wants him to praise his coffee</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a18"
-                  who="#default"
-                  end="#T29"
-                  start="#T28">
-                  <pc join="right" xml:id="xTok_000642">“</pc>
-                  <w xml:id="URFA-125_xTok_000643">ᵊšnōn</w>
-                  <w xml:id="URFA-125_xTok_000644">yābu</w>
-                  <w xml:id="URFA-125_xTok_000645">flān</w>
-                  <w join="right" xml:id="URFA-125_xTok_000646" rend="withDash">ᵊghawt</w>
-                  <w join="right" xml:id="URFA-125_xTok_000648">i</w>
-                  <pc xml:id="xTok_000649">?</pc>
-                  <pc xml:id="xTok_000650">”</pc>
-                  <w xml:id="URFA-125_xTok_000651">waḷḷa</w>
-                  <w xml:id="URFA-125_xTok_000652">gāyil</w>
-                  <pc join="right" xml:id="xTok_000653">“</pc>
-                  <w xml:id="URFA-125_xTok_000654">yābu</w>
-                  <w xml:id="URFA-125_xTok_000655">flān</w>
-                  <w join="right" xml:id="URFA-125_xTok_000656" rend="withDash">ᵊghawt</w>
-                  <w xml:id="URFA-125_xTok_000658">ak</w>
-                  <w xml:id="URFA-125_xTok_000659">čiṯīr</w>
-                  <w join="right" xml:id="URFA-125_xTok_000660">zēna</w>
-                  <pc xml:id="xTok_000661">,</pc>
-                  <w xml:id="URFA-125_xTok_000662">čiṯīr</w>
-                  <w join="right" xml:id="URFA-125_xTok_000663" rend="withDash">z</w>
-                  <w xml:id="URFA-125_xTok_000665" join="right">ēna</w>
-                  <pc xml:id="xTok_000666">,</pc>
-                  <w xml:id="URFA-125_xTok_000667">ḥadd</w>
-                  <w join="right" xml:id="URFA-125_xTok_000668">zēne</w>
-                  <pc xml:id="xTok_000669">,</pc>
-                  <w xml:id="URFA-125_xTok_000670">bass</w>
-                  <w join="right" xml:id="URFA-125_xTok_000671" rend="withDash">yēlōn</w>
-                  <w xml:id="URFA-125_xTok_000673">ak</w>
-                  <w xml:id="URFA-125_xTok_000674">minte</w>
-                  <w xml:id="URFA-125_xTok_000675">ḥāṭṭ</w>
-                  <w join="right" xml:id="URFA-125_xTok_000676" rend="withDash">ha</w>
-                  <w join="right" xml:id="URFA-125_xTok_000678" rend="withDash">l</w>
-                  <w xml:id="URFA-125_xTok_000680">ḥabbtēn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000681" rend="withDash">aš</w>
-                  <w xml:id="URFA-125_xTok_000683">šiˁīr</w>
-                  <w join="right" xml:id="URFA-125_xTok_000684" rend="withDash">ᵊb</w>
-                  <w join="right" xml:id="URFA-125_xTok_000686" rend="withDash">gaḷᵊb</w>
-                  <w xml:id="URFA-125_xTok_000688">ha</w>
-                  <w xml:id="URFA-125_xTok_000689">daha</w>
-                  <w xml:id="URFA-125_xTok_000690">zēn</w>
-                  <w join="right" xml:id="URFA-125_xTok_000691">ṣārat</w>
-                  <pc xml:id="xTok_000692">.</pc>
-                  <pc xml:id="xTok_000693">”</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a18" xml:id="a44">“How is my coffee, ˀabu flān?” He says “Well, ˀabu flān, your coffee is very good, very good, so good, but if you did not put these two grains of barley into it, it would have been even better”</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a19"
-                  who="#default"
-                  end="#T31"
-                  start="#T30">
-                  <w join="right" xml:id="URFA-125_xTok_000694" rend="withDash">ˀaz</w>
-                  <w xml:id="URFA-125_xTok_000696">zlime</w>
-                  <w xml:id="URFA-125_xTok_000697">ḏa</w>
-                  <w xml:id="URFA-125_xTok_000698">wāǧif</w>
-                  <w xml:id="URFA-125_xTok_000699">gāyil</w>
-                  <pc join="right" xml:id="xTok_000700">“</pc>
-                  <w xml:id="URFA-125_xTok_000701" join="right">ˀabō</w>
-                  <pc xml:id="xTok_000702">!</pc>
-                  <w xml:id="URFA-125_xTok_000703">demek</w>
-                  <w xml:id="URFA-125_xTok_000704">āni</w>
-                  <w join="right" xml:id="URFA-125_xTok_000705" rend="withDash">b</w>
-                  <w xml:id="URFA-125_xTok_000707">gaḷəb</w>
-                  <w join="right" xml:id="URFA-125_xTok_000708" rend="withDash">ad</w>
-                  <w xml:id="URFA-125_xTok_000710">dabbītēn</w>
-                  <w xml:id="URFA-125_xTok_000711">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000712">ḥaṭṭēt</w>
-                  <w join="right" xml:id="URFA-125_xTok_000713" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000715">ḥabbtēn</w>
-                  <w xml:id="URFA-125_xTok_000716">šiˁīr</w>
-                  <w join="right" xml:id="URFA-125_xTok_000717" rend="withDash">w</w>
-                  <w join="right" xml:id="URFA-125_xTok_000719" rend="withDash">az</w>
-                  <w xml:id="URFA-125_xTok_000721">zlime</w>
-                  <w xml:id="URFA-125_xTok_000722">hāḏa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000723" rend="withDash">ˁrif</w>
-                  <w xml:id="URFA-125_xTok_000725">hin</w>
-                  <w join="right" xml:id="URFA-125_xTok_000726" rend="withDash">inn</w>
-                  <w xml:id="URFA-125_xTok_000728">i</w>
-                  <w xml:id="URFA-125_xTok_000729">ḥāṭṭ</w>
-                  <w xml:id="URFA-125_xTok_000730">ḥabbtēn</w>
-                  <w xml:id="URFA-125_xTok_000731">šiˁīr</w>
-                  <w join="right" xml:id="URFA-125_xTok_000732" rend="withDash">bī</w>
-                  <w xml:id="URFA-125_xTok_000734" join="right">he</w>
-                  <pc xml:id="xTok_000735">!</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a19" xml:id="a45">This man stands and says “Wow! I have put the two grains of barley into the two cans of coffee, and this man knows that I have put two grains of barley into it!</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a20"
-                  who="#default"
-                  end="#T33"
-                  start="#T32">
-                  <w xml:id="URFA-125_xTok_000736">demek</w>
-                  <w join="right" xml:id="URFA-125_xTok_000737" rend="withDash">az</w>
-                  <w xml:id="URFA-125_xTok_000739">zlime</w>
-                  <w xml:id="URFA-125_xTok_000740">ḏa</w>
-                  <w xml:id="URFA-125_xTok_000741">ṣāḥib</w>
-                  <w xml:id="URFA-125_xTok_000742">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000743">ṣaġlam</w>
-                  <pc xml:id="xTok_000744">.</pc>
-                  <pc xml:id="xTok_000745">”</pc>
-                  <w xml:id="URFA-125_xTok_000746">yaˁni</w>
-                  <w xml:id="URFA-125_xTok_000747">kēfči</w>
-                  <w join="right" xml:id="URFA-125_xTok_000748">ghawa</w>
-                  <pc xml:id="xTok_000749">,</pc>
-                  <w xml:id="URFA-125_xTok_000750">kēfči</w>
-                  <w join="right" xml:id="URFA-125_xTok_000751">ngūl</w>
-                  <pc xml:id="xTok_000752">.</pc>
-                  <w xml:id="URFA-125_xTok_000753">gāyil</w>
-                  <pc join="right" xml:id="xTok_000754">“</pc>
-                  <w xml:id="URFA-125_xTok_000755" join="right">tamām</w>
-                  <pc xml:id="xTok_000756">”</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000757" rend="withDash">ˁugub</w>
-                  <w xml:id="URFA-125_xTok_000759">mū</w>
-                  <w xml:id="URFA-125_xTok_000760">šārib</w>
-                  <w join="right" xml:id="URFA-125_xTok_000761" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000763">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000764">gāyil</w>
-                  <pc join="right" xml:id="xTok_000765">“</pc>
-                  <w xml:id="URFA-125_xTok_000766">xayyo</w>
-                  <w join="right" xml:id="URFA-125_xTok_000767">ˀinte</w>
-                  <pc xml:id="xTok_000768">…</pc>
-                  <pc xml:id="xTok_000769">”</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a20" xml:id="a46">That means, this man makes a good coffee.” that means, a tasty coffee, we say k¬¬ēfči. He says “Fine” After he has drunk the coffee he says “Brother, you are”</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a21"
-                  who="#default"
-                  end="#T35"
-                  start="#T34">
-                  <w join="right" xml:id="URFA-125_xTok_000770" rend="withDash">saˁal</w>
-                  <w xml:id="URFA-125_xTok_000772">u</w>
-                  <w xml:id="URFA-125_xTok_000773">gāyil</w>
-                  <pc xml:id="xTok_000774">“</pc>
-                  <w xml:id="URFA-125_xTok_000775">inte</w>
-                  <w xml:id="URFA-125_xTok_000776">ᵊšgadd</w>
-                  <w join="right" xml:id="URFA-125_xTok_000777" rend="withDash">b</w>
-                  <w join="right" xml:id="URFA-125_xTok_000779" rend="withDash">as</w>
-                  <w xml:id="URFA-125_xTok_000781">sine</w>
-                  <w xml:id="URFA-125_xTok_000782">tišrab</w>
-                  <w join="right" xml:id="URFA-125_xTok_000783">ᵊghawa</w>
-                  <pc xml:id="xTok_000784">?</pc>
-                  <pc xml:id="xTok_000785">”</pc>
-                  <w xml:id="URFA-125_xTok_000786">gāyil</w>
-                  <pc join="right" xml:id="xTok_000787">“</pc>
-                  <w xml:id="URFA-125_xTok_000788" join="right">xayyo</w>
-                  <pc xml:id="xTok_000789">,</pc>
-                  <w xml:id="URFA-125_xTok_000790">ˀāni</w>
-                  <w join="right" xml:id="URFA-125_xTok_000791" rend="withDash">b</w>
-                  <w join="right" xml:id="URFA-125_xTok_000793" rend="withDash">as</w>
-                  <w xml:id="URFA-125_xTok_000795">sine</w>
-                  <w xml:id="URFA-125_xTok_000796">ṯalṯəmiyye</w>
-                  <w join="right" xml:id="URFA-125_xTok_000797" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000799">xamsīn</w>
-                  <w xml:id="URFA-125_xTok_000800">kīlaw</w>
-                  <w xml:id="URFA-125_xTok_000801">ašrab</w>
-                  <w join="right" xml:id="URFA-125_xTok_000802">ᵊghawa</w>
-                  <pc xml:id="xTok_000803">.</pc>
-                  <pc xml:id="xTok_000804">”</pc>
-                  <w xml:id="URFA-125_xTok_000805">gāyil</w>
-                  <pc join="right" xml:id="xTok_000806">“</pc>
-                  <w xml:id="URFA-125_xTok_000807">yābu</w>
-                  <w join="right" xml:id="URFA-125_xTok_000808">flān</w>
-                  <pc xml:id="xTok_000809">,</pc>
-                  <w xml:id="URFA-125_xTok_000810">inte</w>
-                  <w xml:id="URFA-125_xTok_000811">mā</w>
-                  <w join="right" xml:id="URFA-125_xTok_000812" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000814">ak</w>
-                  <w xml:id="URFA-125_xTok_000815">maġdūr</w>
-                  <w join="right" xml:id="URFA-125_xTok_000816" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000818">mā</w>
-                  <w xml:id="URFA-125_xTok_000819">ḏ̣all</w>
-                  <w join="right" xml:id="URFA-125_xTok_000820" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000822">ak</w>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a21" xml:id="a47">He asks him saying “How much coffee do you drink a year?” He says “Brother, I drink three hundred and fifty kilos of coffee a year” He says “O ˀabu flān, you are not able and do not have any</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a22"
-                  who="#default"
-                  end="#T37"
-                  start="#T36">
-                  <w xml:id="URFA-125_xTok_000823">gūmu</w>
-                  <w xml:id="URFA-125_xTok_000824">lummu</w>
-                  <w xml:id="URFA-125_xTok_000825">maˁāmīl</w>
-                  <w join="right" xml:id="URFA-125_xTok_000826" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000828">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000829" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000831" join="right">šīlu</w>
-                  <pc xml:id="xTok_000832">!</pc>
-                  <w xml:id="URFA-125_xTok_000833">ˀāni</w>
-                  <w join="right" xml:id="URFA-125_xTok_000834" rend="withDash">b</w>
-                  <w join="right" xml:id="URFA-125_xTok_000836" rend="withDash">s</w>
-                  <w xml:id="URFA-125_xTok_000838">sine</w>
-                  <w xml:id="URFA-125_xTok_000839">ṯalṯəmiyye</w>
-                  <w join="right" xml:id="URFA-125_xTok_000840" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000842">xamsīn</w>
-                  <w xml:id="URFA-125_xTok_000843">kīlaw</w>
-                  <w join="right" xml:id="URFA-125_xTok_000844" rend="withDash">ghawt</w>
-                  <w xml:id="URFA-125_xTok_000846">ak</w>
-                  <w xml:id="URFA-125_xTok_000847">ˁalayye</w>
-                  <w join="right" xml:id="URFA-125_xTok_000848" rend="withDash">lumm</w>
-                  <w xml:id="URFA-125_xTok_000850">ma</w>
-                  <w join="right" xml:id="URFA-125_xTok_000851">tmūt</w>
-                  <pc xml:id="xTok_000852">.</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000853" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000855">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000856" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000858">ak</w>
-                  <w xml:id="URFA-125_xTok_000859">uxra</w>
-                  <w xml:id="URFA-125_xTok_000860">ttaḥawwal</w>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a22" xml:id="a48">get up (to his men) and pick the utensils of the coffee and take it! Your three hundred and fifty kilos of coffee a year are on me until you die. The coffee will be done at your place again</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a23"
-                  who="#default"
-                  end="#T39"
-                  start="#T38">
-                  <w xml:id="URFA-125_xTok_000861">ˀinte</w>
-                  <w xml:id="URFA-125_xTok_000862">xayyo</w>
-                  <w xml:id="URFA-125_xTok_000863">demek</w>
-                  <w join="right" xml:id="URFA-125_xTok_000864" rend="withDash">kēfč</w>
-                  <w xml:id="URFA-125_xTok_000866">in</w>
-                  <w xml:id="URFA-125_xTok_000867">ḥagīgi</w>
-                  <w xml:id="URFA-125_xTok_000868">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000869" rend="withDash">w</w>
-                  <w join="right" xml:id="URFA-125_xTok_000871">inte</w>
-                  <pc join="right" xml:id="xTok_000872">.</pc>
-                  <pc xml:id="xTok_000873">.</pc>
-                  <pc xml:id="xTok_000874">.</pc>
-                  <w xml:id="URFA-125_xTok_000875">ˀāni</w>
-                  <w xml:id="URFA-125_xTok_000876">māni</w>
-                  <w xml:id="URFA-125_xTok_000877">ṣāḥib</w>
-                  <w join="right" xml:id="URFA-125_xTok_000878">ᵊghawa</w>
-                  <pc xml:id="xTok_000879">,</pc>
-                  <w xml:id="URFA-125_xTok_000880">ˀinte</w>
-                  <w xml:id="URFA-125_xTok_000881">ṣāḥb</w>
-                  <w join="right" xml:id="URFA-125_xTok_000882" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000884" join="right">ᵊghawa</w>
-                  <pc xml:id="xTok_000885">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a23" xml:id="a49">You are, brother, I mean, a real taster of coffee, and you... I am not a coffee guy, you are the coffee guy.</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a24"
-                  who="#default"
-                  end="#T41"
-                  start="#T40">
-                  <w join="right" xml:id="URFA-125_xTok_000886" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000888">šāyil</w>
-                  <w join="right" xml:id="URFA-125_xTok_000889" rend="withDash">əmmāˁīn</w>
-                  <w xml:id="URFA-125_xTok_000891">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000892" rend="withDash">kull</w>
-                  <w xml:id="URFA-125_xTok_000894">hin</w>
-                  <w join="right" xml:id="URFA-125_xTok_000895" rend="withDash">naḏ̣ḏ̣af</w>
-                  <w xml:id="URFA-125_xTok_000897">hin</w>
-                  <w join="right" xml:id="URFA-125_xTok_000898" rend="withDash">māxiḏ</w>
-                  <w xml:id="URFA-125_xTok_000900">hin</w>
-                  <w join="right" xml:id="URFA-125_xTok_000901" rend="withDash">ˁa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000903" rend="withDash">š</w>
-                  <w xml:id="URFA-125_xTok_000905">šēx</w>
-                  <w xml:id="URFA-125_xTok_000906">ḥitt</w>
-                  <w join="right" xml:id="URFA-125_xTok_000907" rend="withDash">əmmāˁīn</w>
-                  <w xml:id="URFA-125_xTok_000909">u</w>
-                  <w join="right" xml:id="URFA-125_xTok_000910" rend="withDash">māxiḏ</w>
-                  <w xml:id="URFA-125_xTok_000912" join="right">hin</w>
-                  <pc xml:id="xTok_000913">.</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000914" rend="withDash">w</w>
-                  <w join="right" xml:id="URFA-125_xTok_000916" rend="withDash">māxḏ</w>
-                  <w xml:id="URFA-125_xTok_000918">illu</w>
-                  <w xml:id="URFA-125_xTok_000919">ṯalṯəmiyye</w>
-                  <w join="right" xml:id="URFA-125_xTok_000920" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000922">xamsīn</w>
-                  <w xml:id="URFA-125_xTok_000923">kīlaw</w>
-                  <w xml:id="URFA-125_xTok_000924">ghawa</w>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a24" xml:id="a50">He picks all the utensils, cleans them up and takes them to the old man, he even takes his utensils. and he buys for him three hundred and fifty kilos of coffee</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a25"
-                  who="#default"
-                  end="#T43"
-                  start="#T42">
-                  <w join="right" xml:id="URFA-125_xTok_000925" rend="withDash">w</w>
-                  <w xml:id="URFA-125_xTok_000927">gāyil</w>
-                  <pc join="right" xml:id="xTok_000928">“</pc>
-                  <w xml:id="URFA-125_xTok_000929">inte</w>
-                  <w join="right" xml:id="URFA-125_xTok_000930" rend="withDash">ta</w>
-                  <w xml:id="URFA-125_xTok_000932">nḏ̣all</w>
-                  <w xml:id="URFA-125_xTok_000933">niǧi</w>
-                  <w xml:id="URFA-125_xTok_000934">nišrab</w>
-                  <w join="right" xml:id="URFA-125_xTok_000935" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_000937">ak</w>
-                  <w xml:id="URFA-125_xTok_000938">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000939">ˀinte</w>
-                  <w xml:id="URFA-125_xTok_000940">ṣāḥb</w>
-                  <w xml:id="URFA-125_xTok_000941">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000942" rend="withDash">ˀal</w>
-                  <w xml:id="URFA-125_xTok_000944">ᵊghawa</w>
-                  <w xml:id="URFA-125_xTok_000945">ˀuxra</w>
-                  <w join="right" xml:id="URFA-125_xTok_000946" rend="withDash">b</w>
-                  <w join="right" xml:id="URFA-125_xTok_000948" rend="withDash">maḏ̣īft</w>
-                  <w xml:id="URFA-125_xTok_000950" join="right">ak</w>
-                  <pc xml:id="xTok_000951">.</pc>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a25" xml:id="a51">and says “We will keep coming to drink coffee at your place. You are a coffee guy. The coffee is again at your place</span>
-               </spanGrp>
-            </annotationBlock>
-            <annotationBlock>
-               <u xml:lang="x-vicav-shawi"
-                  xml:id="URFA-125_a26"
-                  who="#default"
-                  end="#T44"
-                  start="#T43">
-                  <w xml:id="URFA-125_xTok_000952">inte</w>
-                  <w xml:id="URFA-125_xTok_000953">demek</w>
-                  <w xml:id="URFA-125_xTok_000954">hagīgi</w>
-                  <w xml:id="URFA-125_xTok_000955">kēfči</w>
-                  <w join="right" xml:id="URFA-125_xTok_000956">ghawa</w>
-                  <pc xml:id="xTok_000957">,</pc>
-                  <w xml:id="URFA-125_xTok_000958">ˀāni</w>
-                  <w xml:id="URFA-125_xTok_000959">mū</w>
-                  <w join="right" xml:id="URFA-125_xTok_000960" rend="withDash">šuġl</w>
-                  <w xml:id="URFA-125_xTok_000962">i</w>
-                  <w join="right" xml:id="URFA-125_xTok_000963" rend="withDash">ˁa</w>
-                  <w join="right" xml:id="URFA-125_xTok_000965" rend="withDash">l</w>
-                  <w join="right" xml:id="URFA-125_xTok_000967">ᵊghawa</w>
-                  <pc xml:id="xTok_000968">.</pc>
-                  <pc xml:id="xTok_000969">”</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000970" rend="withDash">ˀal</w>
-                  <w xml:id="URFA-125_xTok_000972">ˁarab</w>
-                  <w xml:id="URFA-125_xTok_000973">ygūl</w>
-                  <pc join="right" xml:id="xTok_000974">“</pc>
-                  <w xml:id="URFA-125_xTok_000975">mū</w>
-                  <w join="right" xml:id="URFA-125_xTok_000976" rend="withDash">kār</w>
-                  <w xml:id="URFA-125_xTok_000978">ak</w>
-                  <w xml:id="URFA-125_xTok_000979">yhaddim</w>
-                  <w join="right" xml:id="URFA-125_xTok_000980" rend="withDash">ᵊdyār</w>
-                  <w join="right" xml:id="URFA-125_xTok_000982">ak</w>
-                  <pc xml:id="xTok_000983">.</pc>
-                  <pc xml:id="xTok_000984">”</pc>
-                  <w xml:id="URFA-125_xTok_000985">inte</w>
-                  <w join="right" xml:id="URFA-125_xTok_000986" rend="withDash">šuġl</w>
-                  <w xml:id="URFA-125_xTok_000988">ak</w>
-                  <w join="right" xml:id="URFA-125_xTok_000989">xayyo</w>
-                  <pc xml:id="xTok_000990">,</pc>
-                  <w xml:id="URFA-125_xTok_000991">ˀāni</w>
-                  <w xml:id="URFA-125_xTok_000992">mū</w>
-                  <w join="right" xml:id="URFA-125_xTok_000993" rend="withDash">kār</w>
-                  <w xml:id="URFA-125_xTok_000995" join="right">i</w>
-                  <pc xml:id="xTok_000996">,</pc>
-                  <w join="right" xml:id="URFA-125_xTok_000997" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_000999">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_001000" rend="withDash">šuġl</w>
-                  <w xml:id="URFA-125_xTok_001002">ak</w>
-                  <w join="right" xml:id="URFA-125_xTok_001003">inte</w>
-                  <pc xml:id="xTok_001004">,</pc>
-                  <w xml:id="URFA-125_xTok_001005">ˀartəq</w>
-                  <w join="right" xml:id="URFA-125_xTok_001006" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_001008">ᵊghawa</w>
-                  <w join="right" xml:id="URFA-125_xTok_001009" rend="withDash">ˁind</w>
-                  <w xml:id="URFA-125_xTok_001011">ak</w>
-                  <w join="right" xml:id="URFA-125_xTok_001012">ssīr</w>
-                  <pc xml:id="xTok_001013">”</pc>
-                  <w join="right" xml:id="URFA-125_xTok_001014" rend="withDash">salāmt</w>
-                  <w xml:id="URFA-125_xTok_001016">ak</w>
-                  <w join="right" xml:id="URFA-125_xTok_001017" rend="withDash">w</w>
-                  <w join="right" xml:id="URFA-125_xTok_001019" rend="withDash">al</w>
-                  <w xml:id="URFA-125_xTok_001021">ˁāfiye</w>
-               </u>
-               <spanGrp type="Translation">
-                  <span xml:lang="en" target="#URFA-125_a26" xml:id="a52">You are a real coffee taster. The coffee is not my business” The Arabs say “If it is not what you are good at (literally, if it is not your job/profession/ business), it will destroy your home” It is your thing, brother, It is not mine. The coffee is your thing, therefore, the coffee will be made at your place”</span>
-               </spanGrp>
-            </annotationBlock>
-         </div>
-      </body>
-   </text>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title level="a">URFA-125</title>
+				<title level="s">SHAWI Corpus</title>
+				<respStmt>
+					<persName ref="corpus:SP">
+						<forename>Stephan</forename>
+						<surname>Procházka</surname>
+					</persName>
+					<resp>Principal Investigator</resp>
+				</respStmt>
+				<respStmt>
+					<persName ref="corpus:AHu">
+						<forename>Aozan</forename>
+						<surname>Hussien</surname>
+					</persName>
+					<resp/>
+				</respStmt>
+				<respStmt>
+					<persName ref="corpus:MT">
+						<forename>Miriam</forename>
+						<surname>Al Tawil</surname>
+					</persName>
+					<resp/>
+				</respStmt>
+				<respStmt>
+					<persName ref="corpus:MA">
+						<forename>Zsófia Maura</forename>
+						<surname>Abraham</surname>
+					</persName>
+					<resp/>
+				</respStmt>
+				<respStmt>
+					<persName ref="corpus:CM">
+						<forename>Charly</forename>
+						<surname>Mörth</surname>
+					</persName>
+					<resp>National Cooperation Partner</resp>
+				</respStmt>
+				<respStmt>
+					<persName ref="corpus:DS">
+						<forename>Daniel</forename>
+						<surname>Schopper</surname>
+					</persName>
+					<resp/>
+				</respStmt>
+				<respStmt>
+					<persName ref="corpus:AHe">
+						<forename>Angelika</forename>
+						<surname>Hechtl</surname>
+					</persName>
+					<resp/>
+				</respStmt>
+				<respStmt>
+					<persName ref="corpus:ISM">
+						<forename>Ismail</forename>
+						<surname>Batan</surname>
+					</persName>
+					<resp/>
+				</respStmt>
+				<funder>Funded by the <orgName ref="https://ror.org/013tf3c58">FWF Austrian Science Fund</orgName> under the number <idno type="projectNumber">P 33574</idno>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher ref="https://ror.org/03anc3s24">Austrian Academy of Sciences</publisher>
+				<publisher ref="https://ror.org/03prydq77">University of Vienna</publisher>
+				<distributor ref="https://ror.org/028bsh698">Austrian Center for Digital Humanities and Cultural Heritage</distributor>
+				<date when="????-??-??">TODO Set publication date here</date>
+				<address>
+					<addrLine>Sonnenfelsgasse 19</addrLine>
+					<addrLine>1010 Vienna</addrLine>
+					<addrLine>Austria</addrLine>
+				</address>
+				<availability status="free">
+					<licence target="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</licence>
+				</availability>
+				<idno type="SHAWICorpusID">URFA-125</idno>
+			</publicationStmt>
+			<sourceDesc>
+				<recordingStmt>
+					<recording dur-iso="04:20" type="audio">
+						<date when="2010-05-15"/>
+						<respStmt>
+							<resp>recording</resp>
+							<persName ref="corpus:SP">Stephan Procházka</persName>
+						</respStmt>
+						<media url="share:Urfa-125_Coffee-Harran-2010.wav" mimeType="audio/wav" type="master"/>
+					</recording>
+				</recordingStmt>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<listPrefixDef>
+				<prefixDef ident="corpus" matchPattern="^(.+)$" replacementPattern="shawiCorpus.xml#$1">
+					<p>Private URIs using the <code>teiCorpusHeader</code> prefix are pointers to any element in the <ref target="shawiCorpus.xml">SHAWI teiCorpus document</ref>.</p>
+				</prefixDef>
+				<prefixDef ident="share" matchPattern="^(.+)$" replacementPattern="\\share17.univie.ac.at\orientalistik\SHAWI\Recordings\*\*\$1.wav">
+					<p>Private URIs using the <code>share</code> prefix are pointers to audio file residing on the SHAWI network share.</p>
+				</prefixDef>
+				<prefixDef ident="geo" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml#$1">
+					<p>Private URIs using the <code>geo</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>place</gi> element in <ref target="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml">VICAV Geodata list</ref>.</p>
+				</prefixDef>
+				<prefixDef ident="zotid" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_biblio_tei_zotero.xml#$1">
+					<p>Private URIs using the <code>zotid</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>biblStruct</gi> element in the TEI export of the <ref target="https://www.zotero.org/groups/2165756/vicav/library">VICAV Zotero Group library</ref>.</p>
+				</prefixDef>
+			</listPrefixDef>
+		</encodingDesc>
+		<profileDesc>
+			<particDesc>
+				<listPerson>
+					<head>Speakers in URFA-125</head>
+					<person sameAs="corpus:Harran01">
+						<name type="pseudonym">Harran01</name>
+					</person>
+					<person sameAs="corpus:Harran02">
+						<name type="pseudonym">Harran02</name>
+					</person>
+				</listPerson>
+			</particDesc>
+			<settingDesc>
+				<place sameAs="geo:harran">
+					<placeName>Harran</placeName>
+				</place>
+			</settingDesc>
+			<textClass>
+				<catRef target="corpus:Coffee"/>
+				<catRef target="corpus:TwoBarleyGrains"/>
+			</textClass>
+		</profileDesc>
+	</teiHeader>
+	<text>
+		<timeline unit="ms">
+			<when xml:id="T0"/>
+			<when interval="17275" since="#T0" xml:id="T1"/>
+			<when interval="27517" since="#T0" xml:id="T2"/>
+			<when interval="27585" since="#T0" xml:id="T3"/>
+			<when interval="37792" since="#T0" xml:id="T4"/>
+			<when interval="37827" since="#T0" xml:id="T5"/>
+			<when interval="46620" since="#T0" xml:id="T6"/>
+			<when interval="57102" since="#T0" xml:id="T7"/>
+			<when interval="57103" since="#T0" xml:id="T8"/>
+			<when interval="62482" since="#T0" xml:id="T9"/>
+			<when interval="62551" since="#T0" xml:id="T10"/>
+			<when interval="73827" since="#T0" xml:id="T11"/>
+			<when interval="82447" since="#T0" xml:id="T12"/>
+			<when interval="92068" since="#T0" xml:id="T13"/>
+			<when interval="92103" since="#T0" xml:id="T14"/>
+			<when interval="97861" since="#T0" xml:id="T15"/>
+			<when interval="97896" since="#T0" xml:id="T16"/>
+			<when interval="109930" since="#T0" xml:id="T17"/>
+			<when interval="109999" since="#T0" xml:id="T18"/>
+			<when interval="118688" since="#T0" xml:id="T19"/>
+			<when interval="126516" since="#T0" xml:id="T20"/>
+			<when interval="141033" since="#T0" xml:id="T21"/>
+			<when interval="141068" since="#T0" xml:id="T22"/>
+			<when interval="152068" since="#T0" xml:id="T23"/>
+			<when interval="152103" since="#T0" xml:id="T24"/>
+			<when interval="160447" since="#T0" xml:id="T25"/>
+			<when interval="160481" since="#T0" xml:id="T26"/>
+			<when interval="176205" since="#T0" xml:id="T27"/>
+			<when interval="176206" since="#T0" xml:id="T28"/>
+			<when interval="186517" since="#T0" xml:id="T29"/>
+			<when interval="186551" since="#T0" xml:id="T30"/>
+			<when interval="197861" since="#T0" xml:id="T31"/>
+			<when interval="197862" since="#T0" xml:id="T32"/>
+			<when interval="206999" since="#T0" xml:id="T33"/>
+			<when interval="207033" since="#T0" xml:id="T34"/>
+			<when interval="221344" since="#T0" xml:id="T35"/>
+			<when interval="221413" since="#T0" xml:id="T36"/>
+			<when interval="229999" since="#T0" xml:id="T37"/>
+			<when interval="230068" since="#T0" xml:id="T38"/>
+			<when interval="234965" since="#T0" xml:id="T39"/>
+			<when interval="234999" since="#T0" xml:id="T40"/>
+			<when interval="242103" since="#T0" xml:id="T41"/>
+			<when interval="242137" since="#T0" xml:id="T42"/>
+			<when interval="246999" since="#T0" xml:id="T43"/>
+			<when interval="261807" since="#T0" xml:id="T44"/>
+		</timeline>
+		<body>
+			<div subtype="d0" type="Situation">
+				<head>
+					<note type="start">#T0</note>
+					<note type="end">#T44</note>
+				</head>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a1" who="#default" end="#T1" start="#T0">
+						<w join="right" xml:id="URFA-125_xTok_000001" rend="withDash">ᵊb</w>
+						<w xml:id="URFA-125_xTok_000003">zimānāt</w>
+						<w xml:id="URFA-125_xTok_000004">xōǧam</w>
+						<w xml:id="URFA-125_xTok_000005">wāḥad</w>
+						<w xml:id="URFA-125_xTok_000006">rāˁi</w>
+						<w xml:id="URFA-125_xTok_000007">ghawa</w>
+						<w xml:id="URFA-125_xTok_000008">rāˁi</w>
+						<w join="right" xml:id="URFA-125_xTok_000009">maḏ̣īfe</w>
+						<pc xml:id="xTok_000010">,</pc>
+						<w xml:id="URFA-125_xTok_000011">ˀawwali</w>
+						<w join="right" xml:id="URFA-125_xTok_000012" rend="withDash">l</w>
+						<w xml:id="URFA-125_xTok_000014">ˁarab</w>
+						<w xml:id="URFA-125_xTok_000015">ygūlūn</w>
+						<w join="right" xml:id="URFA-125_xTok_000016" rend="withDash">b</w>
+						<w join="right" xml:id="URFA-125_xTok_000018" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000020">garāye</w>
+						<w xml:id="URFA-125_xTok_000021">yduggūn</w>
+						<w join="right" xml:id="URFA-125_xTok_000022">ᵊghawa</w>
+						<pc xml:id="xTok_000023">,</pc>
+						<w xml:id="URFA-125_xTok_000024">ᵊghawa</w>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a1" xml:id="a27">Once upon a time, my master, there was a coffee boy, who had a place, where coffee is served. In former times, the Arabs used to say in villages, they used to mill coffee, coffee</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a2" who="#default" end="#T2" start="#T1">
+						<w join="right" xml:id="URFA-125_xTok_000025" rend="withDash">ˀaz</w>
+						<w xml:id="URFA-125_xTok_000027">zlime</w>
+						<w join="right" xml:id="URFA-125_xTok_000028">hāḏa</w>
+						<pc xml:id="xTok_000029">,</pc>
+						<w xml:id="URFA-125_xTok_000030">ydugg</w>
+						<w xml:id="URFA-125_xTok_000031">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_000032" rend="withDash">b</w>
+						<w join="right" xml:id="URFA-125_xTok_000034" rend="withDash">an</w>
+						<w xml:id="URFA-125_xTok_000036">nahāṛ</w>
+						<w xml:id="URFA-125_xTok_000037">kīlow</w>
+						<w xml:id="URFA-125_xTok_000038">ghawa</w>
+						<w xml:id="URFA-125_xTok_000039">yṣarrif</w>
+						<w join="right" xml:id="URFA-125_xTok_000040" rend="withDash">b</w>
+						<w join="right" xml:id="URFA-125_xTok_000042" rend="withDash">as</w>
+						<w xml:id="URFA-125_xTok_000044">sine</w>
+						<w xml:id="URFA-125_xTok_000045">talaṯmiyye</w>
+						<w join="right" xml:id="URFA-125_xTok_000046" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000048">xamsīn</w>
+						<w xml:id="URFA-125_xTok_000049">kīlow</w>
+						<w xml:id="URFA-125_xTok_000050">yṣarrif</w>
+						<w xml:id="URFA-125_xTok_000051">yākul</w>
+						<w join="right" xml:id="URFA-125_xTok_000052">ᵊghawa</w>
+						<pc xml:id="xTok_000053">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a2" xml:id="a28">This man mills coffee, he would consume a kilo of coffee a day, he would consume three hundred and fifty kilos a year, he would eat coffee</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a3" who="#default" end="#T4" start="#T3">
+						<w xml:id="URFA-125_xTok_000054">yaˁni</w>
+						<w xml:id="URFA-125_xTok_000055">yṣarrif</w>
+						<w xml:id="URFA-125_xTok_000056">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000057">sine</w>
+						<w xml:id="URFA-125_xTok_000058">sintēn</w>
+						<w join="right" xml:id="URFA-125_xTok_000059" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000061">mille</w>
+						<w xml:id="URFA-125_xTok_000062">tiǧī</w>
+						<w join="right" xml:id="URFA-125_xTok_000063" rend="withDash">m</w>
+						<w join="right" xml:id="URFA-125_xTok_000065" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000067" join="right">garāye</w>
+						<pc xml:id="xTok_000068">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000069">yitharraǧ</w>
+						<pc join="right" xml:id="xTok_000070">[</pc>
+						<w xml:id="URFA-125_xTok_000071" join="right">ūn</w>
+						<pc xml:id="xTok_000072">]</pc>
+						<w join="right" xml:id="URFA-125_xTok_000073">yišrabūn</w>
+						<pc xml:id="xTok_000074">,</pc>
+						<w xml:id="URFA-125_xTok_000075">bass</w>
+						<w xml:id="URFA-125_xTok_000076">yišrabūn</w>
+						<w xml:id="URFA-125_xTok_000077">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000078">ˁind</w>
+						<w join="right" xml:id="URFA-125_xTok_000079" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000081">gamgūm</w>
+						<w join="right" xml:id="URFA-125_xTok_000082" rend="withDash">w</w>
+						<w join="right" xml:id="URFA-125_xTok_000084" rend="withDash">an</w>
+						<w xml:id="URFA-125_xTok_000086" join="right">nafīle</w>
+						<pc xml:id="xTok_000087">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a3" xml:id="a29">that means he consumes coffee, one-two years pass, people come from villages, get entertained and drink, they only drink coffee at the gamgūm and the nafīle (tools for making coffee?)</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a4" who="#default" end="#T6" start="#T5">
+						<w xml:id="URFA-125_xTok_000088">yḏ̣allūn</w>
+						<w join="right" xml:id="URFA-125_xTok_000089" rend="withDash">l</w>
+						<w join="right" xml:id="URFA-125_xTok_000091" rend="withDash">aṣ</w>
+						<w xml:id="URFA-125_xTok_000093">ṣubuḥ</w>
+						<w xml:id="URFA-125_xTok_000094">yišrabūn</w>
+						<w join="right" xml:id="URFA-125_xTok_000095">ᵊghawa</w>
+						<pc xml:id="xTok_000096">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000097" rend="withDash">ˀaǧ</w>
+						<w xml:id="URFA-125_xTok_000099">ǧīrān</w>
+						<w join="right" xml:id="URFA-125_xTok_000100" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000102">u</w>
+						<w xml:id="URFA-125_xTok_000103">yiǧūn</w>
+						<w join="right" xml:id="URFA-125_xTok_000104" rend="withDash">m</w>
+						<w join="right" xml:id="URFA-125_xTok_000106" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000108" join="right">garāye</w>
+						<pc xml:id="xTok_000109">,</pc>
+						<w xml:id="URFA-125_xTok_000110">ǧarītēn</w>
+						<w xml:id="URFA-125_xTok_000111">ṯalāṯ</w>
+						<w join="right" xml:id="URFA-125_xTok_000112">maši</w>
+						<pc xml:id="xTok_000113">,</pc>
+						<w xml:id="URFA-125_xTok_000114">yiǧūn</w>
+						<w xml:id="URFA-125_xTok_000115">ˁalē</w>
+						<w join="right" xml:id="URFA-125_xTok_000116" rend="withDash">ta</w>
+						<w xml:id="URFA-125_xTok_000118">yišrabūn</w>
+						<w join="right" xml:id="URFA-125_xTok_000119">ᵊghawa</w>
+						<pc xml:id="xTok_000120">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a4" xml:id="a30">they keep drinking coffee till the morning, the neighbors at his place, they come from villages, two or three villages on foot, they come to him to drink coffee</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a5" who="#default" end="#T7" start="#T6">
+						<w xml:id="URFA-125_xTok_000121">yugˁudūn</w>
+						<w join="right" xml:id="URFA-125_xTok_000122" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000124">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000125" rend="withDash">yōm</w>
+						<w xml:id="URFA-125_xTok_000127">in</w>
+						<w xml:id="URFA-125_xTok_000128">yugˁudūn</w>
+						<w join="right" xml:id="URFA-125_xTok_000129" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000131">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000132" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000134">yišrabūn</w>
+						<w join="right" xml:id="URFA-125_xTok_000135">ᵊghawa</w>
+						<pc xml:id="xTok_000136">,</pc>
+						<w xml:id="URFA-125_xTok_000137">sine</w>
+						<w xml:id="URFA-125_xTok_000138">sintēn</w>
+						<w xml:id="URFA-125_xTok_000139">ṯalāṯ</w>
+						<w join="right" xml:id="URFA-125_xTok_000140" rend="withDash">az</w>
+						<w xml:id="URFA-125_xTok_000142">zlime</w>
+						<w xml:id="URFA-125_xTok_000143">hāḏa</w>
+						<w xml:id="URFA-125_xTok_000144">ḏ̣aˁfān</w>
+						<w xml:id="URFA-125_xTok_000145">yaˁni</w>
+						<w xml:id="URFA-125_xTok_000146">flūs</w>
+						<w xml:id="URFA-125_xTok_000147">mū</w>
+						<w xml:id="URFA-125_xTok_000148">ḏ̣āll</w>
+						<w join="right" xml:id="URFA-125_xTok_000149" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000151">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000152" rend="withDash">məṣāriyy</w>
+						<w xml:id="URFA-125_xTok_000154">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000155">xəlṣānāt</w>
+						<pc xml:id="xTok_000156">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a5" xml:id="a31">they sit at his place, when they sit at his place and drink coffee, a year, two years, three years later this man has become weak, that means, he has got no money left, his money is out</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a6" who="#default" end="#T9" start="#T8">
+						<w join="right" xml:id="URFA-125_xTok_000157" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000159">gāḏ̣i</w>
+						<w xml:id="URFA-125_xTok_000160">ˀartəq</w>
+						<w xml:id="URFA-125_xTok_000161">mā</w>
+						<w xml:id="URFA-125_xTok_000162">ḏ̣āll</w>
+						<w join="right" xml:id="URFA-125_xTok_000163" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000165">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000166" rend="withDash">gūǧ</w>
+						<w xml:id="URFA-125_xTok_000168">in</w>
+						<w xml:id="URFA-125_xTok_000169">yāxuḏ</w>
+						<w xml:id="URFA-125_xTok_000170">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000171">mā</w>
+						<w xml:id="URFA-125_xTok_000172">ˁād</w>
+						<w xml:id="URFA-125_xTok_000173">yigdar</w>
+						<w xml:id="URFA-125_xTok_000174">yištari</w>
+						<w join="right" xml:id="URFA-125_xTok_000175">ghawa</w>
+						<pc xml:id="xTok_000176">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a6" xml:id="a32">and he is done, he has no power more to take coffee, he can not buy coffee anymore</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a7" who="#default" end="#T11" start="#T10">
+						<w join="right" xml:id="URFA-125_xTok_000177" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000179">gāḏ̣ib</w>
+						<w xml:id="URFA-125_xTok_000180">ᵊmbaṭṭil</w>
+						<w join="right" xml:id="URFA-125_xTok_000181" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000183">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000184">məṣāri</w>
+						<w xml:id="URFA-125_xTok_000185">mā</w>
+						<w join="right" xml:id="URFA-125_xTok_000186" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000188">u</w>
+						<w xml:id="URFA-125_xTok_000189">gāḏ̣ib</w>
+						<w xml:id="URFA-125_xTok_000190">lamm</w>
+						<w join="right" xml:id="URFA-125_xTok_000191" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000193">gamgūm</w>
+						<w join="right" xml:id="URFA-125_xTok_000194" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000196">ᵊmmāˁīn</w>
+						<w join="right" xml:id="URFA-125_xTok_000197" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000199">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_000200" rend="withDash">w</w>
+						<w join="right" xml:id="URFA-125_xTok_000202" rend="withDash">ḥāṭṭ</w>
+						<w xml:id="URFA-125_xTok_000204">hin</w>
+						<w join="right" xml:id="URFA-125_xTok_000205" rend="withDash">b</w>
+						<w join="right" xml:id="URFA-125_xTok_000207" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000209" join="right">kōše</w>
+						<pc xml:id="xTok_000210">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000211" rend="withDash">rāmī</w>
+						<w xml:id="URFA-125_xTok_000213" join="right">hin</w>
+						<pc xml:id="xTok_000214">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a7" xml:id="a33">and he gives up coffee, he has no money, he gathers the gamgūm, the utensils of the coffee and puts them in the corner, he throws them</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a8" who="#default" end="#T12" start="#T11">
+						<w xml:id="URFA-125_xTok_000215">wāḥad</w>
+						<w xml:id="URFA-125_xTok_000216">zād</w>
+						<w xml:id="URFA-125_xTok_000217">ṣāyir</w>
+						<w xml:id="URFA-125_xTok_000218">zangīl</w>
+						<w join="right" xml:id="URFA-125_xTok_000219">ǧidīd</w>
+						<pc xml:id="xTok_000220">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000221" rend="withDash">yamm</w>
+						<w xml:id="URFA-125_xTok_000223">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000224" rend="withDash">ta</w>
+						<w xml:id="URFA-125_xTok_000226" join="right">ngūl</w>
+						<pc xml:id="xTok_000227">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000228" rend="withDash">yamm</w>
+						<w xml:id="URFA-125_xTok_000230">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000231" rend="withDash">b</w>
+						<w xml:id="URFA-125_xTok_000233">ǧærye</w>
+						<w xml:id="URFA-125_xTok_000234">ǧarītēn</w>
+						<w xml:id="URFA-125_xTok_000235">ṣāyir</w>
+						<w xml:id="URFA-125_xTok_000236">wāḥad</w>
+						<w xml:id="URFA-125_xTok_000237">šabˁān</w>
+						<w join="right" xml:id="URFA-125_xTok_000238">ǧidīd</w>
+						<pc xml:id="xTok_000239">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a8" xml:id="a34">Someone has recently become rich, close to him, let’s say, close to him by a village or two, someone has recently become replete (rich)</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a9" who="#default" end="#T13" start="#T12">
+						<w xml:id="URFA-125_xTok_000240">samˁān</w>
+						<w xml:id="URFA-125_xTok_000241">in</w>
+						<w join="right" xml:id="URFA-125_xTok_000242" rend="withDash">aš</w>
+						<w xml:id="URFA-125_xTok_000244">šēx</w>
+						<w xml:id="URFA-125_xTok_000245">hāḏa</w>
+						<w xml:id="URFA-125_xTok_000246">tārič</w>
+						<w join="right" xml:id="URFA-125_xTok_000247" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000249">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000250">gāyil</w>
+						<pc join="right" xml:id="xTok_000251">“</pc>
+						<w xml:id="URFA-125_xTok_000252">min</w>
+						<w xml:id="URFA-125_xTok_000253">hēn</w>
+						<w xml:id="URFA-125_xTok_000254">ṛāyiḥ</w>
+						<w xml:id="URFA-125_xTok_000255">āni</w>
+						<w xml:id="URFA-125_xTok_000256">ˀarīd</w>
+						<w xml:id="URFA-125_xTok_000257">agḏ̣ub</w>
+						<w xml:id="URFA-125_xTok_000258">dār</w>
+						<w join="right" xml:id="URFA-125_xTok_000259" rend="withDash">aš</w>
+						<w xml:id="URFA-125_xTok_000261">šēx</w>
+						<w join="right" xml:id="URFA-125_xTok_000262" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000264">arīd</w>
+						<w xml:id="URFA-125_xTok_000265">āni</w>
+						<w xml:id="URFA-125_xTok_000266">ˀasāwi</w>
+						<w join="right" xml:id="URFA-125_xTok_000267">ghawa</w>
+						<pc xml:id="xTok_000268">.</pc>
+						<pc xml:id="xTok_000269">”</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a9" xml:id="a35">He hears that this old man has left the coffee and says “I will leave from here, I want to go to the old man’s house and I want to make coffee”</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a10" who="#default" end="#T15" start="#T14">
+						<w xml:id="URFA-125_xTok_000270">ᵊmdarrib</w>
+						<w join="right" xml:id="URFA-125_xTok_000271" rend="withDash">ˁa</w>
+						<w join="right" xml:id="URFA-125_xTok_000273" rend="withDash">l</w>
+						<w xml:id="URFA-125_xTok_000275">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000276">msāwi</w>
+						<w join="right" xml:id="URFA-125_xTok_000277" rend="withDash">l</w>
+						<w xml:id="URFA-125_xTok_000279" join="right">gamgūm</w>
+						<pc xml:id="xTok_000280">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000281" rend="withDash">mālī</w>
+						<w xml:id="URFA-125_xTok_000283">hin</w>
+						<w xml:id="URFA-125_xTok_000284">ᵊflān</w>
+						<w xml:id="URFA-125_xTok_000285">gāyim</w>
+						<w xml:id="URFA-125_xTok_000286">ysāwi</w>
+						<w xml:id="URFA-125_xTok_000287">ghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_000288" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000290">yṣubb</w>
+						<w join="right" xml:id="URFA-125_xTok_000291" rend="withDash">l</w>
+						<w join="right" xml:id="URFA-125_xTok_000293" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000295" join="right">ˁālam</w>
+						<pc xml:id="xTok_000296">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000297" rend="withDash">l</w>
+						<w join="right" xml:id="URFA-125_xTok_000299" rend="withDash">ᵊzlimt</w>
+						<w xml:id="URFA-125_xTok_000301">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000302">yṣubb</w>
+						<pc xml:id="xTok_000303">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a10" xml:id="a36">He sends for coffee, he makes the gamgūm, he fills them and what not, then he starts to make coffee and pour for people, for his men</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a11" who="#default" end="#T17" start="#T16">
+						<w join="right" xml:id="URFA-125_xTok_000304" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000306">u</w>
+						<w xml:id="URFA-125_xTok_000307">zlime</w>
+						<w xml:id="URFA-125_xTok_000308">wāḥad</w>
+						<w xml:id="URFA-125_xTok_000309">min</w>
+						<w join="right" xml:id="URFA-125_xTok_000310" rend="withDash">zilm</w>
+						<w xml:id="URFA-125_xTok_000312">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000313" rend="withDash">mdarrb</w>
+						<w xml:id="URFA-125_xTok_000315">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000316" rend="withDash">ˁa</w>
+						<w join="right" xml:id="URFA-125_xTok_000318" rend="withDash">š</w>
+						<w xml:id="URFA-125_xTok_000320">šēx</w>
+						<w join="right" xml:id="URFA-125_xTok_000321" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000323" join="right">awwali</w>
+						<pc xml:id="xTok_000324">,</pc>
+						<w xml:id="URFA-125_xTok_000325">ˁala</w>
+						<w xml:id="URFA-125_xTok_000326">ṣāḥb</w>
+						<w join="right" xml:id="URFA-125_xTok_000327" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000329" join="right">ᵊghawa</w>
+						<pc xml:id="xTok_000330">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000331" rend="withDash">gāyil</w>
+						<w xml:id="URFA-125_xTok_000333">lu</w>
+						<pc join="right" xml:id="xTok_000334">“</pc>
+						<w xml:id="URFA-125_xTok_000335">rūḥ</w>
+						<w join="right" xml:id="URFA-125_xTok_000336" rend="withDash">ṣiḥ</w>
+						<w xml:id="URFA-125_xTok_000338">inne</w>
+						<w join="right" xml:id="URFA-125_xTok_000339" rend="withDash">la</w>
+						<w join="right" xml:id="URFA-125_xTok_000341" rend="withDash">š</w>
+						<w xml:id="URFA-125_xTok_000343" join="right">šēx</w>
+						<pc xml:id="xTok_000344">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000345" rend="withDash">gul</w>
+						<w xml:id="URFA-125_xTok_000347">illu</w>
+						<w xml:id="URFA-125_xTok_000348">ˀIsmāˁīn</w>
+						<w join="right" xml:id="URFA-125_xTok_000349" rend="withDash">ˁāzm</w>
+						<w xml:id="URFA-125_xTok_000351" join="right">ak</w>
+						<pc xml:id="xTok_000352">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000353" rend="withDash">ˁāzim</w>
+						<w xml:id="URFA-125_xTok_000355">ak</w>
+						<w join="right" xml:id="URFA-125_xTok_000356" rend="withDash">ˁa</w>
+						<w join="right" xml:id="URFA-125_xTok_000358" rend="withDash">l</w>
+						<w join="right" xml:id="URFA-125_xTok_000360">ᵊghawa</w>
+						<pc xml:id="xTok_000361">.</pc>
+						<pc xml:id="xTok_000362">”</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a11" xml:id="a37">he has a man, he sends one of his men to the first old man, to the coffee guy, he says to him “Go and call the old man for us, tell him that ˀIsmāˁīn is inviting you, he is inviting you for  coffee”</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a12" who="#default" end="#T19" start="#T18">
+						<w xml:id="URFA-125_xTok_000363">ygūl</w>
+						<w join="right" xml:id="URFA-125_xTok_000364" rend="withDash">ta</w>
+						<w xml:id="URFA-125_xTok_000366">yiǧi</w>
+						<w join="right" xml:id="URFA-125_xTok_000367" rend="withDash">ˁind</w>
+						<w join="right" xml:id="URFA-125_xTok_000369" rend="withDash">inn</w>
+						<w xml:id="URFA-125_xTok_000371">u</w>
+						<w xml:id="URFA-125_xTok_000372">huwwa</w>
+						<w xml:id="URFA-125_xTok_000373">mbaṭṭil</w>
+						<w join="right" xml:id="URFA-125_xTok_000374" rend="withDash">ᵊghawt</w>
+						<w xml:id="URFA-125_xTok_000376" join="right">u</w>
+						<pc xml:id="xTok_000377">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000378" rend="withDash">ta</w>
+						<w xml:id="URFA-125_xTok_000380">yiǧi</w>
+						<w xml:id="URFA-125_xTok_000381">yḏ̣all</w>
+						<w xml:id="URFA-125_xTok_000382">yišrab</w>
+						<w join="right" xml:id="URFA-125_xTok_000383" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000385">i</w>
+						<w join="right" xml:id="URFA-125_xTok_000386">ghawa</w>
+						<pc xml:id="xTok_000387">,</pc>
+						<w xml:id="URFA-125_xTok_000388">lā</w>
+						<w xml:id="URFA-125_xTok_000389">yḏ̣all</w>
+						<w join="right" xml:id="URFA-125_xTok_000390" rend="withDash">ᵊb</w>
+						<w xml:id="URFA-125_xTok_000392">qēr</w>
+						<w join="right" xml:id="URFA-125_xTok_000393">ᵊghawa</w>
+						<pc xml:id="xTok_000394">,</pc>
+						<w xml:id="URFA-125_xTok_000395">kahvesiz</w>
+						<w join="right" xml:id="URFA-125_xTok_000396">kalmasın</w>
+						<pc xml:id="xTok_000397">!</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a12" xml:id="a38">he says, so he can come, since he has given up his coffee, so he can come and keep drinking coffee at my place, so he would not stay without coffee, he should not stay without coffee!</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a13" who="#default" end="#T20" start="#T19">
+						<w join="right" xml:id="URFA-125_xTok_000398" rend="withDash">yōm</w>
+						<w join="right" xml:id="URFA-125_xTok_000400" rend="withDash">inn</w>
+						<w xml:id="URFA-125_xTok_000402">u</w>
+						<w xml:id="URFA-125_xTok_000403">ṛāyiḥ</w>
+						<w join="right" xml:id="URFA-125_xTok_000404" rend="withDash">ṣāyiḥ</w>
+						<w xml:id="URFA-125_xTok_000406">illu</w>
+						<w xml:id="URFA-125_xTok_000407">gāyil</w>
+						<pc join="right" xml:id="xTok_000408">“</pc>
+						<w xml:id="URFA-125_xTok_000409" join="right">tamām</w>
+						<pc xml:id="xTok_000410">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000411" rend="withDash">aš</w>
+						<w xml:id="URFA-125_xTok_000413">šēx</w>
+						<w join="right" xml:id="URFA-125_xTok_000414" rend="withDash">yṣīḥ</w>
+						<w xml:id="URFA-125_xTok_000416" join="right">lak</w>
+						<pc xml:id="xTok_000417">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000418">ugḏ̣ub</w>
+						<pc xml:id="xTok_000419">”</pc>
+						<w join="right" xml:id="URFA-125_xTok_000420" rend="withDash">w</w>
+						<w join="right" xml:id="URFA-125_xTok_000422" rend="withDash">gabəl</w>
+						<w xml:id="URFA-125_xTok_000424">ma</w>
+						<w xml:id="URFA-125_xTok_000425">yiǧi</w>
+						<w join="right" xml:id="URFA-125_xTok_000426" rend="withDash">ˀaz</w>
+						<w xml:id="URFA-125_xTok_000428">zlime</w>
+						<w xml:id="URFA-125_xTok_000429">ḏāk</w>
+						<w xml:id="URFA-125_xTok_000430">gāyil</w>
+						<w join="right" xml:id="URFA-125_xTok_000431" rend="withDash">li</w>
+						<w join="right" xml:id="URFA-125_xTok_000433" rend="withDash">zlimt</w>
+						<w xml:id="URFA-125_xTok_000435">u</w>
+						<w xml:id="URFA-125_xTok_000436">al</w>
+						<w xml:id="URFA-125_xTok_000437">ysāwi</w>
+						<w join="right" xml:id="URFA-125_xTok_000438" rend="withDash">l</w>
+						<w xml:id="URFA-125_xTok_000440">ᵊghawa</w>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a13" xml:id="a39">When he goes and calls him, he says “fine, the old man is asking for you, there you go” and before that man has arrived, the man who is making coffee says to his men</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a14" who="#default" end="#T21" start="#T20">
+						<w xml:id="URFA-125_xTok_000441">gāyil</w>
+						<pc join="right" xml:id="xTok_000442">“</pc>
+						<w join="right" xml:id="URFA-125_xTok_000443" rend="withDash">aš</w>
+						<w xml:id="URFA-125_xTok_000445">šēx</w>
+						<w join="right" xml:id="URFA-125_xTok_000446" rend="withDash">ǧaˁ</w>
+						<w xml:id="URFA-125_xTok_000448" join="right">yiǧi</w>
+						<pc xml:id="xTok_000449">,</pc>
+						<w xml:id="URFA-125_xTok_000450">ˀimil</w>
+						<w join="right" xml:id="URFA-125_xTok_000451" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000453">imle</w>
+						<w join="right" xml:id="URFA-125_xTok_000454" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000456">gamgūm</w>
+						<w join="right" xml:id="URFA-125_xTok_000457" rend="withDash">ač</w>
+						<w xml:id="URFA-125_xTok_000459">čibīre</w>
+						<w join="right" xml:id="URFA-125_xTok_000460" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000462">gamgūm</w>
+						<w join="right" xml:id="URFA-125_xTok_000463" rend="withDash">ač</w>
+						<w join="right" xml:id="URFA-125_xTok_000465">čibīr</w>
+						<pc xml:id="xTok_000466">!</pc>
+						<pc xml:id="xTok_000467">”</pc>
+						<w xml:id="URFA-125_xTok_000468">malyāne</w>
+						<w join="right" xml:id="URFA-125_xTok_000469" rend="withDash">bī</w>
+						<w xml:id="URFA-125_xTok_000471">he</w>
+						<w xml:id="URFA-125_xTok_000472">dabbītēn</w>
+						<w xml:id="URFA-125_xTok_000473">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_000474" rend="withDash">ǧaˁ</w>
+						<w xml:id="URFA-125_xTok_000476">ᵊtfūr</w>
+						<w join="right" xml:id="URFA-125_xTok_000477" rend="withDash">gāyl</w>
+						<w xml:id="URFA-125_xTok_000479">illu</w>
+						<pc join="right" xml:id="xTok_000480">“</pc>
+						<w join="right" xml:id="URFA-125_xTok_000481" rend="withDash">ḥuṭṭ</w>
+						<w xml:id="URFA-125_xTok_000483">ullak</w>
+						<w join="right" xml:id="URFA-125_xTok_000484" rend="withDash">bī</w>
+						<w xml:id="URFA-125_xTok_000486">he</w>
+						<w xml:id="URFA-125_xTok_000487">ḥabbtēn</w>
+						<w join="right" xml:id="URFA-125_xTok_000488">šiˁīr</w>
+						<pc xml:id="xTok_000489">!</pc>
+						<w xml:id="URFA-125_xTok_000490">ḥuṭṭ</w>
+						<w join="right" xml:id="URFA-125_xTok_000491" rend="withDash">ᵊb</w>
+						<w xml:id="URFA-125_xTok_000493">gaḷb</w>
+						<w join="right" xml:id="URFA-125_xTok_000494" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000496">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000497">ḥabbt¬ēn</w>
+						<w xml:id="URFA-125_xTok_000498">šiˁīr</w>
+						<w join="right" xml:id="URFA-125_xTok_000499" rend="withDash">w</w>
+						<w join="right" xml:id="URFA-125_xTok_000501" rend="withDash">xall</w>
+						<w xml:id="URFA-125_xTok_000503">ha</w>
+						<w join="right" xml:id="URFA-125_xTok_000504">təṭbax</w>
+						<pc xml:id="xTok_000505">!</pc>
+						<pc xml:id="xTok_000506">”</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a14" xml:id="a40">he says “The old man is coming, fill the big gamgūm! The big gamgūm is full and has two cans of coffee in it, which are evaporating, he says to him “Put into it two grains of barley! Put two grains of barley into the coffee and let it boil!”</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a15" who="#default" end="#T23" start="#T22">
+						<w xml:id="URFA-125_xTok_000507">gāyil</w>
+						<pc join="right" xml:id="xTok_000508">“</pc>
+						<w join="right" xml:id="URFA-125_xTok_000509">tamām</w>
+						<pc xml:id="xTok_000510">!</pc>
+						<pc xml:id="xTok_000511">”</pc>
+						<w xml:id="URFA-125_xTok_000512">ḥāṭṭ</w>
+						<w xml:id="URFA-125_xTok_000513">ḥabbtēn</w>
+						<w xml:id="URFA-125_xTok_000514">šiˁīr</w>
+						<w join="right" xml:id="URFA-125_xTok_000515" rend="withDash">w</w>
+						<w join="right" xml:id="URFA-125_xTok_000517" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000519">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_000520" rend="withDash">gaˁa</w>
+						<w xml:id="URFA-125_xTok_000522">təṭbax</w>
+						<w xml:id="URFA-125_xTok_000523">ᵊ</w>
+						<w join="right" xml:id="URFA-125_xTok_000524" rend="withDash">yihnī</w>
+						<w xml:id="URFA-125_xTok_000526">he</w>
+						<w join="right" xml:id="URFA-125_xTok_000527" rend="withDash">ssāwī</w>
+						<w xml:id="URFA-125_xTok_000529">he</w>
+						<w xml:id="URFA-125_xTok_000530">ˀaxtar</w>
+						<w xml:id="URFA-125_xTok_000531">dönder</w>
+						<w xml:id="URFA-125_xTok_000532">yaˁni</w>
+						<w join="right" xml:id="URFA-125_xTok_000533" rend="withDash">b</w>
+						<w join="right" xml:id="URFA-125_xTok_000535" rend="withDash">aǧ</w>
+						<w xml:id="URFA-125_xTok_000537">ǧæzwit</w>
+						<w join="right" xml:id="URFA-125_xTok_000538" rend="withDash">az</w>
+						<w xml:id="URFA-125_xTok_000540">ziqīre</w>
+						<w join="right" xml:id="URFA-125_xTok_000541" rend="withDash">m</w>
+						<w join="right" xml:id="URFA-125_xTok_000543" rend="withDash">ač</w>
+						<w xml:id="URFA-125_xTok_000545" join="right">čibīre</w>
+						<pc xml:id="xTok_000546">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a15" xml:id="a41">He says “Alright!” He puts two grains of barley while the coffee is boiling, he does something with it, he makes it bruise, he stirs it, I mean, in the small pot no the big one</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a16" who="#default" end="#T25" start="#T24">
+						<w join="right" xml:id="URFA-125_xTok_000547" rend="withDash">yōm</w>
+						<w join="right" xml:id="URFA-125_xTok_000549" rend="withDash">inn</w>
+						<w xml:id="URFA-125_xTok_000551">u</w>
+						<w xml:id="URFA-125_xTok_000552">ǧāy</w>
+						<w join="right" xml:id="URFA-125_xTok_000553" rend="withDash">aš</w>
+						<w xml:id="URFA-125_xTok_000555" join="right">šēx</w>
+						<pc xml:id="xTok_000556">,</pc>
+						<w xml:id="URFA-125_xTok_000557">ˀabu</w>
+						<w xml:id="URFA-125_xTok_000558">al</w>
+						<w xml:id="URFA-125_xTok_000559">ghawt</w>
+						<w join="right" xml:id="URFA-125_xTok_000560" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000562" join="right">ˁatīǧe</w>
+						<pc xml:id="xTok_000563">,</pc>
+						<w xml:id="URFA-125_xTok_000564">gāyil</w>
+						<pc join="right" xml:id="xTok_000565">“</pc>
+						<w xml:id="URFA-125_xTok_000566" join="right">ahlan</w>
+						<pc xml:id="xTok_000567">,</pc>
+						<w xml:id="URFA-125_xTok_000568">ahlan</w>
+						<w join="right" xml:id="URFA-125_xTok_000569" rend="withDash">b</w>
+						<w xml:id="URFA-125_xTok_000571">abu</w>
+						<w join="right" xml:id="URFA-125_xTok_000572">flān</w>
+						<pc xml:id="xTok_000573">,</pc>
+						<w xml:id="URFA-125_xTok_000574">ahlan</w>
+						<w join="right" xml:id="URFA-125_xTok_000575" rend="withDash">b</w>
+						<w xml:id="URFA-125_xTok_000577">abu</w>
+						<w join="right" xml:id="URFA-125_xTok_000578">flān</w>
+						<pc xml:id="xTok_000579">!</pc>
+						<pc xml:id="xTok_000580">”</pc>
+						<w xml:id="URFA-125_xTok_000581">gāyim</w>
+						<w xml:id="URFA-125_xTok_000582">yhalli</w>
+						<w join="right" xml:id="URFA-125_xTok_000583">bī</w>
+						<pc xml:id="xTok_000584">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a16" xml:id="a42">When the old man has arrived, the one with the old coffee says “Welcome ˀabu flān (literally father of someone), welcome ˀabu flān!” He starts to welcome him</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a17" who="#default" end="#T27" start="#T26">
+						<w xml:id="URFA-125_xTok_000585">gāyil</w>
+						<pc join="right" xml:id="xTok_000586">“</pc>
+						<w xml:id="URFA-125_xTok_000587">ᵊtfaḏ̣ḏ̣al</w>
+						<w join="right" xml:id="URFA-125_xTok_000588">ugˁud</w>
+						<pc xml:id="xTok_000589">!</pc>
+						<pc xml:id="xTok_000590">”</pc>
+						<w xml:id="URFA-125_xTok_000591">gāˁid</w>
+						<w xml:id="URFA-125_xTok_000592">gāyil</w>
+						<w join="right" xml:id="URFA-125_xTok_000593" rend="withDash">l</w>
+						<w join="right" xml:id="URFA-125_xTok_000595" rend="withDash">zlimt</w>
+						<w xml:id="URFA-125_xTok_000597">u</w>
+						<pc join="right" xml:id="xTok_000598">“</pc>
+						<w xml:id="URFA-125_xTok_000599">ṣubb</w>
+						<w join="right" xml:id="URFA-125_xTok_000600" rend="withDash">l</w>
+						<w join="right" xml:id="URFA-125_xTok_000602" rend="withDash">aš</w>
+						<w xml:id="URFA-125_xTok_000604">šēx</w>
+						<w xml:id="URFA-125_xTok_000605">finǧān</w>
+						<w join="right" xml:id="URFA-125_xTok_000606">ᵊghawa</w>
+						<pc xml:id="xTok_000607">!</pc>
+						<pc xml:id="xTok_000608">”</pc>
+						<w join="right" xml:id="URFA-125_xTok_000609" rend="withDash">ṣābb</w>
+						<w xml:id="URFA-125_xTok_000611">illu</w>
+						<w xml:id="URFA-125_xTok_000612">finǧāl</w>
+						<w xml:id="URFA-125_xTok_000613">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000614">šārib</w>
+						<w join="right" xml:id="URFA-125_xTok_000615" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000617" join="right">ᵊghawa</w>
+						<pc xml:id="xTok_000618">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000619" rend="withDash">yōm</w>
+						<w join="right" xml:id="URFA-125_xTok_000621" rend="withDash">inn</w>
+						<w xml:id="URFA-125_xTok_000623">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000624">šārib</w>
+						<pc xml:id="xTok_000625">,</pc>
+						<w xml:id="URFA-125_xTok_000626">gāyim</w>
+						<w xml:id="URFA-125_xTok_000627">yrīd</w>
+						<w join="right" xml:id="URFA-125_xTok_000628" rend="withDash">ta</w>
+						<w xml:id="URFA-125_xTok_000630">yḥamid</w>
+						<w join="right" xml:id="URFA-125_xTok_000631" rend="withDash">ᵊb</w>
+						<w join="right" xml:id="URFA-125_xTok_000633" rend="withDash">ghawt</w>
+						<w xml:id="URFA-125_xTok_000635" join="right">u</w>
+						<pc xml:id="xTok_000636">,</pc>
+						<w xml:id="URFA-125_xTok_000637">yaˁni</w>
+						<w xml:id="URFA-125_xTok_000638">kahvesini</w>
+						<w xml:id="URFA-125_xTok_000639">övmek</w>
+						<w join="right" xml:id="URFA-125_xTok_000640">istiyor</w>
+						<pc xml:id="xTok_000641">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a17" xml:id="a43">He says “Please have a seat!” He sits. He says to his man “Pour a cup of coffee for the old man!” He pours a cup of coffee for him. He drinks the coffee, after he has drunk, he wants him to praise his coffee</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a18" who="#default" end="#T29" start="#T28">
+						<pc join="right" xml:id="xTok_000642">“</pc>
+						<w xml:id="URFA-125_xTok_000643">ᵊšnōn</w>
+						<w xml:id="URFA-125_xTok_000644">yābu</w>
+						<w xml:id="URFA-125_xTok_000645">flān</w>
+						<w join="right" xml:id="URFA-125_xTok_000646" rend="withDash">ᵊghawt</w>
+						<w join="right" xml:id="URFA-125_xTok_000648">i</w>
+						<pc xml:id="xTok_000649">?</pc>
+						<pc xml:id="xTok_000650">”</pc>
+						<w xml:id="URFA-125_xTok_000651">waḷḷa</w>
+						<w xml:id="URFA-125_xTok_000652">gāyil</w>
+						<pc join="right" xml:id="xTok_000653">“</pc>
+						<w xml:id="URFA-125_xTok_000654">yābu</w>
+						<w xml:id="URFA-125_xTok_000655">flān</w>
+						<w join="right" xml:id="URFA-125_xTok_000656" rend="withDash">ᵊghawt</w>
+						<w xml:id="URFA-125_xTok_000658">ak</w>
+						<w xml:id="URFA-125_xTok_000659">čiṯīr</w>
+						<w join="right" xml:id="URFA-125_xTok_000660">zēna</w>
+						<pc xml:id="xTok_000661">,</pc>
+						<w xml:id="URFA-125_xTok_000662">čiṯīr</w>
+						<w join="right" xml:id="URFA-125_xTok_000663" rend="withDash">z</w>
+						<w xml:id="URFA-125_xTok_000665" join="right">ēna</w>
+						<pc xml:id="xTok_000666">,</pc>
+						<w xml:id="URFA-125_xTok_000667">ḥadd</w>
+						<w join="right" xml:id="URFA-125_xTok_000668">zēne</w>
+						<pc xml:id="xTok_000669">,</pc>
+						<w xml:id="URFA-125_xTok_000670">bass</w>
+						<w join="right" xml:id="URFA-125_xTok_000671" rend="withDash">yēlōn</w>
+						<w xml:id="URFA-125_xTok_000673">ak</w>
+						<w xml:id="URFA-125_xTok_000674">minte</w>
+						<w xml:id="URFA-125_xTok_000675">ḥāṭṭ</w>
+						<w join="right" xml:id="URFA-125_xTok_000676" rend="withDash">ha</w>
+						<w join="right" xml:id="URFA-125_xTok_000678" rend="withDash">l</w>
+						<w xml:id="URFA-125_xTok_000680">ḥabbtēn</w>
+						<w join="right" xml:id="URFA-125_xTok_000681" rend="withDash">aš</w>
+						<w xml:id="URFA-125_xTok_000683">šiˁīr</w>
+						<w join="right" xml:id="URFA-125_xTok_000684" rend="withDash">ᵊb</w>
+						<w join="right" xml:id="URFA-125_xTok_000686" rend="withDash">gaḷᵊb</w>
+						<w xml:id="URFA-125_xTok_000688">ha</w>
+						<w xml:id="URFA-125_xTok_000689">daha</w>
+						<w xml:id="URFA-125_xTok_000690">zēn</w>
+						<w join="right" xml:id="URFA-125_xTok_000691">ṣārat</w>
+						<pc xml:id="xTok_000692">.</pc>
+						<pc xml:id="xTok_000693">”</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a18" xml:id="a44">“How is my coffee, ˀabu flān?” He says “Well, ˀabu flān, your coffee is very good, very good, so good, but if you did not put these two grains of barley into it, it would have been even better”</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a19" who="#default" end="#T31" start="#T30">
+						<w join="right" xml:id="URFA-125_xTok_000694" rend="withDash">ˀaz</w>
+						<w xml:id="URFA-125_xTok_000696">zlime</w>
+						<w xml:id="URFA-125_xTok_000697">ḏa</w>
+						<w xml:id="URFA-125_xTok_000698">wāǧif</w>
+						<w xml:id="URFA-125_xTok_000699">gāyil</w>
+						<pc join="right" xml:id="xTok_000700">“</pc>
+						<w xml:id="URFA-125_xTok_000701" join="right">ˀabō</w>
+						<pc xml:id="xTok_000702">!</pc>
+						<w xml:id="URFA-125_xTok_000703">demek</w>
+						<w xml:id="URFA-125_xTok_000704">āni</w>
+						<w join="right" xml:id="URFA-125_xTok_000705" rend="withDash">b</w>
+						<w xml:id="URFA-125_xTok_000707">gaḷəb</w>
+						<w join="right" xml:id="URFA-125_xTok_000708" rend="withDash">ad</w>
+						<w xml:id="URFA-125_xTok_000710">dabbītēn</w>
+						<w xml:id="URFA-125_xTok_000711">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000712">ḥaṭṭēt</w>
+						<w join="right" xml:id="URFA-125_xTok_000713" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000715">ḥabbtēn</w>
+						<w xml:id="URFA-125_xTok_000716">šiˁīr</w>
+						<w join="right" xml:id="URFA-125_xTok_000717" rend="withDash">w</w>
+						<w join="right" xml:id="URFA-125_xTok_000719" rend="withDash">az</w>
+						<w xml:id="URFA-125_xTok_000721">zlime</w>
+						<w xml:id="URFA-125_xTok_000722">hāḏa</w>
+						<w join="right" xml:id="URFA-125_xTok_000723" rend="withDash">ˁrif</w>
+						<w xml:id="URFA-125_xTok_000725">hin</w>
+						<w join="right" xml:id="URFA-125_xTok_000726" rend="withDash">inn</w>
+						<w xml:id="URFA-125_xTok_000728">i</w>
+						<w xml:id="URFA-125_xTok_000729">ḥāṭṭ</w>
+						<w xml:id="URFA-125_xTok_000730">ḥabbtēn</w>
+						<w xml:id="URFA-125_xTok_000731">šiˁīr</w>
+						<w join="right" xml:id="URFA-125_xTok_000732" rend="withDash">bī</w>
+						<w xml:id="URFA-125_xTok_000734" join="right">he</w>
+						<pc xml:id="xTok_000735">!</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a19" xml:id="a45">This man stands and says “Wow! I have put the two grains of barley into the two cans of coffee, and this man knows that I have put two grains of barley into it!</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a20" who="#default" end="#T33" start="#T32">
+						<w xml:id="URFA-125_xTok_000736">demek</w>
+						<w join="right" xml:id="URFA-125_xTok_000737" rend="withDash">az</w>
+						<w xml:id="URFA-125_xTok_000739">zlime</w>
+						<w xml:id="URFA-125_xTok_000740">ḏa</w>
+						<w xml:id="URFA-125_xTok_000741">ṣāḥib</w>
+						<w xml:id="URFA-125_xTok_000742">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_000743">ṣaġlam</w>
+						<pc xml:id="xTok_000744">.</pc>
+						<pc xml:id="xTok_000745">”</pc>
+						<w xml:id="URFA-125_xTok_000746">yaˁni</w>
+						<w xml:id="URFA-125_xTok_000747">kēfči</w>
+						<w join="right" xml:id="URFA-125_xTok_000748">ghawa</w>
+						<pc xml:id="xTok_000749">,</pc>
+						<w xml:id="URFA-125_xTok_000750">kēfči</w>
+						<w join="right" xml:id="URFA-125_xTok_000751">ngūl</w>
+						<pc xml:id="xTok_000752">.</pc>
+						<w xml:id="URFA-125_xTok_000753">gāyil</w>
+						<pc join="right" xml:id="xTok_000754">“</pc>
+						<w xml:id="URFA-125_xTok_000755" join="right">tamām</w>
+						<pc xml:id="xTok_000756">”</pc>
+						<w join="right" xml:id="URFA-125_xTok_000757" rend="withDash">ˁugub</w>
+						<w xml:id="URFA-125_xTok_000759">mū</w>
+						<w xml:id="URFA-125_xTok_000760">šārib</w>
+						<w join="right" xml:id="URFA-125_xTok_000761" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000763">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000764">gāyil</w>
+						<pc join="right" xml:id="xTok_000765">“</pc>
+						<w xml:id="URFA-125_xTok_000766">xayyo</w>
+						<w join="right" xml:id="URFA-125_xTok_000767">ˀinte</w>
+						<pc xml:id="xTok_000768">…</pc>
+						<pc xml:id="xTok_000769">”</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a20" xml:id="a46">That means, this man makes a good coffee.” that means, a tasty coffee, we say k¬¬ēfči. He says “Fine” After he has drunk the coffee he says “Brother, you are”</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a21" who="#default" end="#T35" start="#T34">
+						<w join="right" xml:id="URFA-125_xTok_000770" rend="withDash">saˁal</w>
+						<w xml:id="URFA-125_xTok_000772">u</w>
+						<w xml:id="URFA-125_xTok_000773">gāyil</w>
+						<pc xml:id="xTok_000774">“</pc>
+						<w xml:id="URFA-125_xTok_000775">inte</w>
+						<w xml:id="URFA-125_xTok_000776">ᵊšgadd</w>
+						<w join="right" xml:id="URFA-125_xTok_000777" rend="withDash">b</w>
+						<w join="right" xml:id="URFA-125_xTok_000779" rend="withDash">as</w>
+						<w xml:id="URFA-125_xTok_000781">sine</w>
+						<w xml:id="URFA-125_xTok_000782">tišrab</w>
+						<w join="right" xml:id="URFA-125_xTok_000783">ᵊghawa</w>
+						<pc xml:id="xTok_000784">?</pc>
+						<pc xml:id="xTok_000785">”</pc>
+						<w xml:id="URFA-125_xTok_000786">gāyil</w>
+						<pc join="right" xml:id="xTok_000787">“</pc>
+						<w xml:id="URFA-125_xTok_000788" join="right">xayyo</w>
+						<pc xml:id="xTok_000789">,</pc>
+						<w xml:id="URFA-125_xTok_000790">ˀāni</w>
+						<w join="right" xml:id="URFA-125_xTok_000791" rend="withDash">b</w>
+						<w join="right" xml:id="URFA-125_xTok_000793" rend="withDash">as</w>
+						<w xml:id="URFA-125_xTok_000795">sine</w>
+						<w xml:id="URFA-125_xTok_000796">ṯalṯəmiyye</w>
+						<w join="right" xml:id="URFA-125_xTok_000797" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000799">xamsīn</w>
+						<w xml:id="URFA-125_xTok_000800">kīlaw</w>
+						<w xml:id="URFA-125_xTok_000801">ašrab</w>
+						<w join="right" xml:id="URFA-125_xTok_000802">ᵊghawa</w>
+						<pc xml:id="xTok_000803">.</pc>
+						<pc xml:id="xTok_000804">”</pc>
+						<w xml:id="URFA-125_xTok_000805">gāyil</w>
+						<pc join="right" xml:id="xTok_000806">“</pc>
+						<w xml:id="URFA-125_xTok_000807">yābu</w>
+						<w join="right" xml:id="URFA-125_xTok_000808">flān</w>
+						<pc xml:id="xTok_000809">,</pc>
+						<w xml:id="URFA-125_xTok_000810">inte</w>
+						<w xml:id="URFA-125_xTok_000811">mā</w>
+						<w join="right" xml:id="URFA-125_xTok_000812" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000814">ak</w>
+						<w xml:id="URFA-125_xTok_000815">maġdūr</w>
+						<w join="right" xml:id="URFA-125_xTok_000816" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000818">mā</w>
+						<w xml:id="URFA-125_xTok_000819">ḏ̣all</w>
+						<w join="right" xml:id="URFA-125_xTok_000820" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000822">ak</w>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a21" xml:id="a47">He asks him saying “How much coffee do you drink a year?” He says “Brother, I drink three hundred and fifty kilos of coffee a year” He says “O ˀabu flān, you are not able and do not have any</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a22" who="#default" end="#T37" start="#T36">
+						<w xml:id="URFA-125_xTok_000823">gūmu</w>
+						<w xml:id="URFA-125_xTok_000824">lummu</w>
+						<w xml:id="URFA-125_xTok_000825">maˁāmīl</w>
+						<w join="right" xml:id="URFA-125_xTok_000826" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000828">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_000829" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000831" join="right">šīlu</w>
+						<pc xml:id="xTok_000832">!</pc>
+						<w xml:id="URFA-125_xTok_000833">ˀāni</w>
+						<w join="right" xml:id="URFA-125_xTok_000834" rend="withDash">b</w>
+						<w join="right" xml:id="URFA-125_xTok_000836" rend="withDash">s</w>
+						<w xml:id="URFA-125_xTok_000838">sine</w>
+						<w xml:id="URFA-125_xTok_000839">ṯalṯəmiyye</w>
+						<w join="right" xml:id="URFA-125_xTok_000840" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000842">xamsīn</w>
+						<w xml:id="URFA-125_xTok_000843">kīlaw</w>
+						<w join="right" xml:id="URFA-125_xTok_000844" rend="withDash">ghawt</w>
+						<w xml:id="URFA-125_xTok_000846">ak</w>
+						<w xml:id="URFA-125_xTok_000847">ˁalayye</w>
+						<w join="right" xml:id="URFA-125_xTok_000848" rend="withDash">lumm</w>
+						<w xml:id="URFA-125_xTok_000850">ma</w>
+						<w join="right" xml:id="URFA-125_xTok_000851">tmūt</w>
+						<pc xml:id="xTok_000852">.</pc>
+						<w join="right" xml:id="URFA-125_xTok_000853" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000855">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_000856" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000858">ak</w>
+						<w xml:id="URFA-125_xTok_000859">uxra</w>
+						<w xml:id="URFA-125_xTok_000860">ttaḥawwal</w>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a22" xml:id="a48">get up (to his men) and pick the utensils of the coffee and take it! Your three hundred and fifty kilos of coffee a year are on me until you die. The coffee will be done at your place again</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a23" who="#default" end="#T39" start="#T38">
+						<w xml:id="URFA-125_xTok_000861">ˀinte</w>
+						<w xml:id="URFA-125_xTok_000862">xayyo</w>
+						<w xml:id="URFA-125_xTok_000863">demek</w>
+						<w join="right" xml:id="URFA-125_xTok_000864" rend="withDash">kēfč</w>
+						<w xml:id="URFA-125_xTok_000866">in</w>
+						<w xml:id="URFA-125_xTok_000867">ḥagīgi</w>
+						<w xml:id="URFA-125_xTok_000868">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_000869" rend="withDash">w</w>
+						<w join="right" xml:id="URFA-125_xTok_000871">inte</w>
+						<pc join="right" xml:id="xTok_000872">.</pc>
+						<pc xml:id="xTok_000873">.</pc>
+						<pc xml:id="xTok_000874">.</pc>
+						<w xml:id="URFA-125_xTok_000875">ˀāni</w>
+						<w xml:id="URFA-125_xTok_000876">māni</w>
+						<w xml:id="URFA-125_xTok_000877">ṣāḥib</w>
+						<w join="right" xml:id="URFA-125_xTok_000878">ᵊghawa</w>
+						<pc xml:id="xTok_000879">,</pc>
+						<w xml:id="URFA-125_xTok_000880">ˀinte</w>
+						<w xml:id="URFA-125_xTok_000881">ṣāḥb</w>
+						<w join="right" xml:id="URFA-125_xTok_000882" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000884" join="right">ᵊghawa</w>
+						<pc xml:id="xTok_000885">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a23" xml:id="a49">You are, brother, I mean, a real taster of coffee, and you... I am not a coffee guy, you are the coffee guy.</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a24" who="#default" end="#T41" start="#T40">
+						<w join="right" xml:id="URFA-125_xTok_000886" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000888">šāyil</w>
+						<w join="right" xml:id="URFA-125_xTok_000889" rend="withDash">əmmāˁīn</w>
+						<w xml:id="URFA-125_xTok_000891">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000892" rend="withDash">kull</w>
+						<w xml:id="URFA-125_xTok_000894">hin</w>
+						<w join="right" xml:id="URFA-125_xTok_000895" rend="withDash">naḏ̣ḏ̣af</w>
+						<w xml:id="URFA-125_xTok_000897">hin</w>
+						<w join="right" xml:id="URFA-125_xTok_000898" rend="withDash">māxiḏ</w>
+						<w xml:id="URFA-125_xTok_000900">hin</w>
+						<w join="right" xml:id="URFA-125_xTok_000901" rend="withDash">ˁa</w>
+						<w join="right" xml:id="URFA-125_xTok_000903" rend="withDash">š</w>
+						<w xml:id="URFA-125_xTok_000905">šēx</w>
+						<w xml:id="URFA-125_xTok_000906">ḥitt</w>
+						<w join="right" xml:id="URFA-125_xTok_000907" rend="withDash">əmmāˁīn</w>
+						<w xml:id="URFA-125_xTok_000909">u</w>
+						<w join="right" xml:id="URFA-125_xTok_000910" rend="withDash">māxiḏ</w>
+						<w xml:id="URFA-125_xTok_000912" join="right">hin</w>
+						<pc xml:id="xTok_000913">.</pc>
+						<w join="right" xml:id="URFA-125_xTok_000914" rend="withDash">w</w>
+						<w join="right" xml:id="URFA-125_xTok_000916" rend="withDash">māxḏ</w>
+						<w xml:id="URFA-125_xTok_000918">illu</w>
+						<w xml:id="URFA-125_xTok_000919">ṯalṯəmiyye</w>
+						<w join="right" xml:id="URFA-125_xTok_000920" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000922">xamsīn</w>
+						<w xml:id="URFA-125_xTok_000923">kīlaw</w>
+						<w xml:id="URFA-125_xTok_000924">ghawa</w>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a24" xml:id="a50">He picks all the utensils, cleans them up and takes them to the old man, he even takes his utensils. and he buys for him three hundred and fifty kilos of coffee</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a25" who="#default" end="#T43" start="#T42">
+						<w join="right" xml:id="URFA-125_xTok_000925" rend="withDash">w</w>
+						<w xml:id="URFA-125_xTok_000927">gāyil</w>
+						<pc join="right" xml:id="xTok_000928">“</pc>
+						<w xml:id="URFA-125_xTok_000929">inte</w>
+						<w join="right" xml:id="URFA-125_xTok_000930" rend="withDash">ta</w>
+						<w xml:id="URFA-125_xTok_000932">nḏ̣all</w>
+						<w xml:id="URFA-125_xTok_000933">niǧi</w>
+						<w xml:id="URFA-125_xTok_000934">nišrab</w>
+						<w join="right" xml:id="URFA-125_xTok_000935" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_000937">ak</w>
+						<w xml:id="URFA-125_xTok_000938">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000939">ˀinte</w>
+						<w xml:id="URFA-125_xTok_000940">ṣāḥb</w>
+						<w xml:id="URFA-125_xTok_000941">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_000942" rend="withDash">ˀal</w>
+						<w xml:id="URFA-125_xTok_000944">ᵊghawa</w>
+						<w xml:id="URFA-125_xTok_000945">ˀuxra</w>
+						<w join="right" xml:id="URFA-125_xTok_000946" rend="withDash">b</w>
+						<w join="right" xml:id="URFA-125_xTok_000948" rend="withDash">maḏ̣īft</w>
+						<w xml:id="URFA-125_xTok_000950" join="right">ak</w>
+						<pc xml:id="xTok_000951">.</pc>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a25" xml:id="a51">and says “We will keep coming to drink coffee at your place. You are a coffee guy. The coffee is again at your place</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock>
+					<u xml:lang="x-vicav-shawi" xml:id="URFA-125_a26" who="#default" end="#T44" start="#T43">
+						<w xml:id="URFA-125_xTok_000952">inte</w>
+						<w xml:id="URFA-125_xTok_000953">demek</w>
+						<w xml:id="URFA-125_xTok_000954">hagīgi</w>
+						<w xml:id="URFA-125_xTok_000955">kēfči</w>
+						<w join="right" xml:id="URFA-125_xTok_000956">ghawa</w>
+						<pc xml:id="xTok_000957">,</pc>
+						<w xml:id="URFA-125_xTok_000958">ˀāni</w>
+						<w xml:id="URFA-125_xTok_000959">mū</w>
+						<w join="right" xml:id="URFA-125_xTok_000960" rend="withDash">šuġl</w>
+						<w xml:id="URFA-125_xTok_000962">i</w>
+						<w join="right" xml:id="URFA-125_xTok_000963" rend="withDash">ˁa</w>
+						<w join="right" xml:id="URFA-125_xTok_000965" rend="withDash">l</w>
+						<w join="right" xml:id="URFA-125_xTok_000967">ᵊghawa</w>
+						<pc xml:id="xTok_000968">.</pc>
+						<pc xml:id="xTok_000969">”</pc>
+						<w join="right" xml:id="URFA-125_xTok_000970" rend="withDash">ˀal</w>
+						<w xml:id="URFA-125_xTok_000972">ˁarab</w>
+						<w xml:id="URFA-125_xTok_000973">ygūl</w>
+						<pc join="right" xml:id="xTok_000974">“</pc>
+						<w xml:id="URFA-125_xTok_000975">mū</w>
+						<w join="right" xml:id="URFA-125_xTok_000976" rend="withDash">kār</w>
+						<w xml:id="URFA-125_xTok_000978">ak</w>
+						<w xml:id="URFA-125_xTok_000979">yhaddim</w>
+						<w join="right" xml:id="URFA-125_xTok_000980" rend="withDash">ᵊdyār</w>
+						<w join="right" xml:id="URFA-125_xTok_000982">ak</w>
+						<pc xml:id="xTok_000983">.</pc>
+						<pc xml:id="xTok_000984">”</pc>
+						<w xml:id="URFA-125_xTok_000985">inte</w>
+						<w join="right" xml:id="URFA-125_xTok_000986" rend="withDash">šuġl</w>
+						<w xml:id="URFA-125_xTok_000988">ak</w>
+						<w join="right" xml:id="URFA-125_xTok_000989">xayyo</w>
+						<pc xml:id="xTok_000990">,</pc>
+						<w xml:id="URFA-125_xTok_000991">ˀāni</w>
+						<w xml:id="URFA-125_xTok_000992">mū</w>
+						<w join="right" xml:id="URFA-125_xTok_000993" rend="withDash">kār</w>
+						<w xml:id="URFA-125_xTok_000995" join="right">i</w>
+						<pc xml:id="xTok_000996">,</pc>
+						<w join="right" xml:id="URFA-125_xTok_000997" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_000999">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_001000" rend="withDash">šuġl</w>
+						<w xml:id="URFA-125_xTok_001002">ak</w>
+						<w join="right" xml:id="URFA-125_xTok_001003">inte</w>
+						<pc xml:id="xTok_001004">,</pc>
+						<w xml:id="URFA-125_xTok_001005">ˀartəq</w>
+						<w join="right" xml:id="URFA-125_xTok_001006" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_001008">ᵊghawa</w>
+						<w join="right" xml:id="URFA-125_xTok_001009" rend="withDash">ˁind</w>
+						<w xml:id="URFA-125_xTok_001011">ak</w>
+						<w join="right" xml:id="URFA-125_xTok_001012">ssīr</w>
+						<pc xml:id="xTok_001013">”</pc>
+						<w join="right" xml:id="URFA-125_xTok_001014" rend="withDash">salāmt</w>
+						<w xml:id="URFA-125_xTok_001016">ak</w>
+						<w join="right" xml:id="URFA-125_xTok_001017" rend="withDash">w</w>
+						<w join="right" xml:id="URFA-125_xTok_001019" rend="withDash">al</w>
+						<w xml:id="URFA-125_xTok_001021">ˁāfiye</w>
+					</u>
+					<spanGrp type="Translation">
+						<span xml:lang="en" target="#URFA-125_a26" xml:id="a52">You are a real coffee taster. The coffee is not my business” The Arabs say “If it is not what you are good at (literally, if it is not your job/profession/ business), it will destroy your home” It is your thing, brother, It is not mine. The coffee is your thing, therefore, the coffee will be made at your place”</span>
+					</spanGrp>
+				</annotationBlock>
+			</div>
+		</body>
+	</text>
 </TEI>
