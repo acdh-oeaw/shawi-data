@@ -25,6 +25,7 @@ This will change at the end of the project.
 | `802_tei_odd`         | TEI customization (ODD)    | This is the source of truth for the SHAWI Schema and the HTML documentation generated from it.                                                                                                                              |
 | `130_vert_plain`       | NoSketch Engine Verticals  | NoSketch Engine text verticals                                                                                                                                                                                                     |
 | `803_RNG-schematron`  | Schemas                    | derived from the ODD in `802_tei_odd`                                                                                                                                                                                       |
+| `804_xsd`  | Schemas                    | derived from the ODD in `802_tei_odd` |
 | `850_docs`            | Documentation              | Further data documentation, esp. the HTML documentation of the ODD                                                                                                                                                          |
 
 The oXygen project `shawi.xpr` contains the configuration for various transformation scenarios.
