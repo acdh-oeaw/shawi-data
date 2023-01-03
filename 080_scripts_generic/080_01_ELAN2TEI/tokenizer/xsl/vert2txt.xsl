@@ -61,7 +61,7 @@
         <xsl:for-each select="//tei:body/@*">
             <xsl:value-of select="concat(' ', local-name(.), '=', '&#34;', data(.), '&#34;')"/>
         </xsl:for-each>
-        <xsl:value-of select="concat(' attrs=&#34;', string-join(('word', 'id', tei:sort-attrs((.//xtoks:w)[1])!local-name(.)), ' '),'&#34;')"/>
+        <xsl:value-of select="concat(' attrs=&#34;', string-join(('word', 'wid', tei:sort-attrs((.//xtoks:w)[1])!local-name(.)), ' '),'&#34;')"/>
         <xsl:text xml:space="preserve">&gt;
 </xsl:text>
         <xsl:apply-templates select="//tei:body/*"/>
