@@ -26,7 +26,7 @@ jobs:
           cd 080_scripts_generic/080_01_ELAN2TEI
           pipenv install
           pipenv run jupyter nbconvert --to script ELAN2TEI.ipynb
-          pipenv run python ELAN2TEI.py
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python ELAN2TEI.py
       - name: Commit auto generated files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
