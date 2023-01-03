@@ -15,7 +15,7 @@
     
     
     <xsl:template match="/">
-        <xsl:if test="$debug !=''">
+        <xsl:if test="not($debug = ('no', 'false', ''))">
             <xsl:message select="'addP.xsl'"/>
         </xsl:if>    
         <!-- First every token is assigned a stable ID -->

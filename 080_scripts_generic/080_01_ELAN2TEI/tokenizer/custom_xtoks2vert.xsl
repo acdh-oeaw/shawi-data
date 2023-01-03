@@ -5,7 +5,7 @@
                 version="2.0"
                 exclude-result-prefixes="#all">
    <xsl:include href="wrapper_xtoks2vert.xsl"/>
-   <xsl:template match="text()[parent::tei:span]" mode="extractTokens">
+   <xsl:template match="text()[parent::tei:span]" mode="extractTokens" priority="1">
       <xsl:value-of select="."/>
    </xsl:template>
 </xsl:stylesheet>

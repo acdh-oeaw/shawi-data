@@ -4,16 +4,14 @@
     <xsl:preserve-space elements="xtoks:seg xtoks:w xtoks:pc xtoks:ws"/>
     <xsl:key name="tag-by-id" match="xtoks:*" use="@xml:id"/>
     
-    <xsl:template match="/">
-        <xsl:if test="$debug !=''">
-            <xsl:message select="'xtoks2vert.xsl'"/>
-        </xsl:if>    
+    <xsl:template match="/">   
         <xsl:variable name="part-i" select="count(//xtoks:*[@part = 'I'])"/>
         <xsl:variable name="part-f" select="count(//xtoks:*[@part = 'F'])"/>
         <xsl:if test="$part-i != $part-f">
             <xsl:message terminate="yes">Unequal number of partial tokens: <xsl:value-of select="$part-i"/> inital, <xsl:value-of select="$part-f"/> final parts</xsl:message>
         </xsl:if>
-        <xsl:if test="$debug != 'no'">
+        <xsl:if test="not($debug = ('no', 'false', ''))">
+            <xsl:message select="'xtoks2vert.xsl'"/>
             <xsl:message>Debug level: <xsl:value-of select="$debug"/>
             </xsl:message>
         </xsl:if>
