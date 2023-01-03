@@ -50,11 +50,18 @@
 </xsl:text>
         </xsl:if>
     </xsl:function>
-    <xsl:template match="/">
+    <xsl:function name="tei:sort-attrs" as="attribute()*">
+        <xsl:param name="w" as="element()"/>
+        <xsl:perform-sort select="$w/@* except $w/(@xtoks:id, @join, @rend)">
+            <xsl:sort select="local-name(.)"/>
+        </xsl:perform-sort>
+    </xsl:function>
+    <xsl:template match="/">       
         <xsl:text>&lt;doc</xsl:text>
         <xsl:for-each select="//tei:body/@*">
             <xsl:value-of select="concat(' ', local-name(.), '=', '&#34;', data(.), '&#34;')"/>
         </xsl:for-each>
+        <xsl:value-of select="concat(' attrs=&#34;', string-join(('word', 'id', tei:sort-attrs((.//xtoks:w)[1])!local-name(.)), ' '),'&#34;')"/>
         <xsl:text xml:space="preserve">&gt;
 </xsl:text>
         <xsl:apply-templates select="//tei:body/*"/>
@@ -71,7 +78,7 @@
     </xsl:template>
     <xsl:template name="noske-token">
         <xsl:value-of
-            select="concat(string-join((normalize-space(.), @xtoks:id[parent::xtoks:w], @* except (@xtoks:id, @join, @rend)), '&#x9;'), '&#xA;')"
+            select="concat(string-join((normalize-space(.), @xtoks:id[parent::xtoks:w], tei:sort-attrs(.)), '&#x9;'), '&#xA;')"
         />
     </xsl:template>
     <xsl:template match="xtoks:w | xtoks:pc">
