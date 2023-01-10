@@ -6,8 +6,8 @@
     exclude-result-prefixes="#all"
     version="2.0">
     <xsl:param name="path_to_annotated_doc">../../010_manannot/Urfa-012_Lentils-Harran-2010.xml</xsl:param>
-    <!-- replace is for oxygenXML as it is easier to just get the input filename there which contains _vert -->
-    <xsl:variable name="annotated_doc_path" select="replace($path_to_annotated_doc, '_vert', '')"/>
+    <!-- replace is for oxygenXML as it is easier to just get the input filename there which contains _05_vert -->
+    <xsl:variable name="annotated_doc_path" select="replace($path_to_annotated_doc, '_05_vert', '')"/>
     <xsl:variable name="annotated_dir" select="string-join(tokenize($annotated_doc_path, '/')[position() != last()],  '/')"/>
     <xsl:variable name="standoff_doc_path" select="$annotated_dir||'/shawi_standoff.xml'"/>
     <xsl:variable name="annotated_doc" select="doc($annotated_doc_path)" as="document-node()"/>
