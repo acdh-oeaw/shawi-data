@@ -1,4 +1,4 @@
-FROM acdhch/noske:5.57.6-2.208-open
+FROM acdhch/noske:5.58.1-2.214.1-open
 LABEL maintainer omar.siam@oeaw.ac.at
 
 ENV CORPLIST shawi
