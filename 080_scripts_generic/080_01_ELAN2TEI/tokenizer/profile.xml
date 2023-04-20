@@ -1,0 +1,65 @@
+<?xml-model href="../../profile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../profile.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile created="2022-06-29T12:32:00+02:00" id="shawi" last-updated="" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0">
+    <about>
+        <name>SHAWI Tokenizatoin Profile</name>
+        <creator>Daniel Schopper</creator>
+        <description>A simple profile for tokenizing ELAN-generated TEI documents.</description>
+    </about>
+    <parameters>
+        <param key="preserve-ws" value="false"/>
+        <param key="pc-regex" value="\p{P}"/>
+        <param key="ws-regex" value="[\s+]"/>
+        <param key="debug" value="false"/>
+        <param key="useLexicon" value="false"/>
+        <param key="lexicon" xml:space="preserve"/>
+        <param key="token-namespace" value="tei"/> 
+        <param key="pathToTokenizerLib" value="xsl/toks.xsl"/>
+        <param key="pathToVertXSL" value="xsl/xtoks2vert.xsl"/>
+        <param key="pathToVertTxtXSL" value="xsl/vert2txt.xsl"/>
+        <param key="pathToPLib" value="xsl/addP.xsl"/>
+    </parameters>
+    <postProcessing>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postTokenization/1.xsl"/>
+    </postProcessing>
+    <namespace prefix="tei">http://www.tei-c.org/ns/1.0</namespace>
+    <namespace prefix="xml">http://www.w3.org/XML/1998/namespace</namespace>
+    <copy>
+        <expression>tei:teiHeader</expression>
+        <expression>tei:timeline</expression>
+        <expression>tei:note</expression>
+        <expression>tei:spanGrp</expression>
+        <expression>tei:span</expression>
+    </copy>
+    <ignore/> 
+    <in-word-tags/>
+    <floating-blocks/>
+    <structure>
+        <expression>tei:annotationBlock</expression>
+        <expression>tei:u</expression>
+        <expression>tei:spanGrp</expression>
+        <expression>tei:span</expression>
+        <expression>tei:seg[@type = 'connected']</expression>
+    </structure>
+
+    <struct-attributes/>
+
+    <doc-attributes>
+        <doc-attribute name="id">
+            <expression>//tei:title[@level='a']</expression>
+        </doc-attribute>
+        <doc-attribute name="audio">
+            <expression>//tei:sourceDesc/tei:recording/tei:media/@url</expression>
+        </doc-attribute>
+        <doc-attribute name="topic">
+            <expression>//tei:textClass/tei:catRef/@target</expression>
+        </doc-attribute>
+        <doc-attribute name="geo">
+            <expression>//tei:settingDesc/tei:place</expression>
+        </doc-attribute>
+        <doc-attribute name="speakers">
+            <expression>//tei:particDesc//tei:person</expression>
+        </doc-attribute>
+    </doc-attributes>
+
+</profile>

@@ -1,0 +1,172 @@
+## Settings for TYPES ( MD_MD, MD_MI, map32 ) are suited for a SMALL (less than 200Mio token) corpus !
+################################################
+########## CORPUS: voicexml30 ############
+################################################
+NAME "shawi"
+
+## Path where to store the index files
+PATH "/var/lib/manatee/data/shawi"
+## Path where to find vertical files
+VERTICAL "| ls /var/lib/manatee/data/verticals/shawi/*.txt | xargs cat"
+
+ENCODING "utf-8"
+MAINTAINER "omar.siam@oeaw.ac.at"
+LANGUAGE "Transcribed Arabic"
+TAGSETDOC ""
+
+
+########## STATIC TOKEN ATTRIBUTES ############
+
+## column #1
+ATTRIBUTE "word" {
+	TYPE "MD_MD"
+}
+#	MULTIVALUE y
+#     MULTISEP ","
+
+## column #2
+ATTRIBUTE "wid" {
+	TYPE "MD_MD"
+}
+
+## column #3
+ATTRIBUTE "ana" {
+	TYPE "MD_MD"
+}
+
+# column #4
+ATTRIBUTE "dict" {
+	TYPE "MD_MD"
+}
+
+## column #5
+ATTRIBUTE "gloss" {
+	TYPE "MD_MD"
+}
+
+## column #6
+ATTRIBUTE "msd" {
+	TYPE "MD_MD"
+}
+
+## column #7
+ATTRIBUTE "pos" {
+	TYPE "MD_MD"
+}
+
+## column #8
+ATTRIBUTE "root" {
+	TYPE "MD_MD"
+}
+
+## column #9
+ATTRIBUTE "trans" {
+	TYPE "MD_MD"
+}
+
+### just make "lemma" a lc copy of "l"
+#ATTRIBUTE   "lemma" {
+#	DYNAMIC  utf8lowercase
+#	DYNLIB   internal
+#	ARG1     "C"
+#	FUNTYPE  s
+#	FROMATTR l
+#	TYPE     index
+#	TRANSQUERY	yes
+#}
+
+########## STRUCTURES ############
+
+### EDIT ATTRIBUTES - PROPERTIES MANUALLY! (e.g. MULTIVALUE, MAXLISTSIZE, ...
+
+### cf. https://www.sketchengine.eu/documentation/corpus-configuration-file-all-features/
+
+STRUCTURE "doc" {
+	TYPE "map32"
+
+	ATTRIBUTE "id" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "speakers" {
+		TYPE "MD_MI"
+ 	  	MULTIVALUE y
+        MULTISEP " "
+	}
+
+	ATTRIBUTE "geo" {
+		TYPE "MD_MI"
+ 	  	MULTIVALUE y
+        MULTISEP " "
+	}
+
+	ATTRIBUTE "topic" {
+		TYPE "MD_MI"
+ 	  	MULTIVALUE y
+        MULTISEP " "
+	}
+
+}
+
+STRUCTURE "u" {
+	TYPE "map32"
+
+	ATTRIBUTE "id" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "who" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+}
+
+STRUCTURE "annotationBlock" {
+	TYPE "map32"
+
+}
+
+STRUCTURE "connecteds" {
+	TYPE "map32"
+
+}
+
+STRUCTURE "translations" {
+	TYPE "map32"
+
+}
+
+STRUCTURE "Translations" {
+	TYPE "map32"
+
+}
+
+STRUCTURE "span" {
+	TYPE "map32"
+
+}
+
+STRUCTURE "g" {
+    DISPLAYTAG 0
+    DISPLAYBEGIN "_EMPTY_"
+}
+
+################ PARAMETERS for CONTROLLING DISPLAY 
+## In the Detail view at the bottom: linebreak at every <p>
+WRAPDETAIL u 
+
+## In the Detail view at the bottom: creates new link "show whole document" 
+STRUCTCTX doc
+MAXCONTENT 200
+MAXDETAIL 0
+
+# SHORTREF
+# the attribute of a structure to display as a default reference in the left-hand column of a concordance. Defaults to the first attribute of the first #structure or “#” (token number) if no attribute of a structure exists. The syntax is SHORTREF “=structure.attribute”, e.g. “=doc.id” for displaying #only the value of “doc.id” or SHORTREF “structure.attribute” (without equal sign) for displaying the pair “structure.attribute=value”. There can be #multiple links in SHORTREF, e.g. SHORTREF “=bncdoc.id,#,bncdoc.year” has a reference “J0P,#507890,bncdoc.year=1977”.
+
+SHORTREF "=doc.id,=u.id"

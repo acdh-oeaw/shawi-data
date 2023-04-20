@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../082_scripts_xsl/tei_2_html__simple_text.xsl"?>
+<?xslt inPathSegment="\010_manannot\" outPathSegment="\106_html\"?>
+<?processor name="saxon" removePreserveFromXML="true" removePreserveFromXSLT="true"?>
+<?snippets fn="snippets_shawi_001.xml" path="{filePath}/../880_conf/"?>
+<?standoff fn="shawi_standoff.xml" path=""?>
+<?attributeAssignments fn="shawi_attributes.xml" path="{filePath}/../880_conf/"?>
+<?shortCuts fn="shawi_shortCuts" path="{filePath}/../880_conf/"?>
+<!--THIS FILE WAS PROGRAMMATICALLY CREATED by mergeHeaderAndTranscription.xsl on/at2023-02-24T13:28:49.001Z-->
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title level="a">URFA-136</title>
+            <title level="s">SHAWI Corpus</title>
+            <respStmt>
+               <persName ref="corpus:SP">
+                  <forename>Stephan</forename>
+                  <surname>Procházka</surname>
+               </persName>
+               <resp>Principal Investigator</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AHu">
+                  <forename>Aozan</forename>
+                  <surname>Hussien</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:MT">
+                  <forename>Miriam</forename>
+                  <surname>Al Tawil</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:MA">
+                  <forename>Zsófia Maura</forename>
+                  <surname>Abraham</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:CM">
+                  <forename>Charly</forename>
+                  <surname>Mörth</surname>
+               </persName>
+               <resp>National Cooperation Partner</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:DS">
+                  <forename>Daniel</forename>
+                  <surname>Schopper</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AHe">
+                  <forename>Angelika</forename>
+                  <surname>Hechtl</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:ISM">
+                  <forename>Ismail</forename>
+                  <surname>Batan</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <funder>Funded by the <orgName ref="https://ror.org/013tf3c58">FWF Austrian Science Fund</orgName> under the number <idno type="projectNumber">P 33574</idno>
+            </funder>
+         </titleStmt>
+         <publicationStmt>
+            <publisher ref="https://ror.org/03anc3s24">Austrian Academy of Sciences</publisher>
+            <publisher ref="https://ror.org/03prydq77">University of Vienna</publisher>
+            <distributor ref="https://ror.org/028bsh698">Austrian Center for Digital Humanities and Cultural Heritage</distributor>
+            <date when="????-??-??">TODO Set publication date here</date>
+            <address>
+               <addrLine>Sonnenfelsgasse 19</addrLine>
+               <addrLine>1010 Vienna</addrLine>
+               <addrLine>Austria</addrLine>
+            </address>
+            <availability status="free">
+               <licence target="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</licence>
+            </availability>
+            <idno type="SHAWICorpusID">URFA-136</idno>
+         </publicationStmt>
+         <sourceDesc>
+            <recordingStmt>
+               <recording dur-iso="03:11" type="audio">
+                  <date when="2013-10-01"/>
+                  <respStmt>
+                     <resp>recording</resp>
+                     <persName ref="corpus:SP">Stephan Procházka</persName>
+                  </respStmt>
+                  <media url="share:Urfa-136_Cigkofte-Harran-2013.wav"
+                         mimeType="audio/wav"
+                         type="master"/>
+               </recording>
+            </recordingStmt>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <listPrefixDef>
+            <prefixDef ident="corpus"
+                       matchPattern="^(.+)$"
+                       replacementPattern="shawiCorpus.xml#$1">
+               <p>Private URIs using the <code>teiCorpusHeader</code> prefix are pointers to any element in the <ref target="shawiCorpus.xml">SHAWI teiCorpus document</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="share"
+                       matchPattern="^(.+)$"
+                       replacementPattern="\\share17.univie.ac.at\orientalistik\SHAWI\Recordings\*\*\$1.wav">
+               <p>Private URIs using the <code>share</code> prefix are pointers to audio file residing on the SHAWI network share.</p>
+            </prefixDef>
+            <prefixDef ident="geo"
+                       matchPattern="^(.+)$"
+                       replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml#$1">
+               <p>Private URIs using the <code>geo</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>place</gi> element in <ref target="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml">VICAV Geodata list</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="zotid"
+                       matchPattern="^(.+)$"
+                       replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_biblio_tei_zotero.xml#$1">
+               <p>Private URIs using the <code>zotid</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>biblStruct</gi> element in the TEI export of the <ref target="https://www.zotero.org/groups/2165756/vicav/library">VICAV Zotero Group library</ref>.</p>
+            </prefixDef>
+         </listPrefixDef>
+      </encodingDesc>
+      <profileDesc>
+         <particDesc>
+            <listPerson>
+               <head>Speakers in URFA-136</head>
+               <person sameAs="corpus:Harran01">
+                  <name type="pseudonym">Harran01</name>
+               </person>
+               <person sameAs="corpus:Harran02">
+                  <name type="pseudonym">Harran02</name>
+               </person>
+               <person sameAs="corpus:Harran03">
+                  <name type="pseudonym">Harran03</name>
+               </person>
+            </listPerson>
+         </particDesc>
+         <settingDesc>
+            <place sameAs="geo:harran">
+               <placeName>Harran</placeName>
+            </place>
+         </settingDesc>
+         <textClass/>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <timeline unit="ms">
+         <when xml:id="T0"/>
+         <when interval="21480" since="#T0" xml:id="T1"/>
+         <when interval="26690" since="#T0" xml:id="T2"/>
+         <when interval="26700" since="#T0" xml:id="T3"/>
+         <when interval="31140" since="#T0" xml:id="T4"/>
+         <when interval="31147" since="#T0" xml:id="T5"/>
+         <when interval="38556" since="#T0" xml:id="T6"/>
+         <when interval="45613" since="#T0" xml:id="T7"/>
+         <when interval="51613" since="#T0" xml:id="T8"/>
+         <when interval="51624" since="#T0" xml:id="T9"/>
+         <when interval="59556" since="#T0" xml:id="T10"/>
+         <when interval="59568" since="#T0" xml:id="T11"/>
+         <when interval="67465" since="#T0" xml:id="T12"/>
+         <when interval="67477" since="#T0" xml:id="T13"/>
+         <when interval="74192" since="#T0" xml:id="T14"/>
+         <when interval="74215" since="#T0" xml:id="T15"/>
+         <when interval="80692" since="#T0" xml:id="T16"/>
+         <when interval="80704" since="#T0" xml:id="T17"/>
+         <when interval="88772" since="#T0" xml:id="T18"/>
+         <when interval="95090" since="#T0" xml:id="T19"/>
+         <when interval="95113" since="#T0" xml:id="T20"/>
+         <when interval="103306" since="#T0" xml:id="T21"/>
+         <when interval="103329" since="#T0" xml:id="T22"/>
+         <when interval="111874" since="#T0" xml:id="T23"/>
+         <when interval="118578" since="#T0" xml:id="T24"/>
+         <when interval="118590" since="#T0" xml:id="T25"/>
+         <when interval="125919" since="#T0" xml:id="T26"/>
+         <when interval="125920" since="#T0" xml:id="T27"/>
+         <when interval="134454" since="#T0" xml:id="T28"/>
+         <when interval="134476" since="#T0" xml:id="T29"/>
+         <when interval="143567" since="#T0" xml:id="T30"/>
+         <when interval="150442" since="#T0" xml:id="T31"/>
+         <when interval="155726" since="#T0" xml:id="T32"/>
+         <when interval="155727" since="#T0" xml:id="T33"/>
+         <when interval="162954" since="#T0" xml:id="T34"/>
+         <when interval="172363" since="#T0" xml:id="T35"/>
+         <when interval="172374" since="#T0" xml:id="T36"/>
+         <when interval="178522" since="#T0" xml:id="T37"/>
+         <when interval="178533" since="#T0" xml:id="T38"/>
+         <when interval="184386" since="#T0" xml:id="T39"/>
+         <when interval="191069" since="#T0" xml:id="T40"/>
+      </timeline>
+      <body>
+         <div subtype="d0" type="Situation">
+            <head>
+               <note type="start">#T0</note>
+               <note type="end">#T40</note>
+            </head>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a1"
+                  who="#default"
+                  end="#T2"
+                  start="#T1">
+                  <w join="right" xml:id="URFA-136_xTok_000001" rend="withDash">ˀač</w>
+                  <w xml:id="URFA-136_xTok_000003">čīgt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000004" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000006">faṛək</w>
+                  <w join="right" xml:id="URFA-136_xTok_000007" rend="withDash">ta</w>
+                  <w xml:id="URFA-136_xTok_000009">ngūl</w>
+                  <w join="right" xml:id="URFA-136_xTok_000010" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000012">burqul</w>
+                  <w xml:id="URFA-136_xTok_000013">awwal</w>
+                  <w xml:id="URFA-136_xTok_000014">fāl</w>
+                  <w xml:id="URFA-136_xTok_000015">ᵊǧǧīv</w>
+                  <w xml:id="URFA-136_xTok_000016">ᵊnǧīb</w>
+                  <w join="right" xml:id="URFA-136_xTok_000017" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000019" join="right">burqul</w>
+                  <pc xml:id="xTok_000020">,</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a1" xml:id="a25">The mixing çiğ, let’s say, the bulgur, first we bring the bulgur</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a2"
+                  who="#default"
+                  end="#T4"
+                  start="#T3">
+                  <w join="right" xml:id="URFA-136_xTok_000021" rend="withDash">ˀal</w>
+                  <w xml:id="URFA-136_xTok_000023">burqul</w>
+                  <w xml:id="URFA-136_xTok_000024">šaklēn</w>
+                  <w xml:id="URFA-136_xTok_000025">šī</w>
+                  <w join="right" xml:id="URFA-136_xTok_000026" rend="withDash">b</w>
+                  <w xml:id="URFA-136_xTok_000028" join="right">burqul</w>
+                  <pc xml:id="xTok_000029">,</pc>
+                  <w xml:id="URFA-136_xTok_000030">burqul</w>
+                  <w join="right" xml:id="URFA-136_xTok_000031" rend="withDash">ač</w>
+                  <w xml:id="URFA-136_xTok_000033">čīge</w>
+                  <w join="right" xml:id="URFA-136_xTok_000034" rend="withDash">an</w>
+                  <w xml:id="URFA-136_xTok_000036" join="right">nāˁim</w>
+                  <pc xml:id="xTok_000037">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a2" xml:id="a26">There are two types of bulgur, the çiğ bulgur, the fine one</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a3"
+                  who="#default"
+                  end="#T6"
+                  start="#T5">
+                  <w join="right" xml:id="URFA-136_xTok_000038" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000040" rend="withDash">dibis</w>
+                  <w xml:id="URFA-136_xTok_000042">he</w>
+                  <w xml:id="URFA-136_xTok_000043">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000044" rend="withDash">ṣōṭ</w>
+                  <w xml:id="URFA-136_xTok_000046" join="right">he</w>
+                  <pc xml:id="xTok_000047">,</pc>
+                  <w xml:id="URFA-136_xTok_000048">ṣōṭ</w>
+                  <w xml:id="URFA-136_xTok_000049">bēt</w>
+                  <w xml:id="URFA-136_xTok_000050">yrīd</w>
+                  <w xml:id="URFA-136_xTok_000051">yṣīr</w>
+                  <w xml:id="URFA-136_xTok_000052">dibis</w>
+                  <w xml:id="URFA-136_xTok_000053">bēt</w>
+                  <w xml:id="URFA-136_xTok_000054">zād</w>
+                  <w xml:id="URFA-136_xTok_000055">yṣīr</w>
+                  <w join="right" xml:id="URFA-136_xTok_000056" rend="withDash">ˁalē</w>
+                  <w xml:id="URFA-136_xTok_000058">he</w>
+                  <w join="right" xml:id="URFA-136_xTok_000059" rend="withDash">ˀal</w>
+                  <w xml:id="URFA-136_xTok_000061">ḥāḏ̣ir</w>
+                  <w xml:id="URFA-136_xTok_000062">zād</w>
+                  <w xml:id="URFA-136_xTok_000063">yṣir</w>
+                  <w join="right" xml:id="URFA-136_xTok_000064" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000066">bēt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000067">zād</w>
+                  <pc xml:id="xTok_000068">.</pc>
+                  <w xml:id="URFA-136_xTok_000069">hā</w>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a3" xml:id="a27">and its molasses and its pepper. A home dried pepper can be used, a homemade molasses can be used on it, basically what has already been made at home can be used</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a4"
+                  who="#default"
+                  end="#T7"
+                  start="#T6">
+                  <w xml:id="URFA-136_xTok_000070">w</w>
+                  <w xml:id="URFA-136_xTok_000071">tgūm</w>
+                  <w join="right" xml:id="URFA-136_xTok_000072" rend="withDash">tufruk</w>
+                  <w xml:id="URFA-136_xTok_000074">hin</w>
+                  <w xml:id="URFA-136_xTok_000075">tugruḏ̣</w>
+                  <w join="right" xml:id="URFA-136_xTok_000076" rend="withDash">ˁalē</w>
+                  <w xml:id="URFA-136_xTok_000078">hin</w>
+                  <w xml:id="URFA-136_xTok_000079">ṯalāṯ</w>
+                  <w xml:id="URFA-136_xTok_000080">arbaˁ</w>
+                  <w xml:id="URFA-136_xTok_000081">ᵊsnūm</w>
+                  <w xml:id="URFA-136_xTok_000082">ṣarməsaq</w>
+                  <w join="right" xml:id="URFA-136_xTok_000083">ṣāmirsāq</w>
+                  <pc xml:id="xTok_000084">,</pc>
+                  <w join="right" xml:id="URFA-136_xTok_000085" rend="withDash">aṯ</w>
+                  <w xml:id="URFA-136_xTok_000087" join="right">ṯūm</w>
+                  <pc xml:id="xTok_000088">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a4" xml:id="a28">then you start to mix them. You cut four heads of garlic on them, the garlic</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a5"
+                  who="#default"
+                  end="#T8"
+                  start="#T7">
+                  <w join="right" xml:id="URFA-136_xTok_000089" rend="withDash">w</w>
+                  <w xml:id="URFA-136_xTok_000091">ᵊhnīt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000092">bəṣal</w>
+                  <pc xml:id="xTok_000093">,</pc>
+                  <w xml:id="URFA-136_xTok_000094">rās</w>
+                  <w xml:id="URFA-136_xTok_000095">bəṣal</w>
+                  <w join="right" xml:id="URFA-136_xTok_000096" rend="withDash">ta</w>
+                  <w xml:id="URFA-136_xTok_000098" join="right">ngūl</w>
+                  <pc xml:id="xTok_000099">,</pc>
+                  <w xml:id="URFA-136_xTok_000100">ᵊbṣale</w>
+                  <w xml:id="URFA-136_xTok_000101">wəḥde</w>
+                  <w xml:id="URFA-136_xTok_000102">tugruḏ̣</w>
+                  <w join="right" xml:id="URFA-136_xTok_000103" rend="withDash">ˁalē</w>
+                  <w xml:id="URFA-136_xTok_000105">he</w>
+                  <w join="right" xml:id="URFA-136_xTok_000106" rend="withDash">bṣalt</w>
+                  <w xml:id="URFA-136_xTok_000108">in</w>
+                  <w xml:id="URFA-136_xTok_000109">yābse</w>
+                  <w join="right" xml:id="URFA-136_xTok_000110" rend="withDash">w</w>
+                  <w xml:id="URFA-136_xTok_000112">yinfarčin</w>
+                  <w join="right" xml:id="URFA-136_xTok_000113">haḏanne</w>
+                  <pc xml:id="xTok_000114">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a5" xml:id="a29">and some onions, a head of onions, let’s say, an onion, you cut a yellow onion on it, and these get mixed</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a6"
+                  who="#default"
+                  end="#T10"
+                  start="#T9">
+                  <w xml:id="URFA-136_xTok_000115">yḏ̣all</w>
+                  <w xml:id="URFA-136_xTok_000116">guṭma</w>
+                  <w xml:id="URFA-136_xTok_000117">guṭma</w>
+                  <w xml:id="URFA-136_xTok_000118">mayye</w>
+                  <w xml:id="URFA-136_xTok_000119">tḥuṭṭ</w>
+                  <w join="right" xml:id="URFA-136_xTok_000120" rend="withDash">ˁalē</w>
+                  <w xml:id="URFA-136_xTok_000122">hin</w>
+                  <w join="right" xml:id="URFA-136_xTok_000123" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000125" rend="withDash">tufruk</w>
+                  <w xml:id="URFA-136_xTok_000127">hin</w>
+                  <w join="right" xml:id="URFA-136_xTok_000128" rend="withDash">tufruk</w>
+                  <w xml:id="URFA-136_xTok_000130">hin</w>
+                  <w join="right" xml:id="URFA-136_xTok_000131" rend="withDash">lummun</w>
+                  <w xml:id="URFA-136_xTok_000133">hin</w>
+                  <w xml:id="URFA-136_xTok_000134">guṭma</w>
+                  <w xml:id="URFA-136_xTok_000135">yistawin</w>
+                  <w join="right" xml:id="URFA-136_xTok_000136" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000138" rend="withDash">ssawwī</w>
+                  <w xml:id="URFA-136_xTok_000140">lhin</w>
+                  <w join="right" xml:id="URFA-136_xTok_000141">īdām</w>
+                  <pc xml:id="xTok_000142">,</pc>
+                  <w xml:id="URFA-136_xTok_000143">ˀīdām</w>
+                  <w join="right" xml:id="URFA-136_xTok_000144">bēḏ̣</w>
+                  <pc xml:id="xTok_000145">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a6" xml:id="a30">you keep pouring slowly slowly water on them, and you mix them, you mix them until they get blended and then you put hot oil on them, hot oil, eggs</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a7"
+                  who="#default"
+                  end="#T12"
+                  start="#T11">
+                  <w xml:id="URFA-136_xTok_000146">tiksir</w>
+                  <w join="right" xml:id="URFA-136_xTok_000147" rend="withDash">ˁalē</w>
+                  <w xml:id="URFA-136_xTok_000149">hin</w>
+                  <w xml:id="URFA-136_xTok_000150">bēḏ̣tēn</w>
+                  <w join="right" xml:id="URFA-136_xTok_000151" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000153" rend="withDash">īdām</w>
+                  <w xml:id="URFA-136_xTok_000155">hin</w>
+                  <w xml:id="URFA-136_xTok_000156">guṭma</w>
+                  <w join="right" xml:id="URFA-136_xTok_000157">yṣīr</w>
+                  <pc xml:id="xTok_000158">,</pc>
+                  <w xml:id="URFA-136_xTok_000159">tugruḏ̣</w>
+                  <w join="right" xml:id="URFA-136_xTok_000160" rend="withDash">ˁalē</w>
+                  <w xml:id="URFA-136_xTok_000162">hin</w>
+                  <w xml:id="URFA-136_xTok_000163">baqdanūs</w>
+                  <w join="right" xml:id="URFA-136_xTok_000164" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000166" rend="withDash">bəṣal</w>
+                  <w xml:id="URFA-136_xTok_000168">in</w>
+                  <w join="right" xml:id="URFA-136_xTok_000169">yā</w>
+                  <pc xml:id="xTok_000170">…</pc>
+                  <w join="right" xml:id="URFA-136_xTok_000171">xaḏ̣ar</w>
+                  <pc xml:id="xTok_000172">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a7" xml:id="a31">you break two eggs on them, and oil them slowly, you cut parsley on them and some green onion</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a8"
+                  who="#default"
+                  end="#T14"
+                  start="#T13">
+                  <w xml:id="URFA-136_xTok_000173">haḏanne</w>
+                  <w xml:id="URFA-136_xTok_000174">zād</w>
+                  <w xml:id="URFA-136_xTok_000175">yinḥaṭṭin</w>
+                  <w join="right" xml:id="URFA-136_xTok_000176" rend="withDash">fōg</w>
+                  <w xml:id="URFA-136_xTok_000178">ha</w>
+                  <w xml:id="URFA-136_xTok_000179">gabəl</w>
+                  <w join="right" xml:id="URFA-136_xTok_000180" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000182">īdām</w>
+                  <w xml:id="URFA-136_xTok_000183">yinxalṭin</w>
+                  <w xml:id="URFA-136_xTok_000184">hāḏi</w>
+                  <w xml:id="URFA-136_xTok_000185">čīgt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000186" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000188" join="right">bēḏ̣</w>
+                  <pc xml:id="xTok_000189">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a8" xml:id="a32">These are basically put on it before oiling it, they get mixed, this is the çiğ with eggs</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a9"
+                  who="#default"
+                  end="#T16"
+                  start="#T15">
+                  <w join="right" xml:id="URFA-136_xTok_000190" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000192" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000194">laḥam</w>
+                  <w xml:id="URFA-136_xTok_000195">zād</w>
+                  <w join="right" xml:id="URFA-136_xTok_000196" rend="withDash">ač</w>
+                  <w xml:id="URFA-136_xTok_000198">čīgt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000199" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000201">laḥam</w>
+                  <w join="right" xml:id="URFA-136_xTok_000202">ˁayne</w>
+                  <pc xml:id="xTok_000203">,</pc>
+                  <w join="right" xml:id="URFA-136_xTok_000204" rend="withDash">ˀal</w>
+                  <w xml:id="URFA-136_xTok_000206" join="right">habra</w>
+                  <pc xml:id="xTok_000207">,</pc>
+                  <w xml:id="URFA-136_xTok_000208">nafs</w>
+                  <w join="right" xml:id="URFA-136_xTok_000209" rend="withDash">əš</w>
+                  <w xml:id="URFA-136_xTok_000211">šī</w>
+                  <w xml:id="URFA-136_xTok_000212">čīgt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000213" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000215">habra</w>
+                  <w xml:id="URFA-136_xTok_000216">zād</w>
+                  <w xml:id="URFA-136_xTok_000217">ˁayne</w>
+                  <w xml:id="URFA-136_xTok_000218">burqul</w>
+                  <w xml:id="URFA-136_xTok_000219">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000220" rend="withDash">dibis</w>
+                  <w xml:id="URFA-136_xTok_000222" join="right">he</w>
+                  <pc xml:id="xTok_000223">,</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a9" xml:id="a33">and the meat actually, the çiğ with meat is the same, the çiğ with cut meat, it is the same, basically its same bulgur and its molasses</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a10"
+                  who="#default"
+                  end="#T18"
+                  start="#T17">
+                  <w join="right" xml:id="URFA-136_xTok_000224" rend="withDash">w</w>
+                  <w xml:id="URFA-136_xTok_000226">ˁayne</w>
+                  <w join="right" xml:id="URFA-136_xTok_000227" rend="withDash">bəṣal</w>
+                  <w xml:id="URFA-136_xTok_000229">ha</w>
+                  <w xml:id="URFA-136_xTok_000230">ˁayne</w>
+                  <w xml:id="URFA-136_xTok_000231">ˁayne</w>
+                  <w xml:id="URFA-136_xTok_000232">bass</w>
+                  <w xml:id="URFA-136_xTok_000233">lummun</w>
+                  <w xml:id="URFA-136_xTok_000234">ᵊtgūm</w>
+                  <w join="right" xml:id="URFA-136_xTok_000235" rend="withDash">tufruk</w>
+                  <w xml:id="URFA-136_xTok_000237">ha</w>
+                  <w xml:id="URFA-136_xTok_000238">hāḏi</w>
+                  <w join="right" xml:id="URFA-136_xTok_000239" rend="withDash">b</w>
+                  <w xml:id="URFA-136_xTok_000241">būz</w>
+                  <w join="right" xml:id="URFA-136_xTok_000242" rend="withDash">tufruk</w>
+                  <w xml:id="URFA-136_xTok_000244" join="right">ha</w>
+                  <pc xml:id="xTok_000245">,</pc>
+                  <w join="right" xml:id="URFA-136_xTok_000246" rend="withDash">ᵊb</w>
+                  <w xml:id="URFA-136_xTok_000248">būz</w>
+                  <w xml:id="URFA-136_xTok_000249">ˀē</w>
+                  <w join="right" xml:id="URFA-136_xTok_000250" rend="withDash">ᵊb</w>
+                  <w xml:id="URFA-136_xTok_000252">qālib</w>
+                  <w join="right" xml:id="URFA-136_xTok_000253">būz</w>
+                  <pc xml:id="xTok_000254">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a10" xml:id="a34">and its same onion, the same, the same, but when you mix it, this one you mix it with ice, you mix it with an ice block</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a11"
+                  who="#default"
+                  end="#T19"
+                  start="#T18">
+                  <w xml:id="URFA-136_xTok_000255">bala</w>
+                  <w xml:id="URFA-136_xTok_000256">ǧāfi</w>
+                  <w xml:id="URFA-136_xTok_000257">tā</w>
+                  <w join="right" xml:id="URFA-136_xTok_000258" rend="withDash">ˀal</w>
+                  <w xml:id="URFA-136_xTok_000260">mayye</w>
+                  <w xml:id="URFA-136_xTok_000261">yḏ̣all</w>
+                  <w xml:id="URFA-136_xTok_000262">zihīd</w>
+                  <w xml:id="URFA-136_xTok_000263">zihīd</w>
+                  <w xml:id="URFA-136_xTok_000264">yḏ̣all</w>
+                  <w join="right" xml:id="URFA-136_xTok_000265">tmūˁ</w>
+                  <pc xml:id="xTok_000266">,</pc>
+                  <w xml:id="URFA-136_xTok_000267">zād</w>
+                  <w xml:id="URFA-136_xTok_000268">tinfariǧ</w>
+                  <w xml:id="URFA-136_xTok_000269">hāḏi</w>
+                  <w xml:id="URFA-136_xTok_000270">tiṣīr</w>
+                  <w xml:id="URFA-136_xTok_000271">guṭma</w>
+                  <w xml:id="URFA-136_xTok_000272">alli</w>
+                  <w xml:id="URFA-136_xTok_000273">ṣṣīr</w>
+                  <w join="right" xml:id="URFA-136_xTok_000274">ḥāṛṛa</w>
+                  <pc xml:id="xTok_000275">,</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a11" xml:id="a35">if you do not mind, until the water is almost gone, it keeps melting, this gets mixed until it becomes a little, until it becomes warm</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a12"
+                  who="#default"
+                  end="#T21"
+                  start="#T20">
+                  <w xml:id="URFA-136_xTok_000276">mū</w>
+                  <w xml:id="URFA-136_xTok_000277">miṯil</w>
+                  <w xml:id="URFA-136_xTok_000278">čīgt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000279" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000281">bēḏ̣</w>
+                  <w xml:id="URFA-136_xTok_000282">yṣīr</w>
+                  <w xml:id="URFA-136_xTok_000283">guṭma</w>
+                  <w xml:id="URFA-136_xTok_000284">aǧələ</w>
+                  <w xml:id="URFA-136_xTok_000285">yṣīr</w>
+                  <w xml:id="URFA-136_xTok_000286">zād</w>
+                  <w xml:id="URFA-136_xTok_000287">tinfariǧ</w>
+                  <w xml:id="URFA-136_xTok_000288">ˁugub</w>
+                  <w xml:id="URFA-136_xTok_000289">ˁād</w>
+                  <w xml:id="URFA-136_xTok_000290">tinḥaṭṭ</w>
+                  <w join="right" xml:id="URFA-136_xTok_000291" rend="withDash">ˁalē</w>
+                  <w xml:id="URFA-136_xTok_000293">he</w>
+                  <w xml:id="URFA-136_xTok_000294">tindagg</w>
+                  <w xml:id="URFA-136_xTok_000295">ˁala</w>
+                  <w join="right" xml:id="URFA-136_xTok_000296" rend="withDash">l</w>
+                  <w xml:id="URFA-136_xTok_000298" join="right">habra</w>
+                  <pc xml:id="xTok_000299">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a12" xml:id="a36">unlike the çiğ with eggs, it becomes a little bit spicy, it basically gets mixed, it gets put on it afterwards, it gets knocked on the cut meat</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a13"
+                  who="#default"
+                  end="#T23"
+                  start="#T22">
+                  <w join="right" xml:id="URFA-136_xTok_000300" rend="withDash">ˀal</w>
+                  <w join="right" xml:id="URFA-136_xTok_000302" rend="withDash">habrat</w>
+                  <w xml:id="URFA-136_xTok_000304">in</w>
+                  <w xml:id="URFA-136_xTok_000305">ˀalḥaz</w>
+                  <w xml:id="URFA-136_xTok_000306">ˁād</w>
+                  <w join="right" xml:id="URFA-136_xTok_000307" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000309">mille</w>
+                  <w xml:id="URFA-136_xTok_000310">ˀawwali</w>
+                  <w join="right" xml:id="URFA-136_xTok_000311" rend="withDash">yduggūn</w>
+                  <w xml:id="URFA-136_xTok_000313">he</w>
+                  <w join="right" xml:id="URFA-136_xTok_000314" rend="withDash">ˁa</w>
+                  <w join="right" xml:id="URFA-136_xTok_000316" rend="withDash">l</w>
+                  <w xml:id="URFA-136_xTok_000318">ᵊḥǧaṛā</w>
+                  <w join="right" xml:id="URFA-136_xTok_000319" rend="withDash">b</w>
+                  <w xml:id="URFA-136_xTok_000321" join="right">al</w>
+                  <pc xml:id="xTok_000322">…</pc>
+                  <w xml:id="URFA-136_xTok_000323">w</w>
+                  <w xml:id="URFA-136_xTok_000324">šift</w>
+                  <w join="right" xml:id="URFA-136_xTok_000325" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000327">miǧannt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000328" rend="withDash">az</w>
+                  <w xml:id="URFA-136_xTok_000330">ziqīre</w>
+                  <w xml:id="URFA-136_xTok_000331">ˀawwali</w>
+                  <w xml:id="URFA-136_xTok_000332">daha</w>
+                  <w xml:id="URFA-136_xTok_000333">ṣṣīr</w>
+                  <w join="right" xml:id="URFA-136_xTok_000334">axēr</w>
+                  <pc xml:id="xTok_000335">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a13" xml:id="a37">the cut meat, now people in former times used to hit it on stones, and you saw the small miǧann, in former times, it would become better</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a14"
+                  who="#default"
+                  end="#T24"
+                  start="#T23">
+                  <w xml:id="URFA-136_xTok_000336">ˀamma</w>
+                  <w xml:id="URFA-136_xTok_000337">ˀalḥaz</w>
+                  <w xml:id="URFA-136_xTok_000338">ṭəlˁat</w>
+                  <w xml:id="URFA-136_xTok_000339">qōlay</w>
+                  <w join="right" xml:id="URFA-136_xTok_000340" rend="withDash">ar</w>
+                  <w xml:id="URFA-136_xTok_000342">robōṭāt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000343" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-136_xTok_000345" rend="withDash">ar</w>
+                  <w xml:id="URFA-136_xTok_000347">robōṭ</w>
+                  <w xml:id="URFA-136_xTok_000348">yinǧarr</w>
+                  <w join="right" xml:id="URFA-136_xTok_000349" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000351">laḥam</w>
+                  <w xml:id="URFA-136_xTok_000352">yinḥaṭṭ</w>
+                  <w join="right" xml:id="URFA-136_xTok_000353" rend="withDash">ˁalē</w>
+                  <w xml:id="URFA-136_xTok_000355">he</w>
+                  <w xml:id="URFA-136_xTok_000356">zād</w>
+                  <w xml:id="URFA-136_xTok_000357">tinfiriǧ</w>
+                  <w xml:id="URFA-136_xTok_000358">ˁayne</w>
+                  <w join="right" xml:id="URFA-136_xTok_000359" rend="withDash">yešilik</w>
+                  <w xml:id="URFA-136_xTok_000361">he</w>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a14" xml:id="a38">but nowadays, it has become easier thanks to the robots, using the robot, the meat gets dragged, it gets put on it, it gets mixed the same, its vegetables are</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a15"
+                  who="#default"
+                  end="#T26"
+                  start="#T25">
+                  <w xml:id="URFA-136_xTok_000362">zād</w>
+                  <w xml:id="URFA-136_xTok_000363">kiḏe</w>
+                  <w join="right" xml:id="URFA-136_xTok_000364" rend="withDash">miṯil</w>
+                  <w xml:id="URFA-136_xTok_000366">he</w>
+                  <w xml:id="URFA-136_xTok_000367">miṯil</w>
+                  <w join="right" xml:id="URFA-136_xTok_000368" rend="withDash">uxut</w>
+                  <w xml:id="URFA-136_xTok_000370">he</w>
+                  <w xml:id="URFA-136_xTok_000371">bass</w>
+                  <w xml:id="URFA-136_xTok_000372">hāḏi</w>
+                  <w xml:id="URFA-136_xTok_000373">ˁala</w>
+                  <w xml:id="URFA-136_xTok_000374">laḥam</w>
+                  <w xml:id="URFA-136_xTok_000375">ˁād</w>
+                  <w join="right" xml:id="URFA-136_xTok_000376">ᵊṣṣīr</w>
+                  <pc xml:id="xTok_000377">.</pc>
+                  <w join="right" xml:id="URFA-136_xTok_000378" rend="withDash">kull</w>
+                  <w xml:id="URFA-136_xTok_000380">hin</w>
+                  <w xml:id="URFA-136_xTok_000381">ᵊhniyye</w>
+                  <w xml:id="URFA-136_xTok_000382">miṯil</w>
+                  <w join="right" xml:id="URFA-136_xTok_000383" rend="withDash">baˁaḏ̣</w>
+                  <w xml:id="URFA-136_xTok_000385" join="right">hin</w>
+                  <pc xml:id="xTok_000386">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a15" xml:id="a39">so like that, like it, like its sister, but this one is made with meat. All of them are the same</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a16"
+                  who="#default"
+                  end="#T28"
+                  start="#T27">
+                  <w xml:id="URFA-136_xTok_000387">hinne</w>
+                  <w join="right" xml:id="URFA-136_xTok_000388" rend="withDash">kull</w>
+                  <w xml:id="URFA-136_xTok_000390">hin</w>
+                  <w xml:id="URFA-136_xTok_000391">miṯil</w>
+                  <w join="right" xml:id="URFA-136_xTok_000392" rend="withDash">baˁaḏ̣</w>
+                  <w xml:id="URFA-136_xTok_000394">hin</w>
+                  <w join="right" xml:id="URFA-136_xTok_000395" rend="withDash">w</w>
+                  <w xml:id="URFA-136_xTok_000397">hnīt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000398" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000400">ˁadas</w>
+                  <w xml:id="URFA-136_xTok_000401">zād</w>
+                  <w xml:id="URFA-136_xTok_000402">ˁayne</w>
+                  <w xml:id="URFA-136_xTok_000403">nafs</w>
+                  <w join="right" xml:id="URFA-136_xTok_000404" rend="withDash">aš</w>
+                  <w xml:id="URFA-136_xTok_000406">šī</w>
+                  <w xml:id="URFA-136_xTok_000407">zād</w>
+                  <w join="right" xml:id="URFA-136_xTok_000408" rend="withDash">kull</w>
+                  <w xml:id="URFA-136_xTok_000410">he</w>
+                  <w join="right" xml:id="URFA-136_xTok_000411" rend="withDash">burqul</w>
+                  <w xml:id="URFA-136_xTok_000413">he</w>
+                  <w join="right" xml:id="URFA-136_xTok_000414" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000416" rend="withDash">bəṣal</w>
+                  <w xml:id="URFA-136_xTok_000418">ha</w>
+                  <w join="right" xml:id="URFA-136_xTok_000419" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000421" rend="withDash">ṯūm</w>
+                  <w xml:id="URFA-136_xTok_000423">ha</w>
+                  <w join="right" xml:id="URFA-136_xTok_000424" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000426">yābis</w>
+                  <w join="right" xml:id="URFA-136_xTok_000427">hā</w>
+                  <pc xml:id="xTok_000428">!</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a16" xml:id="a40">they are all the same. And the one with lentil is basically the same, actually all of it, its bulgur, its onion and its garlic, the yellow (onion) ha!</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a17"
+                  who="#default"
+                  end="#T30"
+                  start="#T29">
+                  <w join="right" xml:id="URFA-136_xTok_000429" rend="withDash">kull</w>
+                  <w xml:id="URFA-136_xTok_000431">hin</w>
+                  <w join="right" xml:id="URFA-136_xTok_000432" rend="withDash">wakt</w>
+                  <w xml:id="URFA-136_xTok_000434">in</w>
+                  <w xml:id="URFA-136_xTok_000435">ᵊtgūm</w>
+                  <w xml:id="URFA-136_xTok_000436">tinfariǧ</w>
+                  <w xml:id="URFA-136_xTok_000437">yḏ̣all</w>
+                  <w xml:id="URFA-136_xTok_000438">tinḥaṭṭ</w>
+                  <w xml:id="URFA-136_xTok_000439">xāšūgit</w>
+                  <w xml:id="URFA-136_xTok_000440">ᵊhnīt</w>
+                  <w xml:id="URFA-136_xTok_000441">ˁadas</w>
+                  <w xml:id="URFA-136_xTok_000442">šōrabit</w>
+                  <w join="right" xml:id="URFA-136_xTok_000443" rend="withDash">ˁadas</w>
+                  <w xml:id="URFA-136_xTok_000445">in</w>
+                  <w xml:id="URFA-136_xTok_000446">ḥāṛṛa</w>
+                  <w join="right" xml:id="URFA-136_xTok_000447" rend="withDash">ta</w>
+                  <w join="right" xml:id="URFA-136_xTok_000449" rend="withDash">tiswī</w>
+                  <w xml:id="URFA-136_xTok_000451" join="right">ha</w>
+                  <pc xml:id="xTok_000452">,</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a17" xml:id="a41">All of them, when they get mixed, a small spoon of lentil should be added, a hot lentil soup, until it gets ready</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a18"
+                  who="#default"
+                  end="#T31"
+                  start="#T30">
+                  <w xml:id="URFA-136_xTok_000453">ˀaḏ̣all</w>
+                  <w join="right" xml:id="URFA-136_xTok_000454" rend="withDash">kull</w>
+                  <w xml:id="URFA-136_xTok_000456">ma</w>
+                  <w xml:id="URFA-136_xTok_000457">bidāl</w>
+                  <w join="right" xml:id="URFA-136_xTok_000458" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000460">mayye</w>
+                  <w xml:id="URFA-136_xTok_000461">ˀaḏ̣all</w>
+                  <w xml:id="URFA-136_xTok_000462">aḥuṭṭ</w>
+                  <w xml:id="URFA-136_xTok_000463">šōraba</w>
+                  <w join="right" xml:id="URFA-136_xTok_000464" rend="withDash">lummun</w>
+                  <w xml:id="URFA-136_xTok_000466">he</w>
+                  <w xml:id="URFA-136_xTok_000467">tihni</w>
+                  <w xml:id="URFA-136_xTok_000468">tistawi</w>
+                  <w xml:id="URFA-136_xTok_000469">ṣṣīr</w>
+                  <w xml:id="URFA-136_xTok_000470">zēne</w>
+                  <w xml:id="URFA-136_xTok_000471">miṯil</w>
+                  <w join="right" xml:id="URFA-136_xTok_000472">ˁaǧīn</w>
+                  <pc xml:id="xTok_000473">,</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a18" xml:id="a42">I keep putting the lentil soup, whenever it has less water until it comes down, gets ready, and becomes good like dough</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a19"
+                  who="#default"
+                  end="#T32"
+                  start="#T31">
+                  <w xml:id="URFA-136_xTok_000474">ˀagūm</w>
+                  <w xml:id="URFA-136_xTok_000475">ˁād</w>
+                  <w xml:id="URFA-136_xTok_000476">aḥuṭṭ</w>
+                  <w join="right" xml:id="URFA-136_xTok_000477" rend="withDash">ˁalē</w>
+                  <w xml:id="URFA-136_xTok_000479">he</w>
+                  <w xml:id="URFA-136_xTok_000480">ayaddim</w>
+                  <w xml:id="URFA-136_xTok_000481">ᵊbṣala</w>
+                  <w xml:id="URFA-136_xTok_000482">ˀīdām</w>
+                  <w xml:id="URFA-136_xTok_000483">ᵊbṣala</w>
+                  <w xml:id="URFA-136_xTok_000484">wala</w>
+                  <w xml:id="URFA-136_xTok_000485">hiyye</w>
+                  <w xml:id="URFA-136_xTok_000486">bēḏ̣a</w>
+                  <w xml:id="URFA-136_xTok_000487">wala</w>
+                  <w xml:id="URFA-136_xTok_000488">ṣinˁa</w>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a19" xml:id="a43">then I put on it, I oil an onion, oiling an onion is neither an innovation nor a workmanship (It is easy)</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a20"
+                  who="#default"
+                  end="#T34"
+                  start="#T33">
+                  <w xml:id="URFA-136_xTok_000489">ᵊbṣala</w>
+                  <w join="right" xml:id="URFA-136_xTok_000490" rend="withDash">ˀīdām</w>
+                  <w xml:id="URFA-136_xTok_000492">he</w>
+                  <w xml:id="URFA-136_xTok_000493">yinḥaṭṭ</w>
+                  <w xml:id="URFA-136_xTok_000494">ˁād</w>
+                  <w join="right" xml:id="URFA-136_xTok_000495" rend="withDash">ˁalē</w>
+                  <w xml:id="URFA-136_xTok_000497" join="right">he</w>
+                  <pc xml:id="xTok_000498">,</pc>
+                  <w xml:id="URFA-136_xTok_000499">hāḏi</w>
+                  <w xml:id="URFA-136_xTok_000500">zād</w>
+                  <w xml:id="URFA-136_xTok_000501">čīgt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000502" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000504" join="right">ˁadas</w>
+                  <pc xml:id="xTok_000505">,</pc>
+                  <w join="right" xml:id="URFA-136_xTok_000506" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000508" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000510">ᵊhniyy</w>
+                  <w xml:id="URFA-136_xTok_000511">zād</w>
+                  <w xml:id="URFA-136_xTok_000512">ˁayne</w>
+                  <w join="right" xml:id="URFA-136_xTok_000513" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000515" join="right">bəṭāṭa</w>
+                  <pc xml:id="xTok_000516">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a20" xml:id="a44">then the oiled onion will be put on it, this is basically the çiğ with lentil, and the other one is actually similar, the one with potato</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a21"
+                  who="#default"
+                  end="#T35"
+                  start="#T34">
+                  <w join="right" xml:id="URFA-136_xTok_000517" rend="withDash">ˀal</w>
+                  <w xml:id="URFA-136_xTok_000519">bəṭāṭa</w>
+                  <w xml:id="URFA-136_xTok_000520">zād</w>
+                  <w xml:id="URFA-136_xTok_000521">hašlani</w>
+                  <w join="right" xml:id="URFA-136_xTok_000522" rend="withDash">ta</w>
+                  <w xml:id="URFA-136_xTok_000524">ngūl</w>
+                  <w join="right" xml:id="URFA-136_xTok_000525">tinṭabix</w>
+                  <pc xml:id="xTok_000526">,</pc>
+                  <w xml:id="URFA-136_xTok_000527">tinṭabix</w>
+                  <w xml:id="URFA-136_xTok_000528">zād</w>
+                  <w join="right" xml:id="URFA-136_xTok_000529" rend="withDash">wakt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000531" rend="withDash">in</w>
+                  <w xml:id="URFA-136_xTok_000533">ha</w>
+                  <w xml:id="URFA-136_xTok_000534">ḥāṛṛa</w>
+                  <w xml:id="URFA-136_xTok_000535">ˁayne</w>
+                  <w xml:id="URFA-136_xTok_000536">zād</w>
+                  <w join="right" xml:id="URFA-136_xTok_000537" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000539">burqul</w>
+                  <w join="right" xml:id="URFA-136_xTok_000540" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000542" rend="withDash">ad</w>
+                  <w xml:id="URFA-136_xTok_000544">dibis</w>
+                  <w join="right" xml:id="URFA-136_xTok_000545" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000547" rend="withDash">aš</w>
+                  <w xml:id="URFA-136_xTok_000549">šī</w>
+                  <w xml:id="URFA-136_xTok_000550">kullu</w>
+                  <w xml:id="URFA-136_xTok_000551">ˁayne</w>
+                  <w xml:id="URFA-136_xTok_000552">nafs</w>
+                  <w join="right" xml:id="URFA-136_xTok_000553" rend="withDash">aš</w>
+                  <w xml:id="URFA-136_xTok_000555" join="right">šī</w>
+                  <pc xml:id="xTok_000556">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a21" xml:id="a45">the potato is basically boiled, let’s say, it gets boiled, it gets boiled, when it is hot, it is actually the same, basically the bulgur, the molasses and everything is the same, the same thing</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a22"
+                  who="#default"
+                  end="#T37"
+                  start="#T36">
+                  <w xml:id="URFA-136_xTok_000557">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000558" rend="withDash">bṣalt</w>
+                  <w xml:id="URFA-136_xTok_000560">in</w>
+                  <w xml:id="URFA-136_xTok_000561">yābse</w>
+                  <w join="right" xml:id="URFA-136_xTok_000562" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000564" rend="withDash">aṯ</w>
+                  <w xml:id="URFA-136_xTok_000566">ṯūm</w>
+                  <w xml:id="URFA-136_xTok_000567">ˁayne</w>
+                  <w join="right" xml:id="URFA-136_xTok_000568" rend="withDash">wakt</w>
+                  <w xml:id="URFA-136_xTok_000570">in</w>
+                  <w xml:id="URFA-136_xTok_000571">ᵊtgūm</w>
+                  <w xml:id="URFA-136_xTok_000572">tinfarik</w>
+                  <w xml:id="URFA-136_xTok_000573">bidāl</w>
+                  <w join="right" xml:id="URFA-136_xTok_000574" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000576">ˁadas</w>
+                  <w xml:id="URFA-136_xTok_000577">tinḥaṭṭ</w>
+                  <w join="right" xml:id="URFA-136_xTok_000578">bəṭāṭa</w>
+                  <pc xml:id="xTok_000579">,</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a22" xml:id="a46">and a yellow onion and the garlic is the same, (but) when it get mixed, potato will be put instead of lentil</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a23"
+                  who="#default"
+                  end="#T39"
+                  start="#T38">
+                  <w join="right" xml:id="URFA-136_xTok_000580" rend="withDash">ˀal</w>
+                  <w xml:id="URFA-136_xTok_000582">bəṭāṭa</w>
+                  <w xml:id="URFA-136_xTok_000583">zād</w>
+                  <w xml:id="URFA-136_xTok_000584">tinfarik</w>
+                  <w join="right" xml:id="URFA-136_xTok_000585" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-136_xTok_000587" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000589">bəṭāṭa</w>
+                  <w xml:id="URFA-136_xTok_000590">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000591" rend="withDash">ˀīdām</w>
+                  <w xml:id="URFA-136_xTok_000593">he</w>
+                  <w xml:id="URFA-136_xTok_000594">zād¬ēn</w>
+                  <w xml:id="URFA-136_xTok_000595">zēt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000596" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-136_xTok_000598" rend="withDash">bṣalt</w>
+                  <w xml:id="URFA-136_xTok_000600">in</w>
+                  <w join="right" xml:id="URFA-136_xTok_000601">yābse</w>
+                  <pc xml:id="xTok_000602">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a23" xml:id="a47">the potato gets basically mixed with potato, and its oiling is basically oil and a yellow onion</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="x-vicav-shawi"
+                  xml:id="URFA-136_a24"
+                  who="#default"
+                  end="#T40"
+                  start="#T39">
+                  <w xml:id="URFA-136_xTok_000603">hāḏi</w>
+                  <w xml:id="URFA-136_xTok_000604">zād</w>
+                  <w xml:id="URFA-136_xTok_000605">ᵊhnīt</w>
+                  <w join="right" xml:id="URFA-136_xTok_000606" rend="withDash">al</w>
+                  <w xml:id="URFA-136_xTok_000608">bəṭāṭa</w>
+                  <w xml:id="URFA-136_xTok_000609">haḏanne</w>
+                  <w join="right" xml:id="URFA-136_xTok_000610" rend="withDash">ˀač</w>
+                  <w xml:id="URFA-136_xTok_000612">čīga</w>
+                  <w xml:id="URFA-136_xTok_000613">arbaˁ</w>
+                  <w join="right" xml:id="URFA-136_xTok_000614">ᵊšqāl</w>
+                  <pc xml:id="xTok_000615">.</pc>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-136_a24" xml:id="a48">this is basically the thing with potato, these are çiğ dishes, four types</span>
+               </spanGrp>
+            </annotationBlock>
+         </div>
+      </body>
+   </text>
+</TEI>

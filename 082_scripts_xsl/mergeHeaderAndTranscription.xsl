@@ -59,6 +59,27 @@
         </xsl:copy>
     </xsl:template>
     
+    <xsl:template match="tei:annotationBlock">
+        <annotationBlock>
+            <xsl:apply-templates select="node()"/>
+        </annotationBlock>
+    </xsl:template>
     
+    <xsl:template match="tei:u">
+        <u xml:lang="x-vicav-shawi" xml:id="{concat($recordingID,'_',../@xml:id)}" who="{concat('#', ../@who)}">
+          <xsl:apply-templates select="../@* except (../@xml:id, ../@who)"/>
+          <xsl:apply-templates select="tei:seg"/>
+        </u>
+    </xsl:template>
+    
+    <xsl:template match="tei:seg">
+        <xsl:apply-templates select="node()"/>
+    </xsl:template>
+    
+    <xsl:template match="tei:span">
+        <span xml:lang="en" target="{concat('#', $recordingID,'_',substring(@target, 2))}">
+            <xsl:apply-templates select="@* except @target|node()"/>
+        </span>
+    </xsl:template>
     
 </xsl:stylesheet>

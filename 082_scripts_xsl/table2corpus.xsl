@@ -3,8 +3,9 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:_="urn:shawi"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns="http://www.tei-c.org/ns/1.0"
-    exclude-result-prefixes="xs tei"
+    exclude-result-prefixes="xs tei _ map"
     version="2.0">
     <xsl:output method="xml" indent="yes"/>
     
@@ -46,6 +47,20 @@
     <xsl:variable name="sharePrefix">share</xsl:variable>
     <xsl:variable name="vicavGeoListPrefix">geo</xsl:variable>
     <xsl:variable name="vicavZoteroGroupPrefix">zotid</xsl:variable>
+       
+    <xsl:variable name="cn" as="map(xs:string, map(xs:string, xs:integer))">
+        <xsl:map>
+            <xsl:for-each select="//tei:table/tei:head">
+             <xsl:map-entry key="xs:string(.)">                
+                 <xsl:map>
+                     <xsl:for-each select="following-sibling::tei:row[@n='1'][1]/tei:cell[normalize-space(.) ne '']">
+                         <xsl:map-entry key="xs:string(.)" select="xs:integer(position())"/>
+                     </xsl:for-each>
+                 </xsl:map> 
+             </xsl:map-entry>
+          </xsl:for-each>
+        </xsl:map>
+    </xsl:variable>
     
     <xsl:variable name="t_Speakers" select="//tei:table[tei:head = 'Speakers']" as="element(tei:table)"/>
     <xsl:variable name="allSpeakers" select="$t_Speakers//tei:row[position() gt 1]" as="element(tei:row)*"/>
@@ -62,6 +77,9 @@
     
     <xsl:template match="/">
         <xsl:comment>THIS FILE WAS PROGRAMMATICALLY CREATED by table2corpus.xsl on/at <xsl:value-of select="current-dateTime()"/></xsl:comment>
+        <xsl:result-document method="json" href="table_cell_num_mapping.json">
+            <xsl:sequence select="$cn"/>
+        </xsl:result-document>
         <xsl:apply-templates select="//tei:table[tei:head = 'Recordings']"/>
     </xsl:template>
     
@@ -79,7 +97,7 @@
     
     <xsl:function name="_:personReferenceByName" as="element(tei:person)">
         <xsl:param name="persName" as="xs:string"/>
-        <xsl:variable name="tei:row" select="($allTeam[tei:cell[2]||' '||tei:cell[3] = $persName], $allSpeakers[tei:cell[1] = $persName])[1]"/>
+        <xsl:variable name="tei:row" select="($allTeam[tei:cell[$cn('Team')('Forename')]||' '||tei:cell[$cn('Team')('Surname')] = $persName], $allSpeakers[tei:cell[$cn('Speakers')('Speaker')] = $persName])[1]"/>
         <xsl:apply-templates select="$tei:row" mode="teiInstanceDoc"/>
     </xsl:function>
     
@@ -138,11 +156,11 @@
                 <encodingDesc>
                     <classDecl>
                         <taxonomy>
-                            <xsl:for-each select="$allSubjects[tei:cell[1] != '']">
-                                <xsl:sort select="_:sortKey(tei:cell[1])"/>
+                            <xsl:for-each select="$allSubjects[tei:cell[$cn('Subjects')('Label')] != '']">
+                                <xsl:sort select="_:sortKey(tei:cell[$cn('Subjects')('Label')])"/>
                                 <xsl:variable name="subjectID" select="_:ID(tei:cell[1])"/>
-                                <category xml:id="{$subjectID}" n="{tei:cell[1]}">
-                                    <catDesc><xsl:value-of select="(tei:cell[2][. != ''],'TODO ADD DESCRIPTION in Subjects table!')[1]"/></catDesc>
+                                <category xml:id="{$subjectID}" n="{tei:cell[$cn('Subjects')('Label')]}">
+                                    <catDesc><xsl:value-of select="(tei:cell[$cn('Subjects')('Definition')][. != ''],'TODO ADD DESCRIPTION in Subjects table!')[1]"/></catDesc>
                                 </category>
                             </xsl:for-each>
                         </taxonomy>
@@ -170,22 +188,22 @@
         </teiCorpus>
     </xsl:template>
     
-    <xsl:template match="tei:table[tei:head = 'Recordings']/tei:row">
-        <xsl:variable name="textID" select="tei:cell[1]"/>
+    <xsl:template match="tei:table[tei:head = 'Recordings']/tei:row[normalize-space(tei:cell[$cn('Recordings')('Rec. person')]) ne '']" priority="0">
+        <xsl:variable name="textID" select="tei:cell[$cn('Recordings')('Text')]"/>
         <!-- find all rows with the matching text ID and take "the other" cell of the row, which is the speaker ID -->
         <xsl:variable name="speakerIDs" select="$t_Speakers_in_Recordings//tei:row[tei:cell = $textID]/tei:cell[. != $textID]"/>
-        <xsl:variable name="speakers_in_recording" select="$allSpeakers[tei:cell[1] = $speakerIDs]" as="element(tei:row)*"/>
+        <xsl:variable name="speakers_in_recording" select="$allSpeakers[tei:cell[$cn('Recordings')('Text')] = $speakerIDs]" as="element(tei:row)*"/>
         
         <!--  -->
         <xsl:variable name="subjectIDs" select="$t_Subjects_in_Recordings//tei:row[tei:cell = $textID]/tei:cell[. != $textID]"/>
-        <xsl:variable name="subjects_in_recording" select="$allSubjects[tei:cell[1] = $subjectIDs]" as="element(tei:row)*"/>
+        <xsl:variable name="subjects_in_recording" select="$allSubjects[tei:cell[$cn('Subjects')('Label')] = $subjectIDs]" as="element(tei:row)*"/>
         
         <!-- place -->
-        <xsl:variable name="placeName" select="tei:cell[7]"/>
-        <xsl:variable name="placeID" select="$t_Places//tei:row[tei:cell[2] = $placeName]/tei:cell[1]"/>
+        <xsl:variable name="placeName" select="tei:cell[$cn('Recordings')('Place')]"/>
+        <xsl:variable name="placeID" select="$t_Places//tei:row[tei:cell[$cn('Places')('PlaceName')] = $placeName]/tei:cell[$cn('Places')('ID')]"/>
         
         <!-- path to Audio files -->
-        <xsl:variable name="relPath" select="tei:cell[8]"/>
+        <xsl:variable name="relPath" select="tei:cell[$cn('Recordings')('Trascribed Audio-file')]"/>
         <xsl:variable name="fullPath" select="$pathToRecordings"/>
         <TEI>
             <teiHeader>
@@ -200,14 +218,14 @@
                         <!-- TODO reference source audio file to match with ELAN export. -->
                         <recordingStmt>
                             <!-- TODO parse duration and date -->
-                            <recording dur-iso="{tei:cell[5]}" type="audio">
-                                <date when="{tei:cell[4]}"/>
+                            <recording dur-iso="{tei:cell[$cn('Recordings')('Length')]}" type="audio">
+                                <date when="{_:excelSerialToISO( tei:cell[$cn('Recordings')('Date')])}"/>
                                 <respStmt>
                                     <resp>recording</resp>
-                                    <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName(tei:cell[6])}"><xsl:value-of select="normalize-space(tei:cell[6])"/></persName>
+                                    <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName(tei:cell[$cn('Recordings')('Rec. person')])}"><xsl:value-of select="normalize-space(tei:cell[$cn('Recordings')('Rec. person')])"/></persName>
                                 </respStmt>
                                 <!-- TODO The audio files on the share need to be re-organised to match the replacementPattern in the header -->
-                                <media url="{$sharePrefix}:{tei:cell[8]}" mimeType="audio/wav" type="master"/>
+                                <media url="{$sharePrefix}:{tei:cell[$cn('Recordings')('Transcribed Audio-file')]}" mimeType="audio/wav" type="master"/>
                             </recording>
                         </recordingStmt>
                     </sourceDesc>
@@ -250,6 +268,12 @@
         </TEI>
     </xsl:template>
     
+    <xsl:function name="_:excelSerialToISO" as="xs:date">
+        <xsl:param name="serial" required="yes" as="xs:int"/>
+        <xsl:sequence select="xs:date('1899-12-30') + xs:dayTimeDuration('P'||$serial||'D')"/>
+    </xsl:function>
+    
+    <xsl:template match="tei:table[tei:head = 'Recordings']/tei:row" priority="-2"/><!-- don't process rows that have no Rec. Person filled in -->    
     
     <xsl:template match="tei:table[tei:head = 'Subjects']/tei:row[tei:cell[1] != '']">
         <xsl:variable name="subjectID"/>
@@ -298,22 +322,22 @@
         <xsl:param name="mode"/>
         <person xml:id="{tei:cell[1]}">
             <persName>
-                <forename><xsl:value-of select="tei:cell[2]"/></forename>
-                <surname><xsl:value-of select="tei:cell[3]"/></surname>
+                <forename><xsl:value-of select="tei:cell[$cn('Team')('Forename')]"/></forename>
+                <surname><xsl:value-of select="tei:cell[$cn('Team')('Surname')]"/></surname>
             </persName>
-            <state type="projectRole"><desc><xsl:value-of select="tei:cell[4]"/></desc></state>
+            <state type="projectRole"><desc><xsl:value-of select="tei:cell[$cn('Team')('Role')]"/></desc></state>
             <idno type="URI" subtype="ORCID">
                 <xsl:choose>
-                    <xsl:when test="tei:cell[5] != ''">
-                        <xsl:value-of select="concat('https://orcid.org/',tei:cell[5])"/>
+                    <xsl:when test="tei:cell[$cn('Team')('ORCID')] != ''">
+                        <xsl:value-of select="concat('https://orcid.org/',tei:cell[$cn('Team')('ORCID')])"/>
                     </xsl:when>
                     <xsl:otherwise>
                         TODO get an ORCID
                     </xsl:otherwise>
                 </xsl:choose>
             </idno>
-            <affiliation><xsl:value-of select="tei:cell[6]"/></affiliation>
-            <note><xsl:value-of select="tei:cell[7]"/></note>
+            <affiliation><xsl:value-of select="tei:cell[$cn('Team')('Affiliation')]"/></affiliation>
+            <note><xsl:value-of select="tei:cell[$cn('Team')('Note')]"/></note>
         </person>
     </xsl:template>
 
