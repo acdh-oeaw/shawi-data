@@ -76,6 +76,12 @@ $message
 </revisionDesc>
 EOF
 )
+
+#------ Link generated data files to VICAV data directory
+
+ln -f 103_tei_w/*.xml ./vicav_corpus/shawi
+
+
 #------- copy all images into the "images" directory in the web application directory
 echo "copying image files from shawi-data to vicav-webapp"
 for d in $(ls -d vicav_*)
