@@ -78,8 +78,8 @@ EOF
 )
 
 #------ Link generated data files to VICAV data directory
-
-ln -f 103_tei_w/*.xml ./vicav_corpus/shawi
+echo "copying XML data files to data directory"
+cp 103_tei_w/*.xml ./vicav_corpus/shawi
 
 
 #------- copy all images into the "images" directory in the web application directory
