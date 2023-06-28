@@ -1,0 +1,117 @@
+<snippets xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xml:space="preserve">
+
+<!--*************************************************************************-->
+<!--** The list on the left side is filled with the pseudo-n (pn)        ****-->
+<!--** and pseudo-name (pname) attributes.                               ****-->
+<!--** Psydo-n's can also be used as substittion short-cuts in the XML   ****-->
+<!--** editor. E.g. #p# is replaced by <p></p>                           ****-->
+<!--*************************************************************************-->
+
+
+<?xml-stylesheet type="text/xsl" href="../xsl/tei_2_html__simple_text.xsl"?>
+<?xslt inPathSegment="\exercises\" outPathSegment="\html\"?>
+<?processor name="saxon|msxml{caret}" removePreserveFromXML="true" removePreserveFromXSLT="true"?>
+<?snippets fn="snippets_001.xml" path="{appPath}\conf\"?>
+<?schema fn="" path="{appPath}"?>
+<?standoff fn="" path="{appPath}"?>
+<?shortCuts fn="edShortCuts_01" path="{appPath}\conf\"?>
+
+@xml:space="preserve"
+
+<annotationBlock pn="ab" pname="ab:annot" xml:id="">
+{insert}{caret}
+</annotationBlock>
+
+<div pn="di" pname="dv:invisible" type="invisible" xml:id="">
+   <head>{insert}{caret}</head>
+</div>
+
+<div pn="de" pname="dv:exercise" type="exercise">{insert}{caret}</div>
+
+<div pn="dv" pname="div" xml:id="{id}">{caret}{insert}</div>
+
+<figure pn="gr1" pname="graphic:Wikimedia">
+   <graphic url="{caret}"/>
+   <head type="imgCaption" xml:space="preserve">
+      <ref target="">Wikimedia</ref>
+   </head>
+</figure>
+
+<figure pn="gr2" pname="graphic">
+   <graphic url="../601_imgs_raster/{caret}"/>
+</figure>
+
+<foreign pn="f" pname="foreign" xml:lang="zu">{insert}</foreign>{caret}
+
+<head pn="hd" pname="head">{caret}</head>
+
+<hi pn="ita" pname="hi:italics" rend="italics">{insert}</hi>{caret}
+
+<hi rendition="#i">{insert}</hi>{caret}
+
+<hi rend="bold">{caret}{insert}</hi>
+
+<hi rend="white_green">{caret}{insert}</hi>
+
+<hi pn="bre" pname="boldRed" rend="bold-red">{caret}{insert}</hi>
+
+<hi pn="bre1" pname="boldRed1" rend="bold_green">{caret}{insert}</hi>
+
+<hi pn="hrw" pname="redWhite" rend="red_white">{caret}{insert}</hi>
+
+<hi rend="red">{caret}{insert}</hi>
+
+<hi rend="green">{caret}{insert}</hi>
+
+<hi rend="blue">{caret}{insert}</hi>
+
+<note pn="nt" pname="note">{caret}{insert}</note>
+
+<note pn="nd" pname="note:date">{year}-{month}-{day}: {caret}</note>
+
+
+<note pn="n" pname="note" type="topics">{caret}{insert}</note>
+
+<p pn="pr" pname="p:ref"><ref target="#{caret}">{insert}</ref></p>
+
+<p pn="p" pname="para">{insert}{caret}</p>
+
+<p pn="p1" pname="p:Vocab" type="Vocab">{insert}{caret}</p>
+
+<ref pn="rf" pname="ref" target="#{caret}">{insert}</ref>
+
+<row><cell>{caret}</cell></row>
+
+<rs type="bibl" ref="zotid:{caret}">{insert}</rs>
+
+<u pn="u" pname="utterance" xml:lang="ar" corresp="{caret}">{insert}</u>
+
+<w pn="w" pname="w" n="{caret}">{insert}</w>
+
+<!--*************************************************************************-->
+<!--**   Templates used in XSL **********************************************-->
+<!--*************************************************************************-->
+
+<xsl:apply-templates/>{caret}
+
+<xsl:attribute name="{caret}"></xsl:attribute>
+
+<xsl:choose>{caret}</xsl:choose>
+
+<xsl:for-each select="{caret}"></xsl:for-each>
+
+<xsl:if pn="xi" pname="xsl:if" test="">{caret}</xsl:if>
+
+<xsl:text>{caret}</xsl:text>
+
+<xsl:template match="{caret}"></xsl:template>
+
+<xsl:value-of select="{caret}"/>
+
+<xsl:variable></xsl:variable>
+
+<xsl:when test="">{caret}</xsl:when>
+
+<xsl:otherwise>{caret}</xsl:otherwise>
+
+</snippets>
