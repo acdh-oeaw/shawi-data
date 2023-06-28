@@ -1,6 +1,8 @@
 name: Convert ELAN to TEI
 on:
-  push: {}
+  push:
+    branches:
+      - "main"
   repository_dispatch:
     types: [run]
   workflow_dispatch: {}
@@ -44,7 +46,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/acdh-oeaw/shawi-data/shawi-noske/${{ github.ref_name }}
+            ghcr.io/acdh-oeaw/shawi-data/shawi-noske
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -71,14 +73,12 @@ jobs:
           push: true
   _3:
     needs: [build]
-    uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy.yml@main
+    uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy-cluster-2.yml@main
     secrets: inherit
     with:
-      DOCKER_TAG: "ghcr.io/acdh-oeaw/shawi-data/shawi-noske/${{ github.ref_name }}"
+      DOCKER_TAG: "ghcr.io/acdh-oeaw/shawi-data/shawi-noske"
       APP_NAME: "shawi-noske"
       APP_ROOT: "/"
-      SERVICE_ID: "20740"
-      PUBLIC_URL: "shawi-noske.acdh-dev.oeaw.ac.at"
       POSTGRES_ENABLED: false
       environment: "${{ github.ref_name }}"
       default_port: "8080"
