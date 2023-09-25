@@ -21,8 +21,8 @@
     <xsl:variable name="input" select="."/>
     <xsl:variable name="corpusDoc" select="doc($pathToCorpusDoc)" as="document-node()"/>
     <xsl:variable name="IDcandidates" select="$corpusDoc//*:title"/>
-    <xsl:variable name="pathSegs" select="tokenize(base-uri($input),'/')"/>
-    <xsl:variable name="recordingID" select="$IDcandidates[some $x in $pathSegs satisfies contains(lower-case($x), lower-case(.))]"/>
+    <xsl:variable name="pathSegs" select="tokenize(base-uri($input),'[/_]')"/>
+    <xsl:variable name="recordingID" select="$IDcandidates[some $x in $pathSegs satisfies lower-case($x) = lower-case(.)]"/>
     <xsl:variable name="teiHeaderFromCorpus" select="$recordingID/ancestor::tei:teiHeader" as="element(tei:teiHeader)?"/>
     
     <xsl:template match="/">
