@@ -10,7 +10,7 @@
    <xsl:strip-space elements="*"/>
    <xsl:param name="debug"/>
    <xsl:template match="/">
-      <xsl:processing-instruction name="xml-stylesheet">type="text/xsl" href="../082_scripts_xsl/tei_2_html__simple_text.xsl"</xsl:processing-instruction>
+      <xsl:processing-instruction name="xml-stylesheet">type="text/xsl" href="../082_scripts_xsl/tei_2_html__shawi.xsl"</xsl:processing-instruction>
       <xsl:text>
 </xsl:text>
       <xsl:processing-instruction name="xslt">inPathSegment="\010_manannot\" outPathSegment="\106_html\"</xsl:processing-instruction>
