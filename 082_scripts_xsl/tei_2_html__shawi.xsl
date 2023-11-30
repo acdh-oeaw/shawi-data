@@ -155,7 +155,7 @@
    <xsl:template match="tei:p"><p><xsl:apply-templates/></p></xsl:template>
 
    <xsl:template match="tei:w | tei:seg | tei:pc">
-      <a href="goto:{@xml:id}"><span>
+      <a href="goto:{@xml:id}"><span xml:space="default">
          <xsl:choose>
             <xsl:when test="@ana"><xsl:attribute name="class">wAssigned</xsl:attribute></xsl:when>
             <xsl:otherwise><xsl:attribute name="class">w</xsl:attribute></xsl:otherwise>
