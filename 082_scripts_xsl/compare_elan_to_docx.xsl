@@ -130,11 +130,11 @@
         </xsl:if>
     </xsl:template>
     
-    <xsl:template match="tei:row[normalize-space(tei:cell[2])='']"/>
+    <xsl:template match="tei:row[count(tei:cell) eq 3][normalize-space(tei:cell[2])='']"/>
     
-    <xsl:template match="tei:row[normalize-space(tei:cell[2])!='']">
+    <xsl:template match="tei:row[count(tei:cell) eq 3][normalize-space(tei:cell[2])!=''] | tei:row[count(tei:cell) eq 2][normalize-space(tei:cell[1])!='']">
         <xsl:variable name="utterance-no" select="count(preceding-sibling::tei:row)"/>
-        <xsl:apply-templates select="tei:cell[2]">
+        <xsl:apply-templates select="if (count(tei:cell) eq 3) then tei:cell[2] else tei:cell[1]">
             <xsl:with-param name="utterance-no" select="$utterance-no" tunnel="yes"/>
         </xsl:apply-templates>
     </xsl:template>
