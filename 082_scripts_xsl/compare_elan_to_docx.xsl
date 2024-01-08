@@ -146,7 +146,7 @@
         <xsl:param name="utterance-no" as="xs:integer" tunnel="yes"/>
         
         <xsl:variable name="elan-doc" select="$elan-doc-map?fetch()" as="document-node()"/>
-        <xsl:variable name="utterance-in-elan" select="normalize-space(subsequence($elan-doc//ALIGNABLE_ANNOTATION[normalize-space(.)!=''],$utterance-no+1,1))"/>        
+        <xsl:variable name="utterance-in-elan" select="normalize-space(subsequence($elan-doc//ALIGNABLE_ANNOTATION[ancestor::TIER/@TIER_ID='default'][normalize-space(.)!=''],$utterance-no+1,1))"/>        
         <xsl:variable name="elan-tokens" select="tokenize($utterance-in-elan)"/>
         <xsl:variable name="elan-text">
             <xsl:apply-templates/>
