@@ -28,14 +28,22 @@
         <xsl:variable name="headings" select="$doc//tei:head" as="element()*"/>
         <xsl:variable name="head" as="element(tei:head)*">
             <xsl:for-each select="$headings">
-                <xsl:variable name="text" select="substring-before(.,':')"/>
+                <xsl:variable name="text">
+                    <xsl:analyze-string select="translate(.,'ª','a')" regex="^Urfa-\d+[a-z]?">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="."/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:variable>
                 <xsl:if test="normalize-space($text) != '' and starts-with(lower-case($filename),lower-case($text))">
                     <xsl:sequence select="."/>
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
-        <xsl:message select="count($head)"></xsl:message>        
-        <xsl:sequence select="$head"/>
+        <xsl:if test="count($head) ne 1">
+            <xsl:message select="concat('found ',count($head),' TEI documents for ', $filename)"/>
+        </xsl:if>        
+        <xsl:sequence select="$head[last()]"/>
 
     </xsl:function>
 
@@ -72,7 +80,13 @@
     which matches the file name of the ELAN document-->
     <xsl:template match="tei:table">
         <xsl:variable name="head" select="preceding-sibling::tei:head[1]"/>
-        <xsl:variable name="text" select="translate(substring-before($head,':'),'ª','a')" as="xs:string"/>
+        <xsl:variable name="text">
+            <xsl:analyze-string select="translate($head,'ª','a')" regex="^Urfa-\d+[a-z]?">
+                <xsl:matching-substring>
+                    <xsl:value-of select="."/>
+                </xsl:matching-substring>
+            </xsl:analyze-string>
+        </xsl:variable>
         <!--<xsl:for-each select="$elan-docs">
             <xsl:variable name="map" select="." as="map(*)"/>
             <xsl:for-each select="map:keys($map)">
@@ -109,7 +123,7 @@
                     <p>found several potential ELAN documents: <xsl:value-of select="string-join(for $i in $elan-doc-map return $i('filename'),',')"/></p>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:message>No file found starting with <xsl:value-of select="$text"/></xsl:message>
+                    <xsl:message>No file found starting with "<xsl:value-of select="$text"/>"</xsl:message>
                     <p><i>No ELAN document found starting with <xsl:value-of select="$text"/></i></p>
                 </xsl:otherwise>
             </xsl:choose>
@@ -125,6 +139,8 @@
         </xsl:apply-templates>
     </xsl:template>
     
+    <xsl:template match="tei:note[@place = 'foot']"/>
+    
     <xsl:template match="tei:cell">
         <xsl:param name="elan-doc-map" as="map(*)" tunnel="yes"/>
         <xsl:param name="utterance-no" as="xs:integer" tunnel="yes"/>
@@ -132,7 +148,10 @@
         <xsl:variable name="elan-doc" select="$elan-doc-map?fetch()" as="document-node()"/>
         <xsl:variable name="utterance-in-elan" select="normalize-space(subsequence($elan-doc//ALIGNABLE_ANNOTATION[normalize-space(.)!=''],$utterance-no+1,1))"/>        
         <xsl:variable name="elan-tokens" select="tokenize($utterance-in-elan)"/>
-        <xsl:variable name="docx-tokens" select="tokenize(.)"/>
+        <xsl:variable name="elan-text">
+            <xsl:apply-templates/>
+        </xsl:variable>
+        <xsl:variable name="docx-tokens" select="tokenize($elan-text)"/>
         <tr style="border: 1px solid black; border-collapse: collapse;">
             <td style="border: 1px solid black; border-collapse: collapse;"><xsl:value-of select="$elan-doc-map('filename')"/></td>
             <td style="border: 1px solid black; border-collapse: collapse;"><xsl:value-of select="$utterance-no"/></td>
