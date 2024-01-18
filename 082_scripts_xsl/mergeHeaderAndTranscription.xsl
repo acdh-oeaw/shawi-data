@@ -69,6 +69,8 @@
         <u xml:lang="ar-acm-x-shawi-vicav" xml:id="{concat($recordingID,'_',../@xml:id)}" who="{concat('#', ../@who)}">
           <xsl:apply-templates select="../@* except (../@xml:id, ../@who)"/>
           <xsl:apply-templates select="tei:seg"/>
+          <media mimeType="audio/mp3" url="publicAssets:{textID}/{utterance-id}.mp3"></media>
+          <media mimeType="audio/wav" url="arche:{textID}/{utterance-id}.wav"></media>
         </u>
     </xsl:template>
     
