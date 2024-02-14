@@ -9,7 +9,7 @@
     
     <!--  
         This stylesheet merges the metadata from the Corpus document and the 
-        TEI-represenation of the ELAN transcriptions. 
+        TEI-representation of the ELAN transcriptions. 
         
         TODOs mentioned inline.
         
@@ -69,8 +69,8 @@
         <u xml:lang="ar-acm-x-shawi-vicav" xml:id="{concat($recordingID,'_',../@xml:id)}" who="{concat('#', ../@who)}">
           <xsl:apply-templates select="../@* except (../@xml:id, ../@who)"/>
           <xsl:apply-templates select="tei:seg"/>
-          <media mimeType="audio/mp3" url="publicAssets:{textID}/{utterance-id}.mp3"></media>
-          <media mimeType="audio/wav" url="arche:{textID}/{utterance-id}.wav"></media>
+          <media mimeType="audio/mp3" url="publicAssets:{$recordingID}/{concat($recordingID,'_',../@xml:id)}.mp3"></media>
+          <media mimeType="audio/wav" url="arche:{$recordingID}/{concat($recordingID,'_',../@xml:id)}.wav"></media>
         </u>
     </xsl:template>
     
