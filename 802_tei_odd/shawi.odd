@@ -98,7 +98,7 @@
          <div>
             <head>Part 2: Formal Specification</head>
             
-            <schemaSpec ident="shawi" source="file:/C:/Users/mrauschsupola/generic-dict-schema/generic-dict-schema/schema/acdh-ch-dicts.compiled.odd">
+            <schemaSpec ident="shawi" source="file:/C:/Users/mrauschsupola/generic-dict-schema/generic-dict-schema/schema/tmp/TEI-Lex0.compiled.odd">
             <!-- We copy all modules from TEI Lex0  -->
             <moduleRef key="analysis"/>
             <moduleRef key="core"/>
@@ -111,7 +111,6 @@
             <moduleRef key="tei"/>
             <moduleRef key="textstructure"/>
             <moduleRef key="transcr"/>
-            
             
             <!-- Additionally needed elements -->
             <elementRef key="list" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
@@ -135,11 +134,16 @@
             <elementRef key="f" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
             <elementRef key="symbol" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
             <elementRef key="measure" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            <elementRef key="change" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
             <elementRef key="listChange" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
+            <elementRef key="change" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
             <elementRef key="ptr" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
             <elementRef key="interpretation" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>   
-
+            
+            <classSpec ident="change" mode="change" module="tei" type="atts">
+               <attList>
+                  <attDef ident="calendar" mode="delete"/>
+               </attList>
+            </classSpec>
             <!-- 
                TODO We should have a finer-grained definition for <usg type="corpusFrequency">
                For the time being, I'm simply adding <q> and <val>.
@@ -346,6 +350,9 @@
                <constraintSpec ident="form-type" scheme="schematron">
                   <desc>assert content of correct context of @type values</desc>
                   <constraint>
+                     <s:rule context="tei:form[not(@type)]">
+                        <s:assert test="parent::tei:cit">a headword must be a direct child of an entry element. </s:assert>
+                     </s:rule>
                      <s:rule context="tei:form[@type = 'variant']">
                         <s:assert test="parent::tei:form[@type = ('lemma','multiWordUnit', 'inflected')]">a variant must be a direct child of the main form (type = "lemma", "multiWordUnit" or "inflected").</s:assert>
                      </s:rule>
@@ -359,7 +366,7 @@
                      of cit type translation 
                      HOW TO treat? 2021-12-11 DS
                   -->
-                  <attDef ident="type" mode="replace" usage="opt">
+                  <attDef ident="type" mode="replace" usage="req">
                      <valList type="closed">
                         <valItem ident="lemma">
                            <desc>the headword of a lemma entry</desc>
