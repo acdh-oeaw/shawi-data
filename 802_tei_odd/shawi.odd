@@ -113,49 +113,17 @@
             <moduleRef key="transcr"/>
             
             <!-- Additionally needed elements -->
-            <elementRef key="list" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            <elementRef key="item" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            <!-- WATCHME If I don't redefine the content model of list here, the resulting XML 
-               schema is violating the Unique particle attribution. We should find out, why. 
-               2021-12-11 -->
-            <elementSpec ident="list" mode="change">
-               <content>
-                  <sequence>
-                     <classRef key="model.divTop" minOccurs="0"/>
-                     <sequence minOccurs="1" maxOccurs="unbounded">
-                        <elementRef key="label" minOccurs="0"/>
-                        <elementRef key="item" minOccurs="1" maxOccurs="1"/>
-                     </sequence>
-                  </sequence>
-               </content>
-            </elementSpec>
-            
             <elementRef key="fs" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
             <elementRef key="f" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
             <elementRef key="symbol" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            <elementRef key="measure" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            <elementRef key="listChange" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            <elementRef key="change" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            <elementRef key="ptr" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            <elementRef key="interpretation" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>   
             
+            <!-- if not removed then duplicate, should be excluded from tei by November --> 
             <classSpec ident="change" mode="change" module="tei" type="atts">
                <attList>
                   <attDef ident="calendar" mode="delete"/>
                </attList>
             </classSpec>
-            <!-- 
-               TODO We should have a finer-grained definition for <usg type="corpusFrequency">
-               For the time being, I'm simply adding <q> and <val>.
-               DS 2021-12-02
-            -->
-            <elementRef key="q" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>   
-            <elementRef key="val" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>   
 
-            <!-- TODO are we sure we want <mentioned> and <lb/> ? DS 2021-12-02-->
-            <elementRef key="mentioned" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            <elementRef key="lb" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            
             <!-- 
                for some reason I had to explicitly add model.featureVal
                and make <symbol> a member of it. We should find out why. 
@@ -167,48 +135,7 @@
                   <memberOf key="model.featureVal"/>
                </classes>
             </elementSpec>
-            
-            <classRef key="att.measurement" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-            
-            <elementSpec ident="ptr" mode="change" module="core">
-               <constraintSpec ident="example-target" scheme="schematron">
-                  <desc>rules that govern ptr elements</desc>
-                  <constraint>
-                     <s:rule context="tei:ptr[@type = 'example'][matches(@target,'^#') and not(contains(@target,' '))]">
-                        <s:assert test="exists(root()//tei:cit[@type = 'example'][@xml:id = current()/substring-after(@target,'#')])">unknown example with id "<s:value-of select="current()/substring-after(@target,'#')"/>"</s:assert>
-                     </s:rule>
-                     <s:rule context="tei:ptr[@type = 'example'][not(matches(@target,'^#')) or contains(@target,' ')]">
-                        <s:report test="count(tokenize(@target,'\s')[.!='']) > 1">only one pointer allowed in @target</s:report>
-                        <s:report test="not(starts-with(normalize-space(@target),'#'))">unexpected value "<s:value-of select="current()/@target"/>": the value of @target must be a fragment identifier pointing to an xml:id of a dictionary example (tei:cit[@type='example'])</s:report>
-                     </s:rule>
-                  </constraint>
-               </constraintSpec>
-            </elementSpec>
-            
-            <elementSpec ident="seg" mode="change" module="linking">
-               <constraintSpec ident="seg-context" scheme="schematron">
-                  <desc> assert correct context of seg</desc>
-                  <constraint>
-                     <s:rule context="tei:seg[@type = 'hint']">
-                        <s:assert test="parent::tei:quote[parent::tei:cit[@type = 'translation']]">a hint segment must be inside a translation equivalent</s:assert>
-                     </s:rule>
-                  </constraint>
-               </constraintSpec>
-               <attList>
-                  <attDef ident="type" mode="replace" usage="req">
-                     <valList type="closed">
-                        <valItem ident="hint">
-                           <desc>a hint in a translation to narrow down the semantic scope of the particular item.</desc>  
-                        </valItem>
-                        <valItem ident="constrPart">
-                           <desc>TODO add description ???</desc>
-                        </valItem>
-                     </valList>
-                  </attDef>
-               </attList>
-            </elementSpec>
-            
-            
+
             <elementSpec ident="gram" mode="change" module="dictionaries">
                <attList>
                   <!-- TODO 2021-12-03 
@@ -226,6 +153,9 @@
                         <valItem ident="constraint">
                            <desc>TODO description missing</desc>
                         </valItem>
+                        <valItem ident="degree">
+                           <desc>TODO description missing</desc>
+                        </valItem>
                         <valItem ident="diaRoot">
                            <desc>TODO description missing</desc>
                         </valItem>
@@ -236,6 +166,9 @@
                            <desc>TODO description missing</desc>
                         </valItem>
                         <valItem ident="inflectionType">
+                           <desc>TODO description missing</desc>
+                        </valItem>
+                        <valItem ident="morphPattern">
                            <desc>TODO description missing</desc>
                         </valItem>
                         <valItem ident="morphPatternPl">
@@ -256,6 +189,9 @@
                         <valItem ident="pos">
                            <desc>TODO description missing</desc>
                         </valItem>
+                        <valItem ident="rection">
+                           <desc>TODO description missing</desc>
+                        </valItem>
                         <valItem ident="root">
                            <desc>TODO description missing</desc>
                         </valItem>
@@ -263,9 +199,6 @@
                            <desc>TODO description missing</desc>
                         </valItem>
                         <valItem ident="synRoot">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        <valItem ident="translationEquivalent">
                            <desc>TODO description missing</desc>
                         </valItem>
                         <valItem ident="usg">
@@ -351,7 +284,7 @@
                   <desc>assert content of correct context of @type values</desc>
                   <constraint>
                      <s:rule context="tei:form[not(@type)]">
-                        <s:assert test="parent::tei:cit">a headword must be a direct child of an entry element. </s:assert>
+                        <s:assert test="parent::tei:cit[parent::tei:sense]">a form does not need a type attribute as a child of a cit element</s:assert>
                      </s:rule>
                      <s:rule context="tei:form[@type = 'variant']">
                         <s:assert test="parent::tei:form[@type = ('lemma','multiWordUnit', 'inflected')]">a variant must be a direct child of the main form (type = "lemma", "multiWordUnit" or "inflected").</s:assert>
@@ -366,7 +299,7 @@
                      of cit type translation 
                      HOW TO treat? 2021-12-11 DS
                   -->
-                  <attDef ident="type" mode="replace" usage="req">
+                  <attDef ident="type" mode="replace" usage="opt">
                      <valList type="closed">
                         <valItem ident="lemma">
                            <desc>the headword of a lemma entry</desc>
@@ -378,16 +311,7 @@
                         <valItem ident="inflected">
                            <desc>inflected form</desc>
                         </valItem>
-                        <!-- WHAT IS @type='infl' ? 
-                    121 in baghdad dict, many empty orth elements
-                    112 in apc
-                -->
-                        <!--<valItem ident="infl">
-                    <desc>????</desc>
-                </valItem>-->
-                        
-                        
-                        <!-- WHEN IS THIS USED ? 16 instances in damascus dict  -->
+
                         <valItem ident="example">
                            <desc>???</desc>
                         </valItem>
