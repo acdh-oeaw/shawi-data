@@ -222,13 +222,8 @@
                      <!-- only  -->
                      <elementRef key="bibl"/>
                      <elementRef key="note"/>
-                     <elementRef key="sense"/>
                      <elementRef key="usg"/>
-                     <elementRef key="xr"/>
-                     <elementRef key="def"/>
-                     <elementRef key="ptr"/>
                      <elementRef key="form"/>
-                     <elementRef key="ref"/>
                      <elementRef key="gramGrp"/>
                   </alternate>
                </content>
@@ -236,13 +231,13 @@
                   <desc>assert correct context of cit types</desc>
                   <constraint>
                      <s:rule context="tei:cit[@type = 'translation']">
-                        <s:report test="* except (tei:quote|tei:usg[@type = 'hint']|tei:bibl)">a translation equivalent may only contain 1) the translated text in a quote element, 2) a usage hint and/or 3) a bibliographic reference to the source of the translation.</s:report>
+                        <s:report test="* except (tei:quote|tei:cit|tei:bibl|tei:form[not(@type)]|tei:fs)">a translation equivalent may only contain the translated text in a quote element</s:report>
                      </s:rule>
                      <s:rule context="tei:entry//tei:cit[@type = 'translation']">
                         <s:assert test="parent::tei:sense">a translation equivalent in a headword or MWU entry must be a direct child of a sense element</s:assert>
                      </s:rule>
-                     <s:rule context="tei:cit[@subtype = 'proverb']">
-                        <s:assert test="@type = 'example'">unexpected value "<s:value-of select="current()/@type"/>" in @type – a proverb must be encoded as cit type="example" subtype="proverb"</s:assert>
+                     <s:rule context="tei:cit[@type = 'translationEquivalent']">
+                        <s:report test="* except (tei:usg[@type = 'hint']|tei:bibl|tei:form[not(@type)])">a translation equivalent may only contain 1) a usage hint 2) a bibliographic reference to the source of the translation 3) a form element.</s:report>
                      </s:rule>
                   </constraint>
                </constraintSpec>
@@ -253,26 +248,13 @@
                            <desc>A dictionary example. Ideally, examples should consist in complete sentences. Examples should be concise, but can also contain several sentences. If dialogical models are involved, sentences are to be separated by a dash.</desc>
                         </valItem>
                         <valItem ident="translation">
-                           <desc>A translation equivalent.</desc>
+                           <desc>A translation.</desc>
                         </valItem>
                         <valItem ident="translationEquivalent">
                            <desc>A translation equivalent.</desc>
                         </valItem>
                         <valItem ident="etymon">
-                           <desc>A translation equivalent.</desc>
-                        </valItem>
-                     </valList>
-                  </attDef>
-                  <attDef ident="subtype" mode="replace" usage="opt">
-                     <valList type="closed">
-                        <valItem ident="proverb">
-                           <desc>Proverbs are a subtype of example.</desc>
-                        </valItem>
-                        <valItem ident="verbatim">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        <valItem ident="scientificName">
-                           <desc>TODO descripion missing</desc>
+                           <desc>An etymon</desc>
                         </valItem>
                      </valList>
                   </attDef>
@@ -284,7 +266,7 @@
                   <desc>assert content of correct context of @type values</desc>
                   <constraint>
                      <s:rule context="tei:form[not(@type)]">
-                        <s:assert test="parent::tei:cit[parent::tei:sense]">a form does not need a type attribute as a child of a cit element</s:assert>
+                        <s:assert test="parent::tei:cit">a form without a type attribute must be a direct child of cit.</s:assert>
                      </s:rule>
                      <s:rule context="tei:form[@type = 'variant']">
                         <s:assert test="parent::tei:form[@type = ('lemma','multiWordUnit', 'inflected')]">a variant must be a direct child of the main form (type = "lemma", "multiWordUnit" or "inflected").</s:assert>
@@ -307,74 +289,12 @@
                         <valItem ident="multiWordUnit">
                            <desc>the headword of a MWU entry</desc>
                         </valItem>
-                        
                         <valItem ident="inflected">
                            <desc>inflected form</desc>
                         </valItem>
-
-                        <valItem ident="example">
-                           <desc>???</desc>
-                        </valItem>
-                        
                         <valItem ident="variant">
                            <desc>A variant form of the lemma. Only headwords may have variants. All other variants – e.g. competing morphological forms – are simply listed but not classified. Variants can be assigned usage labels indicating e.g. a particular register. The more frequent variant should precede less frequent ones. </desc>
-                        </valItem>
-                        
-                        <valItem ident="stem">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        
-                        <valItem ident="derived">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        
-                        <!-- in how far is @type = "lemmaVariant" different from @type = 'variant'? -->
-                        <valItem ident="lemmaVariant">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        
-                        <!-- WHEN IS THIS USED ?? -->
-                        <valItem ident="construction">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        
-                        <valItem ident="VN">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        
-                        <valItem ident="infinitive">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        
-                        <valItem ident="adverbial">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        
-                       
-                        <valItem ident="abbreviation">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        
-                       
-                        <!-- TODO DS 2021-12-02 
-                           These @types look complex – we should describe why 
-                           they are different from the other "flat" values -->
-                        <valItem ident="lexicalType:adverb">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        <valItem ident="lexicalType:infinitive">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        <valItem ident="lexicalType:infinitiveLocative">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        <valItem ident="grammaticalCase:genitive">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        <valItem ident="grammaticalCase:vocative">
-                           <desc>TODO description missing</desc>
-                        </valItem>
-                        
+                        </valItem>                                           
                      </valList>
                   </attDef>
                </attList>
