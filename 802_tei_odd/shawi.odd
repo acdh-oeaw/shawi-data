@@ -77,12 +77,11 @@
 
                <elementSpec ident="gram" mode="change" module="dictionaries">
                   <constraintSpec ident="gram" scheme="schematron">
-                     <desc>a gram type morphPattern must be a direct child of a gramGrp and a grandchild of a form type lemma</desc>
-                        <constraint>
-                           <s:rule context="tei:gram[@type = 'morphPattern']">
-                              <s:assert test="parent::tei:gramGrp/parent::tei:form[@type = 'lemma']">a gram type morphPattern must be a direct child of a gramGrp and a direct grandchild of a form type lemma</s:assert>
-                           </s:rule>
-                        </constraint>
+                     <constraint>
+                        <s:rule context="tei:gram[@type = 'morphPattern']">
+                           <s:assert test="parent::tei:gramGrp/parent::tei:form[@type]">a gram type morphPattern must be a direct child of a gramGrp and a direct grandchild of a form with a type attribute</s:assert>
+                        </s:rule>
+                     </constraint>
                   </constraintSpec>
                   <attList>
                      <!-- TODO 2021-12-03 
@@ -174,12 +173,8 @@
                      <desc>assert correct context of cit types</desc>
                      <constraint>
                         <s:rule context="tei:cit[@type = 'translationEquivalent']">
-                           <s:assert test="child::tei:form[not(@type)]">a form without a type attribute must be a direct child of cit.</s:assert>
-                           <s:assert test="parent::tei:sense">a translationEquivalent must be a direct child of a sense element</s:assert>
-                           <s:report test="* except (tei:usg[@type = 'hint']|tei:bibl|tei:form[not(@type)])">a translation equivalent may only contain 1) a usage hint 2) a bibliographic reference to the source of the translation 3) a form  element without type.</s:report>
-                        </s:rule>
-                        <s:rule context="tei:entry//tei:cit[@type = 'translation']">
-                           <s:assert test="parent::tei:sense">a translation in a headword or MWU entry must be a direct child of a sense element</s:assert>
+                           <s:assert test="parent::tei:sense">translationEquivalent: must be a direct child of a sense element</s:assert>
+                           <s:assert test="child::tei:bibl|child::tei:form[not(@type)]">translationEquivalent: a bibliographic reference or a form without a type attribute must be direct children of cit type translationEquivalent.</s:assert>
                         </s:rule>
                         <s:rule context="tei:cit[@type = 'translation']">
                            <s:report test="* except (tei:quote|tei:cit|tei:bibl|tei:form)">a translation may only contain the translated text in a quote element</s:report>
@@ -211,9 +206,9 @@
                      <desc>assert content of correct context of @type values</desc>
                      <constraint>
                         <s:rule context="tei:form[@type = 'variant']">
-                           <s:assert test="parent::tei:form[@type = ('lemma', 'multiWordUnit')]">a variant must be a direct child of the main form (type = "lemma" or "multiWordUnit").</s:assert>
+                           <s:assert test="parent::tei:form[@type = ('lemma', 'multiWordUnit', 'inflected')]">a variant must be a direct child of the main form (type = "lemma" or "multiWordUnit").</s:assert>
                         </s:rule>
-                        <s:rule context="tei:form[@type = ('lemma', 'multiWordUnit')]">
+                        <s:rule context="tei:form[@type = ('lemma', 'multiWordUnit', 'inflected')]">
                            <s:assert test="parent::tei:entry">a headword must be a direct child of an entry element. </s:assert>
                         </s:rule>
                      </constraint>
