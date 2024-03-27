@@ -1,0 +1,431 @@
+<?xml-stylesheet type="text/xsl" href="../082_scripts_xsl/tei_2_html__shawi.xsl"?>
+<?xslt inPathSegment="\010_manannot\" outPathSegment="\106_html\"?>
+<?processor name="saxon" removePreserveFromXML="true" removePreserveFromXSLT="true"?>
+<?snippets fn="snippets_shawi_001.xml" path="{filePath}/../880_conf/"?>
+<?standoff fn="shawi_standoff.xml" path=""?>
+<?attributeAssignments fn="shawi_attributes.xml" path="{filePath}/../880_conf/"?>
+<?shortCuts fn="shawi_shortCuts" path="{filePath}/../880_conf/"?>
+<!--THIS FILE WAS PROGRAMMATICALLY CREATED by mergeHeaderAndTranscription.xsl on/at2024-03-26T13:59:41.619154Z-->
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title level="a">URFA-120</title>
+            <title level="s">SHAWI Corpus</title>
+            <respStmt>
+               <persName ref="corpus:SP">
+                  <forename>Stephan</forename>
+                  <surname>Procházka</surname>
+               </persName>
+               <resp>Principal Investigator</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AHu">
+                  <forename>Aozan</forename>
+                  <surname>Hussien</surname>
+               </persName>
+               <resp>Transcription</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:MT">
+                  <forename>Miriam</forename>
+                  <surname>Al Tawil</surname>
+               </persName>
+               <resp>ELAN </resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AN">
+                  <forename>Aleksandra</forename>
+                  <surname>Naddari</surname>
+               </persName>
+               <resp>Dictionary</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:MA">
+                  <forename>Zsófia Maura</forename>
+                  <surname>Abraham</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:CM">
+                  <forename>Charly</forename>
+                  <surname>Mörth</surname>
+               </persName>
+               <resp>National Cooperation Partner</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:DS">
+                  <forename>Daniel</forename>
+                  <surname>Schopper</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AHe">
+                  <forename>Angelika</forename>
+                  <surname>Hechtl</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:ISM">
+                  <forename>Ismail</forename>
+                  <surname>Batan</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:No Need">
+                  <forename>No Need/ unqualified</forename>
+                  <surname/>
+               </persName>
+               <resp/>
+            </respStmt>
+            <funder>Funded by the <orgName ref="https://ror.org/013tf3c58">FWF Austrian Science Fund</orgName> under the number <idno type="projectNumber">P 33574</idno>
+            </funder>
+         </titleStmt>
+         <publicationStmt>
+            <publisher ref="https://ror.org/03anc3s24">Austrian Academy of Sciences</publisher>
+            <publisher ref="https://ror.org/03prydq77">University of Vienna</publisher>
+            <distributor ref="https://ror.org/028bsh698">Austrian Center for Digital Humanities and Cultural Heritage</distributor>
+            <date when="????-??-??">TODO Set publication date here</date>
+            <address>
+               <addrLine>Sonnenfelsgasse 19</addrLine>
+               <addrLine>1010 Vienna</addrLine>
+               <addrLine>Austria</addrLine>
+            </address>
+            <availability status="free">
+               <licence target="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</licence>
+            </availability>
+            <idno type="SHAWICorpusID">URFA-120</idno>
+         </publicationStmt>
+         <sourceDesc>
+            <recordingStmt>
+               <recording dur-iso="01:02" type="audio">
+                  <date when="2010-05-14"/>
+                  <respStmt>
+                     <resp>recording</resp>
+                     <persName ref="corpus:SP">Stephan Procházka</persName>
+                  </respStmt>
+                  <media url="share:Urfa-120_Cross_Marriage-Harran-2010.wav" mimeType="audio/wav" type="master"/>
+               </recording>
+            </recordingStmt>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <listPrefixDef>
+            <prefixDef ident="corpus" matchPattern="^(.+)$" replacementPattern="shawiCorpus.xml#$1">
+               <p>Private URIs using the <code>teiCorpusHeader</code> prefix are pointers to any element in the <ref target="shawiCorpus.xml">SHAWI teiCorpus document</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="share" matchPattern="^(.+)$" replacementPattern="\\share17.univie.ac.at\orientalistik\SHAWI\Recordings\*\*\$1.wav">
+               <p>Private URIs using the <code>share</code> prefix are pointers to audio file residing on the SHAWI network share.</p>
+            </prefixDef>
+            <prefixDef ident="geo" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml#$1">
+               <p>Private URIs using the <code>geo</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>place</gi> element in <ref target="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml">VICAV Geodata list</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="zotid" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_biblio_tei_zotero.xml#$1">
+               <p>Private URIs using the <code>zotid</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>biblStruct</gi> element in the TEI export of the <ref target="https://www.zotero.org/groups/2165756/vicav/library">VICAV Zotero Group library</ref>.</p>
+            </prefixDef>
+         </listPrefixDef>
+      </encodingDesc>
+      <profileDesc>
+         <particDesc>
+            <listPerson>
+               <head>Speakers in URFA-120</head>
+               <person sameAs="corpus:Harran01">
+                  <name type="pseudonym">Harran01</name>
+               </person>
+               <person sameAs="corpus:Harran02">
+                  <name type="pseudonym">Harran02</name>
+               </person>
+            </listPerson>
+         </particDesc>
+         <settingDesc>
+            <place sameAs="geo:harran">
+               <placeName>Harran</placeName>
+            </place>
+         </settingDesc>
+         <textClass>
+            <catRef target="corpus:CrossMarriage"/>
+         </textClass>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <timeline unit="ms">
+         <when xml:id="T0"/>
+         <when interval="780" since="#T0" xml:id="T1"/>
+         <when interval="11720" since="#T0" xml:id="T2"/>
+         <when interval="11730" since="#T0" xml:id="T3"/>
+         <when interval="20290" since="#T0" xml:id="T4"/>
+         <when interval="20310" since="#T0" xml:id="T5"/>
+         <when interval="30404" since="#T0" xml:id="T6"/>
+         <when interval="40147" since="#T0" xml:id="T7"/>
+         <when interval="40148" since="#T0" xml:id="T8"/>
+         <when interval="48013" since="#T0" xml:id="T9"/>
+         <when interval="48026" since="#T0" xml:id="T10"/>
+         <when interval="52945" since="#T0" xml:id="T11"/>
+         <when interval="62468" since="#T0" xml:id="T12"/>
+      </timeline>
+      <body>
+         <div subtype="d0" type="Situation">
+            <head>
+               <note type="start">#T0</note>
+               <note type="end">#T12</note>
+            </head>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-120_a1" who="#default" end="#T2" start="#T1">
+                  <w xml:id="URFA-120_xTok_000001" ana="#anid_24678">hā</w>
+                  <w join="right" xml:id="URFA-120_xTok_000002" rend="withDash" ana="#anid_125">w</w>
+                  <w join="right" xml:id="URFA-120_xTok_000004" rend="withDash" ana="#anid_419">al</w>
+                  <w xml:id="URFA-120_xTok_000006" ana="#anid_624">ᵊhniyye</w>
+                  <w xml:id="URFA-120_xTok_000007" ana="#anid_19800 #anid_272 #anid_30187 #anid_7669">zād</w>
+                  <w xml:id="URFA-120_xTok_000008" ana="#anid_503">xōǧam</w>
+                  <w xml:id="URFA-120_xTok_000009" ana="#anid_574">hāḏi</w>
+                  <w xml:id="URFA-120_xTok_000010" ana="#anid_24599 #anid_24600">nisēt</w>
+                  <w join="right" xml:id="URFA-120_xTok_000011" rend="withDash" ana="#anid_914">agūl</w>
+                  <w xml:id="URFA-120_xTok_000013" ana="#anid_437">he</w>
+                  <w join="right" xml:id="URFA-120_xTok_000014" ana="#anid_1018">likke</w>
+                  <pc xml:id="xTok_000015">:</pc>
+                  <w join="right" xml:id="URFA-120_xTok_000016" rend="withDash" ana="#anid_419">al</w>
+                  <w xml:id="URFA-120_xTok_000018" join="right" ana="#anid_1266">bidīle</w>
+                  <pc xml:id="xTok_000019">,</pc>
+                  <w join="right" xml:id="URFA-120_xTok_000020" rend="withDash" ana="#anid_136">at</w>
+                  <w xml:id="URFA-120_xTok_000022" ana="#anid_859">turuk</w>
+                  <w join="right" xml:id="URFA-120_xTok_000023" rend="withDash" ana="#anid_27432 #anid_438">ysammūn</w>
+                  <w xml:id="URFA-120_xTok_000025" ana="#anid_437">he</w>
+                  <w join="right" xml:id="URFA-120_xTok_000026" ana="#anid_2015">berdel</w>
+                  <pc xml:id="xTok_000027">,</pc>
+                  <w join="right" xml:id="URFA-120_xTok_000028" rend="withDash" ana="#anid_136">at</w>
+                  <w xml:id="URFA-120_xTok_000030" ana="#anid_859">turuk</w>
+                  <w xml:id="URFA-120_xTok_000031" ana="#anid_485">ygūlūn</w>
+                  <w join="right" xml:id="URFA-120_xTok_000032" ana="#anid_2015">berdel</w>
+                  <pc xml:id="xTok_000033">.</pc>
+                  <w xml:id="URFA-120_xTok_000034" ana="#anid_12368 #anid_243">iḥna</w>
+                  <w join="right" xml:id="URFA-120_xTok_000035" rend="withDash" ana="#anid_19">b</w>
+                  <w join="right" xml:id="URFA-120_xTok_000037" rend="withDash" ana="#anid_419">al</w>
+                  <w xml:id="URFA-120_xTok_000039" ana="#anid_34184 #anid_699 #anid_7442">ʕarab</w>
+                  <w xml:id="URFA-120_xTok_000040" ana="#anid_253">ᵊngūl</w>
+                  <w xml:id="URFA-120_xTok_000041" ana="#anid_1266">bidīle</w>
+                  <w join="right" xml:id="URFA-120_xTok_000042" ana="#anid_2046">bidāyil</w>
+                  <pc join="right" xml:id="xTok_000043">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-120/URFA-120_a1.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-120/URFA-120_a1.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-120_a1" xml:id="a8">There is a thing, my hoca, which I forgot to tell you about: The exchange of two siblings for marriage. The Turks call it berdel; the Turks say berdel. In Arabic we say bidīle bidāyil.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-120_a2" who="#default" end="#T4" start="#T3">
+                  <w join="right" xml:id="URFA-120_xTok_000044" rend="withDash" ana="#anid_419">al</w>
+                  <w xml:id="URFA-120_xTok_000046" ana="#anid_1266">bidīle</w>
+                  <w xml:id="URFA-120_xTok_000047" ana="#anid_563 #anid_8322">āni</w>
+                  <w xml:id="URFA-120_xTok_000048" ana="#anid_24654 #anid_7287">anṭi</w>
+                  <w join="right" xml:id="URFA-120_xTok_000049" rend="withDash" ana="#anid_878 #anid_8819">bint</w>
+                  <w xml:id="URFA-120_xTok_000051" ana="#anid_12337 #anid_4107 #anid_423">i</w>
+                  <w join="right" xml:id="URFA-120_xTok_000052" rend="withDash" ana="#anid_16861">ta</w>
+                  <w xml:id="URFA-120_xTok_000054" ana="#anid_74">ngūl</w>
+                  <w join="right" xml:id="URFA-120_xTok_000055" rend="withDash" ana="#anid_4118">li</w>
+                  <w xml:id="URFA-120_xTok_000057" join="right" ana="#anid_1504">man</w>
+                  <pc xml:id="xTok_000058">?</pc>
+                  <w xml:id="URFA-120_xTok_000059" ana="#anid_1336">yabanǧi</w>
+                  <w ana="#anid_42965" xml:id="URFA-120_xTok_000060">Syāli</w>
+                  <w join="right" xml:id="URFA-120_xTok_000061" ana="#anid_41929 #anid_89">mesela</w>
+                  <pc xml:id="xTok_000062">,</pc>
+                  <w xml:id="URFA-120_xTok_000063" ana="#anid_1120">wald</w>
+                  <w join="right" xml:id="URFA-120_xTok_000064" ana="#anid_1644">Mamdūḥ</w>
+                  <pc xml:id="xTok_000065">,</pc>
+                  <w xml:id="URFA-120_xTok_000066" ana="#anid_672">hū</w>
+                  <w ana="#anid_42965" join="right" xml:id="URFA-120_xTok_000067">Siyāli</w>
+                  <pc join="right" xml:id="xTok_000068">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-120/URFA-120_a2.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-120/URFA-120_a2.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-120_a2" xml:id="a9">The cross-marriage is: I would give my daughter, let’s say, to whom? To a foreigner, to someone from the Syāle tribe. For instance, to Mamdūḥ’s son. He is from the Syāle.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-120_a3" who="#default" end="#T6" start="#T5">
+                  <w xml:id="URFA-120_xTok_000069" ana="#anid_641">ibin</w>
+                  <w join="right" xml:id="URFA-120_xTok_000070" ana="#anid_1644">Mamdūḥ</w>
+                  <pc xml:id="xTok_000071">,</pc>
+                  <w xml:id="URFA-120_xTok_000072" ana="#anid_24654 #anid_7287">anṭi</w>
+                  <w join="right" xml:id="URFA-120_xTok_000073" rend="withDash" ana="#anid_878 #anid_8819">bint</w>
+                  <w xml:id="URFA-120_xTok_000075" ana="#anid_12337 #anid_4107 #anid_423">i</w>
+                  <w join="right" xml:id="URFA-120_xTok_000076" rend="withDash" ana="#anid_56">l</w>
+                  <w join="right" xml:id="URFA-120_xTok_000078" rend="withDash" ana="#anid_769">wlēd</w>
+                  <w xml:id="URFA-120_xTok_000080" ana="#anid_42522">u</w>
+                  <w join="right" xml:id="URFA-120_xTok_000081" rend="withDash" ana="#anid_125">w</w>
+                  <w xml:id="URFA-120_xTok_000083" ana="#anid_1621">binit</w>
+                  <w xml:id="URFA-120_xTok_000084" ana="#anid_1644">Mamdūḥ</w>
+                  <w join="right" xml:id="URFA-120_xTok_000085" rend="withDash" ana="#anid_1526 #anid_8152 #anid_8153">āxuḏ</w>
+                  <w xml:id="URFA-120_xTok_000087" ana="#anid_437">he</w>
+                  <w join="right" xml:id="URFA-120_xTok_000088" rend="withDash" ana="#anid_56">l</w>
+                  <w join="right" xml:id="URFA-120_xTok_000090" rend="withDash" ana="#anid_769">wlēd</w>
+                  <w xml:id="URFA-120_xTok_000092" ana="#anid_12337 #anid_4107 #anid_423">i</w>
+                  <w ana="#anid_42966" xml:id="URFA-120_xTok_000093">ntibādal</w>
+                  <w ana="#anid_42966" xml:id="URFA-120_xTok_000094">ntibādal</w>
+                  <pc join="right" xml:id="xTok_000095">[</pc>
+                  <w xml:id="URFA-120_xTok_000096" join="right" ana="#anid_944">ti</w>
+                  <pc xml:id="xTok_000097">]</pc>
+                  <w join="right" xml:id="URFA-120_xTok_000098" ana="#anid_2046">bidāyil</w>
+                  <pc xml:id="xTok_000099">,</pc>
+                  <w xml:id="URFA-120_xTok_000100" ana="#anid_42560">ā</w>
+                  <w xml:id="URFA-120_xTok_000101" ana="#anid_12336 #anid_560">huwwa</w>
+                  <w ana="#anid_42965" xml:id="URFA-120_xTok_000102">Syāli</w>
+                  <w join="right" xml:id="URFA-120_xTok_000103" rend="withDash" ana="#anid_125">w</w>
+                  <w xml:id="URFA-120_xTok_000105" ana="#anid_563 #anid_8322">āni</w>
+                  <w join="right" xml:id="URFA-120_xTok_000106" ana="#anid_2284">ʕIǧli</w>
+                  <pc join="right" xml:id="xTok_000107">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-120/URFA-120_a3.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-120/URFA-120_a3.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-120_a3" xml:id="a10">I give my daughter to Madmdūḥ’s son and I take Mamdūḥ’s daughter for my son. So, we do an exchange, because he is a Syāli and I am a ʕIǧli.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-120_a4" who="#default" end="#T7" start="#T6">
+                  <w join="right" xml:id="URFA-120_xTok_000108" rend="withDash" ana="#anid_323">yōm</w>
+                  <w xml:id="URFA-120_xTok_000110" ana="#anid_149">in</w>
+                  <w join="right" xml:id="URFA-120_xTok_000111" rend="withDash" ana="#anid_419">al</w>
+                  <w xml:id="URFA-120_xTok_000113" ana="#anid_2046">bidāyil</w>
+                  <w xml:id="URFA-120_xTok_000114" ana="#anid_965">ᵊḥyār</w>
+                  <w xml:id="URFA-120_xTok_000115" ana="#anid_48">mā</w>
+                  <w xml:id="URFA-120_xTok_000116" ana="#anid_44">yṣīr</w>
+                  <w join="right" xml:id="URFA-120_xTok_000117" rend="withDash" ana="#anid_239">ʕalē</w>
+                  <w xml:id="URFA-120_xTok_000119" join="right" ana="#anid_12255 #anid_433">hin</w>
+                  <pc xml:id="xTok_000120">.</pc>
+                  <w xml:id="URFA-120_xTok_000121" ana="#anid_1424">ḥitt</w>
+                  <w xml:id="URFA-120_xTok_000122" ana="#anid_1261">Ḥasan</w>
+                  <w xml:id="URFA-120_xTok_000123" ana="#anid_48">mā</w>
+                  <w xml:id="URFA-120_xTok_000124" ana="#anid_8055 #anid_979">yigdar</w>
+                  <w xml:id="URFA-120_xTok_000125" ana="#anid_1248">yḥayyir</w>
+                  <w join="right" xml:id="URFA-120_xTok_000126" rend="withDash" ana="#anid_239">ʕalē</w>
+                  <w xml:id="URFA-120_xTok_000128" join="right" ana="#anid_7607">ne</w>
+                  <pc xml:id="xTok_000129">,</pc>
+                  <w join="right" xml:id="URFA-120_xTok_000130" rend="withDash" ana="#anid_419">al</w>
+                  <w xml:id="URFA-120_xTok_000132" join="right" ana="#anid_1266">bidīle</w>
+                  <pc xml:id="xTok_000133">,</pc>
+                  <w xml:id="URFA-120_xTok_000134" ana="#anid_34795">maʕna</w>
+                  <w join="right" xml:id="URFA-120_xTok_000135" ana="#anid_50">yaʕni</w>
+                  <pc xml:id="xTok_000136">…</pc>
+                  <pc xml:id="xTok_000137">–</pc>
+                  <w ana="#anid_42967" join="right" xml:id="URFA-120_xTok_000138">SP</w>
+                  <pc xml:id="xTok_000139">:</pc>
+                  <w ana="#anid_42968" xml:id="URFA-120_xTok_000140">agwa</w>
+                  <pc xml:id="xTok_000141">–</pc>
+                  <w ana="#anid_42968" xml:id="URFA-120_xTok_000142">agwa</w>
+                  <w xml:id="URFA-120_xTok_000143" ana="#anid_50">yaʕni</w>
+                  <w xml:id="URFA-120_xTok_000144" ana="#anid_67">maḥḥad</w>
+                  <w join="right" xml:id="URFA-120_xTok_000145" ana="#anid_1248">yḥayyir</w>
+                  <pc join="right" xml:id="xTok_000146">!</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-120/URFA-120_a4.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-120/URFA-120_a4.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-120_a4" xml:id="a11">When there is an exchange of siblings, no objection can occur to them. Even Ḥasan (the speaker’s brother) cannot object to us, because the ‘cross-marriage’ is… – Stronger. – Yes, stronger, nobody can object to it.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-120_a5" who="#default" end="#T9" start="#T8">
+                  <pc join="right" xml:id="xTok_000147">[</pc>
+                  <w xml:id="URFA-120_xTok_000148" join="right" ana="#anid_1648">Turkish</w>
+                  <pc xml:id="xTok_000149">]</pc>
+                  <w ana="#anid_42969" join="right" xml:id="URFA-120_xTok_000150">cut</w>
+                  <pc join="right" xml:id="xTok_000151">!</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-120/URFA-120_a5.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-120/URFA-120_a5.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-120_a5" xml:id="a12">[Turkish]</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-120_a6" who="#default" end="#T11" start="#T10">
+                  <w xml:id="URFA-120_xTok_000152" ana="#anid_12423 #anid_756">inte</w>
+                  <w join="right" xml:id="URFA-120_xTok_000153" rend="withDash" ana="#anid_16861">ta</w>
+                  <w xml:id="URFA-120_xTok_000155" join="right" ana="#anid_74">ngūl</w>
+                  <pc xml:id="xTok_000156">,</pc>
+                  <w join="right" xml:id="URFA-120_xTok_000157" rend="withDash" ana="#anid_769">wlēd</w>
+                  <w xml:id="URFA-120_xTok_000159" ana="#anid_745">ak</w>
+                  <w xml:id="URFA-120_xTok_000160" ana="#anid_143 #anid_42022">šī</w>
+                  <w join="right" xml:id="URFA-120_xTok_000161" rend="withDash" ana="#anid_878 #anid_8819">bint</w>
+                  <w xml:id="URFA-120_xTok_000163" ana="#anid_745">ak</w>
+                  <w join="right" xml:id="URFA-120_xTok_000164" ana="#anid_143 #anid_42022">šī</w>
+                  <pc xml:id="xTok_000165">,</pc>
+                  <w xml:id="URFA-120_xTok_000166" ana="#anid_563 #anid_8322">āni</w>
+                  <w join="right" xml:id="URFA-120_xTok_000167" rend="withDash" ana="#anid_125">w</w>
+                  <w xml:id="URFA-120_xTok_000169" ana="#anid_12423 #anid_756">inte</w>
+                  <w xml:id="URFA-120_xTok_000170" ana="#anid_1698">rrīd</w>
+                  <w ana="#anid_42966" join="right" xml:id="URFA-120_xTok_000171">ᵊntibādal</w>
+                  <pc xml:id="xTok_000172">,</pc>
+                  <w xml:id="URFA-120_xTok_000173" ana="#anid_472">uxṛa</w>
+                  <w xml:id="URFA-120_xTok_000174" ana="#anid_67">maḥḥad</w>
+                  <w xml:id="URFA-120_xTok_000175" ana="#anid_1248">yḥayyir</w>
+                  <w join="right" xml:id="URFA-120_xTok_000176" rend="withDash" ana="#anid_239">ʕalē</w>
+                  <w join="right" xml:id="URFA-120_xTok_000178" ana="#anid_7607">ne</w>
+                  <pc join="right" xml:id="xTok_000179">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-120/URFA-120_a6.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-120/URFA-120_a6.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-120_a6" xml:id="a13">Let’s say, you have a son and a daughter. If you and I want to exchange (our children), no one can object to us.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-120_a7" who="#default" end="#T12" start="#T11">
+                  <w join="right" xml:id="URFA-120_xTok_000180" rend="withDash" ana="#anid_419">al</w>
+                  <w xml:id="URFA-120_xTok_000182" join="right" ana="#anid_1266">bidīle</w>
+                  <pc xml:id="xTok_000183">,</pc>
+                  <w xml:id="URFA-120_xTok_000184" ana="#anid_965">ᵊḥyār</w>
+                  <w xml:id="URFA-120_xTok_000185" ana="#anid_48">mā</w>
+                  <w xml:id="URFA-120_xTok_000186" ana="#anid_44">yṣīr</w>
+                  <w join="right" xml:id="URFA-120_xTok_000187" rend="withDash" ana="#anid_239">ʕalē</w>
+                  <w xml:id="URFA-120_xTok_000189" ana="#anid_437">he</w>
+                  <w xml:id="URFA-120_xTok_000190" ana="#anid_50">yaʕni</w>
+                  <w xml:id="URFA-120_xTok_000191" ana="#anid_533">ygūl</w>
+                  <w xml:id="URFA-120_xTok_000192" ana="#anid_645">čünkü</w>
+                  <w xml:id="URFA-120_xTok_000193" ana="#anid_768">ǧaʕad</w>
+                  <w xml:id="URFA-120_xTok_000194" ana="#anid_24657 #anid_911">yinṭi</w>
+                  <w join="right" xml:id="URFA-120_xTok_000195" rend="withDash" ana="#anid_878 #anid_8819">bint</w>
+                  <w xml:id="URFA-120_xTok_000197" ana="#anid_42522">u</w>
+                  <w xml:id="URFA-120_xTok_000198" ana="#anid_31 #anid_3607">gaʕad</w>
+                  <w xml:id="URFA-120_xTok_000199" ana="#anid_131 #anid_23807 #anid_7590">yāxuḏ</w>
+                  <w xml:id="URFA-120_xTok_000200" ana="#anid_162">ḥurma</w>
+                  <w xml:id="URFA-120_xTok_000201" ana="#anid_30">min</w>
+                  <w join="right" xml:id="URFA-120_xTok_000202" ana="#anid_34">qādi</w>
+                  <pc xml:id="xTok_000203">.</pc>
+                  <w join="right" xml:id="URFA-120_xTok_000204" rend="withDash" ana="#anid_419">al</w>
+                  <w xml:id="URFA-120_xTok_000206" ana="#anid_1266">bidīle</w>
+                  <w xml:id="URFA-120_xTok_000207" ana="#anid_67">maḥḥad</w>
+                  <w xml:id="URFA-120_xTok_000208" ana="#anid_1248">yḥayyir</w>
+                  <w join="right" xml:id="URFA-120_xTok_000209" rend="withDash" ana="#anid_239">ʕalē</w>
+                  <w xml:id="URFA-120_xTok_000211" join="right" ana="#anid_437">he</w>
+                  <pc xml:id="xTok_000212">,</pc>
+                  <w ana="#anid_42970" xml:id="URFA-120_xTok_000213">hıyar</w>
+                  <w ana="#anid_42971" join="right" xml:id="URFA-120_xTok_000214">olmuyor</w>
+                  <pc xml:id="xTok_000215">,</pc>
+                  <w ana="#anid_42972" xml:id="URFA-120_xTok_000216">yok</w>
+                  <w ana="#anid_42970" xml:id="URFA-120_xTok_000217">hıyar</w>
+                  <w ana="#anid_42972" join="right" xml:id="URFA-120_xTok_000218">yok</w>
+                  <pc xml:id="xTok_000219">.</pc>
+                  <w join="right" xml:id="URFA-120_xTok_000220" rend="withDash" ana="#anid_1079">salāmt</w>
+                  <w xml:id="URFA-120_xTok_000222" ana="#anid_745">ak</w>
+                  <w join="right" xml:id="URFA-120_xTok_000223" rend="withDash" ana="#anid_125">w</w>
+                  <w join="right" xml:id="URFA-120_xTok_000225" rend="withDash" ana="#anid_419">al</w>
+                  <w join="right" xml:id="URFA-120_xTok_000227" ana="#anid_977">ʕāfiye</w>
+                  <pc join="right" xml:id="xTok_000228">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-120/URFA-120_a7.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-120/URFA-120_a7.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-120_a7" xml:id="a14">There is no objection to the cross-marriage. This, because he is giving his daughter, but takes a woman from there (in exchange). Nobody can object to the bidīle, there is no objection. Enjoy it!</span>
+               </spanGrp>
+            </annotationBlock>
+         </div>
+      </body>
+   </text>
+</TEI>
