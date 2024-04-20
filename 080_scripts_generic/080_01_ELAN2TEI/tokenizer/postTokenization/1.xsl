@@ -38,6 +38,13 @@
          <xsl:apply-templates select="node() | @*"/>
       </xsl:copy>
    </xsl:template>
+       <xsl:template match="tei:w/xtoks:w">
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates select="../@*"/>
+            <xsl:apply-templates/>
+        </xsl:copy>
+   </xsl:template>
    <xsl:template match="tei:seg[xtoks:w|xtoks:pc]">
       <xsl:call-template name="groupTokenParts"/>
    </xsl:template>
@@ -166,6 +173,9 @@
    </xsl:template>
    <xsl:template match="xtoks:pc[.='-']"/>
    <xsl:template match="tei:u/tei:seg">
+      <xsl:apply-templates/>
+   </xsl:template>
+   <xsl:template match="tei:u/tei:w">
       <xsl:apply-templates/>
    </xsl:template>
    <xsl:template match="tei:when[@xml:id = 'T0']/@absolute"/>
