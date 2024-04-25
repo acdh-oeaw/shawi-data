@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    exclude-result-prefixes="xs"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns="http://www.tei-c.org/ns/1.0"
-    exclude-result-prefixes="tei">
+    version="2.0">
+    
     <!-- Output method set to XML with indentation -->
     <xsl:output method="xml" indent="yes" />
     
@@ -17,18 +19,10 @@
     <!-- Template to remove original bibl elements from their original location -->
     <xsl:template match="tei:bibl"/>
     
-    <!-- Template to process parents of bibl elements to add source attribute correctly -->
+    <!-- Enhance the template to process parents of bibl elements to add source attribute correctly -->
     <xsl:template match="*[tei:bibl]">
         <xsl:copy>
-            <!-- Generate a concatenated string of all bibl IDs in this element prefixed with # -->
-            <xsl:attribute name="source">
-                <xsl:for-each select="tei:bibl">
-                    <xsl:value-of select="concat('#', generate-id(.))"/>
-                    <xsl:if test="position() != last()">
-                        <xsl:text> </xsl:text>
-                    </xsl:if>
-                </xsl:for-each>
-            </xsl:attribute>
+            <xsl:attribute name="source">#<xsl:value-of select="generate-id(tei:bibl[1])"/></xsl:attribute>
             <xsl:apply-templates select="@*|node()"/>
         </xsl:copy>
     </xsl:template>
@@ -36,7 +30,6 @@
     <!-- Enhanced template for tei:entry to include listBibl at the end -->
     <xsl:template match="tei:entry">
         <xsl:copy>
-            <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="node()[not(self::tei:bibl)]"/>
             <listBibl>
                 <xsl:for-each select=".//tei:bibl">

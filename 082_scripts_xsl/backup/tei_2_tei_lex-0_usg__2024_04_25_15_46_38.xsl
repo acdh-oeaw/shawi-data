@@ -12,7 +12,7 @@
    </xsl:template>
    
    <xsl:template match="tei:entry/tei:sense/tei:cit/tei:usg">
-      <gloss><xsl:value-of select="."/></gloss>
+      <tei:gloss><xsl:value-of select="."/></tei:gloss>
    </xsl:template>
    
    
