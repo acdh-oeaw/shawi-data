@@ -206,7 +206,7 @@
                      <desc>assert content of correct context of @type values</desc>
                      <constraint>
                         <s:rule context="tei:form[@type = 'variant']">
-                           <s:assert test="parent::tei:form[@type = ('lemma', 'multiWordUnit', 'inflected')]">a variant must be a direct child of the main form (type = "lemma" or "multiWordUnit").</s:assert>
+                           <s:assert test="parent::tei:form[@type = ('lemma', 'multiWordUnit', 'inflected')]">a variant must be a direct child of the headwords or of an inflected form.</s:assert>
                         </s:rule>
                         <s:rule context="tei:form[@type = ('lemma', 'multiWordUnit', 'inflected')]">
                            <s:assert test="parent::tei:entry">a headword must be a direct child of an entry element. </s:assert>
@@ -226,11 +226,46 @@
                               <desc>inflected form</desc>
                            </valItem>
                            <valItem ident="variant">
-                              <desc>A variant form of the lemma. Only headwords may have variants. All other variants – e.g. competing morphological forms – are simply listed but not classified. Variants can be assigned usage labels indicating e.g. a particular register. The more frequent variant should precede less frequent ones. </desc>
+                              <desc>A variant form of the lemma, MWU or inflected forms. The more frequent variant should precede less frequent ones. </desc>
                            </valItem>
                         </valList>
                      </attDef>
                   </attList>
+               </elementSpec>
+               
+               <elementSpec ident="listBibl" mode="change" module="core">
+                  <constraintSpec ident="listBibl-context" scheme="schematron">
+                     <desc></desc>
+                     <constraint>
+                           <s:rule context="tei:listBibl">
+                              <s:assert test="parent::tei:entry">a listBibl is a direct child of an entry</s:assert>
+                              <s:assert test="child::tei:bibl">a bibl is a direct child of a listBibl</s:assert>
+                           </s:rule>
+                     </constraint>
+                  </constraintSpec>
+               </elementSpec>
+                             
+               <elementSpec ident="entry" mode="change" module="dictionaries">
+                  <constraintSpec ident="formSourceCheck" scheme="schematron">
+                     <constraint>
+                        <s:rule context="tei:form[@source]">
+                           <s:let name="sourceID" value ="substring-after(@source, '#')"/>
+                           <s:let name="biblID" value="following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
+                           <s:report test="not(exists(index-of($biblID, $sourceID)))">If a form element has a source attribute("<s:value-of select="$sourceID"/>"), there must be a corresponding bibl element ("<s:value-of select="$biblID"/>") in listBibl
+                           </s:report>
+                        </s:rule>
+                     </constraint>
+                  </constraintSpec>
+                  <constraintSpec ident="senseSourceCheck" scheme="schematron">
+                     <constraint>
+                        <s:rule context="tei:sense[@source]">
+                           <s:let name="sourceID" value ="substring-after(@source, '#')"/>
+                           <s:let name="biblID" value="following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
+                           <s:report test="not(exists(index-of($biblID, $sourceID)))">If a sense element has a source attribute("<s:value-of select="$sourceID"/>"), there must be a corresponding bibl element ("<s:value-of select="$biblID"/>") in listBibl
+                           </s:report>
+                        </s:rule>
+                     </constraint>
+                  </constraintSpec>
                </elementSpec>
             </schemaSpec>
          </div>
