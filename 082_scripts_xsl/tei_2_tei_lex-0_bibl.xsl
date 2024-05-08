@@ -37,7 +37,7 @@
     <xsl:template match="tei:entry">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates select="node()[not(self::tei:bibl)]"/>
+            <xsl:apply-templates select="node()[not(self::tei:bibl)][not(self::tei:fs)]"/>
             <listBibl>
                 <xsl:for-each select=".//tei:bibl">
                     <bibl>
@@ -54,6 +54,7 @@
                     </bibl>
                 </xsl:for-each>
             </listBibl>
+            <xsl:apply-templates select="tei:fs | tei:fs/following-sibling::*"/>
         </xsl:copy>
     </xsl:template>
     
