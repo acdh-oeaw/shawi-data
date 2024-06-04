@@ -57,6 +57,7 @@
             <head>Part 2: Formal Specification</head>
 
             <schemaSpec ident="shawi" source="file:/C:/Users/mrauschsupola/generic-dict-schema/generic-dict-schema/schema/acdh-ch-dicts.compiled.odd">
+               <moduleRef key="derived-module-TEILex0"/>
                <!-- We copy all modules from TEI Lex0  -->
                <moduleRef key="analysis"/>
                <moduleRef key="core" except="ptr q interpretation lb mentioned measure"/>
@@ -69,11 +70,18 @@
                <moduleRef key="tei"/>
                <moduleRef key="textstructure"/>
                <moduleRef key="transcr"/>
-
                <moduleRef key="iso-fs"/>
                
                <elementSpec ident="val" mode="delete"/>
                <classSpec type="atts" ident="att.measurement" mode="delete"/>
+               
+               <!-- also had to insert symbol as a member of model.featureVal like in acdh-ch-dicts.odd -->
+               <classRef key="model.featureVal" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
+               <elementSpec ident="symbol" mode="change">
+                  <classes mode="change">
+                     <memberOf key="model.featureVal"/>
+                  </classes>
+               </elementSpec>
 
                <elementSpec ident="gram" mode="change" module="dictionaries">
                   <constraintSpec ident="gram" scheme="schematron">
@@ -151,8 +159,7 @@
                      </attDef>
                   </attList>
                </elementSpec>
-
-
+               
                <elementSpec ident="cit" mode="change" module="core">
                   <content>
                      <alternate minOccurs="1" maxOccurs="unbounded">
@@ -166,6 +173,7 @@
                         <elementRef key="bibl"/>
                         <elementRef key="note"/>
                         <elementRef key="usg"/>
+                        <elementRef key="gloss"/>
                         <elementRef key="form"/>
                      </alternate>
                   </content>
@@ -239,7 +247,10 @@
                      <constraint>
                            <s:rule context="tei:listBibl">
                               <s:assert test="parent::tei:entry">a listBibl is a direct child of an entry</s:assert>
-                              <s:assert test="child::tei:bibl">a bibl is a direct child of a listBibl</s:assert>
+                              <s:assert test="not(child) or child and child::tei:bibl">a bibl is a direct child of a listBibl</s:assert>
+                           </s:rule>
+                           <s:rule context="tei:bibl">
+                              <s:assert test="matches(child::tei:biblScope, '^p\.\d')">Missing or misspelled page number</s:assert>
                            </s:rule>
                      </constraint>
                   </constraintSpec>
@@ -249,20 +260,18 @@
                   <constraintSpec ident="formSourceCheck" scheme="schematron">
                      <constraint>
                         <s:rule context="tei:form[@source]">
-                           <s:let name="sourceID" value ="substring-after(@source, '#')"/>
-                           <s:let name="biblID" value="following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
-                           <s:report test="not(exists(index-of($biblID, $sourceID)))">If a form element has a source attribute("<s:value-of select="$sourceID"/>"), there must be a corresponding bibl element ("<s:value-of select="$biblID"/>") in listBibl
-                           </s:report>
+                           <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
+                           <s:let name="biblID" value="following-sibling::tei:listBibl/tei:bibl/@xml:id | parent::tei:form/following-sibling::tei:listBibl/tei:bibl/@xml:id | parent::tei:form/parent::tei:form/following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
+                           <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a form element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$biblID"/>")</s:assert>
                         </s:rule>
                      </constraint>
                   </constraintSpec>
                   <constraintSpec ident="senseSourceCheck" scheme="schematron">
                      <constraint>
                         <s:rule context="tei:sense[@source]">
-                           <s:let name="sourceID" value ="substring-after(@source, '#')"/>
+                           <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
                            <s:let name="biblID" value="following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
-                           <s:report test="not(exists(index-of($biblID, $sourceID)))">If a sense element has a source attribute("<s:value-of select="$sourceID"/>"), there must be a corresponding bibl element ("<s:value-of select="$biblID"/>") in listBibl
-                           </s:report>
+                           <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a sense element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$biblID"/>")</s:assert>
                         </s:rule>
                      </constraint>
                   </constraintSpec>
