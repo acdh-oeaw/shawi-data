@@ -84,7 +84,7 @@
                </elementSpec>
 
                <elementSpec ident="gram" mode="change" module="dictionaries">
-                  <constraintSpec ident="gram" scheme="schematron">
+                  <constraintSpec ident="gram-parents" scheme="schematron">
                      <constraint>
                         <s:rule context="tei:gram[@type = 'morphPattern']">
                            <s:assert test="parent::tei:gramGrp/parent::tei:form[@type]">a gram type morphPattern must be a direct child of a gramGrp and a direct grandchild of a form with a type attribute</s:assert>
@@ -276,6 +276,29 @@
                      </constraint>
                   </constraintSpec>
                </elementSpec>
+               
+               <elementSpec ident="name" mode="change" module="core">
+                  <constraintSpec ident="name-not-empty" scheme="schematron">
+                     <constraint>
+                        <s:rule context="tei:name">
+                           <s:assert test="normalize-space(.) != ''">1: the type attribute of a name element must not be empty</s:assert>
+                        </s:rule>
+                     </constraint>
+                  </constraintSpec>
+                  <attList>
+                     <attDef ident="type" mode="replace" usage="req">
+                        <valList type="closed">
+                           <valItem ident="place">
+                              <desc>TODO description missing</desc>
+                           </valItem>
+                           <valItem ident="tribe">
+                              <desc>TODO description missing</desc>
+                           </valItem>
+                        </valList>
+                     </attDef>
+                  </attList>
+               </elementSpec>
+               
             </schemaSpec>
          </div>
       </body>

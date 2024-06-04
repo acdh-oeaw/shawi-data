@@ -6,7 +6,7 @@
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.tmp"/>
    <!--
-    Schema generated from ODD source 2024-06-04T09:43:08Z. .
+    Schema generated from ODD source 2024-06-04T13:06:02Z. .
     TEI Edition: 
     TEI Edition Location: https://www.tei-c.org/Vault/P5//
     
@@ -2755,7 +2755,26 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
                <xs:attributeGroup ref="tei:att.personal.attributes"/>
                <xs:attributeGroup ref="tei:att.datable.attributes"/>
                <xs:attributeGroup ref="tei:att.editLike.attributes"/>
-               <xs:attributeGroup ref="tei:att.typed.attributes"/>
+               <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
+               <xs:attribute name="type" use="required">
+                  <xs:annotation>
+                     <xs:documentation/>
+                  </xs:annotation>
+                  <xs:simpleType>
+                     <xs:restriction base="xs:token">
+                        <xs:enumeration value="place">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="tribe">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:attribute>
                <xs:attribute name="calendar">
                   <xs:annotation>
                      <xs:documentation>indicates one or more systems or calendars to which the date represented by the content of this element belongs.</xs:documentation>
@@ -4337,7 +4356,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice>
-            <xs:element ref="tei:placeName"/>
+            <xs:element ref="tei:name"/>
             <xs:group ref="tei:macro.lexicalParaContent"/>
          </xs:choice>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
