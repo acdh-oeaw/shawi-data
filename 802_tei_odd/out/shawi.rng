@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-06-04T13:06:08Z. .
+Schema generated from ODD source 2024-06-13T12:59:39Z. .
 TEI Edition: 
 TEI Edition Location: https://www.tei-c.org/Vault/P5//
   
@@ -4288,6 +4288,8 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">TODO description missing</a:documentation>
                <value>frequency</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">TODO description missing</a:documentation>
+               <value>followedBy</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">TODO description missing</a:documentation>
                <value>gender</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">TODO description missing</a:documentation>
                <value>government</value>
@@ -4404,14 +4406,16 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       <element name="usg" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(usage) contains usage information in a dictionary entry. [9.3.5.2. Usage Information and Other Labels]</a:documentation>
          <choice>
-            <ref name="name"/>
+            <zeroOrMore>
+               <ref name="name"/>
+            </zeroOrMore>
             <ref name="macro.lexicalParaContent"/>
          </choice>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="shawi-usg-name-in-usg-constraint-rule-30">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
-                    context="tei:usg[not(@type = 'geographic')]">
+                    context="tei:usg[not(@type = 'geographic') and not(@type='socioCultural')]">
                <s:report test="exists(tei:name)">the name element must only occur inside of usg elements with @type="geographic".</s:report>
             </s:rule>
          </pattern>
