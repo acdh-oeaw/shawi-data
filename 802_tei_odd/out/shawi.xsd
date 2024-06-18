@@ -2,13 +2,13 @@
 <xs:schema xmlns:tei="http://www.tei-c.org/ns/1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"
-           targetNamespace="http://www.tei-c.org/ns/1.0">
+           targetNamespace="http://www.tei-c.org/ns/1.0" version="1.1">
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.tmp"/>
    <!--
-    Schema generated from ODD source 2024-06-13T12:59:46Z. .
-    TEI Edition: 
-    TEI Edition Location: https://www.tei-c.org/Vault/P5//
+    Schema generated from ODD source 2024-06-18T11:22:49Z. . 
+    TEI Edition:  
+    TEI Edition Location: https://www.tei-c.org/Vault/P5// 
     
   -->
    <!---->
@@ -59,12 +59,6 @@
             <xs:element ref="tei:xr"/>
          </xs:choice>
       </xs:sequence>
-   </xs:group>
-   <xs:group name="anyElement-xenoData">
-      <xs:choice>
-         <xs:any namespace="##other" processContents="skip"/>
-         <xs:any namespace="##local" processContents="skip"/>
-      </xs:choice>
    </xs:group>
    <xs:attributeGroup name="att.anchoring.attributes">
       <xs:attributeGroup ref="tei:att.anchoring.attribute.anchored"/>
@@ -1495,36 +1489,6 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <xs:element maxOccurs="unbounded" ref="tei:seg"/>
       </xs:sequence>
    </xs:group>
-   <xs:group name="model.hiLike">
-      <xs:sequence>
-         <xs:element ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike_alternation">
-      <xs:sequence>
-         <xs:element ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike_sequence">
-      <xs:sequence>
-         <xs:element ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike_sequenceOptional">
-      <xs:sequence>
-         <xs:element minOccurs="0" ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike_sequenceOptionalRepeatable">
-      <xs:sequence>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike_sequenceRepeatable">
-      <xs:sequence>
-         <xs:element maxOccurs="unbounded" ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
    <xs:group name="model.emphLike">
       <xs:choice>
          <xs:element ref="tei:gloss"/>
@@ -1574,26 +1538,22 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       </xs:sequence>
    </xs:group>
    <xs:group name="model.highlighted">
-      <xs:choice>
-         <xs:group ref="tei:model.hiLike"/>
+      <xs:sequence>
          <xs:group ref="tei:model.emphLike"/>
-      </xs:choice>
+      </xs:sequence>
    </xs:group>
    <xs:group name="model.highlighted_alternation">
-      <xs:choice>
-         <xs:group ref="tei:model.hiLike_alternation"/>
+      <xs:sequence>
          <xs:group ref="tei:model.emphLike_alternation"/>
-      </xs:choice>
+      </xs:sequence>
    </xs:group>
    <xs:group name="model.highlighted_sequence">
       <xs:sequence>
-         <xs:group ref="tei:model.hiLike_sequence"/>
          <xs:group ref="tei:model.emphLike_sequence"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.highlighted_sequenceOptional">
       <xs:sequence>
-         <xs:group minOccurs="0" ref="tei:model.hiLike_sequenceOptional"/>
          <xs:group minOccurs="0" ref="tei:model.emphLike_sequenceOptional"/>
       </xs:sequence>
    </xs:group>
@@ -1601,16 +1561,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       <xs:sequence>
          <xs:group minOccurs="0"
                    maxOccurs="unbounded"
-                   ref="tei:model.hiLike_sequenceOptionalRepeatable"/>
-         <xs:group minOccurs="0"
-                   maxOccurs="unbounded"
                    ref="tei:model.emphLike_sequenceOptionalRepeatable"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.highlighted_sequenceRepeatable">
-      <xs:sequence>
-         <xs:group maxOccurs="unbounded" ref="tei:model.hiLike_sequenceRepeatable"/>
-         <xs:group maxOccurs="unbounded" ref="tei:model.emphLike_sequenceRepeatable"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.dateLike">
@@ -1974,28 +1925,12 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <xs:element maxOccurs="unbounded" ref="tei:p"/>
       </xs:sequence>
    </xs:group>
-   <xs:group name="model.entryPart">
-      <xs:choice>
-         <xs:element ref="tei:sense"/>
-         <xs:element ref="tei:form"/>
-         <xs:element ref="tei:orth"/>
-         <xs:element ref="tei:pron"/>
-         <xs:element ref="tei:hyph"/>
-         <xs:element ref="tei:syll"/>
-         <xs:element ref="tei:gramGrp"/>
-         <xs:element ref="tei:etym"/>
-         <xs:element ref="tei:usg"/>
-         <xs:element ref="tei:lbl"/>
-         <xs:element ref="tei:xr"/>
-      </xs:choice>
-   </xs:group>
    <xs:group name="model.entryPart.top">
       <xs:choice>
          <xs:group ref="tei:model.biblLike"/>
          <xs:element ref="tei:cit"/>
          <xs:element ref="tei:num"/>
          <xs:element ref="tei:entry"/>
-         <xs:element ref="tei:dictScrap"/>
          <xs:element ref="tei:form"/>
          <xs:element ref="tei:gramGrp"/>
          <xs:element ref="tei:etym"/>
@@ -2401,7 +2336,6 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    </xs:group>
    <xs:group name="model.limitedPhrase">
       <xs:choice>
-         <xs:group ref="tei:model.hiLike"/>
          <xs:group ref="tei:model.emphLike"/>
          <xs:group ref="tei:model.pPart.editorial"/>
          <xs:group ref="tei:model.ptrLike"/>
@@ -2609,19 +2543,6 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
             <xs:extension base="tei:macro.paraContent">
                <xs:attributeGroup ref="tei:att.global.attributes"/>
                <xs:attributeGroup ref="tei:att.fragmentable.attributes"/>
-               <xs:attributeGroup ref="tei:att.written.attributes"/>
-            </xs:extension>
-         </xs:complexContent>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="hi">
-      <xs:annotation>
-         <xs:documentation>(highlighted) marks a word or phrase as graphically distinct from the surrounding text, for reasons concerning which no claim is made. [3.3.2.2. Emphatic Words and Phrases 3.3.2. Emphasis, Foreign Words, and Unusual Language]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:complexContent>
-            <xs:extension base="tei:macro.paraContent">
-               <xs:attributeGroup ref="tei:att.global.attributes"/>
                <xs:attributeGroup ref="tei:att.written.attributes"/>
             </xs:extension>
          </xs:complexContent>
@@ -3284,8 +3205,7 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
          <xs:attributeGroup ref="tei:att.datable.attributes"/>
          <xs:attribute name="type">
             <xs:annotation>
-               <xs:documentation>
-Sample values include: 1] full; 2] abbr</xs:documentation>
+               <xs:documentation/>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="calendar">
@@ -3536,7 +3456,6 @@ Suggested values include: 1] dictionaries; 2] corpora; 3] literature</xs:documen
    <xs:group name="model.lexicalPhrase">
       <xs:choice>
          <xs:group ref="tei:model.segLike"/>
-         <xs:group ref="tei:model.hiLike"/>
          <xs:group ref="tei:model.highlighted"/>
          <xs:group ref="tei:model.graphicLike"/>
          <xs:group ref="tei:model.ptrLike"/>
@@ -3549,8 +3468,7 @@ Suggested values include: 1] dictionaries; 2] corpora; 3] literature</xs:documen
    <xs:attributeGroup name="att.scoped.attribute.scope">
       <xs:attribute name="scope">
          <xs:annotation>
-            <xs:documentation>TEI Lex-0 specific class for providing elements with an attribute describing their extent.
-Sample values include: 1] currentEntry; 2] externalEntry</xs:documentation>
+            <xs:documentation>TEI Lex-0 specific class for providing elements with an attribute describing their extent.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -4001,22 +3919,6 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          <xs:attributeGroup ref="tei:att.global.source.attribute.source"/>
          <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
          <xs:attribute ref="xml:id" use="required"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="dictScrap">
-      <xs:annotation>
-         <xs:documentation>(dictionary scrap) encloses a part of a dictionary entry in which other phrase-level dictionary elements are freely combined. [9.1. Dictionary Body and Overall Structure 9.2. The Structure of Dictionary Entries]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
-            <xs:group ref="tei:model.entryPart"/>
-            <xs:group ref="tei:model.morphLike"/>
-            <xs:group ref="tei:model.lexicalPhrase"/>
-            <xs:group ref="tei:model.lexicalInter"/>
-            <xs:group ref="tei:model.global"/>
-         </xs:choice>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="form">
@@ -6534,7 +6436,6 @@ Suggested values include: 1] 1.0.1; 2] 1.1; 3] 2.0; 4] 2.1; 5] 3.0; 6] 3.1; 7] 3
             <xs:element ref="tei:fileDesc"/>
             <xs:element minOccurs="0" ref="tei:encodingDesc"/>
             <xs:element ref="tei:profileDesc"/>
-            <xs:element minOccurs="0" ref="tei:xenoData"/>
             <xs:element minOccurs="0" ref="tei:revisionDesc"/>
          </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
@@ -7118,17 +7019,6 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</xs:d
             <xs:element maxOccurs="unbounded" ref="tei:model.profileDescPart"/>
          </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="xenoData">
-      <xs:annotation>
-         <xs:documentation>(non-TEI metadata) provides a container element into which metadata in non-TEI formats may be placed. [2.5. Non-TEI Metadata]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group minOccurs="0" ref="tei:anyElement-xenoData"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.declarable.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attributes"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="revisionDesc">
