@@ -19,15 +19,27 @@
 				<item xml:id="liProfilesExplanation" target="tunocentExplanationProfiles" type="vicavTexts">Explanation</item>
 				<separator/>
 				<item xml:id="navProfilesGeoRegMarkers">Show All Locations</item>
-		        <item xml:id="liProfilesList">List all entries</item>
+		        <item xml:id="liProfilesList" targetType="DataList" target="vicav_profiles">
+		        	List all entries
+		        	<params>
+		        		<dataTypes>
+							<_>Profile</_>
+						</dataTypes>
+		        	</params>
+		        </item>
+
 				<separator/>
 				<item xml:id="liVicavContributeProfile">Contribute a Profile</item>
 			</dropdown>
 			
-	      	<dropdown xml:id="dropdown04" title="Corpus">   
-		        <item xml:id="allCorpusTexts" target="shawi.corpusTexts" type="vicavTexts">List all entries</item>
+	      	<dropdown xml:id="dropdown04" title="Corpus">
+                <item xml:id="allCorpusTexts" type="DataList" target="vicav_corpus">
+		        	List all entries
+		        	<params>
+		        		<dataTypes><_>CorpusText</_></dataTypes>
+		        	</params>
+		        </item>
                 <item xml:id="corpusQuery" type="CorpusQuery">Search the corpus</item>
-                <item xml:id="corpusText" type="CorpusText" target="URFA-107">Read corpus text URFA-107</item>
 			</dropdown>
 		</main>
 		<subnav>
@@ -176,6 +188,7 @@ figure, img {
 	</style>
 	<staticData>
 		<table>
+          <insert_vicav_profiles/>
           <insert_vicav_corpus/>
         </table>
 	</staticData>
