@@ -16,19 +16,18 @@
     </xsl:template>
     
     <!-- Template to handle usg[@type='socioCultural'] elements -->
-    <xsl:template match="tei:usg[@type='socioCultural']">
-    </xsl:template>
+    <xsl:template match="tei:usg[@type='socioCultural']"/>
     
-    <!-- Template to handle usg[@type='geographic'] elements -->
+   
     <xsl:template match="tei:usg[@type='geographic']">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
             <!-- Copy all child nodes -->
             <xsl:apply-templates select="node()"/>
-            <!-- Insert name[@type='tribe'] elements from following usg[@type='socioCultural'] -->
-            <xsl:for-each select="following-sibling::tei:usg[@type='socioCultural'][1]/tei:name[@type='tribe']">
-                <xsl:copy-of select="."/>
-            </xsl:for-each>
+            <!-- Insert name[@type='tribe'] elements from the first following usg[@type='socioCultural'] if it exists -->
+            <xsl:if test="following-sibling::tei:usg[1][@type='socioCultural']">
+                <xsl:sequence select="following-sibling::tei:usg[1]/tei:name[@type='tribe']"/>
+            </xsl:if>
         </xsl:copy>
     </xsl:template>
     
