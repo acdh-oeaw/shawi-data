@@ -15,9 +15,16 @@
         <xsl:variable name="missing-in-new-version" as="element()*">
             <xsl:for-each select="$oldDocuments//tei:fs">
                 <xsl:variable name="id" select="@xml:id"/>
-                <xsl:variable name="wordform-in-current-version" select="key('fs-by-trans',tei:f[@name = 'trans']/tei:string,$currentDocument)"/>
+                <xsl:variable name="fs-in-current-version" select="key('fs-by-trans',tei:f[@name = 'trans']/tei:string,$currentDocument)"/>
                 <xsl:if test="not(exists(key('fs-by-id',$id,$currentDocument)))">
-                    <missing-in-new-version id="{$id}" id-of-wordform-in-current-standoff-document="{$wordform-in-current-version/@xml:id}" path="{base-uri()}"><xsl:sequence select="."/></missing-in-new-version>
+                    <missing-in-new-version id="{$id}" id-of-wordform-in-current-standoff-document="{$fs-in-current-version/@xml:id}" path="{base-uri()}">
+                        <old-version>
+                            <xsl:sequence select="."/>
+                        </old-version>
+                        <current-version-with-matching-transcription>
+                            <xsl:sequence select="$fs-in-current-version"/>
+                        </current-version-with-matching-transcription>
+                    </missing-in-new-version>
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
