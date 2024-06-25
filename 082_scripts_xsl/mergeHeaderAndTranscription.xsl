@@ -46,17 +46,35 @@
         </xsl:apply-templates>
     </xsl:template>
     
-    <!-- TODO: make a real merge, i.e. include relelvant metadata from the ELAN export 
+    <!-- TODO: make a real merge, i.e. include relevant metadata from the ELAN export 
         and not just overwrite it with the corpus header -->
     <xsl:template match="tei:teiHeader">
         <xsl:param name="teiHeaderFromCorpus" tunnel="yes"/>
         <xsl:sequence select="$teiHeaderFromCorpus"/>
     </xsl:template>
     
-    <xsl:template match="node() | @*">
+    <xsl:template match="node() except text()| @*">
         <xsl:copy>
             <xsl:apply-templates select="node() | @*"/>
         </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="text()">
+        <xsl:analyze-string select="." regex="\s\[?(…|\.\.\.)\]?">
+            <xsl:matching-substring>
+                <gap/>
+            </xsl:matching-substring>
+            <xsl:non-matching-substring>
+                <xsl:analyze-string select="." regex="(\w+)(…|\.\.\.)">
+                    <xsl:matching-substring>
+                        <w type="truncated"><xsl:value-of select="regex-group(1)"/></w>
+                    </xsl:matching-substring>
+                    <xsl:non-matching-substring>
+                        <xsl:value-of select="."/>
+                    </xsl:non-matching-substring>
+                </xsl:analyze-string>
+            </xsl:non-matching-substring>
+        </xsl:analyze-string>
     </xsl:template>
     
     <xsl:template match="tei:annotationBlock">

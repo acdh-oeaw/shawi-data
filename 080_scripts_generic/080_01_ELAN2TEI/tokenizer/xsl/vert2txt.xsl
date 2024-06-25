@@ -78,7 +78,7 @@
     </xsl:template>
     <xsl:template name="noske-token">
         <xsl:value-of
-            select="concat(string-join((normalize-space(.), @xtoks:id[parent::xtoks:w], tei:sort-attrs(.)), '&#x9;'), '&#xA;')"
+            select="concat(string-join((normalize-unicode(normalize-space(.), 'NFC'), @xtoks:id[parent::xtoks:w], normalize-unicode(normalize-space(.), 'NFD'), tei:sort-attrs(.)), '&#x9;'), '&#xA;')"
         />
     </xsl:template>
     <xsl:template match="xtoks:w | xtoks:pc">

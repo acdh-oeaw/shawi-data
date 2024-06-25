@@ -92,6 +92,8 @@ pushd ${BUILD_DIR:-webapp/vicav-app}
 find ./ -type f -and \( -name '*.js' -or -name '*.html' \) -not \( -path './node_modules/*' -or -path './cypress/*' \) -exec sed -i "s~\@data-version@~$dataversion~g" {} \;
 popd
 sed -i "s~webapp/vicav-app/~${BUILD_DIR:-webapp/vicav-app}/~g" deploy-shawi-content.bxs
-./execute-basex-batch.sh deploy-shawi-content
+./execute-basex-batch.sh deploy-shawi-content $1
+sed -i "s~../webapp/vicav-app/~${BUILD_DIR:-../webapp/vicav-app}/~g" refresh-project-config.xqtl
+./execute-basex-batch.sh refresh-project-config.xqtl $1 >/dev/null
 pushd shawi-data
 popd

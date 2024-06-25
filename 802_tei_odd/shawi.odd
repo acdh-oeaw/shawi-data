@@ -57,6 +57,7 @@
             <head>Part 2: Formal Specification</head>
 
             <schemaSpec ident="shawi" source="file:/C:/Users/mrauschsupola/generic-dict-schema/generic-dict-schema/schema/acdh-ch-dicts.compiled.odd">
+               <moduleRef key="derived-module-TEILex0"/>
                <!-- We copy all modules from TEI Lex0  -->
                <moduleRef key="analysis"/>
                <moduleRef key="core" except="ptr q interpretation lb mentioned measure"/>
@@ -69,14 +70,21 @@
                <moduleRef key="tei"/>
                <moduleRef key="textstructure"/>
                <moduleRef key="transcr"/>
-
                <moduleRef key="iso-fs"/>
                
                <elementSpec ident="val" mode="delete"/>
                <classSpec type="atts" ident="att.measurement" mode="delete"/>
+               
+               <!-- also had to insert symbol as a member of model.featureVal like in acdh-ch-dicts.odd -->
+               <classRef key="model.featureVal" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
+               <elementSpec ident="symbol" mode="change">
+                  <classes mode="change">
+                     <memberOf key="model.featureVal"/>
+                  </classes>
+               </elementSpec>
 
                <elementSpec ident="gram" mode="change" module="dictionaries">
-                  <constraintSpec ident="gram" scheme="schematron">
+                  <constraintSpec ident="gram-parents" scheme="schematron">
                      <constraint>
                         <s:rule context="tei:gram[@type = 'morphPattern']">
                            <s:assert test="parent::tei:gramGrp/parent::tei:form[@type]">a gram type morphPattern must be a direct child of a gramGrp and a direct grandchild of a form with a type attribute</s:assert>
@@ -109,6 +117,9 @@
                               <desc>TODO description missing</desc>
                            </valItem>
                            <valItem ident="frequency"> <!-- additionally to constraint -->
+                              <desc>TODO description missing</desc>
+                           </valItem>
+                           <valItem ident="followedBy">
                               <desc>TODO description missing</desc>
                            </valItem>
                            <valItem ident="gender">
@@ -151,8 +162,7 @@
                      </attDef>
                   </attList>
                </elementSpec>
-
-
+               
                <elementSpec ident="cit" mode="change" module="core">
                   <content>
                      <alternate minOccurs="1" maxOccurs="unbounded">
@@ -166,6 +176,7 @@
                         <elementRef key="bibl"/>
                         <elementRef key="note"/>
                         <elementRef key="usg"/>
+                        <elementRef key="gloss"/>
                         <elementRef key="form"/>
                      </alternate>
                   </content>
@@ -206,7 +217,7 @@
                      <desc>assert content of correct context of @type values</desc>
                      <constraint>
                         <s:rule context="tei:form[@type = 'variant']">
-                           <s:assert test="parent::tei:form[@type = ('lemma', 'multiWordUnit', 'inflected')]">a variant must be a direct child of the main form (type = "lemma" or "multiWordUnit").</s:assert>
+                           <s:assert test="parent::tei:form[@type = ('lemma', 'multiWordUnit', 'inflected')]">a variant must be a direct child of the headwords or of an inflected form.</s:assert>
                         </s:rule>
                         <s:rule context="tei:form[@type = ('lemma', 'multiWordUnit', 'inflected')]">
                            <s:assert test="parent::tei:entry">a headword must be a direct child of an entry element. </s:assert>
@@ -226,12 +237,71 @@
                               <desc>inflected form</desc>
                            </valItem>
                            <valItem ident="variant">
-                              <desc>A variant form of the lemma. Only headwords may have variants. All other variants – e.g. competing morphological forms – are simply listed but not classified. Variants can be assigned usage labels indicating e.g. a particular register. The more frequent variant should precede less frequent ones. </desc>
+                              <desc>A variant form of the lemma, MWU or inflected forms. The more frequent variant should precede less frequent ones. </desc>
                            </valItem>
                         </valList>
                      </attDef>
                   </attList>
                </elementSpec>
+               
+               <elementSpec ident="listBibl" mode="change" module="core">
+                  <constraintSpec ident="listBibl-context" scheme="schematron">
+                     <desc></desc>
+                     <constraint>
+                           <s:rule context="tei:listBibl">
+                              <s:assert test="parent::tei:entry">a listBibl is a direct child of an entry</s:assert>
+                              <s:assert test="not(child) or child and child::tei:bibl">a bibl is a direct child of a listBibl</s:assert>
+                           </s:rule>
+                           <s:rule context="tei:bibl">
+                              <s:assert test="matches(child::tei:biblScope, '^p\.\d')">Missing or misspelled page number</s:assert>
+                           </s:rule>
+                     </constraint>
+                  </constraintSpec>
+               </elementSpec>
+                             
+               <elementSpec ident="entry" mode="change" module="dictionaries">
+                  <constraintSpec ident="formSourceCheck" scheme="schematron">
+                     <constraint>
+                        <s:rule context="tei:form[@source]">
+                           <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
+                           <s:let name="biblID" value="following-sibling::tei:listBibl/tei:bibl/@xml:id | parent::tei:form/following-sibling::tei:listBibl/tei:bibl/@xml:id | parent::tei:form/parent::tei:form/following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
+                           <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a form element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$biblID"/>")</s:assert>
+                        </s:rule>
+                     </constraint>
+                  </constraintSpec>
+                  <constraintSpec ident="senseSourceCheck" scheme="schematron">
+                     <constraint>
+                        <s:rule context="tei:sense[@source]">
+                           <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
+                           <s:let name="biblID" value="following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
+                           <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a sense element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$biblID"/>")</s:assert>
+                        </s:rule>
+                     </constraint>
+                  </constraintSpec>
+               </elementSpec>
+               
+               <elementSpec ident="name" mode="change" module="core">
+                  <constraintSpec ident="name-not-empty" scheme="schematron">
+                     <constraint>
+                        <s:rule context="tei:name">
+                           <s:assert test="normalize-space(.) != ''">1: the type attribute of a name element must not be empty</s:assert>
+                        </s:rule>
+                     </constraint>
+                  </constraintSpec>
+                  <attList>
+                     <attDef ident="type" mode="replace" usage="req">
+                        <valList type="closed">
+                           <valItem ident="place">
+                              <desc>TODO description missing</desc>
+                           </valItem>
+                           <valItem ident="tribe">
+                              <desc>TODO description missing</desc>
+                           </valItem>
+                        </valList>
+                     </attDef>
+                  </attList>
+               </elementSpec>
+               
             </schemaSpec>
          </div>
       </body>
