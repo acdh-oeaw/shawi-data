@@ -25,28 +25,31 @@
     <text>
         <body>
             <schemaSpec ident="vicav_corpus" start="TEI">
-                <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt availability rendition sourceDesc encodingDesc tagsDecl revisionDesc change listPrefixDef prefixDef"/>
-                <moduleRef key="core" include="address author bibl cit date editor desc graphic head hi quote name note p publisher pubPlace ref respStmt resp rs series title"/>
+                <moduleRef key="header" include="textClass catRef availability availability change distributor encodingDesc fileDesc funder idno licence listPrefixDef prefixDef profileDesc publicationStmt rendition revisionDesc sourceDesc tagsDecl teiHeader titleStmt"/>
+                <moduleRef key="core" include="address addrLine author bibl cit date editor desc graphic head hi quote name note p publisher pubPlace ref respStmt resp rs series title media"/>
                 <moduleRef key="tei"/>
+                <moduleRef key="tagdocs" include="code att gi"/>
+                <moduleRef key="namesdates" include="person orgName persName forename surname listPerson place placeName"></moduleRef>
                 <moduleRef key="textstructure" include="body div TEI text"/>
                 <moduleRef key="corpus"/>
-                <moduleRef key="analysis" include="w pc phr"/>
-                <moduleRef key="linking" include="timeline when anchor"></moduleRef>
-                <moduleRef key="spoken" include="annotationBlock u"></moduleRef>
+                <moduleRef key="analysis" include="w pc phr span spanGrp"/>
+                <moduleRef key="linking" include="timeline when anchor"/>
+                <moduleRef key="spoken" include="annotationBlock u recordingStmt recording"></moduleRef>
                 <elementSpec ident="w" module="analysis" mode="change">
-                    <desc>Token ana attributes should entries in the standoff document.
-                    </desc>
+                    <desc>Token ana attributes should entries in the standoff document.</desc>
                     <constraintSpec ident="ana-spec" scheme="schematron">
                         <desc>Enforce that the token links to a document.</desc>
                         <constraint>
-                            <s:rule context="tei:w">
-                                <s:let name="ana" value="replace(@ana, '#', '')" />
-                                <s:let name="filename" value="document-uri(/)"/>
-                                <s:let name="doc" value="concat($filename,'_standoff.xml')"/>
-                                <s:let name="props" value="doc($doc)/tei:TEI/tei:standOff/tei:fs/@xml:id"/>
-                                <s:let name="test" value="$ana = doc($doc)/tei:TEI/tei:standOff/tei:fs/@xml:id"/>
-                                
-                                <s:assert test="$ana = '' or $ana = doc($doc)/tei:TEI/tei:standOff/tei:fs/@xml:id">Entry with id '<s:value-of select="$ana"/>' not found in glossary document.</s:assert>
+                            <s:rule context="tei:w[@ana/contains(.,' ')]">
+                                <s:let name="wid" value="@xml:id"/>
+                                <s:assert test="not(contains(normalize-space(@ana),' '))">@ana on token with id '<s:value-of select="$wid"/>' seems to contain more than one one id reference.</s:assert>
+                            </s:rule>
+                            <s:rule context="tei:w[@ana]">
+                                <s:let name="wid" value="@xml:id"/>
+                                <s:let name="idRef" value="replace(@ana, '#', '')" />
+                                <s:let name="standOffFile" value="'../../010_manannot/shawi_standoff.xml'"/>
+                                <s:let name="props" value="doc($standOffFile)//tei:fs[@xml:id = $idRef]"/>
+                                <s:assert test="exists($props)">Entry with id '<s:value-of select="$idRef"/>' referenced by token with id '<s:value-of select="$idRef"/>' not found in stand-off document.</s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
