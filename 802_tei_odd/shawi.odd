@@ -56,15 +56,16 @@
          <div>
             <head>Part 2: Formal Specification</head>
 
-            <schemaSpec ident="shawi" source="file:/C:/Users/mrauschsupola/generic-dict-schema/generic-dict-schema/schema/acdh-ch-dicts.compiled.odd">
-               <moduleRef key="derived-module-TEILex0"/>
+            <schemaSpec ident="shawi" source="file:/C:/Users/ksramo/Documents/generic-dict-schema/schema/tmp/acdh-ch-dicts.compiled.odd">
+               
                <!-- We copy all modules from TEI Lex0  -->
+               <moduleRef key="derived-module-TEILex0"/>
                <moduleRef key="analysis"/>
                <moduleRef key="core" except="ptr q interpretation lb mentioned measure"/>
                <moduleRef key="dictionaries"/>
                <moduleRef key="figures"/>
                <moduleRef key="gaiji"/>
-               <moduleRef key="header" except="change listChange"/>
+               <moduleRef key="header"/>
                <moduleRef key="linking"/>
                <moduleRef key="namesdates"/>
                <moduleRef key="tei"/>
@@ -72,16 +73,9 @@
                <moduleRef key="transcr"/>
                <moduleRef key="iso-fs"/>
                
+               
                <elementSpec ident="val" mode="delete"/>
                <classSpec type="atts" ident="att.measurement" mode="delete"/>
-               
-               <!-- also had to insert symbol as a member of model.featureVal like in acdh-ch-dicts.odd -->
-               <classRef key="model.featureVal" source="https://www.tei-c.org/release/xml/tei/odd/p5subset.xml"/>
-               <elementSpec ident="symbol" mode="change">
-                  <classes mode="change">
-                     <memberOf key="model.featureVal"/>
-                  </classes>
-               </elementSpec>
 
                <elementSpec ident="gram" mode="change" module="dictionaries">
                   <constraintSpec ident="gram-parents" scheme="schematron">
