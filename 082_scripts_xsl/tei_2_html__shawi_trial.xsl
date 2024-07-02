@@ -8,12 +8,11 @@
     <xsl:strip-space elements="tei:body tei:TEI tei:row tei:cell tei:teiHeader tei:text tei:u tei:hi tei:ref tei:p tei:fileDesc tei:titleStmt tei:publicationStmt tei:editionStmt tei:revisionDesc tei:sourceDesc tei:div"/>
 
     <!-- Variable to hold the title -->
-    <xsl:variable name="title">
-        <xsl:value-of select="//tei:titleStmt/tei:title"/>
-    </xsl:variable>
+    <xsl:variable name="title" select="//tei:titleStmt/tei:title"/>
 
     <!-- Variable to count all 'ana' attributes in the document -->
     <xsl:variable name="anaCount" select="count(//tei:*[@ana])"/>
+    <xsl:variable name="wCount" select="count(//tei:w)"/>
 
     <!-- Template to apply at the root level -->
     <xsl:template match="/tei:TEI">
@@ -22,10 +21,20 @@
                 <title>
                     <xsl:value-of select="$title"/>
                 </title>
+                <!-- Embed CSS styles directly in the head section -->
+                <style type="text/css">
+                    p {
+                        color: blue; /* Sets the text color to blue */
+                        background-color: green; /* Sets the background color to green */
+                        padding: 10px; /* Adds space around the text */
+                        margin: 10px 0; /* Adds space above and below the paragraph */
+                    }
+                </style>
             </head>
             <body>
                 <h1><xsl:value-of select="$title"/></h1>
                 <p>Total 'ana' attributes found: <xsl:value-of select="$anaCount"/></p>
+                <p>Total 'w' elements found: <xsl:value-of select="$wCount"/></p>
                 <!-- Processing the body of the TEI document -->
                 <xsl:apply-templates select=".//tei:body"/>
             </body>
