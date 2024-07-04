@@ -15,7 +15,7 @@
     <xsl:variable name="wCount" select="count(//tei:w)"/>
 
     <!-- Template to apply at the root level -->
-    <xsl:template match="/tei:TEI">
+    <xsl:template match="/">
         <html>
             <head>
                 <title>
@@ -36,7 +36,7 @@
                 <p>Total 'ana' attributes found: <xsl:value-of select="$anaCount"/></p>
                 <p>Total 'w' elements found: <xsl:value-of select="$wCount"/></p>
                 <!-- Processing the body of the TEI document -->
-                <xsl:apply-templates select=".//tei:body"/>
+                <xsl:apply-templates select="tei:text/tei:body"/>
             </body>
         </html>
     </xsl:template>
