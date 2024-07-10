@@ -58,7 +58,7 @@
 
             <schemaSpec ident="shawi" source="file:/C:/Users/ksramo/Documents/generic-dict-schema/schema/tmp/acdh-ch-dicts.compiled.odd">
                
-               <!-- We copy all modules from TEI Lex0  -->
+               <!-- We copy all modules from ACDH-CH dicts  -->
                <moduleRef key="derived-module-TEILex0"/>
                <moduleRef key="analysis"/>
                <moduleRef key="core" except="ptr q interpretation lb mentioned measure"/>
@@ -207,31 +207,17 @@
                </elementSpec>
 
                <elementSpec ident="form" mode="change" module="dictionaries">
-                  <constraintSpec ident="form-type" scheme="schematron">
-                     <desc>assert content of correct context of @type values</desc>
-                     <constraint>
-                        <s:rule context="tei:form[@type = 'variant']">
-                           <s:assert test="parent::tei:form[@type = ('lemma', 'multiWordUnit', 'inflected')]">a variant must be a direct child of the headwords or of an inflected form.</s:assert>
-                        </s:rule>
-                        <s:rule context="tei:form[@type = ('lemma', 'multiWordUnit', 'inflected')]">
-                           <s:assert test="parent::tei:entry">a headword must be a direct child of an entry element. </s:assert>
-                        </s:rule>
-                     </constraint>
-                  </constraintSpec>
                   <attList>
                      <attDef ident="type" mode="replace" usage="opt">
                         <valList type="closed">
                            <valItem ident="lemma">
                               <desc>the headword of a lemma entry</desc>
                            </valItem>
-                           <valItem ident="multiWordUnit">
-                              <desc>the headword of a MWU entry</desc>
-                           </valItem>
                            <valItem ident="inflected">
                               <desc>inflected form</desc>
                            </valItem>
                            <valItem ident="variant">
-                              <desc>A variant form of the lemma, MWU or inflected forms. The more frequent variant should precede less frequent ones. </desc>
+                              <desc>A variant form of the lemma or inflected forms. The more frequent variant should precede less frequent ones. </desc>
                            </valItem>
                         </valList>
                      </attDef>
