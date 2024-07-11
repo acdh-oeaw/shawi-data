@@ -56,7 +56,7 @@
          <div>
             <head>Part 2: Formal Specification</head>
 
-            <schemaSpec ident="shawi" source="file:/C:/Users/ksramo/Documents/generic-dict-schema/schema/tmp/acdh-ch-dicts.compiled.odd">
+            <schemaSpec ident="shawi" source="file:/C:/Users/mrauschsupola/generic-dict-schema/generic-dict-schema/schema/acdh-ch-dicts.compiled.odd">
                
                <!-- We copy all modules from ACDH-CH dicts  -->
                <moduleRef key="derived-module-TEILex0"/>
@@ -77,6 +77,12 @@
                <elementSpec ident="val" mode="delete"/>
                <classSpec type="atts" ident="att.measurement" mode="delete"/>
 
+               <elementSpec ident="gramGrp" mode="change" module="dictionaries">
+                  <content>
+                     <elementRef key="model.gramPart" minOccurs="1" maxOccurs="unbounded"/>
+                  </content>
+               </elementSpec>
+
                <elementSpec ident="gram" mode="change" module="dictionaries">
                   <constraintSpec ident="gram-parents" scheme="schematron">
                      <constraint>
@@ -87,7 +93,7 @@
                   </constraintSpec>
                   <attList>
                      <!-- TODO 2021-12-03 
-                     Vocabularies should be moved to specific implementations. 
+                     Vocabularies should be moved to specific implementations. element
                      Also this one? 
                      -->
                      <attDef ident="type" mode="replace" usage="req">
