@@ -1,8 +1,8 @@
-<xsl:stylesheet xml:space="preserve"
-                xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:tei="http://www.tei-c.org/ns/1.0"
-                version="2.0"
+<xsl:stylesheet xml:space="preserve" 
+                xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+                xmlns:tei="http://www.tei-c.org/ns/1.0" 
+                version="2.0" 
                 exclude-result-prefixes="xsl tei">
     <xsl:output method="html" indent="no" encoding="UTF-8"/>
     <xsl:strip-space elements="tei:body tei:TEI tei:row tei:cell tei:teiHeader tei:text tei:u tei:hi tei:ref tei:p tei:fileDesc tei:titleStmt tei:publicationStmt tei:editionStmt tei:revisionDesc tei:sourceDesc tei:div"/>
@@ -11,13 +11,13 @@
    <xsl:param name="pathToExternalDoc">../010_manannot/shawi_standoff.xml</xsl:param>
     <!-- Load the external XML document using the parameter -->
     <xsl:variable name="externalDoc" select="doc('../010_manannot/shawi_standoff.xml')" as="document-node()"/>
-
+    
   <!-- Key to access elements by ID quickly within the external document -->
     <xsl:key name="element-by-id" match="*[@id]" use="@id"/>
-
+    
     <!-- Variable to hold the title -->
     <xsl:variable name="title" select="//tei:titleStmt/tei:title"/>
-
+    
      <!-- Variable to count all 'ana' attributes in the document -->
     <xsl:variable name="anaCount" select="count(//tei:*[@ana])"/>
     <xsl:variable name="wCount" select="count(//tei:w)"/>
@@ -43,10 +43,10 @@
 
             </head>
             <body>
-
-
+                
+              
                 <h1><xsl:value-of select="$title"/></h1>
-
+                
                 <p class="countResult">Total 'ana' attributes found: <xsl:value-of select="$anaCount"/></p>
                 <p class="countResult">Total 'w' elements found: <xsl:value-of select="$wCount"/></p>
 
@@ -57,7 +57,7 @@
             </body>
         </html>
     </xsl:template>
-
+    
       <xsl:template match="/tei:TEI">
         <html>
             <head>
@@ -66,7 +66,7 @@
                 </title>
             </head>
             <body>
-
+                
                 <xsl:apply-templates select=".//tei:body"/>
             </body>
         </html>
@@ -98,4 +98,3 @@
         </p>
     </xsl:template>
 </xsl:stylesheet>
-
