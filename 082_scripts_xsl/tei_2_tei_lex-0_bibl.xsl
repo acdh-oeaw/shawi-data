@@ -15,10 +15,10 @@
     </xsl:template>
     
     <!-- Template to remove original bibl elements from their original location -->
-    <xsl:template match="tei:bibl"/>
+    <xsl:template match="tei:bibl[not(parent::tei:listBibl)]"/>
     
     <!-- Template to process parents of bibl elements to add source attribute correctly -->
-    <xsl:template match="*[tei:bibl]">
+    <xsl:template match="*except listBibl[tei:bibl]">
         <xsl:copy>
             <!-- Generate a concatenated string of all bibl IDs in this element prefixed with # -->
             <xsl:attribute name="source">
@@ -29,12 +29,12 @@
                    <xsl:if test="position() != last()"><xsl:text> </xsl:text></xsl:if>
                </xsl:for-each>
             </xsl:attribute>
-            <xsl:apply-templates select="@*|node()"/>
+            <xsl:apply-templates select="@* except @source[.='#']|node()"/>
         </xsl:copy>
     </xsl:template>
     
     <!-- Enhanced template for tei:entry to include listBibl at the end -->
-    <xsl:template match="tei:entry">
+    <xsl:template match="tei:type[type='example']">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="node()[not(self::tei:bibl)][not(self::tei:fs)]"/>

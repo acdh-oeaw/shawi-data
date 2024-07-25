@@ -5,7 +5,7 @@
     xmlns="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="xs"
     version="2.0">
-    
+    <xsl:output method="xml" indent="yes"/>
     <xsl:template match="node() | @*">
         <xsl:copy>
             <xsl:apply-templates select="node() | @*"/>
