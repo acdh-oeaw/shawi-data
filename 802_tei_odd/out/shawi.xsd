@@ -6,9 +6,9 @@
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.tmp"/>
    <!--
-    Schema generated from ODD source 2024-07-11T14:06:42Z. .
-    TEI Edition: 
-    TEI Edition Location: https://www.tei-c.org/Vault/P5//
+    Schema generated from ODD source 2024-07-26T15:42:19Z. . 
+    TEI Edition:  
+    TEI Edition Location: https://www.tei-c.org/Vault/P5// 
     
   -->
    <!---->
@@ -23,7 +23,6 @@
    </xs:complexType>
    <xs:complexType name="macro.phraseSeq" mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-         <xs:element ref="tei:model.gLike"/>
          <xs:group ref="tei:model.attributable"/>
          <xs:group ref="tei:model.phrase"/>
          <xs:group ref="tei:model.global"/>
@@ -37,35 +36,20 @@
    </xs:complexType>
    <xs:complexType name="macro.specialPara" mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-         <xs:element ref="tei:model.gLike"/>
          <xs:group ref="tei:model.phrase"/>
          <xs:group ref="tei:model.inter"/>
          <xs:group ref="tei:model.divPart"/>
          <xs:group ref="tei:model.global"/>
       </xs:choice>
    </xs:complexType>
-   <xs:complexType name="macro.xtext" mixed="true">
-      <xs:sequence>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:model.gLike"/>
-      </xs:sequence>
-   </xs:complexType>
-   <xs:group name="macro.lexicalParaContent">
-      <xs:sequence>
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
-            <xs:group ref="tei:model.lexicalPhrase"/>
-            <xs:group ref="tei:model.lexicalInter"/>
-            <xs:group ref="tei:model.global"/>
-            <xs:element ref="tei:xr"/>
-         </xs:choice>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="anyElement-xenoData">
-      <xs:choice>
-         <xs:any namespace="##other" processContents="skip"/>
-         <xs:any namespace="##local" processContents="skip"/>
+   <xs:complexType name="macro.lexicalParaContent" mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+         <xs:group ref="tei:model.lexicalPhrase"/>
+         <xs:group ref="tei:model.lexicalInter"/>
+         <xs:group ref="tei:model.global"/>
+         <xs:element ref="tei:xr"/>
       </xs:choice>
-   </xs:group>
+   </xs:complexType>
    <xs:attributeGroup name="att.anchoring.attributes">
       <xs:attributeGroup ref="tei:att.anchoring.attribute.anchored"/>
       <xs:attributeGroup ref="tei:att.anchoring.attribute.targetEnd"/>
@@ -875,67 +859,6 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</xs:documentat
          </xs:simpleType>
       </xs:attribute>
    </xs:attributeGroup>
-   <xs:attributeGroup name="att.media.attributes">
-      <xs:attributeGroup ref="tei:att.internetMedia.attributes"/>
-      <xs:attributeGroup ref="tei:att.media.attribute.width"/>
-      <xs:attributeGroup ref="tei:att.media.attribute.height"/>
-      <xs:attributeGroup ref="tei:att.media.attribute.scale"/>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.media.attribute.width">
-      <xs:attribute name="width">
-         <xs:annotation>
-            <xs:documentation>Where the media are displayed, indicates the display width</xs:documentation>
-         </xs:annotation>
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:pattern value="[\-+]?\d+(\.\d+)?(%|cm|mm|in|pt|pc|px|em|ex|ch|rem|vw|vh|vmin|vmax)"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.media.attribute.height">
-      <xs:attribute name="height">
-         <xs:annotation>
-            <xs:documentation>Where the media are displayed, indicates the display height</xs:documentation>
-         </xs:annotation>
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:pattern value="[\-+]?\d+(\.\d+)?(%|cm|mm|in|pt|pc|px|em|ex|ch|rem|vw|vh|vmin|vmax)"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.media.attribute.scale">
-      <xs:attribute name="scale">
-         <xs:annotation>
-            <xs:documentation>Where the media are displayed, indicates a scale factor to be applied when generating the desired display size</xs:documentation>
-         </xs:annotation>
-         <xs:simpleType>
-            <xs:union memberTypes="xs:double xs:decimal">
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:pattern value="(\-?[\d]+/\-?[\d]+)"/>
-                  </xs:restriction>
-               </xs:simpleType>
-            </xs:union>
-         </xs:simpleType>
-      </xs:attribute>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.resourced.attributes">
-      <xs:attributeGroup ref="tei:att.resourced.attribute.url"/>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.resourced.attribute.url">
-      <xs:attribute name="url" use="required">
-         <xs:annotation>
-            <xs:documentation>(uniform resource locator) specifies the URL from which the media concerned may be obtained.</xs:documentation>
-         </xs:annotation>
-         <xs:simpleType>
-            <xs:restriction base="xs:anyURI">
-               <xs:pattern value="\S+"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
-   </xs:attributeGroup>
    <xs:attributeGroup name="att.naming.attributes">
       <xs:attributeGroup ref="tei:att.canonical.attributes"/>
       <xs:attributeGroup ref="tei:att.naming.attribute.role"/>
@@ -1264,21 +1187,6 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
          </xs:simpleType>
       </xs:attribute>
    </xs:attributeGroup>
-   <xs:attributeGroup name="att.spanning.attributes">
-      <xs:attributeGroup ref="tei:att.spanning.attribute.spanTo"/>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.spanning.attribute.spanTo">
-      <xs:attribute name="spanTo">
-         <xs:annotation>
-            <xs:documentation>indicates the end of a span initiated by the element bearing this attribute.</xs:documentation>
-         </xs:annotation>
-         <xs:simpleType>
-            <xs:restriction base="xs:anyURI">
-               <xs:pattern value="\S+"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
-   </xs:attributeGroup>
    <xs:attributeGroup name="att.styleDef.attributes">
       <xs:attributeGroup ref="tei:att.styleDef.attribute.scheme"/>
       <xs:attributeGroup ref="tei:att.styleDef.attribute.schemeVersion"/>
@@ -1478,75 +1386,33 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       </xs:sequence>
    </xs:group>
    <xs:group name="model.segLike">
-      <xs:choice>
-         <xs:element ref="tei:c"/>
-         <xs:element ref="tei:pc"/>
+      <xs:sequence>
          <xs:element ref="tei:seg"/>
-      </xs:choice>
+      </xs:sequence>
    </xs:group>
    <xs:group name="model.segLike_alternation">
-      <xs:choice>
-         <xs:element ref="tei:c"/>
-         <xs:element ref="tei:pc"/>
+      <xs:sequence>
          <xs:element ref="tei:seg"/>
-      </xs:choice>
+      </xs:sequence>
    </xs:group>
    <xs:group name="model.segLike_sequence">
       <xs:sequence>
-         <xs:element ref="tei:c"/>
-         <xs:element ref="tei:pc"/>
          <xs:element ref="tei:seg"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.segLike_sequenceOptional">
       <xs:sequence>
-         <xs:element minOccurs="0" ref="tei:c"/>
-         <xs:element minOccurs="0" ref="tei:pc"/>
          <xs:element minOccurs="0" ref="tei:seg"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.segLike_sequenceOptionalRepeatable">
       <xs:sequence>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:c"/>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:pc"/>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:seg"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.segLike_sequenceRepeatable">
       <xs:sequence>
-         <xs:element maxOccurs="unbounded" ref="tei:c"/>
-         <xs:element maxOccurs="unbounded" ref="tei:pc"/>
          <xs:element maxOccurs="unbounded" ref="tei:seg"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike">
-      <xs:sequence>
-         <xs:element ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike_alternation">
-      <xs:sequence>
-         <xs:element ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike_sequence">
-      <xs:sequence>
-         <xs:element ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike_sequenceOptional">
-      <xs:sequence>
-         <xs:element minOccurs="0" ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike_sequenceOptionalRepeatable">
-      <xs:sequence>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:hi"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.hiLike_sequenceRepeatable">
-      <xs:sequence>
-         <xs:element maxOccurs="unbounded" ref="tei:hi"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.emphLike">
@@ -1592,26 +1458,22 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       </xs:sequence>
    </xs:group>
    <xs:group name="model.highlighted">
-      <xs:choice>
-         <xs:group ref="tei:model.hiLike"/>
+      <xs:sequence>
          <xs:group ref="tei:model.emphLike"/>
-      </xs:choice>
+      </xs:sequence>
    </xs:group>
    <xs:group name="model.highlighted_alternation">
-      <xs:choice>
-         <xs:group ref="tei:model.hiLike_alternation"/>
+      <xs:sequence>
          <xs:group ref="tei:model.emphLike_alternation"/>
-      </xs:choice>
+      </xs:sequence>
    </xs:group>
    <xs:group name="model.highlighted_sequence">
       <xs:sequence>
-         <xs:group ref="tei:model.hiLike_sequence"/>
          <xs:group ref="tei:model.emphLike_sequence"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.highlighted_sequenceOptional">
       <xs:sequence>
-         <xs:group minOccurs="0" ref="tei:model.hiLike_sequenceOptional"/>
          <xs:group minOccurs="0" ref="tei:model.emphLike_sequenceOptional"/>
       </xs:sequence>
    </xs:group>
@@ -1619,16 +1481,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       <xs:sequence>
          <xs:group minOccurs="0"
                    maxOccurs="unbounded"
-                   ref="tei:model.hiLike_sequenceOptionalRepeatable"/>
-         <xs:group minOccurs="0"
-                   maxOccurs="unbounded"
                    ref="tei:model.emphLike_sequenceOptionalRepeatable"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.highlighted_sequenceRepeatable">
-      <xs:sequence>
-         <xs:group maxOccurs="unbounded" ref="tei:model.hiLike_sequenceRepeatable"/>
-         <xs:group maxOccurs="unbounded" ref="tei:model.emphLike_sequenceRepeatable"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.dateLike">
@@ -1661,70 +1514,34 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <xs:element maxOccurs="unbounded" ref="tei:date"/>
       </xs:sequence>
    </xs:group>
-   <xs:group name="model.graphicLike">
-      <xs:sequence>
-         <xs:element ref="tei:graphic"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.graphicLike_alternation">
-      <xs:sequence>
-         <xs:element ref="tei:graphic"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.graphicLike_sequence">
-      <xs:sequence>
-         <xs:element ref="tei:graphic"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.graphicLike_sequenceOptional">
-      <xs:sequence>
-         <xs:element minOccurs="0" ref="tei:graphic"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.graphicLike_sequenceOptionalRepeatable">
-      <xs:sequence>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:graphic"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="model.graphicLike_sequenceRepeatable">
-      <xs:sequence>
-         <xs:element maxOccurs="unbounded" ref="tei:graphic"/>
-      </xs:sequence>
-   </xs:group>
    <xs:group name="model.pPart.editorial">
-      <xs:choice>
+      <xs:sequence>
          <xs:element ref="tei:abbr"/>
-         <xs:element ref="tei:expan"/>
-      </xs:choice>
+      </xs:sequence>
    </xs:group>
    <xs:group name="model.pPart.editorial_alternation">
-      <xs:choice>
+      <xs:sequence>
          <xs:element ref="tei:abbr"/>
-         <xs:element ref="tei:expan"/>
-      </xs:choice>
+      </xs:sequence>
    </xs:group>
    <xs:group name="model.pPart.editorial_sequence">
       <xs:sequence>
          <xs:element ref="tei:abbr"/>
-         <xs:element ref="tei:expan"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.pPart.editorial_sequenceOptional">
       <xs:sequence>
          <xs:element minOccurs="0" ref="tei:abbr"/>
-         <xs:element minOccurs="0" ref="tei:expan"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.pPart.editorial_sequenceOptionalRepeatable">
       <xs:sequence>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:abbr"/>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:expan"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.pPart.editorial_sequenceRepeatable">
       <xs:sequence>
          <xs:element maxOccurs="unbounded" ref="tei:abbr"/>
-         <xs:element maxOccurs="unbounded" ref="tei:expan"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.pPart.edit">
@@ -1814,22 +1631,6 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <xs:element maxOccurs="unbounded" ref="tei:fs"/>
       </xs:sequence>
    </xs:group>
-   <xs:element name="model.gLike" abstract="true">
-      <xs:complexType mixed="true">
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attributes"/>
-         <xs:attribute name="ref">
-            <xs:annotation>
-               <xs:documentation>points to a description of the character or glyph intended.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:anyURI">
-                  <xs:pattern value="\S+"/>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
    <xs:group name="model.biblLike">
       <xs:choice>
          <xs:element ref="tei:bibl"/>
@@ -1992,33 +1793,15 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <xs:element maxOccurs="unbounded" ref="tei:p"/>
       </xs:sequence>
    </xs:group>
-   <xs:group name="model.entryPart">
-      <xs:choice>
-         <xs:element ref="tei:sense"/>
-         <xs:element ref="tei:form"/>
-         <xs:element ref="tei:orth"/>
-         <xs:element ref="tei:pron"/>
-         <xs:element ref="tei:hyph"/>
-         <xs:element ref="tei:syll"/>
-         <xs:element ref="tei:gramGrp"/>
-         <xs:element ref="tei:etym"/>
-         <xs:element ref="tei:usg"/>
-         <xs:element ref="tei:lbl"/>
-         <xs:element ref="tei:xr"/>
-      </xs:choice>
-   </xs:group>
    <xs:group name="model.entryPart.top">
       <xs:choice>
          <xs:group ref="tei:model.biblLike"/>
          <xs:element ref="tei:cit"/>
-         <xs:element ref="tei:num"/>
          <xs:element ref="tei:entry"/>
-         <xs:element ref="tei:dictScrap"/>
          <xs:element ref="tei:form"/>
          <xs:element ref="tei:gramGrp"/>
          <xs:element ref="tei:etym"/>
          <xs:element ref="tei:usg"/>
-         <xs:element ref="tei:lbl"/>
          <xs:element ref="tei:xr"/>
       </xs:choice>
    </xs:group>
@@ -2205,11 +1988,6 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <xs:group ref="tei:model.divTopPart"/>
       </xs:sequence>
    </xs:group>
-   <xs:group name="model.pLike.front">
-      <xs:sequence>
-         <xs:element ref="tei:head"/>
-      </xs:sequence>
-   </xs:group>
    <xs:group name="model.imprintPart">
       <xs:choice>
          <xs:element ref="tei:publisher"/>
@@ -2219,38 +1997,32 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       </xs:choice>
    </xs:group>
    <xs:group name="model.addressLike">
-      <xs:choice>
-         <xs:element ref="tei:email"/>
+      <xs:sequence>
          <xs:element ref="tei:affiliation"/>
-      </xs:choice>
+      </xs:sequence>
    </xs:group>
    <xs:group name="model.addressLike_alternation">
-      <xs:choice>
-         <xs:element ref="tei:email"/>
+      <xs:sequence>
          <xs:element ref="tei:affiliation"/>
-      </xs:choice>
+      </xs:sequence>
    </xs:group>
    <xs:group name="model.addressLike_sequence">
       <xs:sequence>
-         <xs:element ref="tei:email"/>
          <xs:element ref="tei:affiliation"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.addressLike_sequenceOptional">
       <xs:sequence>
-         <xs:element minOccurs="0" ref="tei:email"/>
          <xs:element minOccurs="0" ref="tei:affiliation"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.addressLike_sequenceOptionalRepeatable">
       <xs:sequence>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:email"/>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:affiliation"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.addressLike_sequenceRepeatable">
       <xs:sequence>
-         <xs:element maxOccurs="unbounded" ref="tei:email"/>
          <xs:element maxOccurs="unbounded" ref="tei:affiliation"/>
       </xs:sequence>
    </xs:group>
@@ -2309,8 +2081,6 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       <xs:choice>
          <xs:group ref="tei:model.global.meta"/>
          <xs:group ref="tei:model.noteLike"/>
-         <xs:element ref="tei:figure"/>
-         <xs:element ref="tei:metamark"/>
       </xs:choice>
    </xs:group>
    <xs:group name="model.biblPart">
@@ -2323,11 +2093,6 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <xs:element ref="tei:extent"/>
          <xs:element ref="tei:availability"/>
       </xs:choice>
-   </xs:group>
-   <xs:group name="model.frontPart">
-      <xs:sequence>
-         <xs:element ref="tei:listBibl"/>
-      </xs:sequence>
    </xs:group>
    <xs:group name="model.pPart.data">
       <xs:choice>
@@ -2388,7 +2153,6 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       <xs:choice>
          <xs:group ref="tei:model.segLike"/>
          <xs:group ref="tei:model.highlighted"/>
-         <xs:group ref="tei:model.graphicLike"/>
          <xs:group ref="tei:model.pPart.edit"/>
          <xs:group ref="tei:model.ptrLike"/>
          <xs:group ref="tei:model.pPart.data"/>
@@ -2396,7 +2160,6 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    </xs:group>
    <xs:group name="model.paraPart">
       <xs:choice>
-         <xs:element ref="tei:model.gLike"/>
          <xs:group ref="tei:model.global"/>
          <xs:group ref="tei:model.inter"/>
          <xs:group ref="tei:model.phrase"/>
@@ -2404,7 +2167,6 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    </xs:group>
    <xs:group name="model.limitedPhrase">
       <xs:choice>
-         <xs:group ref="tei:model.hiLike"/>
          <xs:group ref="tei:model.emphLike"/>
          <xs:group ref="tei:model.pPart.editorial"/>
          <xs:group ref="tei:model.ptrLike"/>
@@ -2436,8 +2198,27 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
             </xs:choice>
          </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attributes"/>
+         <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
          <xs:attributeGroup ref="tei:att.written.attributes"/>
+         <xs:attribute name="type" use="required">
+            <xs:annotation>
+               <xs:documentation/>
+            </xs:annotation>
+            <xs:simpleType>
+               <xs:restriction base="xs:token">
+                  <xs:enumeration value="entries">
+                     <xs:annotation>
+                        <xs:documentation>contains all entries in a dictionary</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="examples">
+                     <xs:annotation>
+                        <xs:documentation>contains examples used in the dictionary</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="model.encodingDescPart" abstract="true"/>
@@ -2525,16 +2306,8 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
       <xs:complexType>
          <xs:sequence>
             <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
-            <xs:sequence minOccurs="0">
-               <xs:element ref="tei:front"/>
-               <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
-            </xs:sequence>
             <xs:element ref="tei:body"/>
             <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
-            <xs:sequence minOccurs="0">
-               <xs:element ref="tei:back"/>
-               <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
-            </xs:sequence>
          </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
          <xs:attributeGroup ref="tei:att.typed.attributes"/>
@@ -2628,19 +2401,6 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
             <xs:extension base="tei:macro.paraContent">
                <xs:attributeGroup ref="tei:att.global.attributes"/>
                <xs:attributeGroup ref="tei:att.fragmentable.attributes"/>
-               <xs:attributeGroup ref="tei:att.written.attributes"/>
-            </xs:extension>
-         </xs:complexContent>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="hi">
-      <xs:annotation>
-         <xs:documentation>(highlighted) marks a word or phrase as graphically distinct from the surrounding text, for reasons concerning which no claim is made. [3.3.2.2. Emphatic Words and Phrases 3.3.2. Emphasis, Foreign Words, and Unusual Language]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:complexContent>
-            <xs:extension base="tei:macro.paraContent">
-               <xs:attributeGroup ref="tei:att.global.attributes"/>
                <xs:attributeGroup ref="tei:att.written.attributes"/>
             </xs:extension>
          </xs:complexContent>
@@ -2817,47 +2577,12 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
          </xs:complexContent>
       </xs:complexType>
    </xs:element>
-   <xs:element name="email">
-      <xs:annotation>
-         <xs:documentation>(electronic mail address) contains an email address identifying a location to which email messages can be delivered. [3.6.2. Addresses]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:complexContent>
-            <xs:extension base="tei:macro.phraseSeq">
-               <xs:attributeGroup ref="tei:att.global.attributes"/>
-            </xs:extension>
-         </xs:complexContent>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="num">
-      <xs:annotation>
-         <xs:documentation>(number) contains a number, written in any form. [3.6.3. Numbers and
-Measures]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="value">
-            <xs:annotation>
-               <xs:documentation>supplies the value of the number in standard form.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:union memberTypes="xs:double xs:decimal">
-                  <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:pattern value="(\-?[\d]+/\-?[\d]+)"/>
-                     </xs:restriction>
-                  </xs:simpleType>
-               </xs:union>
-            </xs:simpleType>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="date">
       <xs:annotation>
          <xs:documentation>(date) contains a date in any format. [3.6.4. Dates and Times 2.2.4. Publication, Distribution, Licensing, etc. 2.6. The Revision Description 3.12.2.4. Imprint, Size of a Document, and Reprint Information 15.2.3. The Setting Description 13.4. Dates]</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
             <xs:group ref="tei:model.phrase"/>
             <xs:group ref="tei:model.global"/>
          </xs:choice>
@@ -2894,70 +2619,60 @@ Sample values include: 1] suspension (suspension); 2] contraction (contraction);
          </xs:complexContent>
       </xs:complexType>
    </xs:element>
-   <xs:element name="expan">
-      <xs:annotation>
-         <xs:documentation>(expansion) contains the expansion of an abbreviation. [3.6.5. Abbreviations and Their Expansions]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:complexContent>
-            <xs:extension base="tei:macro.phraseSeq">
-               <xs:attributeGroup ref="tei:att.global.attributes"/>
-               <xs:attributeGroup ref="tei:att.editLike.attributes"/>
-            </xs:extension>
-         </xs:complexContent>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="ref">
       <xs:annotation>
          <xs:documentation>(reference) defines a reference to another location, possibly modified by additional text or comment. [3.7. Simple Links and Cross-References 16.1. Links]</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
-         <xs:attributeGroup ref="tei:att.notated.attributes"/>
-         <xs:attributeGroup ref="tei:att.scoped.attributes"/>
-         <xs:attributeGroup ref="tei:att.cReferencing.attributes"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.internetMedia.attributes"/>
-         <xs:attributeGroup ref="tei:att.pointing.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
-         <xs:attribute name="type" use="required">
-            <xs:annotation>
-               <xs:documentation>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="tei:macro.lexicalParaContent">
+               <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
+               <xs:attributeGroup ref="tei:att.notated.attributes"/>
+               <xs:attributeGroup ref="tei:att.scoped.attributes"/>
+               <xs:attributeGroup ref="tei:att.cReferencing.attributes"/>
+               <xs:attributeGroup ref="tei:att.global.attributes"/>
+               <xs:attributeGroup ref="tei:att.internetMedia.attributes"/>
+               <xs:attributeGroup ref="tei:att.pointing.attributes"/>
+               <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
+               <xs:attribute name="type" use="required">
+                  <xs:annotation>
+                     <xs:documentation>
 Suggested values include: 1] entry; 2] sense; 3] bibliography</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:union memberTypes="xs:Name">
+                  </xs:annotation>
                   <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="entry">
-                           <xs:annotation>
-                              <xs:documentation/>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
+                     <xs:union memberTypes="xs:Name">
+                        <xs:simpleType>
+                           <xs:restriction base="xs:token">
+                              <xs:enumeration value="entry">
+                                 <xs:annotation>
+                                    <xs:documentation/>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                        <xs:simpleType>
+                           <xs:restriction base="xs:token">
+                              <xs:enumeration value="sense">
+                                 <xs:annotation>
+                                    <xs:documentation/>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                        <xs:simpleType>
+                           <xs:restriction base="xs:token">
+                              <xs:enumeration value="bibliography">
+                                 <xs:annotation>
+                                    <xs:documentation/>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                     </xs:union>
                   </xs:simpleType>
-                  <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="sense">
-                           <xs:annotation>
-                              <xs:documentation/>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
-                  </xs:simpleType>
-                  <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="bibliography">
-                           <xs:annotation>
-                              <xs:documentation/>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
-                  </xs:simpleType>
-               </xs:union>
-            </xs:simpleType>
-         </xs:attribute>
+               </xs:attribute>
+            </xs:extension>
+         </xs:complexContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="list">
@@ -3049,7 +2764,6 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
             <xs:group ref="tei:model.phrase"/>
             <xs:group ref="tei:model.inter"/>
             <xs:group ref="tei:model.global"/>
@@ -3075,17 +2789,6 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
                <xs:attributeGroup ref="tei:att.anchoring.attributes"/>
             </xs:extension>
          </xs:complexContent>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="graphic">
-      <xs:annotation>
-         <xs:documentation>(graphic) indicates the location of a graphic or illustration, either forming part of a text, or providing an image of it. [3.10. Graphics and Other Non-textual Components 11.1. Digital Facsimiles]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.media.attributes"/>
-         <xs:attributeGroup ref="tei:att.resourced.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attributes"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="analytic">
@@ -3295,71 +2998,74 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
       <xs:annotation>
          <xs:documentation>(title) contains a title for any kind of work. [3.12.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.5. The Series Statement]</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
-         <xs:attributeGroup ref="tei:att.canonical.attributes"/>
-         <xs:attributeGroup ref="tei:att.datable.attributes"/>
-         <xs:attribute name="type">
-            <xs:annotation>
-               <xs:documentation>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="tei:macro.lexicalParaContent">
+               <xs:attributeGroup ref="tei:att.global.attributes"/>
+               <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
+               <xs:attributeGroup ref="tei:att.canonical.attributes"/>
+               <xs:attributeGroup ref="tei:att.datable.attributes"/>
+               <xs:attribute name="type">
+                  <xs:annotation>
+                     <xs:documentation>
 Sample values include: 1] full; 2] abbr</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="calendar">
-            <xs:annotation>
-               <xs:documentation>indicates one or more systems or calendars to which the date represented by the content of this element belongs.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction>
+                  </xs:annotation>
+               </xs:attribute>
+               <xs:attribute name="calendar">
+                  <xs:annotation>
+                     <xs:documentation>indicates one or more systems or calendars to which the date represented by the content of this element belongs.</xs:documentation>
+                  </xs:annotation>
                   <xs:simpleType>
-                     <xs:list>
+                     <xs:restriction>
                         <xs:simpleType>
-                           <xs:restriction base="xs:anyURI">
-                              <xs:pattern value="\S+"/>
-                           </xs:restriction>
+                           <xs:list>
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:anyURI">
+                                    <xs:pattern value="\S+"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:list>
                         </xs:simpleType>
-                     </xs:list>
+                        <xs:minLength value="1"/>
+                     </xs:restriction>
                   </xs:simpleType>
-                  <xs:minLength value="1"/>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-         <xs:attribute name="level">
-            <xs:annotation>
-               <xs:documentation>indicates the bibliographic level for a title, that is, whether it identifies an article, book, journal, series, or unpublished material.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:enumeration value="a">
-                     <xs:annotation>
-                        <xs:documentation>(analytic) the title applies to an analytic item, such as an article, poem, or other work published as part of a larger item.</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="m">
-                     <xs:annotation>
-                        <xs:documentation>(monographic) the title applies to a monograph such as a book or other item considered to be a distinct publication, including single volumes of multi-volume works</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="j">
-                     <xs:annotation>
-                        <xs:documentation>(journal) the title applies to any serial or periodical publication such as a journal, magazine, or newspaper</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="s">
-                     <xs:annotation>
-                        <xs:documentation>(series) the title applies to a series of otherwise distinct publications such as a collection</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="u">
-                     <xs:annotation>
-                        <xs:documentation>(unpublished) the title applies to any unpublished material (including theses and dissertations unless published by a commercial press)</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
+               </xs:attribute>
+               <xs:attribute name="level">
+                  <xs:annotation>
+                     <xs:documentation>indicates the bibliographic level for a title, that is, whether it identifies an article, book, journal, series, or unpublished material.</xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                     <xs:restriction base="xs:token">
+                        <xs:enumeration value="a">
+                           <xs:annotation>
+                              <xs:documentation>(analytic) the title applies to an analytic item, such as an article, poem, or other work published as part of a larger item.</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="m">
+                           <xs:annotation>
+                              <xs:documentation>(monographic) the title applies to a monograph such as a book or other item considered to be a distinct publication, including single volumes of multi-volume works</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="j">
+                           <xs:annotation>
+                              <xs:documentation>(journal) the title applies to any serial or periodical publication such as a journal, magazine, or newspaper</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="s">
+                           <xs:annotation>
+                              <xs:documentation>(series) the title applies to a series of otherwise distinct publications such as a collection</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="u">
+                           <xs:annotation>
+                              <xs:documentation>(unpublished) the title applies to any unpublished material (including theses and dissertations unless published by a commercial press)</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:attribute>
+            </xs:extension>
+         </xs:complexContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="imprint">
@@ -3437,7 +3143,6 @@ Sample values include: 1] full; 2] abbr</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
             <xs:group ref="tei:model.highlighted"/>
             <xs:group ref="tei:model.pPart.data"/>
             <xs:group ref="tei:model.pPart.edit"/>
@@ -3534,7 +3239,6 @@ Suggested values include: 1] dictionaries; 2] corpora; 3] literature</xs:documen
    <xs:group name="model.sensePart">
       <xs:choice>
          <xs:element ref="tei:cit"/>
-         <xs:element ref="tei:num"/>
          <xs:element ref="tei:entry"/>
          <xs:element ref="tei:sense"/>
          <xs:element ref="tei:form"/>
@@ -3542,7 +3246,6 @@ Suggested values include: 1] dictionaries; 2] corpora; 3] literature</xs:documen
          <xs:element ref="tei:def"/>
          <xs:element ref="tei:etym"/>
          <xs:element ref="tei:usg"/>
-         <xs:element ref="tei:lbl"/>
          <xs:element ref="tei:xr"/>
       </xs:choice>
    </xs:group>
@@ -3556,7 +3259,6 @@ Suggested values include: 1] dictionaries; 2] corpora; 3] literature</xs:documen
       <xs:choice>
          <xs:group ref="tei:model.segLike"/>
          <xs:group ref="tei:model.highlighted"/>
-         <xs:group ref="tei:model.graphicLike"/>
          <xs:group ref="tei:model.ptrLike"/>
          <xs:element ref="tei:lang"/>
       </xs:choice>
@@ -3590,79 +3292,6 @@ Sample values include: 1] currentEntry; 2] externalEntry</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
-   <xs:attributeGroup name="att.linguistic.attributes">
-      <xs:attributeGroup ref="tei:att.lexicographic.normalized.attributes"/>
-      <xs:attributeGroup ref="tei:att.linguistic.attribute.lemma"/>
-      <xs:attributeGroup ref="tei:att.linguistic.attribute.lemmaRef"/>
-      <xs:attributeGroup ref="tei:att.linguistic.attribute.pos"/>
-      <xs:attributeGroup ref="tei:att.linguistic.attribute.msd"/>
-      <xs:attributeGroup ref="tei:att.linguistic.attribute.join"/>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.linguistic.attribute.lemma">
-      <xs:attribute name="lemma" type="xs:string">
-         <xs:annotation>
-            <xs:documentation>provides a lemma (base form) for the word, typically uninflected and serving both as an identifier (e.g. in dictionary contexts, as a headword), and as a basis for potential inflections.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.linguistic.attribute.lemmaRef">
-      <xs:attribute name="lemmaRef">
-         <xs:annotation>
-            <xs:documentation>provides a pointer to a definition of the lemma for the word, for example in an online lexicon.</xs:documentation>
-         </xs:annotation>
-         <xs:simpleType>
-            <xs:restriction base="xs:anyURI">
-               <xs:pattern value="\S+"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.linguistic.attribute.pos">
-      <xs:attribute name="pos" type="xs:string">
-         <xs:annotation>
-            <xs:documentation>(part of speech) indicates the part of speech assigned to a token (i.e. information on whether it is a noun, adjective, or verb), usually according to some official reference vocabulary (e.g. for German: STTS, for English: CLAWS, for Polish: NKJP, etc.).</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.linguistic.attribute.msd">
-      <xs:attribute name="msd" type="xs:string"/>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.linguistic.attribute.join">
-      <xs:attribute name="join">
-         <xs:annotation>
-            <xs:documentation>when present, provides information on whether the token in question is adjacent to another, and if so, on which side.</xs:documentation>
-         </xs:annotation>
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="no">
-                  <xs:annotation>
-                     <xs:documentation>the token is not adjacent to another</xs:documentation>
-                  </xs:annotation>
-               </xs:enumeration>
-               <xs:enumeration value="left">
-                  <xs:annotation>
-                     <xs:documentation>there is no whitespace on the left side of the token</xs:documentation>
-                  </xs:annotation>
-               </xs:enumeration>
-               <xs:enumeration value="right">
-                  <xs:annotation>
-                     <xs:documentation>there is no whitespace on the right side of the token</xs:documentation>
-                  </xs:annotation>
-               </xs:enumeration>
-               <xs:enumeration value="both">
-                  <xs:annotation>
-                     <xs:documentation>there is no whitespace on either side of the token</xs:documentation>
-                  </xs:annotation>
-               </xs:enumeration>
-               <xs:enumeration value="overlap">
-                  <xs:annotation>
-                     <xs:documentation>the token overlaps with another; other devices (specifying the extent and the area of overlap) are needed to more precisely locate this token in the character stream</xs:documentation>
-                  </xs:annotation>
-               </xs:enumeration>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
-   </xs:attributeGroup>
    <xs:attributeGroup name="att.global.analytic.attributes">
       <xs:attributeGroup ref="tei:att.global.analytic.attribute.ana"/>
    </xs:attributeGroup>
@@ -3684,81 +3313,10 @@ Sample values include: 1] currentEntry; 2] externalEntry</xs:documentation>
          </xs:simpleType>
       </xs:attribute>
    </xs:attributeGroup>
-   <xs:element name="c">
-      <xs:annotation>
-         <xs:documentation>(character) represents a character. [17.1. Linguistic Segment Categories]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:complexContent>
-            <xs:extension base="tei:macro.xtext">
-               <xs:attributeGroup ref="tei:att.global.attributes"/>
-               <xs:attributeGroup ref="tei:att.segLike.attributes"/>
-               <xs:attributeGroup ref="tei:att.typed.attributes"/>
-               <xs:attributeGroup ref="tei:att.notated.attributes"/>
-            </xs:extension>
-         </xs:complexContent>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="pc">
-      <xs:annotation>
-         <xs:documentation>(punctuation character) contains a character or string of characters regarded as constituting a single punctuation mark. [17.1.2. Below the Word Level 17.4.2. Lightweight Linguistic Annotation]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
-            <xs:element ref="tei:c"/>
-            <xs:group ref="tei:model.pPart.edit"/>
-         </xs:choice>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.segLike.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attributes"/>
-         <xs:attributeGroup ref="tei:att.linguistic.attributes"/>
-         <xs:attribute name="force">
-            <xs:annotation>
-               <xs:documentation>indicates the extent to which this punctuation mark conventionally separates words or phrases</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:enumeration value="strong">
-                     <xs:annotation>
-                        <xs:documentation>the punctuation mark is a word separator</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="weak">
-                     <xs:annotation>
-                        <xs:documentation>the punctuation mark is not a word separator</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="inter">
-                     <xs:annotation>
-                        <xs:documentation>the punctuation mark may or may not be a word separator</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-         <xs:attribute name="unit">
-            <xs:annotation>
-               <xs:documentation>provides a name for the kind of unit delimited by this punctuation mark.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:pattern value="[^\p{C}\p{Z}]+"/>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-         <xs:attribute name="pre" type="xs:boolean">
-            <xs:annotation>
-               <xs:documentation>indicates whether this punctuation mark precedes or follows the unit it delimits.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="model.entryLike" abstract="true">
       <xs:complexType>
          <xs:choice maxOccurs="unbounded">
             <xs:element ref="tei:sense"/>
-            <xs:element ref="tei:pc"/>
             <xs:group ref="tei:model.entryPart.top"/>
             <xs:group ref="tei:model.global"/>
             <xs:group ref="tei:model.ptrLike"/>
@@ -3926,42 +3484,36 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       <xs:choice>
          <xs:element ref="tei:gramGrp"/>
          <xs:element ref="tei:usg"/>
-         <xs:element ref="tei:lbl"/>
       </xs:choice>
    </xs:group>
    <xs:group name="model.lexicalRefinement_alternation">
       <xs:choice>
          <xs:element ref="tei:gramGrp"/>
          <xs:element ref="tei:usg"/>
-         <xs:element ref="tei:lbl"/>
       </xs:choice>
    </xs:group>
    <xs:group name="model.lexicalRefinement_sequence">
       <xs:sequence>
          <xs:element ref="tei:gramGrp"/>
          <xs:element ref="tei:usg"/>
-         <xs:element ref="tei:lbl"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.lexicalRefinement_sequenceOptional">
       <xs:sequence>
          <xs:element minOccurs="0" ref="tei:gramGrp"/>
          <xs:element minOccurs="0" ref="tei:usg"/>
-         <xs:element minOccurs="0" ref="tei:lbl"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.lexicalRefinement_sequenceOptionalRepeatable">
       <xs:sequence>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:gramGrp"/>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:usg"/>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:lbl"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.lexicalRefinement_sequenceRepeatable">
       <xs:sequence>
          <xs:element maxOccurs="unbounded" ref="tei:gramGrp"/>
          <xs:element maxOccurs="unbounded" ref="tei:usg"/>
-         <xs:element maxOccurs="unbounded" ref="tei:lbl"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.gramPart">
@@ -3976,9 +3528,6 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          <xs:element ref="tei:form"/>
          <xs:element ref="tei:orth"/>
          <xs:element ref="tei:pron"/>
-         <xs:element ref="tei:hyph"/>
-         <xs:element ref="tei:syll"/>
-         <xs:element ref="tei:stress"/>
       </xs:choice>
    </xs:group>
    <xs:element name="entry" substitutionGroup="tei:model.entryLike">
@@ -3992,7 +3541,6 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       </xs:annotation>
       <xs:complexType>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
             <xs:group ref="tei:model.sensePart"/>
             <xs:group ref="tei:model.lexicalPhrase"/>
             <xs:group ref="tei:model.global"/>
@@ -4021,29 +3569,12 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          <xs:attribute ref="xml:id" use="required"/>
       </xs:complexType>
    </xs:element>
-   <xs:element name="dictScrap">
-      <xs:annotation>
-         <xs:documentation>(dictionary scrap) encloses a part of a dictionary entry in which other phrase-level dictionary elements are freely combined. [9.1. Dictionary Body and Overall Structure 9.2. The Structure of Dictionary Entries]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
-            <xs:group ref="tei:model.entryPart"/>
-            <xs:group ref="tei:model.morphLike"/>
-            <xs:group ref="tei:model.lexicalPhrase"/>
-            <xs:group ref="tei:model.lexicalInter"/>
-            <xs:group ref="tei:model.global"/>
-         </xs:choice>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="form">
       <xs:annotation>
          <xs:documentation>(form information group) groups all the information on the written and spoken forms of one headword. [9.3.1. Information on Written and Spoken Forms]</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
             <xs:group ref="tei:model.lexicalPhrase"/>
             <xs:group ref="tei:model.lexicalInter"/>
             <xs:group ref="tei:model.formPart"/>
@@ -4095,190 +3626,167 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       <xs:annotation>
          <xs:documentation>(orthographic form) gives the orthographic form of a dictionary headword. [9.3.1. Information on Written and Spoken Forms]</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.datable.w3c.attributes"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
-         <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
-         <xs:attributeGroup ref="tei:att.partials.attributes"/>
-         <xs:attributeGroup ref="tei:att.notated.attributes"/>
-         <xs:attribute name="type">
-            <xs:annotation>
-               <xs:documentation>gives the type of spelling.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:pattern value="[^\p{C}\p{Z}]+"/>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="tei:macro.lexicalParaContent">
+               <xs:attributeGroup ref="tei:att.datable.w3c.attributes"/>
+               <xs:attributeGroup ref="tei:att.global.attributes"/>
+               <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
+               <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
+               <xs:attributeGroup ref="tei:att.partials.attributes"/>
+               <xs:attributeGroup ref="tei:att.notated.attributes"/>
+               <xs:attribute name="type">
+                  <xs:annotation>
+                     <xs:documentation>gives the type of spelling.</xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                     <xs:restriction base="xs:token">
+                        <xs:pattern value="[^\p{C}\p{Z}]+"/>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:attribute>
+            </xs:extension>
+         </xs:complexContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="pron">
       <xs:annotation>
          <xs:documentation>(pronunciation) contains the pronunciation(s) of the word. [9.3.1. Information on Written and Spoken Forms]</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.datable.w3c.attributes"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
-         <xs:attributeGroup ref="tei:att.notated.attributes"/>
-         <xs:attributeGroup ref="tei:att.partials.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="hyph">
-      <xs:annotation>
-         <xs:documentation>(hyphenation) contains a hyphenated form of a dictionary headword, or hyphenation information in some other form. [9.3.1. Information on Written and Spoken Forms]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
-         <xs:attributeGroup ref="tei:att.notated.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="syll">
-      <xs:annotation>
-         <xs:documentation>(syllabification) contains the syllabification of the headword. [9.3.1. Information on Written and Spoken Forms]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
-         <xs:attributeGroup ref="tei:att.notated.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="stress">
-      <xs:annotation>
-         <xs:documentation>(stress) contains the stress pattern for a dictionary headword, if given separately. [9.3.1. Information on Written and Spoken Forms]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.notated.attributes"/>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="tei:macro.lexicalParaContent">
+               <xs:attributeGroup ref="tei:att.datable.w3c.attributes"/>
+               <xs:attributeGroup ref="tei:att.global.attributes"/>
+               <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
+               <xs:attributeGroup ref="tei:att.notated.attributes"/>
+               <xs:attributeGroup ref="tei:att.partials.attributes"/>
+               <xs:attributeGroup ref="tei:att.typed.attributes"/>
+            </xs:extension>
+         </xs:complexContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="gram">
       <xs:annotation>
          <xs:documentation>(grammatical information) within an entry in a dictionary or a terminological data file, contains grammatical information relating to a term, word, or form. [9.3.2. Grammatical Information]</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
-         <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
-         <xs:attribute name="type" use="required">
-            <xs:annotation>
-               <xs:documentation/>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:enumeration value="arguments">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="aspect">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="constraint">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="degree">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="diaRoot">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="diaRootNew">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="frequency">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="followedBy">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="gender">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="government">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="inflectionType">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="morphPattern">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="nominalState">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="number">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="person">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="pos">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="root">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="subc">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="synRoot">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="usg">
-                     <xs:annotation>
-                        <xs:documentation>hint on usage</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="tei:macro.lexicalParaContent">
+               <xs:attributeGroup ref="tei:att.global.attributes"/>
+               <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
+               <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
+               <xs:attribute name="type" use="required">
+                  <xs:annotation>
+                     <xs:documentation/>
+                  </xs:annotation>
+                  <xs:simpleType>
+                     <xs:restriction base="xs:token">
+                        <xs:enumeration value="arguments">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="aspect">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="constraint">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="degree">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="diaRoot">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="diaRootNew">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="frequency">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="followedBy">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="gender">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="government">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="inflectionType">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="morphPattern">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="nominalState">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="number">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="person">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="pos">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="root">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="subc">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="synRoot">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="usg">
+                           <xs:annotation>
+                              <xs:documentation>hint on usage</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:attribute>
+            </xs:extension>
+         </xs:complexContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="gramGrp">
@@ -4293,10 +3801,13 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       <xs:annotation>
          <xs:documentation>(definition) contains definition text in a dictionary entry. [9.3.3.1. Definitions]</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="tei:macro.lexicalParaContent">
+               <xs:attributeGroup ref="tei:att.global.attributes"/>
+               <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
+            </xs:extension>
+         </xs:complexContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="etym">
@@ -4305,14 +3816,12 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
             <xs:group ref="tei:model.global"/>
             <xs:group ref="tei:model.lexicalInter"/>
             <xs:group ref="tei:model.lexicalPhrase"/>
             <xs:element ref="tei:def"/>
             <xs:element ref="tei:etym"/>
             <xs:element ref="tei:gramGrp"/>
-            <xs:element ref="tei:lbl"/>
             <xs:element ref="tei:usg"/>
             <xs:element ref="tei:xr"/>
          </xs:choice>
@@ -4369,21 +3878,23 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       <xs:annotation>
          <xs:documentation>(language name) contains the name of a language mentioned in etymological or other linguistic discussion. [9.3.4. Etymological Information]</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="tei:macro.lexicalParaContent">
+               <xs:attributeGroup ref="tei:att.global.attributes"/>
+               <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
+            </xs:extension>
+         </xs:complexContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="usg">
       <xs:annotation>
          <xs:documentation>(usage) contains usage information in a dictionary entry. [9.3.5.2. Usage Information and Other Labels]</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:choice maxOccurs="unbounded">
+      <xs:complexType>
+         <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:name"/>
-            <xs:group ref="tei:macro.lexicalParaContent"/>
-         </xs:choice>
+         </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
          <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
          <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
@@ -4448,38 +3959,15 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="lbl">
-      <xs:annotation>
-         <xs:documentation>(label) contains a label for a form, example, translation, or other piece of information, e.g. abbreviation for, contraction of, literally, approximately, synonyms:, etc. [9.3.1. Information on Written and Spoken Forms 9.3.3.2. Translation Equivalents 9.3.5.3. Cross-References to Other Entries]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
-         <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
-         <xs:attribute name="type">
-            <xs:annotation>
-               <xs:documentation>classifies the label using any convenient typology.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:pattern value="[^\p{C}\p{Z}]+"/>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="xr">
       <xs:annotation>
          <xs:documentation>(cross-reference phrase) contains a phrase, sentence, or icon referring the reader to some other location in this or another text. [9.3.5.3. Cross-References to Other Entries]</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
             <xs:group ref="tei:model.lexicalPhrase"/>
             <xs:group ref="tei:model.lexicalInter"/>
             <xs:element ref="tei:usg"/>
-            <xs:element ref="tei:lbl"/>
             <xs:group ref="tei:model.global"/>
          </xs:choice>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
@@ -4535,2016 +4023,6 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="figure">
-      <xs:annotation>
-         <xs:documentation>(figure) groups elements representing or containing graphic information such as an illustration, formula, or figure. [14.4. Specific Elements for Graphic Images]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="tei:model.headLike"/>
-            <xs:group ref="tei:model.common"/>
-            <xs:element ref="tei:figDesc"/>
-            <xs:group ref="tei:model.graphicLike"/>
-            <xs:group ref="tei:model.global"/>
-         </xs:choice>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.placement.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attributes"/>
-         <xs:attributeGroup ref="tei:att.written.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="figDesc">
-      <xs:annotation>
-         <xs:documentation>(description of figure) contains a brief prose description of the appearance or content of a graphic figure, for use when documenting an image without displaying it. [14.4. Specific Elements for Graphic Images]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:complexContent>
-            <xs:extension base="tei:macro.limitedContent">
-               <xs:attributeGroup ref="tei:att.global.attributes"/>
-            </xs:extension>
-         </xs:complexContent>
-      </xs:complexType>
-   </xs:element>
-   <xs:attributeGroup name="att.gaijiProp.attributes">
-      <xs:attributeGroup ref="tei:att.gaijiProp.attribute.name"/>
-      <xs:attributeGroup ref="tei:att.gaijiProp.attribute.value"/>
-      <xs:attributeGroup ref="tei:att.gaijiProp.attribute.version"/>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.gaijiProp.attribute.name">
-      <xs:attribute name="name" use="required" type="xs:NCName">
-         <xs:annotation>
-            <xs:documentation>provides the name of the character or glyph property being defined.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.gaijiProp.attribute.value">
-      <xs:attribute name="value" use="required" type="xs:string">
-         <xs:annotation>
-            <xs:documentation>provides the value of the character or glyph property being defined.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="att.gaijiProp.attribute.version">
-      <xs:attribute name="version">
-         <xs:annotation>
-            <xs:documentation>specifies the version number of the Unicode Standard in which this property name is defined.
-Suggested values include: 1] 1.0.1; 2] 1.1; 3] 2.0; 4] 2.1; 5] 3.0; 6] 3.1; 7] 3.2; 8] 4.0; 9] 4.1; 10] 5.0; 11] 5.1; 12] 5.2; 13] 6.0; 14] 6.1; 15] 6.2; 16] 6.3; 17] 7.0; 18] 8.0; 19] 9.0; 20] 10.0; 21] 11.0; 22] 12.0; 23] 12.1; 24] 13.0; 25] 14.0; 26] 15.0; 27] unassigned</xs:documentation>
-         </xs:annotation>
-         <xs:simpleType>
-            <xs:union>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="1.0.1">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="1.1">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="2.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="2.1">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="3.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="3.1">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="3.2">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="4.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="4.1">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="5.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="5.1">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="5.2">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="6.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="6.1">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="6.2">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="6.3">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="7.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="8.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="9.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="10.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="11.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="12.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="12.1">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="13.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="14.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="15.0">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="unassigned">
-                        <xs:annotation>
-                           <xs:documentation/>
-                        </xs:annotation>
-                     </xs:enumeration>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:pattern value="[^\p{C}\p{Z}]+"/>
-                  </xs:restriction>
-               </xs:simpleType>
-            </xs:union>
-         </xs:simpleType>
-      </xs:attribute>
-   </xs:attributeGroup>
-   <xs:element name="g" substitutionGroup="tei:model.gLike">
-      <xs:annotation>
-         <xs:documentation>(character or glyph) represents a glyph, or a non-standard character. [5. Characters, Glyphs, and Writing Modes]</xs:documentation>
-      </xs:annotation>
-   </xs:element>
-   <xs:element name="charDecl" substitutionGroup="tei:model.encodingDescPart">
-      <xs:annotation>
-         <xs:documentation>(character declarations) provides information about nonstandard characters and glyphs. [5.2. Markup Constructs for Representation of Characters and Glyphs]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:choice maxOccurs="unbounded">
-            <xs:element ref="tei:char"/>
-            <xs:element ref="tei:glyph"/>
-         </xs:choice>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="char">
-      <xs:annotation>
-         <xs:documentation>(character) provides descriptive information about a character. [5.2. Markup Constructs for Representation of Characters and Glyphs]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:unicodeProp"/>
-            <xs:element ref="tei:unihanProp"/>
-            <xs:element ref="tei:localProp"/>
-            <xs:element ref="tei:mapping"/>
-            <xs:element ref="tei:figure"/>
-            <xs:group ref="tei:model.graphicLike"/>
-            <xs:group ref="tei:model.noteLike"/>
-         </xs:choice>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="glyph">
-      <xs:annotation>
-         <xs:documentation>(character glyph) provides descriptive information about a character glyph. [5.2. Markup Constructs for Representation of Characters and Glyphs]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:unicodeProp"/>
-            <xs:element ref="tei:unihanProp"/>
-            <xs:element ref="tei:localProp"/>
-            <xs:element ref="tei:mapping"/>
-            <xs:element ref="tei:figure"/>
-            <xs:group ref="tei:model.graphicLike"/>
-            <xs:group ref="tei:model.noteLike"/>
-         </xs:choice>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="localProp">
-      <xs:annotation>
-         <xs:documentation>(locally defined property) provides a locally defined character (or glyph) property. [5.2.1. Character Properties]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.gaijiProp.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="mapping">
-      <xs:complexType>
-         <xs:complexContent>
-            <xs:extension base="tei:macro.xtext">
-               <xs:attributeGroup ref="tei:att.global.attributes"/>
-               <xs:attributeGroup ref="tei:att.typed.attributes"/>
-            </xs:extension>
-         </xs:complexContent>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="unihanProp">
-      <xs:annotation>
-         <xs:documentation>(unihan property) holds the name and value of a normative or informative Unihan character (or glyph) property as part of its attributes. [5.2.1. Character Properties]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.gaijiProp.attribute.version"/>
-         <xs:attribute name="name" use="required">
-            <xs:annotation>
-               <xs:documentation>specifies the normalized name of a unicode han database (Unihan) property</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:enumeration value="kZVariant">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kAccountingNumeric">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kBigFive">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCCCII">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCNS1986">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCNS1992">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCangjie">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCantonese">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCheungBauer">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCheungBauerIndex">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCihaiT">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCompatibilityVariant">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCowles">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kDaeJaweon">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kDefinition">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kEACC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kFenn">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kFennIndex">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kFourCornerCode">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kFrequency">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kGB0">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kGB1">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kGB3">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kGB5">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kGB7">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kGB8">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kGSR">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kGradeLevel">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kHDZRadBreak">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kHKGlyph">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kHKSCS">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kHanYu">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kHangul">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kHanyuPinlu">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kHanyuPinyin">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIBMJapan">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIICore">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRGDaeJaweon">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRGDaiKanwaZiten">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRGHanyuDaZidian">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRGKangXi">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_GSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_HSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_JSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_KPSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_KSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_MSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_TSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_USource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_VSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kJIS0213">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kJa">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kJapaneseKun">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kJapaneseOn">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kJinmeiyoKanji">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kJis0">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kJis1">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kJoyoKanji">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kKPS0">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kKPS1">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kKSC0">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kKSC1">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kKangXi">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kKarlgren">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kKorean">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kKoreanEducationHanja">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kKoreanName">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kLau">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kMainlandTelegraph">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kMandarin">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kMatthews">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kMeyerWempe">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kMorohashi">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kNelson">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kOtherNumeric">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kPhonetic">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kPrimaryNumeric">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kPseudoGB1">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kRSAdobe_Japan1_6">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kRSJapanese">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kRSKanWa">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kRSKangXi">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kRSKorean">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kRSUnicode">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kSBGY">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kSemanticVariant">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kSimplifiedVariant">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kSpecializedSemanticVariant">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kTGH">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kTaiwanTelegraph">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kTang">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kTotalStrokes">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kTraditionalVariant">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kVietnamese">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kXHC1983">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kXerox">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-         <xs:attribute name="value" use="required">
-            <xs:annotation>
-               <xs:documentation>specifies the value of a named Unihan property</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:pattern value="[^\p{C}\p{Z}]+"/>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="unicodeProp">
-      <xs:annotation>
-         <xs:documentation>(unicode property) provides a Unicode property for a character (or glyph). [5.2.1. Character Properties]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.gaijiProp.attribute.version"/>
-         <xs:attribute name="name" use="required">
-            <xs:annotation>
-               <xs:documentation>specifies the normalized name of a Unicode property.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:enumeration value="Age">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="AHex">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Alpha">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Alphabetic">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="ASCII_Hex_Digit">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="bc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Bidi_C">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Bidi_Class">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Bidi_Control">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Bidi_M">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Bidi_Mirrored">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Bidi_Mirroring_Glyph">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Bidi_Paired_Bracket">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Bidi_Paired_Bracket_Type">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="blk">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Block">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="bmg">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="bpb">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="bpt">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Canonical_Combining_Class">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Case_Folding">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Case_Ignorable">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Cased">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="ccc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="CE">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="cf">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Changes_When_Casefolded">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Changes_When_Casemapped">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Changes_When_Lowercased">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Changes_When_NFKC_Casefolded">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Changes_When_Titlecased">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Changes_When_Uppercased">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="CI">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Comp_Ex">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Composition_Exclusion">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="CWCF">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="CWCM">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="CWKCF">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="CWL">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="CWT">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="CWU">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Dash">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Decomposition_Mapping">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Decomposition_Type">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Default_Ignorable_Code_Point">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Dep">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Deprecated">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="DI">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Dia">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Diacritic">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="dm">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="dt">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="ea">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="East_Asian_Width">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="EqUIdeo">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Equivalent_Unified_Ideograph">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Expands_On_NFC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Expands_On_NFD">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Expands_On_NFKC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Expands_On_NFKD">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Ext">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Extender">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="FC_NFKC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="FC_NFKC_Closure">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Full_Composition_Exclusion">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="gc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="GCB">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="General_Category">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Gr_Base">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Gr_Ext">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Gr_Link">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Grapheme_Base">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Grapheme_Cluster_Break">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Grapheme_Extend">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Grapheme_Link">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Hangul_Syllable_Type">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Hex">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Hex_Digit">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="hst">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Hyphen">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="ID_Continue">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="ID_Start">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="IDC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Ideo">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Ideographic">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="IDS">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="IDS_Binary_Operator">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="IDS_Trinary_Operator">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="IDSB">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="IDST">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Indic_Positional_Category">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Indic_Syllabic_Category">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="InPC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="InSC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="isc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="ISO_Comment">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Jamo_Short_Name">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="jg">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Join_C">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Join_Control">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Joining_Group">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Joining_Type">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="JSN">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="jt">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kAccountingNumeric">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kCompatibilityVariant">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIICore">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_GSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_HSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_JSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_KPSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_KSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_MSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_TSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_USource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kIRG_VSource">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kOtherNumeric">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kPrimaryNumeric">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="kRSUnicode">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="lb">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="lc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Line_Break">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="LOE">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Logical_Order_Exception">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Lower">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Lowercase">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Lowercase_Mapping">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Math">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="na">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="na1">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Name">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Name_Alias">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NChar">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NFC_QC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NFC_Quick_Check">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NFD_QC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NFD_Quick_Check">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NFKC_Casefold">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NFKC_CF">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NFKC_QC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NFKC_Quick_Check">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NFKD_QC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="NFKD_Quick_Check">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Noncharacter_Code_Point">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="nt">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Numeric_Type">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Numeric_Value">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="nv">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="OAlpha">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="ODI">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="OGr_Ext">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="OIDC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="OIDS">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="OLower">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="OMath">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Other_Alphabetic">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Other_Default_Ignorable_Code_Point">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Other_Grapheme_Extend">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Other_ID_Continue">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Other_ID_Start">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Other_Lowercase">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Other_Math">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Other_Uppercase">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="OUpper">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Pat_Syn">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Pat_WS">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Pattern_Syntax">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Pattern_White_Space">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="PCM">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Prepended_Concatenation_Mark">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="QMark">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Quotation_Mark">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Radical">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Regional_Indicator">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="RI">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="SB">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="sc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="scf">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Script">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Script_Extensions">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="scx">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="SD">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Sentence_Break">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Sentence_Terminal">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Simple_Case_Folding">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Simple_Lowercase_Mapping">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Simple_Titlecase_Mapping">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Simple_Uppercase_Mapping">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="slc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Soft_Dotted">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="stc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="STerm">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="suc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="tc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Term">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Terminal_Punctuation">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Titlecase_Mapping">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="uc">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="UIdeo">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Unicode_1_Name">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Unified_Ideograph">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Upper">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Uppercase">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Uppercase_Mapping">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Variation_Selector">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Vertical_Orientation">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="vo">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="VS">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="WB">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="White_Space">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="Word_Break">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="WSpace">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="XID_Continue">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="XID_Start">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="XIDC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="XIDS">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="XO_NFC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="XO_NFD">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="XO_NFKC">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="XO_NFKD">
-                     <xs:annotation>
-                        <xs:documentation/>
-                     </xs:annotation>
-                  </xs:enumeration>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-         <xs:attribute name="value" use="required" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>specifies the value of a named Unicode property.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="teiHeader">
       <xs:annotation>
          <xs:documentation>(TEI header) supplies descriptive and declarative metadata associated with a digital resource or set of resources. [2.1.1. The TEI Header and Its Components 15.1. Varieties of Composite Text]</xs:documentation>
@@ -6554,7 +4032,6 @@ Suggested values include: 1] 1.0.1; 2] 1.1; 3] 2.0; 4] 2.1; 5] 3.0; 6] 3.1; 7] 3
             <xs:element ref="tei:fileDesc"/>
             <xs:element minOccurs="0" ref="tei:encodingDesc"/>
             <xs:element ref="tei:profileDesc"/>
-            <xs:element minOccurs="0" ref="tei:xenoData"/>
             <xs:element minOccurs="0" ref="tei:revisionDesc"/>
          </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
@@ -6749,10 +4226,9 @@ Suggested values include: 1] funder; 2] sponsor; 3] rightsHolder</xs:documentati
          <xs:documentation>(identifier) supplies any form of identifier used to identify some object, such as a bibliographic item, a person, a title, an organization, etc. in a standardized way. [13.3.1. Basic Principles 2.2.4. Publication, Distribution, Licensing, etc. 2.2.5. The Series Statement 3.12.2.4. Imprint, Size of a Document, and Reprint Information]</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tei:model.gLike"/>
-            <xs:element ref="tei:idno"/>
-         </xs:choice>
+         <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:idno"/>
+         </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
          <xs:attributeGroup ref="tei:att.sortable.attributes"/>
          <xs:attributeGroup ref="tei:att.datable.attributes"/>
@@ -7143,17 +4619,6 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</xs:d
          <xs:attributeGroup ref="tei:att.global.attributes"/>
       </xs:complexType>
    </xs:element>
-   <xs:element name="xenoData">
-      <xs:annotation>
-         <xs:documentation>(non-TEI metadata) provides a container element into which metadata in non-TEI formats may be placed. [2.5. Non-TEI Metadata]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group minOccurs="0" ref="tei:anyElement-xenoData"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.declarable.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attributes"/>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="revisionDesc">
       <xs:annotation>
          <xs:documentation>(revision description) summarizes the revision history for a file. [2.6. The Revision Description 2.1.1. The TEI Header and Its Components]</xs:documentation>
@@ -7449,32 +4914,35 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</xs:d
       <xs:annotation>
          <xs:documentation>(arbitrary segment) represents any segmentation of text below the chunk level. [16.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="tei:macro.lexicalParaContent"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.segLike.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
-         <xs:attributeGroup ref="tei:att.written.attributes"/>
-         <xs:attributeGroup ref="tei:att.notated.attributes"/>
-         <xs:attribute name="type" use="required">
-            <xs:annotation>
-               <xs:documentation/>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:enumeration value="hint">
-                     <xs:annotation>
-                        <xs:documentation>a hint in a translation to narrow down the semantic scope of the particular item.</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="constrPart">
-                     <xs:annotation>
-                        <xs:documentation>TODO add description ???</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="tei:macro.lexicalParaContent">
+               <xs:attributeGroup ref="tei:att.global.attributes"/>
+               <xs:attributeGroup ref="tei:att.segLike.attributes"/>
+               <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
+               <xs:attributeGroup ref="tei:att.written.attributes"/>
+               <xs:attributeGroup ref="tei:att.notated.attributes"/>
+               <xs:attribute name="type" use="required">
+                  <xs:annotation>
+                     <xs:documentation/>
+                  </xs:annotation>
+                  <xs:simpleType>
+                     <xs:restriction base="xs:token">
+                        <xs:enumeration value="hint">
+                           <xs:annotation>
+                              <xs:documentation>a hint in a translation to narrow down the semantic scope of the particular item.</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="constrPart">
+                           <xs:annotation>
+                              <xs:documentation>TODO add description ???</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:attribute>
+            </xs:extension>
+         </xs:complexContent>
       </xs:complexType>
    </xs:element>
    <xs:attributeGroup name="att.datable.custom.attributes">
@@ -7961,34 +5429,11 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</xs:do
    </xs:element>
    <xs:element name="body">
       <xs:annotation>
-         <xs:documentation>(text body) contains the whole body of a single unitary text, excluding any front or back matter. [4. Default Text Structure]</xs:documentation>
+         <xs:documentation>(text body) contains the main content of the dictionary. MUST include a `&lt;div type="entries"&gt;` and MAY include a `&lt;div type="examples"&gt;`. [4. Default Text Structure]</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
-            <xs:sequence minOccurs="0">
-               <xs:group ref="tei:model.divTop"/>
-               <xs:choice minOccurs="0" maxOccurs="unbounded">
-                  <xs:group ref="tei:model.global"/>
-                  <xs:group ref="tei:model.divTop"/>
-               </xs:choice>
-            </xs:sequence>
-            <xs:choice>
-               <xs:sequence maxOccurs="unbounded">
-                  <xs:element ref="tei:model.divLike"/>
-                  <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
-               </xs:sequence>
-               <xs:sequence>
-                  <xs:sequence maxOccurs="unbounded">
-                     <xs:group ref="tei:model.common"/>
-                     <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
-                  </xs:sequence>
-                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
-                     <xs:element ref="tei:model.divLike"/>
-                     <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
-                  </xs:sequence>
-               </xs:sequence>
-            </xs:choice>
+            <xs:element ref="tei:div" minOccurs="1" maxOccurs="2"/>
          </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
       </xs:complexType>
@@ -7997,55 +5442,6 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</xs:do
       <xs:annotation>
          <xs:documentation>(text division) contains a subdivision of the front, body, or back of a text. [4.1. Divisions of the Body]</xs:documentation>
       </xs:annotation>
-   </xs:element>
-   <xs:element name="front">
-      <xs:annotation>
-         <xs:documentation>(front matter) contains any prefatory matter (headers, abstracts, title page, prefaces, dedications, etc.) found at the start of a document, before the main body. [4.6. Title Pages 4. Default Text Structure]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
-               <xs:group ref="tei:model.frontPart"/>
-               <xs:group ref="tei:model.pLike"/>
-               <xs:group ref="tei:model.pLike.front"/>
-               <xs:group ref="tei:model.global"/>
-            </xs:choice>
-            <xs:sequence minOccurs="0">
-               <xs:element ref="tei:model.divLike"/>
-               <xs:choice minOccurs="0" maxOccurs="unbounded">
-                  <xs:element ref="tei:model.divLike"/>
-                  <xs:group ref="tei:model.frontPart"/>
-                  <xs:group ref="tei:model.global"/>
-               </xs:choice>
-            </xs:sequence>
-         </xs:sequence>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="back">
-      <xs:annotation>
-         <xs:documentation>(back matter) contains any appendixes, etc. following the main part of a text. [4.7. Back Matter 4. Default Text Structure]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
-               <xs:group ref="tei:model.frontPart"/>
-               <xs:group ref="tei:model.pLike.front"/>
-               <xs:group ref="tei:model.pLike"/>
-               <xs:group ref="tei:model.listLike"/>
-               <xs:group ref="tei:model.global"/>
-            </xs:choice>
-            <xs:sequence minOccurs="0">
-               <xs:element ref="tei:model.divLike"/>
-               <xs:choice minOccurs="0" maxOccurs="unbounded">
-                  <xs:group ref="tei:model.frontPart"/>
-                  <xs:element ref="tei:model.divLike"/>
-                  <xs:group ref="tei:model.global"/>
-               </xs:choice>
-            </xs:sequence>
-         </xs:sequence>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-      </xs:complexType>
    </xs:element>
    <xs:attributeGroup name="att.global.facs.attributes">
       <xs:attributeGroup ref="tei:att.global.facs.attribute.facs"/>
@@ -8092,49 +5488,6 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</xs:do
          </xs:simpleType>
       </xs:attribute>
    </xs:attributeGroup>
-   <xs:element name="metamark">
-      <xs:annotation>
-         <xs:documentation>contains or describes any kind of graphic or written signal within a document the function of which is to determine how it should be read rather than forming part of the actual content of the document. [11.3.4.2. Metamarks]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:complexContent>
-            <xs:extension base="tei:macro.specialPara">
-               <xs:attributeGroup ref="tei:att.spanning.attributes"/>
-               <xs:attributeGroup ref="tei:att.placement.attributes"/>
-               <xs:attributeGroup ref="tei:att.global.attributes"/>
-               <xs:attribute name="function">
-                  <xs:annotation>
-                     <xs:documentation>describes the function (for example status, insertion, deletion, transposition) of the metamark.</xs:documentation>
-                  </xs:annotation>
-                  <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:pattern value="[^\p{C}\p{Z}]+"/>
-                     </xs:restriction>
-                  </xs:simpleType>
-               </xs:attribute>
-               <xs:attribute name="target">
-                  <xs:annotation>
-                     <xs:documentation>identifies one or more elements to which the metamark applies.</xs:documentation>
-                  </xs:annotation>
-                  <xs:simpleType>
-                     <xs:restriction>
-                        <xs:simpleType>
-                           <xs:list>
-                              <xs:simpleType>
-                                 <xs:restriction base="xs:anyURI">
-                                    <xs:pattern value="\S+"/>
-                                 </xs:restriction>
-                              </xs:simpleType>
-                           </xs:list>
-                        </xs:simpleType>
-                        <xs:minLength value="1"/>
-                     </xs:restriction>
-                  </xs:simpleType>
-               </xs:attribute>
-            </xs:extension>
-         </xs:complexContent>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="fs">
       <xs:annotation>
          <xs:documentation>(feature structure) represents a feature structure, that is, a collection of feature-value pairs organized as a structural unit. []</xs:documentation>
