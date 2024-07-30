@@ -56,7 +56,7 @@
          <div>
             <head>Part 2: Formal Specification</head>
 
-            <schemaSpec ident="shawi" source="/home/dschopper/data/generic-dict-schema/schema/acdh-ch-dicts.compiled.odd">
+            <schemaSpec ident="shawi" source="https://raw.githubusercontent.com/acdh-oeaw/generic-dict-schema/main/schema/tmp/acdh-ch-dicts.compiled.odd">
                
                <!-- We copy all modules from ACDH-CH dicts  -->
                <moduleRef key="derived-module-TEILex0"/>
@@ -163,55 +163,7 @@
                   </attList>
                </elementSpec>
                
-               <elementSpec ident="cit" mode="change" module="core">
-                  <content>
-                     <alternate minOccurs="1" maxOccurs="unbounded">
-                        <!-- both examples or translations have their textual content enclosed in quote elements -->
-                        <elementRef key="quote" minOccurs="1" maxOccurs="1"/>
-                        <!-- example entries may have 1–n nested translations -->
-                        <elementRef key="cit" minOccurs="0" maxOccurs="unbounded"/>
-                        <!-- change history of example entries  -->
-                        <elementRef key="fs"/>
-                        <!-- only  -->
-                        <elementRef key="bibl"/>
-                        <elementRef key="note"/>
-                        <elementRef key="usg"/>
-                        <elementRef key="gloss"/>
-                        <elementRef key="form"/>
-                     </alternate>
-                  </content>
-                  <constraintSpec ident="cit-context" scheme="schematron" mode="replace">
-                     <desc>assert correct context of cit types</desc>
-                     <constraint>
-                        <s:rule context="tei:cit[@type = 'translationEquivalent']">
-                           <s:assert test="parent::tei:sense">translationEquivalent: must be a direct child of a sense element</s:assert>
-                           <s:assert test="child::tei:bibl|child::tei:form[not(@type)]">translationEquivalent: a bibliographic reference or a form without a type attribute must be direct children of cit type translationEquivalent.</s:assert>
-                        </s:rule>
-                        <s:rule context="tei:cit[@type = 'translation']">
-                           <s:report test="* except (tei:quote|tei:cit|tei:bibl|tei:form)">a translation may only contain the translated text in a quote element</s:report>
-                        </s:rule>
-                     </constraint>
-                  </constraintSpec>
-                  <attList>
-                     <attDef ident="type" mode="replace" usage="req">
-                        <valList type="closed">
-                           <valItem ident="example">
-                              <desc>A dictionary example. Ideally, examples should consist in complete sentences. Examples should be concise, but can also contain several sentences. If dialogical models are involved, sentences are to be separated by a dash.</desc>
-                           </valItem>
-                           <valItem ident="translation">
-                              <desc>A translation.</desc>
-                           </valItem>
-                           <valItem ident="translationEquivalent">
-                              <desc>A translation equivalent.</desc>
-                           </valItem>
-                           <valItem ident="etymon">
-                              <desc>An etymon.</desc>
-                           </valItem>
-                        </valList>
-                     </attDef>
-                  </attList>
-               </elementSpec>
-
+               
                <elementSpec ident="form" mode="change" module="dictionaries">
                   <attList>
                      <attDef ident="type" mode="replace" usage="opt">
@@ -229,19 +181,14 @@
                      </attDef>
                   </attList>
                </elementSpec>
-               
-               <elementSpec ident="listBibl" mode="change" module="core">
-                  <constraintSpec ident="listBibl-context" scheme="schematron">
-                     <desc></desc>
+                            
+               <elementSpec ident="biblScope" mode="change" module="dictionaries">
+                  <constraintSpec ident="biblScope-context" scheme="schematron">
                      <constraint>
-                           <s:rule context="tei:listBibl">
-                              <s:assert test="parent::tei:entry">a listBibl is a direct child of an entry</s:assert>
-                              <s:assert test="not(child) or child and child::tei:bibl">a bibl is a direct child of a listBibl</s:assert>
-                           </s:rule>
-                           <s:rule context="tei:bibl">
-                              <s:assert test="matches(child::tei:biblScope, '^p\.\d')">Missing or misspelled page number</s:assert>
-                           </s:rule>
-                     </constraint>
+                        <s:rule context="tei:biblScope">
+                           <s:assert test="matches(., '^p\.\s?\d')">Missing or misspelled page number</s:assert>
+                        </s:rule>
+                     </constraint>   
                   </constraintSpec>
                </elementSpec>
                              
