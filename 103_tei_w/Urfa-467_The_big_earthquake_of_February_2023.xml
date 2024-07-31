@@ -1,0 +1,1594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../082_scripts_xsl/tei_2_html__shawi.xsl"?>
+<?xslt inPathSegment="\010_manannot\" outPathSegment="\106_html\"?>
+<?processor name="saxon" removePreserveFromXML="true" removePreserveFromXSLT="true"?>
+<?snippets fn="snippets_shawi_001.xml" path="{filePath}/../880_conf/"?>
+<?standoff fn="shawi_standoff.xml" path=""?>
+<?attributeAssignments fn="shawi_attributes.xml" path="{filePath}/../880_conf/"?>
+<?shortCuts fn="shawi_shortCuts" path="{filePath}/../880_conf/"?>
+<!--THIS FILE WAS PROGRAMMATICALLY CREATED by mergeHeaderAndTranscription.xsl on/at2024-07-31T10:01:52.218927Z-->
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title level="a">URFA-467</title>
+            <title level="s">SHAWI Corpus</title>
+            <respStmt>
+               <persName ref="corpus:SP">
+                  <forename>Stephan</forename>
+                  <surname>Procházka</surname>
+               </persName>
+               <resp>Principal Investigator</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AHu">
+                  <forename>Aozan</forename>
+                  <surname>Hussien</surname>
+               </persName>
+               <resp>Transcription</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:MT">
+                  <forename>Miriam</forename>
+                  <surname>Al Tawil</surname>
+               </persName>
+               <resp>ELAN </resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AN">
+                  <forename>Aleksandra</forename>
+                  <surname>Naddari</surname>
+               </persName>
+               <resp>Dictionary</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:MA">
+                  <forename>Zsófia Maura</forename>
+                  <surname>Abraham</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:CM">
+                  <forename>Charly</forename>
+                  <surname>Mörth</surname>
+               </persName>
+               <resp>National Cooperation Partner</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:DS">
+                  <forename>Daniel</forename>
+                  <surname>Schopper</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AHe">
+                  <forename>Angelika</forename>
+                  <surname>Hechtl</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:ISM">
+                  <forename>Ismail</forename>
+                  <surname>Batan</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:No Need">
+                  <forename>No Need/ unqualified</forename>
+                  <surname/>
+               </persName>
+               <resp/>
+            </respStmt>
+            <funder>Funded by the <orgName ref="https://ror.org/013tf3c58">FWF Austrian Science Fund</orgName> under the number <idno type="projectNumber">P 33574</idno>
+            </funder>
+         </titleStmt>
+         <publicationStmt>
+            <publisher ref="https://ror.org/03anc3s24">Austrian Academy of Sciences</publisher>
+            <publisher ref="https://ror.org/03prydq77">University of Vienna</publisher>
+            <distributor ref="https://ror.org/028bsh698">Austrian Center for Digital Humanities and Cultural Heritage</distributor>
+            <date when="????-??-??">TODO Set publication date here</date>
+            <address>
+               <addrLine>Sonnenfelsgasse 19</addrLine>
+               <addrLine>1010 Vienna</addrLine>
+               <addrLine>Austria</addrLine>
+            </address>
+            <availability status="free">
+               <licence target="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</licence>
+            </availability>
+            <idno type="SHAWICorpusID">URFA-467</idno>
+         </publicationStmt>
+         <sourceDesc>
+            <recordingStmt>
+               <recording dur-iso="06:29" type="audio">
+                  <date when="2023-05-06"/>
+                  <respStmt>
+                     <resp>recording</resp>
+                     <persName ref="corpus:SP">Stephan Procházka</persName>
+                  </respStmt>
+                  <media url="share:Urfa-467_Mezraa_Earthquake-Harran-2023.wav"
+                         mimeType="audio/wav"
+                         type="master"/>
+               </recording>
+            </recordingStmt>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <listPrefixDef>
+            <prefixDef ident="corpus"
+                       matchPattern="^(.+)$"
+                       replacementPattern="shawiCorpus.xml#$1">
+               <p>Private URIs using the <code>teiCorpusHeader</code> prefix are pointers to any element in the <ref target="shawiCorpus.xml">SHAWI teiCorpus document</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="share"
+                       matchPattern="^(.+)$"
+                       replacementPattern="\\share17.univie.ac.at\orientalistik\SHAWI\Recordings\*\*\$1.wav">
+               <p>Private URIs using the <code>share</code> prefix are pointers to audio file residing on the SHAWI network share.</p>
+            </prefixDef>
+            <prefixDef ident="geo"
+                       matchPattern="^(.+)$"
+                       replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml#$1">
+               <p>Private URIs using the <code>geo</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>place</gi> element in <ref target="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml">VICAV Geodata list</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="zotid"
+                       matchPattern="^(.+)$"
+                       replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_biblio_tei_zotero.xml#$1">
+               <p>Private URIs using the <code>zotid</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>biblStruct</gi> element in the TEI export of the <ref target="https://www.zotero.org/groups/2165756/vicav/library">VICAV Zotero Group library</ref>.</p>
+            </prefixDef>
+         </listPrefixDef>
+      </encodingDesc>
+      <profileDesc>
+         <particDesc>
+            <listPerson>
+               <head>Speakers in URFA-467</head>
+               <person sameAs="corpus:Mezra02">
+                  <name type="pseudonym">Mezra02</name>
+               </person>
+            </listPerson>
+         </particDesc>
+         <settingDesc>
+            <place sameAs="geo:harran">
+               <placeName>Harran</placeName>
+            </place>
+         </settingDesc>
+         <textClass>
+            <catRef target="corpus:Earthquake"/>
+         </textClass>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <timeline unit="ms">
+         <when xml:id="T0"/>
+         <when interval="97810" since="#T0" xml:id="T1"/>
+         <when interval="113990" since="#T0" xml:id="T2"/>
+         <when interval="113999" since="#T0" xml:id="T3"/>
+         <when interval="123310" since="#T0" xml:id="T4"/>
+         <when interval="123324" since="#T0" xml:id="T5"/>
+         <when interval="134135" since="#T0" xml:id="T6"/>
+         <when interval="134161" since="#T0" xml:id="T7"/>
+         <when interval="141674" since="#T0" xml:id="T8"/>
+         <when interval="141688" since="#T0" xml:id="T9"/>
+         <when interval="147688" since="#T0" xml:id="T10"/>
+         <when interval="147689" since="#T0" xml:id="T11"/>
+         <when interval="154770" since="#T0" xml:id="T12"/>
+         <when interval="154783" since="#T0" xml:id="T13"/>
+         <when interval="160229" since="#T0" xml:id="T14"/>
+         <when interval="160256" since="#T0" xml:id="T15"/>
+         <when interval="167229" since="#T0" xml:id="T16"/>
+         <when interval="167242" since="#T0" xml:id="T17"/>
+         <when interval="175121" since="#T0" xml:id="T18"/>
+         <when interval="175148" since="#T0" xml:id="T19"/>
+         <when interval="182648" since="#T0" xml:id="T20"/>
+         <when interval="182674" since="#T0" xml:id="T21"/>
+         <when interval="185390" since="#T0" xml:id="T22"/>
+         <when interval="185432" since="#T0" xml:id="T23"/>
+         <when interval="193215" since="#T0" xml:id="T24"/>
+         <when interval="205418" since="#T0" xml:id="T25"/>
+         <when interval="205445" since="#T0" xml:id="T26"/>
+         <when interval="214039" since="#T0" xml:id="T27"/>
+         <when interval="214066" since="#T0" xml:id="T28"/>
+         <when interval="221418" since="#T0" xml:id="T29"/>
+         <when interval="221445" since="#T0" xml:id="T30"/>
+         <when interval="229662" since="#T0" xml:id="T31"/>
+         <when interval="229675" since="#T0" xml:id="T32"/>
+         <when interval="233702" since="#T0" xml:id="T33"/>
+         <when interval="233729" since="#T0" xml:id="T34"/>
+         <when interval="243026" since="#T0" xml:id="T35"/>
+         <when interval="253053" since="#T0" xml:id="T36"/>
+         <when interval="262323" since="#T0" xml:id="T37"/>
+         <when interval="262337" since="#T0" xml:id="T38"/>
+         <when interval="269148" since="#T0" xml:id="T39"/>
+         <when interval="269188" since="#T0" xml:id="T40"/>
+         <when interval="283905" since="#T0" xml:id="T41"/>
+         <when interval="283972" since="#T0" xml:id="T42"/>
+         <when interval="297323" since="#T0" xml:id="T43"/>
+         <when interval="297350" since="#T0" xml:id="T44"/>
+         <when interval="304891" since="#T0" xml:id="T45"/>
+         <when interval="304904" since="#T0" xml:id="T46"/>
+         <when interval="310026" since="#T0" xml:id="T47"/>
+         <when interval="310053" since="#T0" xml:id="T48"/>
+         <when interval="318499" since="#T0" xml:id="T49"/>
+         <when interval="318567" since="#T0" xml:id="T50"/>
+         <when interval="325972" since="#T0" xml:id="T51"/>
+         <when interval="326012" since="#T0" xml:id="T52"/>
+         <when interval="336350" since="#T0" xml:id="T53"/>
+         <when interval="336364" since="#T0" xml:id="T54"/>
+         <when interval="347040" since="#T0" xml:id="T55"/>
+         <when interval="347094" since="#T0" xml:id="T56"/>
+         <when interval="360526" since="#T0" xml:id="T57"/>
+      </timeline>
+      <body>
+         <div subtype="d0" type="Situation">
+            <head>
+               <note type="start">#T0</note>
+               <note type="end">#T57</note>
+            </head>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a1"
+                  who="#default"
+                  end="#T2"
+                  start="#T1">
+                  <w join="right" xml:id="URFA-467_xTok_000001">SP</w>
+                  <pc xml:id="xTok_000002">:</pc>
+                  <w xml:id="URFA-467_xTok_000003">činit</w>
+                  <w xml:id="URFA-467_xTok_000004">hēne</w>
+                  <w xml:id="URFA-467_xTok_000005">lummun</w>
+                  <w xml:id="URFA-467_xTok_000006">ṣār</w>
+                  <w join="right" xml:id="URFA-467_xTok_000007" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000009" join="right">deprem</w>
+                  <pc xml:id="xTok_000010">?</pc>
+                  <w xml:id="URFA-467_xTok_000011">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000012">RD</w>
+                  <pc xml:id="xTok_000013">:</pc>
+                  <w xml:id="URFA-467_xTok_000014">ay</w>
+                  <w join="right" xml:id="URFA-467_xTok_000015" rend="withDash">aṣ</w>
+                  <w xml:id="URFA-467_xTok_000017">ṣubuḥ</w>
+                  <w xml:id="URFA-467_xTok_000018">činit</w>
+                  <w xml:id="URFA-467_xTok_000019">hēne</w>
+                  <w join="right" xml:id="URFA-467_xTok_000020">āni</w>
+                  <pc xml:id="xTok_000021">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000022" rend="withDash">aṣ</w>
+                  <w xml:id="URFA-467_xTok_000024">ṣubuḥ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000025" rend="withDash">w</w>
+                  <w xml:id="URFA-467_xTok_000027">iḥne</w>
+                  <w join="right" xml:id="URFA-467_xTok_000028" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-467_xTok_000030" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000032" join="right">lēl</w>
+                  <pc xml:id="xTok_000033">,</pc>
+                  <w xml:id="URFA-467_xTok_000034">mā</w>
+                  <w xml:id="URFA-467_xTok_000035">zāten</w>
+                  <w xml:id="URFA-467_xTok_000036">mā</w>
+                  <w join="right" xml:id="URFA-467_xTok_000037">nimna</w>
+                  <pc xml:id="xTok_000038">.</pc>
+                  <w xml:id="URFA-467_xTok_000039">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000040">HA</w>
+                  <pc xml:id="xTok_000041">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000042" rend="withDash">as</w>
+                  <w xml:id="URFA-467_xTok_000044">sāʕa</w>
+                  <w xml:id="URFA-467_xTok_000045">arbaʕa</w>
+                  <w xml:id="URFA-467_xTok_000046">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000047">RD</w>
+                  <pc xml:id="xTok_000048">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000049" rend="withDash">ʕind</w>
+                  <w xml:id="URFA-467_xTok_000051">i</w>
+                  <w xml:id="URFA-467_xTok_000052">čān</w>
+                  <w xml:id="URFA-467_xTok_000053">axu</w>
+                  <w join="right" xml:id="URFA-467_xTok_000054" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000056">ḥurma</w>
+                  <w xml:id="URFA-467_xTok_000057">ište</w>
+                  <w join="right" xml:id="URFA-467_xTok_000058">hā</w>
+                  <pc xml:id="xTok_000059">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000060" rend="withDash">nisīb</w>
+                  <w xml:id="URFA-467_xTok_000062">i</w>
+                  <w xml:id="URFA-467_xTok_000063">čān</w>
+                  <w xml:id="URFA-467_xTok_000064">gaʕad</w>
+                  <w join="right" xml:id="URFA-467_xTok_000065" rend="withDash">ʕind</w>
+                  <w join="right" xml:id="URFA-467_xTok_000067">i</w>
+                  <pc join="right" xml:id="xTok_000068">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a1.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a1.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a1" xml:id="a31">Were you here when the earthquake happened? | Yes, I was here in the morning. It was in the morning and we had hardly slept during the night. | (It was) at 4 o’clock. | The brother of my wife, my brother-in-law was here with me.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a2"
+                  who="#default"
+                  end="#T4"
+                  start="#T3">
+                  <w join="right" xml:id="URFA-467_xTok_000069" rend="withDash">l</w>
+                  <w join="right" xml:id="URFA-467_xTok_000071" rend="withDash">as</w>
+                  <w xml:id="URFA-467_xTok_000073">sāʕa</w>
+                  <w xml:id="URFA-467_xTok_000074">ṭnāʕaš</w>
+                  <w xml:id="URFA-467_xTok_000075">wəḥde</w>
+                  <w join="right" xml:id="URFA-467_xTok_000076">gaʕadna</w>
+                  <pc xml:id="xTok_000077">,</pc>
+                  <w xml:id="URFA-467_xTok_000078">gaʕadna</w>
+                  <w join="right" xml:id="URFA-467_xTok_000079" rend="withDash">ad</w>
+                  <w xml:id="URFA-467_xTok_000081">dōb</w>
+                  <w join="right" xml:id="URFA-467_xTok_000082">ginne</w>
+                  <pc xml:id="xTok_000083">:</pc>
+                  <w xml:id="URFA-467_xTok_000084">ᵊngūm</w>
+                  <w xml:id="URFA-467_xTok_000085">w</w>
+                  <w xml:id="URFA-467_xTok_000086">tā</w>
+                  <w join="right" xml:id="URFA-467_xTok_000087">nnām</w>
+                  <pc xml:id="xTok_000088">!</pc>
+                  <w xml:id="URFA-467_xTok_000089">ᵊtimaddadne</w>
+                  <w xml:id="URFA-467_xTok_000090">gimit</w>
+                  <w xml:id="URFA-467_xTok_000091">huwwa</w>
+                  <w xml:id="URFA-467_xTok_000092">yḥiss</w>
+                  <w join="right" xml:id="URFA-467_xTok_000093" rend="withDash">w</w>
+                  <w xml:id="URFA-467_xTok_000095">āni</w>
+                  <w join="right" xml:id="URFA-467_xTok_000096">aḥiss</w>
+                  <pc join="right" xml:id="xTok_000097">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a2.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a2.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a2" xml:id="a32">We were sitting together until twelve or one o’clock. We were sitting and then we had just said, “Let’s get up and go to bed!” We had just lain down when he woke up and I woke up too.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a3"
+                  who="#default"
+                  end="#T6"
+                  start="#T5">
+                  <w xml:id="URFA-467_xTok_000098">taʕbān</w>
+                  <w xml:id="URFA-467_xTok_000099">zād</w>
+                  <w xml:id="URFA-467_xTok_000100">āni</w>
+                  <w xml:id="URFA-467_xTok_000101">arbaʕ</w>
+                  <w xml:id="URFA-467_xTok_000102">w</w>
+                  <w xml:id="URFA-467_xTok_000103">ʕišrīn</w>
+                  <w xml:id="URFA-467_xTok_000104">sāʕa</w>
+                  <w xml:id="URFA-467_xTok_000105">wāgif</w>
+                  <w xml:id="URFA-467_xTok_000106">ʕala</w>
+                  <w join="right" xml:id="URFA-467_xTok_000107" rend="withDash">ḥēl</w>
+                  <w xml:id="URFA-467_xTok_000109">i</w>
+                  <w xml:id="URFA-467_xTok_000110">gāḏ̣ib</w>
+                  <w join="right" xml:id="URFA-467_xTok_000111" rend="withDash">b</w>
+                  <w xml:id="URFA-467_xTok_000113">nōbe</w>
+                  <w join="right" xml:id="URFA-467_xTok_000114" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-467_xTok_000116" rend="withDash">aš</w>
+                  <w xml:id="URFA-467_xTok_000118" join="right">šuġul</w>
+                  <pc xml:id="xTok_000119">,</pc>
+                  <w xml:id="URFA-467_xTok_000120">w</w>
+                  <w xml:id="URFA-467_xTok_000121">arbaʕ</w>
+                  <w xml:id="URFA-467_xTok_000122">w</w>
+                  <w xml:id="URFA-467_xTok_000123">ʕišrīn</w>
+                  <w xml:id="URFA-467_xTok_000124">sāʕa</w>
+                  <w xml:id="URFA-467_xTok_000125">al</w>
+                  <w xml:id="URFA-467_xTok_000126">wāgif</w>
+                  <w xml:id="URFA-467_xTok_000127">ʕala</w>
+                  <w join="right" xml:id="URFA-467_xTok_000128" rend="withDash">ḥēl</w>
+                  <w xml:id="URFA-467_xTok_000130">u</w>
+                  <w xml:id="URFA-467_xTok_000131">mā</w>
+                  <w xml:id="URFA-467_xTok_000132">yigdar</w>
+                  <w join="right" xml:id="URFA-467_xTok_000133">yinām</w>
+                  <pc xml:id="xTok_000134">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000135" rend="withDash">bī</w>
+                  <w xml:id="URFA-467_xTok_000137">´</w>
+                  <w xml:id="URFA-467_xTok_000138">səqənṭi</w>
+                  <w join="right" xml:id="URFA-467_xTok_000139" rend="withDash">b</w>
+                  <w xml:id="URFA-467_xTok_000141">wuǧūd</w>
+                  <w join="right" xml:id="URFA-467_xTok_000142" rend="withDash">al</w>
+                  <w join="right" xml:id="URFA-467_xTok_000144">wāḥad</w>
+                  <pc join="right" xml:id="xTok_000145">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a3.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a3.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a3" xml:id="a33">I was tired because I had been awake for twenty four hours because there was a lot to do at work. And the one who has been staying awake for twenty four hours, nevertheless cannot sleep because there is a kind of anxiety in one’s body.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a4"
+                  who="#default"
+                  end="#T8"
+                  start="#T7">
+                  <w xml:id="URFA-467_xTok_000146">gimit</w>
+                  <w xml:id="URFA-467_xTok_000147">ḥassēt</w>
+                  <w xml:id="URFA-467_xTok_000148">gimit</w>
+                  <w xml:id="URFA-467_xTok_000149">ḥassēt</w>
+                  <w xml:id="URFA-467_xTok_000150">gimit</w>
+                  <w xml:id="URFA-467_xTok_000151">fitaḥit</w>
+                  <w join="right" xml:id="URFA-467_xTok_000152" rend="withDash">ʕēn</w>
+                  <w xml:id="URFA-467_xTok_000154">i</w>
+                  <w join="right" xml:id="URFA-467_xTok_000155" rend="withDash">as</w>
+                  <w xml:id="URFA-467_xTok_000157">sāʕa</w>
+                  <w xml:id="URFA-467_xTok_000158">ište</w>
+                  <w xml:id="URFA-467_xTok_000159">arbaʕ</w>
+                  <w xml:id="URFA-467_xTok_000160">w</w>
+                  <w xml:id="URFA-467_xTok_000161" type="truncated">sabaʕ</w>
+                  <w xml:id="URFA-467_xTok_000162">arbaʕ</w>
+                  <w xml:id="URFA-467_xTok_000163">w</w>
+                  <w join="right" xml:id="URFA-467_xTok_000164">rubuʕ</w>
+                  <pc xml:id="xTok_000165">.</pc>
+                  <w xml:id="URFA-467_xTok_000166">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000167">IB</w>
+                  <pc xml:id="xTok_000168">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000169">ē</w>
+                  <pc xml:id="xTok_000170">.</pc>
+                  <w xml:id="URFA-467_xTok_000171">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000172">RD</w>
+                  <pc xml:id="xTok_000173">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000174">ay</w>
+                  <pc join="right" xml:id="xTok_000175">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a4.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a4.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a4" xml:id="a34">I woke up. I woke up, I opened my eyes. It was seven past four. It was a quarter past four. |  Yes. | Yes.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a5"
+                  who="#default"
+                  end="#T10"
+                  start="#T9">
+                  <w xml:id="URFA-467_xTok_000176">w</w>
+                  <w xml:id="URFA-467_xTok_000177">ginne</w>
+                  <w xml:id="URFA-467_xTok_000178">guṭmūne</w>
+                  <w xml:id="URFA-467_xTok_000179">tā</w>
+                  <w xml:id="URFA-467_xTok_000180">ntimaddad</w>
+                  <w xml:id="URFA-467_xTok_000181">rəmēt</w>
+                  <w join="right" xml:id="URFA-467_xTok_000182" rend="withDash">rās</w>
+                  <w xml:id="URFA-467_xTok_000184">i</w>
+                  <w join="right" xml:id="URFA-467_xTok_000185">mā</w>
+                  <pc join="right" xml:id="xTok_000186">_</pc>
+                  <w xml:id="URFA-467_xTok_000187">dri</w>
+                  <w xml:id="URFA-467_xTok_000188">šnōn</w>
+                  <w join="right" xml:id="URFA-467_xTok_000189" rend="withDash">lissaʕ</w>
+                  <w xml:id="URFA-467_xTok_000191">i</w>
+                  <w xml:id="URFA-467_xTok_000192">māni</w>
+                  <w xml:id="URFA-467_xTok_000193">qāfi</w>
+                  <w xml:id="URFA-467_xTok_000194">daḥḥagit</w>
+                  <w xml:id="URFA-467_xTok_000195">ᵊnhazzat</w>
+                  <w join="right" xml:id="URFA-467_xTok_000196">ᵊšwayy</w>
+                  <pc xml:id="xTok_000197">,</pc>
+                  <w xml:id="URFA-467_xTok_000198">guṭmūne</w>
+                  <w join="right" xml:id="URFA-467_xTok_000199">ᵊnhazzat</w>
+                  <pc join="right" xml:id="xTok_000200">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a5.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a5.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a5" xml:id="a35">We had just said, “Let’s lay down!” I had put my head (on the cushion), I don’t know if I had already fallen asleep when I felt that (the earth) trembled, it trembled a little bit.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a6"
+                  who="#default"
+                  end="#T12"
+                  start="#T11">
+                  <w xml:id="URFA-467_xTok_000201">nōbtēn</w>
+                  <w xml:id="URFA-467_xTok_000202">ṯalāṯ</w>
+                  <w xml:id="URFA-467_xTok_000203">hēn</w>
+                  <w xml:id="URFA-467_xTok_000204">awwal</w>
+                  <w xml:id="URFA-467_xTok_000205">gāḷam</w>
+                  <w xml:id="URFA-467_xTok_000206">nōbtēn</w>
+                  <w xml:id="URFA-467_xTok_000207">ṣār</w>
+                  <w xml:id="URFA-467_xTok_000208">amma</w>
+                  <w xml:id="URFA-467_xTok_000209">ṯalaṯ</w>
+                  <w xml:id="URFA-467_xTok_000210">nōbāt</w>
+                  <w xml:id="URFA-467_xTok_000211">ṣār</w>
+                  <w xml:id="URFA-467_xTok_000212">alḥaz</w>
+                  <w xml:id="URFA-467_xTok_000213">darrēne</w>
+                  <w join="right" xml:id="URFA-467_xTok_000214" rend="withDash">bī</w>
+                  <w xml:id="URFA-467_xTok_000216" join="right">´</w>
+                  <pc xml:id="xTok_000217">.</pc>
+                  <w xml:id="URFA-467_xTok_000218">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000219">HA</w>
+                  <pc xml:id="xTok_000220">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000221" rend="withDash">as</w>
+                  <w xml:id="URFA-467_xTok_000223">sāʕa</w>
+                  <w xml:id="URFA-467_xTok_000224">arbaʕ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000225">fāyte</w>
+                  <pc xml:id="xTok_000226">.</pc>
+                  <w xml:id="URFA-467_xTok_000227">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000228">RD</w>
+                  <pc xml:id="xTok_000229">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000230">ēy</w>
+                  <pc join="right" xml:id="xTok_000231">!</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a6.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a6.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a6" xml:id="a36">Two or three times. First they said that here it was two times, but it was three times, we could feel it at that moment. | It was past four o’clock. | Yes.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a7"
+                  who="#default"
+                  end="#T14"
+                  start="#T13">
+                  <w xml:id="URFA-467_xTok_000232">hazzat</w>
+                  <w join="right" xml:id="URFA-467_xTok_000233">guṭmūn</w>
+                  <pc xml:id="xTok_000234">,</pc>
+                  <w xml:id="URFA-467_xTok_000235">gimit</w>
+                  <w xml:id="URFA-467_xTok_000236">daḥḥagit</w>
+                  <w join="right" xml:id="URFA-467_xTok_000237" rend="withDash">nisīb</w>
+                  <w xml:id="URFA-467_xTok_000239">i</w>
+                  <w xml:id="URFA-467_xTok_000240">huwwa</w>
+                  <w xml:id="URFA-467_xTok_000241">zād</w>
+                  <w xml:id="URFA-467_xTok_000242">ḥāss</w>
+                  <w xml:id="URFA-467_xTok_000243">ā</w>
+                  <w xml:id="URFA-467_xTok_000244">daḥḥagne</w>
+                  <w xml:id="URFA-467_xTok_000245">ʕala</w>
+                  <w xml:id="URFA-467_xTok_000246">waǧih</w>
+                  <w join="right" xml:id="URFA-467_xTok_000247" rend="withDash">baʕaḏ̣</w>
+                  <w join="right" xml:id="URFA-467_xTok_000249">ne</w>
+                  <pc join="right" xml:id="xTok_000250">,</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a7.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a7.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a7" xml:id="a37">It trembled a little bit and then I realized that my brother-in-law had also woken up. We were looking at each other’s faces.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a8"
+                  who="#default"
+                  end="#T16"
+                  start="#T15">
+                  <w join="right" xml:id="URFA-467_xTok_000251">gilit</w>
+                  <pc xml:id="xTok_000252">:</pc>
+                  <w xml:id="URFA-467_xTok_000253">hāḏi</w>
+                  <w xml:id="URFA-467_xTok_000254">aḷḷa</w>
+                  <w xml:id="URFA-467_xTok_000255">gilt</w>
+                  <w xml:id="URFA-467_xTok_000256">aḷḷa</w>
+                  <w xml:id="URFA-467_xTok_000257">yiʕlam</w>
+                  <w xml:id="URFA-467_xTok_000258">zēn</w>
+                  <w join="right" xml:id="URFA-467_xTok_000259">ṣārat</w>
+                  <pc xml:id="xTok_000260">.</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000261">gilit</w>
+                  <pc xml:id="xTok_000262">:</pc>
+                  <w xml:id="URFA-467_xTok_000263">uxṛa</w>
+                  <w join="right" xml:id="URFA-467_xTok_000264" rend="withDash">b</w>
+                  <w xml:id="URFA-467_xTok_000266">Malatya</w>
+                  <w join="right" xml:id="URFA-467_xTok_000267" rend="withDash">b</w>
+                  <w xml:id="URFA-467_xTok_000269">Elaziq</w>
+                  <w xml:id="URFA-467_xTok_000270">ṣār</w>
+                  <w xml:id="URFA-467_xTok_000271">gilit</w>
+                  <w xml:id="URFA-467_xTok_000272">deprem</w>
+                  <w xml:id="URFA-467_xTok_000273">ṣār</w>
+                  <w xml:id="URFA-467_xTok_000274">gilit</w>
+                  <w xml:id="URFA-467_xTok_000275">hēne</w>
+                  <w join="right" xml:id="URFA-467_xTok_000276">nhazzat</w>
+                  <pc join="right" xml:id="xTok_000277">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a8.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a8.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a8" xml:id="a38">I said, “God knows but this time things still went well.” I said, “Again there was probably an earthquake in Malatya or Elazığ and the earth also trembled here.”</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a9"
+                  who="#default"
+                  end="#T18"
+                  start="#T17">
+                  <w xml:id="URFA-467_xTok_000278">ṣaḥīḥ</w>
+                  <w xml:id="URFA-467_xTok_000279">daḥḥagne</w>
+                  <w xml:id="URFA-467_xTok_000280">ʕala</w>
+                  <w xml:id="URFA-467_xTok_000281">wǧūh</w>
+                  <w join="right" xml:id="URFA-467_xTok_000282" rend="withDash">baʕaḏ̣</w>
+                  <w xml:id="URFA-467_xTok_000284">ne</w>
+                  <w xml:id="URFA-467_xTok_000285">daḥḥagit</w>
+                  <w join="right" xml:id="URFA-467_xTok_000286">ᵊnhazzat</w>
+                  <pc xml:id="xTok_000287">.</pc>
+                  <w xml:id="URFA-467_xTok_000288">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000289">IB</w>
+                  <pc xml:id="xTok_000290">:</pc>
+                  <w xml:id="URFA-467_xTok_000291">gāmat</w>
+                  <w xml:id="URFA-467_xTok_000292">tinhazz</w>
+                  <w xml:id="URFA-467_xTok_000293">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000294">RD</w>
+                  <pc xml:id="xTok_000295">:</pc>
+                  <w xml:id="URFA-467_xTok_000296">ēy</w>
+                  <w xml:id="URFA-467_xTok_000297">gāmat</w>
+                  <w xml:id="URFA-467_xTok_000298">tinhazz</w>
+                  <w xml:id="URFA-467_xTok_000299">amma</w>
+                  <w xml:id="URFA-467_xTok_000300">tinhazz</w>
+                  <w xml:id="URFA-467_xTok_000301">ᵊšnōn</w>
+                  <w xml:id="URFA-467_xTok_000302">tā</w>
+                  <w join="right" xml:id="URFA-467_xTok_000303">tinhazz</w>
+                  <pc join="right" xml:id="xTok_000304">!</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a9.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a9.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a9" xml:id="a39">Right. We looked into each other’s faces and I realized that the earth trembled. | It began to tremble. | Yes, it stared trembling. And how it trembled!</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a10"
+                  who="#default"
+                  end="#T20"
+                  start="#T19">
+                  <w xml:id="URFA-467_xTok_000305">iḥne</w>
+                  <w join="right" xml:id="URFA-467_xTok_000306" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-467_xTok_000308" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000310">ōḍa</w>
+                  <w join="right" xml:id="URFA-467_xTok_000311" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-467_xTok_000313" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000315">ġurfe</w>
+                  <w xml:id="URFA-467_xTok_000316">gāʕdīn</w>
+                  <w join="right" xml:id="URFA-467_xTok_000317" rend="withDash">da</w>
+                  <w xml:id="URFA-467_xTok_000319">nurkuḏ̣</w>
+                  <w xml:id="URFA-467_xTok_000320">hīčiḏ</w>
+                  <w xml:id="URFA-467_xTok_000321">daḥḥagne</w>
+                  <w xml:id="URFA-467_xTok_000322">iḥne</w>
+                  <w join="right" xml:id="URFA-467_xTok_000323">asfal</w>
+                  <pc xml:id="xTok_000324">.</pc>
+                  <w xml:id="URFA-467_xTok_000325">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000326">FU</w>
+                  <pc xml:id="xTok_000327">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000328" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000330">bāb</w>
+                  <w xml:id="URFA-467_xTok_000331">mā</w>
+                  <w xml:id="URFA-467_xTok_000332">ʕād</w>
+                  <w join="right" xml:id="URFA-467_xTok_000333" rend="withDash">nindall</w>
+                  <w join="right" xml:id="URFA-467_xTok_000335">u</w>
+                  <pc join="right" xml:id="xTok_000336">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a10.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a10.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a10" xml:id="a40">We had been sitting in the parlour when we started running. Suddenly we realized that we were (lying) on the ground. | We didn’t know where the door is.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a11"
+                  who="#default"
+                  end="#T22"
+                  start="#T21">
+                  <w join="right" xml:id="URFA-467_xTok_000337">RD</w>
+                  <pc xml:id="xTok_000338">:</pc>
+                  <w xml:id="URFA-467_xTok_000339">mā</w>
+                  <w xml:id="URFA-467_xTok_000340">nigdar</w>
+                  <w xml:id="URFA-467_xTok_000341">nugḏ̣ub</w>
+                  <w join="right" xml:id="URFA-467_xTok_000342" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000344">bāb</w>
+                  <w xml:id="URFA-467_xTok_000345">mā</w>
+                  <w xml:id="URFA-467_xTok_000346">nigdar</w>
+                  <w xml:id="URFA-467_xTok_000347">nʕayyir</w>
+                  <w join="right" xml:id="URFA-467_xTok_000348" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000350" join="right">bāb</w>
+                  <pc xml:id="xTok_000351">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000352" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000354" type="truncated">b</w>
+                  <w xml:id="URFA-467_xTok_000355">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000356">FU</w>
+                  <pc xml:id="xTok_000357">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000358" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000360">bāb</w>
+                  <w xml:id="URFA-467_xTok_000361">mā</w>
+                  <w join="right" xml:id="URFA-467_xTok_000362" rend="withDash">nilgā</w>
+                  <w xml:id="URFA-467_xTok_000364" join="right">´</w>
+                  <pc xml:id="xTok_000365">.</pc>
+                  <w xml:id="URFA-467_xTok_000366">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000367">ay</w>
+                  <pc join="right" xml:id="xTok_000368">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a11.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a11.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a11" xml:id="a41">We could not reach the door, we could not recognize the door. | We could not find it. | Yes.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a12"
+                  who="#default"
+                  end="#T24"
+                  start="#T23">
+                  <w xml:id="URFA-467_xTok_000369">waḷḷa</w>
+                  <w xml:id="URFA-467_xTok_000370">ṭəlaʕit</w>
+                  <w xml:id="URFA-467_xTok_000371">hēne</w>
+                  <w xml:id="URFA-467_xTok_000372">ǧiddām</w>
+                  <w join="right" xml:id="URFA-467_xTok_000373" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000375">bāb</w>
+                  <w join="right" xml:id="URFA-467_xTok_000376">ṭəlaʕit</w>
+                  <pc xml:id="xTok_000377">,</pc>
+                  <w xml:id="URFA-467_xTok_000378">ī</w>
+                  <w xml:id="URFA-467_xTok_000379">tā</w>
+                  <w xml:id="URFA-467_xTok_000380">tinhazz</w>
+                  <w xml:id="URFA-467_xTok_000381">adaḥḥig</w>
+                  <w join="right" xml:id="URFA-467_xTok_000382" rend="withDash">ad</w>
+                  <w xml:id="URFA-467_xTok_000384">dinye</w>
+                  <w join="right" xml:id="URFA-467_xTok_000385" rend="withDash">as</w>
+                  <w xml:id="URFA-467_xTok_000387">sima</w>
+                  <w join="right" xml:id="URFA-467_xTok_000388" rend="withDash">w</w>
+                  <w join="right" xml:id="URFA-467_xTok_000390" rend="withDash">ad</w>
+                  <w xml:id="URFA-467_xTok_000392">dinye</w>
+                  <w join="right" xml:id="URFA-467_xTok_000393" rend="withDash">kull</w>
+                  <w xml:id="URFA-467_xTok_000395">he</w>
+                  <w xml:id="URFA-467_xTok_000396">hičiḏ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000397" rend="withDash">da</w>
+                  <w xml:id="URFA-467_xTok_000399">yinhazz</w>
+                  <w xml:id="URFA-467_xTok_000400">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000401">HA</w>
+                  <pc xml:id="xTok_000402">:</pc>
+                  <w xml:id="URFA-467_xTok_000403">mā</w>
+                  <w xml:id="URFA-467_xTok_000404">šā</w>
+                  <w xml:id="URFA-467_xTok_000405">aḷḷā</w>
+                  <w xml:id="URFA-467_xTok_000406">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000407">RD</w>
+                  <pc xml:id="xTok_000408">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000409">waḷḷāhi</w>
+                  <pc join="right" xml:id="xTok_000410">!</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a12.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a12.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a12" xml:id="a42">By God, I had moved here in front of the door, I had moved here when I realized that the earth and the sky were shaking. Everything was trembling like this. | My goodness! | By God!</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a13"
+                  who="#default"
+                  end="#T25"
+                  start="#T24">
+                  <w xml:id="URFA-467_xTok_000411">bass</w>
+                  <w join="right" xml:id="URFA-467_xTok_000412" rend="withDash">as</w>
+                  <w xml:id="URFA-467_xTok_000414">sōṭ</w>
+                  <w xml:id="URFA-467_xTok_000415">ᵊšnōn</w>
+                  <w xml:id="URFA-467_xTok_000416">mū</w>
+                  <w xml:id="URFA-467_xTok_000417">sōṭ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000418" rend="withDash">da</w>
+                  <w xml:id="URFA-467_xTok_000420" join="right">yiǧi</w>
+                  <pc xml:id="xTok_000421">?</pc>
+                  <w xml:id="URFA-467_xTok_000422">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000423">IB</w>
+                  <pc xml:id="xTok_000424">:</pc>
+                  <w xml:id="URFA-467_xTok_000425">ī</w>
+                  <w xml:id="URFA-467_xTok_000426">ḥiss</w>
+                  <w join="right" xml:id="URFA-467_xTok_000427">yaʕni</w>
+                  <pc xml:id="xTok_000428">.</pc>
+                  <w xml:id="URFA-467_xTok_000429">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000430">miṯil</w>
+                  <pc xml:id="xTok_000431">,</pc>
+                  <w xml:id="URFA-467_xTok_000432">miṯil</w>
+                  <w xml:id="URFA-467_xTok_000433">hawa</w>
+                  <w join="right" xml:id="URFA-467_xTok_000434" rend="withDash">wakt</w>
+                  <w xml:id="URFA-467_xTok_000436">in</w>
+                  <w xml:id="URFA-467_xTok_000437">hīčiḏ</w>
+                  <w xml:id="URFA-467_xTok_000438">yuḏ̣rub</w>
+                  <w join="right" xml:id="URFA-467_xTok_000439" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000441">ᵊhniyye</w>
+                  <w xml:id="URFA-467_xTok_000442">yuḏ̣rub</w>
+                  <w xml:id="URFA-467_xTok_000443">ᵊhnīt</w>
+                  <w join="right" xml:id="URFA-467_xTok_000444" rend="withDash">at</w>
+                  <w xml:id="URFA-467_xTok_000446">tēl</w>
+                  <w join="right" xml:id="URFA-467_xTok_000447" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000449" join="right">ǧēyrān</w>
+                  <pc xml:id="xTok_000450">,</pc>
+                  <w xml:id="URFA-467_xTok_000451">yṣaffir</w>
+                  <w xml:id="URFA-467_xTok_000452">ʕayne</w>
+                  <w xml:id="URFA-467_xTok_000453">hīčiḏ</w>
+                  <w xml:id="URFA-467_xTok_000454">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000455">HA</w>
+                  <pc xml:id="xTok_000456">:</pc>
+                  <w xml:id="URFA-467_xTok_000457">ilhe</w>
+                  <w xml:id="URFA-467_xTok_000458">ṣəfīr</w>
+                  <w xml:id="URFA-467_xTok_000459">yā</w>
+                  <w join="right" xml:id="URFA-467_xTok_000460">Muḥammad</w>
+                  <pc xml:id="xTok_000461">.</pc>
+                  <w xml:id="URFA-467_xTok_000462">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000463">RD</w>
+                  <pc xml:id="xTok_000464">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000465">ēy</w>
+                  <pc join="right" xml:id="xTok_000466">!</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a13.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a13.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a13" xml:id="a43">But there was a noise. Wasn’t there a noise coming? | Yes, a noise. | Like, like a wind when it hits the thingy, the electric wires. It was howling like this. | It has such a howling, o Muhammad. | Yes.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a14"
+                  who="#default"
+                  end="#T27"
+                  start="#T26">
+                  <w xml:id="URFA-467_xTok_000467">awwal</w>
+                  <w xml:id="URFA-467_xTok_000468">čān</w>
+                  <w xml:id="URFA-467_xTok_000469">yṣaffir</w>
+                  <w xml:id="URFA-467_xTok_000470">ʕugub</w>
+                  <w join="right" xml:id="URFA-467_xTok_000471">wugfat</w>
+                  <pc xml:id="xTok_000472">,</pc>
+                  <w xml:id="URFA-467_xTok_000473">yaʕni</w>
+                  <w join="right" xml:id="URFA-467_xTok_000474" rend="withDash">bi</w>
+                  <w xml:id="URFA-467_xTok_000476">gadd</w>
+                  <w join="right" xml:id="URFA-467_xTok_000477">daqāyiq</w>
+                  <pc xml:id="xTok_000478">,</pc>
+                  <w xml:id="URFA-467_xTok_000479">daqāyiq</w>
+                  <w xml:id="URFA-467_xTok_000480">daqāyiq</w>
+                  <w xml:id="URFA-467_xTok_000481">w</w>
+                  <w xml:id="URFA-467_xTok_000482">nuṣṣ</w>
+                  <w xml:id="URFA-467_xTok_000483">mā</w>
+                  <w join="right" xml:id="URFA-467_xTok_000484">ṣār</w>
+                  <pc xml:id="xTok_000485">,</pc>
+                  <w xml:id="URFA-467_xTok_000486">mā</w>
+                  <w xml:id="URFA-467_xTok_000487">sāgat</w>
+                  <w xml:id="URFA-467_xTok_000488">yaʕni</w>
+                  <w join="right" xml:id="URFA-467_xTok_000489">wugfat</w>
+                  <pc xml:id="xTok_000490">,</pc>
+                  <w xml:id="URFA-467_xTok_000491">w</w>
+                  <w xml:id="URFA-467_xTok_000492">uxṛa</w>
+                  <w join="right" xml:id="URFA-467_xTok_000493">ballašat</w>
+                  <pc join="right" xml:id="xTok_000494">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a14.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a14.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a14" xml:id="a44">First it started howling, but then it stopped for some minutes. It lasted not even a minute and half until it stopped, but then it started again.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a15"
+                  who="#default"
+                  end="#T29"
+                  start="#T28">
+                  <w join="right" xml:id="URFA-467_xTok_000495" rend="withDash">aḏ̣</w>
+                  <w xml:id="URFA-467_xTok_000497">ḏ̣uhur</w>
+                  <w xml:id="URFA-467_xTok_000498">ballašat</w>
+                  <w xml:id="URFA-467_xTok_000499">zād</w>
+                  <w join="right" xml:id="URFA-467_xTok_000500" rend="withDash">han</w>
+                  <w xml:id="URFA-467_xTok_000502">nōb</w>
+                  <w xml:id="URFA-467_xTok_000503">gāmat</w>
+                  <w xml:id="URFA-467_xTok_000504">tunfux</w>
+                  <w xml:id="URFA-467_xTok_000505">miṯil</w>
+                  <w join="right" xml:id="URFA-467_xTok_000506" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000508">insān</w>
+                  <w xml:id="URFA-467_xTok_000509">al</w>
+                  <w xml:id="URFA-467_xTok_000510">yitʕab</w>
+                  <w xml:id="URFA-467_xTok_000511">ygūl</w>
+                  <w join="right" xml:id="URFA-467_xTok_000512" rend="withDash">wakt</w>
+                  <w xml:id="URFA-467_xTok_000514">in</w>
+                  <w xml:id="URFA-467_xTok_000515">yiǧi</w>
+                  <w xml:id="URFA-467_xTok_000516">ygūl</w>
+                  <w join="right" xml:id="URFA-467_xTok_000517" rend="withDash">kuff</w>
+                  <w join="right" xml:id="URFA-467_xTok_000519" rend="withDash">kuff</w>
+                  <w join="right" xml:id="URFA-467_xTok_000521">kuff</w>
+                  <pc join="right" xml:id="xTok_000522">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a15.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a15.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a15" xml:id="a45">Afterwards it began again; this time it started to pant like a person who is tired and starts to make huff huff huff.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a16"
+                  who="#default"
+                  end="#T31"
+                  start="#T30">
+                  <w xml:id="URFA-467_xTok_000523">en</w>
+                  <w xml:id="URFA-467_xTok_000524">āxir</w>
+                  <w xml:id="URFA-467_xTok_000525">āxir</w>
+                  <w xml:id="URFA-467_xTok_000526">šī</w>
+                  <w join="right" xml:id="URFA-467_xTok_000527" rend="withDash">wakt</w>
+                  <w xml:id="URFA-467_xTok_000529">in</w>
+                  <w xml:id="URFA-467_xTok_000530">ṣārat</w>
+                  <w xml:id="URFA-467_xTok_000531">ᵊhniyye</w>
+                  <w xml:id="URFA-467_xTok_000532">wgufat</w>
+                  <w xml:id="URFA-467_xTok_000533">zād</w>
+                  <w xml:id="URFA-467_xTok_000534">ʕād</w>
+                  <w xml:id="URFA-467_xTok_000535">gāḷat</w>
+                  <w xml:id="URFA-467_xTok_000536">kussssss</w>
+                  <w join="right" xml:id="URFA-467_xTok_000537" rend="withDash">b</w>
+                  <w xml:id="URFA-467_xTok_000539">nōba</w>
+                  <w xml:id="URFA-467_xTok_000540">wəḥde</w>
+                  <w join="right" xml:id="URFA-467_xTok_000541" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000543">hawa</w>
+                  <w join="right" xml:id="URFA-467_xTok_000544">rāḥ</w>
+                  <pc xml:id="xTok_000545">.</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000546">IB</w>
+                  <pc xml:id="xTok_000547">:</pc>
+                  <w xml:id="URFA-467_xTok_000548">ī</w>
+                  <w join="right" xml:id="URFA-467_xTok_000549">wgufat</w>
+                  <pc join="right" xml:id="xTok_000550">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a16.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a16.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a16" xml:id="a46">Eventually, eventually it stopped by making kusssss. At once the “wind” had gone. | Yes, it stopped.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a17"
+                  who="#default"
+                  end="#T33"
+                  start="#T32">
+                  <w xml:id="URFA-467_xTok_000551">amma</w>
+                  <w xml:id="URFA-467_xTok_000552">sāgat</w>
+                  <w xml:id="URFA-467_xTok_000553">gaṛāba</w>
+                  <w xml:id="URFA-467_xTok_000554">daqāyiq</w>
+                  <w xml:id="URFA-467_xTok_000555">daqāyig</w>
+                  <w xml:id="URFA-467_xTok_000556">w</w>
+                  <w xml:id="URFA-467_xTok_000557">nuṣṣ</w>
+                  <w xml:id="URFA-467_xTok_000558">gaṛāba</w>
+                  <w xml:id="URFA-467_xTok_000559">daqāyig</w>
+                  <w xml:id="URFA-467_xTok_000560">w</w>
+                  <w xml:id="URFA-467_xTok_000561">nuṣṣ</w>
+                  <w xml:id="URFA-467_xTok_000562">darrēne</w>
+                  <w join="right" xml:id="URFA-467_xTok_000563" rend="withDash">bī</w>
+                  <w join="right" xml:id="URFA-467_xTok_000565">ha</w>
+                  <pc join="right" xml:id="xTok_000566">,</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a17.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a17.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a17" xml:id="a47">It had lasted for about a minute, a minute and a half. We felt it for about a minute and a half.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a18"
+                  who="#default"
+                  end="#T35"
+                  start="#T34">
+                  <w xml:id="URFA-467_xTok_000567">āni</w>
+                  <w xml:id="URFA-467_xTok_000568">wāgif</w>
+                  <w xml:id="URFA-467_xTok_000569">hēne</w>
+                  <w xml:id="URFA-467_xTok_000570">gimit</w>
+                  <w xml:id="URFA-467_xTok_000571">agri</w>
+                  <w xml:id="URFA-467_xTok_000572">aḏān</w>
+                  <w xml:id="URFA-467_xTok_000573">āni</w>
+                  <w join="right" xml:id="URFA-467_xTok_000574">aḏḏin</w>
+                  <pc join="right" xml:id="xTok_000575">.</pc>
+                  <w xml:id="URFA-467_xTok_000576">wāḥad</w>
+                  <w xml:id="URFA-467_xTok_000577">yigri</w>
+                  <w xml:id="URFA-467_xTok_000578">yindaʕi</w>
+                  <w xml:id="URFA-467_xTok_000579">hināka</w>
+                  <w join="right" xml:id="URFA-467_xTok_000580" rend="withDash">ʕamm</w>
+                  <w xml:id="URFA-467_xTok_000582">u</w>
+                  <w xml:id="URFA-467_xTok_000583">ʕAli</w>
+                  <w xml:id="URFA-467_xTok_000584">čān</w>
+                  <w xml:id="URFA-467_xTok_000585">gaʕad</w>
+                  <w xml:id="URFA-467_xTok_000586">ṭāliʕ</w>
+                  <w xml:id="URFA-467_xTok_000587">hināka</w>
+                  <w xml:id="URFA-467_xTok_000588">o</w>
+                  <w xml:id="URFA-467_xTok_000589">zaman</w>
+                  <w xml:id="URFA-467_xTok_000590">ᵊhniyye</w>
+                  <w xml:id="URFA-467_xTok_000591">mī</w>
+                  <w xml:id="URFA-467_xTok_000592">ṭayyib</w>
+                  <w xml:id="URFA-467_xTok_000593">čān</w>
+                  <w xml:id="URFA-467_xTok_000594">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000595">IB</w>
+                  <pc xml:id="xTok_000596">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000597">ē</w>
+                  <pc join="right" xml:id="xTok_000598">!</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a18.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a18.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a18" xml:id="a48">I was standing here and started reciting the prayer call. I recited the prayer call.Uncle Ali was reciting and praying over there; he had gone there. He was still alive at that time, wasn’t he? | Yes!</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a19"
+                  who="#default"
+                  end="#T36"
+                  start="#T35">
+                  <w xml:id="URFA-467_xTok_000599">ṭāliʕ</w>
+                  <w xml:id="URFA-467_xTok_000600">hināk</w>
+                  <w join="right" xml:id="URFA-467_xTok_000601" rend="withDash">da</w>
+                  <w xml:id="URFA-467_xTok_000603" join="right">yigūl</w>
+                  <pc xml:id="xTok_000604">:</pc>
+                  <w xml:id="URFA-467_xTok_000605">aḷḷāhu</w>
+                  <w join="right" xml:id="URFA-467_xTok_000606">akbar</w>
+                  <pc xml:id="xTok_000607">.</pc>
+                  <w xml:id="URFA-467_xTok_000608">allāhu</w>
+                  <w join="right" xml:id="URFA-467_xTok_000609">məṭar</w>
+                  <pc xml:id="xTok_000610">,</pc>
+                  <w xml:id="URFA-467_xTok_000611">amma</w>
+                  <w xml:id="URFA-467_xTok_000612">məṭar</w>
+                  <w xml:id="URFA-467_xTok_000613">šnōn</w>
+                  <w join="right" xml:id="URFA-467_xTok_000614" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000616">məṭar</w>
+                  <w join="right" xml:id="URFA-467_xTok_000617" rend="withDash">da</w>
+                  <w xml:id="URFA-467_xTok_000619">yumṭur</w>
+                  <w xml:id="URFA-467_xTok_000620">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000621">FU</w>
+                  <pc xml:id="xTok_000622">:</pc>
+                  <w xml:id="URFA-467_xTok_000623">ʕugub</w>
+                  <w xml:id="URFA-467_xTok_000624">ṭəlaʕit</w>
+                  <w xml:id="URFA-467_xTok_000625">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000626">RD</w>
+                  <pc xml:id="xTok_000627">:</pc>
+                  <w xml:id="URFA-467_xTok_000628">guṛbān</w>
+                  <w xml:id="URFA-467_xTok_000629">w</w>
+                  <w xml:id="URFA-467_xTok_000630">aḷḷa</w>
+                  <w xml:id="URFA-467_xTok_000631">ište</w>
+                  <w join="right" xml:id="URFA-467_xTok_000632" rend="withDash">da</w>
+                  <w xml:id="URFA-467_xTok_000634">yinṭi</w>
+                  <w join="right" xml:id="URFA-467_xTok_000635" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000637">qazab</w>
+                  <w xml:id="URFA-467_xTok_000638">w</w>
+                  <w join="right" xml:id="URFA-467_xTok_000639" rend="withDash">waṛā</w>
+                  <w xml:id="URFA-467_xTok_000641">´</w>
+                  <w join="right" xml:id="URFA-467_xTok_000642" rend="withDash">da</w>
+                  <w xml:id="URFA-467_xTok_000644">yinṭi</w>
+                  <w join="right" xml:id="URFA-467_xTok_000645" rend="withDash">ar</w>
+                  <w join="right" xml:id="URFA-467_xTok_000647">raḥam</w>
+                  <pc join="right" xml:id="xTok_000648">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a19.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a19.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a19" xml:id="a49">I had gone there and was saying, “God is great! God, there’s rain.” It was really raining a lot. | Then I got up. | That’s the way it is. God gives punishment and after that he gives mercy.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a20"
+                  who="#default"
+                  end="#T37"
+                  start="#T36">
+                  <w xml:id="URFA-467_xTok_000649">hīčiḏ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000650" rend="withDash">in</w>
+                  <w xml:id="URFA-467_xTok_000652">ha</w>
+                  <w xml:id="URFA-467_xTok_000653">zēne</w>
+                  <w xml:id="URFA-467_xTok_000654">gilit</w>
+                  <w xml:id="URFA-467_xTok_000655">gilit</w>
+                  <w xml:id="URFA-467_xTok_000656">rikaḏ̣it</w>
+                  <w xml:id="URFA-467_xTok_000657">ǧīt</w>
+                  <w xml:id="URFA-467_xTok_000658">ʕind</w>
+                  <w join="right" xml:id="URFA-467_xTok_000659" rend="withDash">abū</w>
+                  <w xml:id="URFA-467_xTok_000661">ye</w>
+                  <w xml:id="URFA-467_xTok_000662">hēne</w>
+                  <w xml:id="URFA-467_xTok_000663">mā</w>
+                  <w xml:id="URFA-467_xTok_000664">yigdar</w>
+                  <w xml:id="URFA-467_xTok_000665">yxušš</w>
+                  <w join="right" xml:id="URFA-467_xTok_000666">ǧawwa</w>
+                  <pc xml:id="xTok_000667">,</pc>
+                  <w xml:id="URFA-467_xTok_000668">hēne</w>
+                  <w join="right" xml:id="URFA-467_xTok_000669" rend="withDash">sayyārt</w>
+                  <w xml:id="URFA-467_xTok_000671">i</w>
+                  <w join="right" xml:id="URFA-467_xTok_000672" rend="withDash">ʕarabānt</w>
+                  <w xml:id="URFA-467_xTok_000674">i</w>
+                  <w xml:id="URFA-467_xTok_000675">hēne</w>
+                  <w xml:id="URFA-467_xTok_000676">ʕin</w>
+                  <w xml:id="URFA-467_xTok_000677">ǧamb</w>
+                  <w join="right" xml:id="URFA-467_xTok_000678" rend="withDash">bāb</w>
+                  <w xml:id="URFA-467_xTok_000680">u</w>
+                  <w join="right" xml:id="URFA-467_xTok_000681">wāgfe</w>
+                  <pc join="right" xml:id="xTok_000682">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a20.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a20.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a20" xml:id="a50">I said, “It is good like this.” Then I ran to my father. He could not come inside because here was my car. My car was standing here next to his door.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a21"
+                  who="#default"
+                  end="#T39"
+                  start="#T38">
+                  <w xml:id="URFA-467_xTok_000683">fitaḥt</w>
+                  <w join="right" xml:id="URFA-467_xTok_000684" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000686">ʕarabāne</w>
+                  <w xml:id="URFA-467_xTok_000687">gilit</w>
+                  <w xml:id="URFA-467_xTok_000688">halla</w>
+                  <w xml:id="URFA-467_xTok_000689">irkab</w>
+                  <w join="right" xml:id="URFA-467_xTok_000690" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000692" join="right">məṭar</w>
+                  <pc xml:id="xTok_000693">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000694">ē</w>
+                  <pc xml:id="xTok_000695">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000696" rend="withDash">as</w>
+                  <w xml:id="URFA-467_xTok_000698">sāʕa</w>
+                  <w xml:id="URFA-467_xTok_000699">arbaʕa</w>
+                  <w xml:id="URFA-467_xTok_000700">w</w>
+                  <w xml:id="URFA-467_xTok_000701">məṭar</w>
+                  <w join="right" xml:id="URFA-467_xTok_000702" rend="withDash">da</w>
+                  <w xml:id="URFA-467_xTok_000704">yumṭur</w>
+                  <w xml:id="URFA-467_xTok_000705">neyse</w>
+                  <w join="right" xml:id="URFA-467_xTok_000706" rend="withDash">rakkabit</w>
+                  <w xml:id="URFA-467_xTok_000708">hum</w>
+                  <w join="right" xml:id="URFA-467_xTok_000709" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-467_xTok_000711" rend="withDash">al</w>
+                  <w join="right" xml:id="URFA-467_xTok_000713">ʕarabāne</w>
+                  <pc join="right" xml:id="xTok_000714">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a21.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a21.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a21" xml:id="a51">I opened the door of the car and said, “Hop in, there is rain!” It was four o’clock and it was raining. I let them enter the car.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a22"
+                  who="#default"
+                  end="#T41"
+                  start="#T40">
+                  <w xml:id="URFA-467_xTok_000715">gilit</w>
+                  <w join="right" xml:id="URFA-467_xTok_000716" rend="withDash">l</w>
+                  <w join="right" xml:id="URFA-467_xTok_000718" rend="withDash">abū</w>
+                  <w xml:id="URFA-467_xTok_000720">ye</w>
+                  <w xml:id="URFA-467_xTok_000721">gilit</w>
+                  <w join="right" xml:id="URFA-467_xTok_000722" rend="withDash">la</w>
+                  <w xml:id="URFA-467_xTok_000724">ʕammu</w>
+                  <w xml:id="URFA-467_xTok_000725">ʕAli</w>
+                  <w xml:id="URFA-467_xTok_000726">ište</w>
+                  <w join="right" xml:id="URFA-467_xTok_000727" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000729" join="right">marḥūm</w>
+                  <pc xml:id="xTok_000730">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000731">gitt</w>
+                  <pc xml:id="xTok_000732">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000733">gitt</w>
+                  <pc xml:id="xTok_000734">:</pc>
+                  <w xml:id="URFA-467_xTok_000735">eger</w>
+                  <w xml:id="URFA-467_xTok_000736">hēne</w>
+                  <w xml:id="URFA-467_xTok_000737">hīčiḏ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000738">inhazzat</w>
+                  <pc xml:id="xTok_000739">,</pc>
+                  <w xml:id="URFA-467_xTok_000740">ʕaǧab</w>
+                  <w xml:id="URFA-467_xTok_000741">Baraǧīk</w>
+                  <w join="right" xml:id="URFA-467_xTok_000742" rend="withDash">iš</w>
+                  <w xml:id="URFA-467_xTok_000744">ṣār</w>
+                  <w join="right" xml:id="URFA-467_xTok_000745" rend="withDash">bī</w>
+                  <w xml:id="URFA-467_xTok_000747" join="right">he</w>
+                  <pc xml:id="xTok_000748">?</pc>
+                  <w xml:id="URFA-467_xTok_000749">ʕAyntāb</w>
+                  <w join="right" xml:id="URFA-467_xTok_000750" rend="withDash">iš</w>
+                  <w xml:id="URFA-467_xTok_000752">ṣār</w>
+                  <w join="right" xml:id="URFA-467_xTok_000753" rend="withDash">bī</w>
+                  <w xml:id="URFA-467_xTok_000755" join="right">he</w>
+                  <pc xml:id="xTok_000756">?</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000757">IB</w>
+                  <pc xml:id="xTok_000758">:</pc>
+                  <w xml:id="URFA-467_xTok_000759">ʕaǧab</w>
+                  <w xml:id="URFA-467_xTok_000760">Marʕaš</w>
+                  <w join="right" xml:id="URFA-467_xTok_000761" rend="withDash">iš</w>
+                  <w xml:id="URFA-467_xTok_000763">ṣār</w>
+                  <w join="right" xml:id="URFA-467_xTok_000764" rend="withDash">bī</w>
+                  <w xml:id="URFA-467_xTok_000766" join="right">he</w>
+                  <pc xml:id="xTok_000767">?</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000768">RD</w>
+                  <pc xml:id="xTok_000769">:</pc>
+                  <w xml:id="URFA-467_xTok_000770">ʕaǧab</w>
+                  <w xml:id="URFA-467_xTok_000771">Marʕaš</w>
+                  <w join="right" xml:id="URFA-467_xTok_000772" rend="withDash">iš</w>
+                  <w xml:id="URFA-467_xTok_000774">ṣār</w>
+                  <w join="right" xml:id="URFA-467_xTok_000775" rend="withDash">bī</w>
+                  <w xml:id="URFA-467_xTok_000777" join="right">he</w>
+                  <pc xml:id="xTok_000778">?</pc>
+                  <w xml:id="URFA-467_xTok_000779">iḥne</w>
+                  <w xml:id="URFA-467_xTok_000780">mā</w>
+                  <w xml:id="URFA-467_xTok_000781">nindall</w>
+                  <w xml:id="URFA-467_xTok_000782">mā</w>
+                  <w xml:id="URFA-467_xTok_000783">nindall</w>
+                  <w xml:id="URFA-467_xTok_000784">lissaʕ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000785" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-467_xTok_000787">Marʕaš</w>
+                  <pc join="right" xml:id="xTok_000788">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a22.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a22.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a22" xml:id="a52">Then I said to my father, to the late Uncle Ali, I said, “If the earth had trembled like this here, what happened then to Birecik? What happened to Antep? | What happened then to Maraş? | What happened to Maraş?” We still did not know it, we did not know (how bad) it was in Maraş.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a23"
+                  who="#default"
+                  end="#T43"
+                  start="#T42">
+                  <w xml:id="URFA-467_xTok_000789">ʕugub</w>
+                  <w join="right" xml:id="URFA-467_xTok_000790" rend="withDash">aṣ</w>
+                  <w xml:id="URFA-467_xTok_000792">ṣubuḥ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000793">ṣār</w>
+                  <pc xml:id="xTok_000794">,</pc>
+                  <w xml:id="URFA-467_xTok_000795">ište</w>
+                  <w xml:id="URFA-467_xTok_000796">xaššēne</w>
+                  <w xml:id="URFA-467_xTok_000797">ǧawwa</w>
+                  <w xml:id="URFA-467_xTok_000798">fitaḥt</w>
+                  <w join="right" xml:id="URFA-467_xTok_000799" rend="withDash">at</w>
+                  <w xml:id="URFA-467_xTok_000801">telefizyōn</w>
+                  <w xml:id="URFA-467_xTok_000802">ōōō</w>
+                  <w join="right" xml:id="URFA-467_xTok_000803">daḥḥagit</w>
+                  <pc xml:id="xTok_000804">.</pc>
+                  <w xml:id="URFA-467_xTok_000805">waḷḷa</w>
+                  <w xml:id="URFA-467_xTok_000806">Marʕāš</w>
+                  <w xml:id="URFA-467_xTok_000807">waḷḷa</w>
+                  <w xml:id="URFA-467_xTok_000808">Adıyamān</w>
+                  <w xml:id="URFA-467_xTok_000809">waḷḷa</w>
+                  <w xml:id="URFA-467_xTok_000810">xarbāne</w>
+                  <w xml:id="URFA-467_xTok_000811">waḷḷa</w>
+                  <w xml:id="URFA-467_xTok_000812">Xatāy</w>
+                  <w xml:id="URFA-467_xTok_000813">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000814">IB</w>
+                  <pc xml:id="xTok_000815">:</pc>
+                  <w xml:id="URFA-467_xTok_000816">xarbāne</w>
+                  <w xml:id="URFA-467_xTok_000817">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000818">RD</w>
+                  <pc xml:id="xTok_000819">:</pc>
+                  <w xml:id="URFA-467_xTok_000820">mī</w>
+                  <w xml:id="URFA-467_xTok_000821">ḏ̣ālle</w>
+                  <w xml:id="URFA-467_xTok_000822">kull</w>
+                  <w join="right" xml:id="URFA-467_xTok_000823">məṭraḥ</w>
+                  <pc join="right" xml:id="xTok_000824">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a23.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a23.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a23" xml:id="a53">Later, in the morning, we went inside (the house), switched on the television and got to know that Maraş and Adıyman are in ruins, Hatay. | It is in ruins. | Nothing has remained.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a24"
+                  who="#default"
+                  end="#T45"
+                  start="#T44">
+                  <w join="right" xml:id="URFA-467_xTok_000825">ē</w>
+                  <pc xml:id="xTok_000826">,</pc>
+                  <w xml:id="URFA-467_xTok_000827" join="right" rend="withDash">haǧ</w>
+                  <pc xml:id="xTok_000829">…</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000830" rend="withDash">aǧ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000832" rend="withDash">ǧēyrān</w>
+                  <w xml:id="URFA-467_xTok_000834">ne</w>
+                  <w xml:id="URFA-467_xTok_000835">zād</w>
+                  <w xml:id="URFA-467_xTok_000836">ᵊngəṭaʕ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000837" rend="withDash">fōg</w>
+                  <w xml:id="URFA-467_xTok_000839" join="right">ha</w>
+                  <pc xml:id="xTok_000840">.</pc>
+                  <w xml:id="URFA-467_xTok_000841">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000842">IB</w>
+                  <pc xml:id="xTok_000843">:</pc>
+                  <w xml:id="URFA-467_xTok_000844">ē</w>
+                  <w join="right" xml:id="URFA-467_xTok_000845">ʕayne</w>
+                  <pc xml:id="xTok_000846">.</pc>
+                  <w xml:id="URFA-467_xTok_000847">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000848">RD</w>
+                  <pc xml:id="xTok_000849">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000850" rend="withDash">aǧ</w>
+                  <w xml:id="URFA-467_xTok_000852">ǧēyrān</w>
+                  <w xml:id="URFA-467_xTok_000853">ᵊngəṭaʕ</w>
+                  <w xml:id="URFA-467_xTok_000854">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000855">IB</w>
+                  <pc xml:id="xTok_000856">:</pc>
+                  <w xml:id="URFA-467_xTok_000857">iḥne</w>
+                  <w xml:id="URFA-467_xTok_000858">zād</w>
+                  <w xml:id="URFA-467_xTok_000859">ᵊngəṭaʕ|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000860">RD</w>
+                  <pc xml:id="xTok_000861">:</pc>
+                  <w xml:id="URFA-467_xTok_000862">sāʕtēn</w>
+                  <w xml:id="URFA-467_xTok_000863">ṯalāṯ</w>
+                  <w xml:id="URFA-467_xTok_000864">mā</w>
+                  <w join="right" xml:id="URFA-467_xTok_000865">ǧīy</w>
+                  <pc xml:id="xTok_000866">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000867">tāli</w>
+                  <pc xml:id="xTok_000868">,</pc>
+                  <w xml:id="URFA-467_xTok_000869">tāli</w>
+                  <w xml:id="URFA-467_xTok_000870">yōm</w>
+                  <w join="right" xml:id="URFA-467_xTok_000871" rend="withDash">aḏ̣</w>
+                  <w xml:id="URFA-467_xTok_000873">ḏ̣uhur</w>
+                  <w join="right" xml:id="URFA-467_xTok_000874">ǧīy</w>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a24.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a24.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a24" xml:id="a54">Moreover, electricity was cut. Yes, electricity was cut. | It was also cut here at our place. | It did not return for two or three hours. Eventually, at noon, it returned.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a25"
+                  who="#default"
+                  end="#T47"
+                  start="#T46">
+                  <w join="right" xml:id="URFA-467_xTok_000875" rend="withDash">ʕa</w>
+                  <w join="right" xml:id="URFA-467_xTok_000877" rend="withDash">t</w>
+                  <w xml:id="URFA-467_xTok_000879">telefōn</w>
+                  <w xml:id="URFA-467_xTok_000880">gimna</w>
+                  <w xml:id="URFA-467_xTok_000881">ndaḥḥig</w>
+                  <w join="right" xml:id="URFA-467_xTok_000882" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000884">ᵊhniyye</w>
+                  <w xml:id="URFA-467_xTok_000885">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000886" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-467_xTok_000888" rend="withDash">at</w>
+                  <w xml:id="URFA-467_xTok_000890">telefon</w>
+                  <w xml:id="URFA-467_xTok_000891">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000892">SP</w>
+                  <pc xml:id="xTok_000893">:</pc>
+                  <w xml:id="URFA-467_xTok_000894">bass</w>
+                  <w xml:id="URFA-467_xTok_000895">mā</w>
+                  <w xml:id="URFA-467_xTok_000896">yinxarib</w>
+                  <w xml:id="URFA-467_xTok_000897">bēt</w>
+                  <w xml:id="URFA-467_xTok_000898" type="truncated">w</w>
+                  <w join="right" xml:id="URFA-467_xTok_000899">|</w>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a25.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a25.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a25" xml:id="a55">By telephone we got to know about it. | On the phone. | But no house was destroyed?</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a26"
+                  who="#default"
+                  end="#T49"
+                  start="#T48">
+                  <w join="right" xml:id="URFA-467_xTok_000900">IB</w>
+                  <pc xml:id="xTok_000901">:</pc>
+                  <w xml:id="URFA-467_xTok_000902">hēne</w>
+                  <w xml:id="URFA-467_xTok_000903">bēt</w>
+                  <w xml:id="URFA-467_xTok_000904">ᵊnhadd</w>
+                  <w join="right" xml:id="URFA-467_xTok_000905">šī</w>
+                  <pc xml:id="xTok_000906">?</pc>
+                  <w xml:id="URFA-467_xTok_000907">|</w>
+                  <w xml:id="URFA-467_xTok_000908">RD</w>
+                  <w xml:id="URFA-467_xTok_000909">hēne</w>
+                  <w join="right" xml:id="URFA-467_xTok_000910">lā</w>
+                  <pc xml:id="xTok_000911">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000912" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-467_xTok_000914" rend="withDash">ǧaryit</w>
+                  <w xml:id="URFA-467_xTok_000916">ne</w>
+                  <w xml:id="URFA-467_xTok_000917">mā</w>
+                  <w xml:id="URFA-467_xTok_000918">xrib</w>
+                  <w xml:id="URFA-467_xTok_000919">ište</w>
+                  <w join="right" xml:id="URFA-467_xTok_000920" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000922">minārāye</w>
+                  <w xml:id="URFA-467_xTok_000923">hnīt</w>
+                  <w join="right" xml:id="URFA-467_xTok_000924" rend="withDash">aǧ</w>
+                  <w xml:id="URFA-467_xTok_000926">ǧāmiʕ</w>
+                  <w join="right" xml:id="URFA-467_xTok_000927" rend="withDash">fōg</w>
+                  <w xml:id="URFA-467_xTok_000929">hin</w>
+                  <w join="right" xml:id="URFA-467_xTok_000930">ᵊnkasrat</w>
+                  <pc xml:id="xTok_000931">.</pc>
+                  <w xml:id="URFA-467_xTok_000932">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000933">FU</w>
+                  <pc xml:id="xTok_000934">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000935">ēy</w>
+                  <pc join="right" xml:id="xTok_000936">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a26.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a26.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a26" xml:id="a56">Did any house collapse here? | No, here in our village nothing was destroyed. Just the upper parts of the minaret of the mosque broke down. | Yes.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a27"
+                  who="#default"
+                  end="#T51"
+                  start="#T50">
+                  <w xml:id="URFA-467_xTok_000937">yamm</w>
+                  <w join="right" xml:id="URFA-467_xTok_000938" rend="withDash">aǧ</w>
+                  <w xml:id="URFA-467_xTok_000940">ǧibal</w>
+                  <w xml:id="URFA-467_xTok_000941">hināka</w>
+                  <w xml:id="URFA-467_xTok_000942">fāyit</w>
+                  <w xml:id="URFA-467_xTok_000943">fayxaṭṭə</w>
+                  <w xml:id="URFA-467_xTok_000944">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000945">IB</w>
+                  <pc xml:id="xTok_000946">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000947">ē</w>
+                  <pc xml:id="xTok_000948">!</pc>
+                  <w xml:id="URFA-467_xTok_000949">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000950">RD</w>
+                  <pc xml:id="xTok_000951">:</pc>
+                  <w xml:id="URFA-467_xTok_000952">fayxaṭṭə</w>
+                  <w xml:id="URFA-467_xTok_000953">rifīʕ</w>
+                  <w xml:id="URFA-467_xTok_000954">yaʕni</w>
+                  <w xml:id="URFA-467_xTok_000955">šnōn</w>
+                  <w join="right" xml:id="URFA-467_xTok_000956">tā</w>
+                  <gap/>
+                  <w xml:id="URFA-467_xTok_000957">gilit</w>
+                  <w xml:id="URFA-467_xTok_000958">kılcal</w>
+                  <w xml:id="URFA-467_xTok_000959">damar</w>
+                  <w xml:id="URFA-467_xTok_000960">ygūl</w>
+                  <w join="right" xml:id="URFA-467_xTok_000961">yā</w>
+                  <pc join="right" xml:id="xTok_000962">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a27.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a27.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a27" xml:id="a57">Next to the mountain over there, a faultline, a narrow faultline appeared. How should I say, just a hairline vein.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a28"
+                  who="#default"
+                  end="#T53"
+                  start="#T52">
+                  <w xml:id="URFA-467_xTok_000963">ᵊhnīt</w>
+                  <w xml:id="URFA-467_xTok_000964" type="truncated">al</w>
+                  <w xml:id="URFA-467_xTok_000965">ǟǟǟ</w>
+                  <w xml:id="URFA-467_xTok_000966">haḏōle</w>
+                  <w join="right" xml:id="URFA-467_xTok_000967">hniyye</w>
+                  <pc xml:id="xTok_000968">,</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000969" rend="withDash">ʕašīrit</w>
+                  <w xml:id="URFA-467_xTok_000971">hum</w>
+                  <w xml:id="URFA-467_xTok_000972">šinhi</w>
+                  <w xml:id="URFA-467_xTok_000973">čān</w>
+                  <w join="right" xml:id="URFA-467_xTok_000974">yā</w>
+                  <pc xml:id="xTok_000975">?</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000976" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000978" join="right">Xālidīn</w>
+                  <pc xml:id="xTok_000979">.</pc>
+                  <w xml:id="URFA-467_xTok_000980">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000981">IB</w>
+                  <pc xml:id="xTok_000982">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000983" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000985" join="right">Xālidīn</w>
+                  <pc xml:id="xTok_000986">.</pc>
+                  <w xml:id="URFA-467_xTok_000987">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_000988">RD</w>
+                  <pc xml:id="xTok_000989">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_000990" rend="withDash">bī</w>
+                  <w xml:id="URFA-467_xTok_000992">´</w>
+                  <w join="right" xml:id="URFA-467_xTok_000993" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000995">Xālidīn</w>
+                  <w xml:id="URFA-467_xTok_000996">ʕašīrit</w>
+                  <w join="right" xml:id="URFA-467_xTok_000997" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_000999">Xālidīn</w>
+                  <w join="right" xml:id="URFA-467_xTok_001000" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_001002" join="right">Xālidiyye</w>
+                  <pc xml:id="xTok_001003">.</pc>
+                  <w xml:id="URFA-467_xTok_001004">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001005">IB</w>
+                  <pc xml:id="xTok_001006">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_001007">ē</w>
+                  <pc join="right" xml:id="xTok_001008">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a28.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a28.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a28" xml:id="a58">Belonging to <w type="truncated">those</w> what is the name of their tribe? The Khalidin. | The Khalidin. | There are the Khalidin, the Khalidin tribe. | Yes.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a29"
+                  who="#default"
+                  end="#T55"
+                  start="#T54">
+                  <w xml:id="URFA-467_xTok_001009">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001010">RD</w>
+                  <pc xml:id="xTok_001011">:</pc>
+                  <w xml:id="URFA-467_xTok_001012">minnāka</w>
+                  <w xml:id="URFA-467_xTok_001013">min</w>
+                  <w xml:id="URFA-467_xTok_001014">yamm</w>
+                  <w join="right" xml:id="URFA-467_xTok_001015" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_001017">Xālidiyye</w>
+                  <w xml:id="URFA-467_xTok_001018">fāytīn</w>
+                  <w xml:id="URFA-467_xTok_001019">fāyit</w>
+                  <w xml:id="URFA-467_xTok_001020">yaʕni</w>
+                  <w xml:id="URFA-467_xTok_001021">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001022">IB</w>
+                  <pc xml:id="xTok_001023">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_001024" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_001026" join="right">fayxaṭṭə</w>
+                  <pc xml:id="xTok_001027">.</pc>
+                  <w xml:id="URFA-467_xTok_001028">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001029">RD</w>
+                  <pc xml:id="xTok_001030">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_001031" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_001033">fayxaṭṭə</w>
+                  <w xml:id="URFA-467_xTok_001034">ī</w>
+                  <w xml:id="URFA-467_xTok_001035">yaʕni</w>
+                  <w xml:id="URFA-467_xTok_001036">rfayyiʕ</w>
+                  <w xml:id="URFA-467_xTok_001037">fayxaṭṭı</w>
+                  <w xml:id="URFA-467_xTok_001038">bass</w>
+                  <w xml:id="URFA-467_xTok_001039">čiṯīr</w>
+                  <w xml:id="URFA-467_xTok_001040">byūt</w>
+                  <w join="right" xml:id="URFA-467_xTok_001041" rend="withDash">aṣ</w>
+                  <w xml:id="URFA-467_xTok_001043">ṣaġlamāt</w>
+                  <w xml:id="URFA-467_xTok_001044">bile</w>
+                  <w join="right" xml:id="URFA-467_xTok_001045" rend="withDash">mənṭī</w>
+                  <w xml:id="URFA-467_xTok_001047">hin</w>
+                  <w join="right" xml:id="URFA-467_xTok_001048">ḏ̣arar</w>
+                  <pc xml:id="xTok_001049">.</pc>
+                  <w xml:id="URFA-467_xTok_001050">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001051">IB</w>
+                  <pc xml:id="xTok_001052">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_001053" rend="withDash">mənṭī</w>
+                  <w xml:id="URFA-467_xTok_001055">hin</w>
+                  <w xml:id="URFA-467_xTok_001056">ḏ̣arar</w>
+                  <w join="right" xml:id="URFA-467_xTok_001057">yaʕni</w>
+                  <pc join="right" xml:id="xTok_001058">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a29.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a29.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a29" xml:id="a59">Over there, next to the Khalidin, the thingy emerged. | The faultline. | Yes, a very narrow faultline. However, it (the earthquake) caused a lot of damage even to the solid buildings. | It caused damaged.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav"
+                  xml:id="URFA-467_a30"
+                  who="#default"
+                  end="#T57"
+                  start="#T56">
+                  <w xml:id="URFA-467_xTok_001059">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001060">RD</w>
+                  <pc xml:id="xTok_001061">:</pc>
+                  <w xml:id="URFA-467_xTok_001062">ʕayne</w>
+                  <w xml:id="URFA-467_xTok_001063">mā</w>
+                  <w xml:id="URFA-467_xTok_001064">nhaddan</w>
+                  <w xml:id="URFA-467_xTok_001065">bass</w>
+                  <w xml:id="URFA-467_xTok_001066">aġır</w>
+                  <w xml:id="URFA-467_xTok_001067">xasār</w>
+                  <w xml:id="URFA-467_xTok_001068">šāf</w>
+                  <w xml:id="URFA-467_xTok_001069">čam</w>
+                  <w join="right" xml:id="URFA-467_xTok_001070">bēt</w>
+                  <pc xml:id="xTok_001071">.</pc>
+                  <w xml:id="URFA-467_xTok_001072">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001073">IB</w>
+                  <pc xml:id="xTok_001074">:</pc>
+                  <w xml:id="URFA-467_xTok_001075">ṣār</w>
+                  <w join="right" xml:id="URFA-467_xTok_001076" rend="withDash">bī</w>
+                  <w xml:id="URFA-467_xTok_001078">hin</w>
+                  <w join="right" xml:id="URFA-467_xTok_001079">xasār</w>
+                  <pc xml:id="xTok_001080">.</pc>
+                  <w xml:id="URFA-467_xTok_001081">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001082">RD</w>
+                  <pc xml:id="xTok_001083">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_001084">ēy</w>
+                  <pc xml:id="xTok_001085">.</pc>
+                  <w xml:id="URFA-467_xTok_001086">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001087">FU</w>
+                  <pc xml:id="xTok_001088">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_001089" rend="withDash">b</w>
+                  <w join="right" xml:id="URFA-467_xTok_001091" rend="withDash">al</w>
+                  <w xml:id="URFA-467_xTok_001093">madīne</w>
+                  <w xml:id="URFA-467_xTok_001094">bināye</w>
+                  <w join="right" xml:id="URFA-467_xTok_001095">wəḥde</w>
+                  <pc xml:id="xTok_001096">,</pc>
+                  <w xml:id="URFA-467_xTok_001097">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001098">RD</w>
+                  <pc xml:id="xTok_001099">:</pc>
+                  <w join="right" xml:id="URFA-467_xTok_001100">nhaddat</w>
+                  <pc xml:id="xTok_001101">,</pc>
+                  <w xml:id="URFA-467_xTok_001102">|</w>
+                  <w join="right" xml:id="URFA-467_xTok_001103">FU</w>
+                  <pc xml:id="xTok_001104">:</pc>
+                  <w xml:id="URFA-467_xTok_001105">hiyye</w>
+                  <w xml:id="URFA-467_xTok_001106">zād</w>
+                  <w xml:id="URFA-467_xTok_001107">gāṭʕīn</w>
+                  <w join="right" xml:id="URFA-467_xTok_001108" rend="withDash">al</w>
+                  <w join="right" xml:id="URFA-467_xTok_001110">qolonāt</w>
+                  <pc join="right" xml:id="xTok_001111">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-467/URFA-467_a30.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-467/URFA-467_a30.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-467_a30" xml:id="a60">Although they did not collapse, several houses underwent heavy damage. | Damage occurred on them. | In the town (viz. Birecik) one building collapsed. It was one from which they had removed the buttresses.</span>
+               </spanGrp>
+            </annotationBlock>
+         </div>
+      </body>
+   </text>
+</TEI>
