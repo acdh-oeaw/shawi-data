@@ -242,6 +242,18 @@
                   </attList>
                </elementSpec>
                
+               <elementSpec ident="ref" mode="change" module="core">
+                  <constraintSpec ident="quote-ref" scheme="schematron">
+                     <constraint>
+                        <s:rule context="tei:ref[@type='entry']">
+                           <s:assert test="parent::tei:quote">A ref type entry has to be child of quote</s:assert>
+                           <s:let name="entryIDs" value="//tei:entry/@xml:id"/>
+                           <s:assert test="some $entryID in $entryIDs satisfies $entryID = substring-after(@target, '#')">The target attribute of a ref element in quote (<s:value-of select="@target"/>) must match the xml:id of an entry</s:assert>
+                        </s:rule>
+                     </constraint>
+                  </constraintSpec>
+               </elementSpec>
+
             </schemaSpec>
          </div>
       </body>
