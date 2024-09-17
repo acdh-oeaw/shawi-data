@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-09-17T12:06:58Z. . 
+Schema generated from ODD source 2024-09-17T12:53:17Z. . 
 TEI Edition:  
 TEI Edition Location: https://www.tei-c.org/Vault/P5// 
   
@@ -2528,6 +2528,9 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
       <element name="cit" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(cited quotation) contains a quotation from some other document, together with a bibliographic reference to its source. In a dictionary it may contain an example text with at least one occurrence of the word form, used in the sense being described, or a translation of the headword, or an example. [3.3.3. Quotation 4.3.1. Grouped Texts 9.3.5.1. Examples]</a:documentation>
          <group>
+            <zeroOrMore>
+               <ref name="usg"/>
+            </zeroOrMore>
             <choice>
                <ref name="quote"/>
                <ref name="form"/>
@@ -2537,7 +2540,6 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
                   <zeroOrMore>
                      <ref name="cit"/>
                   </zeroOrMore>
-                  <ref name="usg"/>
                   <ref name="note"/>
                   <ref name="gloss"/>
                </choice>
@@ -2568,9 +2570,7 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
                     context="tei:cit[@type = 'translation']">
                <s:assert test="parent::tei:cit[@type = 'example']">cit/type="translation" must be part of an example</s:assert>
                <s:report test="tei:form">tei:cit/@type = 'translation' may only contain a tei:quote element</s:report>
-               <s:report test="* except (tei:quote|tei:usg)">a
-                              translation equivalent may only contain 1) the translated text in a
-                              quote element, 2) the context of the translatoin in a tei:usg element</s:report>
+               <s:report test="* except (tei:quote|tei:usg)">a translation may only contain 1) the translated text in a quote element, 2) the context of the translation in a tei:usg element</s:report>
                <s:assert test="@subtype='literal' or @subtype='idiomatic'">only "literal" or "idiomatic" translations expected</s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
@@ -2794,7 +2794,7 @@ Suggested values include: 1] entry; 2] sense; 3] bibliography</a:documentation>
       </element>
    </define>
    <define name="list">
-      <element name="list" ns="http://www.tei-c.org/ns/1.0">
+      <element name="list">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(list) contains any sequence of items organized as a list. [3.8. Lists]</a:documentation>
          <group>
             <optional>
@@ -3754,7 +3754,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                   id="shawi-form-compoundOrth-constraint-rule-27">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
-                    context="tei:form[@type='lemma']/tei:orth[contains(., ' ')]">
+                    context="tei:form[@type='lemma'][tei:orth[contains(., ' ')]]">
                <s:assert test="@subtype = 'compound'">a form type lemma with an orth that contains spaces has to have a subtype compound</s:assert>
             </s:rule>
          </pattern>
@@ -5512,7 +5512,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
       </element>
    </define>
    <define name="body">
-      <element name="body" ns="http://www.tei-c.org/ns/1.0">
+      <element name="body">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text body) contains the main content of the dictionary. MUST include a `&lt;div type="entries"&gt;` and MAY include a `&lt;div type="examples"&gt;`. [4. Default Text Structure]</a:documentation>
          <group>
             <ref name="div"/>
@@ -5535,7 +5535,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
       </element>
    </define>
    <define name="div">
-      <element name="div" ns="http://www.tei-c.org/ns/1.0">
+      <element name="div">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text division) contains a subdivision of the front, body, or back of a text. [4.1. Divisions of the Body]</a:documentation>
          <group>
             <zeroOrMore>
@@ -5680,6 +5680,15 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
          <zeroOrMore>
             <ref name="f"/>
          </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                  id="shawi-fs-fs-context-constraint-rule-45">
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    context="tei:fs">
+               <s:assert test="parent::tei:cit[@type='example'] or parent::tei:entry">fs is only contained by cit/@type example or entry</s:assert>
+            </s:rule>
+         </pattern>
          <ref name="att.global.attributes"/>
          <ref name="att.datcat.attributes"/>
          <optional>
@@ -5730,7 +5739,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
       </element>
    </define>
    <define name="symbol">
-      <element name="symbol" ns="http://www.tei-c.org/ns/1.0">
+      <element name="symbol">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(symbolic value) represents the value part of a feature-value specification which contains one of a finite list of symbols. []</a:documentation>
          <empty/>
          <ref name="att.global.attributes"/>
