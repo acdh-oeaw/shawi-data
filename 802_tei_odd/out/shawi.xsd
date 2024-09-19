@@ -6,9 +6,9 @@
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.tmp"/>
    <!--
-    Schema generated from ODD source 2024-07-26T15:42:19Z. . 
-    TEI Edition:  
-    TEI Edition Location: https://www.tei-c.org/Vault/P5// 
+    Schema generated from ODD source 2024-09-19T07:57:56Z. .
+    TEI Edition: 
+    TEI Edition Location: https://www.tei-c.org/Vault/P5//
     
   -->
    <!---->
@@ -2425,16 +2425,20 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
          <xs:documentation>(cited quotation) contains a quotation from some other document, together with a bibliographic reference to its source. In a dictionary it may contain an example text with at least one occurrence of the word form, used in the sense being described, or a translation of the headword, or an example. [3.3.3. Quotation 4.3.1. Grouped Texts 9.3.5.1. Examples]</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:choice maxOccurs="unbounded">
-            <xs:element ref="tei:quote"/>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:cit"/>
-            <xs:element ref="tei:fs"/>
-            <xs:element ref="tei:bibl"/>
-            <xs:element ref="tei:note"/>
-            <xs:element ref="tei:usg"/>
-            <xs:element ref="tei:gloss"/>
-            <xs:element ref="tei:form"/>
-         </xs:choice>
+         <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:usg"/>
+            <xs:choice>
+               <xs:element ref="tei:quote"/>
+               <xs:element ref="tei:form"/>
+            </xs:choice>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+               <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:cit"/>
+               <xs:element ref="tei:note"/>
+               <xs:element ref="tei:gloss"/>
+            </xs:choice>
+            <xs:element minOccurs="0" ref="tei:listBibl"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:fs"/>
+         </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
          <xs:attribute name="type" use="required">
             <xs:annotation>
@@ -2447,14 +2451,14 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
                         <xs:documentation>A dictionary example. Ideally, examples should consist in complete sentences. Examples should be concise, but can also contain several sentences. If dialogical models are involved, sentences are to be separated by a dash.</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
-                  <xs:enumeration value="translation">
-                     <xs:annotation>
-                        <xs:documentation>A translation.</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
                   <xs:enumeration value="translationEquivalent">
                      <xs:annotation>
                         <xs:documentation>A translation equivalent.</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="translation">
+                     <xs:annotation>
+                        <xs:documentation>A translation.</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                   <xs:enumeration value="etymon">
@@ -2476,14 +2480,19 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
                         <xs:documentation>Proverbs are a subtype of example.</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
-                  <xs:enumeration value="verbatim">
-                     <xs:annotation>
-                        <xs:documentation>TODO description missing</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
                   <xs:enumeration value="scientificName">
                      <xs:annotation>
-                        <xs:documentation>TODO descripion missing</xs:documentation>
+                        <xs:documentation>contains a scientific name of a plants or similar</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="literal">
+                     <xs:annotation>
+                        <xs:documentation>marks a translation to be a literal translation (instead of a idiomatic one)</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="idiomatic">
+                     <xs:annotation>
+                        <xs:documentation>marks a translation to be a idiomatic translation (instead of a literal one)</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                </xs:restriction>
@@ -3184,10 +3193,10 @@ Sample values include: 1] full; 2] abbr</xs:documentation>
          <xs:documentation>(citation list) contains a list of bibliographic citations of any kind. [3.12.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements]</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:sequence>
-            <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.headLike"/>
-            <xs:group maxOccurs="unbounded" ref="tei:model.biblLike"/>
-         </xs:sequence>
+         <xs:choice maxOccurs="unbounded">
+            <xs:element ref="tei:bibl"/>
+            <xs:element ref="tei:biblStruct"/>
+         </xs:choice>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
          <xs:attributeGroup ref="tei:att.sortable.attributes"/>
          <xs:attributeGroup ref="tei:att.declarable.attributes"/>
@@ -3762,6 +3771,11 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                               <xs:documentation>TODO description missing</xs:documentation>
                            </xs:annotation>
                         </xs:enumeration>
+                        <xs:enumeration value="precededBy">
+                           <xs:annotation>
+                              <xs:documentation>TODO description missing</xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
                         <xs:enumeration value="root">
                            <xs:annotation>
                               <xs:documentation>TODO description missing</xs:documentation>
@@ -3891,7 +3905,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       <xs:annotation>
          <xs:documentation>(usage) contains usage information in a dictionary entry. [9.3.5.2. Usage Information and Other Labels]</xs:documentation>
       </xs:annotation>
-      <xs:complexType>
+      <xs:complexType mixed="true">
          <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:name"/>
          </xs:sequence>
