@@ -76,20 +76,32 @@ $message
 </revisionDesc>
 EOF
 )
-
 #------- copy all images into the "images" directory in the web application directory
 echo "copying image files from shawi-data to vicav-webapp"
 for d in $(ls -d vicav_*)
 do echo "Directory $d:"
-   find "$d" -type f -and \( -name '*.jpg' -or -name '*.JPG' -or -name '*.png' -or -name '*.PNG' -or -name '*.svg' \) -exec cp -v {} ${BUILD_DIR:-../webapp/vicav-app}/images \;
+   cd "$d"
+   mkdir -p $(dirname "" $(find . -type f -and \( -name '*.jpg' -or -name '*.JPG' -or -name '*.png' -or -name '*.PNG' -or -name '*.svg' \) -exec echo ${BUILD_DIR:-../../webapp/vicav-app}/images/{} \;))
+   find . -type f -and \( -name '*.jpg' -or -name '*.JPG' -or -name '*.png' -or -name '*.PNG' -or -name '*.svg' \) -exec mv -v {} ${BUILD_DIR:-../../webapp/vicav-app}/images/{} \;
    if [ "$onlytags"x = 'truex' ]
    then
-     find "$d" -type f -and -name '*.xml' -exec sed -i "s~\(</teiHeader>\)~$revisionDesc\\n\1~g" {} \;
+     find . -type f -and -name '*.xml' -exec sed -i "s~\(</teiHeader>\)~$revisionDesc\\n\1~g" {} \;
    fi
+   cd ..
 done
+if [ "$CI"x == "truex" ]; then echo "CI: removing .git"; rm -rf .git; fi
+versionInfo=$(sed ':a;N;$!ba;s/\n/\\n/g' <<EOF
+  <version>
+    <backend>$uiversion</backend>
+    <data>$dataversion</data>
+  </version>
+EOF
+)
+sed -i "s~\(</projectConfig>\)~$versionInfo\\n\1~g" vicav_projects/shawi.xml
 popd
 pushd ${BUILD_DIR:-webapp/vicav-app}
 find ./ -type f -and \( -name '*.js' -or -name '*.html' \) -not \( -path './node_modules/*' -or -path './cypress/*' \) -exec sed -i "s~\@data-version@~$dataversion~g" {} \;
+if [ "$CI"x == "truex" ]; then echo "CI: removing .git"; rm -rf .git; fi 
 popd
 sed -i "s~webapp/vicav-app/~${BUILD_DIR:-webapp/vicav-app}/~g" deploy-shawi-content.bxs
 ./execute-basex-batch.sh deploy-shawi-content $1
@@ -97,3 +109,4 @@ sed -i "s~../webapp/vicav-app/~${BUILD_DIR:-../webapp/vicav-app}/~g" refresh-pro
 ./execute-basex-batch.sh refresh-project-config.xqtl $1 >/dev/null
 pushd shawi-data
 popd
+if [ "$CI"x == "truex" ]; then echo "CI: removing content repo"; rm -rf shawi-content; fi 
