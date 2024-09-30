@@ -21,120 +21,12 @@
 
 
 
-<entryStyle><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" xmlns:tei="http://www.tei-c.org/ns/1.0" version="1.0">
-
+<entryStyle>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" xmlns:tei="http://www.tei-c.org/ns/1.0" version="1.0">
     <xsl:output method="html"/>
     <xsl:template match="/">
-
-      <html>
-        <head>
-          <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-          <style type="text/css">
-            table {
-              border-collapse: collapse;
-              background: white;
-            }
-            td {
-              border: 1px solid black;
-              padding-left: 5px;
-              vertical-align: top;
-            }
-            
-            .dvExamples {
-              border: 1px solid black;
-              background: rgb(210,210,255);
-            }
-            
-            .dvArguments {
-              border: 1px solid black;
-              background: rgb(210,210,255);
-            }
-            
-            .dvUsg {
-              color: green;
-              font-style: italic;
-            }
-
-            .tdHead {
-               font-weight: bold;
-               color: white;
-               background: blue;
-               padding-right: 5px;
-               width: 100px;
-            }
-            
-            .tdSenseHead {
-               font-weight: bold;
-               font-style: italic;
-               color: blue;
-               background: rgb(181,213,251);
-               padding-right: 5px;
-               width: 100px;
-               text-align: right;
-            }
-            
-            .tdSense {
-               background: rgb(248,234,255);
-               border-style: dotted;
-            }
-            
-            .gramGrp {
-               color: rgb(255,128,0);
-               font-weight: bold;
-            }
-
-            .spArab {
-               direction:rtl;
-            }
-
-            .spTrans {
-               direction: rtl;
-               font-style: italic;
-               color: blue;
-            }
-            
-            .spPlaceName {
-               font-style: italic;
-               color: green;
-            }
-
-            .spTransGerm {
-               font-style: italic;
-               color: rgb(180,180,180);
-            }
-            
-            .spDef {
-               font-style: italic;
-               color: green;
-            }
-
-            .spDefGerm {
-               font-style: italic;
-               color: rgb(160,160,160);
-            }
-            
-            .spDefTurk {
-               font-style: italic;
-               color: green;
-            }
-            
-            .iTransEn {
-               font-style: italic;
-               color: green;
-            }
-            
-            .iTransDe {
-               font-style: italic;
-               color: purple;
-            }
-          </style>
-        </head>
-        
-        <body>
-            <xsl:if test="//@value='released'">
-               <xsl:attribute name="style">background: rgb(179,253,157)</xsl:attribute>
-            </xsl:if>
-            
+        <div>
+        <xsl:for-each select="//tei:div[@type='entry']">
             <xsl:for-each select="tei:cit">
                <table width="600px">
                   <xsl:if test="//tei:usg/tei:placeName">
@@ -411,12 +303,112 @@
                
                </table>
             </xsl:for-each>
+          </xsl:for-each>
+          <style type="text/css">
+            @scope {
+            table {
+            border-collapse: collapse;
+            background: white;
+            }
+            td {
+            border: 1px solid black;
+            padding-left: 5px;
+            vertical-align: top;
+            }
             
-        </body>
-      </html>
+            .dvExamples {
+            border: 1px solid black;
+            background: rgb(210,210,255);
+            }
+            
+            .dvArguments {
+            border: 1px solid black;
+            background: rgb(210,210,255);
+            }
+            
+            .dvUsg {
+            color: green;
+            font-style: italic;
+            }
+            
+            .tdHead {
+            font-weight: bold;
+            color: white;
+            background: blue;
+            padding-right: 5px;
+            width: 100px;
+            }
+            
+            .tdSenseHead {
+            font-weight: bold;
+            font-style: italic;
+            color: blue;
+            background: rgb(181,213,251);
+            padding-right: 5px;
+            width: 100px;
+            text-align: right;
+            }
+            
+            .tdSense {
+            background: rgb(248,234,255);
+            border-style: dotted;
+            }
+            
+            .gramGrp {
+            color: rgb(255,128,0);
+            font-weight: bold;
+            }
+            
+            .spArab {
+            direction:rtl;
+            }
+            
+            .spTrans {
+            direction: rtl;
+            font-style: italic;
+            color: blue;
+            }
+            
+            .spPlaceName {
+            font-style: italic;
+            color: green;
+            }
+            
+            .spTransGerm {
+            font-style: italic;
+            color: rgb(180,180,180);
+            }
+            
+            .spDef {
+            font-style: italic;
+            color: green;
+            }
+            
+            .spDefGerm {
+            font-style: italic;
+            color: rgb(160,160,160);
+            }
+            
+            .spDefTurk {
+            font-style: italic;
+            color: green;
+            }
+            
+            .iTransEn {
+            font-style: italic;
+            color: green;
+            }
+            
+            .iTransDe {
+            font-style: italic;
+            color: purple;
+            }
+            }
+          </style>
+        </div>
     </xsl:template>
 </xsl:stylesheet>
-  </entryStyle>
+</entryStyle>
 <entryTemplates>//*********************************************************//
 //* ENTRY (lemma) - TEMPLATE ******************************//
 //*********************************************************//
