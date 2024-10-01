@@ -6,7 +6,7 @@
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.tmp"/>
    <!--
-    Schema generated from ODD source 2024-09-24T09:42:17Z. .
+    Schema generated from ODD source 2024-10-01T11:36:54Z. .
     TEI Edition: 
     TEI Edition Location: https://www.tei-c.org/Vault/P5//
     
@@ -3198,44 +3198,26 @@ Sample values include: 1] full; 2] abbr</xs:documentation>
          <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
          <xs:attribute name="type" use="required">
             <xs:annotation>
-               <xs:documentation>characterizes the element in some sense, using any convenient classification scheme or typology.
-Suggested values include: 1] dictionaries; 2] corpora; 3] literature</xs:documentation>
+               <xs:documentation/>
             </xs:annotation>
             <xs:simpleType>
-               <xs:union>
-                  <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="dictionaries">
-                           <xs:annotation>
-                              <xs:documentation/>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
-                  </xs:simpleType>
-                  <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="corpora">
-                           <xs:annotation>
-                              <xs:documentation/>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
-                  </xs:simpleType>
-                  <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="literature">
-                           <xs:annotation>
-                              <xs:documentation/>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
-                  </xs:simpleType>
-                  <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:pattern value="[^\p{C}\p{Z}]+"/>
-                     </xs:restriction>
-                  </xs:simpleType>
-               </xs:union>
+               <xs:restriction base="xs:token">
+                  <xs:enumeration value="dictionaries">
+                     <xs:annotation>
+                        <xs:documentation>the listBibl is of type dictionaries</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="corpora">
+                     <xs:annotation>
+                        <xs:documentation>the listBibl is of type corpora</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="literature">
+                     <xs:annotation>
+                        <xs:documentation>the listBibl is of type literature</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+               </xs:restriction>
             </xs:simpleType>
          </xs:attribute>
       </xs:complexType>
