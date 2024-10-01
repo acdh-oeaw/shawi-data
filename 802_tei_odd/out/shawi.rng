@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-09-24T09:42:13Z. .
+Schema generated from ODD source 2024-10-01T11:31:42Z. .
 TEI Edition: 
 TEI Edition Location: https://www.tei-c.org/Vault/P5//
   
@@ -3316,18 +3316,14 @@ Sample values include: 1] full; 2] abbr</a:documentation>
          <ref name="att.declarable.attributes"/>
          <ref name="att.typed.attribute.subtype"/>
          <attribute name="type">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.
-Suggested values include: 1] dictionaries; 2] corpora; 3] literature</a:documentation>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             <choice>
                <value>dictionaries</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the listBibl is of type dictionaries</a:documentation>
                <value>corpora</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the listBibl is of type corpora</a:documentation>
                <value>literature</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <data type="token">
-                  <param name="pattern">[^\p{C}\p{Z}]+</param>
-               </data>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the listBibl is of type literature</a:documentation>
             </choice>
          </attribute>
          <empty/>
@@ -3724,13 +3720,13 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                   id="shawi-form-compoundOrth-constraint-rule-26">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
-                    context="tei:form[@type='lemma']/tei:orth[contains(., ' ') or contains(., '-')]">
-               <s:assert test="parent::tei:form[@subtype = 'compound']">a form type lemma with an orth that contains a space or a hyphen has to have a subtype compound</s:assert>
+                    context="tei:form[@type='lemma']/tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">
+               <s:assert test="parent::tei:form[@subtype = 'compound']">a form type lemma with an orth that contains a space or a hyphen (not at the beginning or end of a string) has to have a subtype compound</s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:form[@subtype='compound']">
-               <s:assert test="tei:orth[contains(., ' ') or contains(., '-')]">a form with subtype compound has to have an orth child that contains a space or a hyphen</s:assert>
+               <s:assert test="tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">a form with subtype compound has to have an orth child that contains a space or a hyphen (not at the beginning or end of a string)</s:assert>
             </s:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"

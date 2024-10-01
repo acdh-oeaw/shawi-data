@@ -170,11 +170,11 @@
                <elementSpec ident="form" mode="change" module="dictionaries">
                   <constraintSpec ident="compoundOrth" scheme="schematron">
                      <constraint>
-                        <s:rule context="tei:form[@type='lemma']/tei:orth[contains(., ' ') or contains(., '-')]">
-                           <s:assert test="parent::tei:form[@subtype = 'compound']">a form type lemma with an orth that contains a space or a hyphen has to have a subtype compound</s:assert>
+                        <s:rule context="tei:form[@type='lemma']/tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">
+                           <s:assert test="parent::tei:form[@subtype = 'compound']">a form type lemma with an orth that contains a space or a hyphen (not at the beginning or end of a string) has to have a subtype compound</s:assert>
                         </s:rule>
                         <s:rule context="tei:form[@subtype='compound']">
-                           <s:assert test="tei:orth[contains(., ' ') or contains(., '-')]">a form with subtype compound has to have an orth child that contains a space or a hyphen</s:assert>
+                           <s:assert test="tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">a form with subtype compound has to have an orth child that contains a space or a hyphen (not at the beginning or end of a string)</s:assert>
                         </s:rule>
                      </constraint>
                   </constraintSpec>
