@@ -12,5 +12,7 @@
             <xsl:apply-templates select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
-    
+    <xsl:template match="processing-instruction()">
+        <xsl:sequence select="."/><xsl:text xml:space="preserve">&#10;</xsl:text>
+    </xsl:template>
 </xsl:stylesheet>
