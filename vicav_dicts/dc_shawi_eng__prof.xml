@@ -1,14 +1,5 @@
 <profile when="2022_04_28_11_18_54" xml:id="dictProfile" xml:space="preserve">
-
-
-
-
-
 <basexRest>https://shawi.acdh-ch-dev.oeaw.ac.at</basexRest>
-
-
-
-
 
 <displayString>/concat(
 (tei:form[1]/tei:orth)[1],
@@ -17,9 +8,6 @@
 (tei:gramGrp[1]/tei:gram[@type="pos"])[1],
 "]"
 )</displayString>
-
-
-
 
 <entryStyle>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" xmlns:tei="http://www.tei-c.org/ns/1.0" version="1.0">
@@ -689,78 +677,88 @@
 
 <mainLangLabel>ar-acm-x-shawi-vicav</mainLangLabel>
 
-
-
-
-<queryTemplate/>
 <queryTemplates>
-
-<queryTemplate label="ft_all">
+<!-- for public dictionaries it is assumed that there are no unreleased entries! -->
+<!-- for subQuery .*x, x.* and .*x.* are replaced with ends-with(., x), starts-with(., x) and contains(., x) -->
+<queryTemplate label="fuzzy">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
-   collection($__db__)//tei:entry/.//node()[text() contains text "{subQuery}" using wildcards] | 
-   collection($__db__)//tei:cit[@type='example']//tei:quote[text() contains text "{subQuery}" using wildcards]
+   collection($__db__)//tei:entry/.//node()[text() contains text "{noSubstQuery}" using wildcards using diacritics insensitive using case insensitive] | 
+   collection($__db__)//tei:cit[@type='example']/.//node()[text() contains text "{noSubstQuery}" using wildcards using diacritics insensitive using case insensitive]
 </queryTemplate>
 
-<queryTemplate label="ft_all_complete" type="complete">
+<queryTemplate label="anywhere">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
-   collection($__db__)//tei:entry/.//node()[text() contains text "{subQuery}" using wildcards] | 
-   collection($__db__)//tei:cit[@type='example']/tei:quote[text() contains text "{subQuery}" using wildcards]
+   collection($__db__)//tei:entry/.//node()[text() contains text "{noSubstQuery}" using wildcards using diacritics sensitive using case sensitive] | 
+   collection($__db__)//tei:cit[@type='example']/.//node()[text() contains text "{noSubstQuery}" using wildcards using diacritics sensitive using case sensitive]
 </queryTemplate>
 
-<queryTemplate label="ft_lem">
+<queryTemplate label="lemma">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
-   collection($__db__)//tei:entry/tei:form[@type='lemma']/tei:orth[text() contains text "{subQuery}" using wildcards] |
-   collection($__db__)//tei:entry/tei:form[@type='multiWordUnit']/tei:orth[text() contains text "{subQuery}" using wildcards]
+   collection($__db__)//tei:entry/tei:form[@type='lemma']/tei:orth[text() contains text "{noSubstQuery}" using wildcards using diacritics sensitive using case sensitive] |
+   collection($__db__)//tei:entry/tei:form[@type='multiWordUnit']/tei:orth[text() contains text "{noSubstQuery}" using wildcards using diacritics sensitive using case sensitive]
 </queryTemplate>
 
-<queryTemplate label="ft_sid">
+<queryTemplate label="example">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
-   collection($__db__)//tei:entry[contains(@xml:id,{noSubstQuery})] | 
-   collection($__db__)//tei:teiHeader[contains(@xml:id,{noSubstQuery})] | 
-   collection($__db__)//tei:cit[contains(@xml:id,{noSubstQuery})] 
+   collection($__db__)//tei:cit[@type='example']/tei:quote[text() contains text "{noSubstQuery}" using wildcards using diacritics sensitive using case sensitive using language "en" using stemming] |
+   collection($__db__)//tei:cit[@type='example']/tei:cit/tei:quote[text() contains text "{noSubstQuery}" using wildcards using diacritics sensitive using case sensitive using language "en" using stemming]  
 </queryTemplate>
 
-<queryTemplate label="ft_pos">
+<queryTemplate label="sense">
+   declare namespace tei = 'http://www.tei-c.org/ns/1.0';
+   declare variable $__db__ external;
+   collection($__db__)//tei:entry/tei:sense/tei:cit/tei:quote[text() contains text "{noSubstQuery}" using wildcards using diacritics sensitive using case sensitive using language "en" using stemming]
+</queryTemplate>
+
+<queryTemplate label="note">
+   declare namespace tei = 'http://www.tei-c.org/ns/1.0';
+   declare variable $__db__ external;
+   collection($__db__)//tei:entry/tei:note[text() contains text "{noSubstQuery}" using wildcards using diacritics sensitive using case sensitive using language "en" using stemming]
+</queryTemplate>
+
+<queryTemplate label="sid">
+   declare namespace tei = 'http://www.tei-c.org/ns/1.0';
+   declare variable $__db__ external;
+   collection($__db__)//tei:entry/@xml:id[{subQuery}]/.. | 
+   collection($__db__)//tei:teiHeader/@xml:id[{subQuery}]/.. | 
+   collection($__db__)//tei:cit/@xml:id[{subQuery}]/.. 
+</queryTemplate>
+
+<queryTemplate label="pos">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
    collection($__db__)//tei:entry[tei:gramGrp/tei:gram[@type='pos'][{subQuery}]]
 </queryTemplate>
 
-<queryTemplate label="ft_tr">
+<!-- Example: pos=noun, root=ktb -->
+<queryTemplate label="root">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
-   collection($__db__)//tei:entry/tei:sense/tei:cit/tei:quote[text() contains text "{subQuery}" using wildcards]
+   collection($__db__)//tei:entry[tei:gramGrp[tei:gram[@type='root'][{subQuery}]]]
 </queryTemplate>
 
-<queryTemplate label="ft_ex">
+<queryTemplate label="subc">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
-   collection($__db__)//tei:cit[@type='example']/tei:quote[text() contains text "{subQuery}" using wildcards] |
-   collection($__db__)//tei:cit[@type='example']/tei:cit/tei:quote[text() contains text "{subQuery}" using wildcards]  
+   collection($__db__)//tei:entry[tei:gramGrp/tei:gram[@type='subc'][{subQuery}]]
 </queryTemplate>
 
-<queryTemplate label="header">
+<!-- To find punctuation marks: ;,-->
+<queryTemplate label="sense phrase">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
-   collection($__db__)//tei:teiHeader
-</queryTemplate>                                                         
+   collection($__db__)//tei:entry/tei:sense/tei:cit/tei:quote[contains(., {subQuery})]
+</queryTemplate>                                  
                                                      
 </queryTemplates>
-
-
-
-
-
-
-
 <sortedDisplay>true</sortedDisplay>
 
 <tableName label="dc_shawi_eng">dc_shawi_eng</tableName>
-
+<specialCharacters><char><value>§</value></char><char><value>Ä</value></char><char><value>Ç</value></char><char><value>Ô</value></char><char><value>Ö</value></char><char><value>Ü</value></char><char><value>ß</value></char><char><value>à</value></char><char><value>á</value></char><char><value>â</value></char><char><value>ä</value></char><char><value>ç</value></char><char><value>è</value></char><char><value>é</value></char><char><value>ê</value></char><char><value>í</value></char><char><value>î</value></char><char><value>ï</value></char><char><value>ð</value></char><char><value>ô</value></char><char><value>ö</value></char><char><text><sup>q</sup></text><value>Q</value></char><char><value>ù</value></char><char><value>ú</value></char><char><value>û</value></char><char><value>ü</value></char><char><value>Ā</value></char><char><value>ā</value></char><char><value>č</value></char><char><value>Ē</value></char><char><value>ē</value></char><char><value>ğ</value></char><char><value>ġ</value></char><char><value>ī</value></char><char><value>İ</value></char><char><value>ı</value></char><char><value>ō</value></char><char><value>œ</value></char><char><value>Ş</value></char><char><value>ş</value></char><char><value>Š</value></char><char><value>š</value></char><char><value>ū</value></char><char><value>ž</value></char><char><value>ǝ</value></char><char><value>ǟ</value></char><char><value>Ǧ</value></char><char><value>ǧ</value></char><char><value>ȫ</value></char><char><value>ə</value></char><char><value>ʔ</value></char><char><value>ʕ</value></char><char><value>ʷ</value></char><char><value>ˀ</value></char><char><value>ˁ</value></char><char><value>́</value></char><char><value>̣</value></char><char><value>ά</value></char><char><value>έ</value></char><char><value>ί</value></char><char><value>α</value></char><char><value>β</value></char><char><value>γ</value></char><char><value>η</value></char><char><value>ι</value></char><char><value>κ</value></char><char><value>λ</value></char><char><value>μ</value></char><char><value>ν</value></char><char><value>ξ</value></char><char><value>ο</value></char><char><value>π</value></char><char><value>ρ</value></char><char><value>τ</value></char><char><value>ώ</value></char><char><value>،</value></char><char><value>؟</value></char><char><value>ء</value></char><char><value>آ</value></char><char><value>أ</value></char><char><value>إ</value></char><char><value>ئ</value></char><char><value>ا</value></char><char><value>ب</value></char><char><value>ة</value></char><char><value>ت</value></char><char><value>ث</value></char><char><value>ج</value></char><char><value>ح</value></char><char><value>خ</value></char><char><value>د</value></char><char><value>ذ</value></char><char><value>ر</value></char><char><value>ز</value></char><char><value>س</value></char><char><value>ش</value></char><char><value>ص</value></char><char><value>ض</value></char><char><value>ط</value></char><char><value>ع</value></char><char><value>غ</value></char><char><value>ف</value></char><char><value>ق</value></char><char><value>ك</value></char><char><value>ل</value></char><char><value>م</value></char><char><value>ن</value></char><char><value>ه</value></char><char><value>و</value></char><char><value>ى</value></char><char><value>ي</value></char><char><value>َ</value></char><char><value>ُ</value></char><char><value>ِ</value></char><char><value>ّ</value></char><char><value>چ</value></char><char><value>ک</value></char><char><value>ᵃ</value></char><char><value>ᵊ</value></char><char><value>ᵘ</value></char><char><value>ḅ</value></char><char><value>ḍ</value></char><char><value>ḏ</value></char><char><value>ḓ</value></char><char><value>Ḥ</value></char><char><value>ḥ</value></char><char><value>ḳ</value></char><char><value>ḷ</value></char><char><value>ṃ</value></char><char><value>ṛ</value></char><char><value>ṣ</value></char><char><value>Ṭ</value></char><char><value>ṭ</value></char><char><value>ṯ</value></char><char><value>ẉ</value></char><char><value>ẓ</value></char><char><value>ạ</value></char><char><value>ọ</value></char><char><value>​</value></char><char><value>ⁱ</value></char></specialCharacters>
 
 
 
