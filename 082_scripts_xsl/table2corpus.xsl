@@ -125,9 +125,17 @@
     
     <xsl:template name="titleStmt">
         <xsl:param name="textID"/>
+        <xsl:param name="audioFile"/>
         <titleStmt>
             <xsl:if test="$textID != ''">
-                <title level="a"><xsl:value-of select="$textID"/></title>
+                <title level="a"><xsl:value-of select="
+                    concat(
+                        replace(replace(replace($audioFile, '^.*?_', ''), '-\d{4}\.wav$', ''), '[-_]', ' '),
+                        if (matches($textID, '\d{3}\w$'))
+                            then concat(' (', substring($textID, string-length($textID), 1), ')')
+                        else ''
+                    )
+                "/></title>
             </xsl:if>
             <title level="s">SHAWI Corpus</title>
             <xsl:choose>
@@ -203,13 +211,14 @@
         <xsl:variable name="placeID" select="$t_Places//tei:row[tei:cell[$cn('Places')('PlaceName')] = $placeName]/tei:cell[$cn('Places')('ID')]"/>
         
         <!-- path to Audio files -->
-        <xsl:variable name="relPath" select="tei:cell[$cn('Recordings')('Trascribed Audio-file')]"/>
+        <xsl:variable name="relPath" select="tei:cell[$cn('Recordings')('Transcribed Audio-file')]"/>
         <xsl:variable name="fullPath" select="$pathToRecordings"/>
         <TEI>
             <teiHeader>
                 <fileDesc>
                     <xsl:call-template name="titleStmt">
                         <xsl:with-param name="textID" select="$textID"/>
+                        <xsl:with-param name="audioFile" select="$relPath"/>
                     </xsl:call-template>
                     <xsl:call-template name="publicationStmt">
                         <xsl:with-param name="textID" select="$textID"/>
