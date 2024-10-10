@@ -90,8 +90,10 @@
    <xsl:template match="tei:sense">
       <tr>
          <td class="tdSenseHead">
-            <xsl:if test="tei:gramGrp/tei:gram"><xsl:value-of select="tei:gramGrp/tei:gram"/>
-            </xsl:if>
+            <xsl:choose>
+               <xsl:when test="tei:gramGrp/tei:gram"><xsl:value-of select="tei:gramGrp/tei:gram"/></xsl:when>
+               <xsl:otherwise>Sense</xsl:otherwise>
+            </xsl:choose>
          </td>
          
          <td class="tdSense">
@@ -161,16 +163,27 @@
       </tr>
    </xsl:template>
    
-   <xsl:template match="tei:cit[@type='translation']">
+   <xsl:template match="tei:cit[@type = 'translation']">
       <tr>
-         <td class="tdSenseHead"><xsl:value-of select="@xml:lang"/></td>
+         <td class="tdSenseHead">
+            <xsl:value-of select="@xml:lang"/>
+         </td>
          <td>
+            <xsl:if test="normalize-space(tei:quote) = ''">
+               <xsl:attribute name="style">background-color:red</xsl:attribute>
+            </xsl:if>
             <xsl:choose>
-               <xsl:when test="@xml:lang='de'"><span class="spTransGerm"><xsl:value-of select="tei:quote"/><xsl:if test="tei:usg"> (<xsl:value-of select="tei:usg"/>)</xsl:if>
-               </span>
+               <xsl:when test="@xml:lang = 'de'">
+                  <span class="spTransGerm">
+                     <xsl:value-of select="tei:quote"/>
+                     <xsl:if test="tei:usg"> (<xsl:value-of select="tei:usg"/>)</xsl:if>
+                  </span>
                </xsl:when>
-               <xsl:otherwise><span class="spTrans"><xsl:value-of select="tei:quote"/><xsl:if test="tei:usg"> (<xsl:value-of select="tei:usg"/>)</xsl:if>
-               </span>
+               <xsl:otherwise>
+                  <span class="spTrans">
+                     <xsl:value-of select="tei:quote"/>
+                     <xsl:if test="tei:usg"> (<xsl:value-of select="tei:usg"/>)</xsl:if>
+                  </span>
                </xsl:otherwise>
             </xsl:choose>
          </td>
