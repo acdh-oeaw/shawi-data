@@ -237,11 +237,14 @@
             <xsl:when test="@type='synRoot'"><td class="tdHead">synRoot</td></xsl:when>
             <xsl:when test="@type='diaRoot'"><td class="tdHead">diaRoot</td></xsl:when>
             <xsl:when test="@type='root'"><td class="tdHead">root</td></xsl:when>
-            <xsl:otherwise><td class="tdHead" style="background-color:red">Unknown gram feature</td></xsl:otherwise>
+            <xsl:otherwise><td class="tdHead" style="background-color:red">Unknown gram feature <xsl:value-of select="@type"/></td></xsl:otherwise>
          </xsl:choose>
          <td><xsl:value-of select="."/></td>
       </tr>
    </xsl:template>
+
+   <!-- handled differently -->
+   <xsl:template match="tei:gram[@type='pos']"/>
 
    <xsl:template match="tei:usg[@type='geographic']">
       <xsl:for-each select="tei:name">
