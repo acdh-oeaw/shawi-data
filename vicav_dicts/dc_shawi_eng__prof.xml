@@ -221,52 +221,26 @@
             </xsl:for-each>
          </td>
       </tr>
-      
-      <xsl:if test="string-length(//tei:gram[@type='subc'])">
-         <tr>
-            <td class="tdHead">Subcat.</td>
-            <td><xsl:value-of select="//tei:gram[@type='subc']"/>
-            </td>
-         </tr>
-      </xsl:if>
-      
-      <xsl:if test="string-length(//tei:gram[@type='morphPatternSg'])">
-         <tr>
-            <td class="tdHead">morphPatSg</td>
-            <td><xsl:value-of select="//tei:gram[@type='morphPatternSg']"/>
-            </td>
-         </tr>
-      </xsl:if>
-      
-      <xsl:if test="string-length(//tei:gram[@type='morphPatternPl'])">
-         <tr>
-            <td class="tdHead">morphPatPl</td>
-            <td><xsl:value-of select="//tei:gram[@type='morphPatternPl']"/>
-            </td>
-         </tr>
-      </xsl:if>
-      
-      <xsl:if test="string-length(//tei:gram[@type='synRoot'])">
-         <tr>
-            <td class="tdHead">synRoot</td>
-            <td><xsl:value-of select="//tei:gram[@type='synRoot']"/>
-            </td>
-         </tr>
-      </xsl:if>
-      <xsl:if test="string-length(//tei:gram[@type='diaRoot'])">
-         <tr>
-            <td class="tdHead">diaRoot</td>
-            <td><xsl:value-of select="//tei:gram[@type='diaRoot']"/>
-            </td>
-         </tr>
-      </xsl:if>
-      <xsl:if test="string-length(//tei:gram[@type='root'])">
-         <tr>
-            <td class="tdHead">root</td>
-            <td><xsl:value-of select="//tei:gram[@type='root']"/>
-            </td>
-         </tr>
-      </xsl:if>
+      <xsl:apply-templates select="../tei:gramGrp"/>
+   </xsl:template>
+   
+   <xsl:template match="tei:gramGrp">
+      <xsl:apply-templates select="tei:gram"/>
+   </xsl:template>
+   
+   <xsl:template match="tei:gram">
+      <tr>
+         <xsl:choose>
+            <xsl:when test="@type='subc'"><td class="tdHead">Subcat.</td></xsl:when>
+            <xsl:when test="@type='morphPatternSg'"><td class="tdHead">morphPatSg</td></xsl:when>
+            <xsl:when test="@type='morphPatternPl'"><td class="tdHead">morphPatPl</td></xsl:when>
+            <xsl:when test="@type='synRoot'"><td class="tdHead">synRoot</td></xsl:when>
+            <xsl:when test="@type='diaRoot'"><td class="tdHead">diaRoot</td></xsl:when>
+            <xsl:when test="@type='root'"><td class="tdHead">root</td></xsl:when>
+            <xsl:otherwise><td class="tdHead" style="background-color:red">Unknown gram feature</td></xsl:otherwise>
+         </xsl:choose>
+         <td><xsl:value-of select="."/></td>
+      </tr>
    </xsl:template>
 
    <xsl:template match="tei:usg[@type='geographic']">
