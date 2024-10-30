@@ -42,7 +42,7 @@
       <xsl:copy>
          <xsl:apply-templates select="@*"/>
          <xsl:apply-templates select="../@*"/>
-         <xsl:attribute name="xtoks:id" select="concat(root()//tei:title[@level ='a'],'_',@xtoks:id)"/>
+         <xsl:attribute name="xtoks:id" select="concat(root()//tei:idno[@type ='SHAWICorpusID'],'_',@xtoks:id)"/>
          <xsl:apply-templates/>
       </xsl:copy>
    </xsl:template>
@@ -152,7 +152,7 @@
       <xsl:copy copy-namespaces="no">
          <xsl:copy-of select="@* except @xml:id"/>
          <xsl:attribute name="xtoks:id"
-                        select="concat(root()//tei:title[@level ='a'],'_',@xtoks:id)"/>
+                        select="concat(root()//tei:idno[@type ='SHAWICorpusID'],'_',@xtoks:id)"/>
          <xsl:attribute name="join">right</xsl:attribute>
          <xsl:if test="following-sibling::*[1]/self::xtoks:pc[. = '-']">
             <xsl:attribute name="rend">withDash</xsl:attribute>
@@ -168,7 +168,7 @@
             <xsl:attribute name="join" select="$join"/>
          </xsl:if>
          <xsl:attribute name="xtoks:id"
-                        select="concat(root()//tei:title[@level ='a'],'_',@xtoks:id)"/>
+                        select="concat(root()//tei:idno[@type ='SHAWICorpusID'],'_',@xtoks:id)"/>
          <xsl:apply-templates/>
       </xsl:copy>
    </xsl:template>
