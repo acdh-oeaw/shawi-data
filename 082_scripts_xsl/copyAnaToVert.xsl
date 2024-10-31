@@ -41,7 +41,7 @@
     
     <xsl:template match="tei:f">
         <xsl:attribute name="xtoks:{@name}">
-            <xsl:value-of select="tei:string"/>
+            <xsl:value-of select="tei:string | @fVal"/>
         </xsl:attribute>
     </xsl:template>
       
