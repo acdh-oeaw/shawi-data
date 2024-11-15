@@ -50,7 +50,15 @@
         and not just overwrite it with the corpus header -->
     <xsl:template match="tei:teiHeader">
         <xsl:param name="teiHeaderFromCorpus" tunnel="yes"/>
-        <xsl:sequence select="$teiHeaderFromCorpus"/>
+        <xsl:element name="{name($teiHeaderFromCorpus)}">
+            <xsl:copy-of select="$teiHeaderFromCorpus/@*"/>
+            <xsl:for-each select="$teiHeaderFromCorpus/*">
+                <xsl:sequence select="."/>
+                <xsl:if test="name() = 'profileDesc'">
+                    <revisionDesc status="generated"/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:element>
     </xsl:template>
     
     <xsl:template match="node() except text()| @*">
