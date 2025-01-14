@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../082_scripts_xsl/tei_2_html__shawi.xsl"?>
+<?xslt inPathSegment="\010_manannot\" outPathSegment="\106_html\"?>
+<?processor name="saxon" removePreserveFromXML="true" removePreserveFromXSLT="true"?>
+<?snippets fn="snippets_shawi_001.xml" path="{filePath}/../880_conf/"?>
+<?standoff fn="shawi_standoff.xml" path=""?>
+<?attributeAssignments fn="shawi_attributes.xml" path="{filePath}/../880_conf/"?>
+<?shortCuts fn="shawi_shortCuts" path="{filePath}/../880_conf/"?>
+<!--THIS FILE WAS PROGRAMMATICALLY CREATED by mergeHeaderAndTranscription.xsl on/at2024-03-26T13:59:25.179123Z-->
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title level="a">Tall Nasir Harran</title>
+            <title level="s">SHAWI Corpus</title>
+            <respStmt>
+               <persName ref="corpus:SP">
+                  <forename>Stephan</forename>
+                  <surname>Procházka</surname>
+               </persName>
+               <resp>Principal Investigator</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AHu">
+                  <forename>Aozan</forename>
+                  <surname>Hussien</surname>
+               </persName>
+               <resp>Transcription</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:MT">
+                  <forename>Miriam</forename>
+                  <surname>Al Tawil</surname>
+               </persName>
+               <resp>ELAN </resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AN">
+                  <forename>Aleksandra</forename>
+                  <surname>Naddari</surname>
+               </persName>
+               <resp>Dictionary</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:MA">
+                  <forename>Zsófia Maura</forename>
+                  <surname>Abraham</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:CM">
+                  <forename>Charly</forename>
+                  <surname>Mörth</surname>
+               </persName>
+               <resp>National Cooperation Partner</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:DS">
+                  <forename>Daniel</forename>
+                  <surname>Schopper</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AHe">
+                  <forename>Angelika</forename>
+                  <surname>Hechtl</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:ISM">
+                  <forename>Ismail</forename>
+                  <surname>Batan</surname>
+               </persName>
+               <resp/>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:No Need">
+                  <forename>No Need/ unqualified</forename>
+                  <surname/>
+               </persName>
+               <resp/>
+            </respStmt>
+            <funder>Funded by the <orgName ref="https://ror.org/013tf3c58">FWF Austrian Science Fund</orgName> under the number <idno type="projectNumber">P 33574</idno>
+            </funder>
+         </titleStmt>
+         <publicationStmt>
+            <publisher ref="https://ror.org/03anc3s24">Austrian Academy of Sciences</publisher>
+            <publisher ref="https://ror.org/03prydq77">University of Vienna</publisher>
+            <distributor ref="https://ror.org/028bsh698">Austrian Center for Digital Humanities and Cultural Heritage</distributor>
+            <date>TODO Set publication date here</date>
+            <address>
+               <addrLine>Sonnenfelsgasse 19</addrLine>
+               <addrLine>1010 Vienna</addrLine>
+               <addrLine>Austria</addrLine>
+            </address>
+            <availability status="free">
+               <licence target="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</licence>
+            </availability>
+            <idno type="SHAWICorpusID">URFA-112</idno>
+         </publicationStmt>
+         <sourceDesc>
+            <recordingStmt>
+               <recording dur-iso="07:00" type="audio">
+                  <date when="2010-05-12"/>
+                  <respStmt>
+                     <resp>recording</resp>
+                     <persName ref="corpus:SP">Stephan Procházka</persName>
+                  </respStmt>
+                  <media url="share:Urfa-112_Tall_Nasir-Harran-2010.wav" mimeType="audio/wav" type="master"/>
+               </recording>
+            </recordingStmt>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <listPrefixDef>
+            <prefixDef ident="corpus" matchPattern="^(.+)$" replacementPattern="shawiCorpus.xml#$1">
+               <p>Private URIs using the <code>teiCorpusHeader</code> prefix are pointers to any element in the <ref target="shawiCorpus.xml">SHAWI teiCorpus document</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="share" matchPattern="^(.+)$" replacementPattern="\\share17.univie.ac.at\orientalistik\SHAWI\Recordings\*\*\$1.wav">
+               <p>Private URIs using the <code>share</code> prefix are pointers to audio file residing on the SHAWI network share.</p>
+            </prefixDef>
+            <prefixDef ident="geo" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml#$1">
+               <p>Private URIs using the <code>geo</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>place</gi> element in <ref target="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml">VICAV Geodata list</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="zotid" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_biblio_tei_zotero.xml#$1">
+               <p>Private URIs using the <code>zotid</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>biblStruct</gi> element in the TEI export of the <ref target="https://www.zotero.org/groups/2165756/vicav/library">VICAV Zotero Group library</ref>.</p>
+            </prefixDef>
+         </listPrefixDef>
+      </encodingDesc>
+      <profileDesc>
+         <particDesc>
+            <listPerson>
+               <head>Speakers in URFA-112</head>
+               <person sameAs="corpus:Harran01">
+                  <name type="pseudonym">Harran01</name>
+               </person>
+               <person sameAs="corpus:TallXarma01">
+                  <name type="pseudonym">TallXarma01</name>
+               </person>
+            </listPerson>
+         </particDesc>
+         <settingDesc>
+            <place sameAs="geo:harran">
+               <placeName>Harran</placeName>
+            </place>
+         </settingDesc>
+         <textClass>
+            <catRef target="corpus:TallNasir"/>
+         </textClass>
+      </profileDesc>
+   <revisionDesc status="draft"/>
+	</teiHeader>
+   <text>
+      <timeline unit="ms">
+         <when xml:id="T0"/>
+         <when interval="28589" since="#T0" xml:id="T1"/>
+         <when interval="28600" since="#T0" xml:id="T2"/>
+         <when interval="74440" since="#T0" xml:id="T3"/>
+         <when interval="74480" since="#T0" xml:id="T4"/>
+         <when interval="108560" since="#T0" xml:id="T5"/>
+         <when interval="145720" since="#T0" xml:id="T6"/>
+         <when interval="184720" since="#T0" xml:id="T7"/>
+         <when interval="237840" since="#T0" xml:id="T8"/>
+         <when interval="264360" since="#T0" xml:id="T9"/>
+         <when interval="264400" since="#T0" xml:id="T10"/>
+         <when interval="313160" since="#T0" xml:id="T11"/>
+         <when interval="349160" since="#T0" xml:id="T12"/>
+         <when interval="373480" since="#T0" xml:id="T13"/>
+         <when interval="402280" since="#T0" xml:id="T14"/>
+      </timeline>
+      <body>
+         <div subtype="d0" type="Situation">
+            <head>
+               <note type="start">#T0</note>
+               <note type="end">#T14</note>
+            </head>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a1" who="#default" end="#T1" start="#T0">
+                  <w xml:id="URFA-112_xTok_000001" lemmaRef="dict:DShaAr.tall_00000" n="*to pull++tell (mound)" msd="*pf.3.m.sg.++sg." xml:lang="*iso6393:ara">Tall</w>
+                  <w xml:id="URFA-112_xTok_000002">Xarma</w>
+                  <pc xml:id="xTok_000003">–</pc>
+                  <w xml:id="URFA-112_xTok_000004" lemmaRef="*dict:DShaAr.isim_000" n="*name" msd="*sg." xml:lang="*iso6393:ara">isim</w>
+                  <w xml:id="URFA-112_xTok_000005" lemmaRef="*dict:DShaAr.awwali_000" n="*the ones in former times++firstly/ in former times++firstly" xml:lang="*iso6393:ara">awwali</w>
+                  <w xml:id="URFA-112_xTok_000006" lemmaRef="dict:DShaAr.tall_00000" n="*to pull++tell (mound)" msd="*pf.3.m.sg.++sg." xml:lang="*iso6393:ara">Tall</w>
+                  <w join="right" xml:id="URFA-112_xTok_000007">Xarma</w>
+                  <pc xml:id="xTok_000008">?</pc>
+                  <pc xml:id="xTok_000009">–</pc>
+                  <w xml:id="URFA-112_xTok_000010" lemmaRef="dict:DShaAr.tall_00000" n="*to pull++tell (mound)" msd="*pf.3.m.sg.++sg." xml:lang="*iso6393:ara">Tall</w>
+                  <w join="right" xml:id="URFA-112_xTok_000011">Qarma</w>
+                  <pc xml:id="xTok_000012">,</pc>
+                  <w xml:id="URFA-112_xTok_000013" lemmaRef="dict:DShaAr.zimaan_00000" n="*in former times++time" msd="*sg.++m.sg." xml:lang="*iso6393:ara">zimān</w>
+                  <w join="right" xml:id="URFA-112_xTok_000014" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000016" join="right">ʕUsmalli</w>
+                  <pc xml:id="xTok_000017">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000018" xml:lang="*iso6393:ara">ā</w>
+                  <pc xml:id="xTok_000019">,</pc>
+                  <w xml:id="URFA-112_xTok_000020" n="#afterwards#afterwards" msd="##" lemmaRef="#dict:DShaAr.bacdeen_000#dict:DShaAr.bacdeen_00000" xml:lang="##">baʕdēn</w>
+                  <w join="right" xml:id="URFA-112_xTok_000021" rend="withDash" lemmaRef="dict:DShaAr.gidd_00000" n="*grandfather" msd="*m.sg." xml:lang="*iso6393:ara">ǧidd</w>
+                  <w xml:id="URFA-112_xTok_000023">ina</w>
+                  <w xml:id="URFA-112_xTok_000024" lemmaRef="*dict:DShaAr.heene_000" n="*here" xml:lang="*iso6393:ara">hēn</w>
+                  <w join="right" xml:id="URFA-112_xTok_000025">nāzil</w>
+                  <pc xml:id="xTok_000026">.</pc>
+                  <w xml:id="URFA-112_xTok_000027" n="##he" msd="#3.m.sg.#" lemmaRef="#dict:DShaAr.huwwa_00000#dict:DShaAr.huwwa_00000" xml:lang="##">huwwa</w>
+                  <w xml:id="URFA-112_xTok_000028" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000029" lemmaRef="*dict:DShaAr.rayyis_000" n="*gypsy whose function is to musically animate weddings" msd="*m.sg.++sg." xml:lang="*iso6393:ara">rayyis</w>
+                  <w join="right" xml:id="URFA-112_xTok_000030" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000032" lemmaRef="*dict:DShaAr.cashiira_000" n="*tribe" msd="*pl." xml:lang="*iso6393:ara">ʕašāyir</w>
+                  <w join="right" xml:id="URFA-112_xTok_000033" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">as</w>
+                  <w xml:id="URFA-112_xTok_000035" n="*Syria" msd="*properNoun++properNoun" xml:lang="*iso6393:ara">Sūriyye</w>
+                  <w xml:id="URFA-112_xTok_000036" lemmaRef="dict:DShaAr.saar_00000" n="*to become" msd="*pf.3.m.sg.++pf.3.m.sg" xml:lang="*iso6393:ara">ṣār</w>
+                  <w join="right" xml:id="URFA-112_xTok_000037" n="##war" msd="##sg." lemmaRef="##dict:DShaAr.harib_00000" xml:lang="##">ḥarb</w>
+                  <pc xml:id="xTok_000038">.</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000039" rend="withDash" lemmaRef="dict:DShaAr.maa_000" xml:lang="*iso6393:ara">ma</w>
+                  <w xml:id="URFA-112_xTok_000041" n="between" lemmaRef="dict:DShaAr.been_00000" msd="*sg." xml:lang="*iso6393:ara">bēn</w>
+                  <w join="right" xml:id="URFA-112_xTok_000042" rend="withDash" lemmaRef="*dict:DShaAr.cashiira_000" n="*tribe" msd="*pl." xml:lang="*iso6393:ara">ʕašāyir</w>
+                  <w xml:id="URFA-112_xTok_000044" n="##us" msd="#1.pl.#" lemmaRef="#dict:DShaAr.na_001#dict:DShaAr.na_001" xml:lang="##">na</w>
+                  <w join="right" xml:id="URFA-112_xTok_000045" rend="withDash" lemmaRef="dict:DShaAr.w_000" n="*and" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000047" n="*Syria" msd="*properNoun++properNoun" xml:lang="*iso6393:ara">Sūriyye</w>
+                  <w xml:id="URFA-112_xTok_000048" lemmaRef="dict:DShaAr.saar_00000" n="*to become" msd="*pf.3.m.sg.++pf.3.m.sg" xml:lang="*iso6393:ara">ṣār</w>
+                  <w xml:id="URFA-112_xTok_000049" n="##war" msd="##sg." lemmaRef="##dict:DShaAr.harib_00000" xml:lang="##">ḥarb</w>
+                  <w join="right" xml:id="URFA-112_xTok_000050" n="#much#very" msd="##" lemmaRef="#dict:DShaAr.cjithiir_00000#dict:DShaAr.cjithiir_00001" xml:lang="##">čiṯīr</w>
+                  <pc join="right" xml:id="xTok_000051">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a1.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a1.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a1" xml:id="a23">Tell Xarma – [SP] Its former name was Tell Xarma? – Tall Qarma, in the era of the Ottomans. Then our grandfather settled down here. A war broke out between him and the chief of the Syrian tribes. Between our tribes and the Syrians there was a lot of war.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a2" who="#default" end="#T3" start="#T2">
+                  <w xml:id="URFA-112_xTok_000052" lemmaRef="*dict:DShaAr.rayyis_000" n="*gypsy whose function is to musically animate weddings" msd="*m.sg.++sg." xml:lang="*iso6393:ara">rayyis</w>
+                  <w join="right" xml:id="URFA-112_xTok_000053" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000055" lemmaRef="*dict:DShaAr.cashiira_000" n="*tribe" msd="*pl." xml:lang="*iso6393:ara">ʕašāyir</w>
+                  <w xml:id="URFA-112_xTok_000056" n="##that" msd="#m.sg.#" lemmaRef="#dict:DShaAr.haada_000#dict:DShaAr.hadaak_000" xml:lang="##">haḏāk</w>
+                  <w xml:id="URFA-112_xTok_000057" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*m.sg." xml:lang="*iso6393:ara">gāyil</w>
+                  <w join="right" xml:id="URFA-112_xTok_000058" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">l</w>
+                  <w join="right" xml:id="URFA-112_xTok_000060" rend="withDash" xml:lang="*iso6393:ara">aš</w>
+                  <w xml:id="URFA-112_xTok_000062" join="right" lemmaRef="dict:DShaAr.shaacir_00000" n="*poet" xml:lang="*iso6393:ara">šāʕir</w>
+                  <pc xml:id="xTok_000063">,</pc>
+                  <w xml:id="URFA-112_xTok_000064">šāʕr</w>
+                  <w join="right" xml:id="URFA-112_xTok_000065" n="*yes" xml:lang="*iso6393:ara">ē</w>
+                  <pc xml:id="xTok_000066">,</pc>
+                  <w xml:id="URFA-112_xTok_000067" lemmaRef="dict:DShaAr.caraf_000" n="*to know" msd="*impf.2.m.sg.++impf.3.f.sg." xml:lang="*iso6393:ara">tʕarif</w>
+                  <w join="right" xml:id="URFA-112_xTok_000068" lemmaRef="dict:DShaAr.shaacir_00000" n="*poet" xml:lang="*iso6393:ara">šāʕir</w>
+                  <pc xml:id="xTok_000069">?</pc>
+                  <pc xml:id="xTok_000070">–</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000071" n="*yes" xml:lang="*iso6393:ara">ē</w>
+                  <pc xml:id="xTok_000072">!</pc>
+                  <pc xml:id="xTok_000073">–</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000074" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000075">:</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000076" lemmaRef="dict:DShaAr.ruuh_000" n="*to go++soul" msd="*imp.2.m.sg.++m.sg.++f.sg." xml:lang="*iso6393:ara">rūḥ</w>
+                  <pc xml:id="xTok_000077">!</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000078" rend="withDash" lemmaRef="dict:DShaAr.cala_000" n="*to++on" msd="*properNoun" xml:lang="*iso6393:ara">ʕa</w>
+                  <w xml:id="URFA-112_xTok_000080" lemmaRef="*dict:DShaAr.rayyis_000" n="*gypsy whose function is to musically animate weddings" msd="*m.sg.++sg." xml:lang="*iso6393:ara">rayyis</w>
+                  <w xml:id="URFA-112_xTok_000081" lemmaRef="*dict:DShaAr.cashiira_000" n="*tribe" msd="*pl." xml:lang="*iso6393:ara">ʕašāyir</w>
+                  <w xml:id="URFA-112_xTok_000082">Ǧēs</w>
+                  <w xml:id="URFA-112_xTok_000083" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000084" n="in the direction of" lemmaRef="dict:DShaAr.lee_00000" xml:lang="*iso6393:ara">lē</w>
+                  <w xml:id="URFA-112_xTok_000085" lemmaRef="dict:DShaAr.saar_00000" n="*to become" msd="*pf.3.m.sg.++pf.3.m.sg" xml:lang="*iso6393:ara">ṣār</w>
+                  <w join="right" xml:id="URFA-112_xTok_000086" rend="withDash" n="in" lemmaRef="dict:DShaAr.b_00000" xml:lang="*iso6393:ara">b</w>
+                  <w join="right" xml:id="URFA-112_xTok_000088" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000090" n="*coffee" msd="*sg." xml:lang="*iso6393:ara">ᵊghawa</w>
+                  <w join="right" xml:id="URFA-112_xTok_000091" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000093">maǧlis</w>
+                  <w xml:id="URFA-112_xTok_000094" lemmaRef="dict:DShaAr.saar_00000" n="*to become" msd="*pf.3.m.sg.++pf.3.m.sg" xml:lang="*iso6393:ara">ṣār</w>
+                  <w join="right" xml:id="URFA-112_xTok_000095" n="*ok" xml:lang="*iso6393:ara">tamām</w>
+                  <pc xml:id="xTok_000096">.</pc>
+                  <w xml:id="URFA-112_xTok_000097" n="##you (m)" msd="#2.m.sg.#" lemmaRef="#dict:DShaAr.inte_00000#dict:DShaAr.inte_00000" xml:lang="##">inte</w>
+                  <w join="right" xml:id="URFA-112_xTok_000098" rend="withDash" n="in" lemmaRef="dict:DShaAr.b_00000" xml:lang="*iso6393:ara">b</w>
+                  <w join="right" xml:id="URFA-112_xTok_000100" rend="withDash" xml:lang="*iso6393:ara">aṛ</w>
+                  <w xml:id="URFA-112_xTok_000102" join="right">ṛǝbāb</w>
+                  <pc xml:id="xTok_000103">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000104" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*imp.2.m.sg.++impf.1.sg." xml:lang="*iso6393:ara">gūl</w>
+                  <pc xml:id="xTok_000105">:</pc>
+                  <w xml:id="URFA-112_xTok_000106">mǝn</w>
+                  <w xml:id="URFA-112_xTok_000107" n="#above#above" msd="##" lemmaRef="#dict:DShaAr.foog_00000#dict:DShaAr.foog_00001" xml:lang="##">fōg</w>
+                  <w join="right" xml:id="URFA-112_xTok_000108" rend="withDash" xml:lang="*tr">diǧil</w>
+                  <w xml:id="URFA-112_xTok_000110" join="right" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <pc xml:id="xTok_000111">,</pc>
+                  <w xml:id="URFA-112_xTok_000112">mǝn</w>
+                  <w xml:id="URFA-112_xTok_000113" n="#above#above" msd="##" lemmaRef="#dict:DShaAr.foog_00000#dict:DShaAr.foog_00001" xml:lang="##">fōg</w>
+                  <w join="right" xml:id="URFA-112_xTok_000114" rend="withDash" xml:lang="*tr">diǧil</w>
+                  <w xml:id="URFA-112_xTok_000116" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <w xml:id="URFA-112_xTok_000117" n="all" lemmaRef="dict:DShaAr.kull_001" xml:lang="*iso6393:ara">kull</w>
+                  <w join="right" xml:id="URFA-112_xTok_000118" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000120">ʕaǧādīy</w>
+                  <w xml:id="URFA-112_xTok_000121">yassarat</w>
+                  <w join="right" xml:id="URFA-112_xTok_000122" rend="withDash" n="*and" xml:lang="*iso6393:ara">wa</w>
+                  <w xml:id="URFA-112_xTok_000124" xml:lang="*tr">Čill</w>
+                  <w join="right" xml:id="URFA-112_xTok_000125" rend="withDash">ḥabbal</w>
+                  <w join="right" xml:id="URFA-112_xTok_000127" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <pc join="right" xml:id="xTok_000128">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a2.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a2.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a2" xml:id="a24">The chief of those tribes said to a certain poet, a poet, yes, you know what a poet is? – Yes! – He said, “Go to the chief of the tribes of Qays! And when he is sitting in the coffee house, in the majlis, then it is the right (moment) to recite (to him) by playing the rebab: He beat (?) them from above (the camel) All men were taken captives And Čill made pregnant all (women).</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a3" who="#default" end="#T5" start="#T4">
+                  <w xml:id="URFA-112_xTok_000129" n="thus" lemmaRef="dict:DShaAr.yacni_000" xml:lang="*iso6393:ara">yaʕni</w>
+                  <w xml:id="URFA-112_xTok_000130" n="##he" msd="#3.m.sg.#" lemmaRef="#dict:DShaAr.huwwa_00000#dict:DShaAr.huwwa_00000" xml:lang="##">huwwa</w>
+                  <w xml:id="URFA-112_xTok_000131" xml:lang="*tr">erqeq</w>
+                  <w xml:id="URFA-112_xTok_000132" n="this" lemmaRef="dict:DShaAr.haadi_000" msd="*f.sg." xml:lang="*iso6393:ara">hāḏi</w>
+                  <w join="right" xml:id="URFA-112_xTok_000133" rend="withDash" n="all" lemmaRef="dict:DShaAr.kull_001" xml:lang="*iso6393:ara">kull</w>
+                  <w xml:id="URFA-112_xTok_000135" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <w join="right" xml:id="URFA-112_xTok_000136">qadǝn</w>
+                  <pc xml:id="xTok_000137">.</pc>
+                  <w xml:id="URFA-112_xTok_000138">sen</w>
+                  <w xml:id="URFA-112_xTok_000139" msd="*properNoun" xml:lang="*tr">böyle</w>
+                  <w join="right" xml:id="URFA-112_xTok_000140">söyle</w>
+                  <pc xml:id="xTok_000141">:</pc>
+                  <w xml:id="URFA-112_xTok_000142">mǝn</w>
+                  <w xml:id="URFA-112_xTok_000143" n="#above#above" msd="##" lemmaRef="#dict:DShaAr.foog_00000#dict:DShaAr.foog_00001" xml:lang="##">fōg</w>
+                  <w join="right" xml:id="URFA-112_xTok_000144" rend="withDash" xml:lang="*tr">diǧil</w>
+                  <w xml:id="URFA-112_xTok_000146" join="right" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <pc xml:id="xTok_000147">,</pc>
+                  <w xml:id="URFA-112_xTok_000148">mǝn</w>
+                  <w xml:id="URFA-112_xTok_000149" n="#above#above" msd="##" lemmaRef="#dict:DShaAr.foog_00000#dict:DShaAr.foog_00001" xml:lang="##">fōg</w>
+                  <w join="right" xml:id="URFA-112_xTok_000150" rend="withDash" xml:lang="*tr">diǧil</w>
+                  <w xml:id="URFA-112_xTok_000152" join="right" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <pc xml:id="xTok_000153">,</pc>
+                  <w xml:id="URFA-112_xTok_000154" n="all" lemmaRef="dict:DShaAr.kull_001" xml:lang="*iso6393:ara">kull</w>
+                  <w join="right" xml:id="URFA-112_xTok_000155" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000157">ʕaǧādīy</w>
+                  <w join="right" xml:id="URFA-112_xTok_000158">yassarat</w>
+                  <pc xml:id="xTok_000159">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000160" rend="withDash" n="*and" xml:lang="*iso6393:ara">wa</w>
+                  <w xml:id="URFA-112_xTok_000162" xml:lang="*tr">Čill</w>
+                  <w join="right" xml:id="URFA-112_xTok_000163" rend="withDash">ḥabbal</w>
+                  <w xml:id="URFA-112_xTok_000165" join="right" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <pc xml:id="xTok_000166">.</pc>
+                  <w xml:id="URFA-112_xTok_000167" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*imp.2.m.sg.++impf.1.sg." xml:lang="*iso6393:ara">gūl</w>
+                  <w xml:id="URFA-112_xTok_000168" n="so" lemmaRef="dict:DShaAr.hiicjid_00000" xml:lang="*iso6393:ara">hīčiḏ</w>
+                  <w xml:id="URFA-112_xTok_000169" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000170" n="##I" msd="#1.sg.#" lemmaRef="#dict:DShaAr.aani_00000#dict:DShaAr.aani_00000" xml:lang="##">āni</w>
+                  <w join="right" xml:id="URFA-112_xTok_000171" rend="withDash" n="*to give" msd="*impf.1.sg." xml:lang="*iso6393:ara">anṭī</w>
+                  <w xml:id="URFA-112_xTok_000173" msd="*2.m.sg." xml:lang="*iso6393:ara">k</w>
+                  <w xml:id="URFA-112_xTok_000174" n="#much#very" msd="##" lemmaRef="#dict:DShaAr.cjithiir_00000#dict:DShaAr.cjithiir_00001" xml:lang="##">čiṯīr</w>
+                  <w join="right" xml:id="URFA-112_xTok_000175" n="*money" msd="*pl." xml:lang="*iso6393:ara">məṣāri</w>
+                  <pc xml:id="xTok_000176">.</pc>
+                  <w xml:id="URFA-112_xTok_000177" n="this" lemmaRef="dict:DShaAr.haadi_000" msd="*f.sg." xml:lang="*iso6393:ara">hāḏi</w>
+                  <w xml:id="URFA-112_xTok_000178" n="##" msd="##" lemmaRef="#dict:DShaAr.zaad_00000#dict:DShaAr.zaad_000" xml:lang="##">zād</w>
+                  <w xml:id="URFA-112_xTok_000179">xarǧiliq</w>
+                  <w xml:id="URFA-112_xTok_000180" n="this" lemmaRef="dict:DShaAr.haada_000" msd="m.sg." xml:lang="iso6393:ara">hāḏa</w>
+                  <w xml:id="URFA-112_xTok_000181" n="*clothes" msd="*pl." xml:lang="*iso6393:ara">albīs</w>
+                  <w xml:id="URFA-112_xTok_000182" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w join="right" xml:id="URFA-112_xTok_000183" lemmaRef="dict:DShaAr.ruuh_000" n="*to go++soul" msd="*imp.2.m.sg.++m.sg.++f.sg." xml:lang="*iso6393:ara">rūḥ</w>
+                  <pc join="right" xml:id="xTok_000184">!</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a3.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a3.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a3" xml:id="a25">That means, he was a real man and those others were all (like) women. Say this: He beat them from above (the camel) All men were taken captives And Čill made pregnant all (women). Say like this and I’ll give you a lot of money. Here you have also some allowance! Here you have clothes and (now) go!</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a4" who="#default" end="#T6" start="#T5">
+                  <w join="right" xml:id="URFA-112_xTok_000185" lemmaRef="dict:DShaAr.ha_000" msd="3.f.sg." n="*yes" xml:lang="*iso6393:ara">hā</w>
+                  <pc xml:id="xTok_000186">,</pc>
+                  <w xml:id="URFA-112_xTok_000187" lemmaRef="dict:DShaAr.gii_00000" n="*to come" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">ǧī</w>
+                  <w xml:id="URFA-112_xTok_000188" lemmaRef="dict:DShaAr.cala_000" n="*on" xml:lang="*iso6393:ara">ʕala</w>
+                  <w join="right" xml:id="URFA-112_xTok_000189" rend="withDash" lemmaRef="dict:DShaAr.gidd_00000" n="*grandfather" msd="*m.sg." xml:lang="*iso6393:ara">ǧidd</w>
+                  <w xml:id="URFA-112_xTok_000191">ina</w>
+                  <w xml:id="URFA-112_xTok_000192" n="here" lemmaRef="dict:DShaAr.heene_000" xml:lang="*iso6393:ara">hēne</w>
+                  <w xml:id="URFA-112_xTok_000193" n="#that#" msd="##" lemmaRef="#dict:DShaAr.hadaak_000#" xml:lang="##">ḏāk</w>
+                  <w join="right" xml:id="URFA-112_xTok_000194" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*tr++iso6393:ara">az</w>
+                  <w xml:id="URFA-112_xTok_000196" lemmaRef="dict:DShaAr.zimaan_00000" n="*in former times++time" msd="*sg.++m.sg." xml:lang="*iso6393:ara">zimān</w>
+                  <w xml:id="URFA-112_xTok_000197" n="to read" msd="pf.3.m.sg." lemmaRef="dict:DShaAr.gera_00000" xml:lang="*iso6393:ara">qara</w>
+                  <w join="right" xml:id="URFA-112_xTok_000198" n="##tent" msd="##sg." lemmaRef="#dict:DShaAr.cjaadir_00000#dict:DShaAr.cjaadir_00000" xml:lang="##">čādir</w>
+                  <pc xml:id="xTok_000199">,</pc>
+                  <w xml:id="URFA-112_xTok_000200" n="##house" msd="##pl." lemmaRef="#dict:DShaAr.beet_00000#dict:DShaAr.beet_00000" xml:lang="##">byūt</w>
+                  <w join="right" xml:id="URFA-112_xTok_000201" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000203" join="right" n="##" msd="##" lemmaRef="#dict:DShaAr.carab_00000#dict:DShaAr.crubi_00000" xml:lang="##">ʕarab</w>
+                  <pc xml:id="xTok_000204">.</pc>
+                  <w xml:id="URFA-112_xTok_000205" n="##village" msd="##pl." lemmaRef="#dict:DShaAr.garye_00000#dict:DShaAr.garye_00000" xml:lang="##">gaṛāye</w>
+                  <w xml:id="URFA-112_xTok_000206" lemmaRef="*dict:DShaAr.flaan_000" n="*so-and-so" msd="*sg." xml:lang="*iso6393:ara">flān</w>
+                  <w join="right" xml:id="URFA-112_xTok_000207" n="*there is not" xml:lang="*iso6393:ara">māmin</w>
+                  <pc xml:id="xTok_000208">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000209" rend="withDash" n="all" lemmaRef="dict:DShaAr.kull_001" xml:lang="*iso6393:ara">kull</w>
+                  <w xml:id="URFA-112_xTok_000211" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w xml:id="URFA-112_xTok_000212" n="to read" msd="pf.3.m.sg." lemmaRef="dict:DShaAr.gera_00000" xml:lang="*iso6393:ara">qara</w>
+                  <w join="right" xml:id="URFA-112_xTok_000213" n="##tent" msd="##sg." lemmaRef="#dict:DShaAr.cjaadir_00000#dict:DShaAr.cjaadir_00000" xml:lang="##">čādir</w>
+                  <pc xml:id="xTok_000214">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000215" rend="withDash" n="#house#house" msd="##sg." lemmaRef="#dict:DShaAr.beet_00000#dict:DShaAr.beet_00000" xml:lang="##">bēt</w>
+                  <w xml:id="URFA-112_xTok_000217" n="if" lemmaRef="dict:DShaAr.in_000" xml:lang="*iso6393:ara">in</w>
+                  <w join="right" xml:id="URFA-112_xTok_000218" lemmaRef="*dict:DShaAr.aswad_000++dict:DShaAr.aswad_001" n="*black++black African" msd="*sg." xml:lang="*iso6393:ara">aswad</w>
+                  <pc xml:id="xTok_000219">,</pc>
+                  <w xml:id="URFA-112_xTok_000220" n="#house#house" msd="##sg." lemmaRef="#dict:DShaAr.beet_00000#dict:DShaAr.beet_00000" xml:lang="##">bēt</w>
+                  <w join="right" xml:id="URFA-112_xTok_000221">šaʕir</w>
+                  <pc xml:id="xTok_000222">.</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000223" xml:lang="*iso6393:ara">āā</w>
+                  <pc xml:id="xTok_000224">,</pc>
+                  <w xml:id="URFA-112_xTok_000225" n="this" lemmaRef="dict:DShaAr.haada_000" msd="m.sg." xml:lang="iso6393:ara">hāḏa</w>
+                  <w xml:id="URFA-112_xTok_000226" n="##" msd="##" lemmaRef="#dict:DShaAr.zaad_00000#dict:DShaAr.zaad_000" xml:lang="##">zād</w>
+                  <w xml:id="URFA-112_xTok_000227" n="*to come" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">ǧīy</w>
+                  <w xml:id="URFA-112_xTok_000228" lemmaRef="dict:DShaAr.raacjib_00000" n="*having mounted" msd="*m.sg." xml:lang="*iso6393:ara">rāčib</w>
+                  <w join="right" xml:id="URFA-112_xTok_000229" rend="withDash" lemmaRef="dict:DShaAr.cala_000" n="*to++on" msd="*properNoun" xml:lang="*iso6393:ara">ʕa</w>
+                  <w join="right" xml:id="URFA-112_xTok_000231" rend="withDash" lemmaRef="dict:DShaAr.al_000">ǧ</w>
+                  <w xml:id="URFA-112_xTok_000233" join="right" n="##donkey" msd="##sg." lemmaRef="##dict:DShaAr.cjahash_00000" xml:lang="##">ǧaḥaš</w>
+                  <pc xml:id="xTok_000234">,</pc>
+                  <w xml:id="URFA-112_xTok_000235" lemmaRef="dict:DShaAr.hawwal_000" n="*to invite++to go down++to transform" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">ḥawwal</w>
+                  <w xml:id="URFA-112_xTok_000236" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000237">fāt</w>
+                  <w xml:id="URFA-112_xTok_000238" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000239" n="##sit down" msd="##pf.3.m.sg." lemmaRef="#dict:DShaAr.gacad_00000#dict:DShaAr.gacad_00000" xml:lang="##">gaʕad</w>
+                  <w xml:id="URFA-112_xTok_000240" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000241" lemmaRef="*dict:DShaAr.flaan_000" n="*so-and-so" msd="*sg." xml:lang="*iso6393:ara">flān</w>
+                  <w xml:id="URFA-112_xTok_000242" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000243" n="coffee" msd="sg." lemmaRef="dict:DShaAr.ghawa_00000">qahwa</w>
+                  <w xml:id="URFA-112_xTok_000244" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000245" n="*will" msd="*sg." xml:lang="*iso6393:ara">kēf</w>
+                  <w join="right" xml:id="URFA-112_xTok_000246">ifil</w>
+                  <pc join="right" xml:id="xTok_000247">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a4.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a4.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a4" xml:id="a26">Hey, he came here to our grandfather and in that time there still were black tents, the tents of the Arabs, there were no villages here, only the black tent, the tent made of hair. This one came riding on a donkey. He got off, came in and sat down. There was coffee and good mood.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a5" who="#default" end="#T7" start="#T6">
+                  <w xml:id="URFA-112_xTok_000248" lemmaRef="dict:DShaAr.cugub_00000" n="*after" xml:lang="*iso6393:ara">ʕugub</w>
+                  <w join="right" xml:id="URFA-112_xTok_000249" rend="withDash" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000251" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">l</w>
+                  <w xml:id="URFA-112_xTok_000253" join="right" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <pc xml:id="xTok_000254">:</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000255" n="*or" msd="*3.m.sg." xml:lang="*iso6393:ara">yā</w>
+                  <pc xml:id="xTok_000256">…</pc>
+                  <w xml:id="URFA-112_xTok_000257" n="*or" msd="*3.m.sg." xml:lang="*iso6393:ara">yā</w>
+                  <w join="right" xml:id="URFA-112_xTok_000258" rend="withDash" lemmaRef="*dict:DShaAr.d_eef_000" n="*guest" msd="*sg." xml:lang="*iso6393:ara">ḏ̣ēf</w>
+                  <w xml:id="URFA-112_xTok_000260" n="##us" msd="#1.pl.#" lemmaRef="#dict:DShaAr.na_001#dict:DShaAr.na_001" xml:lang="##">na</w>
+                  <w xml:id="URFA-112_xTok_000261" n="come on!" lemmaRef="dict:DShaAr.halla_000" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">halla</w>
+                  <w join="right" xml:id="URFA-112_xTok_000262" rend="withDash" lemmaRef="dict:DShaAr.cind_00000" n="*at" xml:lang="*iso6393:ara">ʕind</w>
+                  <w xml:id="URFA-112_xTok_000264" n="*you" msd="*2.m.sg." xml:lang="*iso6393:ara">ak</w>
+                  <w join="right" xml:id="URFA-112_xTok_000265">ṛubāba</w>
+                  <pc xml:id="xTok_000266">,</pc>
+                  <w xml:id="URFA-112_xTok_000267" n="come on!" lemmaRef="dict:DShaAr.halla_000" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">halla</w>
+                  <w join="right" xml:id="URFA-112_xTok_000268" rend="withDash">sawwī</w>
+                  <w join="right" xml:id="URFA-112_xTok_000270" rend="withDash" xml:lang="*iso6393:ara">n</w>
+                  <w xml:id="URFA-112_xTok_000272" n="##us" msd="#1.pl.#" lemmaRef="#dict:DShaAr.na_001#dict:DShaAr.na_001" xml:lang="##">na</w>
+                  <w join="right" xml:id="URFA-112_xTok_000273">teselli</w>
+                  <pc xml:id="xTok_000274">!</pc>
+                  <w xml:id="URFA-112_xTok_000275">giḏ̣ab</w>
+                  <w join="right" xml:id="URFA-112_xTok_000276" rend="withDash" xml:lang="*iso6393:ara">aṛ</w>
+                  <w xml:id="URFA-112_xTok_000278" join="right">ṛubāba</w>
+                  <pc xml:id="xTok_000279">,</pc>
+                  <w xml:id="URFA-112_xTok_000280" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w xml:id="URFA-112_xTok_000281" msd="dual" n="*time" xml:lang="*iso6393:ara">nōbtēn</w>
+                  <w xml:id="URFA-112_xTok_000282" lemmaRef="dict:DShaAr.thalaathe_000" msd="*m.sg." xml:lang="*iso6393:ara">ṯalāṯ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000283">šarqī</w>
+                  <pc xml:id="xTok_000284">,</pc>
+                  <w xml:id="URFA-112_xTok_000285" lemmaRef="dict:DShaAr.qeer_00000" n="*another" xml:lang="*iso6393:ara">qēr</w>
+                  <w join="right" xml:id="URFA-112_xTok_000286">šarqī</w>
+                  <pc xml:id="xTok_000287">,</pc>
+                  <w xml:id="URFA-112_xTok_000288" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000289" rend="withDash">hak</w>
+                  <w xml:id="URFA-112_xTok_000291">kilma</w>
+                  <w xml:id="URFA-112_xTok_000292" n="this" lemmaRef="dict:DShaAr.haadi_000" msd="*f.sg." xml:lang="*iso6393:ara">hāḏi</w>
+                  <w join="right" xml:id="URFA-112_xTok_000293" n="##" msd="##" lemmaRef="#dict:DShaAr.zaad_00000#dict:DShaAr.zaad_000" xml:lang="##">zād</w>
+                  <pc xml:id="xTok_000294">,</pc>
+                  <w xml:id="URFA-112_xTok_000295" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w xml:id="URFA-112_xTok_000296">mǝn</w>
+                  <w xml:id="URFA-112_xTok_000297" n="#above#above" msd="##" lemmaRef="#dict:DShaAr.foog_00000#dict:DShaAr.foog_00001" xml:lang="##">fōg</w>
+                  <w join="right" xml:id="URFA-112_xTok_000298" rend="withDash" xml:lang="*tr">diǧil</w>
+                  <w xml:id="URFA-112_xTok_000300" join="right" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <pc xml:id="xTok_000301">,</pc>
+                  <w xml:id="URFA-112_xTok_000302">mǝn</w>
+                  <w xml:id="URFA-112_xTok_000303" n="#above#above" msd="##" lemmaRef="#dict:DShaAr.foog_00000#dict:DShaAr.foog_00001" xml:lang="##">fōg</w>
+                  <w join="right" xml:id="URFA-112_xTok_000304" rend="withDash" xml:lang="*tr">diǧil</w>
+                  <w xml:id="URFA-112_xTok_000306" join="right" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <pc xml:id="xTok_000307">,</pc>
+                  <w xml:id="URFA-112_xTok_000308" n="all" lemmaRef="dict:DShaAr.kull_001" xml:lang="*iso6393:ara">kull</w>
+                  <w join="right" xml:id="URFA-112_xTok_000309" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000311">ʕaǧādīy</w>
+                  <w join="right" xml:id="URFA-112_xTok_000312">yassarat</w>
+                  <pc xml:id="xTok_000313">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000314" rend="withDash" n="*and" xml:lang="*iso6393:ara">wa</w>
+                  <w xml:id="URFA-112_xTok_000316" xml:lang="*tr">Čill</w>
+                  <w join="right" xml:id="URFA-112_xTok_000317" rend="withDash">ḥabbal</w>
+                  <w join="right" xml:id="URFA-112_xTok_000319" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <pc join="right" xml:id="xTok_000320">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a5.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a5.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a5" xml:id="a27">Afterwards he said to him, “O our guest, since you have a rebab with you, please, comfort us!” He took the rebab and played two or three songs, other songs (than the one he was told in Syria), but then he also said these words: He beat (?) them from above (the camel) All men were taken captives And Čill made pregnant all (women).</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a6" who="#default" end="#T8" start="#T7">
+                  <w xml:id="URFA-112_xTok_000321" n="nobody" lemmaRef="dict:DShaAr.mahhad_000" xml:lang="*iso6393:ara">maḥḥad</w>
+                  <w join="right" xml:id="URFA-112_xTok_000322" rend="withDash" n="*to follow along" msd="*sg." xml:lang="*iso6393:ara">ᵊmtabbʕ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000324" rend="withDash" n="to" lemmaRef="dict:DShaAr.il_00000" xml:lang="*iso6393:ara">il</w>
+                  <w xml:id="URFA-112_xTok_000326" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">he</w>
+                  <w xml:id="URFA-112_xTok_000327" n="this" lemmaRef="dict:DShaAr.haadi_000" msd="*f.sg." xml:lang="*iso6393:ara">hāḏi</w>
+                  <w xml:id="URFA-112_xTok_000328" n="but" lemmaRef="dict:DShaAr.0amma_000" xml:lang="*iso6393:ara">amma</w>
+                  <w join="right" xml:id="URFA-112_xTok_000329" rend="withDash" xml:lang="*iso6393:ara">aš</w>
+                  <w xml:id="URFA-112_xTok_000331" join="right" lemmaRef="dict:DShaAr.sheex_000" n="*sheikh" msd="*m.sg." xml:lang="*iso6393:ara">šēx</w>
+                  <pc xml:id="xTok_000332">,</pc>
+                  <w xml:id="URFA-112_xTok_000333">xaššat</w>
+                  <w join="right" xml:id="URFA-112_xTok_000334" rend="withDash" lemmaRef="*DShaAr.raas_000" n="*head" msd="*sg." xml:lang="*iso6393:ara">qāft</w>
+                  <w xml:id="URFA-112_xTok_000336" join="right" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <pc xml:id="xTok_000337">,</pc>
+                  <w xml:id="URFA-112_xTok_000338">neyse</w>
+                  <w xml:id="URFA-112_xTok_000339" n="this" lemmaRef="dict:DShaAr.haadi_000" msd="*f.sg." xml:lang="*iso6393:ara">hāḏi</w>
+                  <w xml:id="URFA-112_xTok_000340" n="*to come" msd="*pf.3.f.sg." xml:lang="*iso6393:ara">ǧat</w>
+                  <w join="right" xml:id="URFA-112_xTok_000341" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000343" n="*sheep" msd="*pl." xml:lang="*iso6393:ara">ᵊqnīm</w>
+                  <w join="right" xml:id="URFA-112_xTok_000344" rend="withDash" lemmaRef="dict:DShaAr.cala_000" n="*to++on" msd="*properNoun" xml:lang="*iso6393:ara">ʕa</w>
+                  <w join="right" xml:id="URFA-112_xTok_000346" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">l</w>
+                  <w xml:id="URFA-112_xTok_000348" n="milk" lemmaRef="dict:DShaAr.haliib_00000" msd="*sg." xml:lang="*iso6393:ara">ḥalīb</w>
+                  <w join="right" xml:id="URFA-112_xTok_000349" rend="withDash" lemmaRef="dict:DShaAr.al_000">aḏ̣</w>
+                  <w xml:id="URFA-112_xTok_000351" lemmaRef="dict:DShaAr.d-uhur_00000" n="*noon" msd="*m.sg.++ sg." xml:lang="*iso6393:ara">ḏ̣uhur</w>
+                  <w join="right" xml:id="URFA-112_xTok_000352" rend="withDash" n="all" lemmaRef="dict:DShaAr.kull_001" xml:lang="*iso6393:ara">kull</w>
+                  <w xml:id="URFA-112_xTok_000354" n="*who" xml:lang="*iso6393:ara">man</w>
+                  <w xml:id="URFA-112_xTok_000355" lemmaRef="dict:DShaAr.raah_00000" n="*to go" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">rāḥ</w>
+                  <w xml:id="URFA-112_xTok_000356" lemmaRef="dict:DShaAr.cala_000" n="*on" xml:lang="*iso6393:ara">ʕala</w>
+                  <w join="right" xml:id="URFA-112_xTok_000357" rend="withDash" n="#house#house" msd="##sg." lemmaRef="#dict:DShaAr.beet_00000#dict:DShaAr.beet_00000" xml:lang="##">bēt</w>
+                  <w xml:id="URFA-112_xTok_000359" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w xml:id="URFA-112_xTok_000360" n="*to stay" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">ḏ̣aḷḷ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000361" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">ar</w>
+                  <w xml:id="URFA-112_xTok_000363" lemmaRef="*dict:DShaAr.rayyis_000" n="*gypsy whose function is to musically animate weddings" msd="*m.sg.++sg." xml:lang="*iso6393:ara">rayyis</w>
+                  <w xml:id="URFA-112_xTok_000364" n="here" lemmaRef="dict:DShaAr.heene_000" xml:lang="*iso6393:ara">hēne</w>
+                  <w join="right" xml:id="URFA-112_xTok_000365" rend="withDash" lemmaRef="dict:DShaAr.al_000" n="*what" xml:lang="*iso6393:ara">š</w>
+                  <w xml:id="URFA-112_xTok_000367" join="right" lemmaRef="dict:DShaAr.sheex_000" n="*sheikh" msd="*m.sg." xml:lang="*iso6393:ara">šēx</w>
+                  <pc xml:id="xTok_000368">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000369" rend="withDash" lemmaRef="dict:DShaAr.w_000" n="*and" xml:lang="*iso6393:ara">w</w>
+                  <w join="right" xml:id="URFA-112_xTok_000371" rend="withDash" xml:lang="*iso6393:ara">aš</w>
+                  <w xml:id="URFA-112_xTok_000373" join="right" lemmaRef="dict:DShaAr.shaacir_00000" n="*poet" xml:lang="*iso6393:ara">šāʕir</w>
+                  <pc xml:id="xTok_000374">.</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000375" rend="withDash" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000377" rend="withDash">ḷ</w>
+                  <w xml:id="URFA-112_xTok_000379" join="right" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <pc xml:id="xTok_000380">:</pc>
+                  <w xml:id="URFA-112_xTok_000381" n="*or" msd="*3.m.sg." xml:lang="*iso6393:ara">yā</w>
+                  <w join="right" xml:id="URFA-112_xTok_000382" lemmaRef="dict:DShaAr.shaacir_00000" n="*poet" xml:lang="*iso6393:ara">šāʕir</w>
+                  <pc xml:id="xTok_000383">!</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000384" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000385">:</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000386" lemmaRef="dict:DShaAr.ha_000" msd="3.f.sg." n="*yes" xml:lang="*iso6393:ara">hā</w>
+                  <pc xml:id="xTok_000387">!</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000388" rend="withDash" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000390" rend="withDash">ḷ</w>
+                  <w xml:id="URFA-112_xTok_000392" join="right" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <pc xml:id="xTok_000393">:</pc>
+                  <w xml:id="URFA-112_xTok_000394">imiš</w>
+                  <w xml:id="URFA-112_xTok_000395" lemmaRef="dict:DShaAr.taa_000" n="*in order to++until" xml:lang="*iso6393:ara">tā</w>
+                  <w xml:id="URFA-112_xTok_000396" msd="impf.1.pl." lemmaRef="dict:DShaAr.rega_00000" n="*to ascend" xml:lang="*iso6393:ara">nirga</w>
+                  <w xml:id="URFA-112_xTok_000397" n="#above#above" msd="##" lemmaRef="#dict:DShaAr.foog_00000#dict:DShaAr.foog_00001" xml:lang="##">fōg</w>
+                  <w join="right" xml:id="URFA-112_xTok_000398" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">at</w>
+                  <w xml:id="URFA-112_xTok_000400" lemmaRef="dict:DShaAr.tall_00000" n="*to pull++tell (mound)" msd="*pf.3.m.sg.++sg." xml:lang="*iso6393:ara">tall</w>
+                  <w xml:id="URFA-112_xTok_000401" n="this" lemmaRef="dict:DShaAr.haada_000" msd="m.sg." xml:lang="iso6393:ara">hāḏa</w>
+                  <w xml:id="URFA-112_xTok_000402" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000403" n="look" msd="imp.2.m.sg." xml:lang="*iso6393:ara">daḥḥiǧ</w>
+                  <w xml:id="URFA-112_xTok_000404" lemmaRef="dict:DShaAr.cala_000" n="*on" xml:lang="*iso6393:ara">ʕala</w>
+                  <w xml:id="URFA-112_xTok_000405">ʕurbān</w>
+                  <w join="right" xml:id="URFA-112_xTok_000406">Ǧēs</w>
+                  <pc xml:id="xTok_000407">!</pc>
+                  <w xml:id="URFA-112_xTok_000408" lemmaRef="dict:DShaAr.shgadd_001">šgadd</w>
+                  <w xml:id="URFA-112_xTok_000409">ʕurbān</w>
+                  <w join="right" xml:id="URFA-112_xTok_000410" lemmaRef="*dict:DShaAr.shii_00000" n="*there is" xml:lang="*iso6393:ara">šīy</w>
+                  <pc xml:id="xTok_000411">?</pc>
+                  <w xml:id="URFA-112_xTok_000412" lemmaRef="dict:DShaAr.shgadd_001">šgadd</w>
+                  <w xml:id="URFA-112_xTok_000413" n="#sheep#" msd="##" lemmaRef="#dict:DShaAr.qanam_00000#dict:DShaAr.qanam_00001" xml:lang="##">qanam</w>
+                  <w join="right" xml:id="URFA-112_xTok_000414" lemmaRef="*dict:DShaAr.shii_00000" n="*there is" xml:lang="*iso6393:ara">šīy</w>
+                  <pc xml:id="xTok_000415">?</pc>
+                  <w xml:id="URFA-112_xTok_000416" lemmaRef="dict:DShaAr.shgadd_001">šgadd</w>
+                  <w xml:id="URFA-112_xTok_000417" n="*camel" msd="*collective" xml:lang="*iso6393:ara">baʕar</w>
+                  <w join="right" xml:id="URFA-112_xTok_000418" lemmaRef="*dict:DShaAr.shii_00000" n="*there is" xml:lang="*iso6393:ara">šīy</w>
+                  <pc xml:id="xTok_000419">?</pc>
+                  <w xml:id="URFA-112_xTok_000420" lemmaRef="dict:DShaAr.shgadd_001">šgadd</w>
+                  <w xml:id="URFA-112_xTok_000421" n="##woman" lemmaRef="#dict:DShaAr.hurma_00000#dict:DShaAr.hurma_00000" xml:lang="##" msd="##pl.">ḥarīm</w>
+                  <w join="right" xml:id="URFA-112_xTok_000422" lemmaRef="*dict:DShaAr.shii_00000" n="*there is" xml:lang="*iso6393:ara">šīy</w>
+                  <pc xml:id="xTok_000423">?</pc>
+                  <w xml:id="URFA-112_xTok_000424" lemmaRef="dict:DShaAr.shgadd_001">šgadd</w>
+                  <w xml:id="URFA-112_xTok_000425" n="thus" lemmaRef="dict:DShaAr.yacni_000" xml:lang="*iso6393:ara">yaʕni</w>
+                  <w join="right" xml:id="URFA-112_xTok_000426" lemmaRef="dict:DShaAr.xeel_00000">xēl</w>
+                  <pc xml:id="xTok_000427">?</pc>
+                  <w xml:id="URFA-112_xTok_000428" n="*to see" msd="*imp.2.m.sg." xml:lang="*iso6393:ara">šūf</w>
+                  <w join="right" xml:id="URFA-112_xTok_000429" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000431" join="right" n="*country" msd="*pl." xml:lang="*iso6393:ara">ᵊblād</w>
+                  <pc xml:id="xTok_000432">!</pc>
+                  <w xml:id="URFA-112_xTok_000433">hāt</w>
+                  <w xml:id="URFA-112_xTok_000434" n="##" msd="##" lemmaRef="#dict:DShaAr.zaad_00000#dict:DShaAr.zaad_000" xml:lang="##">zād</w>
+                  <w join="right" xml:id="URFA-112_xTok_000435" rend="withDash">ṛubābt</w>
+                  <w xml:id="URFA-112_xTok_000437" n="*you" msd="*2.m.sg." xml:lang="*iso6393:ara">ak</w>
+                  <w join="right" xml:id="URFA-112_xTok_000438" rend="withDash" n="*with" xml:lang="*iso6393:ara">ᵊbsāgt</w>
+                  <w join="right" xml:id="URFA-112_xTok_000440" n="*you" msd="*2.m.sg." xml:lang="*iso6393:ara">ak</w>
+                  <pc join="right" xml:id="xTok_000441">!</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a6.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a6.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a6" xml:id="a28">Nobody did follow along, but the sheikh caught on to it.  When the sheep came for the noon’s milking everybody went home, only the chief stayed. The sheikh and the poet. He said to him, “O poet!” He said, “Yes!” He said, “Come on, let’s climb this hill and have a look at the Arabs of Qays! How many Arabs are there? How many sheep? How many camels? How many women and how many horses? Have a look at this country and take your rebab with you!</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a7" who="#default" end="#T9" start="#T8">
+                  <w xml:id="URFA-112_xTok_000442" n="this" lemmaRef="dict:DShaAr.haada_000" msd="m.sg." xml:lang="iso6393:ara">hāḏa</w>
+                  <w xml:id="URFA-112_xTok_000443" n="##" msd="##" lemmaRef="#dict:DShaAr.zaad_00000#dict:DShaAr.zaad_000" xml:lang="##">zād</w>
+                  <w xml:id="URFA-112_xTok_000444">ᵊstadār</w>
+                  <w xml:id="URFA-112_xTok_000445" lemmaRef="dict:DShaAr.cala_000" n="*on" xml:lang="*iso6393:ara">ʕala</w>
+                  <w join="right" xml:id="URFA-112_xTok_000446" rend="withDash">ʕiyāl</w>
+                  <w xml:id="URFA-112_xTok_000448" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w join="right" xml:id="URFA-112_xTok_000449" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000451" join="right">qilīč</w>
+                  <pc xml:id="xTok_000452">,</pc>
+                  <w xml:id="URFA-112_xTok_000453" n="*to put on" msd="*imp.2.m.sg." xml:lang="*iso6393:ara">ᵊlbis</w>
+                  <w join="right" xml:id="URFA-112_xTok_000454" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000456" lemmaRef="dict:DShaAr.cabaa_00000" n="*a cloak-like wrap" xml:lang="*iso6393:ara">ʕabā</w>
+                  <w join="right" xml:id="URFA-112_xTok_000457" rend="withDash" n="#above#above" msd="##" lemmaRef="#dict:DShaAr.foog_00000#dict:DShaAr.foog_00001" xml:lang="##">fōg</w>
+                  <w xml:id="URFA-112_xTok_000459" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w join="right" xml:id="URFA-112_xTok_000460" rend="withDash" lemmaRef="dict:DShaAr.w_000" n="*and" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000462" lemmaRef="dict:DShaAr.rega_00000" n="*to ascend" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">rǝga</w>
+                  <w join="right" xml:id="URFA-112_xTok_000463" rend="withDash" lemmaRef="dict:DShaAr.cala_000" n="*to++on" msd="*properNoun" xml:lang="*iso6393:ara">ʕa</w>
+                  <w join="right" xml:id="URFA-112_xTok_000465" rend="withDash" xml:lang="*iso6393:ara">t</w>
+                  <w xml:id="URFA-112_xTok_000467" join="right" lemmaRef="dict:DShaAr.tall_00000" n="*to pull++tell (mound)" msd="*pf.3.m.sg.++sg." xml:lang="*iso6393:ara">tall</w>
+                  <pc xml:id="xTok_000468">.</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000469" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">at</w>
+                  <w xml:id="URFA-112_xTok_000471" lemmaRef="dict:DShaAr.tall_00000" n="*to pull++tell (mound)" msd="*pf.3.m.sg.++sg." xml:lang="*iso6393:ara">tall</w>
+                  <w xml:id="URFA-112_xTok_000472" n="this" lemmaRef="dict:DShaAr.haada_000" msd="m.sg." xml:lang="iso6393:ara">hāḏa</w>
+                  <w xml:id="URFA-112_xTok_000473" n="from" lemmaRef="dict:DShaAr.min_00000" xml:lang="*iso6393:ara">min</w>
+                  <w xml:id="URFA-112_xTok_000474" n="#above#above" msd="##" lemmaRef="#dict:DShaAr.foog_00000#dict:DShaAr.foog_00001" xml:lang="##">fōg</w>
+                  <w xml:id="URFA-112_xTok_000475" n="from" lemmaRef="dict:DShaAr.min_00000" xml:lang="*iso6393:ara">min</w>
+                  <w xml:id="URFA-112_xTok_000476" n="over there" lemmaRef="dict:DShaAr.qaadi_00000" xml:lang="*iso6393:ara">qādi</w>
+                  <w join="right" xml:id="URFA-112_xTok_000477" lemmaRef="dict:DShaAr.caali_00000" n="*high" xml:lang="*iso6393:ara">ʕāli</w>
+                  <pc xml:id="xTok_000478">.</pc>
+                  <w xml:id="URFA-112_xTok_000479" n="from" lemmaRef="dict:DShaAr.min_00000" xml:lang="*iso6393:ara">min</w>
+                  <w xml:id="URFA-112_xTok_000480" n="here" lemmaRef="dict:DShaAr.heene_000" xml:lang="*iso6393:ara">hēne</w>
+                  <w join="right" xml:id="URFA-112_xTok_000481" n="so" lemmaRef="dict:DShaAr.hiicjid_00000" xml:lang="*iso6393:ara">hīčiḏ</w>
+                  <pc xml:id="xTok_000482">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000483" xml:lang="*iso6393:ara">ā</w>
+                  <pc xml:id="xTok_000484">,</pc>
+                  <w xml:id="URFA-112_xTok_000485" n="so" lemmaRef="dict:DShaAr.hiicjid_00000" xml:lang="*iso6393:ara">hīčiḏ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000486" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*impf.1.pl." xml:lang="*iso6393:ara">ᵊngūl</w>
+                  <pc xml:id="xTok_000487">,</pc>
+                  <w xml:id="URFA-112_xTok_000488" n="from" lemmaRef="dict:DShaAr.min_00000" xml:lang="*iso6393:ara">min</w>
+                  <w xml:id="URFA-112_xTok_000489">qād</w>
+                  <w join="right" xml:id="URFA-112_xTok_000490" lemmaRef="dict:DShaAr.caali_00000" n="*high" xml:lang="*iso6393:ara">ʕāli</w>
+                  <pc xml:id="xTok_000491">,</pc>
+                  <w xml:id="URFA-112_xTok_000492" n="from" lemmaRef="dict:DShaAr.min_00000" xml:lang="*iso6393:ara">min</w>
+                  <w join="right" xml:id="URFA-112_xTok_000493" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000495" n="*side" msd="*sg." xml:lang="*iso6393:ara">wurč</w>
+                  <w join="right" xml:id="URFA-112_xTok_000496" rend="withDash" xml:lang="*iso6393:ara">aš</w>
+                  <w join="right" xml:id="URFA-112_xTok_000498">šimāli</w>
+                  <pc join="right" xml:id="xTok_000499">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a7.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a7.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a7" xml:id="a29">He (the sheikh) returned to his family too. He put on his sword, got the aba onto it and climbed the hill. This hill is steep from the other side, from this side here it is like this, but from the other side it is steep, from the northern slope.</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a8" who="#default" end="#T11" start="#T10">
+                  <w xml:id="URFA-112_xTok_000500">gaʕadu</w>
+                  <w join="right" xml:id="URFA-112_xTok_000501" n="there" lemmaRef="dict:DShaAr.hinaak_00000" xml:lang="*iso6393:ara">hināk</w>
+                  <pc xml:id="xTok_000502">.</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000503" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000504">:</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000505" n="look" msd="imp.2.m.sg." xml:lang="*iso6393:ara">daḥḥiǧ</w>
+                  <pc xml:id="xTok_000506">!</pc>
+                  <w xml:id="URFA-112_xTok_000507">gözü</w>
+                  <w xml:id="URFA-112_xTok_000508" xml:lang="*tr">doldur</w>
+                  <pc xml:id="xTok_000509">–</pc>
+                  <w xml:id="URFA-112_xTok_000510">imil</w>
+                  <w join="right" xml:id="URFA-112_xTok_000511" rend="withDash" lemmaRef="dict:DShaAr.ceen_00000" n="*eye" msd="*sg.++m.sg." xml:lang="*iso6393:ara">ʕēn</w>
+                  <w xml:id="URFA-112_xTok_000513" join="right" n="*you" msd="*2.m.sg." xml:lang="*iso6393:ara">ak</w>
+                  <pc xml:id="xTok_000514">!</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000515" rend="withDash" lemmaRef="*dict:DShaAr.shi_001++dict:DShaAr.shi_000" n="*what++thing" msd="*sg." xml:lang="*iso6393:ara">ši</w>
+                  <w xml:id="URFA-112_xTok_000517" join="right" lemmaRef="dict:DShaAr.shaaf_00000" n="*to see" msd="*impf.2.m.sg.++impf.3.f.sg." xml:lang="*iso6393:ara">tšūf</w>
+                  <pc xml:id="xTok_000518">?</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000519" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000520">:</pc>
+                  <w xml:id="URFA-112_xTok_000521" msd="impf.1.sg." lemmaRef="dict:DShaAr.shaaf_00000" n="*to see" xml:lang="*iso6393:ara">ašūf</w>
+                  <w join="right" xml:id="URFA-112_xTok_000522" n="house" msd="pl." xml:lang="*iso6393:ara">ᵊbyūt</w>
+                  <pc xml:id="xTok_000523">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000524" n="#much#very" msd="##" lemmaRef="#dict:DShaAr.cjithiir_00000#dict:DShaAr.cjithiir_00001" xml:lang="##">čiṯīr</w>
+                  <pc xml:id="xTok_000525">.</pc>
+                  <w xml:id="URFA-112_xTok_000526" lemmaRef="dict:DShaAr.axar_000" n="*again" xml:lang="*iso6393:ara">uxṛa</w>
+                  <w join="right" xml:id="URFA-112_xTok_000527" rend="withDash" lemmaRef="*dict:DShaAr.shi_001++dict:DShaAr.shi_000" n="*what++thing" msd="*sg." xml:lang="*iso6393:ara">ši</w>
+                  <w xml:id="URFA-112_xTok_000529" join="right" lemmaRef="dict:DShaAr.shaaf_00000" n="*to see" msd="*impf.2.m.sg.++impf.3.f.sg." xml:lang="*iso6393:ara">tšūf</w>
+                  <pc xml:id="xTok_000530">?</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000531" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000532">:</pc>
+                  <w xml:id="URFA-112_xTok_000533" msd="impf.1.sg." lemmaRef="dict:DShaAr.shaaf_00000" n="*to see" xml:lang="*iso6393:ara">ašūf</w>
+                  <w join="right" xml:id="URFA-112_xTok_000534" n="*sheep" msd="*pl." xml:lang="*iso6393:ara">ᵊqnīm</w>
+                  <pc xml:id="xTok_000535">.</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000536" lemmaRef="dict:DShaAr.axar_000" n="*again" xml:lang="*iso6393:ara">uxṛa</w>
+                  <pc xml:id="xTok_000537">?</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000538" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000539">:</pc>
+                  <w xml:id="URFA-112_xTok_000540" n="*camel" msd="*collective" xml:lang="*iso6393:ara">baʕar</w>
+                  <w join="right" xml:id="URFA-112_xTok_000541" n="#much#very" msd="##" lemmaRef="#dict:DShaAr.cjithiir_00000#dict:DShaAr.cjithiir_00001" xml:lang="##">čiṯīr</w>
+                  <pc xml:id="xTok_000542">.</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000543" lemmaRef="dict:DShaAr.axar_000" n="*again" xml:lang="*iso6393:ara">uxṛa</w>
+                  <pc xml:id="xTok_000544">?</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000545" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000546">:</pc>
+                  <w xml:id="URFA-112_xTok_000547" n="##human being" msd="##pl." lemmaRef="#dict:DShaAr.aadami_000#dict:DShaAr.aadami_000" xml:lang="##">awādim</w>
+                  <w join="right" xml:id="URFA-112_xTok_000548" n="#much#very" msd="##" lemmaRef="#dict:DShaAr.cjithiir_00000#dict:DShaAr.cjithiir_00001" xml:lang="##">čiṯīr</w>
+                  <pc xml:id="xTok_000549">,</pc>
+                  <w xml:id="URFA-112_xTok_000550" lemmaRef="dict:DShaAr.xeel_00000">xēl</w>
+                  <w join="right" xml:id="URFA-112_xTok_000551" n="#much#very" msd="##" lemmaRef="#dict:DShaAr.cjithiir_00000#dict:DShaAr.cjithiir_00001" xml:lang="##">čiṯīr</w>
+                  <pc xml:id="xTok_000552">,</pc>
+                  <w xml:id="URFA-112_xTok_000553" n="*God" msd="*sg." xml:lang="*iso6393:ara">aḷḷa</w>
+                  <w join="right" xml:id="URFA-112_xTok_000554" rend="withDash">yhannī</w>
+                  <w xml:id="URFA-112_xTok_000556" msd="*2.m.sg." xml:lang="*iso6393:ara">k</w>
+                  <w join="right" xml:id="URFA-112_xTok_000557" rend="withDash" lemmaRef="dict:DShaAr.b_00000" n="with" xml:lang="*iso6393:ara">bī</w>
+                  <w xml:id="URFA-112_xTok_000559" join="right" n="###them" msd="#3.m.pl.#3.m.pl.#" lemmaRef="#dict:DShaAr.hum_000#dict:DShaAr.hum_000#dict:DShaAr.hum_000" xml:lang="###">hum</w>
+                  <pc xml:id="xTok_000560">!</pc>
+                  <w xml:id="URFA-112_xTok_000561" n="*God" msd="*sg." xml:lang="*iso6393:ara">aḷḷa</w>
+                  <w join="right" xml:id="URFA-112_xTok_000562" rend="withDash">yhannī</w>
+                  <w xml:id="URFA-112_xTok_000564" msd="*2.m.sg." xml:lang="*iso6393:ara">k</w>
+                  <w join="right" xml:id="URFA-112_xTok_000565" rend="withDash" lemmaRef="dict:DShaAr.b_00000" n="with" xml:lang="*iso6393:ara">bī</w>
+                  <w join="right" xml:id="URFA-112_xTok_000567" n="###them" msd="#3.m.pl.#3.m.pl.#" lemmaRef="#dict:DShaAr.hum_000#dict:DShaAr.hum_000#dict:DShaAr.hum_000" xml:lang="###">hum</w>
+                  <pc join="right" xml:id="xTok_000568">!</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a8.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a8.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a8" xml:id="a30">They sat down there and he said, “Look! Delight your eyes! What do you see?” He said, “I see tents, many indeed.” “What else do you see?” He said, “I see sheep.” “What else?” He said, “Many camels.” “What else?” He said, “Many men, many horses, may God make you happy by them!”</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a9" who="#default" end="#T12" start="#T11">
+                  <w join="right" xml:id="URFA-112_xTok_000569" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000570">:</pc>
+                  <w xml:id="URFA-112_xTok_000571" n="good" lemmaRef="dict:DShaAr.zeen_00000" msd="*sg.++ m.sg." xml:lang="*iso6393:ara">zēn</w>
+                  <w join="right" xml:id="URFA-112_xTok_000572" lemmaRef="*dict:DShaAr.shaaf_00000" n="*to see" msd="*pf.1.sg.++pf.2.m.sg." xml:lang="*iso6393:ara">šifit</w>
+                  <pc xml:id="xTok_000573">?</pc>
+                  <w xml:id="URFA-112_xTok_000574" n="good" lemmaRef="dict:DShaAr.zeen_00000" msd="*sg.++ m.sg." xml:lang="*iso6393:ara">zēn</w>
+                  <w join="right" xml:id="URFA-112_xTok_000575" rend="withDash" n="look" msd="imp.2.m.sg." xml:lang="*iso6393:ara">daḥḥiǧ</w>
+                  <w xml:id="URFA-112_xTok_000577" join="right" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <pc xml:id="xTok_000578">!</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000579" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000580">:</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000581" n="good" lemmaRef="dict:DShaAr.zeen_00000" msd="*sg.++ m.sg." xml:lang="*iso6393:ara">zēn</w>
+                  <pc xml:id="xTok_000582">,</pc>
+                  <w xml:id="URFA-112_xTok_000583" n="#to fill#to fill" msd="#pf.1.sg.#pf.2.m.sg." lemmaRef="#dict:DShaAr.mila_00000#dict:DShaAr.mila_00000" xml:lang="##">milēt</w>
+                  <w join="right" xml:id="URFA-112_xTok_000584" rend="withDash" lemmaRef="dict:DShaAr.ceen_00000" n="*eye" msd="*sg.++m.sg." xml:lang="*iso6393:ara">ʕēn</w>
+                  <w xml:id="URFA-112_xTok_000586" join="right" n="###me" msd="#1.sg.#1.sg.#" lemmaRef="#dict:DShaAr.i_000#dict:DShaAr.i_000#dict:DShaAr.i_000" xml:lang="###">i</w>
+                  <pc xml:id="xTok_000587">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000588">yūūūūū</w>
+                  <pc xml:id="xTok_000589">…</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000590" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000591">:</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000592" rend="withDash" lemmaRef="*dict:DShaAr.sihab_000" n="*to unsheathe (weapon)" msd="*impf.2.m.sg.++impf.3.f.sg." xml:lang="*iso6393:ara">tisḥab</w>
+                  <w join="right" xml:id="URFA-112_xTok_000594" rend="withDash" n="if" lemmaRef="dict:DShaAr.in_000" xml:lang="*iso6393:ara">in</w>
+                  <w xml:id="URFA-112_xTok_000596" msd="1.pl." lemmaRef="dict:DShaAr.na_001">ne</w>
+                  <w join="right" xml:id="URFA-112_xTok_000597" rend="withDash">ṛ</w>
+                  <w xml:id="URFA-112_xTok_000599">ṛubāba</w>
+                  <w join="right" xml:id="URFA-112_xTok_000600" rend="withDash">wannis</w>
+                  <w xml:id="URFA-112_xTok_000602" msd="1.pl." lemmaRef="dict:DShaAr.na_001">ne</w>
+                  <w join="right" xml:id="URFA-112_xTok_000603" rend="withDash" lemmaRef="dict:DShaAr.ta_001" n="*in order to" xml:lang="*iso6393:ara">ta</w>
+                  <w xml:id="URFA-112_xTok_000605" join="right" n="*to see" msd="*impf.2.m.sg." xml:lang="*iso6393:ara">ššūf</w>
+                  <pc xml:id="xTok_000606">!</pc>
+                  <w xml:id="URFA-112_xTok_000607">saḥab</w>
+                  <w join="right" xml:id="URFA-112_xTok_000608" rend="withDash" xml:lang="*iso6393:ara">aṛ</w>
+                  <w xml:id="URFA-112_xTok_000610" join="right">ṛubāba</w>
+                  <pc xml:id="xTok_000611">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000612" rend="withDash" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000614" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">l</w>
+                  <w xml:id="URFA-112_xTok_000616" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w xml:id="URFA-112_xTok_000617">gaṣīdtēn</w>
+                  <w join="right" xml:id="URFA-112_xTok_000618" lemmaRef="dict:DShaAr.thalaathe_000" msd="*m.sg." xml:lang="*iso6393:ara">ṯalāṯ</w>
+                  <pc xml:id="xTok_000619">.</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000620" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000621">:</pc>
+                  <w xml:id="URFA-112_xTok_000622" n="not" lemmaRef="dict:DShaAr.muu_000" xml:lang="*iso6393:ara">mū</w>
+                  <w join="right" xml:id="URFA-112_xTok_000623" n="this" lemmaRef="dict:DShaAr.haadi_000" msd="*f.sg." xml:lang="*iso6393:ara">hāḏi</w>
+                  <pc xml:id="xTok_000624">!</pc>
+                  <w xml:id="URFA-112_xTok_000625" n="that" lemmaRef="dict:DShaAr.al_002" xml:lang="*iso6393:ara">al</w>
+                  <w join="right" xml:id="URFA-112_xTok_000626" rend="withDash">gulit</w>
+                  <w xml:id="URFA-112_xTok_000628" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">he</w>
+                  <w join="right" xml:id="URFA-112_xTok_000629" rend="withDash" lemmaRef="dict:DShaAr.al_000">aḏ̣</w>
+                  <w xml:id="URFA-112_xTok_000631" join="right">ḏ̣aḥa</w>
+                  <pc xml:id="xTok_000632">.</pc>
+                  <w xml:id="URFA-112_xTok_000633" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000634" rend="withDash" lemmaRef="dict:DShaAr.qeer_00000" n="*another" xml:lang="*iso6393:ara">qēr</w>
+                  <w xml:id="URFA-112_xTok_000636" join="right" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">he</w>
+                  <pc xml:id="xTok_000637">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000638" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000639">:</pc>
+                  <w xml:id="URFA-112_xTok_000640" n="not" lemmaRef="dict:DShaAr.muu_000" xml:lang="*iso6393:ara">mū</w>
+                  <w join="right" xml:id="URFA-112_xTok_000641" n="this" lemmaRef="dict:DShaAr.haadi_000" msd="*f.sg." xml:lang="*iso6393:ara">hāḏi</w>
+                  <pc xml:id="xTok_000642">,</pc>
+                  <w xml:id="URFA-112_xTok_000643" n="*who" msd="*sg." xml:lang="*iso6393:ara++kur">alli</w>
+                  <w join="right" xml:id="URFA-112_xTok_000644" rend="withDash">gulit</w>
+                  <w xml:id="URFA-112_xTok_000646" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <w join="right" xml:id="URFA-112_xTok_000647" rend="withDash" n="in" lemmaRef="dict:DShaAr.b_00000" xml:lang="*iso6393:ara">b</w>
+                  <w join="right" xml:id="URFA-112_xTok_000649" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w join="right" xml:id="URFA-112_xTok_000651" n="*coffee" msd="*sg." xml:lang="*iso6393:ara">ᵊghawa</w>
+                  <pc join="right" xml:id="xTok_000652">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a9.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a9.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a9" xml:id="a31">He said, “Did you look well (at them)? Take a hard look at them!” He said, “I have delighted my eyes, yoo-hoo!” He said, “Take the rebab and exhilarate me!” He took the rebab and recited two or three poems for him. He said, “Not this one, the one you played before noon!” He played (again) another one, so he said, “Not this one, the one you played in the coffeehouse!”</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a10" who="#default" end="#T13" start="#T12">
+                  <w xml:id="URFA-112_xTok_000653" lemmaRef="dict:DShaAr.maa_000" n="*not" xml:lang="*iso6393:ara">mā</w>
+                  <w xml:id="URFA-112_xTok_000654" lemmaRef="dict:DShaAr.caad_000" n="*then++to come back++still++to return" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">ʕād</w>
+                  <w xml:id="URFA-112_xTok_000655" msd="impf.3.m.sg." lemmaRef="dict:DShaAr.caraf_000" n="*to know" xml:lang="*iso6393:ara">yʕarif</w>
+                  <w join="right" xml:id="URFA-112_xTok_000656" rend="withDash" lemmaRef="*dict:DShaAr.shi_001++dict:DShaAr.shi_000" n="*what++thing" msd="*sg." xml:lang="*iso6393:ara">ši</w>
+                  <w xml:id="URFA-112_xTok_000658" msd="impf.3.m.sg." lemmaRef="dict:DShaAr.raad_00000" n="*to want" xml:lang="*iso6393:ara">yrīd</w>
+                  <w join="right" xml:id="URFA-112_xTok_000659" n="say" msd="impf.3.m.sg." lemmaRef="dict:DShaAr.gaal_001" xml:lang="*iso6393:ara">yigūl</w>
+                  <pc xml:id="xTok_000660">.</pc>
+                  <w xml:id="URFA-112_xTok_000661" lemmaRef="dict:DShaAr.maa_000" n="*not" xml:lang="*iso6393:ara">mā</w>
+                  <w xml:id="URFA-112_xTok_000662" n="to stay" msd="pf.3.f.sg." lemmaRef="dict:DShaAr.d-all_00000" xml:lang="*iso6393:ara">ḏ̣allat</w>
+                  <w xml:id="URFA-112_xTok_000663">firṣa</w>
+                  <w xml:id="URFA-112_xTok_000664">yōx</w>
+                  <w xml:id="URFA-112_xTok_000665" lemmaRef="*dict:DShaAr.alle_000++dict:DShaAr.qalli_00000" n="*inevitably++or" msd="*conjunction++adverb" xml:lang="*iso6393:ara">alle</w>
+                  <w join="right" xml:id="URFA-112_xTok_000666" rend="withDash" n="##to say#to say" msd="##impf.2.m.sg.#impf.3.f.sg." lemmaRef="#dict:DShaAr.gaal_001#dict:DShaAr.gaal_001#dict:DShaAr.gaal_001" xml:lang="###">tgūl</w>
+                  <w xml:id="URFA-112_xTok_000668" join="right" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">he</w>
+                  <pc xml:id="xTok_000669">.</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000670" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <pc xml:id="xTok_000671">:</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000672" rend="withDash" lemmaRef="dict:DShaAr.yoom_00000" n="*day" msd="*sg.++m.sg." xml:lang="*iso6393:ara">yōm</w>
+                  <w join="right" xml:id="URFA-112_xTok_000674" rend="withDash" n="*if++that" xml:lang="*iso6393:ara">inn</w>
+                  <w xml:id="URFA-112_xTok_000676" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w xml:id="URFA-112_xTok_000677" lemmaRef="*dict:DShaAr.magbuur_000" n="*obligated" xml:lang="*iso6393:ara">maǧbūr</w>
+                  <w join="right" xml:id="URFA-112_xTok_000678" lemmaRef="*dict:DShaAr.alle_000++dict:DShaAr.qalli_00000" n="*inevitably++or" msd="*conjunction++adverb" xml:lang="*iso6393:ara">alle</w>
+                  <pc join="right" xml:id="xTok_000679">_</pc>
+                  <w xml:id="URFA-112_xTok_000680" join="right" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*imp.2.m.sg.++impf.1.sg." xml:lang="*iso6393:ara">gūl</w>
+                  <pc xml:id="xTok_000681">.</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000682" rend="withDash" lemmaRef="dict:DShaAr.yoom_00000" n="*day" msd="*sg.++m.sg." xml:lang="*iso6393:ara">yōm</w>
+                  <w join="right" xml:id="URFA-112_xTok_000684" rend="withDash" n="*if++that" xml:lang="*iso6393:ara">inn</w>
+                  <w xml:id="URFA-112_xTok_000686" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w join="right" xml:id="URFA-112_xTok_000687" rend="withDash" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w xml:id="URFA-112_xTok_000689" msd="3.f.sg." lemmaRef="dict:DShaAr.ha_000">ha</w>
+                  <w xml:id="URFA-112_xTok_000690" n="still" lemmaRef="dict:DShaAr.lissac_00000" xml:lang="*iso6393:ara">lissaʕ</w>
+                  <w xml:id="URFA-112_xTok_000691" lemmaRef="dict:DShaAr.maa_000" n="*not" xml:lang="*iso6393:ara">mā</w>
+                  <w xml:id="URFA-112_xTok_000692" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000693" n="*ok" xml:lang="*iso6393:ara">tamām</w>
+                  <pc xml:id="xTok_000694">,</pc>
+                  <w xml:id="URFA-112_xTok_000695" n="this" lemmaRef="dict:DShaAr.haada_000" msd="m.sg." xml:lang="iso6393:ara">hāḏa</w>
+                  <w join="right" xml:id="URFA-112_xTok_000696" rend="withDash" n="in" lemmaRef="dict:DShaAr.b_00000" xml:lang="*iso6393:ara">b</w>
+                  <w join="right" xml:id="URFA-112_xTok_000698" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">as</w>
+                  <w xml:id="URFA-112_xTok_000700" lemmaRef="dict:DShaAr.seef_00000">sēf</w>
+                  <w xml:id="URFA-112_xTok_000701" lemmaRef="dict:DShaAr.gaal_001" n="*to say" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">gāḷ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000702" rend="withDash" lemmaRef="dict:DShaAr.b_00000" n="with" xml:lang="*iso6393:ara">bī</w>
+                  <w xml:id="URFA-112_xTok_000704" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" xml:lang="*iso6393:ara">´</w>
+                  <w xml:id="URFA-112_xTok_000705" n="so" lemmaRef="dict:DShaAr.hiicjid_00000" xml:lang="*iso6393:ara">hīčiḏ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000706" rend="withDash" n="*and" xml:lang="*iso6393:ara">wa</w>
+                  <w join="right" xml:id="URFA-112_xTok_000708" rend="withDash">ṛās</w>
+                  <w xml:id="URFA-112_xTok_000710" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w xml:id="URFA-112_xTok_000711">yidriǧ</w>
+                  <w xml:id="URFA-112_xTok_000712" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000713">ytammim</w>
+                  <w join="right" xml:id="URFA-112_xTok_000714" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">as</w>
+                  <w join="right" xml:id="URFA-112_xTok_000716" lemmaRef="dict:DShaAr.saalfe_00000" n="*(short) story" xml:lang="*iso6393:ara">sālfe</w>
+                  <pc join="right" xml:id="xTok_000717">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a10.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a10.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a10" xml:id="a32">He (the poet) did not know any longer what he should play. (The sheikh) said, “There is no chance left but to play it.” He said, “If it is really necessary I’ll play it.” He played it again but before he could complete it [the sheikh] said, the sword (in his hand), “It’s like that”, and so he finished the poem while his head was rolling down (the hill).</span>
+               </spanGrp>
+            </annotationBlock>
+            <annotationBlock>
+               <u xml:lang="ar-acm-x-shawi-vicav" xml:id="URFA-112_a11" who="#default" end="#T14" start="#T13">
+                  <w join="right" xml:id="URFA-112_xTok_000718" rend="withDash" lemmaRef="*dict:DShaAr.isim_000" n="*name" msd="*sg." xml:lang="*iso6393:ara">ism</w>
+                  <w xml:id="URFA-112_xTok_000720" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w join="right" xml:id="URFA-112_xTok_000721">Nāṣir</w>
+                  <pc xml:id="xTok_000722">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000723" rend="withDash" xml:lang="*iso6393:ara">aš</w>
+                  <w xml:id="URFA-112_xTok_000725" lemmaRef="dict:DShaAr.shaacir_00000" n="*poet" xml:lang="*iso6393:ara">šāʕir</w>
+                  <w join="right" xml:id="URFA-112_xTok_000726" rend="withDash" lemmaRef="*dict:DShaAr.isim_000" n="*name" msd="*sg." xml:lang="*iso6393:ara">ism</w>
+                  <w xml:id="URFA-112_xTok_000728" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w join="right" xml:id="URFA-112_xTok_000729">Nāṣir</w>
+                  <pc xml:id="xTok_000730">.</pc>
+                  <w xml:id="URFA-112_xTok_000731" lemmaRef="*dict:DShaAr.awwali_000" n="*the ones in former times++firstly/ in former times++firstly" xml:lang="*iso6393:ara">awwali</w>
+                  <w xml:id="URFA-112_xTok_000732" lemmaRef="*dict:DShaAr.cjaan_000" n="*to be" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">čān</w>
+                  <w join="right" xml:id="URFA-112_xTok_000733" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">at</w>
+                  <w xml:id="URFA-112_xTok_000735" lemmaRef="dict:DShaAr.tall_00000" n="*to pull++tell (mound)" msd="*pf.3.m.sg.++sg." xml:lang="*iso6393:ara">tall</w>
+                  <w xml:id="URFA-112_xTok_000736" n="this" lemmaRef="dict:DShaAr.haada_000" msd="m.sg." xml:lang="iso6393:ara">hāḏa</w>
+                  <w xml:id="URFA-112_xTok_000737" lemmaRef="dict:DShaAr.tall_00000" n="*to pull++tell (mound)" msd="*pf.3.m.sg.++sg." xml:lang="*iso6393:ara">Tall</w>
+                  <w join="right" xml:id="URFA-112_xTok_000738">Xarma</w>
+                  <pc xml:id="xTok_000739">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000740" rend="withDash" n="in" lemmaRef="dict:DShaAr.b_00000" xml:lang="*iso6393:ara">b</w>
+                  <w xml:id="URFA-112_xTok_000742" lemmaRef="dict:DShaAr.zimaan_00000" n="*in former times++time" msd="*sg.++m.sg." xml:lang="*iso6393:ara">zimān</w>
+                  <w join="right" xml:id="URFA-112_xTok_000743" rend="withDash" n="the" lemmaRef="dict:DShaAr.al_000" xml:lang="*iso6393:ara">al</w>
+                  <w xml:id="URFA-112_xTok_000745" join="right">ʕUsmalli</w>
+                  <pc xml:id="xTok_000746">,</pc>
+                  <w xml:id="URFA-112_xTok_000747" n="and" lemmaRef="dict:DShaAr.w_000" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000748" n="from" lemmaRef="dict:DShaAr.min_00000" xml:lang="*iso6393:ara">min</w>
+                  <w xml:id="URFA-112_xTok_000749" n="*to get slaughtered" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">ᵊnḏibaḥ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000750" rend="withDash" lemmaRef="dict:DShaAr.b_00000" n="with" xml:lang="*iso6393:ara">bī</w>
+                  <w xml:id="URFA-112_xTok_000752" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" xml:lang="*iso6393:ara">´</w>
+                  <w join="right" xml:id="URFA-112_xTok_000753" rend="withDash" lemmaRef="dict:DShaAr.al_000" xml:lang="*tr++iso6393:ara">az</w>
+                  <w xml:id="URFA-112_xTok_000755" lemmaRef="dict:DShaAr.zlime_00000" n="*man" msd="*sg." xml:lang="*iso6393:ara">zlime</w>
+                  <w xml:id="URFA-112_xTok_000756" n="this" lemmaRef="dict:DShaAr.haada_000" msd="m.sg." xml:lang="iso6393:ara">hāḏa</w>
+                  <w xml:id="URFA-112_xTok_000757" lemmaRef="dict:DShaAr.saar_00000" n="*to become" msd="*pf.3.m.sg.++pf.3.m.sg" xml:lang="*iso6393:ara">ṣār</w>
+                  <w xml:id="URFA-112_xTok_000758" lemmaRef="dict:DShaAr.tall_00000" n="*to pull++tell (mound)" msd="*pf.3.m.sg.++sg." xml:lang="*iso6393:ara">Tall</w>
+                  <w join="right" xml:id="URFA-112_xTok_000759">Nāṣir</w>
+                  <pc xml:id="xTok_000760">,</pc>
+                  <w xml:id="URFA-112_xTok_000761" n="*to get slaughtered" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">ᵊnḏibaḥ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000762" rend="withDash" lemmaRef="dict:DShaAr.b_00000" n="with" xml:lang="*iso6393:ara">bī</w>
+                  <w xml:id="URFA-112_xTok_000764" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" xml:lang="*iso6393:ara">´</w>
+                  <w join="right" xml:id="URFA-112_xTok_000765" rend="withDash" lemmaRef="dict:DShaAr.w_000" n="*and" xml:lang="*iso6393:ara">w</w>
+                  <w xml:id="URFA-112_xTok_000767" n="*to be burried" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">ᵊndifan</w>
+                  <w join="right" xml:id="URFA-112_xTok_000768" rend="withDash" n="#above#above" msd="##" lemmaRef="#dict:DShaAr.foog_00000#dict:DShaAr.foog_00001" xml:lang="##">fōg</w>
+                  <w xml:id="URFA-112_xTok_000770" join="right" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <pc xml:id="xTok_000771">.</pc>
+                  <w xml:id="URFA-112_xTok_000772" lemmaRef="dict:DShaAr.ha_000" msd="3.f.sg." n="*yes" xml:lang="*iso6393:ara">hā</w>
+                  <w xml:id="URFA-112_xTok_000773" n="so" lemmaRef="dict:DShaAr.hiicjid_00000" xml:lang="*iso6393:ara">hīčiḏ</w>
+                  <w join="right" xml:id="URFA-112_xTok_000774" rend="withDash" lemmaRef="dict:DShaAr.gidd_00000" n="*grandfather" msd="*m.sg." xml:lang="*iso6393:ara">ǧidd</w>
+                  <w xml:id="URFA-112_xTok_000776">ina</w>
+                  <w join="right" xml:id="URFA-112_xTok_000777" rend="withDash" n="*to kill" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">ḏbuḥ</w>
+                  <w xml:id="URFA-112_xTok_000779" join="right" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <pc xml:id="xTok_000780">,</pc>
+                  <w join="right" xml:id="URFA-112_xTok_000781" rend="withDash" n="*and" xml:lang="*iso6393:ara">wa</w>
+                  <w xml:id="URFA-112_xTok_000783" xml:lang="*tr">Čill</w>
+                  <w join="right" xml:id="URFA-112_xTok_000784" rend="withDash" lemmaRef="dict:DShaAr.darrab_000" n="*to train++to send" msd="*pf.3.m.sg." xml:lang="*iso6393:ara">darrab</w>
+                  <w xml:id="URFA-112_xTok_000786" msd="3.m.sg." lemmaRef="dict:DShaAr.u_000" n="*and" xml:lang="*iso6393:ara">u</w>
+                  <w xml:id="URFA-112_xTok_000787" n="from" lemmaRef="dict:DShaAr.min_00000" xml:lang="*iso6393:ara">min</w>
+                  <w xml:id="URFA-112_xTok_000788" n="*Syria" msd="*properNoun++properNoun" xml:lang="*iso6393:ara">Sūriyye</w>
+                  <w join="right" xml:id="URFA-112_xTok_000789" n="so" lemmaRef="dict:DShaAr.hiicjid_00000" xml:lang="*iso6393:ara">hīčiḏ</w>
+                  <pc join="right" xml:id="xTok_000790">.</pc>
+                  <media mimeType="audio/mp3" url="publicAssets:URFA-112/URFA-112_a11.mp3"/>
+                  <media mimeType="audio/wav" url="arche:URFA-112/URFA-112_a11.wav"/>
+               </u>
+               <spanGrp type="Translation">
+                  <span xml:lang="en" target="#URFA-112_a11" xml:id="a33">ism-u Nāṣir, aš-šāʕir ism-u Nāṣir. awwali čān at-tall hāḏa Tall Xarma, b-zimān al-ʕUsmalli, w min ᵊnḏibaḥ bī-´ az-zlime hāḏa ṣār Tall Nāṣir, ᵊnḏibaḥ bī-´ w-ᵊndifan fōg-u. hā hīčiḏ ǧidd- ina ḏbuḥ-u, wa-Čill darrab-u min Sūriyye hīčiḏ.</span>
+               </spanGrp>
+            </annotationBlock>
+         </div>
+      </body>
+   </text>
+</TEI>
