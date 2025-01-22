@@ -1,8 +1,7 @@
 <xsl:stylesheet xml:space="preserve" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0" version="2.0" exclude-result-prefixes="xsl tei">
    <xsl:output method="html" indent="no" encoding="UTF-8"/>
    <xsl:strip-space elements="tei:body tei:TEI tei:row tei:cell tei:teiHeader tei:text tei:u tei:hi tei:ref tei:p tei:fileDesc tei:titleStmt tei:publicationStmt tei:editionStmt tei:revisionDesc tei:sourceDesc tei:div"/>
-  <!--*** FN: tei_2_html__shawi.xsl *** -->
-
+   <!--*** FN: tei_2_html__shawi_002.xsl *** -->
 
    <xsl:variable name="title">
       <xsl:value-of select="//tei:titleStmt/tei:title"/>
@@ -157,24 +156,34 @@
    <xsl:template match="tei:p"><p><xsl:apply-templates/></p></xsl:template>
 
    <xsl:template match="tei:w | tei:seg" xml:space="default">
-      <a id="{@xml:id}" href="goto:{@xml:id}">
-         <xsl:choose>
-            <xsl:when test="@ana"><xsl:attribute name="class">wAssigned</xsl:attribute></xsl:when>
-            <xsl:when test="string-length(@lemmaRef)=0"><xsl:attribute name="style">background:red; color:white</xsl:attribute></xsl:when>
-            <xsl:otherwise><xsl:attribute name="class">w</xsl:attribute></xsl:otherwise>
-         </xsl:choose>
-         <xsl:if test="@high">
-            <xsl:attribute name="style">background:blue; color:white</xsl:attribute>
-         </xsl:if>
+      <tr>
+         <td>
+            <a id="{@xml:id}" href="goto:{@xml:id}">
+               <xsl:choose>
+                  <xsl:when test="@ana"><xsl:attribute name="class">wAssigned</xsl:attribute></xsl:when>
+                  <xsl:when test="not(@lemmaRef)"><xsl:attribute name="style">background:red; color:white</xsl:attribute></xsl:when>
+                  <xsl:otherwise><xsl:attribute name="class">wTable</xsl:attribute></xsl:otherwise>
+               </xsl:choose>
+               <xsl:if test="@high">
+                  <xsl:attribute name="style">background:red; color:green</xsl:attribute>
+               </xsl:if>
 
-         <xsl:value-of select="."/>
-         <xsl:choose>
-            <xsl:when test="@rend='withDash'">-</xsl:when>
-            <xsl:when test="not(@join='right')"><span> </span></xsl:when>
-         </xsl:choose></a>
+               <xsl:value-of select="."/>
+               <xsl:choose>
+                  <xsl:when test="@rend='withDash'">-</xsl:when>
+                  <xsl:when test="not(@join='right')"><span> </span></xsl:when>
+               </xsl:choose>
+             </a>
+        </td>
+        <td><xsl:value-of select="@pos"/></td>
+        <td><xsl:value-of select="@msd"/></td>
+        <td><xsl:value-of select="@n"/></td>
+        <td><xsl:value-of select="@lemmaRef"/></td>
+      </tr>
    </xsl:template>
 
    <xsl:template match="tei:pc" xml:space="default">
+      <tr><td colspan="4">
       <a id="{@xml:id}" href="goto:{@xml:id}">
          <xsl:if test="@high">
             <xsl:attribute name="style">background:red; color:green</xsl:attribute>
@@ -185,10 +194,11 @@
             <xsl:when test="@rend='withDash'">-</xsl:when>
             <xsl:when test="not(@join='right')"><span> </span></xsl:when>
          </xsl:choose></a>
+      </td></tr>
    </xsl:template>
 
    <xsl:template match="tei:u">
-      <span class="pAr"><xsl:apply-templates/></span>
+      <table><xsl:apply-templates/></table>
    </xsl:template>
 
    <xsl:template match="tei:ptr[@type = 'contPointer']">

@@ -1,8 +1,6 @@
 <xsl:stylesheet xml:space="preserve" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0" version="2.0" exclude-result-prefixes="xsl tei">
    <xsl:output method="html" indent="no" encoding="UTF-8"/>
    <xsl:strip-space elements="tei:body tei:TEI tei:row tei:cell tei:teiHeader tei:text tei:u tei:hi tei:ref tei:p tei:fileDesc tei:titleStmt tei:publicationStmt tei:editionStmt tei:revisionDesc tei:sourceDesc tei:div"/>
-  <!--*** FN: tei_2_html__shawi.xsl *** -->
-
 
    <xsl:variable name="title">
       <xsl:value-of select="//tei:titleStmt/tei:title"/>
@@ -14,7 +12,7 @@
          <xsl:comment>XSLT: tei_2_html__simple_text.xsl</xsl:comment>
          <head>
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-            <link rel="stylesheet" href="../650_css/basic__001.css"></link>
+            <link rel="stylesheet" href="../css/basic__001.css"></link>
          </head>
 
          <body>
@@ -25,8 +23,12 @@
    </xsl:template>
 
 
-   <xsl:template match="tei:annotationBlock">
-      <div class="anBlock" id="{@xml:id}"><xsl:apply-templates/></div>
+   <xsl:template match="tei:annotationBlock[@who='Transcription']">
+      <div class="pTranscription"><xsl:apply-templates/></div>
+   </xsl:template>
+
+   <xsl:template match="tei:annotationBlock[@who='Translation']">
+      <div class="pTranslation"><xsl:apply-templates/></div>
    </xsl:template>
 
    <xsl:template match="tei:ab">
@@ -37,7 +39,7 @@
       <td><xsl:apply-templates/></td>
    </xsl:template>
 
-   <xsl:template match="tei:div"><xsl:apply-templates/></xsl:template>
+   <xsl:template match="tei:div"><p><xsl:apply-templates/></p></xsl:template>
 
    <xsl:template match="tei:figure">
       <img src="{tei:graphic/@url}" alt="{tei:graphic/@url}"/>
@@ -156,39 +158,18 @@
 
    <xsl:template match="tei:p"><p><xsl:apply-templates/></p></xsl:template>
 
-   <xsl:template match="tei:w | tei:seg" xml:space="default">
-      <a id="{@xml:id}" href="goto:{@xml:id}">
-         <xsl:choose>
-            <xsl:when test="@ana"><xsl:attribute name="class">wAssigned</xsl:attribute></xsl:when>
-            <xsl:when test="string-length(@lemmaRef)=0"><xsl:attribute name="style">background:red; color:white</xsl:attribute></xsl:when>
-            <xsl:otherwise><xsl:attribute name="class">w</xsl:attribute></xsl:otherwise>
-         </xsl:choose>
-         <xsl:if test="@high">
-            <xsl:attribute name="style">background:blue; color:white</xsl:attribute>
-         </xsl:if>
+   <xsl:template match="tei:w | tei:seg | tei:pc">
+      <span class="w">
+         <xsl:apply-templates/>
+         <xsl:if test="not(@join='right')"><span> </span></xsl:if>
+      </span></xsl:template>
 
-         <xsl:value-of select="."/>
-         <xsl:choose>
-            <xsl:when test="@rend='withDash'">-</xsl:when>
-            <xsl:when test="not(@join='right')"><span> </span></xsl:when>
-         </xsl:choose></a>
+   <xsl:template match="tei:u[@xml:lang='ar']">
+      <div class="pAr"><xsl:apply-templates/></div>
    </xsl:template>
 
-   <xsl:template match="tei:pc" xml:space="default">
-      <a id="{@xml:id}" href="goto:{@xml:id}">
-         <xsl:if test="@high">
-            <xsl:attribute name="style">background:red; color:green</xsl:attribute>
-         </xsl:if>
-
-         <xsl:value-of select="."/>
-         <xsl:choose>
-            <xsl:when test="@rend='withDash'">-</xsl:when>
-            <xsl:when test="not(@join='right')"><span> </span></xsl:when>
-         </xsl:choose></a>
-   </xsl:template>
-
-   <xsl:template match="tei:u">
-      <span class="pAr"><xsl:apply-templates/></span>
+   <xsl:template match="tei:u[not(@xml:lang='ar')]">
+      <p class="pNorm"><xsl:apply-templates/></p>
    </xsl:template>
 
    <xsl:template match="tei:ptr[@type = 'contPointer']">
@@ -210,17 +191,17 @@
       <tr><xsl:apply-templates/></tr>
    </xsl:template>
 
-   <xsl:template match="tei:spanGrp[@type = 'Translation']">
-      <div class="dvTrans" id="{@xml:id}">
+   <xsl:template match="tei:span[@type = 'step']">
+      <span class="spStep">
          <xsl:apply-templates/>
-      </div>
+      </span>
    </xsl:template>
 
    <xsl:template match="tei:table">
       <table><xsl:apply-templates/></table>
    </xsl:template>
 
-   <xsl:template match="tei:note[@type='visible']">
+   <xsl:template match="tei:note[@type='visible')]">
       <span class="note"><xsl:apply-templates/></span>
    </xsl:template>
 
