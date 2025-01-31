@@ -37,20 +37,24 @@
                 <moduleRef key="spoken" include="annotationBlock u recordingStmt recording"></moduleRef>
 
                 <elementSpec ident="w" module="analysis" mode="change">
-                    <desc>Token ana attributes should entries in the standoff document.</desc>
-                    <constraintSpec ident="ana-spec" scheme="schematron">
-                        <desc>Enforce that the token links to a document.</desc>
+                    <constraintSpec ident="msd-spec" scheme="schematron">
                         <constraint>
-                            <s:rule context="tei:w[@ana/contains(.,' ')]">
-                                <s:let name="wid" value="@xml:id"/>
-                                <s:assert test="not(contains(normalize-space(@ana),' '))">@ana on token with id '<s:value-of select="$wid"/>' seems to contain more than one one id reference.</s:assert>
+                            <s:rule context="tei:w">
+                                <s:let name="fLibFile" value="'../../010_manannot/fLib_shawi.xml'"/>
+                                <s:let name="msd_values" value="doc($fLibFile)//tei:fvLib[@n='Morpho-syntactic annotations']/tei:fs/@xml:id"/>
+                                <s:let name="normalized_msd_values" value="for $item in $msd_values return replace($item, '\.$', '')"/>
+                                <s:let name="normalized_attr_msd" value="replace(@msd, '\.$', '')"/>
+                                <s:assert test="$normalized_attr_msd = $normalized_msd_values">MSD: <s:value-of select="$normalized_attr_msd"/> is not in list <s:value-of select="$normalized_msd_values"/></s:assert>
                             </s:rule>
-                            <s:rule context="tei:w[@ana]">
-                                <s:let name="wid" value="@xml:id"/>
-                                <s:let name="idRef" value="replace(@ana, '#', '')" />
-                                <s:let name="standOffFile" value="'../../010_manannot/shawi_standoff.xml'"/>
-                                <s:let name="props" value="doc($standOffFile)//tei:fs[@xml:id = $idRef]"/>
-                                <s:assert test="exists($props)">Entry with id '<s:value-of select="$idRef"/>' referenced by token with id '<s:value-of select="$idRef"/>' not found in stand-off document.</s:assert>
+                        </constraint>
+                    </constraintSpec>
+                    
+                    <constraintSpec ident="pos-spec" scheme="schematron">
+                        <constraint>
+                            <s:rule context="tei:w">
+                                <s:let name="fLibFile" value="'../../010_manannot/fLib_shawi.xml'"/>
+                                <s:let name="pos_values" value="doc($fLibFile)//tei:fLib[@n='Part of Speech']/tei:f/@xml:id"/>
+                                <s:assert test="@pos = $pos_values">POS: <s:value-of select="@pos"/> is not in list <s:value-of select="$pos_values"/></s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
