@@ -36,6 +36,93 @@
                 <moduleRef key="linking" include="timeline when anchor"/>
                 <moduleRef key="spoken" include="annotationBlock u recordingStmt recording"></moduleRef>
 
+                <elementSpec ident="respStmt" module="core" mode="change">
+                    <constraintSpec ident="name-check" scheme="schematron">
+                        <constraint>
+                            <s:rule context="tei:resp[text()='transcribed by']">
+                                <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+                                <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+                                <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[8]">
+                                    The person for the role 'transcribed by' should be: <s:value-of select="$recFileData/tei:cell[8]"/>
+                                </s:assert>
+                            </s:rule>
+                            <s:rule context="tei:resp[text()='transcription checked by']">
+                                <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+                                <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+                                <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[9]">
+                                    The person for the role 'transcription checked by' should be: <s:value-of select="$recFileData/tei:cell[9]"/>
+                                </s:assert>
+                            </s:rule>
+                            <s:rule context="tei:resp[text()='transcription checked by2']">
+                                <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+                                <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+                                <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[10]">
+                                    The person for the role 'transcription checked by2' should be: <s:value-of select="$recFileData/tei:cell[10]"/>
+                                </s:assert>
+                            </s:rule>
+                            <s:rule context="tei:resp[text()='translated by']">
+                                <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+                                <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+                                <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[11]">
+                                    The person for the role 'translated by' should be: <s:value-of select="$recFileData/tei:cell[11]"/>
+                                </s:assert>
+                            </s:rule>
+                            <s:rule context="tei:resp[text()='translation checked by']">
+                                <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+                                <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+                                <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[12]">
+                                    The person for the role 'translation checked by' should be: <s:value-of select="$recFileData/tei:cell[12]"/>
+                                </s:assert>
+                            </s:rule>
+                            <s:rule context="tei:resp[text()='glossed by']">
+                                <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+                                <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+                                <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[13]">
+                                    The person for the role 'glossed by' should be: <s:value-of select="$recFileData/tei:cell[13]"/>
+                                </s:assert>
+                            </s:rule>
+                            <s:rule context="tei:resp[text()='glossing checked by']">
+                                <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+                                <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+                                <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[14]">
+                                    The person for the role 'glossing checked by' should be: <s:value-of select="$recFileData/tei:cell[14]"/>
+                                </s:assert>
+                            </s:rule>
+                        </constraint>
+                    </constraintSpec>
+                </elementSpec>
+                
+                <elementSpec ident="revisionDesc" module="header" mode="change">
+                    <attList>
+                        <attDef ident="status" mode="replace" usage="req">
+                            <valList type="closed">
+                                <valItem ident="generated">
+                                    <desc>status automatically generated by elan2tei conversion workflow</desc>
+                                </valItem>
+                                <valItem ident="draft">
+                                    <desc>after changes have been made manually in the 010_manannot folder</desc>
+                                </valItem>
+                                <valItem ident="done">
+                                    <desc>from here on validation with odd makes sense</desc>
+                                </valItem>
+                                <valItem ident="checked">
+                                    <desc>TODO description missing</desc>
+                                </valItem>
+                                <valItem ident="published">
+                                    <desc>when checked and validated</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+
                 <elementSpec ident="w" module="analysis" mode="change">
                     <constraintSpec ident="msd-spec" scheme="schematron">
                         <constraint>
@@ -58,30 +145,6 @@
                             </s:rule>
                         </constraint>
                     </constraintSpec>
-                </elementSpec>
-
-                <elementSpec ident="revisionDesc" module="header" mode="change">
-                    <attList>
-                        <attDef ident="status" mode="replace" usage="req">
-                            <valList type="closed">
-                                <valItem ident="generated">
-                                    <desc>status automatically generated by elan2tei conversion workflow</desc>
-                                </valItem>
-                                <valItem ident="draft">
-                                    <desc>after changes have been made manually in the 010_manannot folder</desc>
-                                </valItem>
-                                <valItem ident="done">
-                                   <desc>from here on validation with odd makes sense</desc>
-                                </valItem>
-                                <valItem ident="checked">
-                                  <desc>TODO description missing</desc>
-                                </valItem>
-                                <valItem ident="published">
-                                    <desc>when checked and validated</desc>
-                                </valItem>
-                            </valList>
-                        </attDef>
-                    </attList>
                 </elementSpec>
 
             </schemaSpec>

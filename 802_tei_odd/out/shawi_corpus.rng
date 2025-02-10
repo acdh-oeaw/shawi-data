@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-01-31T08:37:21Z. . 
+Schema generated from ODD source 2025-02-10T15:49:48Z. . 
 TEI Edition: P5 Version 4.7.0. Last updated on 16th November 2023, revision e5dd73ed0 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/ 
   
@@ -3168,6 +3168,128 @@ Suggested values include: 1] deprecationInfo (deprecation information)</a:docume
                <ref name="note"/>
             </zeroOrMore>
          </group>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="vicav_corpus-respStmt-name-check-constraint-rule-13">
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:resp[text()='transcribed by']">
+               <s:let name="currentID"
+                      value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+               <s:let name="recFile"
+                      value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+               <s:let name="recFileData"
+                      value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+               <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[8]">
+                                    The person for the role 'transcribed by' should be: <s:value-of select="$recFileData/tei:cell[8]"/>
+               </s:assert>
+            </s:rule>
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:resp[text()='transcription checked by']">
+               <s:let name="currentID"
+                      value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+               <s:let name="recFile"
+                      value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+               <s:let name="recFileData"
+                      value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+               <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[9]">
+                                    The person for the role 'transcription checked by' should be: <s:value-of select="$recFileData/tei:cell[9]"/>
+               </s:assert>
+            </s:rule>
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:resp[text()='transcription checked by2']">
+               <s:let name="currentID"
+                      value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+               <s:let name="recFile"
+                      value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+               <s:let name="recFileData"
+                      value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+               <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[10]">
+                                    The person for the role 'transcription checked by2' should be: <s:value-of select="$recFileData/tei:cell[10]"/>
+               </s:assert>
+            </s:rule>
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:resp[text()='translated by']">
+               <s:let name="currentID"
+                      value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+               <s:let name="recFile"
+                      value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+               <s:let name="recFileData"
+                      value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+               <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[11]">
+                                    The person for the role 'translated by' should be: <s:value-of select="$recFileData/tei:cell[11]"/>
+               </s:assert>
+            </s:rule>
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:resp[text()='translation checked by']">
+               <s:let name="currentID"
+                      value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+               <s:let name="recFile"
+                      value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+               <s:let name="recFileData"
+                      value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+               <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[12]">
+                                    The person for the role 'translation checked by' should be: <s:value-of select="$recFileData/tei:cell[12]"/>
+               </s:assert>
+            </s:rule>
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:resp[text()='glossed by']">
+               <s:let name="currentID"
+                      value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+               <s:let name="recFile"
+                      value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+               <s:let name="recFileData"
+                      value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+               <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[13]">
+                                    The person for the role 'glossed by' should be: <s:value-of select="$recFileData/tei:cell[13]"/>
+               </s:assert>
+            </s:rule>
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:resp[text()='glossing checked by']">
+               <s:let name="currentID"
+                      value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
+               <s:let name="recFile"
+                      value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
+               <s:let name="recFileData"
+                      value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
+               <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[14]">
+                                    The person for the role 'glossing checked by' should be: <s:value-of select="$recFileData/tei:cell[14]"/>
+               </s:assert>
+            </s:rule>
+         </pattern>
          <ref name="att.global.attributes"/>
          <ref name="att.canonical.attributes"/>
          <empty/>
@@ -3193,7 +3315,7 @@ Suggested values include: 1] deprecationInfo (deprecation information)</a:docume
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-resp-calendar-calendar-check-resp-constraint-rule-13">
+                  id="vicav_corpus-resp-calendar-calendar-check-resp-constraint-rule-20">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3240,7 +3362,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-title-calendar-calendar-check-title-constraint-rule-14">
+                  id="vicav_corpus-title-calendar-calendar-check-title-constraint-rule-21">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3399,7 +3521,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-funder-calendar-calendar-check-funder-constraint-rule-15">
+                  id="vicav_corpus-funder-calendar-calendar-check-funder-constraint-rule-22">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3500,7 +3622,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-idno-calendar-calendar-check-idno-constraint-rule-16">
+                  id="vicav_corpus-idno-calendar-calendar-check-idno-constraint-rule-23">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3564,7 +3686,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-licence-calendar-calendar-check-licence-constraint-rule-17">
+                  id="vicav_corpus-licence-calendar-calendar-check-licence-constraint-rule-24">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3780,7 +3902,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-change-calendar-calendar-check-change-constraint-rule-18">
+                  id="vicav_corpus-change-calendar-calendar-check-change-constraint-rule-25">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4149,7 +4271,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-orgName-calendar-calendar-check-orgName-constraint-rule-19">
+                  id="vicav_corpus-orgName-calendar-calendar-check-orgName-constraint-rule-26">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4188,7 +4310,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-persName-calendar-calendar-check-persName-constraint-rule-20">
+                  id="vicav_corpus-persName-calendar-calendar-check-persName-constraint-rule-27">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4247,7 +4369,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-placeName-calendar-calendar-check-placeName-constraint-rule-21">
+                  id="vicav_corpus-placeName-calendar-calendar-check-placeName-constraint-rule-28">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -5172,7 +5294,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-w-msd-spec-constraint-rule-22">
+                  id="vicav_corpus-w-msd-spec-constraint-rule-29">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -5191,7 +5313,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
             </s:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-w-pos-spec-constraint-rule-23">
+                  id="vicav_corpus-w-pos-spec-constraint-rule-30">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:rng="http://relaxng.org/ns/structure/1.0"
