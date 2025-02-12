@@ -36,6 +36,26 @@
                 <moduleRef key="linking" include="timeline when anchor"/>
                 <moduleRef key="spoken" include="annotationBlock u recordingStmt recording"></moduleRef>
 
+                <elementSpec ident="resp" module="core" mode="replace">
+                    <content>
+                        <valList type="closed">
+                            <valItem ident="transcribed by"><desc>Transcribed by</desc></valItem>
+                            <valItem ident="transcription checked by"><desc>Transcription checked by</desc></valItem>
+                            <valItem ident="transcription checked by2"><desc>Transcription checked by2</desc></valItem>
+                            <valItem ident="translated by"><desc>Translated by</desc></valItem>
+                            <valItem ident="translation checked by"><desc>Translation checked by</desc></valItem>
+                            <valItem ident="glossed by"><desc>Glossed by</desc></valItem>
+                            <valItem ident="glossing checked by"><desc>Glossing checked by</desc></valItem>
+                        </valList>
+                    </content>
+                    <constraintSpec ident="uniqueRespValues" scheme="schematron">
+                        <constraint>
+                        <s:rule context="tei:respStmt">
+                            <s:assert test="not(tei:resp[. = preceding::tei:resp])">Each value inside 'respStmt' must be unique</s:assert>
+                        </s:rule></constraint>
+                    </constraintSpec>
+                </elementSpec>
+
                 <elementSpec ident="respStmt" module="core" mode="change">
                     <constraintSpec ident="name-check" scheme="schematron">
                         <constraint>
@@ -135,7 +155,6 @@
                             </s:rule>
                         </constraint>
                     </constraintSpec>
-                    
                     <constraintSpec ident="pos-spec" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:w">
@@ -146,7 +165,6 @@
                         </constraint>
                     </constraintSpec>
                 </elementSpec>
-
             </schemaSpec>
         </body>
     </text>
