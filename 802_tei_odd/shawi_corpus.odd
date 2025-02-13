@@ -51,9 +51,10 @@
                     </content>
                     <constraintSpec ident="uniqueRespValues" scheme="schematron">
                         <constraint>
-                        <s:rule context="tei:respStmt">
-                            <s:assert test="not(tei:resp[. = preceding::tei:resp])">Each value inside 'respStmt' must be unique</s:assert>
-                        </s:rule></constraint>
+                            <s:rule context="tei:respStmt">
+                                <s:assert test="not(tei:resp[. != 'Rec. person' and . = preceding::tei:resp])">Each value inside 'respStmt' must be unique, except for 'Rec. person'</s:assert>
+                            </s:rule>
+                        </constraint>
                     </constraintSpec>
                 </elementSpec>
 
@@ -127,7 +128,6 @@
                         </constraint>
                     </constraintSpec>
                 </elementSpec>
-                
                 <elementSpec ident="revisionDesc" module="header" mode="change">
                     <attList>
                         <attDef ident="status" mode="replace" usage="req">
