@@ -169,9 +169,7 @@
                             <s:rule context="tei:w">
                                 <s:let name="fLibFile" value="'../../010_manannot/fLib_shawi.xml'"/>
                                 <s:let name="msd_values" value="doc($fLibFile)//tei:fvLib[@n='Morpho-syntactic annotations']/tei:fs/@xml:id"/>
-                                <s:let name="normalized_msd_values" value="for $item in $msd_values return replace($item, '\.$', '')"/>
-                                <s:let name="normalized_attr_msd" value="replace(@msd, '\.$', '')"/>
-                                <s:assert test="$normalized_attr_msd = $normalized_msd_values">MSD: <s:value-of select="$normalized_attr_msd"/> is not in list <s:value-of select="$normalized_msd_values"/></s:assert>
+                                <s:assert test="@msd = $msd_values">MSD: <s:value-of select="@msd"/> is not in list <s:value-of select="$msd_values"/></s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
