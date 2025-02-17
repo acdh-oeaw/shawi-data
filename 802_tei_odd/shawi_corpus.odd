@@ -58,6 +58,16 @@
                     </constraintSpec>
                 </elementSpec>
 
+                <elementSpec ident="fileDesc" module="header" mode="change">
+                    <constraintSpec ident="rec-person-twice" scheme="schematron">
+                        <constraint>
+                            <s:rule context="tei:respStmt">
+                                <s:assert test="count(//tei:resp[text() = 'Rec. person']) = 2">The role 'Rec. person' should appear exactly twice across all respStmt elements</s:assert>
+                            </s:rule>
+                        </constraint>
+                    </constraintSpec>
+                </elementSpec>
+
                 <elementSpec ident="respStmt" module="core" mode="change">
                     <constraintSpec ident="name-check" scheme="schematron">
                         <constraint>
@@ -128,6 +138,7 @@
                         </constraint>
                     </constraintSpec>
                 </elementSpec>
+                
                 <elementSpec ident="revisionDesc" module="header" mode="change">
                     <attList>
                         <attDef ident="status" mode="replace" usage="req">
