@@ -173,15 +173,6 @@
                             </s:rule>
                         </constraint>
                     </constraintSpec>
-                    <constraintSpec ident="pos-spec" scheme="schematron">
-                        <constraint>
-                            <s:rule context="tei:w">
-                                <s:let name="fLibFile" value="'../../010_manannot/fLib_shawi.xml'"/>
-                                <s:let name="pos_values" value="doc($fLibFile)//tei:fLib[@n='Part of Speech']/tei:f/@xml:id"/>
-                                <s:assert test="@pos = $pos_values">POS: <s:value-of select="@pos"/> is not in list <s:value-of select="$pos_values"/></s:assert>
-                            </s:rule>
-                        </constraint>
-                    </constraintSpec>
                 </elementSpec>
             </schemaSpec>
         </body>
