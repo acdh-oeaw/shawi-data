@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-02-24T07:40:45Z. . 
+Schema generated from ODD source 2025-02-24T09:39:12Z. . 
 TEI Edition: P5 Version 4.7.0. Last updated on 16th November 2023, revision e5dd73ed0 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/ 
   
@@ -3530,7 +3530,40 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
    <define name="funder">
       <element name="funder">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(funding body) specifies the name of an individual, institution, or organization responsible for the funding of a project or text. [2.2.1. The Title Statement]</a:documentation>
-         <ref name="macro.phraseSeq.limited"/>
+         <group>
+            <text/>
+            <ref name="orgName"/>
+            <text/>
+            <ref name="idno"/>
+         </group>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="vicav_corpus-funder-idnoType-constraint-rule-24">
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:funder/tei:idno">
+               <s:assert test="@type='projectNumber'">Only the type "projectNumber" is permitted for idno inside funder</s:assert>
+            </s:rule>
+         </pattern>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="vicav_corpus-funder-calendar-check-funder-constraint-rule-25">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:math="http://www.w3.org/1998/Math/MathML"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      xmlns:svg="http://www.w3.org/2000/svg"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      context="tei:*[@calendar]">
+               <sch:assert test="string-length( normalize-space(.) ) gt 0"> @calendar indicates one or more
+                        systems or calendars to which the date represented by the content of this element belongs,
+                        but this <sch:name/> element has no textual content.</sch:assert>
+            </sch:rule>
+         </pattern>
          <ref name="att.global.attributes"/>
          <ref name="att.canonical.attributes"/>
          <ref name="att.datable.attributes"/>
@@ -3547,7 +3580,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-funder-calendar-calendar-check-funder-constraint-rule-24">
+                  id="vicav_corpus-funder-calendar-calendar-check-funder-constraint-rule-26">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3603,38 +3636,34 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                <ref name="idno"/>
             </choice>
          </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="vicav_corpus-idno-calendar-check-idno-constraint-rule-27">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:math="http://www.w3.org/1998/Math/MathML"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      xmlns:svg="http://www.w3.org/2000/svg"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      context="tei:*[@calendar]">
+               <sch:assert test="string-length( normalize-space(.) ) gt 0"> @calendar indicates one or more
+                        systems or calendars to which the date represented by the content of this element belongs,
+                        but this <sch:name/> element has no textual content.</sch:assert>
+            </sch:rule>
+         </pattern>
          <ref name="att.global.attributes"/>
          <ref name="att.sortable.attributes"/>
          <ref name="att.datable.attributes"/>
          <ref name="att.typed.attribute.subtype"/>
-         <optional>
-            <attribute name="type">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">categorizes the identifier, for example as an ISBN, Social Security number, etc.
-Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7] OCLC</a:documentation>
-               <choice>
-                  <value>ISBN</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">International Standard Book Number: a 13- or (if assigned prior to 2007) 10-digit identifying number assigned by the publishing industry to a published book or similar item, registered with the <a xmlns="http://www.w3.org/1999/xhtml"
-                        href="https://www.isbn-international.org"> International ISBN Agency.</a>
-                  </a:documentation>
-                  <value>ISSN</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">International Standard Serial Number: an eight-digit number to uniquely identify a serial publication.</a:documentation>
-                  <value>DOI</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Digital Object Identifier: a unique string of letters and numbers assigned to an electronic document.</a:documentation>
-                  <value>URI</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Uniform Resource Identifier: a string of characters to uniquely identify a resource, following the syntax of <a xmlns="http://www.w3.org/1999/xhtml"
-                        href="https://datatracker.ietf.org/doc/html/rfc3986">RFC 3986</a>.</a:documentation>
-                  <value>VIAF</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A data number in the Virtual Internet Authority File assigned to link different names in catalogs around the world for the same entity.</a:documentation>
-                  <value>ESTC</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English Short-Title Catalogue number: an identifying number assigned to a document in English printed in the British Isles or North America before 1801.</a:documentation>
-                  <value>OCLC</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">OCLC control number (record number) for the union catalog record in WorldCat, a union catalog for member libraries in the Online Computer Library Center global cooperative.</a:documentation>
-                  <data type="token">
-                     <param name="pattern">[^\p{C}\p{Z}]+</param>
-                  </data>
-               </choice>
-            </attribute>
-         </optional>
+         <attribute name="type">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            <choice>
+               <value>projectNumber</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <value>SHAWICorpusID</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            </choice>
+         </attribute>
          <optional>
             <attribute name="calendar">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates one or more systems or calendars to which the date represented by the content of this element belongs.</a:documentation>
@@ -3648,7 +3677,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-idno-calendar-calendar-check-idno-constraint-rule-25">
+                  id="vicav_corpus-idno-calendar-calendar-check-idno-constraint-rule-28">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3712,7 +3741,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-licence-calendar-calendar-check-licence-constraint-rule-26">
+                  id="vicav_corpus-licence-calendar-calendar-check-licence-constraint-rule-29">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3928,7 +3957,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-change-calendar-calendar-check-change-constraint-rule-27">
+                  id="vicav_corpus-change-calendar-calendar-check-change-constraint-rule-30">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4297,7 +4326,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-orgName-calendar-calendar-check-orgName-constraint-rule-28">
+                  id="vicav_corpus-orgName-calendar-calendar-check-orgName-constraint-rule-31">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4336,7 +4365,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-persName-calendar-calendar-check-persName-constraint-rule-29">
+                  id="vicav_corpus-persName-calendar-calendar-check-persName-constraint-rule-32">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4395,7 +4424,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-placeName-calendar-calendar-check-placeName-constraint-rule-30">
+                  id="vicav_corpus-placeName-calendar-calendar-check-placeName-constraint-rule-33">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -5320,7 +5349,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-w-msd-spec-constraint-rule-31">
+                  id="vicav_corpus-w-msd-spec-constraint-rule-34">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:rng="http://relaxng.org/ns/structure/1.0"
