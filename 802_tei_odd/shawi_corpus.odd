@@ -148,7 +148,7 @@
                             <elementRef key="idno" minOccurs="1" maxOccurs="1"/>
                         </sequence>
                     </content>
-                    <constraintSpec ident="idnoType" scheme="schematron">
+                    <constraintSpec ident="funderIdnoType" scheme="schematron">
                         <desc>Restricts idno type within funder</desc>
                         <constraint>
                             <s:rule context="tei:funder/tei:idno">
@@ -157,16 +157,32 @@
                         </constraint>
                     </constraintSpec>
                 </elementSpec>
+
+                <elementSpec ident="publicationStmt" module="header" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="publisher" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="distributor" minOccurs="0" maxOccurs="unbounded"/>
+                            <elementRef key="date" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="address" minOccurs="0" maxOccurs="1"/>
+                            <elementRef key="availability" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="idno" minOccurs="1" maxOccurs="1"/>
+                        </sequence>
+                    </content>
+                    <constraintSpec ident="publStmtIdnoType" scheme="schematron">
+                        <desc>Restricts idno type within publicationStmt</desc>
+                        <constraint>
+                            <s:rule context="tei:publicationStmt/tei:idno">
+                                <s:assert test="@type='SHAWICorpusID'">Only the type "SHAWICorpusID" is permitted for idno inside publicationStmt</s:assert>
+                            </s:rule>
+                        </constraint>
+                    </constraintSpec>
+                </elementSpec>
                 
-                <elementSpec ident="idno" module="header" mode="change">
-                    <attList>
-                        <attDef ident="type" mode="replace" usage="req">
-                            <valList type="closed">
-                                <valItem ident="projectNumber"/>
-                                <valItem ident="SHAWICorpusID"/>
-                            </valList>
-                        </attDef>
-                    </attList>
+                <elementSpec ident="availability" module="header" mode="change">
+                    <content>
+                        <elementRef key="licence" minOccurs="1" maxOccurs="1"/>
+                    </content>
                 </elementSpec>
                 
                 <elementSpec ident="revisionDesc" module="header" mode="change">
