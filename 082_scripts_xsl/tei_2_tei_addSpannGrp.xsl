@@ -8,18 +8,13 @@
     <!-- Output method set to XML with indentation -->
     <xsl:output method="xml" indent="yes"/>
     
+    
     <!-- Identity template to copy everything by default -->
     <xsl:template match="@* | node()">
         <xsl:copy>
             <xsl:apply-templates select="@* | node()"/>
         </xsl:copy>
     </xsl:template>
-    
-    <!-- Generate a unique ID for each span element -->
-    <xsl:function name="tei:generate-id">
-        <xsl:param name="node"/>
-        <xsl:value-of select="concat('id_', generate-id($node))"/>
-    </xsl:function>
     
     <!-- Process annotationBlock elements -->
     <xsl:template match="tei:annotationBlock">
@@ -33,14 +28,14 @@
                 <xsl:variable name="prevU" select="tei:u"/>
                 <xsl:variable name="uId" select="$prevU/@xml:id"/>
                 
+                <!-- Generate a new xml:id dynamically -->
+                <xsl:variable name="idNum" select="count(preceding::tei:u) + 1"/>
+                <xsl:variable name="newID" select="concat('a', $idNum)"/>
+                
                 <!-- Insert spanGrp with a span referencing the u element -->
-                <spanGrp type="Translation">
-                    <span xml:lang="en" target="#{ $uId }">
-                        <xsl:attribute name="xml:id">
-                            <xsl:value-of select="tei:generate-id(.)"/>
-                        </xsl:attribute>
-                    </span>
-                </spanGrp>
+                <tei:spanGrp type="Translation">
+                    <tei:span xml:lang="en" target="#{ $uId }" xml:id="{$newID}"/>
+                </tei:spanGrp>
             </xsl:if>
         </xsl:copy>
     </xsl:template>
