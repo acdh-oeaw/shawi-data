@@ -26,7 +26,7 @@
         <body>
             <schemaSpec ident="vicav_corpus" start="TEI">
                 <moduleRef key="header" include="textClass catRef availability availability change distributor encodingDesc fileDesc funder idno licence listPrefixDef prefixDef profileDesc publicationStmt rendition revisionDesc sourceDesc tagsDecl teiHeader titleStmt"/>
-                <moduleRef key="core" include="address addrLine author bibl cit date editor desc graphic head hi quote name note p publisher pubPlace ref respStmt resp rs series title media"/>
+                <moduleRef key="core" include="address addrLine author bibl biblStruct cit date editor desc graphic head hi quote name note p publisher pubPlace ref respStmt resp rs series title media"/>
                 <moduleRef key="tei"/>
                 <moduleRef key="tagdocs" include="code att gi"/>
                 <moduleRef key="namesdates" include="person orgName persName forename surname listPerson place placeName"></moduleRef>
@@ -182,6 +182,16 @@
                 <elementSpec ident="availability" module="header" mode="change">
                     <content>
                         <elementRef key="licence" minOccurs="1" maxOccurs="1"/>
+                    </content>
+                </elementSpec>
+                
+                <elementSpec ident="sourceDesc" module="header" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="recordingStmt" minOccurs="1" maxOccurs="1"/>
+                            <!-- have at least one source: the dictionary -->
+                            <elementRef key="biblStruct" minOccurs="1" maxOccurs="unbounded"/>
+                        </sequence>
                     </content>
                 </elementSpec>
                 
