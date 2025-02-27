@@ -233,8 +233,8 @@
                             <recording dur-iso="{tei:cell[$cn('Recordings')('Length')]}" type="audio">
                                 <date when="{_:excelSerialToISO( tei:cell[$cn('Recordings')('Date')])}"/>
                                 <respStmt>
-                                    <resp>Rec. person</resp>
                                     <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName(tei:cell[$cn('Recordings')('Rec. person')])}"><xsl:value-of select="normalize-space(tei:cell[$cn('Recordings')('Rec. person')])"/></persName>
+                                    <resp>recording</resp>
                                 </respStmt>
                                 <!-- TODO The audio files on the share need to be re-organised to match the replacementPattern in the header -->
                                 <media url="{$sharePrefix}:{tei:cell[$cn('Recordings')('Transcribed Audio-file')]}" mimeType="audio/wav" type="master"/>
