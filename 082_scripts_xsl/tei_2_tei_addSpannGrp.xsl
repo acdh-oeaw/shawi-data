@@ -5,14 +5,13 @@
     xmlns="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="tei">
     
-    <!-- Output method set to XML with indentation -->
+    <!-- Output method set to XML without indentations -->
     <xsl:output method="xml" indent="no"/>
     
-    
-    <!-- Identity template to copy everything by default -->
-    <xsl:template match="@* | node()">
+    <!-- Identity template to copy everything by default, including processing instructions -->
+    <xsl:template match="@* | node() | processing-instruction()">
         <xsl:copy>
-            <xsl:apply-templates select="@* | node()"/>
+            <xsl:apply-templates select="@* | node() | processing-instruction()"/>
         </xsl:copy>
     </xsl:template>
     
@@ -24,18 +23,18 @@
             <!-- Check if there is already a spanGrp of type Translation -->
             <xsl:if test="not(tei:spanGrp[@type='Translation'])">
                 
-                <!-- Find the preceding u element and get its @id -->
+                <!-- Find the first u element inside annotationBlock and get its @id -->
                 <xsl:variable name="prevU" select="tei:u"/>
                 <xsl:variable name="uId" select="$prevU/@xml:id"/>
                 
                 <!-- Generate a new xml:id dynamically -->
-                <xsl:variable name="idNum" select="count(preceding::tei:u) + 1"/>
+                <xsl:variable name="idNum" select="count(preceding::tei:annotationBlock/tei:u) + 1"/>
                 <xsl:variable name="newID" select="concat('a', $idNum)"/>
                 
                 <!-- Insert spanGrp with a span referencing the u element -->
-                <tei:spanGrp type="Translation">
-                    <tei:span xml:lang="en" target="#{ $uId }" xml:id="{$newID}"/>
-                </tei:spanGrp>
+                <spanGrp type="Translation">
+                    <span xml:lang="en" target="#{$uId}" xml:id="{$newID}"/>
+                </spanGrp>
             </xsl:if>
         </xsl:copy>
     </xsl:template>
