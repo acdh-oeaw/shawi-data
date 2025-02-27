@@ -6,7 +6,7 @@
     exclude-result-prefixes="tei">
     
     <!-- Output method set to XML with indentation -->
-    <xsl:output method="xml" indent="yes"/>
+    <xsl:output method="xml" indent="no"/>
     
     
     <!-- Identity template to copy everything by default -->
