@@ -100,7 +100,7 @@
     
     <xsl:function name="_:personReferenceByName" as="element(tei:person)">
         <xsl:param name="persName" as="xs:string"/>
-        <xsl:variable name="tei:row" select="($allTeam[tei:cell[$cn('Team')('Forename')]||' '||tei:cell[$cn('Team')('Surname')] = $persName], $allSpeakers[tei:cell[$cn('Speakers')('Speaker')] = $persName])[1]"/>
+        <xsl:variable name="tei:row" select="($allTeam[normalize-space(tei:cell[$cn('Team')('Forename')]||' '||tei:cell[$cn('Team')('Surname')]) = $persName], $allSpeakers[tei:cell[$cn('Speakers')('Speaker')] = $persName])[1]"/>
         <xsl:apply-templates select="$tei:row" mode="teiInstanceDoc"/>
     </xsl:function>
     
@@ -113,7 +113,7 @@
             <distributor ref="https://ror.org/028bsh698">Austrian Center for Digital Humanities and Cultural Heritage</distributor>
             <date when="????-??-??">TODO Set publication date here</date>
             <address>
-                <addrLine>Sonnenfelsgasse 19</addrLine> 
+                <addrLine>Bäckerstraße 13</addrLine> 
                 <addrLine>1010 Vienna</addrLine> 
                 <addrLine>Austria</addrLine>
             </address>
@@ -143,7 +143,7 @@
             <title level="s">SHAWI Corpus</title>
             <xsl:choose>
                 <xsl:when test="$textID != ''">
-                    <xsl:apply-templates select="$allTeam" mode="respStmtInstanceDoc"/>
+                    <xsl:apply-templates select="self::tei:row" mode="respStmtInstanceDoc"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:apply-templates select="$allTeam" mode="respStmtCorpusDoc"/>
@@ -233,7 +233,7 @@
                             <recording dur-iso="{tei:cell[$cn('Recordings')('Length')]}" type="audio">
                                 <date when="{_:excelSerialToISO( tei:cell[$cn('Recordings')('Date')])}"/>
                                 <respStmt>
-                                    <resp>recording</resp>
+                                    <resp>Rec. person</resp>
                                     <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName(tei:cell[$cn('Recordings')('Rec. person')])}"><xsl:value-of select="normalize-space(tei:cell[$cn('Recordings')('Rec. person')])"/></persName>
                                 </respStmt>
                                 <!-- TODO The audio files on the share need to be re-organised to match the replacementPattern in the header -->
@@ -328,7 +328,7 @@
     <xsl:template match="tei:table[tei:head = 'Team']/tei:row[tei:cell[1] != '']" mode="teiCorpusDoc">
         <!-- mode = what is the context of this run:
             * "teiCorpusDoc": this generates the master list of team members in the teiCorpus
-            * "respStmts: genereates a list of respStmts pointing to the list of team members 
+            * "respStmts: generates a list of respStmts pointing to the list of team members 
             * "teiInstanceDoc": this generates the list of team members in one TEI instance, 
             thus not include all details but a @sameAs attribute pointing to the corpusHeader -->
         <xsl:param name="mode"/>
@@ -353,27 +353,80 @@
         </person>
     </xsl:template>
 
-    <xsl:template match="tei:table[tei:head = 'Team']/tei:row[tei:cell[1] != '']" mode="respStmtInstanceDoc">
-        <!-- mode = what is the context of this run:
-            * "teiCorpusDoc": this generates the master list of team members in the teiCorpus 
-            * "teiInstanceDoc": this generates the list of team members in one TEI instance, 
-            * "respStmtsCorpusDoc: genereates a list of respStmts in the TEI Corpus Header
-            * "respStmtsInstanceDoc: genereates a list of respStmts pointing to the list of team members in the TEI Corpus
-            thus not include all details but a @sameAs attribute pointing to the corpusHeader -->
+    <xsl:template match="tei:table[tei:head = 'Recordings']/tei:row[tei:cell[1] != '']" mode="respStmtInstanceDoc">
+    <!-- mode = what is the context of this run:
+        * "teiCorpusDoc": this generates the master list of team members in the teiCorpus 
+        * "teiInstanceDoc": this generates the list of team members in one TEI instance, 
+        * "respStmtsCorpusDoc: generates a list of respStmts in the TEI Corpus Header
+        * "respStmtsInstanceDoc: generates a list of respStmts pointing to the list of team members in the current TEI Corpus file
+        thus not include all details but a @sameAs attribute pointing to the corpusHeader -->
+    
         <xsl:param name="mode"/>
+
+        <xsl:variable name="recordingPerson" select="normalize-space(tei:cell[$cn('Recordings')('Rec. person')])"/>
+        <xsl:variable name="recordingPersonID" select="_:personReferenceByName(normalize-space(tei:cell[$cn('Recordings')('Rec. person')]))" />
         <respStmt>
-            <persName ref="corpus:{tei:cell[1]}">
-                <forename><xsl:value-of select="tei:cell[2]"/></forename>
-                <surname><xsl:value-of select="tei:cell[3]"/></surname>
+            <persName ref="{$teiCorpusPrefix}:{$recordingPersonID}">
+                <xsl:value-of select="tei:cell[$cn('Recordings')('Rec. person')]"/>
             </persName>
-            <resp><xsl:value-of select="tei:cell[4]"/></resp>
+            <resp><xsl:value-of select="'recording'"/></resp>
         </respStmt>
+    
+        <xsl:variable name="transcribingPerson" select="normalize-space(tei:cell[$cn('Recordings')('transcribed by')])"/>
+        <xsl:if test="$transcribingPerson != ''">
+            <respStmt>
+                <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName($transcribingPerson)}">
+                    <xsl:value-of select="$transcribingPerson"/>
+                </persName>
+                <resp>transcription</resp>
+            </respStmt>
+        </xsl:if>
+            
+        <xsl:variable name="transcriptionCheckPerson" select="normalize-space(tei:cell[$cn('Recordings')('transcription checked by')])"/>
+        <xsl:if test="$transcriptionCheckPerson != ''">
+            <respStmt>
+                <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName($transcriptionCheckPerson)}">
+                    <xsl:value-of select="$transcriptionCheckPerson"/>
+                </persName>
+                <resp>transcription check</resp>
+            </respStmt>
+        </xsl:if>
+    
+        <xsl:variable name="transcriptionCheckPerson2" select="normalize-space(tei:cell[$cn('Recordings')('transcription checked by2')])"/>
+        <xsl:if test="$transcriptionCheckPerson2 != ''">
+            <respStmt>
+                <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName($transcriptionCheckPerson2)}">
+                    <xsl:value-of select="$transcriptionCheckPerson2"/>
+                </persName>
+                <resp>transcription check</resp>
+            </respStmt>
+        </xsl:if>
+    
+        <xsl:variable name="translatingPerson" select="normalize-space(tei:cell[$cn('Recordings')('translated by')])"/>
+        <xsl:if test="$translatingPerson != ''">
+            <respStmt>
+                <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName($translatingPerson)}">
+                    <xsl:value-of select="$translatingPerson"/>
+                </persName>
+                <resp>translation</resp>
+            </respStmt>
+        </xsl:if>
+        
+        <xsl:variable name="translationCheckPerson" select="normalize-space(tei:cell[$cn('Recordings')('translation checked by')])"/>
+        <xsl:if test="$translationCheckPerson != ''">
+            <respStmt>
+                <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName($translationCheckPerson)}">
+                    <xsl:value-of select="$translationCheckPerson"/>
+                </persName>
+                <resp>translation check</resp>
+            </respStmt>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template match="tei:table[tei:head = 'Team']/tei:row[tei:cell[1] != '']" mode="respStmtCorpusDoc">
         <!-- mode = what is the context of this run:
             * "teiCorpusDoc": this generates the master list of team members in the teiCorpus
-            * "respStmts: genereates a list of respStmts pointing to the list of team members in the TEI Corpus 
+            * "respStmts: generates a list of respStmts pointing to the list of team members in the TEI Corpus 
             * "teiInstanceDoc": this generates the list of team members in one TEI instance, 
             thus not include all details but a @sameAs attribute pointing to the corpusHeader -->
         <xsl:param name="mode"/>
@@ -389,7 +442,7 @@
     <xsl:template match="tei:table[tei:head = 'Team']/tei:row[tei:cell[1] != '']" mode="teiInstanceDoc">
         <!-- mode = what is the context of this run:
             * "teiCorpusDoc": this generates the master list of team members in the teiCorpus
-            * "respStmts: genereates a list of respStmts pointing to the list of team members 
+            * "respStmts: generates a list of respStmts pointing to the list of team members 
             * "teiInstanceDoc": this generates the list of team members in one TEI instance, 
             thus not include all details but a @sameAs attribute pointing to the corpusHeader -->
         <person sameAs="{$teiCorpusPrefix}:{tei:cell[1]}">
