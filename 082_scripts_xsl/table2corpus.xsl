@@ -364,10 +364,9 @@
         <xsl:param name="mode"/>
 
         <xsl:variable name="recordingPerson" select="normalize-space(tei:cell[$cn('Recordings')('Rec. person')])"/>
-        <xsl:variable name="recordingPersonID" select="_:personReferenceByName(normalize-space(tei:cell[$cn('Recordings')('Rec. person')]))" />
         <respStmt>
-            <persName ref="{$teiCorpusPrefix}:{$recordingPersonID}">
-                <xsl:value-of select="tei:cell[$cn('Recordings')('Rec. person')]"/>
+            <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName($recordingPerson)}">
+                <xsl:value-of select="$recordingPerson"/>
             </persName>
             <resp><xsl:value-of select="'recording'"/></resp>
         </respStmt>
