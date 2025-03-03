@@ -222,10 +222,10 @@
                 <elementSpec ident="w" module="analysis" mode="change">
                     <constraintSpec ident="msd-spec" scheme="schematron">
                         <constraint>
-                            <s:rule context="tei:w">
-                                <s:let name="fLibFile" value="'../../010_manannot/fLib_shawi.xml'"/>
+                            <s:rule context="tei:w[@msd]">
+                                <s:let name="fLibFile" value="'../../010_manannot/fLib.xml'"/>
                                 <s:let name="msd_values" value="doc($fLibFile)//tei:fvLib[@n='Morpho-syntactic annotations']/tei:fs/@xml:id"/>
-                                <s:assert test="@msd = $msd_values">MSD: <s:value-of select="@msd"/> is not in list <s:value-of select="$msd_values"/></s:assert>
+                                <s:assert test="@msd = $msd_values">MSD: '<s:value-of select="@msd"/>' is not in list of msd values (<s:value-of select="$msd_values"/>)</s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
