@@ -39,20 +39,17 @@
                 <elementSpec ident="resp" module="core" mode="replace">
                     <content>
                         <valList type="closed">
-                            <valItem ident="Rec. person"><desc>Transcribed by</desc></valItem>
-                            <valItem ident="transcribed by"><desc>Transcribed by</desc></valItem>
-                            <valItem ident="transcription checked by"><desc>Transcription checked by</desc></valItem>
-                            <valItem ident="transcription checked by2"><desc>Transcription checked by2</desc></valItem>
-                            <valItem ident="translated by"><desc>Translated by</desc></valItem>
-                            <valItem ident="translation checked by"><desc>Translation checked by</desc></valItem>
-                            <valItem ident="glossed by"><desc>Glossed by</desc></valItem>
-                            <valItem ident="glossing checked by"><desc>Glossing checked by</desc></valItem>
+                            <valItem ident="recording"><desc>Recorded by</desc></valItem>
+                            <valItem ident="transcrition"><desc>Transcribed by</desc></valItem>
+                            <valItem ident="transcription check"><desc>Transcription checked by</desc></valItem>
+                            <valItem ident="translation"><desc>Translated by</desc></valItem>
+                            <valItem ident="translation check"><desc>Translation checked by</desc></valItem>
                         </valList>
                     </content>
                     <constraintSpec ident="uniqueRespValues" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:respStmt">
-                                <s:assert test="not(tei:resp[. != 'Rec. person' and . = preceding::tei:resp])">Each value inside 'respStmt' must be unique, except for 'Rec. person'</s:assert>
+                                <s:assert test="not(tei:resp[. != 'recording' and . != 'transcription check' and . = preceding::tei:resp])">Each value inside 'respStmt' must be unique, except for 'recording' and 'transcription check'</s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
@@ -62,7 +59,7 @@
                     <constraintSpec ident="rec-person-twice" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:respStmt">
-                                <s:assert test="count(//tei:resp[text() = 'Rec. person']) = 2">The role 'Rec. person' should appear exactly twice across all respStmt elements</s:assert>
+                                <s:assert test="count(//tei:resp[text() = 'recording']) = 2">The role 'recording' should appear exactly twice across all respStmt elements</s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
@@ -71,68 +68,44 @@
                 <elementSpec ident="respStmt" module="core" mode="change">
                     <constraintSpec ident="name-check" scheme="schematron">
                         <constraint>
-                            <s:rule context="tei:resp[text()='Rec. person']">
+                            <s:rule context="tei:resp[text()='recording']">
                                 <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
                                 <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
                                 <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
                                 <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[6]">
-                                    The person for the role 'Rec. person' should be: <s:value-of select="$recFileData/tei:cell[6]"/>
+                                    The person for the role 'recording' should be: <s:value-of select="$recFileData/tei:cell[6]"/>
                                 </s:assert>
                             </s:rule>
-                            <s:rule context="tei:resp[text()='transcribed by']">
+                            <s:rule context="tei:resp[text()='transcription']">
                                 <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
                                 <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
                                 <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
                                 <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[8]">
-                                    The person for the role 'transcribed by' should be: <s:value-of select="$recFileData/tei:cell[8]"/>
+                                    The person for the role 'transcription' should be: <s:value-of select="$recFileData/tei:cell[8]"/>
                                 </s:assert>
                             </s:rule>
-                            <s:rule context="tei:resp[text()='transcription checked by']">
+                            <s:rule context="tei:resp[text()='transcription check']">
                                 <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
                                 <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
                                 <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
-                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[9]">
-                                    The person for the role 'transcription checked by' should be: <s:value-of select="$recFileData/tei:cell[9]"/>
+                                <s:assert test="(preceding-sibling::tei:persName = $recFileData/tei:cell[9]) or (preceding-sibling::tei:persName = $recFileData/tei:cell[10])">
+                                    The person for the role 'transcription check' should be: <s:value-of select="$recFileData/tei:cell[9]"/> or <s:value-of select="$recFileData/tei:cell[10]"/>
                                 </s:assert>
                             </s:rule>
-                            <s:rule context="tei:resp[text()='transcription checked by2']">
-                                <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
-                                <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
-                                <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
-                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[10]">
-                                    The person for the role 'transcription checked by2' should be: <s:value-of select="$recFileData/tei:cell[10]"/>
-                                </s:assert>
-                            </s:rule>
-                            <s:rule context="tei:resp[text()='translated by']">
+                            <s:rule context="tei:resp[text()='translation']">
                                 <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
                                 <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
                                 <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
                                 <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[11]">
-                                    The person for the role 'translated by' should be: <s:value-of select="$recFileData/tei:cell[11]"/>
+                                    The person for the role 'translation' should be: <s:value-of select="$recFileData/tei:cell[11]"/>
                                 </s:assert>
                             </s:rule>
-                            <s:rule context="tei:resp[text()='translation checked by']">
+                            <s:rule context="tei:resp[text()='translation check']">
                                 <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
                                 <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
                                 <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
                                 <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[12]">
-                                    The person for the role 'translation checked by' should be: <s:value-of select="$recFileData/tei:cell[12]"/>
-                                </s:assert>
-                            </s:rule>
-                            <s:rule context="tei:resp[text()='glossed by']">
-                                <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
-                                <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
-                                <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
-                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[13]">
-                                    The person for the role 'glossed by' should be: <s:value-of select="$recFileData/tei:cell[13]"/>
-                                </s:assert>
-                            </s:rule>
-                            <s:rule context="tei:resp[text()='glossing checked by']">
-                                <s:let name="currentID" value="//tei:publicationStmt/tei:idno[@type='SHAWICorpusID']/text()"/>
-                                <s:let name="recFile" value="'../../080_scripts_generic/080_01_ELAN2TEI/data/Shawi_Recordings.xml'"/>
-                                <s:let name="recFileData" value="doc($recFile)//tei:table[tei:head[text()='Recordings']]/tei:row[@n &gt; 1][tei:cell[1][text() = $currentID]]"/>
-                                <s:assert test="preceding-sibling::tei:persName = $recFileData/tei:cell[14]">
-                                    The person for the role 'glossing checked by' should be: <s:value-of select="$recFileData/tei:cell[14]"/>
+                                    The person for the role 'translation check' should be: <s:value-of select="$recFileData/tei:cell[12]"/>
                                 </s:assert>
                             </s:rule>
                         </constraint>
