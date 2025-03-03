@@ -195,6 +195,34 @@
                     </content>
                 </elementSpec>
                 
+                <elementSpec ident="profileDesc" module="header" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="particDesc" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="settingDesc" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="textClass" minOccurs="1" maxOccurs="1"/>
+                        </sequence>
+                    </content>
+                </elementSpec>
+                
+                <elementSpec ident="particDesc" module="corpus" mode="change">
+                    <content>
+                        <elementRef key="listPerson" minOccurs="1" maxOccurs="1"/>
+                    </content>
+                </elementSpec>
+                
+                <elementSpec ident="settingDesc" module="corpus" mode="change">
+                    <content>
+                        <elementRef key="place" minOccurs="1" maxOccurs="1"/>
+                    </content>
+                </elementSpec>
+                
+                <elementSpec ident="textClass" module="header" mode="change">
+                    <content>
+                        <elementRef key="catRef" minOccurs="1" maxOccurs="unbounded"/>
+                    </content>
+                </elementSpec>
+                
                 <elementSpec ident="revisionDesc" module="header" mode="change">
                     <attList>
                         <attDef ident="status" mode="replace" usage="req">
