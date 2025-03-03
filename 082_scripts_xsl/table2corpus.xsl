@@ -368,7 +368,7 @@
             <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName($recordingPerson)}">
                 <xsl:value-of select="$recordingPerson"/>
             </persName>
-            <resp><xsl:value-of select="'recording'"/></resp>
+            <resp>recording</resp>
         </respStmt>
     
         <xsl:variable name="transcribingPerson" select="normalize-space(tei:cell[$cn('Recordings')('transcribed by')])"/>
