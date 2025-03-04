@@ -18,14 +18,14 @@
         <xsl:value-of select="string-join(t:teiHeader//t:textClass//t:catRef/@target, ' ')"/>
         <xsl:text>" status="</xsl:text>
         <xsl:value-of select="t:teiHeader//t:revisionDesc/@status"/>
-        <xsl:text xml:space="preserve">" attrs="word wid decomp lang lemmaRef msd n">
+        <xsl:text xml:space="preserve">" attrs="word wid decomp dict=lemmaRef pos=msd trans=n">
 </xsl:text>
         <xsl:apply-templates select="t:text/t:body"/>
         <xsl:text xml:space="preserve">
 &lt;/doc></xsl:text>
     </xsl:template>
     
-    <xsl:template match="t:w|t:pc" xml:space="preserve"><xsl:if test=". = (',', '.', '!', '?', '[', '(')">&lt;g/>&#xa;</xsl:if><xsl:value-of select="normalize-unicode(text(), 'NFKC')"/>&#9;<xsl:value-of select="@xml:id"/>&#9;<xsl:value-of select="normalize-unicode(text(), 'NFKD')"/>&#9;<xsl:value-of select="@xml:lang"/>&#9;<xsl:value-of select="@lemmaRef"/>&#9;<xsl:value-of select="@msd"/>&#9;<xsl:value-of select="@n"/><xsl:apply-templates select="@* except (@xml:id,@n,@lemmaRef,@msd,@join,@rend,@xml:lang)" mode="tsv"/><xsl:if test="@rend='withDash'">&#xa;&lt;g/>&#xa;-&#xa;&lt;g/></xsl:if>&#xa;</xsl:template>
+    <xsl:template match="t:w|t:pc" xml:space="preserve"><xsl:if test=". = (',', '.', '!', '?', '[', '(')">&lt;g/>&#xa;</xsl:if><xsl:value-of select="normalize-unicode(text(), 'NFKC')"/>&#9;<xsl:value-of select="@xml:id"/>&#9;<xsl:value-of select="normalize-unicode(text(), 'NFKD')"/>&#9;<xsl:value-of select="@lemmaRef"/>&#9;<xsl:value-of select="@msd"/>&#9;<xsl:value-of select="@n"/><xsl:apply-templates select="@* except (@xml:id,@n,@lemmaRef,@msd,@join,@rend,@xml:lang)" mode="tsv"/><xsl:if test="@rend='withDash'">&#xa;&lt;g/>&#xa;-&#xa;&lt;g/></xsl:if>&#xa;</xsl:template>
     
     <xsl:template match="@*" mode="tsv">
         <xsl:text>&#9;</xsl:text><xsl:value-of select="local-name()"/>=<xsl:value-of select="."/>       
