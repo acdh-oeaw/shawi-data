@@ -22,7 +22,8 @@
 </xsl:text>
         <xsl:apply-templates select="t:text/t:body"/>
         <xsl:text xml:space="preserve">
-&lt;/doc></xsl:text>
+&lt;/doc>
+</xsl:text>
     </xsl:template>
     
     <xsl:template match="t:w|t:pc" xml:space="preserve"><xsl:if test=". = (',', '.', '!', '?', '[', '(')">&lt;g/>&#xa;</xsl:if><xsl:value-of select="normalize-unicode(text(), 'NFKC')"/>&#9;<xsl:value-of select="@xml:id"/>&#9;<xsl:value-of select="normalize-unicode(text(), 'NFKD')"/>&#9;<xsl:value-of select="@lemmaRef"/>&#9;<xsl:value-of select="@msd"/>&#9;<xsl:value-of select="@n"/><xsl:apply-templates select="@* except (@xml:id,@n,@lemmaRef,@msd,@join,@rend,@xml:lang)" mode="tsv"/><xsl:if test="@rend='withDash'">&#xa;&lt;g/>&#xa;-&#xa;&lt;g/></xsl:if>&#xa;</xsl:template>
