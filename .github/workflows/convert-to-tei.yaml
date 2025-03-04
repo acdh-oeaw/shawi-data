@@ -8,38 +8,38 @@ on:
   workflow_dispatch: {}
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: get python 3.12
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: "pipenv"
-      - name: convert ELAN to TEI
-        env:
-          SP_USERNAME: ${{ secrets.SP_USERNAME }}
-          SP_PWD: ${{ secrets.SP_PWD }}
-        run: |
-          python --version
-          python -m pip install pipenv
-          cd 080_scripts_generic/080_01_ELAN2TEI
-          pipenv install
-          pipenv run jupyter nbconvert --to script ELAN2TEI.ipynb
-          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python ELAN2TEI.py
-      - name: Commit auto generated files
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add 103_tei_w/*.xml
-          git add 130_vert_plain/*.txt
-          git commit -m "Automatic generated TEI files" -a
-      - name: Push changes back to GitHub
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+#      - name: convert ELAN to TEI
+#        env:
+#          SP_USERNAME: ${{ secrets.SP_USERNAME }}
+#          SP_PWD: ${{ secrets.SP_PWD }}
+#        run: |
+#          python --version
+#          python -m pip install pipenv
+#          cd 080_scripts_generic/080_01_ELAN2TEI
+#          pipenv install
+#          pipenv run jupyter nbconvert --to script ELAN2TEI.ipynb
+#          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python ELAN2TEI.py
+#      - name: Commit auto generated files
+#        run: |
+#          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+#          git config --local user.name "github-actions[bot]"
+#          git add 103_tei_w/*.xml
+#          git add 130_vert_plain/*.txt
+#          git commit -m "Automatic generated TEI files" -a
+#      - name: Push changes back to GitHub
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          branch: ${{ github.ref }}
       - name: Create tags based on git data
         id: meta
         uses: docker/metadata-action@v5
