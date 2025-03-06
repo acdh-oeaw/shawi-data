@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-03-03T09:52:37Z. . 
+Schema generated from ODD source 2025-03-06T09:12:53Z. . 
 TEI Edition: P5 Version 4.7.0. Last updated on 16th November 2023, revision e5dd73ed0 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/ 
   
@@ -103,10 +103,6 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/
             </list>
          </attribute>
       </optional>
-   </define>
-   <define name="att.ascribed.directed.attributes">
-      <ref name="att.ascribed.attributes"/>
-      <ref name="att.ascribed.directed.attribute.toWhom"/>
    </define>
    <define name="att.ascribed.directed.attribute.toWhom">
       <optional>
@@ -1948,29 +1944,6 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
          <ref name="head"/>
       </choice>
    </define>
-   <define name="model.headLike_alternation">
-      <choice>
-         <ref name="head"/>
-      </choice>
-   </define>
-   <define name="model.headLike_sequence">
-      <ref name="head"/>
-   </define>
-   <define name="model.headLike_sequenceOptional">
-      <optional>
-         <ref name="head"/>
-      </optional>
-   </define>
-   <define name="model.headLike_sequenceOptionalRepeatable">
-      <zeroOrMore>
-         <ref name="head"/>
-      </zeroOrMore>
-   </define>
-   <define name="model.headLike_sequenceRepeatable">
-      <oneOrMore>
-         <ref name="head"/>
-      </oneOrMore>
-   </define>
    <define name="model.labelLike">
       <choice>
          <ref name="desc"/>
@@ -2058,48 +2031,10 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
    <define name="model.lLike">
       <notAllowed/>
    </define>
-   <define name="model.lLike_alternation">
-      <notAllowed/>
-   </define>
-   <define name="model.lLike_sequence">
-      <empty/>
-   </define>
-   <define name="model.lLike_sequenceOptional">
-      <empty/>
-   </define>
-   <define name="model.lLike_sequenceOptionalRepeatable">
-      <empty/>
-   </define>
-   <define name="model.lLike_sequenceRepeatable">
-      <notAllowed/>
-   </define>
    <define name="model.pLike">
       <choice>
          <ref name="p"/>
       </choice>
-   </define>
-   <define name="model.pLike_alternation">
-      <choice>
-         <ref name="p"/>
-      </choice>
-   </define>
-   <define name="model.pLike_sequence">
-      <ref name="p"/>
-   </define>
-   <define name="model.pLike_sequenceOptional">
-      <optional>
-         <ref name="p"/>
-      </optional>
-   </define>
-   <define name="model.pLike_sequenceOptionalRepeatable">
-      <zeroOrMore>
-         <ref name="p"/>
-      </zeroOrMore>
-   </define>
-   <define name="model.pLike_sequenceRepeatable">
-      <oneOrMore>
-         <ref name="p"/>
-      </oneOrMore>
    </define>
    <define name="model.stageLike">
       <notAllowed/>
@@ -2304,29 +2239,6 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
          <ref name="editor"/>
          <ref name="respStmt"/>
          <ref name="funder"/>
-      </choice>
-   </define>
-   <define name="model.divWrapper">
-      <notAllowed/>
-   </define>
-   <define name="model.divTopPart">
-      <choice>
-         <ref name="model.headLike"/>
-      </choice>
-   </define>
-   <define name="model.divTop">
-      <choice>
-         <ref name="model.divWrapper"/>
-         <ref name="model.divTopPart"/>
-      </choice>
-   </define>
-   <define name="model.divBottomPart">
-      <notAllowed/>
-   </define>
-   <define name="model.divBottom">
-      <choice>
-         <ref name="model.divWrapper"/>
-         <ref name="model.divBottomPart"/>
       </choice>
    </define>
    <define name="model.imprintPart">
@@ -2551,12 +2463,6 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
          <ref name="model.attributable"/>
       </choice>
    </define>
-   <define name="model.common">
-      <choice>
-         <ref name="model.divPart"/>
-         <ref name="model.inter"/>
-      </choice>
-   </define>
    <define name="model.phrase">
       <choice>
          <ref name="model.segLike"/>
@@ -2590,17 +2496,6 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
          <ref name="model.phrase.xml"/>
          <ref name="model.pPart.data"/>
       </choice>
-   </define>
-   <define name="model.divLike">
-      <choice>
-         <ref name="div"/>
-      </choice>
-   </define>
-   <define name="model.divGenLike">
-      <notAllowed/>
-   </define>
-   <define name="model.div1Like">
-      <notAllowed/>
    </define>
    <define name="model.teiHeaderPart">
       <choice>
@@ -4624,103 +4519,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
    <define name="body">
       <element name="body">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text body) contains the whole body of a single unitary text, excluding any front or back matter. [4. Default Text Structure]</a:documentation>
-         <group>
-            <zeroOrMore>
-               <ref name="model.global"/>
-            </zeroOrMore>
-            <optional>
-               <group>
-                  <ref name="model.divTop"/>
-                  <zeroOrMore>
-                     <choice>
-                        <ref name="model.global"/>
-                        <ref name="model.divTop"/>
-                     </choice>
-                  </zeroOrMore>
-               </group>
-            </optional>
-            <optional>
-               <group>
-                  <ref name="model.divGenLike"/>
-                  <zeroOrMore>
-                     <choice>
-                        <ref name="model.global"/>
-                        <ref name="model.divGenLike"/>
-                     </choice>
-                  </zeroOrMore>
-               </group>
-            </optional>
-            <choice>
-               <oneOrMore>
-                  <group>
-                     <ref name="model.divLike"/>
-                     <zeroOrMore>
-                        <choice>
-                           <ref name="model.global"/>
-                           <ref name="model.divGenLike"/>
-                        </choice>
-                     </zeroOrMore>
-                  </group>
-               </oneOrMore>
-               <oneOrMore>
-                  <group>
-                     <ref name="model.div1Like"/>
-                     <zeroOrMore>
-                        <choice>
-                           <ref name="model.global"/>
-                           <ref name="model.divGenLike"/>
-                        </choice>
-                     </zeroOrMore>
-                  </group>
-               </oneOrMore>
-               <group>
-                  <oneOrMore>
-                     <group>
-                        <choice>
-                           <ref name="model.common"/>
-                        </choice>
-                        <zeroOrMore>
-                           <ref name="model.global"/>
-                        </zeroOrMore>
-                     </group>
-                  </oneOrMore>
-                  <optional>
-                     <choice>
-                        <oneOrMore>
-                           <group>
-                              <ref name="model.divLike"/>
-                              <zeroOrMore>
-                                 <choice>
-                                    <ref name="model.global"/>
-                                    <ref name="model.divGenLike"/>
-                                 </choice>
-                              </zeroOrMore>
-                           </group>
-                        </oneOrMore>
-                        <oneOrMore>
-                           <group>
-                              <ref name="model.div1Like"/>
-                              <zeroOrMore>
-                                 <choice>
-                                    <ref name="model.global"/>
-                                    <ref name="model.divGenLike"/>
-                                 </choice>
-                              </zeroOrMore>
-                           </group>
-                        </oneOrMore>
-                     </choice>
-                  </optional>
-               </group>
-            </choice>
-            <zeroOrMore>
-               <group>
-                  <ref name="model.divBottom"/>
-                  <zeroOrMore>
-                     <ref name="model.global"/>
-                  </zeroOrMore>
-               </group>
-            </zeroOrMore>
-         </group>
+         <ref name="div"/>
          <ref name="att.global.attributes"/>
          <ref name="att.declaring.attributes"/>
          <empty/>
@@ -4730,60 +4529,10 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
       <element name="div">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text division) contains a subdivision of the front, body, or back of a text. [4.1. Divisions of the Body]</a:documentation>
          <group>
-            <zeroOrMore>
-               <choice>
-                  <ref name="model.divTop"/>
-                  <ref name="model.global"/>
-               </choice>
-            </zeroOrMore>
-            <optional>
-               <group>
-                  <choice>
-                     <oneOrMore>
-                        <group>
-                           <choice>
-                              <ref name="model.divLike"/>
-                              <ref name="model.divGenLike"/>
-                           </choice>
-                           <zeroOrMore>
-                              <ref name="model.global"/>
-                           </zeroOrMore>
-                        </group>
-                     </oneOrMore>
-                     <group>
-                        <oneOrMore>
-                           <group>
-                              <choice>
-                                 <ref name="model.common"/>
-                              </choice>
-                              <zeroOrMore>
-                                 <ref name="model.global"/>
-                              </zeroOrMore>
-                           </group>
-                        </oneOrMore>
-                        <zeroOrMore>
-                           <group>
-                              <choice>
-                                 <ref name="model.divLike"/>
-                                 <ref name="model.divGenLike"/>
-                              </choice>
-                              <zeroOrMore>
-                                 <ref name="model.global"/>
-                              </zeroOrMore>
-                           </group>
-                        </zeroOrMore>
-                     </group>
-                  </choice>
-                  <zeroOrMore>
-                     <group>
-                        <ref name="model.divBottom"/>
-                        <zeroOrMore>
-                           <ref name="model.global"/>
-                        </zeroOrMore>
-                     </group>
-                  </zeroOrMore>
-               </group>
-            </optional>
+            <ref name="head"/>
+            <oneOrMore>
+               <ref name="annotationBlock"/>
+            </oneOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="vicav_corpus-div-abstractModel-structure-div-in-l-or-lg-constraint-report-8">
@@ -5378,7 +5127,15 @@ The attributes @to and @from on <name/> may each contain only a single value</re
             </zeroOrMore>
          </group>
          <ref name="att.global.attributes"/>
-         <ref name="att.interpLike.attributes"/>
+         <ref name="att.interpLike.attribute.subtype"/>
+         <ref name="att.interpLike.attribute.inst"/>
+         <attribute name="type">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            <choice>
+               <value>Translation</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">spanGrp is of type Translation</a:documentation>
+            </choice>
+         </attribute>
          <empty/>
       </element>
    </define>
@@ -5655,40 +5412,6 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
          <ref name="annotationBlock"/>
       </choice>
    </define>
-   <define name="model.divPart.spoken_alternation">
-      <choice>
-         <ref name="u"/>
-         <ref name="annotationBlock"/>
-      </choice>
-   </define>
-   <define name="model.divPart.spoken_sequence">
-      <ref name="u"/>
-      <ref name="annotationBlock"/>
-   </define>
-   <define name="model.divPart.spoken_sequenceOptional">
-      <optional>
-         <ref name="u"/>
-      </optional>
-      <optional>
-         <ref name="annotationBlock"/>
-      </optional>
-   </define>
-   <define name="model.divPart.spoken_sequenceOptionalRepeatable">
-      <zeroOrMore>
-         <ref name="u"/>
-      </zeroOrMore>
-      <zeroOrMore>
-         <ref name="annotationBlock"/>
-      </zeroOrMore>
-   </define>
-   <define name="model.divPart.spoken_sequenceRepeatable">
-      <oneOrMore>
-         <ref name="u"/>
-      </oneOrMore>
-      <oneOrMore>
-         <ref name="annotationBlock"/>
-      </oneOrMore>
-   </define>
    <define name="recordingStmt">
       <element name="recordingStmt">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(recording statement) describes a set of recordings used as the basis for transcription of a spoken text. [8.2. Documenting the Source of Transcribed Speech 2.2.7. The Source Description]</a:documentation>
@@ -5737,11 +5460,56 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
       <element name="u">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(utterance) contains a stretch of speech usually preceded and followed by silence or by a change of speaker. [8.3.1. Utterances]</a:documentation>
          <ref name="macro.paraContent"/>
-         <ref name="att.global.attributes"/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="vicav_corpus-u-u-who-check-constraint-rule-32">
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:u">
+               <s:assert test="starts-with(@who, 'corpus:')">The 'who' attribute of u has to start with 'corpus:'</s:assert>
+               <s:assert test="//tei:person/@sameAs = @who">The who attribute of u must point to a person defined in the header</s:assert>
+            </s:rule>
+         </pattern>
+         <ref name="att.global.attribute.n"/>
+         <ref name="att.global.attribute.xmllang"/>
+         <ref name="att.global.attribute.xmlbase"/>
+         <ref name="att.global.attribute.xmlspace"/>
+         <ref name="att.global.rendition.attribute.rend"/>
+         <ref name="att.global.rendition.attribute.style"/>
+         <ref name="att.global.rendition.attribute.rendition"/>
+         <ref name="att.global.linking.attribute.corresp"/>
+         <ref name="att.global.linking.attribute.synch"/>
+         <ref name="att.global.linking.attribute.sameAs"/>
+         <ref name="att.global.linking.attribute.copyOf"/>
+         <ref name="att.global.linking.attribute.next"/>
+         <ref name="att.global.linking.attribute.prev"/>
+         <ref name="att.global.linking.attribute.exclude"/>
+         <ref name="att.global.linking.attribute.select"/>
+         <ref name="att.global.analytic.attribute.ana"/>
+         <ref name="att.global.responsibility.attribute.cert"/>
+         <ref name="att.global.responsibility.attribute.resp"/>
+         <ref name="att.global.source.attribute.source"/>
          <ref name="att.timed.attributes"/>
          <ref name="att.declaring.attributes"/>
-         <ref name="att.ascribed.directed.attributes"/>
+         <ref name="att.ascribed.directed.attribute.toWhom"/>
          <ref name="att.notated.attributes"/>
+         <attribute name="xml:id">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(identifier) provides a unique identifier for the element bearing the attribute.</a:documentation>
+            <data type="ID"/>
+         </attribute>
+         <attribute name="who">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the person, or group of people, to whom the element content is ascribed.</a:documentation>
+            <list>
+               <oneOrMore>
+                  <data type="anyURI">
+                     <param name="pattern">\S+</param>
+                  </data>
+               </oneOrMore>
+            </list>
+         </attribute>
          <optional>
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                        name="trans"
@@ -5765,13 +5533,14 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
    <define name="annotationBlock">
       <element name="annotationBlock">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">groups together various annotations, e.g. for parallel interpretations of a spoken segment. [8.4.6. Analytic Coding]</a:documentation>
-         <zeroOrMore>
-            <choice>
+         <group>
+            <oneOrMore>
                <ref name="u"/>
+            </oneOrMore>
+            <oneOrMore>
                <ref name="spanGrp"/>
-               <ref name="model.global.spoken"/>
-            </choice>
-         </zeroOrMore>
+            </oneOrMore>
+         </group>
          <ref name="att.ascribed.attributes"/>
          <ref name="att.timed.attributes"/>
          <ref name="att.global.attributes"/>
