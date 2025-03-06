@@ -229,6 +229,57 @@
                     </content>
                 </elementSpec>
 
+                <elementSpec ident="body" module="textstructure" mode="change">
+                    <content>
+                        <elementRef key="div" minOccurs="1" maxOccurs="1"/>
+                    </content>
+                </elementSpec>
+
+                <elementSpec ident="div" module="textstructure" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="head" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="annotationBlock" minOccurs="1" maxOccurs="unbounded"/>
+                        </sequence>
+                    </content>
+                </elementSpec>
+                
+                <elementSpec ident="annotationBlock" module="spoken" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="u" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="spanGrp" minOccurs="1" maxOccurs="unbounded"/>
+                        </sequence>
+                    </content>
+                </elementSpec>
+
+                <elementSpec ident="spanGrp" module="analysis" mode="change">
+                    <attList>
+                        <attDef ident="type" mode="replace" usage="req">
+                            <valList type="closed">
+                                <valItem ident="Translation">
+                                    <desc>spanGrp is of type Translation</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+
+                <elementSpec ident="u" module="spoken" mode="change">
+                    <constraintSpec ident="u-who-check" scheme="schematron">
+                        <constraint>
+                            <s:rule context="tei:u">
+                                <s:assert test="starts-with(@who, 'corpus:')">The 'who' attribute of u has to start with 'corpus:'</s:assert>
+                                <s:assert test="//tei:person/@sameAs = @who">The who attribute of u must point to a person defined in the header</s:assert>
+                            </s:rule>
+                        </constraint>
+                    </constraintSpec>
+                    <attList>
+                        <attDef ident="xml:id" mode="change" usage="req"/>
+                        <attDef ident="who" mode="change" usage="req"/>
+                    </attList>
+                </elementSpec>
+
                 <elementSpec ident="w" module="analysis" mode="change">
                     <constraintSpec ident="msd-spec" scheme="schematron">
                         <constraint>
