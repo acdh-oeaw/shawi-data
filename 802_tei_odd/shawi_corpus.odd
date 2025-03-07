@@ -36,6 +36,12 @@
                 <moduleRef key="linking" include="timeline when anchor"/>
                 <moduleRef key="spoken" include="annotationBlock u recordingStmt recording"></moduleRef>
 
+                <classSpec type="atts" ident="att.linguistic" mode="change">
+                    <attList>
+                        <attDef ident="lemma" mode="delete"/>
+                    </attList>
+                </classSpec>
+
                 <elementSpec ident="resp" module="core" mode="replace">
                     <content>
                         <valList type="closed">
@@ -301,6 +307,9 @@
                 </elementSpec>
                 
                 <elementSpec ident="phr" module="analysis" mode="change">
+                    <classes mode="change">
+                        <memberOf key="att.linguistic"/>
+                    </classes>
                     <attList>
                         <attDef ident="xml:id" mode="change" usage="req"/>
                     </attList>
