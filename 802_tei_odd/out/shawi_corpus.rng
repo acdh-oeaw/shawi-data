@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-03-06T09:12:53Z. . 
+Schema generated from ODD source 2025-03-07T08:51:47Z. . 
 TEI Edition: P5 Version 4.7.0. Last updated on 16th November 2023, revision e5dd73ed0 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/ 
   
@@ -4950,10 +4950,32 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
       <element name="phr">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(phrase) represents a grammatical phrase. [17.1. Linguistic Segment Categories]</a:documentation>
          <ref name="macro.phraseSeq"/>
-         <ref name="att.global.attributes"/>
+         <ref name="att.global.attribute.n"/>
+         <ref name="att.global.attribute.xmllang"/>
+         <ref name="att.global.attribute.xmlbase"/>
+         <ref name="att.global.attribute.xmlspace"/>
+         <ref name="att.global.rendition.attribute.rend"/>
+         <ref name="att.global.rendition.attribute.style"/>
+         <ref name="att.global.rendition.attribute.rendition"/>
+         <ref name="att.global.linking.attribute.corresp"/>
+         <ref name="att.global.linking.attribute.synch"/>
+         <ref name="att.global.linking.attribute.sameAs"/>
+         <ref name="att.global.linking.attribute.copyOf"/>
+         <ref name="att.global.linking.attribute.next"/>
+         <ref name="att.global.linking.attribute.prev"/>
+         <ref name="att.global.linking.attribute.exclude"/>
+         <ref name="att.global.linking.attribute.select"/>
+         <ref name="att.global.analytic.attribute.ana"/>
+         <ref name="att.global.responsibility.attribute.cert"/>
+         <ref name="att.global.responsibility.attribute.resp"/>
+         <ref name="att.global.source.attribute.source"/>
          <ref name="att.segLike.attributes"/>
          <ref name="att.typed.attributes"/>
          <ref name="att.notated.attributes"/>
+         <attribute name="xml:id">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(identifier) provides a unique identifier for the element bearing the attribute.</a:documentation>
+            <data type="ID"/>
+         </attribute>
          <empty/>
       </element>
    </define>
@@ -4987,11 +5009,44 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
                <s:assert test="@msd = $msd_values">MSD: '<s:value-of select="@msd"/>' is not in list of msd values (<s:value-of select="$msd_values"/>)</s:assert>
             </s:rule>
          </pattern>
-         <ref name="att.global.attributes"/>
+         <ref name="att.global.attribute.n"/>
+         <ref name="att.global.attribute.xmllang"/>
+         <ref name="att.global.attribute.xmlbase"/>
+         <ref name="att.global.attribute.xmlspace"/>
+         <ref name="att.global.rendition.attribute.style"/>
+         <ref name="att.global.rendition.attribute.rendition"/>
+         <ref name="att.global.linking.attribute.corresp"/>
+         <ref name="att.global.linking.attribute.synch"/>
+         <ref name="att.global.linking.attribute.sameAs"/>
+         <ref name="att.global.linking.attribute.copyOf"/>
+         <ref name="att.global.linking.attribute.next"/>
+         <ref name="att.global.linking.attribute.prev"/>
+         <ref name="att.global.linking.attribute.exclude"/>
+         <ref name="att.global.linking.attribute.select"/>
+         <ref name="att.global.analytic.attribute.ana"/>
+         <ref name="att.global.responsibility.attribute.cert"/>
+         <ref name="att.global.responsibility.attribute.resp"/>
+         <ref name="att.global.source.attribute.source"/>
          <ref name="att.segLike.attributes"/>
          <ref name="att.typed.attributes"/>
          <ref name="att.linguistic.attributes"/>
          <ref name="att.notated.attributes"/>
+         <attribute name="xml:id">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(identifier) provides a unique identifier for the element bearing the attribute.</a:documentation>
+            <data type="ID"/>
+         </attribute>
+         <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="token">
+                        <param name="pattern">[^\p{C}\p{Z}]+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -5005,10 +5060,32 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
                <ref name="model.pPart.edit"/>
             </choice>
          </zeroOrMore>
-         <ref name="att.global.attributes"/>
+         <ref name="att.global.attribute.n"/>
+         <ref name="att.global.attribute.xmllang"/>
+         <ref name="att.global.attribute.xmlbase"/>
+         <ref name="att.global.attribute.xmlspace"/>
+         <ref name="att.global.rendition.attribute.rend"/>
+         <ref name="att.global.rendition.attribute.style"/>
+         <ref name="att.global.rendition.attribute.rendition"/>
+         <ref name="att.global.linking.attribute.corresp"/>
+         <ref name="att.global.linking.attribute.synch"/>
+         <ref name="att.global.linking.attribute.sameAs"/>
+         <ref name="att.global.linking.attribute.copyOf"/>
+         <ref name="att.global.linking.attribute.next"/>
+         <ref name="att.global.linking.attribute.prev"/>
+         <ref name="att.global.linking.attribute.exclude"/>
+         <ref name="att.global.linking.attribute.select"/>
+         <ref name="att.global.analytic.attribute.ana"/>
+         <ref name="att.global.responsibility.attribute.cert"/>
+         <ref name="att.global.responsibility.attribute.resp"/>
+         <ref name="att.global.source.attribute.source"/>
          <ref name="att.segLike.attributes"/>
          <ref name="att.typed.attributes"/>
          <ref name="att.linguistic.attributes"/>
+         <attribute name="xml:id">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(identifier) provides a unique identifier for the element bearing the attribute.</a:documentation>
+            <data type="ID"/>
+         </attribute>
          <optional>
             <attribute name="force">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the extent to which this punctuation mark conventionally separates words or phrases</a:documentation>
@@ -5043,6 +5120,18 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
       <element name="span">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">associates an interpretative annotation directly with a span of text. [17.3. Spans and Interpretations]</a:documentation>
          <ref name="macro.phraseSeq.limited"/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="vicav_corpus-span-span-target-check-constraint-rule-32">
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:span">
+               <s:assert test="parent::tei:spanGrp/preceding-sibling::tei:u/@xml:id = substring-after(@target, '#')">target of span should point at xml:id of preceding u element</s:assert>
+            </s:rule>
+         </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="vicav_corpus-span-targetfrom-constraint-report-10">
             <rule context="tei:span">
@@ -5095,7 +5184,14 @@ The attributes @to and @from on <name/> may each contain only a single value</re
          </pattern>
          <ref name="att.global.attributes"/>
          <ref name="att.interpLike.attributes"/>
-         <ref name="att.pointing.attributes"/>
+         <ref name="att.pointing.attribute.targetLang"/>
+         <ref name="att.pointing.attribute.evaluate"/>
+         <attribute name="target">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            <data type="anyURI">
+               <param name="pattern">\S+</param>
+            </data>
+         </attribute>
          <optional>
             <attribute name="from">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">gives the identifier of the node which is the starting point of the span of text being annotated; if not accompanied by a <code xmlns="http://www.w3.org/1999/xhtml">@to</code> attribute, gives the identifier of the node of the entire span of text being annotated.</a:documentation>
@@ -5118,14 +5214,7 @@ The attributes @to and @from on <name/> may each contain only a single value</re
    <define name="spanGrp">
       <element name="spanGrp">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(span group) collects together span tags. [17.3. Spans and Interpretations]</a:documentation>
-         <group>
-            <zeroOrMore>
-               <ref name="model.descLike"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="span"/>
-            </zeroOrMore>
-         </group>
+         <ref name="span"/>
          <ref name="att.global.attributes"/>
          <ref name="att.interpLike.attribute.subtype"/>
          <ref name="att.interpLike.attribute.inst"/>
@@ -5461,7 +5550,7 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(utterance) contains a stretch of speech usually preceded and followed by silence or by a change of speaker. [8.3.1. Utterances]</a:documentation>
          <ref name="macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-u-u-who-check-constraint-rule-32">
+                  id="vicav_corpus-u-u-who-check-constraint-rule-33">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:rng="http://relaxng.org/ns/structure/1.0"

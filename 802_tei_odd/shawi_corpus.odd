@@ -254,6 +254,9 @@
                 </elementSpec>
 
                 <elementSpec ident="spanGrp" module="analysis" mode="change">
+                    <content>
+                        <elementRef key="span" minOccurs="1" maxOccurs="1"/>
+                    </content>
                     <attList>
                         <attDef ident="type" mode="replace" usage="req">
                             <valList type="closed">
@@ -261,6 +264,23 @@
                                     <desc>spanGrp is of type Translation</desc>
                                 </valItem>
                             </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                
+                <elementSpec ident="span" module="analysis" mode="change">
+                    <constraintSpec ident="span-target-check" scheme="schematron">
+                        <constraint>
+                            <s:rule context="tei:span">
+                                <s:assert test="parent::tei:spanGrp/preceding-sibling::tei:u/@xml:id = substring-after(@target, '#')">target of span should point at xml:id of preceding u element</s:assert>
+                            </s:rule>
+                        </constraint>
+                    </constraintSpec>
+                    <attList>
+                        <attDef ident="target" mode="replace" usage="req">
+                            <datatype>
+                                <dataRef key="teidata.pointer"/>
+                            </datatype>
                         </attDef>
                     </attList>
                 </elementSpec>
@@ -279,7 +299,13 @@
                         <attDef ident="who" mode="change" usage="req"/>
                     </attList>
                 </elementSpec>
-
+                
+                <elementSpec ident="phr" module="analysis" mode="change">
+                    <attList>
+                        <attDef ident="xml:id" mode="change" usage="req"/>
+                    </attList>
+                </elementSpec>
+                
                 <elementSpec ident="w" module="analysis" mode="change">
                     <constraintSpec ident="msd-spec" scheme="schematron">
                         <constraint>
@@ -290,7 +316,22 @@
                             </s:rule>
                         </constraint>
                     </constraintSpec>
+                    <attList>
+                        <attDef ident="xml:id" mode="change" usage="req"/>
+                        <attDef ident="rend" mode="change" usage="opt">
+                            <valList type="closed">
+                                <valItem ident="withDash"/>
+                            </valList>
+                        </attDef>
+                    </attList>
                 </elementSpec>
+                
+                <elementSpec ident="pc" module="analysis" mode="change">
+                    <attList>
+                        <attDef ident="xml:id" mode="change" usage="req"/>
+                    </attList>
+                </elementSpec>
+                
             </schemaSpec>
         </body>
     </text>
