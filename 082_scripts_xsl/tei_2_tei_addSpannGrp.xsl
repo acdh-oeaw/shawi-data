@@ -33,7 +33,7 @@
                 
                 <!-- Insert spanGrp with a span referencing the u element -->
                 <spanGrp type="Translation">
-                    <span xml:lang="en" target="#{$uId}" xml:id="{$newID}"/>
+                    <span xml:lang="en" target="#{$uId}" xml:id="{$newID}">.</span>
                 </spanGrp>
             </xsl:if>
         </xsl:copy>
