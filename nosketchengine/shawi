@@ -7,7 +7,7 @@ NAME "shawi"
 ## Path where to store the index files
 PATH "/var/lib/manatee/data/shawi"
 ## Path where to find vertical files
-VERTICAL "| ls /var/lib/manatee/data/verticals/shawi/*.txt | xargs cat"
+VERTICAL "| find /var/lib/manatee/data/verticals/shawi/ -type f -name '*.txt' -print0  | xargs -0 cat"
 
 ENCODING "utf-8"
 MAINTAINER "omar.siam@oeaw.ac.at"
@@ -83,8 +83,28 @@ ATTRIBUTE "diaroot" {
 
 ### cf. https://www.sketchengine.eu/documentation/corpus-configuration-file-all-features/
 
+STRUCTURE "annotationBlock" {
+	TYPE "map32"
+
+}
+STRUCTURE "connecteds" {
+	TYPE "map32"
+
+}
 STRUCTURE "doc" {
 	TYPE "map32"
+
+	ATTRIBUTE "attrs" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "geo" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
 
 	ATTRIBUTE "id" {
 		TYPE "MD_MI"
@@ -94,28 +114,122 @@ STRUCTURE "doc" {
 
 	ATTRIBUTE "speakers" {
 		TYPE "MD_MI"
- 	  	MULTIVALUE y
-        MULTISEP " "
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
 	}
 
-	ATTRIBUTE "geo" {
+	ATTRIBUTE "status" {
 		TYPE "MD_MI"
- 	  	MULTIVALUE y
-        MULTISEP " "
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "title" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
 	}
 
 	ATTRIBUTE "topic" {
 		TYPE "MD_MI"
- 	  	MULTIVALUE y
-        MULTISEP " "
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "topics" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
 	}
 
 }
 
-STRUCTURE "u" {
+STRUCTURE "g" {
+	TYPE "map32"
+        DISPLAYTAG 0
+        DISPLAYBEGIN "_EMPTY_"
+}
+
+STRUCTURE "gap" {
+	TYPE "map32"
+
+}
+STRUCTURE "phr" {
 	TYPE "map32"
 
 	ATTRIBUTE "id" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "lang" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "lemmaRef" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "msd" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+}
+STRUCTURE "span" {
+	TYPE "map32"
+
+	ATTRIBUTE "id" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "lang" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "target" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+}
+STRUCTURE "Translations" {
+	TYPE "map32"
+
+}
+STRUCTURE "u" {
+	TYPE "map32"
+
+	ATTRIBUTE "end" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "id" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "lang" {
+		TYPE "MD_MI"
+ 	  #	MULTIVALUE y
+        #   MULTISEP " "
+	}
+
+	ATTRIBUTE "start" {
 		TYPE "MD_MI"
  	  #	MULTIVALUE y
         #   MULTISEP " "
@@ -129,35 +243,6 @@ STRUCTURE "u" {
 
 }
 
-STRUCTURE "annotationBlock" {
-	TYPE "map32"
-
-}
-
-STRUCTURE "connecteds" {
-	TYPE "map32"
-
-}
-
-STRUCTURE "translations" {
-	TYPE "map32"
-
-}
-
-STRUCTURE "Translations" {
-	TYPE "map32"
-
-}
-
-STRUCTURE "span" {
-	TYPE "map32"
-
-}
-
-STRUCTURE "g" {
-    DISPLAYTAG 0
-    DISPLAYBEGIN "_EMPTY_"
-}
 
 ################ PARAMETERS for CONTROLLING DISPLAY 
 ## In the Detail view at the bottom: linebreak at every <p>

@@ -1,5 +1,5 @@
 FROM ghcr.io/acdh-oeaw/noske-ubi9/noske:latest
-LABEL maintainer omar.siam@oeaw.ac.at
+LABEL maintainer=omar.siam@oeaw.ac.at
 
 ENV CORPLIST=shawi\
     LANG=C.UTF8
