@@ -17,17 +17,17 @@ jobs:
         with:
           python-version: '3.12'
           cache: "pipenv"
-#      - name: convert ELAN to TEI
-#        env:
-#          SP_USERNAME: ${{ secrets.SP_USERNAME }}
-#          SP_PWD: ${{ secrets.SP_PWD }}
-#        run: |
-#          python --version
-#          python -m pip install pipenv
-#          cd 080_scripts_generic/080_01_ELAN2TEI
-#          pipenv install
-#          pipenv run jupyter nbconvert --to script ELAN2TEI.ipynb
-#          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python ELAN2TEI.py
+      - name: convert ELAN to TEI
+        env:
+          SP_USERNAME: ${{ secrets.SP_USERNAME }}
+          SP_PWD: ${{ secrets.SP_PWD }}
+        run: |
+          python --version
+          python -m pip install pipenv
+          cd 080_scripts_generic/080_01_ELAN2TEI
+          pipenv install
+          pipenv run jupyter nbconvert --to script ELAN2TEI.ipynb
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python ELAN2TEI.py
       - name: convert 010_manannot to 130_vert_plain
         run: |
           python --version
@@ -40,6 +40,8 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          # revert all files with only the timestamp updated (1 line added, 1 deleted, chatGPT suggestion, edited)
+          git diff --numstat -- 103_tei_w | awk '$1 == 1 && $2 == 1 {print $3}' | sed "s/'/\\\\'/g" | xargs -I{} git restore "{}"
           git add 103_tei_w/*.xml
           git add 130_vert_plain/*.txt
           git commit -m "Automatic generated TEI files" -a
