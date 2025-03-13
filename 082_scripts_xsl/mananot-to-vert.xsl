@@ -38,6 +38,7 @@
         <xsl:if test="true()" xml:space="preserve"><xsl:value-of select="normalize-unicode(text(), 'NFKC')"/>&#9;<xsl:value-of select="@xml:id"/>&#9;<xsl:value-of select="normalize-unicode(text(), 'NFKD')"/>&#9;<xsl:value-of select="@lemmaRef"/>&#9;<xsl:value-of select="@msd"/>&#9;<xsl:value-of select="@n"/>&#9;<xsl:value-of select="$dictEntry//t:gram[@type='pos']"/>&#9;<xsl:value-of select="$dictEntry//t:gram[@type='synRoot']"/>&#9;<xsl:value-of select="$dictEntry//t:gram[@type='subc']"/>&#9;<xsl:value-of select="$dictEntry//t:gram[@type='diaRoot']"/><xsl:apply-templates select="@* except (@xml:id,@n,@lemmaRef,@msd,@join,@rend,@xml:lang)" mode="tsv"/></xsl:if>
         <xsl:if test="@rend='withDash'" xml:space="preserve">&#xa;&lt;g/>&#xa;-&#xa;&lt;g/></xsl:if>
         <xsl:if test="true()" xml:space="preserve">&#xa;</xsl:if>
+        <xsl:if test="t:gap" xml:space="preserve">&lt;gap reason="<xsl:value-of select="t:gap/@reason"/>"/>&#xa;</xsl:if>
     </xsl:template>
     
     <xsl:template match="@*" mode="tsv">
