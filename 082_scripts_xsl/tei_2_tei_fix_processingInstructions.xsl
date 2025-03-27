@@ -10,7 +10,7 @@
     </xsl:template>
     
     <!-- Spezielle Behandlung für Processing Instructions -->
-    <xsl:template match="processing-instruction()" priority="2">
+    <xsl:template match="processing-instruction()|comment()" priority="2">
         <xsl:copy>
             <xsl:value-of select="."/>
         </xsl:copy>
