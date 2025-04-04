@@ -3,265 +3,299 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:s="http://purl.oclc.org/dsdl/schematron">
-   <teiHeader>
-      <fileDesc>
-         <titleStmt>
-            <title>Shawi Dictionary Schema</title>
-            <author>Charly Mörth</author>
-            <author>Daniel Schopper</author>
-         </titleStmt>
-         <publicationStmt>
-            <publisher>Austrian Centre for Digital Humanities and Cultural Heritage</publisher>
-            <date>2024</date>
-         </publicationStmt>
-         <sourceDesc>
-            <p>This ODD is a customization of TEI Lex-0, adapted for the needs of the SHAWI-Project of the ACDH-CH.</p>
-         </sourceDesc>
-      </fileDesc>
-      <revisionDesc>
-         <change status="draft" when="2024-03-01">set up ODD</change>
-      </revisionDesc>
-   </teiHeader>
-   <text>
-      <front>
-         <argument>
-            <p>This TEI customization fits the needs of the SHAWI-Project while conforming with the baseline schema of all dictionaries created at the ACDH-CH.</p>
-         </argument>
-      </front>
-      <body>
-         <head>Part 1: Encoder Documentation</head>
-         <div>
-            <head>Basic Dictionary Structure</head>
-            <p>The dictionaries covered by this schema are encoded according to the Guidelines of the Text Encoding Initiative (P5). They are conceptualised as a specific type of text and are therefore encoded with <gi>text</gi> elements. Each dictionary starts with a <gi>teiHeader</gi> element which contains the metadata of the dictionary.</p>
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Shawi Dictionary Schema</title>
+                <author>Charly Mörth</author>
+                <author>Daniel Schopper</author>
+            </titleStmt>
+            <publicationStmt>
+                <publisher>Austrian Centre for Digital Humanities and Cultural Heritage</publisher>
+                <date>2024</date>
+            </publicationStmt>
+            <sourceDesc>
+                <p>This ODD is a customization of TEI Lex-0, adapted for the needs of the
+                    SHAWI-Project of the ACDH-CH.</p>
+            </sourceDesc>
+        </fileDesc>
+        <revisionDesc>
+            <change status="draft" when="2024-03-01">set up ODD</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <front>
+            <argument>
+                <p>This TEI customization fits the needs of the SHAWI-Project while conforming with
+                    the baseline schema of all dictionaries created at the ACDH-CH.</p>
+            </argument>
+        </front>
+        <body>
+            <head>Part 1: Encoder Documentation</head>
+            <div>
+                <head>Basic Dictionary Structure</head>
+                <p>The dictionaries covered by this schema are encoded according to the Guidelines
+                    of the Text Encoding Initiative (P5). They are conceptualised as a specific type
+                    of text and are therefore encoded with <gi>text</gi> elements. Each dictionary
+                    starts with a <gi>teiHeader</gi> element which contains the metadata of the
+                    dictionary.</p>
 
-            <p>The lexicographic data are placed in typed <gi>div</gi> elements. Thus, our TEI
-               dictionaries basically look like this:</p>
-            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible">
-               <TEI version="5.0">
-                  <teiHeader> ... </teiHeader>
-                  <text>
-                     <body>
-                        <div type="entries">
-                           <entry>...</entry>
-                           <entry>...</entry>
-                           <entry>...</entry>
-                        </div>
-                     </body>
-                  </text>
-               </TEI>
-            </egXML>
+                <p>The lexicographic data are placed in typed <gi>div</gi> elements. Thus, our TEI
+                    dictionaries basically look like this:</p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible">
+                    <TEI version="5.0">
+                        <teiHeader> ... </teiHeader>
+                        <text>
+                            <body>
+                                <div type="entries">
+                                    <entry>...</entry>
+                                    <entry>...</entry>
+                                    <entry>...</entry>
+                                </div>
+                            </body>
+                        </text>
+                    </TEI>
+                </egXML>
 
-            <p>The <gi>body</gi> of a dictionary which conforms to this specification may not only contain a flat series of entries but also examples (which are encoded as <gi>cit</gi>/<gi>quote</gi> constructs). The rationale behind keeping example sentences outside the entries is to be able to reuse them in different parts of the dictionary (See below: <ref target="#examples">Examples and Creating examples</ref>).</p>
-         </div>
-         <div>
-            <head>Part 2: Formal Specification</head>
+                <p>The <gi>body</gi> of a dictionary which conforms to this specification may not
+                    only contain a flat series of entries but also examples (which are encoded as
+                        <gi>cit</gi>/<gi>quote</gi> constructs). The rationale behind keeping
+                    example sentences outside the entries is to be able to reuse them in different
+                    parts of the dictionary (See below: <ref target="#examples">Examples and
+                        Creating examples</ref>).</p>
+            </div>
+            <div>
+                <head>Part 2: Formal Specification</head>
 
-            <schemaSpec ident="shawi" source="https://raw.githubusercontent.com/acdh-oeaw/generic-dict-schema/main/schema/tmp/acdh-ch-dicts.compiled.odd">
-               
-               <!-- We copy all modules from ACDH-CH dicts  -->
-               <moduleRef key="derived-module-TEILex0"/>
-               <moduleRef key="analysis"/>
-               <moduleRef key="core" except="ptr q interpretation lb mentioned measure"/>
-               <moduleRef key="dictionaries"/>
-               <moduleRef key="figures"/>
-               <moduleRef key="gaiji"/>
-               <moduleRef key="header"/>
-               <moduleRef key="linking"/>
-               <moduleRef key="namesdates"/>
-               <moduleRef key="tei"/>
-               <moduleRef key="textstructure"/>
-               <moduleRef key="transcr"/>
-               <moduleRef key="iso-fs"/>
-               
-               
-               <elementSpec ident="val" mode="delete"/>
-               <classSpec type="atts" ident="att.measurement" mode="delete"/>
+                <schemaSpec ident="shawi"
+                    source="https://raw.githubusercontent.com/acdh-oeaw/generic-dict-schema/main/schema/tmp/acdh-ch-dicts.compiled.odd">
 
-               <elementSpec ident="gramGrp" mode="change" module="dictionaries">
-                  <content>
-                     <elementRef key="model.gramPart" minOccurs="1" maxOccurs="unbounded"/>
-                  </content>
-               </elementSpec>
+                    <!-- We copy all modules from ACDH-CH dicts  -->
+                    <moduleRef key="derived-module-TEILex0"/>
+                    <moduleRef key="analysis"/>
+                    <moduleRef key="core" except="ptr q interpretation lb mentioned measure"/>
+                    <moduleRef key="dictionaries"/>
+                    <moduleRef key="figures"/>
+                    <moduleRef key="gaiji"/>
+                    <moduleRef key="header"/>
+                    <moduleRef key="linking"/>
+                    <moduleRef key="namesdates"/>
+                    <moduleRef key="tei"/>
+                    <moduleRef key="textstructure"/>
+                    <moduleRef key="transcr"/>
+                    <moduleRef key="iso-fs"/>
 
-               <elementSpec ident="gram" mode="change" module="dictionaries">
-                  <constraintSpec ident="gram-parents" scheme="schematron">
-                     <constraint>
-                        <s:rule context="tei:gram[@type = 'morphPattern']">
-                           <s:assert test="parent::tei:gramGrp/parent::tei:form[@type]">a gram type morphPattern must be a direct child of a gramGrp and a direct grandchild of a form with a type attribute</s:assert>
-                        </s:rule>
-                     </constraint>
-                  </constraintSpec>
-                  <attList>
-                     <!-- TODO 2021-12-03 
+
+                    <elementSpec ident="val" mode="delete"/>
+                    <classSpec type="atts" ident="att.measurement" mode="delete"/>
+
+                    <elementSpec ident="gramGrp" mode="change" module="dictionaries">
+                        <content>
+                            <elementRef key="model.gramPart" minOccurs="1" maxOccurs="unbounded"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="gram" mode="change" module="dictionaries">
+                        <constraintSpec ident="gram-parents" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:gram[@type = 'morphPattern']">
+                                    <s:assert test="parent::tei:gramGrp/parent::tei:form[@type]">a
+                                        gram type morphPattern must be a direct child of a gramGrp
+                                        and a direct grandchild of a form with a type
+                                        attribute</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <attList>
+                            <!-- TODO 2021-12-03 
                      Vocabularies should be moved to specific implementations. element
                      Also this one? 
                      -->
-                     <attDef ident="type" mode="replace" usage="req">
-                        <valList type="closed">
-                           <valItem ident="arguments">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="aspect">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="constraint">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="degree">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="diaRoot">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="diaRootNew">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="frequency"> <!-- additionally to constraint -->
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="followedBy">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="gender">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="government"> <!-- not rection -->
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="inflectionType">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="morphPattern">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="nominalState">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="number">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="person">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="pos">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="precededBy">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="root">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="subc">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="synRoot">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="usg">
-                              <desc>hint on usage</desc>
-                           </valItem>
-                        </valList>
-                     </attDef>
-                  </attList>
-               </elementSpec>
-               
-               
-               <elementSpec ident="form" mode="change" module="dictionaries">
-                  <constraintSpec ident="compoundOrth" scheme="schematron">
-                     <constraint>
-                        <s:rule context="tei:form[@type='lemma']/tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">
-                           <s:assert test="parent::tei:form[@subtype = 'compound']">a form type lemma with an orth that contains a space or a hyphen (not at the beginning or end of a string) has to have a subtype compound</s:assert>
-                        </s:rule>
-                        <s:rule context="tei:form[@subtype='compound']">
-                           <s:assert test="tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">a form with subtype compound has to have an orth child that contains a space or a hyphen (not at the beginning or end of a string)</s:assert>
-                        </s:rule>
-                     </constraint>
-                  </constraintSpec>
-                  <attList>
-                     <attDef ident="type" mode="replace" usage="opt">
-                        <valList type="closed">
-                           <valItem ident="lemma">
-                              <desc>the headword of a lemma entry</desc>
-                           </valItem>
-                           <valItem ident="inflected">
-                              <desc>inflected form</desc>
-                           </valItem>
-                           <valItem ident="variant">
-                              <desc>A variant form of the lemma or inflected forms. The more frequent variant should precede less frequent ones. </desc>
-                           </valItem>
-                        </valList>
-                     </attDef>
-                  </attList>
-               </elementSpec>
-                            
-               <elementSpec ident="biblScope" mode="change" module="dictionaries">
-                  <constraintSpec ident="biblScope-context" scheme="schematron">
-                     <constraint>
-                        <s:rule context="tei:biblScope">
-                           <s:assert test="matches(., '^p\.\s?\d')">Missing or misspelled page number</s:assert>
-                        </s:rule>
-                     </constraint>   
-                  </constraintSpec>
-               </elementSpec>
-                             
-               <elementSpec ident="entry" mode="change" module="dictionaries">
-                  <constraintSpec ident="formSourceCheck" scheme="schematron">
-                     <constraint>
-                        <s:rule context="tei:form[@source]">
-                           <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
-                           <s:let name="biblID" value="following-sibling::tei:listBibl/tei:bibl/@xml:id | parent::tei:form/following-sibling::tei:listBibl/tei:bibl/@xml:id | parent::tei:form/parent::tei:form/following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
-                           <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a form element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$biblID"/>")</s:assert>
-                        </s:rule>
-                     </constraint>
-                  </constraintSpec>
-                  <constraintSpec ident="senseSourceCheck" scheme="schematron">
-                     <constraint>
-                        <s:rule context="tei:sense[@source]">
-                           <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
-                           <s:let name="biblID" value="following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
-                           <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a sense element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$biblID"/>")</s:assert>
-                        </s:rule>
-                     </constraint>
-                  </constraintSpec>
-               </elementSpec>
-               
-               <elementSpec ident="name" mode="change" module="core">
-                  <constraintSpec ident="name-not-empty" scheme="schematron">
-                     <constraint>
-                        <s:rule context="tei:name">
-                           <s:assert test="normalize-space(.) != ''">1: the type attribute of a name element must not be empty</s:assert>
-                        </s:rule>
-                     </constraint>
-                  </constraintSpec>
-                  <attList>
-                     <attDef ident="type" mode="replace" usage="req">
-                        <valList type="closed">
-                           <valItem ident="place">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                           <valItem ident="tribe">
-                              <desc>TODO description missing</desc>
-                           </valItem>
-                        </valList>
-                     </attDef>
-                  </attList>
-               </elementSpec>
-               
-               <elementSpec ident="ref" mode="change" module="core">
-                  <constraintSpec ident="quote-ref" scheme="schematron">
-                     <constraint>
-                        <s:rule context="tei:ref[@type='entry']">
-                           <s:assert test="parent::tei:quote">A ref type entry has to be child of quote</s:assert>
-                           <s:let name="entryIDs" value="//tei:entry/@xml:id"/>
-                           <s:assert test="some $entryID in $entryIDs satisfies $entryID = substring-after(@target, '#')">The target attribute of a ref element in quote (<s:value-of select="@target"/>) must match the xml:id of an entry</s:assert>
-                        </s:rule>
-                     </constraint>
-                  </constraintSpec>
-               </elementSpec>
+                            <attDef ident="type" mode="replace" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="arguments">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="aspect">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="constraint">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="degree">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="diaRoot">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="followedBy">
+                                       <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="gender">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="government">
+                                        <!-- not rection -->
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="inflectionType">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="morphPattern">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="nominalState">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="number">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="person">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="pos">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="precededBy">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="subc">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="synRoot">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="usg">
+                                        <desc>hint on usage</desc>
+                                    </valItem>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
 
-            </schemaSpec>
-         </div>
-      </body>
-   </text>
+
+                    <elementSpec ident="form" mode="change" module="dictionaries">
+                        <constraintSpec ident="compoundOrth" scheme="schematron">
+                            <constraint>
+                                <s:rule
+                                    context="tei:form[@type='lemma']/tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">
+                                    <s:assert test="parent::tei:form[@subtype = 'compound']">a form
+                                        type lemma with an orth that contains a space or a hyphen
+                                        (not at the beginning or end of a string) has to have a
+                                        subtype compound</s:assert>
+                                </s:rule>
+                                <s:rule context="tei:form[@subtype='compound']">
+                                    <s:assert
+                                        test="tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">a
+                                        form with subtype compound has to have an orth child that
+                                        contains a space or a hyphen (not at the beginning or end of
+                                        a string)</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <attList>
+                            <attDef ident="type" mode="replace" usage="opt">
+                                <valList type="closed">
+                                    <valItem ident="lemma">
+                                        <desc>the headword of a lemma entry</desc>
+                                    </valItem>
+                                    <valItem ident="inflected">
+                                        <desc>inflected form</desc>
+                                    </valItem>
+                                    <valItem ident="variant">
+                                        <desc>A variant form of the lemma or inflected forms. The
+                                            more frequent variant should precede less frequent ones.
+                                        </desc>
+                                    </valItem>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="biblScope" mode="change" module="dictionaries">
+                        <constraintSpec ident="biblScope-context" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:biblScope">
+                                    <s:assert test="matches(., '^p\.\s?\d')">Missing or misspelled
+                                        page number</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+
+                    <elementSpec ident="entry" mode="change" module="dictionaries">
+                        <constraintSpec ident="formSourceCheck" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:form[@source]">
+                                    <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
+                                    <s:let name="biblID"
+                                        value="following-sibling::tei:listBibl/tei:bibl/@xml:id | parent::tei:form/following-sibling::tei:listBibl/tei:bibl/@xml:id | parent::tei:form/parent::tei:form/following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
+                                    <s:assert
+                                        test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID"
+                                        >If a form element has a source attribute there must be a
+                                        corresponding bibl element in listBibl ("<s:value-of
+                                            select="$biblID"/>")</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="senseSourceCheck" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:sense[@source]">
+                                    <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
+                                    <s:let name="biblID"
+                                        value="following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
+                                    <s:assert
+                                        test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID"
+                                        >If a sense element has a source attribute there must be a
+                                        corresponding bibl element in listBibl ("<s:value-of
+                                            select="$biblID"/>")</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+
+                    <elementSpec ident="name" mode="change" module="core">
+                        <constraintSpec ident="name-not-empty" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:name">
+                                    <s:assert test="normalize-space(.) != ''">1: the type attribute
+                                        of a name element must not be empty</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <attList>
+                            <attDef ident="type" mode="replace" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="place">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="tribe">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="ref" mode="change" module="core">
+                        <constraintSpec ident="quote-ref" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:ref[@type='entry']">
+                                    <s:assert test="parent::tei:quote">A ref type entry has to be
+                                        child of quote</s:assert>
+                                    <s:let name="entryIDs" value="//tei:entry/@xml:id"/>
+                                    <s:assert
+                                        test="some $entryID in $entryIDs satisfies $entryID = substring-after(@target, '#')"
+                                        >The target attribute of a ref element in quote (<s:value-of
+                                            select="@target"/>) must match the xml:id of an
+                                        entry</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+
+                </schemaSpec>
+            </div>
+        </body>
+    </text>
 </TEI>
