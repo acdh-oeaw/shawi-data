@@ -93,6 +93,13 @@
                         <content>
                             <elementRef key="model.gramPart" minOccurs="1" maxOccurs="unbounded"/>
                         </content>
+                        <constraintSpec ident="gram-roots" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:gramGrp">
+                                    <s:assert test="not(tei:gram[@type='synRoot']) = not(tei:gram[@type='diaRoot'])">if there is a gram type 'diaRoot', there has to be a gram type 'synRoot' in the same gramGrp, and vice versa</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
                     </elementSpec>
 
                     <elementSpec ident="gram" mode="change" module="dictionaries">
