@@ -96,7 +96,7 @@
                     </elementSpec>
 
                     <elementSpec ident="gram" mode="change" module="dictionaries">
-                        <constraintSpec ident="gram-parents" scheme="schematron">
+                        <constraintSpec ident="gram-constraints" scheme="schematron">
                             <constraint>
                                 <s:rule context="tei:gram[@type = 'morphPattern']">
                                     <s:assert test="parent::tei:gramGrp/parent::tei:form[@type]">a
@@ -104,10 +104,6 @@
                                         and a direct grandchild of a form with a type
                                         attribute</s:assert>
                                 </s:rule>
-                            </constraint>
-                        </constraintSpec>
-                        <constraintSpec ident="gram-polarity" scheme="schematron">
-                            <constraint>
                                 <s:rule context="tei:gram[@type = 'polarity']">
                                     <s:assert test="matches(., 'negative')">'gram' elements with type 'polarity' can only have the value 'negative'</s:assert>
                                 </s:rule>
