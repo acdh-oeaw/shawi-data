@@ -106,6 +106,13 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="gram-polarity" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:gram[@type = 'polarity']">
+                                    <s:assert test="matches(., 'negative')">'gram' elements with type 'polarity' can only have the value 'negative'</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
                         <attList>
                             <!-- TODO 2021-12-03 
                      Vocabularies should be moved to specific implementations. element
@@ -134,8 +141,7 @@
                                     <valItem ident="gender">
                                         <desc>TODO description missing</desc>
                                     </valItem>
-                                    <valItem ident="government">
-                                        <!-- not rection -->
+                                    <valItem ident="government"> <!-- not rection -->
                                         <desc>TODO description missing</desc>
                                     </valItem>
                                     <valItem ident="inflectionType">
@@ -151,6 +157,9 @@
                                         <desc>TODO description missing</desc>
                                     </valItem>
                                     <valItem ident="person">
+                                        <desc>TODO description missing</desc>
+                                    </valItem>
+                                    <valItem ident="polarity">
                                         <desc>TODO description missing</desc>
                                     </valItem>
                                     <valItem ident="pos">
