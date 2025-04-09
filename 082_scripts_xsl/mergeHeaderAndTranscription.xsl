@@ -86,14 +86,17 @@
     </xsl:template>
     
     <xsl:template match="tei:annotationBlock">
-        <annotationBlock>
-            <xsl:apply-templates select="node()"/>
+        <annotationBlock xml:id="{concat($recordingID, '_', @xml:id)}">
+            <xsl:apply-templates select="node() | @* except (@xml:id, @who)"/>
         </annotationBlock>
     </xsl:template>
     
     <xsl:template match="tei:u">
-        <u xml:lang="ar-acm-x-shawi-vicav" xml:id="{concat($recordingID,'_',../@xml:id)}" who="{concat('#', ../@who)}">
-          <xsl:apply-templates select="../@* except (../@xml:id, ../@who)"/>
+        <xsl:variable name="num">
+            <xsl:number level="any" from="annotationBlock" count="u" format="1"/>
+        </xsl:variable>
+        <xsl:message select="concat('number: ', $num)"/>
+        <u xml:lang="ar-acm-x-shawi-vicav" xml:id="{concat($recordingID,'_',../@xml:id,'_u', $num)}" who="{concat('#', ../@who)}">
           <xsl:apply-templates select="tei:seg"/>
           <media mimeType="audio/mp3" url="publicAssets:{$recordingID}/{concat($recordingID,'_',../@xml:id)}.mp3"></media>
           <media mimeType="audio/wav" url="arche:{$recordingID}/{concat($recordingID,'_',../@xml:id)}.wav"></media>
