@@ -295,7 +295,7 @@
                     <constraintSpec ident="u-who-check" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:u">
-                                <s:assert test="starts-with(@who, 'corpus:')">The 'who' attribute of u has to start with 'corpus:'</s:assert>
+                                <s:assert test="starts-with(@who, '#corpus:')">The 'who' attribute of u has to start with '#corpus:'</s:assert>
                                 <s:assert test="//tei:person/@sameAs = @who">The who attribute of u must point to a person defined in the header</s:assert>
                             </s:rule>
                         </constraint>
@@ -325,9 +325,30 @@
                             </s:rule>
                         </constraint>
                     </constraintSpec>
+                    <constraintSpec ident="lemmaRef-spec" scheme="schematron">
+                        <constraint>
+                            <s:rule context="tei:w[@xml:lang='ar-acm-x-shawi-vicav']">
+                                <s:assert test="@lemmaRef">@lemmaRef is required when xml:lang is 'ar-acm-x-shawi-vicav'</s:assert>
+                            </s:rule>
+                        </constraint>
+                    </constraintSpec>
+                    
                     <attList>
-                        <attDef ident="xml:id" mode="change" usage="req"/>
-                        <attDef ident="rend" mode="change" usage="opt">
+                        <attDef ident="xml:id" mode="change" usage="req"/>                        
+                        <attDef ident="xml:lang" mode="replace" usage="req">
+                            <valList type="closed">
+                                <valItem ident="ar-acm-x-shawi-vicav">
+                                    <desc>Shawi type Arabic</desc>
+                                </valItem>
+                                <valItem ident="tr-x-shawi-vicav">
+                                    <desc>Turkish</desc>
+                                </valItem>
+                                <valItem ident="kr-x-shawi-vicav">
+                                    <desc>Kurdish</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="rend" mode="replace" usage="opt">
                             <valList type="closed">
                                 <valItem ident="withDash"/>
                             </valList>
