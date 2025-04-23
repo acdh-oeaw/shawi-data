@@ -25,16 +25,16 @@
     <text>
         <body>
             <schemaSpec ident="vicav_corpus" start="TEI">
-                <moduleRef key="header" include="textClass catRef availability availability change distributor encodingDesc fileDesc funder idno licence listPrefixDef prefixDef profileDesc publicationStmt rendition revisionDesc sourceDesc tagsDecl teiHeader titleStmt"/>
-                <moduleRef key="core" include="address addrLine author bibl biblStruct cit date editor desc graphic head hi quote name note p publisher pubPlace ref respStmt resp rs series title media"/>
+                <moduleRef key="header" include="availability catRef change distributor encodingDesc fileDesc funder idno licence listPrefixDef prefixDef profileDesc publicationStmt rendition revisionDesc sourceDesc tagsDecl teiHeader textClass titleStmt"/>
+                <moduleRef key="core" include="address addrLine author bibl biblStruct cit corr date desc editor gap graphic head hi media monogr name note p publisher pubPlace quote ref respStmt resp rs series title"/>
                 <moduleRef key="tei"/>
-                <moduleRef key="tagdocs" include="code att gi"/>
-                <moduleRef key="namesdates" include="person orgName persName forename surname listPerson place placeName"></moduleRef>
+                <moduleRef key="tagdocs" include="att code gi"/>
+                <moduleRef key="namesdates" include="forename listPerson orgName person persName place placeName surname"></moduleRef>
                 <moduleRef key="textstructure" include="body div TEI text"/>
                 <moduleRef key="corpus"/>
-                <moduleRef key="analysis" include="w pc phr span spanGrp"/>
-                <moduleRef key="linking" include="timeline when anchor"/>
-                <moduleRef key="spoken" include="annotationBlock u recordingStmt recording"></moduleRef>
+                <moduleRef key="analysis" include="pc phr span spanGrp w"/>
+                <moduleRef key="linking" include="anchor timeline when"/>
+                <moduleRef key="spoken" include="annotationBlock pause recording recordingStmt shift u"></moduleRef>
 
                 <classSpec type="atts" ident="att.linguistic" mode="change">
                     <attList>
@@ -174,6 +174,22 @@
                     </content>
                 </elementSpec>
                 
+                <elementSpec ident="biblStruct" module="core" mode="change">
+                    <content>
+                        <elementRef key="monogr" minOccurs="1" maxOccurs="1"/>
+                    </content>
+                </elementSpec>
+                
+                <elementSpec ident="monogr" module="core" mode="change">
+                    <content>
+                        <alternate>
+                            <elementRef key="title" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="author" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="imprint" minOccurs="1" maxOccurs="1"/>
+                        </alternate>
+                    </content>
+                </elementSpec>
+
                 <elementSpec ident="profileDesc" module="header" mode="change">
                     <content>
                         <sequence>
@@ -292,6 +308,18 @@
                 </elementSpec>
 
                 <elementSpec ident="u" module="spoken" mode="change">
+                    <content>
+                        <alternate minOccurs="0" maxOccurs="unbounded">
+                            <elementRef key="corr"/>
+                            <elementRef key="gap"/>
+                            <elementRef key="media"/>
+                            <elementRef key="pause"/>
+                            <elementRef key="pc"/>
+                            <elementRef key="phr"/>
+                            <elementRef key="shift"/>
+                            <elementRef key="w"/>
+                        </alternate>
+                    </content>
                     <constraintSpec ident="u-who-check" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:u">
@@ -316,6 +344,18 @@
                 </elementSpec>
                 
                 <elementSpec ident="w" module="analysis" mode="change">
+                    <content>
+                        <sequence>
+                            <textNode/>
+                            <alternate minOccurs="0" maxOccurs="unbounded">
+                                <textNode/>
+                                <elementRef key="gap"/>
+                                <elementRef key="pause"/>
+                                <elementRef key="shift"/>
+                                <elementRef key="corr"/>
+                            </alternate>
+                        </sequence>
+                    </content>
                     <constraintSpec ident="msd-spec" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:w[@msd]">
@@ -332,7 +372,6 @@
                             </s:rule>
                         </constraint>
                     </constraintSpec>
-                    
                     <attList>
                         <attDef ident="xml:id" mode="change" usage="req"/>                        
                         <attDef ident="xml:lang" mode="replace" usage="req">
