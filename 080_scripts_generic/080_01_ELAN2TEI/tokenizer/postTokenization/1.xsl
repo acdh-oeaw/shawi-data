@@ -49,7 +49,7 @@
    <xsl:template match="tei:seg[xtoks:w|xtoks:pc]">
       <xsl:call-template name="groupTokenParts"/>
    </xsl:template>
-   <xsl:template match="*[not(self::tei:seg)][xtoks:w]">
+   <xsl:template match="*[not(self::tei:seg)][xtoks:w][not(self::tei:w[@type='truncated'])]">
       <xsl:copy>
          <xsl:apply-templates select="@*"/>
          <xsl:call-template name="groupTokenParts"/>
@@ -176,7 +176,7 @@
    <xsl:template match="tei:u/tei:seg">
       <xsl:apply-templates/>
    </xsl:template>
-   <xsl:template match="tei:u/tei:w">
+   <xsl:template match="tei:u/tei:w[@type='truncated']">
       <xsl:apply-templates/>
    </xsl:template>
    <xsl:template match="tei:when[@xml:id = 'T0']/@absolute"/>
