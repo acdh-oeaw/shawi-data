@@ -55,7 +55,13 @@
             <xsl:for-each select="$teiHeaderFromCorpus/*">
                 <xsl:sequence select="."/>
                 <xsl:if test="name() = 'profileDesc'">
-                    <revisionDesc status="generated"><change/></revisionDesc>
+                    <revisionDesc status="generated">
+                        <change>
+                            <xsl:attribute name="when">
+                                <xsl:value-of select="format-date(current-date(), '[Y0001]-[M01]-[D01]')"/>
+                            </xsl:attribute>
+                        </change>
+                    </revisionDesc>
                 </xsl:if>
             </xsl:for-each>
         </xsl:element>
