@@ -26,7 +26,7 @@
         <body>
             <schemaSpec ident="vicav_corpus" start="TEI">
                 <moduleRef key="header" include="availability catRef change distributor encodingDesc fileDesc funder idno licence listPrefixDef prefixDef profileDesc publicationStmt rendition revisionDesc sourceDesc tagsDecl teiHeader textClass titleStmt"/>
-                <moduleRef key="core" include="address addrLine author bibl biblStruct cit corr date desc editor gap graphic head hi media monogr name note p publisher pubPlace quote ref respStmt resp rs series title"/>
+                <moduleRef key="core" include="address addrLine author bibl biblStruct cit corr date desc editor gap graphic head hi imprint media monogr name note p publisher pubPlace quote ref respStmt resp rs series title"/>
                 <moduleRef key="tei"/>
                 <moduleRef key="tagdocs" include="att code gi"/>
                 <moduleRef key="namesdates" include="forename listPerson orgName person persName place placeName surname"></moduleRef>
@@ -45,6 +45,7 @@
                 <elementSpec ident="resp" module="core" mode="replace">
                     <content>
                         <valList type="closed">
+                            <valItem ident="contributor"><desc>role used in biblStruct</desc></valItem>
                             <valItem ident="recording"><desc>Recorded by</desc></valItem>
                             <valItem ident="transcription"><desc>Transcribed by</desc></valItem>
                             <valItem ident="transcription check"><desc>Transcription checked by</desc></valItem>
@@ -55,7 +56,7 @@
                     <constraintSpec ident="uniqueRespValues" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:respStmt">
-                                <s:assert test="not(tei:resp[. != 'recording' and . != 'transcription check' and . = preceding::tei:resp])">Each value inside 'respStmt' must be unique, except for 'recording' and 'transcription check'</s:assert>
+                                <s:assert test="not(tei:resp[. != 'recording' and . != 'transcription check' and . != 'contributor' and . = preceding::tei:resp])">Each value inside 'respStmt' must be unique, except for 'recording', 'transcription check' and 'contributor'</s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
@@ -182,11 +183,12 @@
                 
                 <elementSpec ident="monogr" module="core" mode="change">
                     <content>
-                        <alternate>
+                        <sequence>
                             <elementRef key="title" minOccurs="1" maxOccurs="1"/>
                             <elementRef key="author" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="respStmt" minOccurs="0" maxOccurs="unbounded"/>
                             <elementRef key="imprint" minOccurs="1" maxOccurs="1"/>
-                        </alternate>
+                        </sequence>
                     </content>
                 </elementSpec>
 
