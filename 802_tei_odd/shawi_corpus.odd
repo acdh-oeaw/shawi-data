@@ -296,7 +296,7 @@
                     <constraintSpec ident="span-target-check" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:span">
-                                <s:assert test="parent::tei:spanGrp/preceding-sibling::tei:u/@xml:id = substring-after(@target, '#')">target of span should point at xml:id of preceding u element</s:assert>
+                                <s:assert test="parent::tei:spanGrp/parent::tei:annotationBlock/@xml:id = substring-after(@target, '#')">target of span should point at xml:id of parent annotationBlock element</s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
