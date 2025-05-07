@@ -322,14 +322,17 @@
                             <elementRef key="w"/>
                         </alternate>
                     </content>
+                    <!-- should be inserted again when issue with speakers is closed -->
+                    <!--
                     <constraintSpec ident="u-who-check" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:u">
                                 <s:assert test="starts-with(@who, '#corpus:')">The 'who' attribute of u has to start with '#corpus:'</s:assert>
-                                <s:assert test="//tei:person/@sameAs = @who">The who attribute of u must point to a person defined in the header</s:assert>
+                                <s:assert test="//tei:person/@sameAs = @who">The 'who' attribute of u must point to a person defined in the header</s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
+                    -->
                     <attList>
                         <attDef ident="xml:id" mode="change" usage="req"/>
                         <attDef ident="who" mode="change" usage="req"/>
@@ -386,6 +389,9 @@
                                 </valItem>
                                 <valItem ident="kr-x-shawi-vicav">
                                     <desc>Kurdish</desc>
+                                </valItem>
+                                <valItem ident="en">
+                                    <desc>English</desc>
                                 </valItem>
                             </valList>
                         </attDef>
