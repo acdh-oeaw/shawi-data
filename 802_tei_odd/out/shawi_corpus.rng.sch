@@ -642,7 +642,10 @@
               xmlns:svg="http://www.w3.org/2000/svg"
               xmlns:xi="http://www.w3.org/2001/XInclude"
               context="tei:w[@xml:lang='ar-acm-x-shawi-vicav']">
-         <s:assert test="@lemmaRef">@lemmaRef is required when xml:lang is 'ar-acm-x-shawi-vicav'</s:assert>
+         <s:let name="dict"
+                value="'../../vicav_dicts/dc_shawi_eng_2025_05_14T12_08_57.xml'"/>
+         <s:let name="entryIDs" value="doc($dict)//tei:entry/@xml:id"/>
+         <s:assert test="not(@lemmaRef) or substring-after(@lemmaRef, 'dict:') = $entryIDs">There is no entry in the dictionary for the current w element: '<s:value-of select="@lemmaRef"/>'</s:assert>
       </s:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
