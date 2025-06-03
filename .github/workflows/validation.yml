@@ -23,6 +23,10 @@ jobs:
         with:
           python-version: '3.11'
           cache: "pipenv"
+      - name: Install missing packages
+        run: |
+          cd main/080_scripts_generic/validation
+          pipenv run pip install pandas
       - name: Validate Corpus files
         run: |
           python --version
@@ -33,7 +37,7 @@ jobs:
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python validate_corpus.py
       - name: Commit errors to gh_pages
         run: |
-          cp main/080_scripts_generic/validation/tmp/validation_report.html gh_pages/index.html
+          cp main/080_scripts_generic/validation/tmp/validationReport.html gh_pages/index.html
           cd gh_pages
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
