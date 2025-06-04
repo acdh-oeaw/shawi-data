@@ -23,10 +23,6 @@ jobs:
         with:
           python-version: '3.11'
           cache: "pipenv"
-      - name: Install missing packages
-        run: |
-          cd main/080_scripts_generic/validation
-          pipenv run pip install pandas
       - name: Validate Corpus files
         run: |
           python --version
