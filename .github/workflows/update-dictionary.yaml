@@ -1,0 +1,34 @@
+name: Update Dictionary
+# CoPilot description:
+# This workflow fetches the latest version of the Shawi dictionary from the ACDH VLE curation service
+# and commits it to the repository. It runs daily at 5:00 UTC or can be triggered manually or via repository dispatch.
+# It fetches the dictionary in XML format and its profile in JSON format and extracts the XML, then commits the changes to the repository.
+on:
+  schedule:
+    - cron: "0 5 * * *" # every day at 5:00 UTC
+  repository_dispatch:
+    types: [run]
+  workflow_dispatch: {}
+jobs:
+    fetch:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v4
+            - name: fetch dictionary
+              run: |
+                curl -L -H "accept: application/xml" https://vle-curation.acdh.oeaw.ac.at/restvle/dicts/dc_shawi_eng/files/dc_shawi_eng.xml -o vicav_dicts/dc_shawi_eng.xml
+                curl -L -H "accept: application/json" https://vle-curation.acdh.oeaw.ac.at/restvle/dicts/dc_shawi_eng/entries/dictProfile | jq -r .entry > vicav_dicts/dc_shawi_eng__prof.xml
+            - name: Commit auto generated files
+              run: |
+                git config --local user.email "github-actions[bot]@users.noreply.github.com"
+                git config --local user.name "github-actions[bot]"
+                # revert all files with only the timestamp updated (1 line added, 1 deleted, chatGPT suggestion, edited)
+                git diff --numstat -- vicav_dicts | awk '$1 == 1 && $2 == 1 {print $3}' | sed "s/'/\\\\'/g" | xargs -I{} git restore "{}"
+                git add vicav_dicts/*.xml
+                git commit -m "Automatic dictionary update" -a
+            - name: Push changes back to GitHub
+              uses: ad-m/github-push-action@master
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                branch: ${{ github.ref }}
