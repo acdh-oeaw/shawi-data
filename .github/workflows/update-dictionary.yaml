@@ -1,4 +1,8 @@
-name: Convert ELAN to TEI
+name: Update Dictionary
+# CoPilot description:
+# This workflow fetches the latest version of the Shawi dictionary from the ACDH VLE curation service
+# and commits it to the repository. It runs daily at 5:00 UTC or can be triggered manually or via repository dispatch.
+# It fetches the dictionary in XML format and its profile in JSON format and extracts the XML, then commits the changes to the repository.
 on:
   schedule:
     - cron: "0 5 * * *" # every day at 5:00 UTC
