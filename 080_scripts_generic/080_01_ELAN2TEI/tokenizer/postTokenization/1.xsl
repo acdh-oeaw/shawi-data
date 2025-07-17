@@ -148,18 +148,38 @@
          </xsl:choose>
       </xsl:for-each-group>
    </xsl:template>
+
    <xsl:template match="xtoks:w[exists(following-sibling::*) and not(following-sibling::*[1]/self::xtoks:ws)]">
+      <xsl:variable name="isTruncated" select="parent::*[@type='truncated' and contains(@rendition, 'rend:ellipsisAfter')]"/>
+
       <xsl:copy copy-namespaces="no">
          <xsl:copy-of select="@* except @xml:id"/>
+
          <xsl:attribute name="xtoks:id"
-                        select="concat(root()//tei:idno[@type ='SHAWICorpusID'],'_',@xtoks:id)"/>
+            select="concat(root()//tei:idno[@type ='SHAWICorpusID'],'_',@xtoks:id)"/>
          <xsl:attribute name="join">right</xsl:attribute>
-         <xsl:if test="following-sibling::*[1]/self::xtoks:pc[. = '-']">
-            <xsl:attribute name="rend">withDash</xsl:attribute>
+
+         <xsl:if test="$isTruncated">
+            <xsl:attribute name="type">truncated</xsl:attribute>
+            <xsl:attribute name="rendition">rend:ellipsisAfter</xsl:attribute>
          </xsl:if>
+
+         <xsl:if test="not($isTruncated)">
+            <xsl:choose>
+               <xsl:when test="following-sibling::*[1]/self::xtoks:pc[. = '-']">
+                  <xsl:attribute name="rendition">rend:dashAfter</xsl:attribute>
+               </xsl:when>
+               <xsl:when test="following-sibling::*[1]/self::xtoks:pc[. = '_']">
+                  <xsl:attribute name="rendition">rend:withBowBelow</xsl:attribute>
+               </xsl:when>
+            </xsl:choose>
+         </xsl:if>
+
          <xsl:apply-templates/>
+
       </xsl:copy>
    </xsl:template>
+
    <xsl:template match="xtoks:w">
       <xsl:param tunnel="yes" name="join"/>
       <xsl:copy copy-namespaces="no">
@@ -173,6 +193,7 @@
       </xsl:copy>
    </xsl:template>
    <xsl:template match="xtoks:pc[.='-']"/>
+   <xsl:template match="xtoks:pc[.='_']"/>
    <xsl:template match="tei:u/tei:seg">
       <xsl:apply-templates/>
    </xsl:template>

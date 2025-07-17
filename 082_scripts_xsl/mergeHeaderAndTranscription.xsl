@@ -74,21 +74,37 @@
     </xsl:template>
     
     <xsl:template match="text()">
-        <xsl:analyze-string select="." regex="\s\[?(…|\.\.\.)\]?">
+        <xsl:analyze-string select="." regex="\[(…|\.\.\.)\]">
             <xsl:matching-substring>
-                <gap/>
+                <gap rendition="rend:ellipsisInSquareBrackets"/>
             </xsl:matching-substring>
             <xsl:non-matching-substring>
-                <xsl:analyze-string select="." regex="(\w+)(…|\.\.\.)">
+
+                <xsl:analyze-string select="." regex="(\w+|\w+-)(…|\.\.\.)">
                     <xsl:matching-substring>
-                        <w type="truncated"><xsl:value-of select="regex-group(1)"/></w>
+                        <w type="truncated" rendition="rend:ellipsisAfter"><xsl:value-of select="regex-group(1)"/></w>
                     </xsl:matching-substring>
                     <xsl:non-matching-substring>
-                        <xsl:value-of select="."/>
+
+                        <xsl:analyze-string select="." regex="\s(…|\.\.\.)">
+                            <xsl:matching-substring>
+                                <milestone unit="sentence" rendition="rend:ellipsis"/>
+                            </xsl:matching-substring>
+                            <xsl:non-matching-substring>
+                                <xsl:value-of select="."/>
+                            </xsl:non-matching-substring>
+                        </xsl:analyze-string>
+
                     </xsl:non-matching-substring>
                 </xsl:analyze-string>
+                
             </xsl:non-matching-substring>
         </xsl:analyze-string>
+    </xsl:template>
+
+    <!-- in span do not apply ellipsis handling -->
+    <xsl:template match="tei:span//text()">
+        <xsl:value-of select="."/>
     </xsl:template>
     
     <xsl:template match="tei:annotationBlock">
