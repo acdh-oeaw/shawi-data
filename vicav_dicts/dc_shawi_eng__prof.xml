@@ -195,6 +195,7 @@ Example (Fr):      cit[@type="example"]/cit[@type="translation"][@xml:lang="fr"]
                <xsl:attribute name="style">background: rgb(179,253,157)</xsl:attribute>
             </xsl:if>
             
+            <xsl:for-each select="tei:div[@type='entry']">
             <xsl:for-each select="tei:cit">
                <table width="600px">
                   <xsl:if test="//tei:usg/tei:placeName">
@@ -425,7 +426,7 @@ Example (Fr):      cit[@type="example"]/cit[@type="translation"][@xml:lang="fr"]
                
                </table>
             </xsl:for-each>
-            
+            </xsl:for-each>
         </body>
       </html>
     </xsl:template>
