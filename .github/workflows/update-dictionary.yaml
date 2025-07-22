@@ -18,7 +18,8 @@ jobs:
             - name: fetch dictionary
               run: |
                 curl -L -H "accept: application/xml" https://vle-curation.acdh.oeaw.ac.at/restvle/dicts/dc_shawi_eng/files/dc_shawi_eng.xml -o vicav_dicts/dc_shawi_eng.xml
-                curl -L -H "accept: application/json" https://vle-curation.acdh.oeaw.ac.at/restvle/dicts/dc_shawi_eng/entries/dictProfile | jq -r .entry > vicav_dicts/dc_shawi_eng__prof.xml
+# this would also pull the profile but this will most probably be different than what we need for vicav-vue3
+# curl -L -H "accept: application/json" https://vle-curation.acdh.oeaw.ac.at/restvle/dicts/dc_shawi_eng/entries/dictProfile | jq -r .entry > vicav_dicts/dc_shawi_eng__prof.xml
             - name: Commit auto generated files
               run: |
                 git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -26,7 +27,7 @@ jobs:
                 # revert all files with only the timestamp updated (1 line added, 1 deleted, chatGPT suggestion, edited)
                 git diff --numstat -- vicav_dicts | awk '$1 == 1 && $2 == 1 {print $3}' | sed "s/'/\\\\'/g" | xargs -I{} git restore "{}"
                 git add vicav_dicts/*.xml
-                git commit -m "Automatic dictionary update" -a
+                git commit -m "Automatic dictionary update" -a || true
             - name: Push changes back to GitHub
               uses: ad-m/github-push-action@master
               with:
