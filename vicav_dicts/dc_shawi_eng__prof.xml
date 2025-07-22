@@ -195,6 +195,7 @@ Example (Fr):      cit[@type="example"]/cit[@type="translation"][@xml:lang="fr"]
                <xsl:attribute name="style">background: rgb(179,253,157)</xsl:attribute>
             </xsl:if>
             
+            <xsl:for-each select="tei:div[@type='entry']">
             <xsl:for-each select="tei:cit">
                <table width="600px">
                   <xsl:if test="//tei:usg/tei:placeName">
@@ -425,10 +426,17 @@ Example (Fr):      cit[@type="example"]/cit[@type="translation"][@xml:lang="fr"]
                
                </table>
             </xsl:for-each>
-            
+            </xsl:for-each>
         </body>
       </html>
     </xsl:template>
+</xsl:stylesheet><xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
+  <xsl:template match="@*|*|processing-instruction()|comment()">
+    <xsl:copy>
+      <xsl:apply-templates select="*|@*|text()|processing-instruction()|comment()"/>
+    </xsl:copy>
+  </xsl:template>
 </xsl:stylesheet></entryStyle>
 <entryTemplates>//*********************************************************//
 //* ENTRY (lemma) - TEMPLATE ******************************//
@@ -990,7 +998,7 @@ z# = ž   //zhe alternative
 note,orth,p,per,pos,quote,number,subc,text,tns,usg,user</singleNLElements>
 <sortedDisplay>true</sortedDisplay>
 <statusProt>(status)</statusProt>
-<tableName label="dc_shawi_eng" find-dbs="dc_shawi_eng_\d+" generate-db-prefix="dc_shawi_eng_" split-every="10000">dc_shawi_eng</tableName>
+<tableName label="dc_shawi_eng">dc_shawi_eng</tableName>
 <tempPath>C:\dicttemp</tempPath>
 <tieTo/>
 <URLtemplate/>
