@@ -6,7 +6,7 @@
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.tmp"/>
    <!--
-    Schema generated from ODD source 2025-07-09T07:48:01Z. . 
+    Schema generated from ODD source 2025-08-19T08:54:38Z. . 
     TEI Edition: P5 Version 4.7.0. Last updated on 16th November 2023, revision e5dd73ed0 
     TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/ 
     
@@ -374,6 +374,21 @@ Sample values include: 1] all; 2] most; 3] range</xs:documentation>
          <xs:simpleType>
             <xs:restriction base="xs:anyURI">
                <xs:pattern value="\S+"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="att.breaking.attributes">
+      <xs:attributeGroup ref="tei:att.breaking.attribute.break"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="att.breaking.attribute.break">
+      <xs:attribute name="break">
+         <xs:annotation>
+            <xs:documentation>indicates whether or not the element bearing this attribute should be considered to mark the end of an orthographic token in the same way as whitespace.</xs:documentation>
+         </xs:annotation>
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:pattern value="[^\p{C}\p{Z}]+"/>
             </xs:restriction>
          </xs:simpleType>
       </xs:attribute>
@@ -1414,6 +1429,67 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
          </xs:simpleType>
       </xs:attribute>
    </xs:attributeGroup>
+   <xs:attributeGroup name="att.edition.attributes">
+      <xs:attributeGroup ref="tei:att.edition.attribute.ed"/>
+      <xs:attributeGroup ref="tei:att.edition.attribute.edRef"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="att.edition.attribute.ed">
+      <xs:attribute name="ed">
+         <xs:annotation>
+            <xs:documentation>(edition) supplies a sigil or other arbitrary identifier for the source edition in which the associated feature (for example, a page, column, or line break) occurs at this point in the text.</xs:documentation>
+         </xs:annotation>
+         <xs:simpleType>
+            <xs:restriction>
+               <xs:simpleType>
+                  <xs:list>
+                     <xs:simpleType>
+                        <xs:restriction base="xs:token">
+                           <xs:pattern value="[^\p{C}\p{Z}]+"/>
+                        </xs:restriction>
+                     </xs:simpleType>
+                  </xs:list>
+               </xs:simpleType>
+               <xs:minLength value="1"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="att.edition.attribute.edRef">
+      <xs:attribute name="edRef">
+         <xs:annotation>
+            <xs:documentation>(edition reference) provides a pointer to the source edition in which the associated feature (for example, a page, column, or line break) occurs at this point in the text.</xs:documentation>
+         </xs:annotation>
+         <xs:simpleType>
+            <xs:restriction>
+               <xs:simpleType>
+                  <xs:list>
+                     <xs:simpleType>
+                        <xs:restriction base="xs:anyURI">
+                           <xs:pattern value="\S+"/>
+                        </xs:restriction>
+                     </xs:simpleType>
+                  </xs:list>
+               </xs:simpleType>
+               <xs:minLength value="1"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="att.spanning.attributes">
+      <xs:attributeGroup ref="tei:att.spanning.attribute.spanTo"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="att.spanning.attribute.spanTo">
+      <xs:attribute name="spanTo">
+         <xs:annotation>
+            <xs:documentation>indicates the end of a span initiated by the element bearing this attribute.</xs:documentation>
+         </xs:annotation>
+         <xs:simpleType>
+            <xs:restriction base="xs:anyURI">
+               <xs:pattern value="\S+"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:attributeGroup>
    <xs:attributeGroup name="att.styleDef.attributes">
       <xs:attributeGroup ref="tei:att.styleDef.attribute.scheme"/>
       <xs:attributeGroup ref="tei:att.styleDef.attribute.schemeVersion"/>
@@ -1873,32 +1949,38 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
       </xs:sequence>
    </xs:group>
    <xs:group name="model.milestoneLike">
-      <xs:sequence>
+      <xs:choice>
+         <xs:element ref="tei:milestone"/>
          <xs:element ref="tei:anchor"/>
-      </xs:sequence>
+      </xs:choice>
    </xs:group>
    <xs:group name="model.milestoneLike_alternation">
-      <xs:sequence>
+      <xs:choice>
+         <xs:element ref="tei:milestone"/>
          <xs:element ref="tei:anchor"/>
-      </xs:sequence>
+      </xs:choice>
    </xs:group>
    <xs:group name="model.milestoneLike_sequence">
       <xs:sequence>
+         <xs:element ref="tei:milestone"/>
          <xs:element ref="tei:anchor"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.milestoneLike_sequenceOptional">
       <xs:sequence>
+         <xs:element minOccurs="0" ref="tei:milestone"/>
          <xs:element minOccurs="0" ref="tei:anchor"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.milestoneLike_sequenceOptionalRepeatable">
       <xs:sequence>
+         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:milestone"/>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:anchor"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.milestoneLike_sequenceRepeatable">
       <xs:sequence>
+         <xs:element maxOccurs="unbounded" ref="tei:milestone"/>
          <xs:element maxOccurs="unbounded" ref="tei:anchor"/>
       </xs:sequence>
    </xs:group>
@@ -2650,6 +2732,135 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
          </xs:simpleType>
       </xs:attribute>
    </xs:attributeGroup>
+   <xs:attributeGroup name="att.milestoneUnit.attributes">
+      <xs:attributeGroup ref="tei:att.milestoneUnit.attribute.unit"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="att.milestoneUnit.attribute.unit">
+      <xs:attribute name="unit" use="required">
+         <xs:annotation>
+            <xs:documentation>provides a conventional name for the kind of section changing at this milestone.
+Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] canto; 7] speaker; 8] stanza; 9] act; 10] scene; 11] section; 12] absent; 13] unnumbered</xs:documentation>
+         </xs:annotation>
+         <xs:simpleType>
+            <xs:union>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="page"/>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="column">
+                        <xs:annotation>
+                           <xs:documentation>column breaks.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="line"/>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="book">
+                        <xs:annotation>
+                           <xs:documentation>any units termed book, liber, etc.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="poem">
+                        <xs:annotation>
+                           <xs:documentation>individual poems in a collection.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="canto">
+                        <xs:annotation>
+                           <xs:documentation>cantos or other major sections of a poem.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="speaker">
+                        <xs:annotation>
+                           <xs:documentation>changes of speaker or narrator.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="stanza">
+                        <xs:annotation>
+                           <xs:documentation>stanzas within a poem, book, or canto.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="act">
+                        <xs:annotation>
+                           <xs:documentation>acts within a play.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="scene">
+                        <xs:annotation>
+                           <xs:documentation>scenes within a play or act.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="section">
+                        <xs:annotation>
+                           <xs:documentation>sections of any kind.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="absent">
+                        <xs:annotation>
+                           <xs:documentation>passages not present in the reference edition.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="unnumbered">
+                        <xs:annotation>
+                           <xs:documentation>passages present in the text, but not to be included as part of the reference.</xs:documentation>
+                        </xs:annotation>
+                     </xs:enumeration>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[^\p{C}\p{Z}]+"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:union>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:attributeGroup>
    <xs:element name="p" substitutionGroup="tei:model.pLike">
       <xs:annotation>
          <xs:documentation>(paragraph) marks paragraphs in prose. [3.1. Paragraphs 7.2.5. Speech Contents]</xs:documentation>
@@ -3042,6 +3253,20 @@ Sample values include: 1] rubbing (rubbing); 2] mildew (mildew); 3] smoke (smoke
          <xs:attributeGroup ref="tei:att.resourced.attributes"/>
          <xs:attributeGroup ref="tei:att.declaring.attributes"/>
          <xs:attributeGroup ref="tei:att.typed.attributes"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="milestone">
+      <xs:annotation>
+         <xs:documentation>(milestone) marks a boundary point separating any kind of section of a text, typically but not necessarily indicating a point at which some part of a standard reference system changes, where the change is not represented by a structural element. [3.11.3. Milestone
+Elements]</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:attributeGroup ref="tei:att.global.attributes"/>
+         <xs:attributeGroup ref="tei:att.milestoneUnit.attributes"/>
+         <xs:attributeGroup ref="tei:att.typed.attributes"/>
+         <xs:attributeGroup ref="tei:att.edition.attributes"/>
+         <xs:attributeGroup ref="tei:att.spanning.attributes"/>
+         <xs:attributeGroup ref="tei:att.breaking.attributes"/>
       </xs:complexType>
    </xs:element>
    <xs:complexType name="monogr">
@@ -5770,6 +5995,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</xs:d
             <xs:element ref="tei:corr"/>
             <xs:element ref="tei:gap"/>
             <xs:element ref="tei:media"/>
+            <xs:element ref="tei:milestone"/>
             <xs:element ref="tei:pause"/>
             <xs:element ref="tei:pc"/>
             <xs:element ref="tei:phr"/>

@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-07-09T07:47:52Z. . 
+Schema generated from ODD source 2025-08-19T08:54:33Z. . 
 TEI Edition: P5 Version 4.7.0. Last updated on 16th November 2023, revision e5dd73ed0 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/ 
   
@@ -309,6 +309,19 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a <code xmlns="http://www.w3.org/1999/xhtml">&lt;handNote&gt;</code> element describing the hand considered responsible for the content of the element concerned.</a:documentation>
             <data type="anyURI">
                <param name="pattern">\S+</param>
+            </data>
+         </attribute>
+      </optional>
+   </define>
+   <define name="att.breaking.attributes">
+      <ref name="att.breaking.attribute.break"/>
+   </define>
+   <define name="att.breaking.attribute.break">
+      <optional>
+         <attribute name="break">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates whether or not the element bearing this attribute should be considered to mark the end of an orthographic token in the same way as whitespace.</a:documentation>
+            <data type="token">
+               <param name="pattern">[^\p{C}\p{Z}]+</param>
             </data>
          </attribute>
       </optional>
@@ -1199,6 +1212,66 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
          </attribute>
       </optional>
    </define>
+   <define name="att.edition.attributes">
+      <ref name="att.edition.attribute.ed"/>
+      <ref name="att.edition.attribute.edRef"/>
+   </define>
+   <define name="att.edition.attribute.ed">
+      <optional>
+         <attribute name="ed">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(edition) supplies a sigil or other arbitrary identifier for the source edition in which the associated feature (for example, a page, column, or line break) occurs at this point in the text.</a:documentation>
+            <list>
+               <oneOrMore>
+                  <data type="token">
+                     <param name="pattern">[^\p{C}\p{Z}]+</param>
+                  </data>
+               </oneOrMore>
+            </list>
+         </attribute>
+      </optional>
+   </define>
+   <define name="att.edition.attribute.edRef">
+      <optional>
+         <attribute name="edRef">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(edition reference) provides a pointer to the source edition in which the associated feature (for example, a page, column, or line break) occurs at this point in the text.</a:documentation>
+            <list>
+               <oneOrMore>
+                  <data type="anyURI">
+                     <param name="pattern">\S+</param>
+                  </data>
+               </oneOrMore>
+            </list>
+         </attribute>
+      </optional>
+   </define>
+   <define name="att.spanning.attributes">
+      <ref name="att.spanning.attribute.spanTo"/>
+   </define>
+   <define name="att.spanning.attribute.spanTo">
+      <optional>
+         <attribute name="spanTo">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the end of a span initiated by the element bearing this attribute.</a:documentation>
+            <data type="anyURI">
+               <param name="pattern">\S+</param>
+            </data>
+         </attribute>
+      </optional>
+   </define>
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+            id="vicav_corpus-att.spanning-spanTo-spanTo-points-to-following-constraint-rule-7">
+      <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                xmlns:math="http://www.w3.org/1998/Math/MathML"
+                xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                xmlns:svg="http://www.w3.org/2000/svg"
+                xmlns:xi="http://www.w3.org/2001/XInclude"
+                context="tei:*[@spanTo]">
+         <sch:assert test="id(substring(@spanTo,2)) and following::*[@xml:id=substring(current()/@spanTo,2)]">
+The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow the current element <sch:name/>
+         </sch:assert>
+      </sch:rule>
+   </pattern>
    <define name="att.styleDef.attributes">
       <ref name="att.styleDef.attribute.scheme"/>
       <ref name="att.styleDef.attribute.schemeVersion"/>
@@ -1231,7 +1304,7 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="vicav_corpus-att.styleDef-schemeVersion-schemeVersionRequiresScheme-constraint-rule-7">
+            id="vicav_corpus-att.styleDef-schemeVersion-schemeVersionRequiresScheme-constraint-rule-8">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:math="http://www.w3.org/1998/Math/MathML"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -1808,28 +1881,40 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
    </define>
    <define name="model.milestoneLike">
       <choice>
+         <ref name="milestone"/>
          <ref name="anchor"/>
       </choice>
    </define>
    <define name="model.milestoneLike_alternation">
       <choice>
+         <ref name="milestone"/>
          <ref name="anchor"/>
       </choice>
    </define>
    <define name="model.milestoneLike_sequence">
+      <ref name="milestone"/>
       <ref name="anchor"/>
    </define>
    <define name="model.milestoneLike_sequenceOptional">
+      <optional>
+         <ref name="milestone"/>
+      </optional>
       <optional>
          <ref name="anchor"/>
       </optional>
    </define>
    <define name="model.milestoneLike_sequenceOptionalRepeatable">
       <zeroOrMore>
+         <ref name="milestone"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="anchor"/>
       </zeroOrMore>
    </define>
    <define name="model.milestoneLike_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="milestone"/>
+      </oneOrMore>
       <oneOrMore>
          <ref name="anchor"/>
       </oneOrMore>
@@ -2594,7 +2679,7 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="vicav_corpus-att.calendarSystem-calendar-calendar-constraint-rule-8">
+            id="vicav_corpus-att.calendarSystem-calendar-calendar-constraint-rule-9">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:math="http://www.w3.org/1998/Math/MathML"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2620,6 +2705,46 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
             </data>
          </attribute>
       </optional>
+   </define>
+   <define name="att.milestoneUnit.attributes">
+      <ref name="att.milestoneUnit.attribute.unit"/>
+   </define>
+   <define name="att.milestoneUnit.attribute.unit">
+      <attribute name="unit">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a conventional name for the kind of section changing at this milestone.
+Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] canto; 7] speaker; 8] stanza; 9] act; 10] scene; 11] section; 12] absent; 13] unnumbered</a:documentation>
+         <choice>
+            <value>page</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">physical page breaks (synonymous with the <code xmlns="http://www.w3.org/1999/xhtml">&lt;pb&gt;</code> element).</a:documentation>
+            <value>column</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">column breaks.</a:documentation>
+            <value>line</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">line breaks (synonymous with the <code xmlns="http://www.w3.org/1999/xhtml">&lt;lb&gt;</code> element).</a:documentation>
+            <value>book</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">any units termed book, liber, etc.</a:documentation>
+            <value>poem</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">individual poems in a collection.</a:documentation>
+            <value>canto</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">cantos or other major sections of a poem.</a:documentation>
+            <value>speaker</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">changes of speaker or narrator.</a:documentation>
+            <value>stanza</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">stanzas within a poem, book, or canto.</a:documentation>
+            <value>act</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">acts within a play.</a:documentation>
+            <value>scene</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">scenes within a play or act.</a:documentation>
+            <value>section</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">sections of any kind.</a:documentation>
+            <value>absent</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">passages not present in the reference edition.</a:documentation>
+            <value>unnumbered</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">passages present in the text, but not to be included as part of the reference.</a:documentation>
+            <data type="token">
+               <param name="pattern">[^\p{C}\p{Z}]+</param>
+            </data>
+         </choice>
+      </attribute>
    </define>
    <define name="p">
       <element name="p">
@@ -2706,7 +2831,7 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(description) contains a short description of the purpose, function, or use of its parent element, or when the parent is a documentation element, describes or defines the object being documented.  [22.4.1. Description of Components]</a:documentation>
          <ref name="macro.limitedContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-desc-deprecationInfo-only-in-deprecated-constraint-rule-9">
+                  id="vicav_corpus-desc-deprecationInfo-only-in-deprecated-constraint-rule-10">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2828,7 +2953,7 @@ Sample values include: 1] rubbing (rubbing); 2] mildew (mildew); 3] smoke (smoke
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-name-calendar-calendar-check-name-constraint-rule-10">
+                  id="vicav_corpus-name-calendar-calendar-check-name-constraint-rule-11">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3005,6 +3130,20 @@ Sample values include: 1] rubbing (rubbing); 2] mildew (mildew); 3] smoke (smoke
          <empty/>
       </element>
    </define>
+   <define name="milestone">
+      <element name="milestone">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(milestone) marks a boundary point separating any kind of section of a text, typically but not necessarily indicating a point at which some part of a standard reference system changes, where the change is not represented by a structural element. [3.11.3. Milestone
+Elements]</a:documentation>
+         <empty/>
+         <ref name="att.global.attributes"/>
+         <ref name="att.milestoneUnit.attributes"/>
+         <ref name="att.typed.attributes"/>
+         <ref name="att.edition.attributes"/>
+         <ref name="att.spanning.attributes"/>
+         <ref name="att.breaking.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="monogr">
       <element name="monogr">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(monographic level) contains bibliographic elements describing an item (e.g. a book or journal) published as an independent item (i.e. as a separate physical object). [3.12.2.1. Analytic, Monographic, and Series Levels]</a:documentation>
@@ -3060,7 +3199,7 @@ Sample values include: 1] rubbing (rubbing); 2] mildew (mildew); 3] smoke (smoke
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-author-calendar-calendar-check-author-constraint-rule-11">
+                  id="vicav_corpus-author-calendar-calendar-check-author-constraint-rule-12">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3097,7 +3236,7 @@ Sample values include: 1] rubbing (rubbing); 2] mildew (mildew); 3] smoke (smoke
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-editor-calendar-calendar-check-editor-constraint-rule-12">
+                  id="vicav_corpus-editor-calendar-calendar-check-editor-constraint-rule-13">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3163,7 +3302,7 @@ Sample values include: 1] rubbing (rubbing); 2] mildew (mildew); 3] smoke (smoke
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Translation checked by</a:documentation>
          </choice>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-resp-uniqueRespValues-constraint-rule-13">
+                  id="vicav_corpus-resp-uniqueRespValues-constraint-rule-14">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -3205,7 +3344,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-title-calendar-calendar-check-title-constraint-rule-14">
+                  id="vicav_corpus-title-calendar-calendar-check-title-constraint-rule-15">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3366,7 +3505,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </oneOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-fileDesc-rec-person-twice-constraint-rule-15">
+                  id="vicav_corpus-fileDesc-rec-person-twice-constraint-rule-16">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3406,7 +3545,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             <ref name="idno"/>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-funder-funderIdnoType-constraint-rule-16">
+                  id="vicav_corpus-funder-funderIdnoType-constraint-rule-17">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3419,7 +3558,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </s:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-funder-calendar-check-funder-constraint-rule-17">
+                  id="vicav_corpus-funder-calendar-check-funder-constraint-rule-18">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3449,7 +3588,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-funder-calendar-calendar-check-funder-constraint-rule-18">
+                  id="vicav_corpus-funder-calendar-calendar-check-funder-constraint-rule-19">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3484,7 +3623,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             <ref name="idno"/>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-publicationStmt-publStmtIdnoType-constraint-rule-19">
+                  id="vicav_corpus-publicationStmt-publStmtIdnoType-constraint-rule-20">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3563,7 +3702,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-idno-calendar-calendar-check-idno-constraint-rule-20">
+                  id="vicav_corpus-idno-calendar-calendar-check-idno-constraint-rule-21">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3622,7 +3761,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-licence-calendar-calendar-check-licence-constraint-rule-21">
+                  id="vicav_corpus-licence-calendar-calendar-check-licence-constraint-rule-22">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3832,7 +3971,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-change-calendar-calendar-check-change-constraint-rule-22">
+                  id="vicav_corpus-change-calendar-calendar-check-change-constraint-rule-23">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4201,7 +4340,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-orgName-calendar-calendar-check-orgName-constraint-rule-23">
+                  id="vicav_corpus-orgName-calendar-calendar-check-orgName-constraint-rule-24">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4240,7 +4379,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-persName-calendar-calendar-check-persName-constraint-rule-24">
+                  id="vicav_corpus-persName-calendar-calendar-check-persName-constraint-rule-25">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4299,7 +4438,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-placeName-calendar-calendar-check-placeName-constraint-rule-25">
+                  id="vicav_corpus-placeName-calendar-calendar-check-placeName-constraint-rule-26">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -5024,7 +5163,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-w-msd-spec-constraint-rule-26">
+                  id="vicav_corpus-w-msd-spec-constraint-rule-27">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -5039,7 +5178,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
             </s:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-w-lemmaRef-spec-constraint-rule-27">
+                  id="vicav_corpus-w-lemmaRef-spec-constraint-rule-28">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -5174,7 +5313,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">associates an interpretative annotation directly with a span of text. [17.3. Spans and Interpretations]</a:documentation>
          <ref name="macro.phraseSeq.limited"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-span-span-target-check-constraint-rule-28">
+                  id="vicav_corpus-span-span-target-check-constraint-rule-29">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -5628,6 +5767,7 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
                <ref name="corr"/>
                <ref name="gap"/>
                <ref name="media"/>
+               <ref name="milestone"/>
                <ref name="pause"/>
                <ref name="pc"/>
                <ref name="phr"/>
@@ -5708,7 +5848,7 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(shift) marks the point at which some paralinguistic feature of a series of utterances by any one speaker changes. [8.3.6. Shifts]</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="vicav_corpus-shift-shiftNew-constraint-assert-26">
+                  id="vicav_corpus-shift-shiftNew-constraint-assert-27">
             <rule context="tei:shift">
                <assert xmlns:math="http://www.w3.org/1998/Math/MathML"
                        xmlns:rng="http://relaxng.org/ns/structure/1.0"

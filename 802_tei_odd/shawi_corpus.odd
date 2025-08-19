@@ -26,7 +26,7 @@
         <body>
             <schemaSpec ident="vicav_corpus" start="TEI">
                 <moduleRef key="header" include="availability catRef change distributor encodingDesc fileDesc funder idno licence listPrefixDef prefixDef profileDesc publicationStmt rendition revisionDesc sourceDesc tagsDecl teiHeader textClass titleStmt"/>
-                <moduleRef key="core" include="address addrLine author bibl biblStruct cit corr date desc editor gap graphic head hi imprint media monogr name note p publisher pubPlace quote ref respStmt resp rs series title"/>
+                <moduleRef key="core" include="address addrLine author bibl biblStruct cit corr date desc editor gap graphic head hi imprint media milestone monogr name note p publisher pubPlace quote ref respStmt resp rs series title"/>
                 <moduleRef key="tei"/>
                 <moduleRef key="tagdocs" include="att code gi"/>
                 <moduleRef key="namesdates" include="forename listPerson orgName person persName place placeName surname"></moduleRef>
@@ -317,6 +317,7 @@
                             <elementRef key="corr"/>
                             <elementRef key="gap"/>
                             <elementRef key="media"/>
+                            <elementRef key="milestone"/>
                             <elementRef key="pause"/>
                             <elementRef key="pc"/>
                             <elementRef key="phr"/>
@@ -329,7 +330,7 @@
                     <constraintSpec ident="u-who-check" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:u">
-                                <s:assert test="starts-with(@who, '#corpus:')">The 'who' attribute of u has to start with '#corpus:'</s:assert>
+                                <s:assert test="starts-with(@who, 'corpus:')">The 'who' attribute of u has to start with 'corpus:'</s:assert>
                                 <s:assert test="//tei:person/@sameAs = @who">The 'who' attribute of u must point to a person defined in the header</s:assert>
                             </s:rule>
                         </constraint>
