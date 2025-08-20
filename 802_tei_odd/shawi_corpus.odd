@@ -329,7 +329,7 @@
                         <constraint>
                             <s:rule context="tei:u">
                                 <s:assert test="starts-with(@who, 'corpus:')">The 'who' attribute of u has to start with 'corpus:'</s:assert>
-                                <s:assert test="//tei:person/@sameAs = @who">The 'who' attribute of u must point to a person defined in the header</s:assert>
+                                <s:assert test="every $w in tokenize(@who, '\s+') satisfies //tei:person/@sameAs = $w">The 'who' attribute of u must point to a person defined in the header</s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
