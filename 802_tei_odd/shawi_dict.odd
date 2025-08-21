@@ -112,7 +112,13 @@
                                         attribute</s:assert>
                                 </s:rule>
                                 <s:rule context="tei:gram[@type = 'polarity']">
-                                    <s:assert test="matches(., 'negative')">'gram' elements with type 'polarity' can only have the value 'negative'</s:assert>
+                                    <s:assert test="normalize-space(.) = 'negative'">'gram' elements with type 'polarity' can only have the value 'negative'</s:assert>
+                                </s:rule>
+                                <s:rule context="tei:gram[@type = 'degree']">
+                                    <s:assert test="normalize-space(.) = 'elative'">'gram' elements with type 'degree' can only have the value 'elative'</s:assert>
+                                </s:rule>
+                                <s:rule context="tei:gram[@type = 'subc']">
+                                    <s:assert test="not(normalize-space(.) = 'elative')">'gram' elements with type 'subc' can not have the value 'elative'</s:assert>
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
