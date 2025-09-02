@@ -21,8 +21,8 @@
         <xsl:variable name="url" select="$media/@url" as="attribute(url)"/>
         <xsl:variable name="type">
             <xsl:choose>
-                <xsl:when test="$media/@mimeType='audio/wav'">master</xsl:when>
-                <xsl:otherwise>public</xsl:otherwise>
+                <xsl:when test="$media/@mimeType='audio/wav'">audio-master</xsl:when>
+                <xsl:otherwise>audio-public</xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
         <xsl:value-of select="concat('#',substring-before(substring-after($url,'/'),'.'),'-',$type)"/>
