@@ -930,7 +930,6 @@ z# = ž   //zhe alternative
 <multipleEntriesStyle><multipleEntriesStyle/></multipleEntriesStyle>
 <noDashesIndex>true</noDashesIndex>
 <pointerTemplates><ptr type="example" target="{target}"/></pointerTemplates>
-<queryTemplate/>
 <queryTemplates>
 
 <queryTemplate label="ft_all">
@@ -957,9 +956,9 @@ z# = ž   //zhe alternative
 <queryTemplate label="ft_sid">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
-   collection($__db__)//tei:entry[contains(@xml:id,{noSubstQuery})] | 
-   collection($__db__)//tei:teiHeader[contains(@xml:id,{noSubstQuery})] | 
-   collection($__db__)//tei:cit[contains(@xml:id,{noSubstQuery})] 
+   collection($__db__)//tei:entry/@xml:id[{subQuery}]/.. | 
+   collection($__db__)//tei:teiHeader/@xml:id[{subQuery}]/.. | 
+   collection($__db__)//tei:cit/@xml:id[{subQuery}]/..
 </queryTemplate>
 
 <queryTemplate label="ft_pos">
@@ -979,13 +978,7 @@ z# = ž   //zhe alternative
    declare variable $__db__ external;
    collection($__db__)//tei:cit[@type='example']/tei:quote[text() contains text "{subQuery}" using wildcards] |
    collection($__db__)//tei:cit[@type='example']/tei:cit/tei:quote[text() contains text "{subQuery}" using wildcards]  
-</queryTemplate>
-
-<queryTemplate label="header">
-   declare namespace tei = 'http://www.tei-c.org/ns/1.0';
-   declare variable $__db__ external;
-   collection($__db__)//tei:teiHeader
-</queryTemplate>                                                         
+</queryTemplate>                                                       
                                                      
 </queryTemplates>
 <requestContentType>application/xml</requestContentType>
