@@ -40,8 +40,8 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          # revert all files with only the timestamp updated (1 line added, 1 deleted, chatGPT suggestion, edited)
-          git diff --numstat -- 103_tei_w | awk '$1 == 1 && $2 == 1 {print $3}' | sed "s/'/\\\\'/g" | xargs -I{} git restore "{}"
+          # revert all files with only the timestamp updated (2 lines added, 2 deleted, chatGPT suggestion, edited)
+          git diff --numstat -- 103_tei_w | awk '$1 == 2 && $2 == 2 {print $3}' | sed "s/'/\\\\'/g" | xargs -I{} git restore "{}"
           git add 103_tei_w/*.xml
           git add 130_vert_plain/*.txt
           git commit -m "Automatic generated TEI files" -a
