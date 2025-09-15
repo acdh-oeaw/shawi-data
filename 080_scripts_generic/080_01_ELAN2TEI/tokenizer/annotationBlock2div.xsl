@@ -9,7 +9,7 @@
     exclude-result-prefixes="#all"
     extension-element-prefixes="saxon"
     version="3.0">
-    <xsl:output method="xml" indent="yes" saxon:line-length="1000"/>
+    <xsl:output method="xml" indent="yes"/>
     <xsl:template match="node() | @*">
         <xsl:copy>
             <xsl:apply-templates select="node() | @*"/>
