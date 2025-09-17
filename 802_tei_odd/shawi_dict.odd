@@ -9,6 +9,8 @@
                 <title>Shawi Dictionary Schema</title>
                 <author>Charly Mörth</author>
                 <author>Daniel Schopper</author>
+                <author>Michaela Rausch-Supola</author>
+                <author>Veronika Engler</author>
             </titleStmt>
             <publicationStmt>
                 <publisher>Austrian Centre for Digital Humanities and Cultural Heritage</publisher>
@@ -31,49 +33,107 @@
             </argument>
         </front>
         <body>
-            <head>Part 1: Encoder Documentation</head>
+            <head>SHAWI </head>
             <div>
-                <head>Basic Dictionary Structure</head>
-                <p>The dictionaries covered by this schema are encoded according to the Guidelines
-                    of the Text Encoding Initiative (P5). They are conceptualised as a specific type
-                    of text and are therefore encoded with <gi>text</gi> elements. Each dictionary
-                    starts with a <gi>teiHeader</gi> element which contains the metadata of the
-                    dictionary.</p>
-
-                <p>The lexicographic data are placed in typed <gi>div</gi> elements. Thus, our TEI
-                    dictionaries basically look like this:</p>
+                <head>General Remarks</head>
+                <p>This is the ODD for the "Shawi" dictionary, created in the project "The
+                    Shawi-type Arabic dialects spoken in South-eastern Anatolia and the Middle
+                    Euphrates region" (FWF P 33574), led by Stephan Próchazka (University of Viena,
+                    Department for Near Estern studies) and Charly Mörth (Austrian Academy of
+                    Sciences, Austrian Centre for Digial Humanities). In Arabic dialectology, the
+                    term “Shawi-Arabic” refers to a bundle of closely related dialects spoken by
+                        Šawāya<note place="bottom">
+                        <p>The term Šawāya is an exonym and sometimes even regarded as mildly
+                            pejorative by the so named people themselves. Thus, in this application,
+                            the term is understood in a purely areal linguistic sense (see next
+                            paragraph) as it has been well-established in Arabic dialectology for
+                            many decades  (cf. Behnstedt 2000:424, Herin &amp; Younes 2019, Jastrow
+                            1997, Lentin 2013:152-155).</p>
+                    </note> (plural of Šāwī), sheep and goat herding semi-nomadic tribes in various
+                    regions of the Fertile Crescent, esp. Syria, Turkey, northern Lebanon, northern
+                    Israel, and Jordan.</p>
+                <p>The dictionary is a customization of <ref
+                        target="https://dariah-eric.github.io/lexicalresources/pages/TEILex0/TEILex0.html"
+                        >TEI Lex-0</ref> through the <ref
+                        target="https://github.com/acdh-oeaw/generic-dict-schema/">ACDH generic dict
+                        schema</ref> which defines a framework for dictionaries created at the ACDH,
+                    namely the ones to be created in the context of VICAV - the Vienna Corpus of
+                    Arabic Varieties. Please refer to the ODD of the generic dict schema for more
+                    information. This ODD describes and documents where the Shawi dictionary differs
+                    from this schema.</p>
+            </div>
+            <div>
+                <head>Entries</head>
+                
+                <p>The <name>generic dict schema</name> introduces <tag>entry type="multiWordUnit</tag> in order to ensure backward compatability with the
+                    legacy encoding of VICAV dictionaries. Since the Shawi dictionary should follow TEI Lex-0 more closely,
+                    this is overridden by the values proposed by TEI Lex-0.<specList>
+                        <specDesc key="entry"/>
+                    </specList></p>
+            </div>
+            <div>
+                <head>Diatopic information</head>
+                <p>Given the geographic distribution of the varities described in this dictionary,
+                    we aim at documenting the provenance of lemmas (<tag>form type="lemma"</tag>),
+                    variants (<tag>form type="variant"</tag>) and inflected forms (<tag>form
+                        type="inflected"</tag>). We thus require <tag>usg type="geographic</tag>
+                    inside of these elements (in contrast to the <name>generic dict schema</name>
+                    where this is no requirement).</p>
+                <p>
+                    <specList>
+                        <specDesc key="form"/>
+                    </specList>
+                </p>
+            </div>
+            <div>
+                <head>Subcategorization</head>
+                <p>Certain grammatical features are further subcategorized. This is encoded as <gi>gram</gi> elements with <att>type</att>=<val>subc</val>. Conceptually, certain values of these gram elements are tied to other gram values (e.g. subc="pluralNoun" implies pos="noun"). At the moment, we cannot express this relation in the encoding, by enforce it via schematron rules.</p>
+                <p>Possible combinations are:</p>
+                <table>
+                    <row role="label">
+                        <cell><val>pos</val> value</cell>
+                        <cell><val>subc</val> value</cell>
+                    </row>
+                    <row><cell>noun</cell><cell>toponym​</cell></row>
+                    <row><cell>noun</cell><cell>collectiveNoun​</cell></row>
+                    <row><cell>noun</cell><cell>pluralNoun​</cell></row>
+                    <row><cell>noun</cell><cell>unitNoun​</cell></row>
+                    <row><cell>noun</cell><cell>diminutiveNoun​</cell></row>
+                    <row><cell>numeral</cell><cell>fraction​</cell></row>
+                    <row><cell>numeral</cell><cell>ordinal​</cell></row>
+                </table>
+            </div>
+            <div>
+                <head>Sources for entry parts or examples</head>
+                <p>Each part of an entry can indicate the source its information is based on. In order to be able to specifically reference exact page numbers instead of whole publications, we include a <gi>listBibl</gi> at the end of each entry or example:</p>
                 <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible">
-                    <TEI version="5.0">
-                        <teiHeader> ... </teiHeader>
-                        <text>
-                            <body>
-                                <div type="entries">
-                                    <entry>...</entry>
-                                    <entry>...</entry>
-                                    <entry>...</entry>
-                                </div>
-                            </body>
-                        </text>
-                    </TEI>
+                    <entry>
+                        <form source="#d1e299557" type="lemma">
+                            <orth>zarub</orth>
+                        </form>
+                        <!-- ... -->
+                        <listBibl type="literature">
+                            <bibl xml:id="d1e2995">
+                                <title ref="zot:Lentin2013"/>
+                                <biblScope unit="page">p.159</biblScope>
+                            </bibl>
+                        </listBibl>
+                    </entry>
+                    
                 </egXML>
-
-                <p>The <gi>body</gi> of a dictionary which conforms to this specification may not
-                    only contain a flat series of entries but also examples (which are encoded as
-                        <gi>cit</gi>/<gi>quote</gi> constructs). The rationale behind keeping
-                    example sentences outside the entries is to be able to reuse them in different
-                    parts of the dictionary (See below: <ref target="#examples">Examples and
-                        Creating examples</ref>).</p>
             </div>
             <div>
                 <head>Part 2: Formal Specification</head>
 
+                <!--<schemaSpec ident="shawi"
+                    source="https://raw.githubusercontent.com/acdh-oeaw/generic-dict-schema/main/schema/tmp/acdh-ch-dicts.compiled.odd">-->
                 <schemaSpec ident="shawi"
-                    source="https://raw.githubusercontent.com/acdh-oeaw/generic-dict-schema/main/schema/tmp/acdh-ch-dicts.compiled.odd">
+                    source="file:///home/danielschopper/data/generic-dict-schema/schema/acdh-ch-dicts.compiled.odd">
 
-                    <!-- We copy all modules from ACDH-CH dicts  -->
+                    <!-- We copy all modules from Generic dicts  -->
                     <moduleRef key="derived-module-TEILex0"/>
                     <moduleRef key="analysis"/>
-                    <moduleRef key="core" except="ptr q interpretation lb mentioned measure"/>
+                    <moduleRef key="core" except="ptr q interpretation lb mentioned"/>
                     <moduleRef key="dictionaries"/>
                     <moduleRef key="figures"/>
                     <moduleRef key="gaiji"/>
@@ -84,9 +144,27 @@
                     <moduleRef key="textstructure"/>
                     <moduleRef key="transcr"/>
                     <moduleRef key="iso-fs"/>
+                    <!-- DS ref[@type="entry"] is currently not used. -->
+                    <!--  <elementSpec ident="ref" mode="change" module="core">
+                        <constraintSpec ident="quote-ref" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:ref[@type='entry']">
+                                    <s:assert test="parent::tei:quote">A ref type entry has to be
+                                        child of quote</s:assert>
+                                    <s:let name="entryIDs" value="//tei:entry/@xml:id"/>
+                                    <s:assert
+                                        test="some $entryID in $entryIDs satisfies $entryID = substring-after(@target, '#')"
+                                        >The target attribute of a ref element in quote (<s:value-of
+                                            select="@target"/>) must match the xml:id of an
+                                        entry</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>-->
 
 
                     <elementSpec ident="val" mode="delete"/>
+                    
                     <classSpec type="atts" ident="att.measurement" mode="delete"/>
 
                     <elementSpec ident="gramGrp" mode="change" module="dictionaries">
@@ -119,78 +197,27 @@
                                 </s:rule>
                                 <s:rule context="tei:gram[@type = 'subc']">
                                     <s:assert test="not(normalize-space(.) = 'elative')">'gram' elements with type 'subc' can not have the value 'elative'</s:assert>
+                                    <s:assert test="normalize-space(.) = ('toponym','collectiveNoun','pluralNoun','unitNoun', 'diminutiveNoun', 'fraction','ordinal​')">unexpected value "<s:value-of select="."/>" in gram[@type='subc'] is expected to be 'toponym','collectiveNoun','pluralNoun','unitNoun', 'diminutiveNoun', 'fraction','ordinal​'</s:assert>                                    
+                                </s:rule>
+                                <s:rule context="tei:gram[@type = 'subc'][contains(normalize-space(.),'noun')]">
+                                    <s:assert test="../tei:gram[@type='pos']='noun'">gram[@type='subc'] is not expected in combination with gram[@type='pos']='<s:value-of select="../tei:gram[@type='pos']"/>' (expected: "noun")</s:assert>
+                                </s:rule>
+                                <s:rule context="tei:gram[@type = 'subc'][normalize-space(.)=('fraction','ordinal')]">
+                                    <s:assert test="../tei:gram[@type='pos']='numeral'">gram[@type='subc'] = fraction or ordinal is not expected in combination with gram[@type='pos']='<s:value-of select="../tei:gram[@type='pos']"/>' (expected: "numeral")</s:assert>
                                 </s:rule>
                             </constraint>
-                        </constraintSpec>
+                        </constraintSpec>    
+                    </elementSpec>
+                    
+                    <classSpec type="atts" ident="shawi.gramTypes" mode="add">
                         <attList>
-                            <!-- TODO 2021-12-03 
-                     Vocabularies should be moved to specific implementations. element
-                     Also this one? 
-                     -->
-                            <attDef ident="type" mode="replace" usage="req">
+                            <attDef ident="type" mode="add">
                                 <valList type="closed">
-                                    <valItem ident="arguments">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="aspect">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="constraint">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="degree">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="derivedVerbClass">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="diaRoot">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="followedBy">
-                                       <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="gender">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="government"> <!-- not rection -->
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="morphPattern">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="nominalState">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="number">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="person">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="polarity">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="pos">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="precededBy">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="subc">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="synRoot">
-                                        <desc>TODO description missing</desc>
-                                    </valItem>
-                                    <valItem ident="usg">
-                                        <desc>hint on usage</desc>
-                                    </valItem>
+                                    <valItem ident="case"/>
                                 </valList>
                             </attDef>
                         </attList>
-                    </elementSpec>
-
+                    </classSpec>
 
                     <elementSpec ident="form" mode="change" module="dictionaries">
                         <constraintSpec ident="compoundOrth" scheme="schematron">
@@ -202,6 +229,10 @@
                                         (not at the beginning or end of a string) has to have a
                                         subtype compound</s:assert>
                                 </s:rule>
+                                <s:rule
+                                    context="tei:form[@type=('lemma','variant','inflected')]">
+                                    <s:assert test="tei:usg[@type='geographic']">lemmas, inflected forms and variants must inlcude usg[@type='geographic']</s:assert>
+                                </s:rule>
                                 <s:rule context="tei:form[@subtype='compound']">
                                     <s:assert
                                         test="tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">a
@@ -211,6 +242,14 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="noType" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:form[not(@type)]">
+                                    <s:assert test="parent::tei:cit[@type=('translationEquivalent','etymon')]">form elements without @type must only occur in translationEquivalents</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <!--<!-\- given that generic-dict-schema introduces form/@type="multiWordUnit" for backwards-compatability, we override this here according to TEI Lex-0. -\->
                         <attList>
                             <attDef ident="type" mode="replace" usage="opt">
                                 <valList type="closed">
@@ -227,7 +266,7 @@
                                     </valItem>
                                 </valList>
                             </attDef>
-                        </attList>
+                        </attList>-->
                     </elementSpec>
 
                     <elementSpec ident="biblScope" mode="change" module="dictionaries">
@@ -295,22 +334,7 @@
                         </attList>
                     </elementSpec>
 
-                    <elementSpec ident="ref" mode="change" module="core">
-                        <constraintSpec ident="quote-ref" scheme="schematron">
-                            <constraint>
-                                <s:rule context="tei:ref[@type='entry']">
-                                    <s:assert test="parent::tei:quote">A ref type entry has to be
-                                        child of quote</s:assert>
-                                    <s:let name="entryIDs" value="//tei:entry/@xml:id"/>
-                                    <s:assert
-                                        test="some $entryID in $entryIDs satisfies $entryID = substring-after(@target, '#')"
-                                        >The target attribute of a ref element in quote (<s:value-of
-                                            select="@target"/>) must match the xml:id of an
-                                        entry</s:assert>
-                                </s:rule>
-                            </constraint>
-                        </constraintSpec>
-                    </elementSpec>
+                  
 
                 </schemaSpec>
             </div>
