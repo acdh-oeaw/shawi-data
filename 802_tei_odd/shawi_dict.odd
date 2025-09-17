@@ -7,10 +7,10 @@
         <fileDesc>
             <titleStmt>
                 <title>Shawi Dictionary Schema</title>
-                <author>Charly Mörth</author>
-                <author>Daniel Schopper</author>
-                <author>Michaela Rausch-Supola</author>
-                <author>Veronika Engler</author>
+                <author><name>Charly Mörth</name></author>
+                <author><name>Daniel Schopper</name></author>
+                <author><name>Michaela Rausch-Supola</name></author>
+                <author><name>Veronika Engler</name></author>
             </titleStmt>
             <publicationStmt>
                 <publisher>Austrian Centre for Digital Humanities and Cultural Heritage</publisher>
@@ -64,21 +64,23 @@
             </div>
             <div>
                 <head>Entries</head>
-                
-                <p>The <name>generic dict schema</name> introduces <tag>entry type="multiWordUnit</tag> in order to ensure backward compatability with the
-                    legacy encoding of VICAV dictionaries. Since the Shawi dictionary should follow TEI Lex-0 more closely,
-                    this is overridden by the values proposed by TEI Lex-0.<specList>
+                <p>Entries in the Shawi dictionary follow the Lex-0 model. Entries about
+                    multi-word-units are encoded as <tag>entry type="main" subtype="xxx"</tag></p>
+                <p>NB: The <name>generic dict schema</name> introduces <tag>entry
+                        type="multiWordUnit</tag> for encoding MWUs in order to ensure backwards compatability with the legacy encoding of VICAV dictionaries. Since the Shawi
+                    dictionary should follow TEI Lex-0 more closely, this is overridden in the Shawi Dictionary ODD again.<specList>
                         <specDesc key="entry"/>
                     </specList></p>
+                
             </div>
             <div>
                 <head>Diatopic information</head>
                 <p>Given the geographic distribution of the varities described in this dictionary,
                     we aim at documenting the provenance of lemmas (<tag>form type="lemma"</tag>),
                     variants (<tag>form type="variant"</tag>) and inflected forms (<tag>form
-                        type="inflected"</tag>). We thus require <tag>usg type="geographic</tag>
-                    inside of these elements (in contrast to the <name>generic dict schema</name>
-                    where this is no requirement).</p>
+                        type="inflected"</tag>). We thus encourage using <tag>usg
+                        type="geographic</tag> inside of these elements. Wherever this construct is
+                    absent, the documented word form is not geographically marked.</p> 
                 <p>
                     <specList>
                         <specDesc key="form"/>
@@ -86,22 +88,30 @@
                 </p>
             </div>
             <div>
-                <head>Subcategorization</head>
-                <p>Certain grammatical features are further subcategorized. This is encoded as <gi>gram</gi> elements with <att>type</att>=<val>subc</val>. Conceptually, certain values of these gram elements are tied to other gram values (e.g. subc="pluralNoun" implies pos="noun"). At the moment, we cannot express this relation in the encoding, by enforce it via schematron rules.</p>
-                <p>Possible combinations are:</p>
-                <table>
-                    <row role="label">
-                        <cell><val>pos</val> value</cell>
-                        <cell><val>subc</val> value</cell>
-                    </row>
-                    <row><cell>noun</cell><cell>toponym​</cell></row>
-                    <row><cell>noun</cell><cell>collectiveNoun​</cell></row>
-                    <row><cell>noun</cell><cell>pluralNoun​</cell></row>
-                    <row><cell>noun</cell><cell>unitNoun​</cell></row>
-                    <row><cell>noun</cell><cell>diminutiveNoun​</cell></row>
-                    <row><cell>numeral</cell><cell>fraction​</cell></row>
-                    <row><cell>numeral</cell><cell>ordinal​</cell></row>
-                </table>
+                <head>Grammatical Information</head>
+                <div>
+                    <head>Roots</head>
+                    <p>Like in the generic dict schema, roots occure both on an entry                            are encoded as a kind of grammatical properties.</p>
+                </div>
+                 <div>
+                    <head>Subcategorization</head>
+                    <p>Certain grammatical features of word forms (<gi>gram</gi>) can be further sub-categorized. This is encoded as <gi>gram</gi> elements with <att>type</att>=<val>subc</val>. Conceptually, certain values of these gram
+                        elements are tied to other gram values (e.g. <tag>gram subc="pluralNoun"</tag> implies that there is a <tag>gram type="pos"</tag> with the value "noun"). At the moment, we do not express this relation in the encoding directly, but enforce it in the Schema via schematron rules.</p>
+                    <p>Possible combinations are:</p>
+                    <table>
+                        <row role="label">
+                            <cell><val>pos</val> value</cell>
+                            <cell><val>subc</val> value</cell>
+                        </row>
+                        <row><cell>noun</cell><cell>toponym​</cell></row>
+                        <row><cell>noun</cell><cell>collectiveNoun​</cell></row>
+                        <row><cell>noun</cell><cell>pluralNoun​</cell></row>
+                        <row><cell>noun</cell><cell>unitNoun​</cell></row>
+                        <row><cell>noun</cell><cell>diminutiveNoun​</cell></row>
+                        <row><cell>numeral</cell><cell>fraction​</cell></row>
+                        <row><cell>numeral</cell><cell>ordinal​</cell></row>
+                    </table>
+                </div>
             </div>
             <div>
                 <head>Sources for entry parts or examples</head>
@@ -125,10 +135,8 @@
             <div>
                 <head>Part 2: Formal Specification</head>
 
-                <!--<schemaSpec ident="shawi"
-                    source="https://raw.githubusercontent.com/acdh-oeaw/generic-dict-schema/main/schema/tmp/acdh-ch-dicts.compiled.odd">-->
                 <schemaSpec ident="shawi"
-                    source="file:///home/danielschopper/data/generic-dict-schema/schema/acdh-ch-dicts.compiled.odd">
+                    source="https://raw.githubusercontent.com/acdh-oeaw/generic-dict-schema/main/schema/tmp/acdh-ch-dicts.compiled.odd">
 
                     <!-- We copy all modules from Generic dicts  -->
                     <moduleRef key="derived-module-TEILex0"/>
@@ -189,6 +197,7 @@
                                         and a direct grandchild of a form with a type
                                         attribute</s:assert>
                                 </s:rule>
+                                
                                 <s:rule context="tei:gram[@type = 'polarity']">
                                     <s:assert test="normalize-space(.) = 'negative'">'gram' elements with type 'polarity' can only have the value 'negative'</s:assert>
                                 </s:rule>
@@ -202,22 +211,35 @@
                                 <s:rule context="tei:gram[@type = 'subc'][contains(normalize-space(.),'noun')]">
                                     <s:assert test="../tei:gram[@type='pos']='noun'">gram[@type='subc'] is not expected in combination with gram[@type='pos']='<s:value-of select="../tei:gram[@type='pos']"/>' (expected: "noun")</s:assert>
                                 </s:rule>
+                               
+                               
                                 <s:rule context="tei:gram[@type = 'subc'][normalize-space(.)=('fraction','ordinal')]">
-                                    <s:assert test="../tei:gram[@type='pos']='numeral'">gram[@type='subc'] = fraction or ordinal is not expected in combination with gram[@type='pos']='<s:value-of select="../tei:gram[@type='pos']"/>' (expected: "numeral")</s:assert>
-                                </s:rule>
+                                    <s:assert test="../tei:gram[@type='pos'] = 'numeral'">​value "<s:value-of select="."/>" is not expected in gram[@type='subc'] ​when used in combination with in​ gram[@type='pos'][. = "<s:value-of select="../tei:gram[@type='pos']"/>"]. The expected value is "numeral".</s:assert>
+                                </s:rule>​
                             </constraint>
                         </constraintSpec>    
                     </elementSpec>
                     
-                    <classSpec type="atts" ident="shawi.gramTypes" mode="add">
+                    
+                    
+                    <classSpec type="atts" ident="att.global" mode="change">
                         <attList>
-                            <attDef ident="type" mode="add">
-                                <valList type="closed">
-                                    <valItem ident="case"/>
+                            <attDef ident="xml:lang" mode="change">
+                                <valList type="closed" mode="replace">
+                                    <valItem ident="ar-acm-x-shawi-vicav"/>
+                                    <valItem ident="en"/>
+                                    <valItem ident="de"/>
+                                    <valItem ident="tr"/>
+                                    <valItem ident="fr"/>
+                                    <valItem ident="es"/>
+                                    <valItem ident="tu"/>
+                                    <valItem ident="ku"/>
+                                    <valItem ident="ar"/>
                                 </valList>
                             </attDef>
                         </attList>
                     </classSpec>
+                    
 
                     <elementSpec ident="form" mode="change" module="dictionaries">
                         <constraintSpec ident="compoundOrth" scheme="schematron">
@@ -229,8 +251,7 @@
                                         (not at the beginning or end of a string) has to have a
                                         subtype compound</s:assert>
                                 </s:rule>
-                                <s:rule
-                                    context="tei:form[@type=('lemma','variant','inflected')]">
+                                <s:rule context="tei:form[@type=('lemma','variant','inflected')]">
                                     <s:assert test="tei:usg[@type='geographic']">lemmas, inflected forms and variants must inlcude usg[@type='geographic']</s:assert>
                                 </s:rule>
                                 <s:rule context="tei:form[@subtype='compound']">
@@ -249,26 +270,16 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
-                        <!--<!-\- given that generic-dict-schema introduces form/@type="multiWordUnit" for backwards-compatability, we override this here according to TEI Lex-0. -\->
+                        <!-- given that generic-dict-schema introduces form/@type="multiWordUnit" for backwards-compatability, we override this here according to TEI Lex-0. -->
                         <attList>
-                            <attDef ident="type" mode="replace" usage="opt">
-                                <valList type="closed">
-                                    <valItem ident="lemma">
-                                        <desc>the headword of a lemma entry</desc>
-                                    </valItem>
-                                    <valItem ident="inflected">
-                                        <desc>inflected form</desc>
-                                    </valItem>
-                                    <valItem ident="variant">
-                                        <desc>A variant form of the lemma or inflected forms. The
-                                            more frequent variant should precede less frequent ones.
-                                        </desc>
-                                    </valItem>
+                            <attDef ident="type" mode="change" usage="opt">
+                                <valList type="closed" mode="change">
+                                    <valItem ident="multiWordUnit" mode="delete"/>
                                 </valList>
                             </attDef>
-                        </attList>-->
+                        </attList>
                     </elementSpec>
-
+                    
                     <elementSpec ident="biblScope" mode="change" module="dictionaries">
                         <constraintSpec ident="biblScope-context" scheme="schematron">
                             <constraint>
@@ -295,7 +306,7 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
-                        <constraintSpec ident="senseSourceCheck" scheme="schematron">
+                       <constraintSpec ident="senseSourceCheck" scheme="schematron">
                             <constraint>
                                 <s:rule context="tei:sense[@source]">
                                     <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
@@ -335,7 +346,6 @@
                     </elementSpec>
 
                   
-
                 </schemaSpec>
             </div>
         </body>
