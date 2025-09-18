@@ -63,15 +63,110 @@
                     from this schema.</p>
             </div>
             <div>
-                <head>Entries &amp; Multi Word Units</head>
+                <head>Basic dictionary structure</head>
+                <p>The dictionary starts with a <code>teiHeader</code> element which contains the metadata of the dictionary. The lexicographic data are placed in typed <code>div</code> elements. The <code>body</code> of the VICAV dictionaries can not only contain simple entries 
+                    but also examples which are encoded in <code>cit/quote</code> constructs. The rationale behind keeping example sentences outside the entries is to be able to reuse them in different parts of the dictionary. Thus, our TEI dictionaries basically look like this:</p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                    <TEI version="5.0">
+                        <teiHeader>
+                            ...
+                            
+                        </teiHeader>
+                        <text>
+                            <body>
+                                <div type="entries">
+                                    <entry>...</entry>
+                                    <entry>...</entry>
+                                    <entry>...</entry>
+                                    ...
+                                    ...
+                                    ...
+                                </div>         
+                                <div type="examples">
+                                    <cit type="example">...</cit>
+                                    <cit type="example">...</cit>
+                                    <cit type="example">...</cit>
+                                    ...
+                                    ...
+                                    ...
+                                </div>
+                            </body>
+                        </text>
+                    </TEI>
+                </egXML>
+            </div>
+            <div>
+                <head>Dictionary Entries</head>
                 <p>Entries in the Shawi dictionary follow the Lex-0 model. Accordingly, dictionary entries describing
                     multi-word-units are encoded as <tag>entry type="main" subtype="compound"</tag> (see <ref target="https://dariah-eric.github.io/lexicalresources/pages/TEILex0/TEILex0.html#index.xml-body.1_div.4_div.6">Section 4.6. Multiword expressions</ref>).</p>
                 <p>The <name>generic dict schema</name> introduces <tag>entry
                     type="multiWordUnit</tag> for encoding MWUs in order to ensure backwards compatability with the legacy encoding of VICAV dictionaries. Since the Shawi
-                    dictionary should follow TEI Lex-0 more closely, this is overridden in the Shawi Dictionary ODD again.</p>
+                    dictionary should follow TEI Lex-0 more closely, this is overridden in the Shawi Dictionary ODD again. We relocate the distinction onto the <tag>form</tag> level.</p>
                 <p><specList>
                     <specDesc key="entry"/>
                 </specList></p>
+            </div>
+            <div>
+                <head>Word forms</head>
+                <p>There are three types of <tag>form</tag>elements: <tag>lemma</tag>, <tag>inflected</tag> and <tag>variant</tag>. Nominals are usually furnished with plural forms, verbs with the third person singular present tense.</p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                    <entry xml:lang="ar-acm-x-shawi-vicav" xml:id="DShaAr.balad_00000">
+                        <form type="lemma">
+                            <usg type="geographic">
+                                <name type="place">Harran-Urfa</name>
+                            </usg>
+                            <orth>balad</orth>
+                            <gramGrp>
+                                <gram type="morphPattern" xml:lang="ar-acm-x-shawi-vicav">1a2a3</gram>
+                            </gramGrp>
+                        </form>
+                        <form type="inflected">
+                            <gramGrp>
+                                <gram type="number">plural</gram>
+                            </gramGrp>
+                            <usg type="geographic">
+                                <name type="place">Harran-Urfa</name>
+                            </usg>
+                            <orth>bələd</orth>
+                        </form>
+                        ...
+                    </entry>
+                </egXML>               
+            </div>
+            <div>
+                <head>Grammatical Information</head>
+                <p>
+                    The <code>gramGrp</code> element can accomodate a wide range of grammatical information such as word class, the consonantal root and/or the verb class. It can appear in two places: when the information 
+                    refers to the entry it is put after the <code>entry</code> element. In many cases, the grammatical information only refers to particular word forms. It is then placed inside the <code>form</code> element.
+                </p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                    <entry xml:lang="ar-acm-x-shawi-vicav" xml:id="DShaAr.balad_00000">
+                        <form type="lemma">
+                            <usg type="geographic">
+                                <name type="place">Harran-Urfa</name>
+                            </usg>
+                            <orth>balad</orth>
+                            <gramGrp>
+                                <gram type="morphPattern" xml:lang="ar-acm-x-shawi-vicav">1a2a3</gram>
+                            </gramGrp>
+                        </form>
+                        <form type="inflected">
+                            <gramGrp>
+                                <gram type="number">plural</gram>
+                            </gramGrp>
+                            <usg type="geographic">
+                                <name type="place">Harran-Urfa</name>
+                            </usg>
+                            <orth>bələd</orth>
+                        </form>
+                        <gramGrp>
+                            <gram type="pos">noun</gram>
+                            <gram type="synRoot" xml:lang="ar-acm-x-shawi-vicav">bld</gram>
+                            <gram type="diaRoot" xml:lang="ar">bld</gram>
+                        </gramGrp>
+                        ...
+                    </entry>
+                </egXML>
             </div>
             <div>
                 <head>Diatopic information</head>
