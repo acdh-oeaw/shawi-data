@@ -174,8 +174,27 @@
                     
                 </div>
                 <div>
+                    <head>Subcategorization</head>
+                    <p>Certain grammatical features of word forms (<gi>gram</gi>) can be further sub-categorized. This is encoded as <gi>gram</gi> elements with <att>type</att>=<val>subc</val>. Conceptually, certain values of these gram
+                        elements are tied to other gram values (e.g. <tag>gram subc="pluralNoun"</tag> implies that there is a <tag>gram type="pos"</tag> with the value "noun"). At the moment, we do not express this relation in the encoding directly, but enforce it in the Schema via schematron rules.</p>
+                    <p>Possible combinations are:</p>
+                    <table>
+                        <row role="label">
+                            <cell><val>pos</val> value</cell>
+                            <cell><val>subc</val> value</cell>
+                        </row>
+                        <row><cell>noun</cell><cell>toponym​</cell></row>
+                        <row><cell>noun</cell><cell>collectiveNoun​</cell></row>
+                        <row><cell>noun</cell><cell>pluralNoun​</cell></row>
+                        <row><cell>noun</cell><cell>unitNoun​</cell></row>
+                        <row><cell>noun</cell><cell>diminutiveNoun​</cell></row>
+                        <row><cell>numeral</cell><cell>fraction​</cell></row>
+                        <row><cell>numeral</cell><cell>ordinal​</cell></row>
+                    </table>
+                </div>
+                <div>
                     <head>Roots</head>
-                    <p>Roots are indicated in accordance with etymology. We distinguish between a synchronic root (<tag>synRoot</tag>) and a diachronic root (<tag>diaRoot</tag>), both of them are shown in the gramGrp:</p>
+                    <p>Roots are indicated in accordance with etymology. Like in the generic dict schema they are encoded as a kind of grammatical properties. We distinguish between a synchronic root (<tag>synRoot</tag>) and a diachronic root (<tag>diaRoot</tag>), both of them are shown in the gramGrp:</p>
                     <egXML xmlns="http://www.tei-c.org/ns/Examples">
                         <entry xml:lang="ar-acm-x-shawi-vicav" xml:id="DShaAr.gaad_i_000">
                             ...
@@ -253,32 +272,6 @@
                         <specDesc key="form"/>
                     </specList>
                 </p>
-            </div>
-            <div>
-                <head>Grammatical Information</head>
-                <div>
-                    <head>Roots</head>
-                    <p>Like in the generic dict schema, roots occure both on an entry                            are encoded as a kind of grammatical properties.</p>
-                </div>
-                 <div>
-                    <head>Subcategorization</head>
-                    <p>Certain grammatical features of word forms (<gi>gram</gi>) can be further sub-categorized. This is encoded as <gi>gram</gi> elements with <att>type</att>=<val>subc</val>. Conceptually, certain values of these gram
-                        elements are tied to other gram values (e.g. <tag>gram subc="pluralNoun"</tag> implies that there is a <tag>gram type="pos"</tag> with the value "noun"). At the moment, we do not express this relation in the encoding directly, but enforce it in the Schema via schematron rules.</p>
-                    <p>Possible combinations are:</p>
-                    <table>
-                        <row role="label">
-                            <cell><val>pos</val> value</cell>
-                            <cell><val>subc</val> value</cell>
-                        </row>
-                        <row><cell>noun</cell><cell>toponym​</cell></row>
-                        <row><cell>noun</cell><cell>collectiveNoun​</cell></row>
-                        <row><cell>noun</cell><cell>pluralNoun​</cell></row>
-                        <row><cell>noun</cell><cell>unitNoun​</cell></row>
-                        <row><cell>noun</cell><cell>diminutiveNoun​</cell></row>
-                        <row><cell>numeral</cell><cell>fraction​</cell></row>
-                        <row><cell>numeral</cell><cell>ordinal​</cell></row>
-                    </table>
-                </div>
             </div>
             <div>
                 <head>Sources for entry parts or examples</head>
