@@ -34,7 +34,7 @@
                 <moduleRef key="corpus"/>
                 <moduleRef key="analysis" include="pc phr span spanGrp w"/>
                 <moduleRef key="linking" include="anchor timeline when"/>
-                <moduleRef key="spoken" include="annotationBlock pause recording recordingStmt shift u"></moduleRef>
+                <moduleRef key="spoken" include="pause recording recordingStmt shift u"></moduleRef>
 
                 <classSpec type="atts" ident="att.linguistic" mode="change">
                     <attList>
@@ -263,20 +263,22 @@
                 <elementSpec ident="div" module="textstructure" mode="change">
                     <content>
                         <sequence>
-                            <elementRef key="head" minOccurs="1" maxOccurs="1"/>
-                            <elementRef key="annotationBlock" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="head" minOccurs="0" maxOccurs="1"/>
+                            <elementRef key="div" minOccurs="0" maxOccurs="unbounded"/>
+                            <elementRef key="u" minOccurs="0" maxOccurs="unbounded"/>
+                            <elementRef key="spanGrp" minOccurs="0" maxOccurs="1"/>
                         </sequence>
                     </content>
-                </elementSpec>
-                
-                <elementSpec ident="annotationBlock" module="spoken" mode="change">
-                    <content>
-                        <sequence>
-                            <elementRef key="u" minOccurs="1" maxOccurs="unbounded"/>
-                            <elementRef key="media" minOccurs="0" maxOccurs="unbounded"/>
-                            <elementRef key="spanGrp" minOccurs="1" maxOccurs="unbounded"/>
-                        </sequence>
-                    </content>
+                    <constraintSpec ident="div-distinction" scheme="schematron">
+                        <constraint>
+                            <s:rule context="tei:div[@type='Situation']">
+                                <s:assert test="tei:head">a head element is required when div is of type Situation</s:assert>
+                            </s:rule>
+                            <s:rule context="tei:div[@corresp]">
+                                <s:assert test="tei:u and tei:spanGrp">a div without type Situation has to have utterances and a spanGrp</s:assert>
+                            </s:rule>
+                        </constraint>
+                    </constraintSpec>
                 </elementSpec>
 
                 <elementSpec ident="spanGrp" module="analysis" mode="change">
@@ -298,7 +300,7 @@
                     <constraintSpec ident="span-target-check" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:span">
-                                <s:assert test="parent::tei:spanGrp/parent::tei:annotationBlock/@xml:id = substring-after(@target, '#')">target of span should point at xml:id of parent annotationBlock element</s:assert>
+                                <s:assert test="parent::tei:spanGrp/parent::tei:div/@xml:id = substring-after(@target, '#')">target of span should point at xml:id of parent div element</s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>

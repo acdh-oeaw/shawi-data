@@ -642,6 +642,7 @@
               xmlns:svg="http://www.w3.org/2000/svg"
               xmlns:xi="http://www.w3.org/2001/XInclude"
               context="tei:w[@xml:lang='ar-acm-x-shawi-vicav']">
+         <s:assert test="@lemmaRef">@lemmaRef is required when xml:lang is 'ar-acm-x-shawi-vicav'</s:assert>
          <s:let name="dict"
                 value="'../../vicav_dicts/dc_shawi_eng_2025_05_14T12_08_57.xml'"/>
          <s:let name="entryIDs" value="doc($dict)//tei:entry/@xml:id"/>
@@ -724,7 +725,7 @@ The attributes @to and @from on <name/> may each contain only a single value</re
             xmlns:tei="http://www.tei-c.org/ns/1.0"
             xmlns:teix="http://www.tei-c.org/ns/Examples"
             xmlns:xlink="http://www.w3.org/1999/xlink"
-            id="vicav_corpus-shift-shiftNew-constraint-assert-30">
+            id="vicav_corpus-shift-shiftNew-constraint-assert-31">
       <rule context="tei:shift">
          <assert xmlns:math="http://www.w3.org/1998/Math/MathML"
                  xmlns:s="http://purl.oclc.org/dsdl/schematron"

@@ -6,7 +6,7 @@
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.tmp"/>
    <!--
-    Schema generated from ODD source 2025-08-20T04:34:24Z. . 
+    Schema generated from ODD source 2025-08-28T11:53:41Z. . 
     TEI Edition: P5 Version 4.7.0. Last updated on 16th November 2023, revision e5dd73ed0 
     TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/ 
     
@@ -4670,27 +4670,23 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
          <xs:documentation>(text body) contains the whole body of a single unitary text, excluding any front or back matter. [4. Default Text Structure]</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:complexContent>
-            <xs:extension base="tei:div">
-               <xs:attributeGroup ref="tei:att.global.attributes"/>
-               <xs:attributeGroup ref="tei:att.declaring.attributes"/>
-            </xs:extension>
-         </xs:complexContent>
+         <xs:sequence>
+            <xs:element ref="tei:div"/>
+         </xs:sequence>
+         <xs:attributeGroup ref="tei:att.global.attributes"/>
+         <xs:attributeGroup ref="tei:att.declaring.attributes"/>
       </xs:complexType>
    </xs:element>
-   <xs:complexType name="div">
-      <xs:sequence>
-         <xs:element ref="tei:div"/>
-      </xs:sequence>
-   </xs:complexType>
    <xs:element name="div">
       <xs:annotation>
          <xs:documentation>(text division) contains a subdivision of the front, body, or back of a text. [4.1. Divisions of the Body]</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="tei:head"/>
-            <xs:element maxOccurs="unbounded" ref="tei:annotationBlock"/>
+            <xs:element minOccurs="0" ref="tei:head"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:div"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:u"/>
+            <xs:element minOccurs="0" ref="tei:spanGrp"/>
          </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
          <xs:attributeGroup ref="tei:att.divLike.attributes"/>
@@ -5939,57 +5935,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</xs:d
    </xs:group>
    <xs:element name="model.divPart.spoken"
                abstract="true"
-               substitutionGroup="tei:model.divPart"/>
-   <xs:element name="recordingStmt">
-      <xs:annotation>
-         <xs:documentation>(recording statement) describes a set of recordings used as the basis for transcription of a spoken text. [8.2. Documenting the Source of Transcribed Speech 2.2.7. The Source Description]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:choice>
-            <xs:element maxOccurs="unbounded" ref="tei:model.pLike"/>
-            <xs:element maxOccurs="unbounded" ref="tei:recording"/>
-         </xs:choice>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="recording">
-      <xs:annotation>
-         <xs:documentation>(recording event) provides details of an audio or video recording event used as the source of a spoken text, either directly or from a public broadcast. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="tei:model.recordingPart"/>
-            <xs:element ref="tei:model.pLike"/>
-         </xs:choice>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.declarable.attributes"/>
-         <xs:attributeGroup ref="tei:att.duration.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
-         <xs:attribute name="type" default="audio">
-            <xs:annotation>
-               <xs:documentation>the kind of recording.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:enumeration value="audio">
-                     <xs:annotation>
-                        <xs:documentation>audio recording</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="video">
-                     <xs:annotation>
-                        <xs:documentation>audio and video recording</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="u" substitutionGroup="tei:model.divPart.spoken">
-      <xs:annotation>
-         <xs:documentation>(utterance) contains a stretch of speech usually preceded and followed by silence or by a change of speaker. [8.3.1. Utterances]</xs:documentation>
-      </xs:annotation>
+               substitutionGroup="tei:model.divPart">
       <xs:complexType>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element ref="tei:corr"/>
@@ -6075,6 +6021,57 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</xs:d
             </xs:simpleType>
          </xs:attribute>
       </xs:complexType>
+   </xs:element>
+   <xs:element name="recordingStmt">
+      <xs:annotation>
+         <xs:documentation>(recording statement) describes a set of recordings used as the basis for transcription of a spoken text. [8.2. Documenting the Source of Transcribed Speech 2.2.7. The Source Description]</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:choice>
+            <xs:element maxOccurs="unbounded" ref="tei:model.pLike"/>
+            <xs:element maxOccurs="unbounded" ref="tei:recording"/>
+         </xs:choice>
+         <xs:attributeGroup ref="tei:att.global.attributes"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="recording">
+      <xs:annotation>
+         <xs:documentation>(recording event) provides details of an audio or video recording event used as the source of a spoken text, either directly or from a public broadcast. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements]</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="tei:model.recordingPart"/>
+            <xs:element ref="tei:model.pLike"/>
+         </xs:choice>
+         <xs:attributeGroup ref="tei:att.global.attributes"/>
+         <xs:attributeGroup ref="tei:att.declarable.attributes"/>
+         <xs:attributeGroup ref="tei:att.duration.attributes"/>
+         <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
+         <xs:attribute name="type" default="audio">
+            <xs:annotation>
+               <xs:documentation>the kind of recording.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+               <xs:restriction base="xs:token">
+                  <xs:enumeration value="audio">
+                     <xs:annotation>
+                        <xs:documentation>audio recording</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="video">
+                     <xs:annotation>
+                        <xs:documentation>audio and video recording</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="u" substitutionGroup="tei:model.divPart.spoken">
+      <xs:annotation>
+         <xs:documentation>(utterance) contains a stretch of speech usually preceded and followed by silence or by a change of speaker. [8.3.1. Utterances]</xs:documentation>
+      </xs:annotation>
    </xs:element>
    <xs:element name="pause">
       <xs:annotation>
@@ -6173,21 +6170,6 @@ Suggested values include: 1] tempo; 2] loud; 3] pitch; 4] tension; 5] rhythm; 6]
                </xs:restriction>
             </xs:simpleType>
          </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="annotationBlock" substitutionGroup="tei:model.divPart.spoken">
-      <xs:annotation>
-         <xs:documentation>groups together various annotations, e.g. for parallel interpretations of a spoken segment. [8.4.6. Analytic Coding]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" ref="tei:u"/>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:media"/>
-            <xs:element maxOccurs="unbounded" ref="tei:spanGrp"/>
-         </xs:sequence>
-         <xs:attributeGroup ref="tei:att.ascribed.attributes"/>
-         <xs:attributeGroup ref="tei:att.timed.attributes"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
       </xs:complexType>
    </xs:element>
 </xs:schema>
