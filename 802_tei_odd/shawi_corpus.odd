@@ -325,6 +325,7 @@
                             <elementRef key="phr"/>
                             <elementRef key="shift"/>
                             <elementRef key="w"/>
+                            <elementRef key="note"/>
                         </alternate>
                     </content>                  
                     <constraintSpec ident="u-who-check" scheme="schematron">
@@ -405,6 +406,17 @@
                             </valList>
                         </attDef>
                     </attList>
+                </elementSpec>
+                
+                <elementSpec ident="note" module="core" mode="change">
+                    <constraintSpec ident="note-target-check" scheme="schematron">
+                        <constraint>
+                            <s:rule context="tei:u/tei:note">
+                                <s:assert test="parent::tei:u/tei:w/@xml:id = substring-after(@target, '#')">The target of note in u should point to a w element of the same parent u element</s:assert>
+                                <s:assert test="@resp">The note element must have a resp attribute</s:assert>
+                            </s:rule>
+                        </constraint>
+                    </constraintSpec>
                 </elementSpec>
                 
                 <elementSpec ident="pc" module="analysis" mode="change">
