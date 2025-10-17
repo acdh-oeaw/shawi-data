@@ -481,13 +481,13 @@ Example (Fr):      cit[@type="example"]/cit[@type="translation"][@xml:lang="fr"]
     </xsl:template>
     
     <xsl:template match="tei:entry" mode="tei-cit-or-entry">
-        <entry type="array">
+        <entry type="object">
             <xsl:apply-templates select="."/>
         </entry>
     </xsl:template>
     
     <xsl:template match="tei:cit" mode="tei-cit-or-entry">
-        <cit type="array">
+        <cit type="object">
             <xsl:apply-templates select="."/>
         </cit>
     </xsl:template>
@@ -512,7 +512,7 @@ Example (Fr):      cit[@type="example"]/cit[@type="translation"][@xml:lang="fr"]
     <!-- the following templates are needed for debugging XML fetched from the API -->
 
     <xsl:template match="multipleParts" mode="named-object">
-        <xsl:apply-templates select="xmlSource/*"/>
+        <xsl:apply-templates select="xmlSource/*" mode="named-object"/>
     </xsl:template>
     
     <xsl:template match="tei:div/@*"/>
