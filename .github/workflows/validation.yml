@@ -10,16 +10,16 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           path: main
       - name: Checkout gh_pages
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           ref: gh_pages
           path: gh_pages
       - name: Get python 3.13
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: '3.13'
           cache: "pipenv"
