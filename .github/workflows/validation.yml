@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     name: Validate Corpus files
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -18,10 +18,10 @@ jobs:
         with:
           ref: gh_pages
           path: gh_pages
-      - name: Get python 3.11
+      - name: Get python 3.13
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: '3.13'
           cache: "pipenv"
       - name: Validate Corpus files
         run: |
