@@ -369,6 +369,17 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="gramGrpChildrenOrder" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:gramGrp">
+                                    <s:assert test="count(tei:gram[@type='arguments']) &lt; 2 or not(tei:gram[@type='arguments'][1]/following-sibling::*[not(self::tei:gram[@type='arguments'])]/following-sibling::tei:gram[@type='arguments'])">All gramGrp elements with type arguments must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:gram[@type='diaRoot']) &lt; 2 or not(tei:gram[@type='diaRoot'][1]/following-sibling::*[not(self::tei:gram[@type='diaRoot'])]/following-sibling::tei:gram[@type='diaRoot'])">All gramGrp elements with type diaRoot must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:gram[@type='morphPattern']) &lt; 2 or not(tei:gram[@type='morphPattern'][1]/following-sibling::*[not(self::tei:gram[@type='morphPattern'])]/following-sibling::tei:gram[@type='morphPattern'])">All gramGrp elements with type morphPattern must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:gram[@type='pos']) &lt; 2 or not(tei:gram[@type='pos'][1]/following-sibling::*[not(self::tei:gram[@type='pos'])]/following-sibling::tei:gram[@type='pos'])">All gramGrp elements with type pos must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:gram[@type='synRoot']) &lt; 2 or not(tei:gram[@type='synRoot'][1]/following-sibling::*[not(self::tei:gram[@type='synRoot'])]/following-sibling::tei:gram[@type='synRoot'])">All gramGrp elements with type synRoot must occur consecutively without any other elements between them.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
                     </elementSpec>
 
                     <elementSpec ident="gram" mode="change" module="dictionaries">
@@ -453,6 +464,15 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="formChildrenOrder" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:form">
+                                    <s:assert test="count(tei:form[@type='inflected']) &lt; 2 or not(tei:form[@type='inflected'][1]/following-sibling::*[not(self::tei:form[@type='inflected'])]/following-sibling::tei:form[@type='inflected'])">All inflected forms in form must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:form[@type='variant']) &lt; 2 or not(tei:form[@type='variant'][1]/following-sibling::*[not(self::tei:form[@type='variant'])]/following-sibling::tei:form[@type='variant'])">All variational forms must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:usg[@type='geographic']) &lt; 2 or not(tei:usg[@type='geographic'][1]/following-sibling::*[not(self::tei:usg[@type='geographic'])]/following-sibling::tei:usg[@type='geographic'])">All usg elements with type geographic must occur consecutively without any other elements between them.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
                         <!-- given that generic-dict-schema introduces form/@type="multiWordUnit" for backwards-compatability, we override this here according to TEI Lex-0. -->
                         <attList>
                             <attDef ident="type" mode="change" usage="opt">
@@ -467,14 +487,67 @@
                         <constraintSpec ident="biblScope-context" scheme="schematron">
                             <constraint>
                                 <s:rule context="tei:biblScope">
-                                    <s:assert test="matches(., '^p\.\s?\d')">Missing or misspelled
-                                        page number</s:assert>
+                                    <s:assert test="matches(., '^p\.\s?\d')">Missing or misspelled page number</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+
+                    <elementSpec ident="usg" mode="change" module="dictionaries">
+                        <constraintSpec ident="usgChildrenOrder" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:usg">
+                                    <s:assert test="count(tei:name[@type='place']) &lt; 2 or not(tei:name[@type='place'][1]/following-sibling::*[not(self::tei:name[@type='place'])]/following-sibling::tei:name[@type='place'])">All name elements with type place must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:name[@type='tribe']) &lt; 2 or not(tei:name[@type='tribe'][1]/following-sibling::*[not(self::tei:name[@type='tribe'])]/following-sibling::tei:name[@type='tribe'])">All name elements with type tribe must occur consecutively without any other elements between them.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+                    
+                    <elementSpec ident="etym" mode="change" module="dictionaries">
+                        <constraintSpec ident="etymChildrenOrder" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:etym">
+                                    <s:assert test="count(tei:cit[@type='etymon']) &lt; 2 or not(tei:cit[@type='etymon'][1]/following-sibling::*[not(self::tei:cit[@type='etymon'])]/following-sibling::tei:cit[@type='etymon'])">All cit elements with type etymon must occur consecutively without any other elements between them.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+                    
+                    <elementSpec ident="cit" mode="change" module="core">
+                        <constraintSpec ident="citChildrenOrder" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:cit">
+                                    <s:assert test="count(tei:cit[@type='translation']) &lt; 2 or not(tei:cit[@type='translation'][1]/following-sibling::*[not(self::tei:cit[@type='translation'])]/following-sibling::tei:cit[@type='translation'])">All cit elements with type translation must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:fs[@type='change']) &lt; 2 or not(tei:fs[@type='change'][1]/following-sibling::*[not(self::tei:fs[@type='change'])]/following-sibling::tei:fs[@type='change'])">All fs elements with type change must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:usg[@type='geographic']) &lt; 2 or not(tei:usg[@type='geographic'][1]/following-sibling::*[not(self::tei:usg[@type='geographic'])]/following-sibling::tei:usg[@type='geographic'])">All usg elements with type geographic must occur consecutively without any other elements between them.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+                    
+                    <elementSpec ident="sense" mode="change" module="dictionaries">
+                        <constraintSpec ident="senseChildrenOrder" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:sense">
+                                    <s:assert test="count(tei:cit[@type='translationEquivalent']) &lt; 2 or not(tei:cit[@type='translationEquivalent'][1]/following-sibling::*[not(self::tei:cit[@type='translationEquivalent'])]/following-sibling::tei:cit[@type='translationEquivalent'])">All cit elements with type translationEquivalent must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:ref[@type='example']) &lt; 2 or not(tei:ref[@type='example'][1]/following-sibling::*[not(self::tei:ref[@type='example'])]/following-sibling::tei:ref[@type='example'])">All ref elements with type example must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:usg[@type='geographic']) &lt; 2 or not(tei:usg[@type='geographic'][1]/following-sibling::*[not(self::tei:usg[@type='geographic'])]/following-sibling::tei:usg[@type='geographic'])">All usg elements with type geographic must occur consecutively without any other elements between them.</s:assert>
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
                     </elementSpec>
 
                     <elementSpec ident="entry" mode="change" module="dictionaries">
+                        <constraintSpec ident="entryChildrenOrder" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:entry">
+                                    <s:assert test="count(tei:form[@type='lemma']) = 1">there is only one form type lemma allowed in entry</s:assert>
+                                    <s:assert test="count(tei:form[@type='inflected']) &lt; 2 or not(tei:form[@type='inflected'][1]/following-sibling::*[not(self::tei:form[@type='inflected'])]/following-sibling::tei:form[@type='inflected'])">All inflected forms in entry must occur consecutively without any other elements between them.</s:assert>
+                                    <s:assert test="count(tei:fs[@type='change']) &lt; 2 or not(tei:fs[@type='change'][1]/following-sibling::*[not(self::tei:fs[@type='change'])]/following-sibling::tei:fs[@type='change'])">All fs elements with type change must occur consecutively without any other elements between them.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
                         <constraintSpec ident="formSourceCheck" scheme="schematron">
                             <constraint>
                                 <s:rule context="tei:form[@source]">
