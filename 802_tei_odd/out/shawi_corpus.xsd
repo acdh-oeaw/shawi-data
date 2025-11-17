@@ -6,7 +6,7 @@
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.tmp"/>
    <!--
-    Schema generated from ODD source 2025-09-29T09:23:13Z. . 
+    Schema generated from ODD source 2025-11-03T13:57:54Z. . 
     TEI Edition: P5 Version 4.7.0. Last updated on 16th November 2023, revision e5dd73ed0 
     TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/ 
     
@@ -1607,44 +1607,44 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
    </xs:group>
    <xs:group name="model.segLike">
       <xs:choice>
-         <xs:element ref="tei:phr"/>
          <xs:element ref="tei:w"/>
          <xs:element ref="tei:pc"/>
+         <xs:element ref="tei:seg"/>
       </xs:choice>
    </xs:group>
    <xs:group name="model.segLike_alternation">
       <xs:choice>
-         <xs:element ref="tei:phr"/>
          <xs:element ref="tei:w"/>
          <xs:element ref="tei:pc"/>
+         <xs:element ref="tei:seg"/>
       </xs:choice>
    </xs:group>
    <xs:group name="model.segLike_sequence">
       <xs:sequence>
-         <xs:element ref="tei:phr"/>
          <xs:element ref="tei:w"/>
          <xs:element ref="tei:pc"/>
+         <xs:element ref="tei:seg"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.segLike_sequenceOptional">
       <xs:sequence>
-         <xs:element minOccurs="0" ref="tei:phr"/>
          <xs:element minOccurs="0" ref="tei:w"/>
          <xs:element minOccurs="0" ref="tei:pc"/>
+         <xs:element minOccurs="0" ref="tei:seg"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.segLike_sequenceOptionalRepeatable">
       <xs:sequence>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:phr"/>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:w"/>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:pc"/>
+         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:seg"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.segLike_sequenceRepeatable">
       <xs:sequence>
-         <xs:element maxOccurs="unbounded" ref="tei:phr"/>
          <xs:element maxOccurs="unbounded" ref="tei:w"/>
          <xs:element maxOccurs="unbounded" ref="tei:pc"/>
+         <xs:element maxOccurs="unbounded" ref="tei:seg"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.hiLike">
@@ -5300,41 +5300,6 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</xs:d
          </xs:simpleType>
       </xs:attribute>
    </xs:attributeGroup>
-   <xs:element name="phr">
-      <xs:annotation>
-         <xs:documentation>(phrase) represents a grammatical phrase. [17.1. Linguistic Segment Categories]</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:complexContent>
-            <xs:extension base="tei:macro.phraseSeq">
-               <xs:attributeGroup ref="tei:att.linguistic.attributes"/>
-               <xs:attributeGroup ref="tei:att.global.attribute.n"/>
-               <xs:attributeGroup ref="tei:att.global.attribute.xmllang"/>
-               <xs:attributeGroup ref="tei:att.global.attribute.xmlbase"/>
-               <xs:attributeGroup ref="tei:att.global.attribute.xmlspace"/>
-               <xs:attributeGroup ref="tei:att.global.rendition.attribute.rend"/>
-               <xs:attributeGroup ref="tei:att.global.rendition.attribute.style"/>
-               <xs:attributeGroup ref="tei:att.global.rendition.attribute.rendition"/>
-               <xs:attributeGroup ref="tei:att.global.linking.attribute.corresp"/>
-               <xs:attributeGroup ref="tei:att.global.linking.attribute.synch"/>
-               <xs:attributeGroup ref="tei:att.global.linking.attribute.sameAs"/>
-               <xs:attributeGroup ref="tei:att.global.linking.attribute.copyOf"/>
-               <xs:attributeGroup ref="tei:att.global.linking.attribute.next"/>
-               <xs:attributeGroup ref="tei:att.global.linking.attribute.prev"/>
-               <xs:attributeGroup ref="tei:att.global.linking.attribute.exclude"/>
-               <xs:attributeGroup ref="tei:att.global.linking.attribute.select"/>
-               <xs:attributeGroup ref="tei:att.global.analytic.attribute.ana"/>
-               <xs:attributeGroup ref="tei:att.global.responsibility.attribute.cert"/>
-               <xs:attributeGroup ref="tei:att.global.responsibility.attribute.resp"/>
-               <xs:attributeGroup ref="tei:att.global.source.attribute.source"/>
-               <xs:attributeGroup ref="tei:att.segLike.attributes"/>
-               <xs:attributeGroup ref="tei:att.typed.attributes"/>
-               <xs:attributeGroup ref="tei:att.notated.attributes"/>
-               <xs:attribute ref="xml:id" use="required"/>
-            </xs:extension>
-         </xs:complexContent>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="w">
       <xs:annotation>
          <xs:documentation>(word) represents a grammatical (not necessarily orthographic) word. [17.1. Linguistic Segment Categories 17.4.2. Lightweight Linguistic Annotation]</xs:documentation>
@@ -5674,6 +5639,42 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</xs:d
          <xs:attributeGroup ref="tei:att.typed.attributes"/>
       </xs:complexType>
    </xs:element>
+   <xs:element name="seg">
+      <xs:annotation>
+         <xs:documentation>(arbitrary segment) represents any segmentation of text below the chunk level. [16.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="tei:macro.paraContent">
+               <xs:attributeGroup ref="tei:att.linguistic.attributes"/>
+               <xs:attributeGroup ref="tei:att.global.attribute.n"/>
+               <xs:attributeGroup ref="tei:att.global.attribute.xmllang"/>
+               <xs:attributeGroup ref="tei:att.global.attribute.xmlbase"/>
+               <xs:attributeGroup ref="tei:att.global.attribute.xmlspace"/>
+               <xs:attributeGroup ref="tei:att.global.rendition.attribute.rend"/>
+               <xs:attributeGroup ref="tei:att.global.rendition.attribute.style"/>
+               <xs:attributeGroup ref="tei:att.global.rendition.attribute.rendition"/>
+               <xs:attributeGroup ref="tei:att.global.linking.attribute.corresp"/>
+               <xs:attributeGroup ref="tei:att.global.linking.attribute.synch"/>
+               <xs:attributeGroup ref="tei:att.global.linking.attribute.sameAs"/>
+               <xs:attributeGroup ref="tei:att.global.linking.attribute.copyOf"/>
+               <xs:attributeGroup ref="tei:att.global.linking.attribute.next"/>
+               <xs:attributeGroup ref="tei:att.global.linking.attribute.prev"/>
+               <xs:attributeGroup ref="tei:att.global.linking.attribute.exclude"/>
+               <xs:attributeGroup ref="tei:att.global.linking.attribute.select"/>
+               <xs:attributeGroup ref="tei:att.global.analytic.attribute.ana"/>
+               <xs:attributeGroup ref="tei:att.global.responsibility.attribute.cert"/>
+               <xs:attributeGroup ref="tei:att.global.responsibility.attribute.resp"/>
+               <xs:attributeGroup ref="tei:att.global.source.attribute.source"/>
+               <xs:attributeGroup ref="tei:att.segLike.attributes"/>
+               <xs:attributeGroup ref="tei:att.typed.attributes"/>
+               <xs:attributeGroup ref="tei:att.written.attributes"/>
+               <xs:attributeGroup ref="tei:att.notated.attributes"/>
+               <xs:attribute ref="xml:id" use="required"/>
+            </xs:extension>
+         </xs:complexContent>
+      </xs:complexType>
+   </xs:element>
    <xs:element name="when">
       <xs:annotation>
          <xs:documentation>indicates a point in time either relative to other elements in the same timeline tag, or absolutely. [16.4.2. Placing Synchronous Events in Time]</xs:documentation>
@@ -5893,36 +5894,42 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</xs:d
    <xs:group name="model.global.spoken">
       <xs:choice>
          <xs:element ref="tei:pause"/>
+         <xs:element ref="tei:vocal"/>
          <xs:element ref="tei:shift"/>
       </xs:choice>
    </xs:group>
    <xs:group name="model.global.spoken_alternation">
       <xs:choice>
          <xs:element ref="tei:pause"/>
+         <xs:element ref="tei:vocal"/>
          <xs:element ref="tei:shift"/>
       </xs:choice>
    </xs:group>
    <xs:group name="model.global.spoken_sequence">
       <xs:sequence>
          <xs:element ref="tei:pause"/>
+         <xs:element ref="tei:vocal"/>
          <xs:element ref="tei:shift"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.global.spoken_sequenceOptional">
       <xs:sequence>
          <xs:element minOccurs="0" ref="tei:pause"/>
+         <xs:element minOccurs="0" ref="tei:vocal"/>
          <xs:element minOccurs="0" ref="tei:shift"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.global.spoken_sequenceOptionalRepeatable">
       <xs:sequence>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:pause"/>
+         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:vocal"/>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:shift"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="model.global.spoken_sequenceRepeatable">
       <xs:sequence>
          <xs:element maxOccurs="unbounded" ref="tei:pause"/>
+         <xs:element maxOccurs="unbounded" ref="tei:vocal"/>
          <xs:element maxOccurs="unbounded" ref="tei:shift"/>
       </xs:sequence>
    </xs:group>
@@ -5942,12 +5949,13 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</xs:d
             <xs:element ref="tei:gap"/>
             <xs:element ref="tei:media"/>
             <xs:element ref="tei:milestone"/>
+            <xs:element ref="tei:note"/>
             <xs:element ref="tei:pause"/>
             <xs:element ref="tei:pc"/>
-            <xs:element ref="tei:phr"/>
+            <xs:element ref="tei:seg"/>
             <xs:element ref="tei:shift"/>
+            <xs:element ref="tei:vocal"/>
             <xs:element ref="tei:w"/>
-            <xs:element ref="tei:note"/>
          </xs:choice>
          <xs:attributeGroup ref="tei:att.global.attribute.n"/>
          <xs:attributeGroup ref="tei:att.global.attribute.xmllang"/>
@@ -6083,6 +6091,41 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</xs:d
          <xs:attributeGroup ref="tei:att.timed.attributes"/>
          <xs:attributeGroup ref="tei:att.typed.attributes"/>
          <xs:attributeGroup ref="tei:att.ascribed.directed.attributes"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="vocal">
+      <xs:annotation>
+         <xs:documentation>(vocal) marks any vocalized but not necessarily lexical phenomenon, for example voiced pauses, non-lexical backchannels, etc. [8.3.3. Vocal, Kinesic, Incident]</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.descLike"/>
+         <xs:attributeGroup ref="tei:att.global.attributes"/>
+         <xs:attributeGroup ref="tei:att.timed.attributes"/>
+         <xs:attributeGroup ref="tei:att.ascribed.directed.attributes"/>
+         <xs:attributeGroup ref="tei:att.typed.attributes"/>
+         <xs:attribute name="iterated" default="false">
+            <xs:annotation>
+               <xs:documentation>indicates whether or not the phenomenon is repeated.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+               <xs:union memberTypes="xs:boolean">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:token">
+                        <xs:enumeration value="unknown">
+                           <xs:annotation>
+                              <xs:documentation/>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="inapplicable">
+                           <xs:annotation>
+                              <xs:documentation/>
+                           </xs:annotation>
+                        </xs:enumeration>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:union>
+            </xs:simpleType>
+         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="shift">

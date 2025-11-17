@@ -29,8 +29,8 @@ jobs:
           python -m pip install pipenv
           cd main/080_scripts_generic
           pipenv install
-          pipenv run jupyter nbconvert --to script validate_corpus.ipynb
-          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python validate_corpus.py
+          pipenv run jupyter nbconvert --to script validate_corpus_and_dict.ipynb
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python validate_corpus_and_dict.py
       - name: Commit errors to gh_pages
         run: |
           cp main/080_scripts_generic/tmp/validationReport.html gh_pages/index.html
