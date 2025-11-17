@@ -75,26 +75,41 @@
             </div>
             <div>
                 <head>Word forms</head>
-                <p>There are three types of <tag>form</tag>elements: <val>lemma</val>, <val>inflected</val> and <val>variant</val>. Nominals are usually furnished with plural forms, verbs with the third person singular present tense.</p>
+                <p>There are three types of <tag>form</tag>elements: <val>lemma</val>, <val>inflected</val> and <val>variant</val>, whereas variants occur as children of the two other types. Nominals are usually furnished with plural forms, verbs with the third person singular present tense.</p>
                 <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                    <entry xml:lang="ar-acm-x-shawi-vicav" xml:id="DShaAr.balad_00000">
+                    <entry xml:lang="ar-acm-x-shawi-vicav" xml:id="DShaAr.baqal_000">
                         <form type="lemma">
                             <usg type="geographic">
                                 <name type="place">Harran-Urfa</name>
                             </usg>
-                            <orth>balad</orth>
+                            <orth>baqaḷ</orth>
                             <gramGrp>
-                                <gram type="morphPattern" xml:lang="ar-acm-x-shawi-vicav">1a2a3</gram>
+                                <gram type="morphPattern" xml:lang="ar-acm-x-shawi-vicav">1a23</gram>
                             </gramGrp>
+                            <form type="variant">
+                                <usg type="geographic">
+                                    <name type="place">Bekaa</name>
+                                    <name type="tribe">Idin</name>
+                                </usg>
+                                <orth>ḅaġaḷ</orth>
+                            </form>
                         </form>
                         <form type="inflected">
                             <gramGrp>
-                                <gram type="number">plural</gram>
+                                <gram type="number">singular</gram>
+                                <gram type="gender">feminine</gram>
                             </gramGrp>
                             <usg type="geographic">
                                 <name type="place">Harran-Urfa</name>
                             </usg>
-                            <orth>bələd</orth>
+                            <orth>bqaḷa</orth>
+                            <form type="variant">
+                                <usg type="geographic">
+                                    <name type="place">Bekaa</name>
+                                    <name type="tribe">Idin</name>
+                                </usg>
+                                <orth>ḅġaḷa</orth>
+                            </form>
                         </form>
                         ...
                     </entry>
@@ -279,6 +294,70 @@
                             </gramGrp>
                             ...
                         </entry>
+                    </egXML>
+                </div>
+                <div>
+                    <head>Elatives</head>
+                    <p>Elatives should be registered under the respective positive forms. In some cases it may make sense to treat a particular elative as a lexeme in its own right.</p>
+                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                        <entry xml:lang="ar-acm-x-shawi-vicav" xml:id="DShaAr.makruuh_00000">
+                            <form type="lemma">
+                                <usg type="geographic">
+                                    <name type="place">Harran-Urfa</name>
+                                </usg>
+                                <orth>makrūh</orth>
+                                <gramGrp>
+                                    <gram type="morphPattern" xml:lang="ar-acm-x-shawi-vicav">ma12ū3</gram>
+                                </gramGrp>
+                            </form>
+                            <form source="#d1e125648" type="inflected">
+                                <gramGrp>
+                                    <gram type="aspect">elative</gram>
+                                </gramGrp>
+                            </form>
+                            ...
+                        </entry>
+                    </egXML>
+                </div>
+                <div>
+                    <head>Invariable nouns and adjectives</head>
+                    <p>Many Arabic dialects have nominals which do not display feminine or plural forms. These are identified with a gram element and a morphType attribute.</p>
+                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                        ...
+                        <gramGrp>
+                            <gram type="pos">adjective</gram>
+                            <gram type="subc">invariable</gram>
+                            <gram type="synRoot" xml:lang="ar-acm-x-shawi-vicav">ʕǧb</gram>
+                            <gram type="diaRoot" xml:lang="ar">ʕǧb</gram>
+                        </gramGrp>
+                        ...
+                    </egXML>
+                </div>
+                <div>
+                    <head>Participles</head>
+                    <p></p>
+                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                        ...
+                        <gramGrp>
+                            <gram type="aspect">passiveParticiple</gram>
+                            <gram type="number">singular</gram>
+                            <gram type="person">masculine</gram>
+                        </gramGrp>
+                        ...
+                    </egXML>
+                </div>
+                <div>
+                    <head>Functional constraints</head>
+                    <p>Another option are usage labels which can be used to indicate functional constraints.</p>
+                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                            ...
+                            <sense xml:id="DShaAr.s_hu_000_0">
+                                <gramGrp>
+                                    <gram type="usg">only in phrases taken from Classical Arabic</gram>
+                                </gramGrp>
+                                ...
+                            </sense>
+                            ...
                     </egXML>
                 </div>
             </div>
