@@ -35,7 +35,7 @@
         <body>
             <head>SHAWI </head>
             <div>
-                <head>General Remarks</head>
+                <head>General remarks</head>
                 <p>This is the ODD for the "Shawi" dictionary, created in the project "The
                     Shawi-type Arabic dialects spoken in South-eastern Anatolia and the Middle
                     Euphrates region" (FWF P 33574), led by Stephan Próchazka (University of Vienna,
@@ -63,7 +63,7 @@
                     from this schema.</p>
             </div>
             <div>
-                <head>Dictionary Entries</head>
+                <head>Dictionary entries</head>
                 <p>Entries in the Shawi dictionary follow the Lex-0 model. Accordingly, dictionary entries describing
                     multi-word-units are encoded as <tag>entry type="main" subtype="compound"</tag> (see <ref target="https://dariah-eric.github.io/lexicalresources/pages/TEILex0/TEILex0.html#index.xml-body.1_div.4_div.6">Section 4.6. Multiword expressions</ref>).</p>
                 <p>The <name>generic dict schema</name> introduces <tag>entry
@@ -139,7 +139,7 @@
                 </egXML>
             </div>
             <div>
-                <head>Grammatical Information</head>
+                <head>Grammatical information</head>
                 <p>
                     The <code>gramGrp</code> element can accomodate a wide range of grammatical information such as word class, the consonantal root and/or the verb class. It can appear in two places: when the information 
                     refers to the entry it is put after the <code>entry</code> element. In many cases, the grammatical information only refers to particular word forms. It is then placed inside the <code>form</code> element.
@@ -281,7 +281,7 @@
                     </table>
                 </div>
                 <div>
-                    <head>Grammatical Gender</head>
+                    <head>Grammatical gender</head>
                     <p></p>
                     <egXML xmlns="http://www.tei-c.org/ns/Examples">
                         <entry xml:lang="ar-acm-x-shawi-vicav" xml:id="DShaAr.shamis_00000">
@@ -359,6 +359,114 @@
                             </sense>
                             ...
                     </egXML>
+                </div>
+            </div>
+            <div>
+                <head>Translations</head>
+                <div>
+                    <head>Translating lemmas</head>
+                    <p>Translations of lemmas (incl. compounds) are given in <tag>sense</tag> elements with a <tag>cit</tag> of the type <tag>translationEquivalent</tag>.</p>
+                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                        <entry xml:lang="ar-acm-x-shawi-vicav" xml:id="DShaAr.hama_00001">
+                            ...
+                            <sense xml:id="DShaAr.s__00001_0">
+                                <cit type="translationEquivalent" xml:lang="en">
+                                    <form>
+                                        <orth>to become hot</orth>
+                                    </form>
+                                </cit>
+                                <cit type="translationEquivalent" xml:lang="de">
+                                    <form>
+                                        <orth>sich erhitzen</orth>
+                                    </form>
+                                </cit>
+                                <cit type="translationEquivalent" xml:lang="de">
+                                    <form>
+                                        <orth>heiß werden</orth>
+                                    </form>
+                                </cit>
+                            ...
+                            </sense>
+                            ...
+                        </entry>
+                    </egXML>
+                    <p>Semantically unrelated homophones or items with clearly differing semantics have to be documented with several sense elements.</p>
+                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                        ...
+                        <sense xml:id="DShaAr.s_xafiif_00000_0">
+                            <cit type="translationEquivalent" xml:lang="en">
+                                <form>
+                                    <orth>light</orth>
+                                </form>
+                            </cit>
+                            <cit type="translationEquivalent" xml:lang="de">
+                                <form>
+                                    <orth>leicht (Gewicht)</orth>
+                                </form>
+                            </cit>
+                            ...
+                        </sense>
+                        <sense xml:id="DShaAr.s_xafiif_00000_1">
+                            <cit source="#d1e242058" type="translationEquivalent" xml:lang="en">
+                                <form>
+                                    <orth>easy</orth>
+                                </form>
+                            </cit>
+                            <cit type="translationEquivalent" xml:lang="de">
+                                <form>
+                                    <orth>einfach</orth>
+                                </form>
+                            </cit>
+                            ...
+                        </sense>
+                        ...
+                    </egXML>
+                </div>
+                <div>
+                    <head>Translating examples</head>
+                    <p>Translations of examples are indicated in <tag>cit/quote</tag> constructions with the type <tag>translation</tag> for <tag>cit</tag>.</p>
+                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                        <cit type="example" xml:id="DShaAr.id_302">
+                            <quote>āni b-al-baʕīr saraḥit čiṯīr.</quote>
+                            <cit type="translation" xml:lang="en">
+                                <quote>I often grazed the camels.</quote>
+                            </cit>
+                            <cit type="translation" xml:lang="de">
+                                <quote>Ich führte die Kamele oft auf die Weide.</quote>
+                            </cit>
+                            ...
+                        </cit>
+                    </egXML>
+                </div>
+                <div>
+                    <head>Definitions</head>
+                    <p>When the translation of a term is not very common or easily understandable in the target language, it is common practise to explain the item instead of or in addition to the translation. Explanations can be understood as same language ‛translations’. In TEI, the <tag>def</tag> “definition” element is used to encode this part of a dictionary entry.</p>
+                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                        <sense xml:id="DShaAr.s_shugbaan_000_0">
+                            <def xml:lang="en">a kind of pouch on the belly that is formed by pulling up the dress</def>
+                            <cit type="translationEquivalent" xml:lang="en">
+                                <form>
+                                    <orth>shugban</orth>
+                                </form>
+                            </cit>
+                            <def xml:lang="de">eine Art Schürze, die man durch Hochheben des Kleides bildet</def>
+                            <cit type="translationEquivalent" xml:lang="de">
+                                <form>
+                                    <orth>Schugban</orth>
+                                </form>
+                            </cit>
+                            ...
+                         </sense>
+                    </egXML>
+                    <p>
+                        Very often lexical items are particular to the culture of the source language and do not have adequate equivalents in a target language. In such cases, it is important not to enter definitions or explanations in the <tag>cit/quote</tag> element. Wherever possible, we have tried to furnish translations (very often transliterations) even though they might not be very common in the target language. Explanations have to go into the <tag>def</tag> element.
+                        In principle, <tag>def</tag> can be used to encode any information related to ‛meaning’ that does not qualify as a translation in the narrower sense.
+                    </p>
+                </div>
+                <div>
+                    <head>Names</head>
+                    <p>How to write/transliterate place names and person names is an age-old problem. When several graphematic variants exist, we attempt to choose the most common one.</p>
+                    <!-- example missing -->
                 </div>
             </div>
             <div>
