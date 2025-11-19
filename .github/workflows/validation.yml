@@ -33,7 +33,9 @@ jobs:
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python validate_corpus_and_dict.py
       - name: Commit errors to gh_pages
         run: |
-          cp main/080_scripts_generic/tmp/validationReport.html gh_pages/index.html
+          cp main/080_scripts_generic/tmp/index.html gh_pages/index.html
+          cp main/080_scripts_generic/tmp/validationReport.html gh_pages/manannot_validation.html
+          cp main/080_scripts_generic/tmp/dictValidationReport.html gh_pages/dict_validation.html
           cd gh_pages
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
