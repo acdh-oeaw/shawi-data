@@ -20,8 +20,41 @@ thead {
 </style>
 
 </head>
+<script>
+function filterTable() {
+    const input = document.getElementById("tableFilter");
+    const filter = input.value.toLowerCase();
+    const table = document.getElementById("myTable");
+    const rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {  // skip header (row 0)
+        let rowText = rows[i].innerText.toLowerCase();
+        rows[i].style.display = rowText.includes(filter) ? "" : "none";
+    }
+}
+</script>
 <body>
-<table border="1" class="dataframe">
+<input
+    type="text"
+    id="tableFilter"
+    placeholder="Type to filter..."
+    onkeyup="filterTable()"
+    style="
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        width: 100%;
+        max-width: 400px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+        outline: none;
+        transition: border 0.2s;
+    "
+    onfocus="this.style.border='1px solid #007acc';"
+    onblur="this.style.border='1px solid #ccc';"
+/>
+<table border="1" class="dataframe" id="myTable">
   <thead>
     <tr style="text-align: right;">
       <th></th>
