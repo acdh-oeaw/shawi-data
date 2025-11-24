@@ -675,6 +675,28 @@
                         </attList>
                     </elementSpec>
                     
+                    <elementSpec ident="listBibl" mode="change" module="core">
+                        <constraintSpec ident="literatureCheck" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:bibl/tei:title[@ref='zot:Bettini2006']">
+                                    <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 358
+                                        and
+                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 399">If Bettini2006 is the source, the following biblScope must be in the range between 359 and 398.</s:assert>
+                                </s:rule>
+                                <s:rule context="tei:bibl/tei:title[@ref='zot:Lentin2013']">
+                                    <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 150
+                                        and
+                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 172">If Lentin2013 is the source, the following biblScope must be in the range between 151 and 171.</s:assert>
+                                </s:rule>
+                                <s:rule context="tei:bibl/tei:title[@ref='zot:Younes2021']">
+                                    <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 0
+                                        and
+                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 137">If Younes2021 is the source, the following biblScope must be in the range between 1 and 136.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+                    
                     <elementSpec ident="biblScope" mode="change" module="dictionaries">
                         <constraintSpec ident="biblScope-context" scheme="schematron">
                             <constraint>
