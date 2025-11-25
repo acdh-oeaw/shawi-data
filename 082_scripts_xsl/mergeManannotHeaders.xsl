@@ -10,7 +10,8 @@
     <xsl:output method="xml" indent="yes"/>
     <xsl:mode on-no-match="shallow-copy" />
     
-    <xsl:variable name="c010_manannot" select="collection(base-uri()||'/../../010_manannot?select=*.xml')"/>
+    <xsl:variable name="base-dir" select="string-join(subsequence(tokenize(base-uri(), '/'), 1, count(tokenize(base-uri(), '/')) - 1), '/')"/>
+    <xsl:variable name="c010_manannot" select="collection($base-dir||'/../010_manannot?select=*.xml')"/>
     
     <xsl:template match="tei:TEI/tei:teiHeader">
         <xsl:variable name="SHAWICorpusID" select=".//tei:idno[@type='SHAWICorpusID']"/>
