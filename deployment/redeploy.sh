@@ -83,6 +83,7 @@ for d in $(ls -d vicav_*)
 do echo "Directory $d:"
    for filename in $(find "$d" -type f -and -name '*.xml')
    do
+      echo "    Adding teiSource and revisionDesc to $filename"
       publicationIdno=$(sed ':a;N;$!ba;s/\n/\\n/g' <<EOF
 <idno type="teiSource">$sourcebaseuri$filename</idno>
 EOF
@@ -102,6 +103,14 @@ EOF
    mkdir -p $(dirname "" $(find . -type f -and \( -name '*.jpg' -or -name '*.JPG' -or -name '*.png' -or -name '*.PNG' -or -name '*.svg' \) -exec echo ${BUILD_DIR:-../../webapp/vicav-app}/images/{} \;))
    find . -type f -and \( -name '*.jpg' -or -name '*.JPG' -or -name '*.png' -or -name '*.PNG' -or -name '*.svg' \) -exec mv -v {} ${BUILD_DIR:-../../webapp/vicav-app}/images/{} \;
    cd ..
+done
+for d in $(ls -d 103_tei_w)
+do echo "Directory $d:"
+for filename in $(find "$d" -type f -and -name '*Corpus.xml')
+   do
+      echo "    Adding teiSource to $filename"
+      sed -i "s~\(<idno type=\"teiSource\">.*/blob/\)main~\1$(git rev-parse HEAD)~g" $filename
+   done
 done
 if [ "$CI"x == "truex" ]; then echo "CI: removing .git"; rm -rf .git; fi
 versionInfo=$(sed ':a;N;$!ba;s/\n/\\n/g' <<EOF
