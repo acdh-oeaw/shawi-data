@@ -68,6 +68,7 @@ git -c advice.detachedHead=false checkout ${dataversion}
 who=$(git show -s --format='%cN')
 when=$(git show -s --format='%as')
 message=$(git show -s --format='%B')
+sourcebaseuri=$(git remote get-url origin | sed 's~\.git$~~g')/blob/$(git rev-parse HEAD)/
 revisionDesc=$(sed ':a;N;$!ba;s/\n/\\n/g' <<EOF
 <revisionDesc>
   <change n="$dataversion" who="$who" when="$when">
@@ -80,13 +81,26 @@ EOF
 echo "copying image files from shawi-data to vicav-webapp"
 for d in $(ls -d vicav_*)
 do echo "Directory $d:"
+   for filename in $(find "$d" -type f -and -name '*.xml')
+   do
+      publicationIdno=$(sed ':a;N;$!ba;s/\n/\\n/g' <<EOF
+<idno type="teiSource">$sourcebaseuri$filename</idno>
+EOF
+)
+      revisionDesc=$(sed ':a;N;$!ba;s/\n/\\n/g' <<EOF
+<revisionDesc>
+  <change n="$dataversion" who="$who" when="$when">
+$message
+   </change>
+</revisionDesc>
+EOF
+)
+     sed -i "s~\(</publicationStmt>\)~$publicationIdno\\n\1~g" $filename
+     sed -i "s~\(</teiHeader>\)~$revisionDesc\\n\1~g" $filename
+   done
    cd "$d"
    mkdir -p $(dirname "" $(find . -type f -and \( -name '*.jpg' -or -name '*.JPG' -or -name '*.png' -or -name '*.PNG' -or -name '*.svg' \) -exec echo ${BUILD_DIR:-../../webapp/vicav-app}/images/{} \;))
    find . -type f -and \( -name '*.jpg' -or -name '*.JPG' -or -name '*.png' -or -name '*.PNG' -or -name '*.svg' \) -exec mv -v {} ${BUILD_DIR:-../../webapp/vicav-app}/images/{} \;
-   if [ "$onlytags"x = 'truex' ]
-   then
-     find . -type f -and -name '*.xml' -exec sed -i "s~\(</teiHeader>\)~$revisionDesc\\n\1~g" {} \;
-   fi
    cd ..
 done
 if [ "$CI"x == "truex" ]; then echo "CI: removing .git"; rm -rf .git; fi
