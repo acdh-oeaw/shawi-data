@@ -10,24 +10,31 @@
     <xsl:output method="xml" indent="yes"/>
     <xsl:mode on-no-match="shallow-copy" />
     
+    <xsl:param name="githubRepo">https://github.com/acdh-oeaw/shawi-data</xsl:param>
+    <xsl:param name="gitRef">main</xsl:param>
+    
     <xsl:variable name="base-dir" select="string-join(subsequence(tokenize(base-uri(), '/'), 1, count(tokenize(base-uri(), '/')) - 1), '/')"/>
     <xsl:variable name="c010_manannot" select="collection($base-dir||'/../010_manannot?select=*.xml')"/>
     
     <xsl:template match="tei:TEI/tei:teiHeader">
         <xsl:variable name="SHAWICorpusID" select=".//tei:idno[@type='SHAWICorpusID']"/>
         <xsl:variable name="manannot_teiHeader" select="$c010_manannot//tei:idno[@type='SHAWICorpusID'][. = $SHAWICorpusID]/ancestor::tei:teiHeader"/>
-        <xsl:choose>
-            <xsl:when test="$manannot_teiHeader">
-                <xsl:sequence select="$manannot_teiHeader"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <teiHeader xmlns="http://www.tei-c.org/ns/1.0">
-                    <xsl:apply-templates select="@*"/><xsl:text xml:space="preserve">
+        <teiHeader xmlns="http://www.tei-c.org/ns/1.0">
+            <xsl:apply-templates select="if ($manannot_teiHeader) then $manannot_teiHeader/@* else @*"/><xsl:text xml:space="preserve">
           </xsl:text>
-                    <xsl:apply-templates select="*|comment()|processing-instruction()"/><xsl:text xml:space="preserve">
+            <xsl:apply-templates select="(if ($manannot_teiHeader) then $manannot_teiHeader else .)/(*|comment()|processing-instruction())"/><xsl:text xml:space="preserve">
        </xsl:text></teiHeader>
-            </xsl:otherwise>
-        </xsl:choose>
     </xsl:template>
+    
+    <!-- is thist the right place and tag? -->
+    <xsl:template match="tei:publicationStmt">
+        <publicationStmt xmlns="http://www.tei-c.org/ns/1.0">
+            <xsl:apply-templates select="@*"/><xsl:apply-templates select="*|comment()|processing-instruction()"/>
+            <xsl:text xml:space="preserve">
+            </xsl:text><idno type="teiSource"><xsl:value-of select="replace(base-uri(), '^.*103_tei_w/', $githubRepo||'/blob/'||$gitRef||'/103_tei_w/')"/></idno><xsl:text xml:space="preserve">          
+       </xsl:text></publicationStmt>
+    </xsl:template>
+    
+    <xsl:template match="tei:idno[@type='githubSource']"/> <!-- remove if it is in the source -->
     
 </xsl:stylesheet>
