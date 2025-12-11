@@ -1,12 +1,15 @@
-name: Validate Corpus files
+name: Validate Corpus files and Dictionary
 on:
   push: {}
   repository_dispatch:
     types: [run]
   workflow_dispatch: {}
+  workflow_run:
+    workflows: ["Update Dictionary"]
+    types: [completed]
 jobs:
   build:
-    name: Validate Corpus files
+    name: Validate Corpus files and Dictionary
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
@@ -23,7 +26,7 @@ jobs:
         with:
           python-version: '3.13'
           cache: "pipenv"
-      - name: Validate Corpus files
+      - name: Validate Corpus files and Dictionary
         run: |
           python --version
           python -m pip install pipenv
