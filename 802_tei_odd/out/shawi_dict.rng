@@ -5,11 +5,14 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-11-24T10:38:05Z. . 
+Schema generated from ODD source 2025-12-16T08:54:43Z. . 
 TEI Edition:  
 TEI Edition Location: https://www.tei-c.org/Vault/P5// 
   
 --><!---->
+   <sch:ns xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+           prefix="tei"
+           uri="http://www.tei-c.org/ns/1.0"/>
    <define name="macro.paraContent">
       <zeroOrMore>
          <choice>
@@ -1168,7 +1171,8 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
       <s:rule xmlns="http://www.tei-c.org/ns/1.0"
               xmlns:s="http://purl.oclc.org/dsdl/schematron"
               context="tei:cit[@type = ('etymon','translation','example','translationEquivalent')]|tei:entry|tei:gram[@type=('arguments','diaRoot','government','root','synRoot')]">
-         <s:assert test="exists(@xml:lang)">Elements containing object language must have an @xml:lang attribute.</s:assert>
+         <s:assert test="exists(@xml:lang)">Elements containing object language
+                              must have an @xml:lang attribute.</s:assert>
       </s:rule>
    </pattern>
    <define name="att.naming.attributes">
@@ -2629,15 +2633,20 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
       </element>
    </define>
    <define name="cit">
-      <element name="cit">
+      <element name="cit" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(cited quotation) contains a quotation from some other document, together with a bibliographic reference to its source. In a dictionary it may contain an example text with at least one occurrence of the word form, used in the sense being described, or a translation of the headword, or an example. [3.3.3. Quotation 4.3.1. Grouped Texts 10.3.5.1. Examples]</a:documentation>
          <group>
             <zeroOrMore>
                <ref name="usg"/>
             </zeroOrMore>
             <choice>
-               <ref name="quote"/>
                <ref name="form"/>
+               <group>
+                  <ref name="quote"/>
+                  <optional>
+                     <ref name="quote"/>
+                  </optional>
+               </group>
             </choice>
             <zeroOrMore>
                <choice>
@@ -2672,20 +2681,26 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:cit[@type = 'translationEquivalent']">
-               <s:assert test="parent::tei:sense">translationEquivalent: must be a direct child of a sense element</s:assert>
-               <s:assert test="exists(child::tei:form[not(@type)])">translationEquivalent must contain a form without a type attribute </s:assert>
+               <s:assert test="parent::tei:sense">translationEquivalent: must be a
+                              direct child of a sense element</s:assert>
+               <s:assert test="exists(child::tei:form[not(@type)])">translationEquivalent must contain a form without a type attribute
+                           </s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:cit[@type = 'translation']">
                <s:assert test="parent::tei:cit[@type = 'example']">cit/type="translation" must be part of an example</s:assert>
-               <s:report test="* except (tei:quote|tei:usg)">a cit type translation may only contain 1) the translated text in a quote element, 2) the context of the translation in a tei:usg element</s:report>
-               <s:assert test="not(@subtype) or @subtype='literal'">only "literal" translations expected</s:assert>
+               <s:report test="* except (tei:quote|tei:usg)">a cit type translation may
+                              only contain 1) the translated text in a quote element, 2) the context
+                              of the translation in a tei:usg element</s:report>
+               <s:assert test="not(@subtype) or @subtype='literal'">only "literal"
+                              translations expected</s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:cit[@subtype = 'proverb']">
-               <s:assert test="@type = 'example'">unexpected value "<s:value-of select="current()/@type"/>" in @type – a proverb must be encoded as cit type="example" subtype="proverb"</s:assert>
+               <s:assert test="@type = 'example'">unexpected value "<s:value-of select="current()/@type"/>" in @type – a proverb must be encoded as
+                              cit type="example" subtype="proverb"</s:assert>
             </s:rule>
          </pattern>
          <ref name="att.global.attributes"/>
@@ -2706,7 +2721,7 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
             </choice>
          </attribute>
          <optional>
-            <attribute name="subtype">
+            <attribute name="subtype" ns="http://www.tei-c.org/ns/1.0">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <choice>
                   <value>proverb</value>
@@ -2821,16 +2836,17 @@ Sample values include: 1] suspension (suspension); 2] contraction (contraction);
       </element>
    </define>
    <define name="ref">
-      <element name="ref">
+      <element name="ref" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) a reference either to a license or to an example [3.7. Simple Links and Cross-References 17.1. Links]</a:documentation>
-         <empty/>
+         <ref name="macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
                   id="shawi-ref-ref-constraint-rule-18">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:ref[@type = 'example']">
-               <s:assert test="exists(substring-after(.,':'))">Example with id "<s:value-of select="exists(//tei:cit[@type='example'][@xml:id=substring-after(current()/@target,'#')])"/>" not found</s:assert>
+               <s:assert test="exists(substring-after(.,':'))">Example with id
+                                 "<s:value-of select="exists(//tei:cit[@type='example'][@xml:id=substring-after(current()/@target,'#')])"/>" not found</s:assert>
             </s:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -2853,24 +2869,22 @@ Sample values include: 1] suspension (suspension); 2] contraction (contraction);
          <ref name="att.internetMedia.attributes"/>
          <ref name="att.pointing.attributes"/>
          <ref name="att.typed.attribute.subtype"/>
-         <attribute name="type">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
-Suggested values include: 1] entry; 2] sense; 3] bibliography</a:documentation>
-            <choice>
-               <value>entry</value>
+         <optional>
+            <attribute name="type">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value>sense</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value>bibliography</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <data type="Name"/>
-            </choice>
-         </attribute>
+               <choice>
+                  <value>license</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">license</a:documentation>
+                  <value>example</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">example</a:documentation>
+               </choice>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
    <define name="list">
-      <element name="list">
+      <element name="list" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(list) contains any sequence of items organized as a list. [3.8. Lists]</a:documentation>
          <group>
             <optional>
@@ -3287,7 +3301,7 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
       </element>
    </define>
    <define name="listBibl">
-      <element name="listBibl">
+      <element name="listBibl" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(citation list) contains a list of bibliographic citations of any kind. [3.12.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 16.3.2. Declarable Elements]</a:documentation>
          <oneOrMore>
             <choice>
@@ -3320,8 +3334,10 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:listBibl[ancestor::tei:body]">
-               <s:assert test="parent::tei:entry or parent::tei:cit[@type = 'example']">a listBibl is expected to be a direct child of an entry or an example</s:assert>
-               <s:assert test="not(tei:biblStruct)">a listBibl inside of an entry of an example is composed of bibl elements</s:assert>
+               <s:assert test="parent::tei:entry or parent::tei:cit[@type = 'example']">a listBibl is expected to be a direct child of an entry or an
+                              example</s:assert>
+               <s:assert test="not(tei:biblStruct)">a listBibl inside of an entry of an
+                              example is composed of bibl elements</s:assert>
             </s:rule>
          </pattern>
          <ref name="att.global.attributes"/>
@@ -3329,7 +3345,7 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
          <ref name="att.declarable.attributes"/>
          <ref name="att.sortable.attributes"/>
          <ref name="att.typed.attribute.subtype"/>
-         <attribute name="type">
+         <attribute name="type" ns="http://www.tei-c.org/ns/1.0">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             <choice>
                <value>dictionaries</value>
@@ -3344,7 +3360,7 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
       </element>
    </define>
    <define name="measure">
-      <element name="measure">
+      <element name="measure" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
          <rng:empty xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
       </element>
@@ -3765,7 +3781,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       </element>
    </define>
    <define name="form">
-      <element name="form">
+      <element name="form" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(form information group) groups all the information on the written and spoken forms of one headword. [10.3.1. Information on Written and Spoken Forms]</a:documentation>
          <zeroOrMore>
             <choice>
@@ -3828,23 +3844,26 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:form[not(parent::tei:cit)]">
-               <s:assert test="exists(@type)">@type is reqired on all forms except examples or translations.</s:assert>
+               <s:assert test="exists(@type)">@type is reqired on all forms except
+                              examples or translations.</s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:form[@type = 'variant']">
-               <s:assert test="parent::tei:form[@type = ('lemma','multiWordUnit', 'inflected')]">a variant must be a direct child of the main form (type = "lemma", "multiWordUnit" or "inflected").</s:assert>
+               <s:assert test="parent::tei:form[@type = ('lemma','multiWordUnit', 'inflected')]">a variant must be a direct child of the main form (type = "lemma",
+                              "multiWordUnit" or "inflected").</s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
-                    context="tei:form[@type =  ('lemma', 'inflected')]">
-               <s:assert test="parent::tei:entry">a headword or inflected form must be a direct child of an entry element. </s:assert>
+                    context="tei:form[@type = ('lemma', 'inflected')]">
+               <s:assert test="parent::tei:entry">a headword or inflected form must be a
+                              direct child of an entry element. </s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:form[@subtype='compound']">
                <s:assert test="@type='lemma'">The subtype "compound" must be accompanied
-                           by the type attribute "lemma".</s:assert>
+                              by the type attribute "lemma".</s:assert>
             </s:rule>
          </pattern>
          <ref name="att.global.attribute.xmlid"/>
@@ -3904,7 +3923,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
             </attribute>
          </optional>
          <optional>
-            <attribute name="subtype">
+            <attribute name="subtype" ns="http://www.tei-c.org/ns/1.0">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <choice>
                   <value>compound</value>
@@ -3950,7 +3969,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       </element>
    </define>
    <define name="gram">
-      <element name="gram">
+      <element name="gram" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(grammatical information) within an entry in a dictionary or a terminological data file, contains grammatical information relating to a term, word, or form. [10.3.2. Grammatical Information]</a:documentation>
          <ref name="macro.lexicalParaContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -4021,22 +4040,32 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <value>collocate</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <value>arguments</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">arguments to a verb</a:documentation>
+               <value>constraint</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">arguments to a verb</a:documentation>
+               <value>construction</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">arguments to a verb</a:documentation>
                <value>derivedVerbClass</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">derived verb class</a:documentation>
-               <value>synRoot</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">synchronous root</a:documentation>
-               <value>root</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">synchronous root</a:documentation>
                <value>diaRoot</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">diachronic root</a:documentation>
-               <value>subc</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">any subcategory of another gram value</a:documentation>
-               <value>derivedVerbClass</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">derived verb class</a:documentation>
-               <value>person</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <value>morphPattern</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">morphological pattern</a:documentation>
+               <value>msd</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The abbreviation stands for morphosyntactic description. The value of this gram-type can be "activeParticiple|passiveParticiple"</a:documentation>
+               <value>person</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <value>polarity</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <value>root</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">synchronous root</a:documentation>
+               <value>state</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">construct</a:documentation>
+               <value>synRoot</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">synchronous root</a:documentation>
+               <value>voice</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             </choice>
          </attribute>
          <empty/>
@@ -4154,7 +4183,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
       </element>
    </define>
    <define name="usg">
-      <element name="usg">
+      <element name="usg" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(usage) contains usage information in a dictionary entry. [10.3.5.2. Usage Information and Other Labels]</a:documentation>
          <choice>
             <zeroOrMore>
@@ -4177,8 +4206,10 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                   id="shawi-usg-name-in-usg-constraint-rule-49">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
-                    context="tei:usg[not(@type = 'geographic') and not(@type='socioCultural')]">
-               <s:report test="exists(tei:name)">the name element must only occur inside of usg elements with @type="geographic" or @type="socioCultural".</s:report>
+                    context="tei:usg[not(@type = 'geographic') and not(@type='socioCultural')] and not(@type='pragmatics')]">
+               <s:report test="exists(tei:name)">the name element must only occur inside
+                              of usg elements with @type="geographic" or
+                              @type="socioCultural".</s:report>
             </s:rule>
          </pattern>
          <ref name="att.global.attributes"/>
@@ -4207,13 +4238,15 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">marker which identifies the typical use of a lexical unit in a particular discourse type or genre</a:documentation>
                <value>hint</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">marker which cannot be classified otherwise</a:documentation>
+               <value>pragmatics</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Pragmatic information</a:documentation>
             </choice>
          </attribute>
          <empty/>
       </element>
    </define>
    <define name="xr">
-      <element name="xr">
+      <element name="xr" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(cross-reference phrase) contains a phrase, sentence, or icon referring the reader to some other location in this or another text. [10.3.5.3. Cross-References to Other Entries]</a:documentation>
          <zeroOrMore>
             <choice>
@@ -5256,7 +5289,7 @@ Sample values include: 1] Unicode (Unicode); 2] Bridwell (E. Nelson Bridwell); 3
       </element>
    </define>
    <define name="publicationStmt">
-      <element name="publicationStmt">
+      <element name="publicationStmt" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(publication statement) groups information concerning the publication or distribution of an electronic or other text. [2.2.4. Publication, Distribution, Licensing, etc. 2.2. The File Description]</a:documentation>
          <group>
             <oneOrMore>
@@ -5695,6 +5728,9 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
                <ref name="list"/>
             </oneOrMore>
             <oneOrMore>
+               <ref name="listChange"/>
+            </oneOrMore>
+            <oneOrMore>
                <ref name="change"/>
             </oneOrMore>
          </choice>
@@ -5704,7 +5740,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
       </element>
    </define>
    <define name="change">
-      <element name="change">
+      <element name="change" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(change) documents a change or set of changes made during the production of a source document, or during the revision of an electronic file. [2.6. The Revision Description 2.4.1. Creation 12.7. Identifying Changes and Revisions]</a:documentation>
          <choice>
             <ref name="measure"/>
@@ -5790,6 +5826,14 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
          <ref name="att.global.attributes"/>
          <ref name="att.declarable.attributes"/>
          <empty/>
+      </element>
+   </define>
+   <define name="listChange">
+      <element name="listChange" ns="http://www.tei-c.org/ns/1.0">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <oneOrMore>
+            <ref name="change"/>
+         </oneOrMore>
       </element>
    </define>
    <define name="att.global.linking.attributes">
@@ -5899,7 +5943,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
       </optional>
    </define>
    <define name="seg">
-      <element name="seg">
+      <element name="seg" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(arbitrary segment) represents any segmentation of text below the chunk level. [17.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</a:documentation>
          <ref name="macro.lexicalParaContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -5908,7 +5952,8 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:seg[@type = 'hint']">
-               <s:assert test="parent::tei:quote[parent::tei:cit[@type = 'translation']]">a hint segment must be inside a translation equivalent</s:assert>
+               <s:assert test="parent::tei:quote[parent::tei:cit[@type = 'translation']]">a
+                              hint segment must be inside a translation equivalent</s:assert>
             </s:rule>
          </pattern>
          <ref name="att.global.attributes"/>
@@ -5917,13 +5962,17 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
          <ref name="att.segLike.attributes"/>
          <ref name="att.typed.attribute.subtype"/>
          <ref name="att.written.attributes"/>
-         <attribute name="type">
+         <attribute name="type" ns="http://www.tei-c.org/ns/1.0">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             <choice>
                <value>hint</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">a hint in a translation to narrow down the semantic scope of the particular item.</a:documentation>
                <value>constrPart</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">TODO add description ???</a:documentation>
+               <value>oRef</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">TODO add description ???</a:documentation>
+               <value>exPart</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">exPart stands for example part and is used to encode tokens in example sentences.</a:documentation>
             </choice>
          </attribute>
          <empty/>
@@ -6322,7 +6371,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
       </element>
    </define>
    <define name="body">
-      <element name="body">
+      <element name="body" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text body) contains the main content of the dictionary. It MUST include a `&lt;div type="entries"&gt;` and MAY include a `&lt;div type="examples"&gt;`. [4. Default Text Structure]</a:documentation>
          <group>
             <ref name="div"/>
@@ -6336,7 +6385,8 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:body">
-               <s:assert test="exists(tei:div[@type = 'entries'])">body must contain a div of type "entries".</s:assert>
+               <s:assert test="exists(tei:div[@type = 'entries'])">body must contain a
+                              div of type "entries".</s:assert>
             </s:rule>
          </pattern>
          <ref name="att.global.attributes"/>
@@ -6344,7 +6394,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
       </element>
    </define>
    <define name="div">
-      <element name="div">
+      <element name="div" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text division) contains a subdivision of the front, body, or back of a text. [4.1. Divisions of the Body]</a:documentation>
          <group>
             <zeroOrMore>
@@ -6398,12 +6448,14 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:div[@type = 'examples']">
-               <s:assert test="every $e in * satisfies $e/self::tei:cit[@type = 'example']">div type="examples" may only contain cit type="example"</s:assert>
+               <s:assert test="every $e in * satisfies $e/self::tei:cit[@type = 'example']">div
+                              type="examples" may only contain cit type="example"</s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:div[@type = 'entries']">
-               <s:assert test="every $e in * satisfies $e/self::tei:entry">div type="entries" may only contain entry elements</s:assert>
+               <s:assert test="every $e in * satisfies $e/self::tei:entry">div
+                              type="entries" may only contain entry elements</s:assert>
             </s:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -6436,7 +6488,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
          <ref name="att.placement.attributes"/>
          <ref name="att.typed.attribute.subtype"/>
          <ref name="att.written.attributes"/>
-         <attribute name="type">
+         <attribute name="type" ns="http://www.tei-c.org/ns/1.0">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             <choice>
                <value>entries</value>
@@ -6540,7 +6592,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
       </element>
    </define>
    <define name="symbol">
-      <element name="symbol">
+      <element name="symbol" ns="http://www.tei-c.org/ns/1.0">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(symbolic value) represents the value part of a feature-value specification which contains one of a finite list of symbols. []</a:documentation>
          <empty/>
          <ref name="att.global.attributes"/>
@@ -6557,46 +6609,4 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
    <start>
       <ref name="TEI"/>
    </start>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="tei"
-           uri="http://www.tei-c.org/ns/1.0"/>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="xs"
-           uri="http://www.w3.org/2001/XMLSchema"/>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="rng"
-           uri="http://relaxng.org/ns/structure/1.0"/>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="rna"
-           uri="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="sch"
-           uri="http://purl.oclc.org/dsdl/schematron"/>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="sch1x"
-           uri="http://www.ascc.net/xml/schematron"/>
 </grammar>
