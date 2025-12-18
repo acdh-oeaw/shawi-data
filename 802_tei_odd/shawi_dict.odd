@@ -597,8 +597,6 @@
                                 <s:rule context="tei:gram[@type = 'subc'][contains(normalize-space(.),'noun')]">
                                     <s:assert test="../tei:gram[@type='pos']='noun'">gram[@type='subc'] is not expected in combination with gram[@type='pos']='<s:value-of select="../tei:gram[@type='pos']"/>' (expected: "noun")</s:assert>
                                 </s:rule>
-                               
-                               
                                 <s:rule context="tei:gram[@type = 'subc'][normalize-space(.)=('fraction','ordinal')]">
                                     <s:assert test="../tei:gram[@type='pos'] = 'numeral'">​value "<s:value-of select="."/>" is not expected in gram[@type='subc'] ​when used in combination with in​ gram[@type='pos'][. = "<s:value-of select="../tei:gram[@type='pos']"/>"]. The expected value is "numeral".</s:assert>
                                 </s:rule>​
@@ -607,8 +605,16 @@
                     </elementSpec>
                     
                     
-                    
                     <classSpec type="atts" ident="att.global" mode="change">
+                        <constraintSpec ident="xml-lang-on-object-lang-elts" scheme="schematron" mode="change" xml:id="xml-lang-on-object-lang-elts">
+                            <desc>assert that @xml:lang is added to elements with object language</desc>
+                            <constraint>
+                                <s:rule
+                                    context="tei:entry|tei:gram[@type=('arguments','collocate','diaRoot','government','morphPattern','synRoot')]|tei:orth|tei:quote">
+                                    <s:assert test="exists(@xml:lang)">Elements containing object language must have an @xml:lang attribute.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
                         <attList>
                             <attDef ident="xml:lang" mode="change">
                                 <valList type="closed" mode="replace">
