@@ -688,17 +688,17 @@
                                 <s:rule context="tei:bibl/tei:title[@ref='zot:Bettini2006']">
                                     <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 358
                                         and
-                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 399">If Bettini2006 is the source, the following biblScope must be in the range between 359 and 398.</s:assert>
+                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 399">If Bettini2006 is the source, the following biblScope pages must be between 359 and 398.</s:assert>
                                 </s:rule>
                                 <s:rule context="tei:bibl/tei:title[@ref='zot:Lentin2013']">
                                     <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 150
                                         and
-                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 172">If Lentin2013 is the source, the following biblScope must be in the range between 151 and 171.</s:assert>
+                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 172">If Lentin2013 is the source, the following biblScope pages must be between 151 and 171.</s:assert>
                                 </s:rule>
                                 <s:rule context="tei:bibl/tei:title[@ref='zot:Younes2021']">
                                     <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 0
                                         and
-                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 137">If Younes2021 is the source, the following biblScope must be in the range between 1 and 136.</s:assert>
+                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 137">If Younes2021 is the source, the following biblScope pages must be between 1 and 136.</s:assert>
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
@@ -794,6 +794,27 @@
                                         >If a sense element has a source attribute there must be a
                                         corresponding bibl element in listBibl ("<s:value-of
                                             select="$biblID"/>")</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="biblPlaceCheck" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:form">
+                                    <s:assert test="
+                                        every $sourceID in tokenize(@source,' ') satisfies
+                                        let $bibl :=
+                                            ancestor::tei:entry//tei:bibl[@xml:id = substring-after($sourceID, '#')],
+                                                $zot := substring-after($bibl/tei:title/@ref, 'zot:'),
+                                                $place := tei:usg[@type='geographic']/tei:name[@type='place']
+                                        return
+                                            (
+                                                ($zot = 'Lentin2013' and $place = 'Mayadin')
+                                                or ($zot = 'Younes2021' and $place = 'Bekaa')
+                                                or ($zot = 'Bettini2006' and ($place = 'Jbur' or $place = 'Tayy'))
+                                                or not ($zot = ('Lentin2013', 'Younes2021', 'Bettini2006'))
+                                             )
+                                             ">Invalid geographic usage for <s:value-of select="tokenize(@source,' ')"/>
+                                    </s:assert>
                                 </s:rule>
                             </constraint>
                         </constraintSpec>

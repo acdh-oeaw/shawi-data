@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-12-18T12:13:38Z. . 
+Schema generated from ODD source 2025-12-22T09:32:53Z. . 
 TEI Edition:  
 TEI Edition Location: https://www.tei-c.org/Vault/P5// 
   
@@ -3316,17 +3316,17 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:bibl/tei:title[@ref='zot:Bettini2006']">
-               <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 358                                         and                                         number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 399">If Bettini2006 is the source, the following biblScope must be in the range between 359 and 398.</s:assert>
+               <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 358                                         and                                         number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 399">If Bettini2006 is the source, the following biblScope pages must be between 359 and 398.</s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:bibl/tei:title[@ref='zot:Lentin2013']">
-               <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 150                                         and                                         number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 172">If Lentin2013 is the source, the following biblScope must be in the range between 151 and 171.</s:assert>
+               <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 150                                         and                                         number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 172">If Lentin2013 is the source, the following biblScope pages must be between 151 and 171.</s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:bibl/tei:title[@ref='zot:Younes2021']">
-               <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 0                                         and                                         number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 137">If Younes2021 is the source, the following biblScope must be in the range between 1 and 136.</s:assert>
+               <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 0                                         and                                         number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 137">If Younes2021 is the source, the following biblScope pages must be between 1 and 136.</s:assert>
             </s:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3660,6 +3660,16 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
                                         corresponding bibl element in listBibl ("<s:value-of select="$biblID"/>")</s:assert>
             </s:rule>
          </pattern>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                  id="shawi-entry-biblPlaceCheck-constraint-rule-29">
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    context="tei:form">
+               <s:assert test="                                         every $sourceID in tokenize(@source,' ') satisfies                                         let $bibl :=                                             ancestor::tei:entry//tei:bibl[@xml:id = substring-after($sourceID, '#')],                                                 $zot := substring-after($bibl/tei:title/@ref, 'zot:'),                                                 $place := tei:usg[@type='geographic']/tei:name[@type='place']                                         return                                             (                                                 ($zot = 'Lentin2013' and $place = 'Mayadin')                                                 or ($zot = 'Younes2021' and $place = 'Bekaa')                                                 or ($zot = 'Bettini2006' and ($place = 'Jbur' or $place = 'Tayy'))                                                 or not ($zot = ('Lentin2013', 'Younes2021', 'Bettini2006'))                                              )                                              ">Invalid geographic usage for <s:value-of select="tokenize(@source,' ')"/>
+               </s:assert>
+            </s:rule>
+         </pattern>
          <ref name="att.global.attribute.n"/>
          <ref name="att.global.attribute.xmlbase"/>
          <ref name="att.global.analytic.attribute.ana"/>
@@ -3746,7 +3756,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-sense-senseChildrenOrder-constraint-rule-29">
+                  id="shawi-sense-senseChildrenOrder-constraint-rule-30">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:sense">
@@ -3798,7 +3808,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-form-compoundOrth-constraint-rule-30">
+                  id="shawi-form-compoundOrth-constraint-rule-31">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:form[@type='lemma']/tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">
@@ -3823,7 +3833,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-form-noType-constraint-rule-33">
+                  id="shawi-form-noType-constraint-rule-34">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:form[not(@type)]">
@@ -3832,7 +3842,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-form-formChildrenOrder-constraint-rule-34">
+                  id="shawi-form-formChildrenOrder-constraint-rule-35">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:form">
@@ -3843,7 +3853,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-form-form-type-constraint-rule-35">
+                  id="shawi-form-form-type-constraint-rule-36">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:form[not(parent::tei:cit)]">
@@ -3977,7 +3987,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          <ref name="macro.lexicalParaContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-gram-gram-constraints-constraint-rule-39">
+                  id="shawi-gram-gram-constraints-constraint-rule-40">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:gram[@type = 'morphPattern']">
@@ -4087,7 +4097,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-gramGrp-gram-roots-constraint-rule-45">
+                  id="shawi-gramGrp-gram-roots-constraint-rule-46">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:gramGrp">
@@ -4096,7 +4106,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-gramGrp-gramGrpChildrenOrder-constraint-rule-46">
+                  id="shawi-gramGrp-gramGrpChildrenOrder-constraint-rule-47">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:gramGrp">
@@ -4142,7 +4152,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-etym-etymChildrenOrder-constraint-rule-47">
+                  id="shawi-etym-etymChildrenOrder-constraint-rule-48">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:etym">
@@ -4196,7 +4206,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </choice>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-usg-usgChildrenOrder-constraint-rule-48">
+                  id="shawi-usg-usgChildrenOrder-constraint-rule-49">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:usg">
@@ -4206,7 +4216,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-usg-name-in-usg-constraint-rule-49">
+                  id="shawi-usg-name-in-usg-constraint-rule-50">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:usg[not(@type = 'geographic') and not(@type='socioCultural') and not(@type='pragmatics')]">
@@ -5951,7 +5961,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
          <ref name="macro.lexicalParaContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-seg-seg-context-constraint-rule-50">
+                  id="shawi-seg-seg-context-constraint-rule-51">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:seg[@type = 'hint']">
@@ -6384,7 +6394,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-body-body-children-constraint-rule-51">
+                  id="shawi-body-body-children-constraint-rule-52">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:body">
@@ -6447,7 +6457,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-div-div-example-children-constraint-rule-52">
+                  id="shawi-div-div-example-children-constraint-rule-53">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:div[@type = 'examples']">
@@ -6463,7 +6473,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-div-abstractModel-structure-div-in-l-constraint-rule-54">
+                  id="shawi-div-abstractModel-structure-div-in-l-constraint-rule-55">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6476,7 +6486,7 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi-div-abstractModel-structure-div-in-ab-or-p-constraint-rule-55">
+                  id="shawi-div-abstractModel-structure-div-in-ab-or-p-constraint-rule-56">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
