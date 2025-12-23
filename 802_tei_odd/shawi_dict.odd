@@ -819,6 +819,16 @@
                             </constraint>
                         </constraintSpec>
                     </elementSpec>
+                    
+                    <elementSpec ident="fs" mode="change" module="iso-fs">
+                        <constraintSpec ident="hasStatusCheck" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:entry/tei:fs">
+                                    <s:assert test="tei:f[@name='status']/tei:symbol/@value = ('stub', 'draft', 'released')">at least one f with name status must exist and its child must have one of the values 'stub', 'draft' or 'released'</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
 
                     <elementSpec ident="name" mode="change" module="core">
                         <constraintSpec ident="name-not-empty" scheme="schematron">
