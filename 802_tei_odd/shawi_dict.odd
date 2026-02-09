@@ -594,7 +594,16 @@
                                     <s:assert test="../tei:gram[@type='pos'] = 'numeral'">​value "<s:value-of select="."/>" is not expected in gram[@type='subc'] ​when used in combination with in​ gram[@type='pos'][. = "<s:value-of select="../tei:gram[@type='pos']"/>"]. The expected value is "numeral".</s:assert>
                                 </s:rule>​
                             </constraint>
-                        </constraintSpec>    
+                        </constraintSpec>
+                        
+                        <attList>
+                            <attDef ident="space" ns="http://www.w3.org/XML/1998/namespace" usage="opt">
+                                <desc>Allow xml:space on gram to preserve whitespace.</desc>
+                                <valList type="closed">
+                                    <valItem ident="preserve"/>
+                                </valList>
+                            </attDef>                            
+                        </attList>
                     </elementSpec>
                     
                     
@@ -615,6 +624,7 @@
                                     <valItem ident="ar-Latn"/>
                                     <valItem ident="en"/>
                                     <valItem ident="de"/>
+                                    <valItem ident="gr"/>
                                     <valItem ident="tr"/>
                                     <valItem ident="fr"/>
                                     <valItem ident="es"/>
@@ -626,7 +636,24 @@
                         </attList>
                     </classSpec>
                     
-
+                    <elementSpec ident="quote" mode="change" module="core">
+                        <constraintSpec ident="quote-constraints" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:quote[tei:seg]">
+                                    <s:assert test="exists(@xml:space)">a quote with seg's needs to have xml:space="preserve"</s:assert>
+                                </s:rule>                        
+                            </constraint>
+                        </constraintSpec>    
+                        <attList>
+                            <attDef ident="space" ns="http://www.w3.org/XML/1998/namespace" usage="opt">
+                                <desc>Allow xml:space on quote to preserve whitespace.</desc>
+                                <valList type="closed">
+                                    <valItem ident="preserve"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
                     <elementSpec ident="form" mode="change" module="dictionaries">
                         <constraintSpec ident="compoundOrth" scheme="schematron">
                             <constraint>
