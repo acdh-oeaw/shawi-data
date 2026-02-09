@@ -6,7 +6,7 @@
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.tmp"/>
    <!--
-    Schema generated from ODD source 2025-11-18T10:31:38Z. . 
+    Schema generated from ODD source 2026-01-29T13:16:22Z. . 
     TEI Edition:  
     TEI Edition Location: https://www.tei-c.org/Vault/P5// 
     
@@ -2565,8 +2565,10 @@ Suggested values include: 1] full (full form); 2] pref (prefix); 3] suff (suffix
          <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:usg"/>
             <xs:choice>
-               <xs:element ref="tei:quote"/>
                <xs:element ref="tei:form"/>
+               <xs:sequence>
+                  <xs:element ref="tei:quote" minOccurs="1" maxOccurs="2"/>
+               </xs:sequence>
             </xs:choice>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
                <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:cit"/>
@@ -2758,52 +2760,56 @@ Sample values include: 1] suspension (suspension); 2] contraction (contraction);
          <xs:documentation>(reference) a reference either to a license or to an example [3.7. Simple Links and Cross-References 17.1. Links]</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
-         <xs:attributeGroup ref="tei:att.notated.attributes"/>
-         <xs:attributeGroup ref="tei:att.scoped.attributes"/>
-         <xs:attributeGroup ref="tei:att.global.attributes"/>
-         <xs:attributeGroup ref="tei:att.cReferencing.attributes"/>
-         <xs:attributeGroup ref="tei:att.cmc.attributes"/>
-         <xs:attributeGroup ref="tei:att.internetMedia.attributes"/>
-         <xs:attributeGroup ref="tei:att.pointing.attributes"/>
-         <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
-         <xs:attribute name="type" use="required">
-            <xs:annotation>
-               <xs:documentation>
+         <xs:complexContent>
+            <xs:extension base="tei:macro.phraseSeq">
+               <xs:attributeGroup ref="tei:att.lexicographic.attributes"/>
+               <xs:attributeGroup ref="tei:att.notated.attributes"/>
+               <xs:attributeGroup ref="tei:att.scoped.attributes"/>
+               <xs:attributeGroup ref="tei:att.global.attributes"/>
+               <xs:attributeGroup ref="tei:att.cReferencing.attributes"/>
+               <xs:attributeGroup ref="tei:att.cmc.attributes"/>
+               <xs:attributeGroup ref="tei:att.internetMedia.attributes"/>
+               <xs:attributeGroup ref="tei:att.pointing.attributes"/>
+               <xs:attributeGroup ref="tei:att.typed.attribute.subtype"/>
+               <xs:attribute name="type" use="required">
+                  <xs:annotation>
+                     <xs:documentation>
 Suggested values include: 1] entry; 2] sense; 3] bibliography</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:union memberTypes="xs:Name">
+                  </xs:annotation>
                   <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="entry">
-                           <xs:annotation>
-                              <xs:documentation/>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
+                     <xs:union memberTypes="xs:Name">
+                        <xs:simpleType>
+                           <xs:restriction base="xs:token">
+                              <xs:enumeration value="entry">
+                                 <xs:annotation>
+                                    <xs:documentation/>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                        <xs:simpleType>
+                           <xs:restriction base="xs:token">
+                              <xs:enumeration value="sense">
+                                 <xs:annotation>
+                                    <xs:documentation/>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                        <xs:simpleType>
+                           <xs:restriction base="xs:token">
+                              <xs:enumeration value="bibliography">
+                                 <xs:annotation>
+                                    <xs:documentation/>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                     </xs:union>
                   </xs:simpleType>
-                  <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="sense">
-                           <xs:annotation>
-                              <xs:documentation/>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
-                  </xs:simpleType>
-                  <xs:simpleType>
-                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="bibliography">
-                           <xs:annotation>
-                              <xs:documentation/>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
-                  </xs:simpleType>
-               </xs:union>
-            </xs:simpleType>
-         </xs:attribute>
+               </xs:attribute>
+            </xs:extension>
+         </xs:complexContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="list">
@@ -2812,8 +2818,21 @@ Suggested values include: 1] entry; 2] sense; 3] bibliography</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:group minOccurs="0" ref="tei:model.divTop"/>
-            <xs:element maxOccurs="unbounded" ref="tei:item"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+               <xs:group ref="tei:model.divTop"/>
+               <xs:group ref="tei:model.global"/>
+            </xs:choice>
+            <xs:choice>
+               <xs:sequence maxOccurs="unbounded">
+                  <xs:element ref="tei:item"/>
+                  <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
+               </xs:sequence>
+               <xs:sequence maxOccurs="unbounded">
+                  <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
+                  <xs:element ref="tei:item"/>
+                  <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.global"/>
+               </xs:sequence>
+            </xs:choice>
          </xs:sequence>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
          <xs:attributeGroup ref="tei:att.cmc.attributes"/>
@@ -3712,9 +3731,9 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                         <xs:documentation>multiple-word lexical item</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
-                  <xs:enumeration value="construction">
+                  <xs:enumeration value="stem">
                      <xs:annotation>
-                        <xs:documentation/>
+                        <xs:documentation>This type is used in FarsiDict only.</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                </xs:restriction>
@@ -3849,19 +3868,24 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                         <xs:documentation/>
                      </xs:annotation>
                   </xs:enumeration>
+                  <xs:enumeration value="arguments">
+                     <xs:annotation>
+                        <xs:documentation>arguments to a verb (see above)</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="constraint">
+                     <xs:annotation>
+                        <xs:documentation>constraints</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="construction">
+                     <xs:annotation>
+                        <xs:documentation>constructions (see above)</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
                   <xs:enumeration value="derivedVerbClass">
                      <xs:annotation>
                         <xs:documentation>derived verb class</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="synRoot">
-                     <xs:annotation>
-                        <xs:documentation>synchronous root</xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="root">
-                     <xs:annotation>
-                        <xs:documentation>synchronous root</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                   <xs:enumeration value="diaRoot">
@@ -3869,14 +3893,19 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                         <xs:documentation>diachronic root</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
-                  <xs:enumeration value="subc">
+                  <xs:enumeration value="morphPattern">
                      <xs:annotation>
-                        <xs:documentation>any subcategory of another gram value</xs:documentation>
+                        <xs:documentation>morphological pattern</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
-                  <xs:enumeration value="derivedVerbClass">
+                  <xs:enumeration value="msd">
                      <xs:annotation>
-                        <xs:documentation>derived verb class</xs:documentation>
+                        <xs:documentation>The abbreviation stands for morphosyntactic description. The value of this gram-type can be "activeParticiple|passiveParticiple"</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="nominalState">
+                     <xs:annotation>
+                        <xs:documentation>Used for "status constructus"</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                   <xs:enumeration value="person">
@@ -3884,9 +3913,29 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                         <xs:documentation/>
                      </xs:annotation>
                   </xs:enumeration>
-                  <xs:enumeration value="morphPattern">
+                  <xs:enumeration value="polarity">
                      <xs:annotation>
-                        <xs:documentation>morphological pattern</xs:documentation>
+                        <xs:documentation/>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="root">
+                     <xs:annotation>
+                        <xs:documentation>synchronous root</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="state">
+                     <xs:annotation>
+                        <xs:documentation>construct</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="synRoot">
+                     <xs:annotation>
+                        <xs:documentation>synchronous root</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="voice">
+                     <xs:annotation>
+                        <xs:documentation/>
                      </xs:annotation>
                   </xs:enumeration>
                </xs:restriction>
@@ -4053,6 +4102,11 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                   <xs:enumeration value="hint">
                      <xs:annotation>
                         <xs:documentation>marker which cannot be classified otherwise</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="pragmatics">
+                     <xs:annotation>
+                        <xs:documentation>Pragmatic information</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                </xs:restriction>
@@ -6722,6 +6776,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</xs:d
       <xs:complexType>
          <xs:choice>
             <xs:element maxOccurs="unbounded" ref="tei:list"/>
+            <xs:element maxOccurs="unbounded" ref="tei:listChange"/>
             <xs:element maxOccurs="unbounded" ref="tei:change"/>
          </xs:choice>
          <xs:attributeGroup ref="tei:att.global.attributes"/>
@@ -6828,6 +6883,16 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</xs:d
       <xs:annotation>
          <xs:documentation>(interpretation) describes the scope of any analytic or interpretive information added to the text in addition to the transcription. []</xs:documentation>
       </xs:annotation>
+   </xs:element>
+   <xs:element name="listChange">
+      <xs:annotation>
+         <xs:documentation/>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="tei:change"/>
+         </xs:sequence>
+      </xs:complexType>
    </xs:element>
    <xs:attributeGroup name="att.global.linking.attributes">
       <xs:attributeGroup ref="tei:att.global.linking.attribute.corresp"/>
@@ -6996,7 +7061,17 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</xs:d
                   </xs:enumeration>
                   <xs:enumeration value="constrPart">
                      <xs:annotation>
+                        <xs:documentation>constrPart is used in constructions</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="oRef">
+                     <xs:annotation>
                         <xs:documentation>TODO add description ???</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="exPart">
+                     <xs:annotation>
+                        <xs:documentation>exPart stands for example part and is used to encode tokens in example sentences.</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                </xs:restriction>

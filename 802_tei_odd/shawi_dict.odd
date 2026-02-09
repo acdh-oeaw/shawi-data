@@ -554,13 +554,6 @@
                         <content>
                             <elementRef key="model.gramPart" minOccurs="1" maxOccurs="unbounded"/>
                         </content>
-                        <constraintSpec ident="gram-roots" scheme="schematron">
-                            <constraint>
-                                <s:rule context="tei:gramGrp">
-                                    <s:assert test="not(tei:gram[@type='synRoot']) = not(tei:gram[@type='diaRoot'])">if there is a gram type 'diaRoot', there has to be a gram type 'synRoot' in the same gramGrp, and vice versa</s:assert>
-                                </s:rule>
-                            </constraint>
-                        </constraintSpec>
                         <constraintSpec ident="gramGrpChildrenOrder" scheme="schematron">
                             <constraint>
                                 <s:rule context="tei:gramGrp">
@@ -597,8 +590,6 @@
                                 <s:rule context="tei:gram[@type = 'subc'][contains(normalize-space(.),'noun')]">
                                     <s:assert test="../tei:gram[@type='pos']='noun'">gram[@type='subc'] is not expected in combination with gram[@type='pos']='<s:value-of select="../tei:gram[@type='pos']"/>' (expected: "noun")</s:assert>
                                 </s:rule>
-                               
-                               
                                 <s:rule context="tei:gram[@type = 'subc'][normalize-space(.)=('fraction','ordinal')]">
                                     <s:assert test="../tei:gram[@type='pos'] = 'numeral'">​value "<s:value-of select="."/>" is not expected in gram[@type='subc'] ​when used in combination with in​ gram[@type='pos'][. = "<s:value-of select="../tei:gram[@type='pos']"/>"]. The expected value is "numeral".</s:assert>
                                 </s:rule>​
@@ -607,12 +598,21 @@
                     </elementSpec>
                     
                     
-                    
                     <classSpec type="atts" ident="att.global" mode="change">
+                        <constraintSpec ident="xml-lang-on-object-lang-elts" scheme="schematron" mode="change" xml:id="xml-lang-on-object-lang-elts">
+                            <desc>assert that @xml:lang is added to elements with object language</desc>
+                            <constraint>
+                                <s:rule
+                                    context="tei:entry|tei:gram[@type=('arguments','collocate','diaRoot','government','morphPattern','synRoot')]|tei:orth|tei:quote">
+                                    <s:assert test="exists(@xml:lang)">Elements containing object language must have an @xml:lang attribute.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
                         <attList>
                             <attDef ident="xml:lang" mode="change">
                                 <valList type="closed" mode="replace">
                                     <valItem ident="ar-acm-x-shawi-vicav"/>
+                                    <valItem ident="ar-Latn"/>
                                     <valItem ident="en"/>
                                     <valItem ident="de"/>
                                     <valItem ident="tr"/>
@@ -636,9 +636,6 @@
                                         type lemma with an orth that contains a space or a hyphen
                                         (not at the beginning or end of a string) has to have a
                                         subtype compound</s:assert>
-                                </s:rule>
-                                <s:rule context="tei:form[@type=('lemma','variant','inflected')]">
-                                    <s:assert test="tei:usg[@type='geographic']">lemmas, inflected forms and variants must inlcude usg[@type='geographic']</s:assert>
                                 </s:rule>
                                 <s:rule context="tei:form[@subtype='compound']">
                                     <s:assert
@@ -681,17 +678,17 @@
                                 <s:rule context="tei:bibl/tei:title[@ref='zot:Bettini2006']">
                                     <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 358
                                         and
-                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 399">If Bettini2006 is the source, the following biblScope must be in the range between 359 and 398.</s:assert>
+                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 399">If Bettini2006 is the source, the following biblScope pages must be between 359 and 398.</s:assert>
                                 </s:rule>
                                 <s:rule context="tei:bibl/tei:title[@ref='zot:Lentin2013']">
                                     <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 150
                                         and
-                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 172">If Lentin2013 is the source, the following biblScope must be in the range between 151 and 171.</s:assert>
+                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 172">If Lentin2013 is the source, the following biblScope pages must be between 151 and 171.</s:assert>
                                 </s:rule>
                                 <s:rule context="tei:bibl/tei:title[@ref='zot:Younes2021']">
                                     <s:assert test="number(substring-after(./following-sibling::tei:biblScope, 'p.')) &gt; 0
                                         and
-                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 137">If Younes2021 is the source, the following biblScope must be in the range between 1 and 136.</s:assert>
+                                        number(substring-after(./following-sibling::tei:biblScope, 'p.')) &lt; 137">If Younes2021 is the source, the following biblScope pages must be between 1 and 136.</s:assert>
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
@@ -787,6 +784,37 @@
                                         >If a sense element has a source attribute there must be a
                                         corresponding bibl element in listBibl ("<s:value-of
                                             select="$biblID"/>")</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="biblPlaceCheck" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:form">
+                                    <s:assert test="
+                                        every $sourceID in tokenize(@source,' ') satisfies
+                                        let $bibl :=
+                                            ancestor::tei:entry//tei:bibl[@xml:id = substring-after($sourceID, '#')],
+                                                $zot := substring-after($bibl/tei:title/@ref, 'zot:'),
+                                                $place := tei:usg[@type='geographic']/tei:name[@type='place']
+                                        return
+                                            (
+                                                ($zot = 'Lentin2013' and $place = 'Mayadin')
+                                                or ($zot = 'Younes2021' and $place = 'Bekaa')
+                                                or ($zot = 'Bettini2006' and ($place = 'Jbur' or $place = 'Tayy'))
+                                                or not ($zot = ('Lentin2013', 'Younes2021', 'Bettini2006'))
+                                             )
+                                             ">Invalid geographic usage for <s:value-of select="tokenize(@source,' ')"/>
+                                    </s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+                    
+                    <elementSpec ident="fs" mode="change" module="iso-fs">
+                        <constraintSpec ident="hasStatusCheck" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:entry/tei:fs">
+                                    <s:assert test="tei:f[@name='status']/tei:symbol/@value = ('stub', 'draft', 'released')">at least one f with name status must exist and its child must have one of the values 'stub', 'draft' or 'released'</s:assert>
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
