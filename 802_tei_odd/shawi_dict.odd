@@ -569,6 +569,14 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="gramGrpPosition" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:entry/tei:gramGrp">
+                                    <s:assert test="following-sibling::*[1][self::tei:sense] or following-sibling::*[1][self::tei:etym]">gramGrp is in the wrong place.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                        
                     </elementSpec>
 
                     <elementSpec ident="gram" mode="change" module="dictionaries">
@@ -726,7 +734,16 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
+                        
+                        <constraintSpec ident="listBiblPosition" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:listBibl">
+                                    <s:assert test="following-sibling::*[1][self::tei:fs]">listBibl must be immediately followed by fs.</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
                     </elementSpec>
+                    
                     
                     <elementSpec ident="biblScope" mode="change" module="dictionaries">
                         <constraintSpec ident="biblScope-context" scheme="schematron">
@@ -769,6 +786,14 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
+                        
+                        <constraintSpec ident="etymCit" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:cit[@type='etymon']">
+                                    <s:assert test="parent::tei:etym">missing etym element</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>                        
                     </elementSpec>
                     
                     <elementSpec ident="sense" mode="change" module="dictionaries">
@@ -782,7 +807,7 @@
                             </constraint>
                         </constraintSpec>
                     </elementSpec>
-
+                    
                     <elementSpec ident="entry" mode="change" module="dictionaries">
                         <constraintSpec ident="entryChildrenOrder" scheme="schematron">
                             <constraint>
