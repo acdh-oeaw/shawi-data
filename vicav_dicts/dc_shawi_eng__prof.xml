@@ -981,8 +981,8 @@ z# = ž   //zhe alternative
 <queryTemplate label="ft_all">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
-   collection($__db__)//tei:entry/.//node()[text() contains text "{subQuery}" using wildcards] | 
-   collection($__db__)//tei:cit[@type='example']//tei:quote[text() contains text "{subQuery}" using wildcards]
+   collection($__db__)//tei:entry[.//@value = "released"]/.//node()[text() contains text "{subQuery}" using wildcards] | 
+   collection($__db__)//tei:cit[.//@value = "released"][.//@value = "released"][@type='example']//tei:quote[text() contains text "{subQuery}" using wildcards]
 </queryTemplate>
 
 <queryTemplate label="ft_all_complete" type="complete">
