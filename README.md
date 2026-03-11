@@ -68,3 +68,11 @@ Workflow steps reflected in the data in this repository:
    * now choose `shawi-app-devel` and
    * click `redeploy` (three dots on the right)
    * wait until it is done
+## Dependencies
+
+This content repository uses `vicav-library`. In this repository we keep data common to more than one VICAV projects.
+
+### Updatest to the vicav-library`
+
+Note that `vicav-library` is a submodule that references a revision of that data repoitory by hash. Updates need to be done explicitly by pulling the current
+vicav-library main branch and then committing the new revision in this repository.
