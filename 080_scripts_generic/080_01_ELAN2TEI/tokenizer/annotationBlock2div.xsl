@@ -22,24 +22,11 @@
         <xsl:variable name="type">
             <xsl:choose>
                 <xsl:when test="$media/@mimeType='audio/wav'">audio-master</xsl:when>
-                <xsl:otherwise>audio-public</xsl:otherwise>
+                <xsl:when test="$media/@mimeType='audio/mp3'">audio-public</xsl:when>
             </xsl:choose>
         </xsl:variable>
         <xsl:value-of select="concat('#',substring-before(substring-after($url,'/'),'.'),'-',$type)"/>
     </xsl:function>
-    
-    <xsl:template match="tei:recording">
-        <xsl:copy>
-            <xsl:apply-templates select="@*|node()"/>
-            <xsl:for-each select="//tei:annotationBlock/descendant::tei:media">
-                <xsl:copy>
-                    <xsl:attribute name="xml:id" select="substring-after(_:idRefFromMediaUrl(.),'#')"/>
-                    <xsl:attribute name="type">fragment</xsl:attribute>
-                    <xsl:apply-templates select="@*|node()"/>
-                </xsl:copy>
-            </xsl:for-each>
-        </xsl:copy>
-    </xsl:template>
     
     <xsl:template match="tei:listPrefixDef">
         <xsl:copy>
