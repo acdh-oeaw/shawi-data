@@ -11,31 +11,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: get python 3.13
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.13'
           cache: "pipenv"
       - name: convert ELAN to TEI
         env:
-          SP_USERNAME: ${{ secrets.SP_USERNAME }}
-          SP_PWD: ${{ secrets.SP_PWD }}
+          SP_TENANT_ID: ${{ secrets.SP_TENANT_ID }}
+          SP_CLIENT_ID: ${{ secrets.SP_CLIENT_ID }}
+          SP_CLIENT_SECRET: ${{ secrets.SP_CLIENT_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         run: |
           python --version
           python -m pip install pipenv
           cd 080_scripts_generic/080_01_ELAN2TEI
           pipenv install
           pipenv run jupyter nbconvert --to script ELAN2TEI.ipynb
-          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python ELAN2TEI.py
+          pipenv run python ELAN2TEI.py
       - name: convert 010_manannot to 130_vert_plain
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         run: |
           python --version
           python -m pip install pipenv
           cd 080_scripts_generic/080_02_manannot_to_vert
           pipenv install
           pipenv run jupyter nbconvert --to script manannot-to-vert.ipynb
-          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} pipenv run python manannot-to-vert.py
+          pipenv run python manannot-to-vert.py
       - name: Commit auto generated files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -52,7 +56,7 @@ jobs:
           branch: ${{ github.ref }}
       - name: Create tags based on git data
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: |
             ghcr.io/acdh-oeaw/shawi-data/shawi-noske
@@ -64,15 +68,15 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=raw,value={{sha}}
       - name: login to github container registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
       - name: build and push to ghcr.io      
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./nosketchengine/Dockerfile
