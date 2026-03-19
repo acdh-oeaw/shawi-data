@@ -1,0 +1,1444 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="../082_scripts_xsl/tei_2_html__shawi.xsl"?>
+<?xslt inPathSegment="\010_manannot\" outPathSegment="\106_html\"?>
+<?processor name="saxon" removePreserveFromXML="true" removePreserveFromXSLT="true"?>
+<?snippets fn="snippets_shawi_001.xml" path="{filePath}/../880_conf/"?>
+<?standoff fn="shawi_standoff.xml" path=""?>
+<?attributeAssignments fn="shawi_attributes.xml" path="{filePath}/../880_conf/"?>
+<?shortCuts fn="shawi_shortCuts" path="{filePath}/../880_conf/"?>
+<!--THIS FILE WAS PROGRAMMATICALLY CREATED by mergeHeaderAndTranscription.xsl on/at2026-03-19T12:06:24.911882Z-->
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title level="a">Conversations Harran (a)</title>
+            <title level="s">SHAWI Corpus</title>
+            <respStmt>
+               <persName ref="corpus:ISM">Ismail Batan</persName>
+               <resp>recording</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:SP">Stephan Procházka</persName>
+               <resp>transcription</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:AHu">Aozan Hussien</persName>
+               <resp>transcription check</resp>
+            </respStmt>
+            <respStmt>
+               <persName ref="corpus:SP">Stephan Procházka</persName>
+               <resp>transcription check</resp>
+            </respStmt>
+            <funder>Funded by the <orgName ref="https://ror.org/013tf3c58">FWF Austrian Science Fund</orgName> under the number <idno type="projectNumber">P 33574</idno>
+            </funder>
+         </titleStmt>
+         <publicationStmt>
+            <publisher ref="https://ror.org/03anc3s24">Austrian Academy of Sciences</publisher>
+            <publisher ref="https://ror.org/03prydq77">University of Vienna</publisher>
+            <distributor ref="https://ror.org/028bsh698">Austrian Center for Digital Humanities and Cultural Heritage</distributor>
+            <date>TODO Set publication date here</date>
+            <address>
+               <addrLine>Bäckerstraße 13</addrLine>
+               <addrLine>1010 Vienna</addrLine>
+               <addrLine>Austria</addrLine>
+            </address>
+            <availability status="free">
+               <licence target="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</licence>
+            </availability>
+            <idno type="SHAWICorpusID">URFA-438a</idno>
+            <idno type="teiSource">https://github.com/acdh-oeaw/shawi-data/blob/main/103_tei_w/shawiCorpus.xml</idno>
+         </publicationStmt>
+         <sourceDesc>
+            <recordingStmt>
+               <recording dur-iso="28:09" type="audio">
+                  <date when="2023-01-24"/>
+                  <respStmt>
+                     <persName ref="corpus:ISM">Ismail Batan</persName>
+                     <resp>recording</resp>
+                  </respStmt>
+                  <media url="share:Urfa-438_Conversations-Harran-2023.wav" mimeType="audio/wav" type="master"/>
+               </recording>
+            </recordingStmt>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <listPrefixDef>
+            <prefixDef ident="corpus" matchPattern="^(.+)$" replacementPattern="shawiCorpus.xml#$1">
+               <p>Private URIs using the <code>teiCorpusHeader</code> prefix are pointers to any element in the <ref target="shawiCorpus.xml">SHAWI teiCorpus document</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="share" matchPattern="^(.+)$" replacementPattern="\\share17.univie.ac.at\orientalistik\SHAWI\Recordings\*\*\$1.wav">
+               <p>Private URIs using the <code>share</code> prefix are pointers to audio file residing on the SHAWI network share.</p>
+            </prefixDef>
+            <prefixDef ident="geo" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml#$1">
+               <p>Private URIs using the <code>geo</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>place</gi> element in <ref target="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_geodata.xml">VICAV Geodata list</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="zotid" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/vicav_biblio/vicav_biblio_tei_zotero.xml#$1">
+               <p>Private URIs using the <code>zotid</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>biblStruct</gi> element in the TEI export of the <ref target="https://www.zotero.org/groups/2165756/vicav/library">VICAV Zotero Group library</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="dict" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/shawi-data/blob/main/vicav_dicts/dc_shawi_eng.xml#$1">
+               <p>Private URIs using the <code>dict</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>entry</gi> in the <ref target="https://github.com/acdh-oeaw/shawi-data/blob/main/vicav_dicts/dc_shawi_eng.xml">SHAWI glossary</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="rend" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/tools/vicav_rendition.xml#$1">
+               <p>Private URIs using the <code>rend</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>rendition</gi> element in <ref target="https://github.com/acdh-oeaw/vicav-content/blob/master/tools/vicav_rendition.xml">VICAV rendition library</ref>.</p>
+            </prefixDef>
+            <prefixDef ident="assets" matchPattern="^(.+)$" replacementPattern="https://shawi-assets.acdh.oeaw.ac.at/$1">
+               <p>Private URIs using the <code>assets</code> prefix are pointers to the location of the SHAWI media assets.</p>
+            </prefixDef>
+         </listPrefixDef>
+      </encodingDesc>
+      <profileDesc>
+         <particDesc>
+            <listPerson>
+               <head>Speakers in URFA-438a</head>
+               <person sameAs="corpus:Ceylanpinar04">
+                  <name type="pseudonym">Ceylanpinar04</name>
+               </person>
+               <person sameAs="corpus:Harran02">
+                  <name type="pseudonym">Harran02</name>
+               </person>
+            </listPerson>
+         </particDesc>
+         <settingDesc>
+            <place sameAs="geo:">
+               <placeName>Harran</placeName>
+            </place>
+         </settingDesc>
+         <textClass>
+            <catRef target="corpus:Syrians"/>
+         </textClass>
+      </profileDesc>
+      <revisionDesc status="generated">
+         <change when="2026-03-19"/>
+      </revisionDesc>
+   </teiHeader>
+   <text>
+      <timeline unit="ms">
+         <when xml:id="T0"/>
+         <when interval="702990" since="#T0" xml:id="T65"/>
+         <when interval="706960" since="#T0" xml:id="T66"/>
+         <when interval="706980" since="#T0" xml:id="T1"/>
+         <when interval="707490" since="#T0" xml:id="T2"/>
+         <when interval="708650" since="#T0" xml:id="T67"/>
+         <when interval="709500" since="#T0" xml:id="T68"/>
+         <when interval="709540" since="#T0" xml:id="T3"/>
+         <when interval="710050" since="#T0" xml:id="T4"/>
+         <when interval="710060" since="#T0" xml:id="T69"/>
+         <when interval="710610" since="#T0" xml:id="T5"/>
+         <when interval="710800" since="#T0" xml:id="T70"/>
+         <when interval="712230" since="#T0" xml:id="T6"/>
+         <when interval="715210" since="#T0" xml:id="T71"/>
+         <when interval="720180" since="#T0" xml:id="T72"/>
+         <when interval="720200" since="#T0" xml:id="T7"/>
+         <when interval="720580" since="#T0" xml:id="T73"/>
+         <when interval="720640" since="#T0" xml:id="T8"/>
+         <when interval="725010" since="#T0" xml:id="T74"/>
+         <when interval="726930" since="#T0" xml:id="T75"/>
+         <when interval="731200" since="#T0" xml:id="T9"/>
+         <when interval="731240" since="#T0" xml:id="T76"/>
+         <when interval="731930" since="#T0" xml:id="T10"/>
+         <when interval="732200" since="#T0" xml:id="T77"/>
+         <when interval="733230" since="#T0" xml:id="T78"/>
+         <when interval="734100" since="#T0" xml:id="T11"/>
+         <when interval="735430" since="#T0" xml:id="T12"/>
+         <when interval="735450" since="#T0" xml:id="T79"/>
+         <when interval="735870" since="#T0" xml:id="T13"/>
+         <when interval="735900" since="#T0" xml:id="T80"/>
+         <when interval="736160" since="#T0" xml:id="T14"/>
+         <when interval="737560" since="#T0" xml:id="T81"/>
+         <when interval="742900" since="#T0" xml:id="T82"/>
+         <when interval="742920" since="#T0" xml:id="T15"/>
+         <when interval="743950" since="#T0" xml:id="T16"/>
+         <when interval="743980" since="#T0" xml:id="T83"/>
+         <when interval="745870" since="#T0" xml:id="T84"/>
+         <when interval="745930" since="#T0" xml:id="T17"/>
+         <when interval="749230" since="#T0" xml:id="T18"/>
+         <when interval="749420" since="#T0" xml:id="T85"/>
+         <when interval="753760" since="#T0" xml:id="T86"/>
+         <when interval="753860" since="#T0" xml:id="T87"/>
+         <when interval="758330" since="#T0" xml:id="T88"/>
+         <when interval="758840" since="#T0" xml:id="T89"/>
+         <when interval="768500" since="#T0" xml:id="T90"/>
+         <when interval="769460" since="#T0" xml:id="T91"/>
+         <when interval="777170" since="#T0" xml:id="T92"/>
+         <when interval="777830" since="#T0" xml:id="T93"/>
+         <when interval="781500" since="#T0" xml:id="T94"/>
+         <when interval="781570" since="#T0" xml:id="T19"/>
+         <when interval="783160" since="#T0" xml:id="T20"/>
+         <when interval="783530" since="#T0" xml:id="T95"/>
+         <when interval="791630" since="#T0" xml:id="T96"/>
+         <when interval="791700" since="#T0" xml:id="T21"/>
+         <when interval="792090" since="#T0" xml:id="T22"/>
+         <when interval="792330" since="#T0" xml:id="T97"/>
+         <when interval="793300" since="#T0" xml:id="T23"/>
+         <when interval="793330" since="#T0" xml:id="T98"/>
+         <when interval="795190" since="#T0" xml:id="T24"/>
+         <when interval="795350" since="#T0" xml:id="T99"/>
+         <when interval="797250" since="#T0" xml:id="T100"/>
+         <when interval="797270" since="#T0" xml:id="T25"/>
+         <when interval="798500" since="#T0" xml:id="T26"/>
+         <when interval="798740" since="#T0" xml:id="T101"/>
+         <when interval="799130" since="#T0" xml:id="T27"/>
+         <when interval="799380" since="#T0" xml:id="T102"/>
+         <when interval="801020" since="#T0" xml:id="T28"/>
+         <when interval="801160" since="#T0" xml:id="T103"/>
+         <when interval="801590" since="#T0" xml:id="T29"/>
+         <when interval="801600" since="#T0" xml:id="T104"/>
+         <when interval="802020" since="#T0" xml:id="T30"/>
+         <when interval="807060" since="#T0" xml:id="T31"/>
+         <when interval="816210" since="#T0" xml:id="T32"/>
+         <when interval="816260" since="#T0" xml:id="T105"/>
+         <when interval="817430" since="#T0" xml:id="T33"/>
+         <when interval="819270" since="#T0" xml:id="T34"/>
+         <when interval="819290" since="#T0" xml:id="T106"/>
+         <when interval="822480" since="#T0" xml:id="T35"/>
+         <when interval="822890" since="#T0" xml:id="T36"/>
+         <when interval="822910" since="#T0" xml:id="T107"/>
+         <when interval="823720" since="#T0" xml:id="T108"/>
+         <when interval="828630" since="#T0" xml:id="T37"/>
+         <when interval="828660" since="#T0" xml:id="T109"/>
+         <when interval="829100" since="#T0" xml:id="T38"/>
+         <when interval="829470" since="#T0" xml:id="T110"/>
+         <when interval="830820" since="#T0" xml:id="T111"/>
+         <when interval="831150" since="#T0" xml:id="T39"/>
+         <when interval="832330" since="#T0" xml:id="T40"/>
+         <when interval="832470" since="#T0" xml:id="T112"/>
+         <when interval="834980" since="#T0" xml:id="T113"/>
+         <when interval="835000" since="#T0" xml:id="T41"/>
+         <when interval="835610" since="#T0" xml:id="T42"/>
+         <when interval="835640" since="#T0" xml:id="T114"/>
+         <when interval="840330" since="#T0" xml:id="T115"/>
+         <when interval="840380" since="#T0" xml:id="T116"/>
+         <when interval="843150" since="#T0" xml:id="T117"/>
+         <when interval="843160" since="#T0" xml:id="T43"/>
+         <when interval="844360" since="#T0" xml:id="T44"/>
+         <when interval="845270" since="#T0" xml:id="T118"/>
+         <when interval="847930" since="#T0" xml:id="T119"/>
+         <when interval="848030" since="#T0" xml:id="T45"/>
+         <when interval="848920" since="#T0" xml:id="T46"/>
+         <when interval="848970" since="#T0" xml:id="T120"/>
+         <when interval="849890" since="#T0" xml:id="T47"/>
+         <when interval="849960" since="#T0" xml:id="T121"/>
+         <when interval="855310" since="#T0" xml:id="T48"/>
+         <when interval="855850" since="#T0" xml:id="T122"/>
+         <when interval="856280" since="#T0" xml:id="T123"/>
+         <when interval="856420" since="#T0" xml:id="T49"/>
+         <when interval="857630" since="#T0" xml:id="T50"/>
+         <when interval="857640" since="#T0" xml:id="T124"/>
+         <when interval="860860" since="#T0" xml:id="T51"/>
+         <when interval="861030" since="#T0" xml:id="T125"/>
+         <when interval="864390" since="#T0" xml:id="T52"/>
+         <when interval="864830" since="#T0" xml:id="T126"/>
+         <when interval="865170" since="#T0" xml:id="T53"/>
+         <when interval="865220" since="#T0" xml:id="T127"/>
+         <when interval="867390" since="#T0" xml:id="T54"/>
+         <when interval="867520" since="#T0" xml:id="T128"/>
+         <when interval="868040" since="#T0" xml:id="T55"/>
+         <when interval="868080" since="#T0" xml:id="T129"/>
+         <when interval="871520" since="#T0" xml:id="T56"/>
+         <when interval="871710" since="#T0" xml:id="T57"/>
+         <when interval="875850" since="#T0" xml:id="T58"/>
+         <when interval="876550" since="#T0" xml:id="T130"/>
+         <when interval="876980" since="#T0" xml:id="T59"/>
+         <when interval="877020" since="#T0" xml:id="T131"/>
+         <when interval="879160" since="#T0" xml:id="T132"/>
+         <when interval="879540" since="#T0" xml:id="T60"/>
+         <when interval="879610" since="#T0" xml:id="T61"/>
+         <when interval="879770" since="#T0" xml:id="T133"/>
+         <when interval="881060" since="#T0" xml:id="T62"/>
+         <when interval="883320" since="#T0" xml:id="T134"/>
+         <when interval="883980" since="#T0" xml:id="T63"/>
+         <when interval="884200" since="#T0" xml:id="T135"/>
+         <when interval="885190" since="#T0" xml:id="T64"/>
+      </timeline>
+      <body>
+         <div subtype="d0" type="Situation">
+            <head>
+               <note type="start">#T0</note>
+               <note type="end">#T64</note>
+            </head>
+            <div corresp="#URFA-438a_a1-audio-public #URFA-438a_a1-audio-master" xml:id="URFA-438a_a1">
+               <u start="#T65" end="#T66" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a1_u1">
+                  <w xml:id="URFA-438a_xTok_000001">bass</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000002">Ismāʕīn</w>
+                  <pc xml:id="xTok_000003">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000004" rendition="rend:dashAfter">as</w>
+                  <w xml:id="URFA-438a_xTok_000006" join="right">Sūriyyīn</w>
+                  
+                  <pc xml:id="xTok_000007">,</pc>
+                  <w xml:id="URFA-438a_xTok_000008">mū</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000009" rendition="rend:dashAfter">kull</w>
+                  <w xml:id="URFA-438a_xTok_000011">hum</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000012">hā</w>
+                  <pc xml:id="xTok_000013">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a2-audio-public #URFA-438a_a2-audio-master" xml:id="URFA-438a_a2">
+               <u start="#T1" end="#T2" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a2_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000014">ī</w>
+                  <pc xml:id="xTok_000015">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a3-audio-public #URFA-438a_a3-audio-master" xml:id="URFA-438a_a3">
+               <u start="#T67" end="#T68" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a3_u1">
+                  <w xml:id="URFA-438a_xTok_000016">mūhum</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000017">zēnīn</w>
+                  <pc xml:id="xTok_000018">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a4-audio-public #URFA-438a_a4-audio-master" xml:id="URFA-438a_a4">
+               <u start="#T3" end="#T4" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a4_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000019">hā</w>
+                  <pc xml:id="xTok_000020">?</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a5-audio-public #URFA-438a_a5-audio-master" xml:id="URFA-438a_a5">
+               <u start="#T69" end="#T70" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a5_u1">
+                  <w xml:id="URFA-438a_xTok_000021">mūhum</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000022" join="right">zēnīn</w>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a6-audio-public #URFA-438a_a6-audio-master" xml:id="URFA-438a_a6">
+               <u start="#T5" end="#T6" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a6_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000023">lā</w>
+                  <pc xml:id="xTok_000024">,</pc>
+                  <w xml:id="URFA-438a_xTok_000025">lā</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000026">lā</w>
+                  <pc xml:id="xTok_000027">!</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000028">tsstss</w>
+                  <pc xml:id="xTok_000029">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a7-audio-public #URFA-438a_a7-audio-master" xml:id="URFA-438a_a7">
+               <u start="#T71" end="#T72" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a7_u1">
+                  <w xml:id="URFA-438a_xTok_000030">bass</w>
+                  <w xml:id="URFA-438a_xTok_000031">alyōm</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000032">daḥḥiǧ</w>
+                  <pc xml:id="xTok_000033">,</pc>
+                  <w xml:id="URFA-438a_xTok_000034">aḷḷa</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000035">yʕāwun</w>
+                  <pc xml:id="xTok_000036">,</pc>
+                  <w xml:id="URFA-438a_xTok_000037">aḷḷa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000038" rendition="rend:dashAfter">yʕāwun</w>
+                  <w xml:id="URFA-438a_xTok_000040">hum</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000041">zād</w>
+                  <pc xml:id="xTok_000042">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a8-audio-public #URFA-438a_a8-audio-master" xml:id="URFA-438a_a8">
+               <u start="#T7" end="#T8" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a8_u1">
+                  <w xml:id="URFA-438a_xTok_000043">ī</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000044">waḷḷa</w>
+                  <pc xml:id="xTok_000045">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a9-audio-public #URFA-438a_a9-audio-master" xml:id="URFA-438a_a9">
+               <u start="#T73" end="#T74" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a9_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000046" rendition="rend:dashAfter">ᵊb</w>
+                  <w xml:id="URFA-438a_xTok_000048">rukun</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000049">agūl</w>
+                  <w xml:id="URFA-438a_xTok_000050">aḷḷa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000051" rendition="rend:dashAfter">yʕāwun</w>
+                  <w xml:id="URFA-438a_xTok_000053">hum</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000054" rendition="rend:dashAfter">w</w>
+                  <w xml:id="URFA-438a_xTok_000056">rukun</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000057">zād</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000058">agūl</w>
+                  <pc xml:id="xTok_000059">,</pc>
+                  <w xml:id="URFA-438a_xTok_000060">al</w>
+                  <w xml:id="URFA-438a_xTok_000061">mūhum</w>
+                  <w xml:id="URFA-438a_xTok_000062">zēnīn</w>
+                  <w xml:id="URFA-438a_xTok_000063">zād</w>
+                  <w xml:id="URFA-438a_xTok_000064">zād</w>
+                  <w xml:id="URFA-438a_xTok_000065">aḷḷa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000066" rendition="rend:dashAfter">yiṣliḥ</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000068">ḥum</w>
+                  <pc xml:id="xTok_000069">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a10-audio-public #URFA-438a_a10-audio-master" xml:id="URFA-438a_a10">
+               <u start="#T75" end="#T76" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a10_u1">
+                  <w xml:id="URFA-438a_xTok_000070">čiṯīr</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000071">nukūrīn</w>
+                  <pc xml:id="xTok_000072">,</pc>
+                  <w xml:id="URFA-438a_xTok_000073">šī</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000074">ysōlif</w>
+                  <pc xml:id="xTok_000075">?</pc>
+                  <w xml:id="URFA-438a_xTok_000076">ḥēša</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000077" rendition="rend:dashAfter">al</w>
+                  <w xml:id="URFA-438a_xTok_000079">ḥāḏ̣rīn</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000080">hā</w>
+                  <pc xml:id="xTok_000081">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a11-audio-public #URFA-438a_a11-audio-master" xml:id="URFA-438a_a11">
+               <u start="#T9" end="#T10" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a11_u1">
+                  <w xml:id="URFA-438a_xTok_000082">aḷḷa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000083">yḥaššim</w>
+                  <pc xml:id="xTok_000084">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a12-audio-public #URFA-438a_a12-audio-master" xml:id="URFA-438a_a12">
+               <u start="#T77" end="#T78" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a12_u1">
+                  <w xml:id="URFA-438a_xTok_000085">al</w>
+                  <w xml:id="URFA-438a_xTok_000086">ysōlif</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000087">čiṯīr</w>
+                  <pc xml:id="xTok_000088">,</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a13-audio-public #URFA-438a_a13-audio-master" xml:id="URFA-438a_a13">
+               <u start="#T11" end="#T12" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a13_u1">
+                  <w xml:id="URFA-438a_xTok_000089">alle</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000090" rendition="rend:dashAfter">ʕind</w>
+                  <w xml:id="URFA-438a_xTok_000092">u</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000093">ᵊxlāf</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000094">yiṣīr</w>
+                  <pc xml:id="xTok_000095">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a14-audio-public #URFA-438a_a14-audio-master" xml:id="URFA-438a_a14">
+               <u start="#T79" end="#T80" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a14_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000096" rendition="rend:dashAfter">ḥēšā</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000098">k</w>
+                  <pc xml:id="xTok_000099">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a15-audio-public #URFA-438a_a15-audio-master" xml:id="URFA-438a_a15">
+               <u start="#T13" end="#T14" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a15_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000100">ī</w>
+                  <pc xml:id="xTok_000101">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a16-audio-public #URFA-438a_a16-audio-master" xml:id="URFA-438a_a16">
+               <u start="#T81" end="#T82" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a16_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000102">yāw</w>
+                  <pc xml:id="xTok_000103">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000104" rendition="rend:dashAfter">wāḥad</w>
+                  <w xml:id="URFA-438a_xTok_000106" join="right">hum</w>
+                  
+                  <pc xml:id="xTok_000107">,</pc>
+                  <w xml:id="URFA-438a_xTok_000108">yāw</w>
+                  <w xml:id="URFA-438a_xTok_000109">wāḥad</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000110" rendition="rend:dashAfter">min</w>
+                  <w xml:id="URFA-438a_xTok_000112">hum</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000113">yfukk</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000114" rendition="rend:dashAfter">iṯm</w>
+                  <w xml:id="URFA-438a_xTok_000116">u</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000117" type="truncated" rendition="rend:ellipsisAfter">māmiš</w>
+                  <w xml:id="URFA-438a_xTok_000118">awuqāt</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000119">yā</w>
+                  <pc xml:id="xTok_000120">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a17-audio-public #URFA-438a_a17-audio-master" xml:id="URFA-438a_a17">
+               <u start="#T15" end="#T16" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a17_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000121">ī</w>
+                  <pc xml:id="xTok_000122">,</pc>
+                  <w xml:id="URFA-438a_xTok_000123">mā</w>
+                  <w xml:id="URFA-438a_xTok_000124">tigdar</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000125" rendition="rend:dashAfter">ᵊtsakkt</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000127">u</w>
+                  <pc xml:id="xTok_000128">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a18-audio-public #URFA-438a_a18-audio-master" xml:id="URFA-438a_a18">
+               <u start="#T83" end="#T84" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a18_u1">
+                  <w xml:id="URFA-438a_xTok_000129">mā</w>
+                  <w xml:id="URFA-438a_xTok_000130">tigdar</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000131" rendition="rend:dashAfter">ᵊtsakkt</w>
+                  <w xml:id="URFA-438a_xTok_000133" join="right">u</w>
+                  
+                  <pc xml:id="xTok_000134">,</pc>
+                  <w xml:id="URFA-438a_xTok_000135">yiṭluʕ</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000136">ḥaqqli</w>
+                  <pc xml:id="xTok_000137">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a19-audio-public #URFA-438a_a19-audio-master" xml:id="URFA-438a_a19">
+               <u start="#T17" end="#T18" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a19_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000138">ī</w>
+                  <pc xml:id="xTok_000139">,</pc>
+                  <w xml:id="URFA-438a_xTok_000140">ᵊtgūl</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000141" rendition="rend:dashAfter">inn</w>
+                  <w xml:id="URFA-438a_xTok_000143">u</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000144">humma</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000145">xālǧīn</w>
+                  <pc xml:id="xTok_000146">,</pc>
+                  <w xml:id="URFA-438a_xTok_000147">mahnīn</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000148" rendition="rend:dashAfter">ad</w>
+                  <w xml:id="URFA-438a_xTok_000150" join="right">dinye</w>
+                  
+                  <pc xml:id="xTok_000151">,</pc>
+                  <w xml:id="URFA-438a_xTok_000152">dizayn</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000153">ediler</w>
+                  <pc xml:id="xTok_000154">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a20-audio-public #URFA-438a_a20-audio-master" xml:id="URFA-438a_a20">
+               <u start="#T85" end="#T86" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a20_u1">
+                  <w xml:id="URFA-438a_xTok_000155">yāba</w>
+                  <w xml:id="URFA-438a_xTok_000156">inte</w>
+                  <w xml:id="URFA-438a_xTok_000157">miltaǧi</w>
+                  <w xml:id="URFA-438a_xTok_000158">yāw</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000159">amis</w>
+                  <pc xml:id="xTok_000160">,</pc>
+                  <w xml:id="URFA-438a_xTok_000161">hēne</w>
+                  <w xml:id="URFA-438a_xTok_000162">wāḥad</w>
+                  <w xml:id="URFA-438a_xTok_000163">ǧāʕad</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000164" rendition="rend:dashAfter">ašūf</w>
+                  <w xml:id="URFA-438a_xTok_000166" join="right">u</w>
+                  
+                  <pc xml:id="xTok_000167">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000168" rendition="rend:dashAfter">ᵊb</w>
+                  <w xml:id="URFA-438a_xTok_000170">ṣalāt</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000171" rendition="rend:dashAfter">aǧ</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000173">ǧumʕa</w>
+                  <pc xml:id="xTok_000174">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a21-audio-public #URFA-438a_a21-audio-master" xml:id="URFA-438a_a21">
+               <u start="#T87" end="#T88" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a21_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000175" rendition="rend:dashAfter">winn</w>
+                  <w xml:id="URFA-438a_xTok_000177">u</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000178">arbaʕa</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000179">ṯalāṯe</w>
+                  <pc xml:id="xTok_000180">,</pc>
+                  <w xml:id="URFA-438a_xTok_000181">arbaʕa</w>
+                  <w xml:id="URFA-438a_xTok_000182">ǧāʕdīn</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000183" rendition="rend:dashAfter">w</w>
+                  <w xml:id="URFA-438a_xTok_000185">aksīge</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000186">zād</w>
+                  <w xml:id="URFA-438a_xTok_000187">ǧāʕde</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000188" rendition="rend:dashAfter">ʕid</w>
+                  <w xml:id="URFA-438a_xTok_000190">hum</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000191" rendition="rend:dashAfter">w</w>
+                  <w xml:id="URFA-438a_xTok_000193" join="right">ᵊflān</w>
+                  
+                  <pc xml:id="xTok_000194">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000195" rendition="rend:dashAfter">w</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000197" rendition="rend:dashAfter">ašūf</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000199">u</w>
+                  <pc xml:id="xTok_000200">,</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a22-audio-public #URFA-438a_a22-audio-master" xml:id="URFA-438a_a22">
+               <u start="#T89" end="#T90" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a22_u1">
+                  <w xml:id="URFA-438a_xTok_000201">fāršīn</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000202" rendition="rend:dashAfter">al</w>
+                  <w xml:id="URFA-438a_xTok_000204">maxāḏe</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000205" rendition="rend:dashAfter">win</w>
+                  <w xml:id="URFA-438a_xTok_000207">he</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000208">ǧumʕa</w>
+                  <pc xml:id="xTok_000209">,</pc>
+                  <w xml:id="URFA-438a_xTok_000210">w</w>
+                  <w xml:id="URFA-438a_xTok_000211">riḥne</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000212" rendition="rend:dashAfter">ʕa</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000214" rendition="rend:dashAfter">ǧ</w>
+                  <w xml:id="URFA-438a_xTok_000216">ǧumʕe</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000217" rendition="rend:dashAfter">w</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000219" rendition="rend:dashAfter">ᵊšnōn</w>
+                  <w xml:id="URFA-438a_xTok_000221">ma</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000222">ndablaw</w>
+                  <pc xml:id="xTok_000223">,</pc>
+                  <w xml:id="URFA-438a_xTok_000224">waḷḷa</w>
+                  <w xml:id="URFA-438a_xTok_000225">ṭilaʕit</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000226" rendition="rend:dashAfter">m</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000228" rendition="rend:dashAfter">aǧ</w>
+                  <w xml:id="URFA-438a_xTok_000230" join="right">ǧumʕa</w>
+                  
+                  <pc xml:id="xTok_000231">,</pc>
+                  <w xml:id="URFA-438a_xTok_000232">waḷḷa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000233" rendition="rend:dashAfter">w</w>
+                  <w xml:id="URFA-438a_xTok_000235">ašūf</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000236">demek</w>
+                  <w xml:id="URFA-438a_xTok_000237">xuṭṭār</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000238">ǧāyīn</w>
+                  <pc xml:id="xTok_000239">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a23-audio-public #URFA-438a_a23-audio-master" xml:id="URFA-438a_a23">
+               <u start="#T91" end="#T92" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a23_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000240" rendition="rend:dashAfter">ašūf</w>
+                  <w xml:id="URFA-438a_xTok_000242">hum</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000243">ygūl</w>
+                  <pc xml:id="xTok_000244">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000245" rendition="rend:dashAfter">ašūf</w>
+                  <w xml:id="URFA-438a_xTok_000247">hum</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000248">ḥimad</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000249" rendition="rend:dashAfter">al</w>
+                  <w xml:id="URFA-438a_xTok_000251">ḥurma</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000252">w</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000253">gāmaw</w>
+                  <pc xml:id="xTok_000254">:</pc>
+                  <w xml:id="URFA-438a_xTok_000255">waḷḷa</w>
+                  <w xml:id="URFA-438a_xTok_000256">waḷḷa</w>
+                  <w xml:id="URFA-438a_xTok_000257">yā</w>
+                  <w xml:id="URFA-438a_xTok_000258">umm</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000259">ᵊflān</w>
+                  <pc xml:id="xTok_000260">,</pc>
+                  <w xml:id="URFA-438a_xTok_000261">waḷḷa</w>
+                  <w xml:id="URFA-438a_xTok_000262" type="truncated" rendition="rend:ellipsisAfter">iḥne</w>
+                  <w xml:id="URFA-438a_xTok_000263">iḥne</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000264" rendition="rend:dashAfter">ᵊb</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000266" rendition="rend:dashAfter">kull</w>
+                  <w xml:id="URFA-438a_xTok_000268" join="right">ši</w>
+                  
+                  <pc xml:id="xTok_000269">,</pc>
+                  <w xml:id="URFA-438a_xTok_000270">waḷḷa</w>
+                  <w xml:id="URFA-438a_xTok_000271">iḥne</w>
+                  <w xml:id="URFA-438a_xTok_000272">maʕzūmīn</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000273" rendition="rend:dashAfter">ᵊb</w>
+                  <w xml:id="URFA-438a_xTok_000275" join="right">flān</w>
+                  
+                  <pc xml:id="xTok_000276">,</pc>
+                  <w xml:id="URFA-438a_xTok_000277">yā</w>
+                  <w xml:id="URFA-438a_xTok_000278">wal</w>
+                  <w xml:id="URFA-438a_xTok_000279">inte</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000280">gūl</w>
+                  <pc xml:id="xTok_000281">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a24-audio-public #URFA-438a_a24-audio-master" xml:id="URFA-438a_a24">
+               <u start="#T93" end="#T94" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a24_u1">
+                  <w xml:id="URFA-438a_xTok_000282">yaʕni</w>
+                  <w xml:id="URFA-438a_xTok_000283">inte</w>
+                  <w xml:id="URFA-438a_xTok_000284">miltaǧi</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000285">yāw</w>
+                  <pc xml:id="xTok_000286">,</pc>
+                  <w xml:id="URFA-438a_xTok_000287">šwayye</w>
+                  <w xml:id="URFA-438a_xTok_000288">ᵊʕrif</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000289" rendition="rend:dashAfter">ḥāl</w>
+                  <w xml:id="URFA-438a_xTok_000291">ak</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000292">yāw</w>
+                  <pc xml:id="xTok_000293">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a25-audio-public #URFA-438a_a25-audio-master" xml:id="URFA-438a_a25">
+               <u start="#T19" end="#T20" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a25_u1">
+                  <w xml:id="URFA-438a_xTok_000294">inte</w>
+                  <w xml:id="URFA-438a_xTok_000295">aaaaa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000296" rendition="rend:dashAfter">al</w>
+                  <w xml:id="URFA-438a_xTok_000298">qarīb</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000299">adīb</w>
+                  <pc xml:id="xTok_000300">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a26-audio-public #URFA-438a_a26-audio-master" xml:id="URFA-438a_a26">
+               <u start="#T95" end="#T96" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a26_u1">
+                  <w xml:id="URFA-438a_xTok_000301">tss</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000302">yaʕni</w>
+                  <pc xml:id="xTok_000303">!</pc>
+                  <w join="right" xml:id="URFA-438a_xTok_000304">hā</w>
+                  <pc xml:id="xTok_000305">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000306" rendition="rend:dashAfter">ʕind</w>
+                  <w xml:id="URFA-438a_xTok_000308">kum</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000309" rendition="rend:dashAfter">b</w>
+                  <w xml:id="URFA-438a_xTok_000311">Urfa</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000312">mā</w>
+                  <w xml:id="URFA-438a_xTok_000313">wāḥad</w>
+                  <w xml:id="URFA-438a_xTok_000314">ᵊmsawwi</w>
+                  <w xml:id="URFA-438a_xTok_000315">šamaṭa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000316" rendition="rend:dashAfter">mā</w>
+                  <w xml:id="URFA-438a_xTok_000318">dri</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000319">šinu</w>
+                  <pc xml:id="xTok_000320">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000321" rendition="rend:dashAfter">w</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000323" rendition="rend:dashAfter">al</w>
+                  <w xml:id="URFA-438a_xTok_000325">Urfaliyye</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000326">zēn</w>
+                  <w xml:id="URFA-438a_xTok_000327">gāṭʕīn</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000328" rendition="rend:dashAfter">ʕalē</w>
+                  <w xml:id="URFA-438a_xTok_000330">´</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000331" rendition="rend:dashAfter">ad</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000333">darib</w>
+                  <pc xml:id="xTok_000334">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a27-audio-public #URFA-438a_a27-audio-master" xml:id="URFA-438a_a27">
+               <u start="#T21" end="#T22" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a27_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000335">ī</w>
+                  <pc xml:id="xTok_000336">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a28-audio-public #URFA-438a_a28-audio-master" xml:id="URFA-438a_a28">
+               <u start="#T97" end="#T98" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a28_u1">
+                  <w xml:id="URFA-438a_xTok_000337">baḷḷa</w>
+                  <w xml:id="URFA-438a_xTok_000338">yirḥam</w>
+                  <w xml:id="URFA-438a_xTok_000339">kull</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000340" rendition="rend:dashAfter">māt</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000342" rendition="rend:dashAfter">l</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000344">ak</w>
+                  <pc xml:id="xTok_000345">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a29-audio-public #URFA-438a_a29-audio-master" xml:id="URFA-438a_a29">
+               <u start="#T23" end="#T24" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a29_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000346" rendition="rend:dashAfter">b</w>
+                  <w xml:id="URFA-438a_xTok_000348">Urfa</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000349">mā</w>
+                  <w xml:id="URFA-438a_xTok_000350">mā</w>
+                  <w xml:id="URFA-438a_xTok_000351">yigdarūn</w>
+                  <w xml:id="URFA-438a_xTok_000352">ysāwūn</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000353">ᵊhniyye</w>
+                  <pc xml:id="xTok_000354">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a30-audio-public #URFA-438a_a30-audio-master" xml:id="URFA-438a_a30">
+               <u start="#T99" end="#T100" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a30_u1">
+                  <w xml:id="URFA-438a_xTok_000355">ṣōn</w>
+                  <w xml:id="URFA-438a_xTok_000356">mōdēl</w>
+                  <w xml:id="URFA-438a_xTok_000357">taqṣiyyāt</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000358" rendition="rend:dashAfter">w</w>
+                  <w xml:id="URFA-438a_xTok_000360">flān</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000361" rendition="rend:dashAfter">w</w>
+                  <w xml:id="URFA-438a_xTok_000363" type="truncated" rendition="rend:ellipsisAfter">gāyme</w>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a31-audio-public #URFA-438a_a31-audio-master" xml:id="URFA-438a_a31">
+               <u start="#T25" end="#T26" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a31_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000364">ī</w>
+                  <pc xml:id="xTok_000365">,</pc>
+                  <w xml:id="URFA-438a_xTok_000366">gāmaw</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000367" rendition="rend:dashAfter">ydagdigūn</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000369">hum</w>
+                  <pc xml:id="xTok_000370">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a32-audio-public #URFA-438a_a32-audio-master" xml:id="URFA-438a_a32">
+               <u start="#T101" end="#T102" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a32_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000371" rendition="rend:dashAfter">dagdagō</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000373">hum</w>
+                  <pc xml:id="xTok_000374">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a33-audio-public #URFA-438a_a33-audio-master" xml:id="URFA-438a_a33">
+               <u start="#T27" end="#T28" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a33_u1">
+                  <w xml:id="URFA-438a_xTok_000375">ī</w>
+                  <w xml:id="URFA-438a_xTok_000376">ī</w>
+                  <w xml:id="URFA-438a_xTok_000377">ʕayne</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000378">ʕayne</w>
+                  <pc xml:id="xTok_000379">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000380" rendition="rend:dashAfter">dagdagō</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000382">hum</w>
+                  <pc xml:id="xTok_000383">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a34-audio-public #URFA-438a_a34-audio-master" xml:id="URFA-438a_a34">
+               <u start="#T103" end="#T104" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a34_u1">
+                  <w xml:id="URFA-438a_xTok_000384">ʕēb</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000385">yaʕni</w>
+                  <pc xml:id="xTok_000386">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a35-audio-public #URFA-438a_a35-audio-master" xml:id="URFA-438a_a35">
+               <u start="#T29" end="#T30" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a35_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000387">ī</w>
+                  <pc xml:id="xTok_000388">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a36-audio-public #URFA-438a_a36-audio-master" xml:id="URFA-438a_a36">
+               <u start="#T31" end="#T32" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a36_u1">
+                  <w xml:id="URFA-438a_xTok_000389">yāw</w>
+                  <w xml:id="URFA-438a_xTok_000390">iḥne</w>
+                  <w xml:id="URFA-438a_xTok_000391">lōn</w>
+                  <w xml:id="URFA-438a_xTok_000392">mū</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000393" rendition="rend:dashAfter">ad</w>
+                  <w xml:id="URFA-438a_xTok_000395">dawla</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000396" rendition="rend:dashAfter">minṭit</w>
+                  <w xml:id="URFA-438a_xTok_000398">hum</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000399">ᵊmsāʕde</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000400" rendition="rend:dashAfter">w</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000402" rendition="rend:dashAfter">ǧāybit</w>
+                  <w xml:id="URFA-438a_xTok_000404" join="right">hum</w>
+                  
+                  <pc xml:id="xTok_000405">,</pc>
+                  <w join="right" xml:id="URFA-438a_xTok_000406">ᵊfhimit</w>
+                  <pc xml:id="xTok_000407">?</pc>
+                  <w xml:id="URFA-438a_xTok_000408">hīčiḏ</w>
+                  <w xml:id="URFA-438a_xTok_000409">lōn</w>
+                  <w xml:id="URFA-438a_xTok_000410">ǧāyit</w>
+                  <w xml:id="URFA-438a_xTok_000411">ʕašāyir</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000412" rendition="rend:dashAfter">w</w>
+                  <w xml:id="URFA-438a_xTok_000414">ǧāyit</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000415">ᵊhniyye</w>
+                  <w xml:id="URFA-438a_xTok_000416">waḷḷa</w>
+                  <w xml:id="URFA-438a_xTok_000417">iḥne</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000418" rendition="rend:dashAfter">ᵊb</w>
+                  <w xml:id="URFA-438a_xTok_000420">Urfa</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000421">mā</w>
+                  <w xml:id="URFA-438a_xTok_000422" type="truncated" rendition="rend:ellipsisAfter">xaḷḷa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000423" rendition="rend:dashAfter">al</w>
+                  <w xml:id="URFA-438a_xTok_000425">ʕašāyir</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000426">mā</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000427" rendition="rend:dashAfter">xaḷḷat</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000429">hum</w>
+                  <pc xml:id="xTok_000430">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a37-audio-public #URFA-438a_a37-audio-master" xml:id="URFA-438a_a37">
+               <u start="#T105" end="#T33" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a37_u1">
+                  <w xml:id="URFA-438a_xTok_000431">alḥaz</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000432" rendition="rend:dashAfter">al</w>
+                  <w xml:id="URFA-438a_xTok_000434">ᵊḥkūme</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000435">ḥāṭṭa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000436" rendition="rend:dashAfter">īd</w>
+                  <w xml:id="URFA-438a_xTok_000438">he</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000439" rendition="rend:dashAfter">ʕalē</w>
+                  <w xml:id="URFA-438a_xTok_000441">hum</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000442">yāw</w>
+                  <pc xml:id="xTok_000443">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a38-audio-public #URFA-438a_a38-audio-master" xml:id="URFA-438a_a38">
+               <u start="#T33" end="#T34" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a38_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000444" rendition="rend:dashAfter">al</w>
+                  <w xml:id="URFA-438a_xTok_000446">ᵊḥkūme</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000447">ḥāṭṭa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000448" rendition="rend:dashAfter">īd</w>
+                  <w xml:id="URFA-438a_xTok_000450">he</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000451" rendition="rend:dashAfter">ʕalē</w>
+                  <w xml:id="URFA-438a_xTok_000453" join="right">hum</w>
+                  
+                  <pc xml:id="xTok_000454">,</pc>
+                  <w xml:id="URFA-438a_xTok_000455">mā</w>
+                  <w xml:id="URFA-438a_xTok_000456">nǧārib</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000457" rendition="rend:dashAfter">ᵊnsōlif</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000459">hum</w>
+                  <pc xml:id="xTok_000460">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a39-audio-public #URFA-438a_a39-audio-master" xml:id="URFA-438a_a39">
+               <u start="#T106" end="#T107" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a39_u1">
+                  <w xml:id="URFA-438a_xTok_000461">alḥaz</w>
+                  <w xml:id="URFA-438a_xTok_000462">hēn</w>
+                  <w xml:id="URFA-438a_xTok_000463">hēne</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000464" rendition="rend:dashAfter">al</w>
+                  <w xml:id="URFA-438a_xTok_000466">Afqān</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000467" join="right" type="truncated" rendition="rend:ellipsisAfter">b</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000469" rendition="rend:dashAfter">ᵊb</w>
+                  <w xml:id="URFA-438a_xTok_000471">zimāniyye</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000472" rendition="rend:dashAfter">ᵊb</w>
+                  <w xml:id="URFA-438a_xTok_000474">zimān</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000475">Evren</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000476">Paša</w>
+                  <pc xml:id="xTok_000477">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a40-audio-public #URFA-438a_a40-audio-master" xml:id="URFA-438a_a40">
+               <u start="#T35" end="#T36" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a40_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000478">ī</w>
+                  <pc xml:id="xTok_000479">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a41-audio-public #URFA-438a_a41-audio-master" xml:id="URFA-438a_a41">
+               <u start="#T108" end="#T109" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a41_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000480">ǧaw</w>
+                  <pc xml:id="xTok_000481">,</pc>
+                  <w xml:id="URFA-438a_xTok_000482">yāw</w>
+                  <w xml:id="URFA-438a_xTok_000483">wāḥad</w>
+                  <w xml:id="URFA-438a_xTok_000484">mā</w>
+                  <w xml:id="URFA-438a_xTok_000485">ʕād</w>
+                  <w xml:id="URFA-438a_xTok_000486">yǧārib</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000487" rendition="rend:dashAfter">ysōlif</w>
+                  <w xml:id="URFA-438a_xTok_000489">hum</w>
+                  
+                  
+                  <w xml:id="URFA-438a_xTok_000490" join="right">yāw</w>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a42-audio-public #URFA-438a_a42-audio-master" xml:id="URFA-438a_a42">
+               <u start="#T37" end="#T38" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a42_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000491">ī</w>
+                  <pc xml:id="xTok_000492">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a43-audio-public #URFA-438a_a43-audio-master" xml:id="URFA-438a_a43">
+               <u start="#T110" end="#T111" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a43_u1">
+                  <w xml:id="URFA-438a_xTok_000493">miltaǧīn</w>
+                  <w xml:id="URFA-438a_xTok_000494">ǧāyīn</w>
+                  <w xml:id="URFA-438a_xTok_000495">w</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000496" type="truncated" rendition="rend:ellipsisAfter">ǧāy</w>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a44-audio-public #URFA-438a_a44-audio-master" xml:id="URFA-438a_a44">
+               <u start="#T39" end="#T40" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a44_u1">
+                  <w xml:id="URFA-438a_xTok_000497">w</w>
+                  <w xml:id="URFA-438a_xTok_000498">ṣāraw</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000499">nār</w>
+                  <pc xml:id="xTok_000500">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a45-audio-public #URFA-438a_a45-audio-master" xml:id="URFA-438a_a45">
+               <u start="#T112" end="#T113" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a45_u1">
+                  <w xml:id="URFA-438a_xTok_000501">w</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000502" rendition="rend:dashAfter">han</w>
+                  <w xml:id="URFA-438a_xTok_000504">nōb</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000505">gāmaw</w>
+                  <w xml:id="URFA-438a_xTok_000506">yigḏ̣ubūn</w>
+                  <w xml:id="URFA-438a_xTok_000507">qāfa</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000508" type="truncated" rendition="rend:ellipsisAfter">ʕala</w>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a46-audio-public #URFA-438a_a46-audio-master" xml:id="URFA-438a_a46">
+               <u start="#T41" end="#T42" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a46_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000509" rendition="rend:dashAfter">ʕal</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000511">mille</w>
+                  <pc xml:id="xTok_000512">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a47-audio-public #URFA-438a_a47-audio-master" xml:id="URFA-438a_a47">
+               <u start="#T114" end="#T115" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a47_u1">
+                  <w xml:id="URFA-438a_xTok_000513">ʕal</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000514" rendition="rend:dashAfter">ʕal</w>
+                  <w xml:id="URFA-438a_xTok_000516">mille</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000517">yigḏ̣ubūn</w>
+                  <w xml:id="URFA-438a_xTok_000518">qāfa</w>
+                  <w xml:id="URFA-438a_xTok_000519">ʕala</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000520" rendition="rend:dashAfter">ʕal</w>
+                  <w xml:id="URFA-438a_xTok_000522" join="right">mutfaqči</w>
+                  
+                  <pc xml:id="xTok_000523">,</pc>
+                  <w xml:id="URFA-438a_xTok_000524">ᵊšnōn</w>
+                  <w xml:id="URFA-438a_xTok_000525">mā</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000526" rendition="rend:dashAfter">tinṭī</w>
+                  <w xml:id="URFA-438a_xTok_000528">ne</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000529">xubuz</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000530" rendition="rend:dashAfter">mā</w>
+                  <w xml:id="URFA-438a_xTok_000532">dri</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000533">šinu</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000534">ᵊflān</w>
+                  <pc xml:id="xTok_000535">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a48-audio-public #URFA-438a_a48-audio-master" xml:id="URFA-438a_a48">
+               <u start="#T116" end="#T117" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a48_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000536" rendition="rend:dashAfter">han</w>
+                  <w xml:id="URFA-438a_xTok_000538">nōb</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000539">ygūl</w>
+                  <w xml:id="URFA-438a_xTok_000540">yāw</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000541" rendition="rend:dashAfter">š</w>
+                  <w xml:id="URFA-438a_xTok_000543" join="right">asāwi</w>
+                  
+                  <pc xml:id="xTok_000544">,</pc>
+                  <w xml:id="URFA-438a_xTok_000545">ǧimhūr</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000546" type="truncated" rendition="rend:ellipsisAfter">bāšqani</w>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a49-audio-public #URFA-438a_a49-audio-master" xml:id="URFA-438a_a49">
+               <u start="#T43" end="#T44" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a49_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000547" rendition="rend:dashAfter">ḥāṭṭ</w>
+                  <w xml:id="URFA-438a_xTok_000549">kum</w>
+                  
+                  
+                  <w xml:id="URFA-438a_xTok_000550" type="truncated" rendition="rend:ellipsisAfter">ī</w>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a50-audio-public #URFA-438a_a50-audio-master" xml:id="URFA-438a_a50">
+               <u start="#T118" end="#T119" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a50_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000551" rendition="rend:dashAfter">yōm</w>
+                  <w xml:id="URFA-438a_xTok_000553">in</w>
+                  
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000554" rendition="rend:dashAfter">ygul</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000556" rendition="rend:dashAfter">l</w>
+                  <w xml:id="URFA-438a_xTok_000558">u</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000559">wāḥad</w>
+                  <w xml:id="URFA-438a_xTok_000560">kalām</w>
+                  <w xml:id="URFA-438a_xTok_000561">yrūḥ</w>
+                  <w xml:id="URFA-438a_xTok_000562">yištaki</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000563" rendition="rend:dashAfter">ʕalē</w>
+                  <w xml:id="URFA-438a_xTok_000565" join="right">´</w>
+                  
+                  <pc xml:id="xTok_000566">.</pc>
+                  <w xml:id="URFA-438a_xTok_000567">ā</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000568">tamām</w>
+                  <pc xml:id="xTok_000569">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a51-audio-public #URFA-438a_a51-audio-master" xml:id="URFA-438a_a51">
+               <u start="#T45" end="#T46" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a51_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000570">ī</w>
+                  <pc xml:id="xTok_000571">,</pc>
+                  <w xml:id="URFA-438a_xTok_000572">ʕayne</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000573">ʕayne</w>
+                  <pc xml:id="xTok_000574">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a52-audio-public #URFA-438a_a52-audio-master" xml:id="URFA-438a_a52">
+               <u start="#T120" end="#T121" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a52_u1">
+                  <w xml:id="URFA-438a_xTok_000575">haḏōl</w>
+                  <w xml:id="URFA-438a_xTok_000576">zād</w>
+                  <w xml:id="URFA-438a_xTok_000577">alḥaz</w>
+                  <w xml:id="URFA-438a_xTok_000578">hīčiḏ</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000579">hā</w>
+                  <pc xml:id="xTok_000580">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a53-audio-public #URFA-438a_a53-audio-master" xml:id="URFA-438a_a53">
+               <u start="#T47" end="#T48" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a53_u1">
+                  <w xml:id="URFA-438a_xTok_000581">haḏōle</w>
+                  <w xml:id="URFA-438a_xTok_000582">zād</w>
+                  <w xml:id="URFA-438a_xTok_000583">ište</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000584" rendition="rend:dashAfter">ad</w>
+                  <w xml:id="URFA-438a_xTok_000586">dawle</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000587">ǧaʕad</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000588" rendition="rend:dashAfter">gāḏ̣bit</w>
+                  <w xml:id="URFA-438a_xTok_000590">hum</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000591">min</w>
+                  <w xml:id="URFA-438a_xTok_000592" type="truncated" rendition="rend:ellipsisAfter">hāḏa</w>
+                  <w xml:id="URFA-438a_xTok_000593">bass</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000594" rendition="rend:dashAfter">ᵊb</w>
+                  <w xml:id="URFA-438a_xTok_000596">guṭma</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000597">msāwye</w>
+                  <w xml:id="URFA-438a_xTok_000598">miltaxye</w>
+                  <w xml:id="URFA-438a_xTok_000599">min</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000600" rendition="rend:dashAfter">ʕid</w>
+                  <w xml:id="URFA-438a_xTok_000602">hum</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000603">mū</w>
+                  <w xml:id="URFA-438a_xTok_000604">miṯil</w>
+                  <w xml:id="URFA-438a_xTok_000605">awwali</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000606">hā</w>
+                  <pc xml:id="xTok_000607">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a54-audio-public #URFA-438a_a54-audio-master" xml:id="URFA-438a_a54">
+               <u start="#T122" end="#T123" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a54_u1">
+                  
+                  <w xml:id="URFA-438a_xTok_000608" join="right">ī</w>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a55-audio-public #URFA-438a_a55-audio-master" xml:id="URFA-438a_a55">
+               <u start="#T49" end="#T50" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a55_u1">
+                  <w xml:id="URFA-438a_xTok_000609">mū</w>
+                  <w xml:id="URFA-438a_xTok_000610">min</w>
+                  <w xml:id="URFA-438a_xTok_000611">gadd</w>
+                  <w xml:id="URFA-438a_xTok_000612">miṯil</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000613">awwali</w>
+                  <pc xml:id="xTok_000614">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a56-audio-public #URFA-438a_a56-audio-master" xml:id="URFA-438a_a56">
+               <u start="#T124" end="#T125" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a56_u1">
+                  <w xml:id="URFA-438a_xTok_000615">daḥḥagan</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000616">okya</w>
+                  <pc xml:id="xTok_000617">,</pc>
+                  <w xml:id="URFA-438a_xTok_000618">ama</w>
+                  <w xml:id="URFA-438a_xTok_000619">šī</w>
+                  <w xml:id="URFA-438a_xTok_000620">ǧaʕad</w>
+                  <w xml:id="URFA-438a_xTok_000621">yṣīrūn</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000622">vatandaş</w>
+                  <pc xml:id="xTok_000623">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a57-audio-public #URFA-438a_a57-audio-master" xml:id="URFA-438a_a57">
+               <u start="#T51" end="#T52" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a57_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000624">ī</w>
+                  <pc xml:id="xTok_000625">,</pc>
+                  <w xml:id="URFA-438a_xTok_000626">ṣāraw</w>
+                  <w xml:id="URFA-438a_xTok_000627">al</w>
+                  <w xml:id="URFA-438a_xTok_000628">xaḏaw</w>
+                  <w xml:id="URFA-438a_xTok_000629">kimlik</w>
+                  <w xml:id="URFA-438a_xTok_000630">xaḏaw</w>
+                  <w xml:id="URFA-438a_xTok_000631">ḏōle</w>
+                  <w xml:id="URFA-438a_xTok_000632">xilṣaw</w>
+                  <w xml:id="URFA-438a_xTok_000633">alḥaz</w>
+                  <w xml:id="URFA-438a_xTok_000634">ʕaskar</w>
+                  <w xml:id="URFA-438a_xTok_000635">šī</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000636" rendition="rend:dashAfter">ᵊb</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000638">Urfa</w>
+                  <pc xml:id="xTok_000639">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a58-audio-public #URFA-438a_a58-audio-master" xml:id="URFA-438a_a58">
+               <u start="#T126" end="#T127" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a58_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000640">Sūri</w>
+                  <pc xml:id="xTok_000641">?</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a59-audio-public #URFA-438a_a59-audio-master" xml:id="URFA-438a_a59">
+               <u start="#T53" end="#T54" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a59_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000642">ī</w>
+                  <pc xml:id="xTok_000643">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000644" rendition="rend:dashAfter">b</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000646" rendition="rend:dashAfter">at</w>
+                  <w xml:id="URFA-438a_xTok_000648">Tūġay</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000649">ʕaskar</w>
+                  <w xml:id="URFA-438a_xTok_000650">şu</w>
+                  <w xml:id="URFA-438a_xTok_000651">anda</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000652" rendition="rend:dashAfter">b</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000654" rendition="rend:dashAfter">an</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000656">nizāmiyye</w>
+                  <pc xml:id="xTok_000657">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a60-audio-public #URFA-438a_a60-audio-master" xml:id="URFA-438a_a60">
+               <u start="#T128" end="#T129" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a60_u1">
+                  <w xml:id="URFA-438a_xTok_000658">halla</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000659">halla</w>
+                  <pc xml:id="xTok_000660">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a61-audio-public #URFA-438a_a61-audio-master" xml:id="URFA-438a_a61">
+               <u start="#T55" end="#T56" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a61_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000661">ī</w>
+                  <pc xml:id="xTok_000662">,</pc>
+                  <w xml:id="URFA-438a_xTok_000663">āni</w>
+                  <w xml:id="URFA-438a_xTok_000664">liyye</w>
+                  <w xml:id="URFA-438a_xTok_000665">qādi</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000666" rendition="rend:dashAfter">ṣidīǧ</w>
+                  <w xml:id="URFA-438a_xTok_000668">i</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000669">wāḥad</w>
+                  <w xml:id="URFA-438a_xTok_000670">uzman</w>
+                  <w join="right" xml:id="URFA-438a_xTok_000671">čāvūš</w>
+                  <pc xml:id="xTok_000672">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000673">fihimit</w>
+                  <pc xml:id="xTok_000674">?</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a63-audio-public #URFA-438a_a63-audio-master" xml:id="URFA-438a_a63">
+               <u start="#T57" end="#T58" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a63_u1">
+                  <w xml:id="URFA-438a_xTok_000675">axu</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000676" rendition="rend:dashAfter">nisīb</w>
+                  <w xml:id="URFA-438a_xTok_000678" join="right">i</w>
+                  
+                  <pc xml:id="xTok_000679">,</pc>
+                  <w join="right" xml:id="URFA-438a_xTok_000680">gāḷ</w>
+                  <pc xml:id="xTok_000681">:</pc>
+                  <w xml:id="URFA-438a_xTok_000682">amca</w>
+                  <w xml:id="URFA-438a_xTok_000683">şu</w>
+                  <w xml:id="URFA-438a_xTok_000684">anda</w>
+                  <w xml:id="URFA-438a_xTok_000685">benim</w>
+                  <w xml:id="URFA-438a_xTok_000686">askarım</w>
+                  <w xml:id="URFA-438a_xTok_000687">çoğu</w>
+                  <w xml:id="URFA-438a_xTok_000688">gāḷ</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000689">Suriyeli</w>
+                  <pc xml:id="xTok_000690">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a62-audio-public #URFA-438a_a62-audio-master" xml:id="URFA-438a_a62">
+               <u start="#T130" end="#T131" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a62_u1">
+                  <w xml:id="URFA-438a_xTok_000691">aḷḷa</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000692">aḷḷa</w>
+                  <pc xml:id="xTok_000693">!</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a64-audio-public #URFA-438a_a64-audio-master" xml:id="URFA-438a_a64">
+               <u start="#T59" end="#T60" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a64_u1">
+                  <w join="right" xml:id="URFA-438a_xTok_000694">ī</w>
+                  <pc xml:id="xTok_000695">,</pc>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000696" rendition="rend:dashAfter">ʕid</w>
+                  <w xml:id="URFA-438a_xTok_000698">na</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000699">gāḷ</w>
+                  <w xml:id="URFA-438a_xTok_000700">xaḏaw</w>
+                  <w xml:id="URFA-438a_xTok_000701">kimligāt</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000702" rendition="rend:dashAfter">w</w>
+                  <w xml:id="URFA-438a_xTok_000704">alḥaz</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000705">ʕaskar</w>
+                  <pc xml:id="xTok_000706">,</pc>
+                  <w xml:id="URFA-438a_xTok_000707">ǧaʕad</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000708">yxadmūn</w>
+                  <pc xml:id="xTok_000709">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a65-audio-public #URFA-438a_a65-audio-master" xml:id="URFA-438a_a65">
+               <u start="#T132" end="#T133" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a65_u1">
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000710">vatandaş</w>
+                  <pc xml:id="xTok_000711">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a66-audio-public #URFA-438a_a66-audio-master" xml:id="URFA-438a_a66">
+               <u start="#T61" end="#T62" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a66_u1">
+                  <w xml:id="URFA-438a_xTok_000712">ī</w>
+                  <w xml:id="URFA-438a_xTok_000713">ī</w>
+                  <w xml:id="URFA-438a_xTok_000714">ǧaʕad</w>
+                  <w xml:id="URFA-438a_xTok_000715">yxadmūn</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000716">ʕaskariyye</w>
+                  <pc xml:id="xTok_000717">.</pc>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a67-audio-public #URFA-438a_a67-audio-master" xml:id="URFA-438a_a67">
+               <u start="#T134" end="#T135" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Ceylanpinar04" xml:id="URFA-438a_a67_u1">
+                  <w xml:id="URFA-438a_xTok_000718">lā</w>
+                  <w xml:id="URFA-438a_xTok_000719">ḥawl</w>
+                  <w xml:id="URFA-438a_xTok_000720">w</w>
+                  
+                  <w xml:id="URFA-438a_xTok_000721" type="truncated" rendition="rend:ellipsisAfter">lā</w>
+                  
+               </u>
+            </div>
+            <div corresp="#URFA-438a_a68-audio-public #URFA-438a_a68-audio-master" xml:id="URFA-438a_a68">
+               <u start="#T63" end="#T64" xml:lang="ar-acm-x-shawi-vicav" who="#Corpus:Harran02" xml:id="URFA-438a_a68_u1">
+                  <w xml:id="URFA-438a_xTok_000722">ī</w>
+                  <w xml:id="URFA-438a_xTok_000723">ī</w>
+                  <w xml:id="URFA-438a_xTok_000724">xadim</w>
+                  
+                  <w join="right" xml:id="URFA-438a_xTok_000725">var</w>
+                  <pc xml:id="xTok_000726">.</pc>
+                  
+               </u>
+            </div>
+         </div>
+      </body>
+   </text>
+</TEI>
