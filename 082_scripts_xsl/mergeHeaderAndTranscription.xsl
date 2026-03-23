@@ -117,7 +117,7 @@
         <xsl:variable name="num">
             <xsl:number level="any" from="tei:annotationBlock" count="tei:u" format="1"/>
         </xsl:variable>
-        <u xml:lang="ar-acm-x-shawi-vicav" xml:id="{concat($recordingID,'_',../@xml:id,'_u', $num)}" who="{concat('#', ../@who)}">
+        <u xml:lang="ar-acm-x-shawi-vicav" xml:id="{concat($recordingID,'_',../@xml:id,'_u', $num)}" who="{../@who}">
           <xsl:apply-templates select="tei:seg"/>
           <media mimeType="audio/mp3" url="publicAssets:{$recordingID}/{concat($recordingID,'_',../@xml:id)}.mp3"></media>
           <media mimeType="audio/wav" url="arche:{$recordingID}/{concat($recordingID,'_',../@xml:id)}.wav"></media>
