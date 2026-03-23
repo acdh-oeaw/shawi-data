@@ -65,6 +65,7 @@ dataversion=$(git describe --tags --always)
 fi
 echo checking out data ${dataversion}
 git -c advice.detachedHead=false checkout ${dataversion}
+git submodule update --init --recursive
 who=$(git show -s --format='%cN')
 when=$(git show -s --format='%as')
 message=$(git show -s --format='%B')
