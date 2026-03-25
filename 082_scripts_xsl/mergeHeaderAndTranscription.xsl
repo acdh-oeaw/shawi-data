@@ -24,7 +24,7 @@
     <xsl:variable name="pathSegs" select="tokenize(base-uri($input),'[/_]')"/>
     <xsl:variable name="recordingID" select="$IDcandidates[some $x in $pathSegs satisfies lower-case($x) = lower-case(.)]"/>
     <xsl:variable name="teiHeaderFromCorpus" select="$recordingID/ancestor::tei:teiHeader" as="element(tei:teiHeader)?"/>
-    <xsl:variable name="filenamePattern" select="'^ELAN_Urfa-\d{3}_[\w_]+-Harran-\d{4}\.xml$'"/>
+    <xsl:variable name="filenamePattern" select="'^ELAN_Urfa-\d{3}[a-z]?_[\w_]+-Harran-\d{4}\.xml$'"/>
     
     <xsl:template match="/">
         <xsl:if test="not(matches(tokenize(base-uri($input),'/')[last()], $filenamePattern))">
