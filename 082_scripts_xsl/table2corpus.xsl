@@ -423,6 +423,16 @@
                 <resp>translation check</resp>
             </respStmt>
         </xsl:if>
+
+        <xsl:variable name="transferPerson" select="normalize-space(tei:cell[$cn('Recordings')('transfer to ELAN')])"/>
+        <xsl:if test="$transferPerson != ''">
+            <respStmt>
+                <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName($transferPerson)}">
+                    <xsl:value-of select="$transferPerson"/>
+                </persName>
+                <resp>transfer to ELAN</resp>
+            </respStmt>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template match="tei:table[tei:head = 'Team']/tei:row[tei:cell[1] != '']" mode="respStmtCorpusDoc">
