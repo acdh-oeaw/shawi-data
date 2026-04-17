@@ -7,7 +7,9 @@ for $doc in collection('vicav_corpus')/*
 group by $uri := replace($doc/base-uri(), '/vicav_corpus/(103_tei_w|010_manannot)/([^/]+/)*', '', '')
 where count($doc) > 1
 order by $uri
-return <replace path="/shawi/{$uri}">../shawi-data/010_manannot/{$uri}</replace>,
+let $input_path := $doc/base-uri()[matches(., '/vicav_corpus/010_manannot/([^/]+/)*', '')]
+                => replace('/vicav_corpus/010_manannot/([^/]+/)*', '$1')
+return <replace path="/shawi/{$uri}">../shawi-data/010_manannot/{$input_path}</replace>,
 for $doc in collection('vicav_corpus')/*
 group by $uri := replace($doc/base-uri(), '/vicav_corpus/(103_tei_w|010_manannot)/([^/]+/)*', '', '')
 where count($doc) = 1
