@@ -52,7 +52,7 @@
         <publicationStmt xmlns="http://www.tei-c.org/ns/1.0">
             <xsl:apply-templates select="@*"/><xsl:apply-templates select="*|comment()|processing-instruction()"/>
             <xsl:text xml:space="preserve">
-            </xsl:text><idno type="teiSource"><xsl:value-of select="string-join($teiHeader!replace(./base-uri(), '^.*(103_tei_w|010_manannot)/', $githubRepo||'/blob/'||$gitRef||'/$1/'), ' ')"/></idno><xsl:text xml:space="preserve">          
+            </xsl:text><idno type="teiSource"><xsl:value-of select="string-join($teiHeader!replace(./base-uri(), '^.*(103_tei_w|010_manannot)?/', $githubRepo||'/blob/'||$gitRef||'/$1/'), ' ') => replace('main//', 'main/103_tei_w/', 'q')"/></idno><xsl:text xml:space="preserve">          
        </xsl:text></publicationStmt>
     </xsl:template>
     
