@@ -13,9 +13,11 @@
     <xsl:param name="githubRepo">https://github.com/acdh-oeaw/shawi-data</xsl:param>
     <xsl:param name="gitRef">main</xsl:param>
     
+    <!-- Run this on a copy of shawiCorpus.xml that is located on the root dir shawi-data -->
+    <!-- Place the result of this transformation in 103_tei_w -->
     <xsl:variable name="base-dir" select="string-join(subsequence(tokenize(base-uri(), '/'), 1, count(tokenize(base-uri(), '/')) - 1), '/')"/>
-    <xsl:variable name="c103_tei_w" select="collection($base-dir||'?select=*.xml')"/>
-    <xsl:variable name="c010_manannot" select="collection(replace($base-dir, '/103_tei_w', '/010_manannot?select=*.xml&amp;recurse=yes', 'q'))"/>
+    <xsl:variable name="c103_tei_w" select="collection($base-dir||'/103_tei_w?select=*.xml&amp;on-error=ignore')"/>
+    <xsl:variable name="c010_manannot" select="collection($base-dir||'/010_manannot?select=*.xml&amp;recurse=yes&amp;on-error=ignore')"/>
 
     <xsl:template match="tei:TEI/tei:teiHeader">
         <xsl:variable name="SHAWICorpusID" select=".//tei:idno[@type='SHAWICorpusID']"/>
