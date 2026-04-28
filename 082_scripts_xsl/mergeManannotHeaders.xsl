@@ -14,27 +14,43 @@
     <xsl:param name="gitRef">main</xsl:param>
     
     <xsl:variable name="base-dir" select="string-join(subsequence(tokenize(base-uri(), '/'), 1, count(tokenize(base-uri(), '/')) - 1), '/')"/>
+    <xsl:variable name="c103_tei_w" select="collection($base-dir||'?select=*.xml')"/>
     <xsl:variable name="c010_manannot" select="collection(replace($base-dir, '/103_tei_w', '/010_manannot?select=*.xml&amp;recurse=yes', 'q'))"/>
-    <!-- collection($base-dir||'/../010_manannot?select=*.xml') -->
+
     <xsl:template match="tei:TEI/tei:teiHeader">
         <xsl:variable name="SHAWICorpusID" select=".//tei:idno[@type='SHAWICorpusID']"/>
+        <xsl:variable name="tei_w_teiHeader" select="$c103_tei_w//tei:idno[not(ends-with(base-uri(), 'shawiCorpus.xml'))][@type='SHAWICorpusID'][. = $SHAWICorpusID]/ancestor::tei:teiHeader"/>
         <xsl:variable name="manannot_teiHeader" select="$c010_manannot//tei:idno[@type='SHAWICorpusID'][. = $SHAWICorpusID]/ancestor::tei:teiHeader"/>
+        <xsl:variable name="teiHeaderParam" select="
+            if ($manannot_teiHeader) then $manannot_teiHeader else 
+            if ($tei_w_teiHeader) then $tei_w_teiHeader
+            else ."/>
         <teiHeader xmlns="http://www.tei-c.org/ns/1.0">
             <xsl:apply-templates select="if ($manannot_teiHeader) then $manannot_teiHeader/@* else @*"/><xsl:text xml:space="preserve">
           </xsl:text>
             <xsl:apply-templates select="(if ($manannot_teiHeader) then $manannot_teiHeader else .)/(*|comment()|processing-instruction())">
-                <xsl:with-param name="manannot_teiHeader" select="if ($manannot_teiHeader) then $manannot_teiHeader else ." tunnel="true"/> 
+                <xsl:with-param name="teiHeader" select="$teiHeaderParam" tunnel="true"/> 
             </xsl:apply-templates><xsl:text xml:space="preserve">
        </xsl:text></teiHeader>
     </xsl:template>
     
-    <!-- is thist the right place and tag? -->
+    <xsl:template match="tei:teiCorpus/tei:teiHeader">
+        <teiHeader xmlns="http://www.tei-c.org/ns/1.0">
+            <xsl:apply-templates select="@*"/><xsl:text xml:space="preserve">
+          </xsl:text>
+            <xsl:apply-templates select="./(*|comment()|processing-instruction())">
+                <xsl:with-param name="teiHeader" select="." tunnel="true"/> 
+            </xsl:apply-templates><xsl:text xml:space="preserve">
+       </xsl:text></teiHeader>
+    </xsl:template>
+    
     <xsl:template match="tei:publicationStmt">
-        <xsl:param name="manannot_teiHeader" tunnel="yes" select="./ancestor::tei:teiHeader"/>
+        <!-- This should accept only one tei:teiHeader but there is still a text that was split and has more instances with the same SHAWICorpusID -->
+        <xsl:param name="teiHeader" tunnel="yes" as="element(tei:teiHeader)+"/>
         <publicationStmt xmlns="http://www.tei-c.org/ns/1.0">
             <xsl:apply-templates select="@*"/><xsl:apply-templates select="*|comment()|processing-instruction()"/>
             <xsl:text xml:space="preserve">
-            </xsl:text><idno type="teiSource"><xsl:value-of select="replace($manannot_teiHeader/base-uri(), '^.*(103_tei_w|010_manannot)/', $githubRepo||'/blob/'||$gitRef||'/$1/')"/></idno><xsl:text xml:space="preserve">          
+            </xsl:text><idno type="teiSource"><xsl:value-of select="string-join($teiHeader!replace(./base-uri(), '^.*(103_tei_w|010_manannot)/', $githubRepo||'/blob/'||$gitRef||'/$1/'), ' ')"/></idno><xsl:text xml:space="preserve">          
        </xsl:text></publicationStmt>
     </xsl:template>
     
