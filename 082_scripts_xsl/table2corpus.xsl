@@ -277,7 +277,18 @@
             </teiHeader>
             <text>
                 <body>
-                    <p><xsl:comment>The text of this recording will be added after transcription has finished.</xsl:comment></p>
+                    <ab>
+                       <ref target="{$textID}"><xsl:if test="$textID != ''">
+                <xsl:value-of select="
+                    concat(
+                    replace(replace(replace($relPath, '^.*?_', ''), '-\d{4}\.wav$', ''), '[-_]', ' '),
+                        if (matches($textID, '\d{3}\w$'))
+                            then concat(' (', substring($textID, string-length($textID), 1), ')')
+                        else ''
+                    )
+                "/></xsl:if></ref>
+                       <note>The content of this recording has been processed into a TEI document.</note>
+                    </ab>
                 </body>
             </text>
         </TEI>
