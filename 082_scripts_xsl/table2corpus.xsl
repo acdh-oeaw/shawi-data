@@ -213,8 +213,8 @@
         <xsl:variable name="subjects_in_recording" select="$allSubjects[tei:cell[$cn('Subjects')('Label')] = $subjectIDs]" as="element(tei:row)*"/>
         
         <!-- place -->
-        <xsl:variable name="placeName" select="tei:cell[$cn('Recordings')('Place')]"/>
-        <xsl:variable name="placeID" select="$t_Places//tei:row[tei:cell[$cn('Places')('PlaceName')] = $placeName]/tei:cell[$cn('Places')('ID')]"/>
+        <xsl:variable name="placename" select="tei:cell[$cn('Recordings')('Place')]"/>
+        <xsl:variable name="placeID" select="$t_Places//tei:row[tei:cell[$cn('Places')('Placename')] = $placename]/tei:cell[$cn('Places')('ID')]"/>
         
         <!-- path to Audio files -->
         <xsl:variable name="relPath" select="tei:cell[$cn('Recordings')('Transcribed Audio-file')]"/>
@@ -263,9 +263,16 @@
                         </listPerson>
                     </particDesc>
                     <settingDesc>
-                        <!-- TODO find ID  -->
-                        <!-- TODO fetch additional metadata from place list -->
-                        <place sameAs="{$vicavGeoListPrefix}:{$placeID}"><placeName><xsl:value-of select="$placeName"/></placeName></place>
+                         <setting>
+                            <xsl:choose>
+                                <xsl:when test="normalize-space($placeID) eq ''">
+                                    <p>No place of recording provided.</p>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <placeName sameAs="{$vicavGeoListPrefix}:{$placeID}"><xsl:value-of select="$placename"/></placeName>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                         </setting>
                     </settingDesc>
                     <textClass>
                         <xsl:for-each select="$subjects_in_recording">
