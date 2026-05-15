@@ -28,6 +28,7 @@ jobs:
           python -m pip install pipenv
           cd 080_scripts_generic/080_01_ELAN2TEI
           pipenv install
+          pipenv lock
           pipenv run jupyter nbconvert --to script ELAN2TEI.ipynb
           pipenv run python ELAN2TEI.py
       - name: convert 010_manannot to 130_vert_plain
