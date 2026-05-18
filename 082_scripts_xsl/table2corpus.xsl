@@ -169,7 +169,7 @@
                 </fileDesc>
                 <encodingDesc>
                     <classDecl>
-                        <taxonomy>
+                        <taxonomy xml:id="shawiSubjects">
                             <xsl:for-each select="$allSubjects[tei:cell[$cn('Subjects')('Label')] != '']">
                                 <xsl:sort select="_:sortKey(tei:cell[$cn('Subjects')('Label')])"/>
                                 <xsl:variable name="subjectID" select="_:ID(tei:cell[1])"/>
