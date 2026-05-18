@@ -285,16 +285,28 @@
             <text>
                 <body>
                     <ab>
-                       <ref target="{$textID}"><xsl:if test="$textID != ''">
-                <xsl:value-of select="
-                    concat(
-                    replace(replace(replace($relPath, '^.*?_', ''), '-\d{4}\.wav$', ''), '[-_]', ' '),
-                        if (matches($textID, '\d{3}\w$'))
-                            then concat(' (', substring($textID, string-length($textID), 1), ')')
-                        else ''
-                    )
-                "/></xsl:if></ref>
-                       <note>The content of this recording has been processed into a TEI document.</note>
+                        <xsl:variable name="transcribingPerson" select="normalize-space(tei:cell[$cn('Recordings')('transcribed by')])"/>
+                        <xsl:choose>
+                            <xsl:when test="$transcribingPerson = 'No Need/ unqualified'">
+                                <gap reason="sampling"/>
+                                <note>This recording has not been transcribed.</note>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <ref target="{$textID}">
+                                    <xsl:if test="$textID != ''">
+                                        <xsl:value-of select="
+                                            concat(
+                                            replace(replace(replace($relPath, '^.*?_', ''), '-\d{4}\.wav$', ''), '[-_]', ' '),
+                                                if (matches($textID, '\d{3}\w$'))
+                                                    then concat(' (', substring($textID, string-length($textID), 1), ')')
+                                                else ''
+                                            )
+                                        "/>
+                                    </xsl:if>
+                                </ref>
+                               <note>The content of this recording has been processed into a TEI document.</note>
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </ab>
                 </body>
             </text>
