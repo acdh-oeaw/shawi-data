@@ -393,7 +393,7 @@
         </respStmt>
     
         <xsl:variable name="transcribingPerson" select="normalize-space(tei:cell[$cn('Recordings')('transcribed by')])"/>
-        <xsl:if test="$transcribingPerson != ''">
+        <xsl:if test="$transcribingPerson != '' and $transcribingPerson != 'No Need/ unqualified'">
             <respStmt>
                 <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName($transcribingPerson)}">
                     <xsl:value-of select="$transcribingPerson"/>
