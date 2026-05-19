@@ -275,10 +275,12 @@
                          </setting>
                     </settingDesc>
                     <textClass>
-                        <xsl:for-each select="$subjects_in_recording">
-                            <xsl:sort select="_:sortKey(tei:cell[1])"/>
-                            <xsl:apply-templates select="." mode="teiInstanceDoc"/>
-                        </xsl:for-each>
+                        <keywords scheme="corpus:shawiSubjects">
+                            <xsl:for-each select="$subjects_in_recording">
+                                <xsl:sort select="_:sortKey(tei:cell[1])"/>
+                                <xsl:apply-templates select="." mode="teiInstanceDoc"/>
+                            </xsl:for-each>
+                        </keywords>
                     </textClass>
                 </profileDesc>
             </teiHeader>
@@ -497,7 +499,9 @@
             * "teiCorpusDoc": this generates the master list of speakers in the teiCorpus  
             * "teiInstanceDoc": this generates the list of speakers in one TEI instance, 
             thus not include all details but a @sameAs attribute pointing to the corpusHeader -->
-        <catRef target="{$teiCorpusPrefix}:{_:ID(tei:cell[1])}"/>
+        <term>
+            <xsl:value-of select="tei:cell[1]"/>
+        </term>
     </xsl:template>
     
    
