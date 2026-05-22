@@ -132,6 +132,14 @@
         <xsl:apply-templates select="node()"/>
     </xsl:template>
     
+<xsl:template match="tei:spanGrp">
+    <spanGrp>
+        <xsl:apply-templates select="@* except @type"/>
+        <xsl:attribute name="type">Translation</xsl:attribute>
+        <xsl:apply-templates/>
+    </spanGrp>
+</xsl:template>
+
     <xsl:template match="tei:span">
         <span xml:lang="en" target="{concat('#', $recordingID,'_',substring(@target, 2))}">
             <xsl:apply-templates select="@* except @target|node()"/>
