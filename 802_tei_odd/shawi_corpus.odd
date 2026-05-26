@@ -28,8 +28,8 @@
             <schemaSpec ident="shawi_corpus"
                 source="https://raw.githubusercontent.com/acdh-oeaw/vicav-content/master/tools/802_tei_odd/vicav_corpus.expanded.odd" start="TEI teiCorpus">
                 <!-- We copy all modules from VICAV corpus  -->
-                <moduleRef key="header" include="availability catRef change distributor encodingDesc fileDesc funder idno licence listPrefixDef prefixDef profileDesc publicationStmt rendition revisionDesc sourceDesc tagsDecl teiHeader textClass titleStmt"/>
-                <moduleRef key="core" include="address addrLine author bibl biblStruct cit corr date desc editor gap graphic head hi imprint media milestone monogr name note p publisher pubPlace quote ref respStmt resp rs series title"/>
+                <moduleRef key="header" include="availability catRef change distributor encodingDesc fileDesc funder idno keywords licence listPrefixDef prefixDef profileDesc publicationStmt rendition revisionDesc sourceDesc tagsDecl teiHeader textClass titleStmt"/>
+                <moduleRef key="core" include="address addrLine author bibl biblStruct cit corr date desc editor gap graphic head hi imprint media milestone monogr name note p publisher pubPlace quote ref respStmt resp rs series term title"/>
                 <moduleRef key="tei"/>
                 <moduleRef key="tagdocs" include="att code gi"/>
                 <moduleRef key="namesdates" include="forename listPerson orgName person persName place placeName surname"></moduleRef>
@@ -100,6 +100,16 @@
                 -->
 
                 <elementSpec ident="publicationStmt" module="header" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="publisher" minOccurs="1" maxOccurs="unbounded" />
+                            <elementRef key="distributor" minOccurs="0" maxOccurs="unbounded" />
+                            <elementRef key="date" minOccurs="1" maxOccurs="1" />
+                            <elementRef key="address" minOccurs="0" maxOccurs="1" />
+                            <elementRef key="availability" minOccurs="1" maxOccurs="1" />
+                            <elementRef key="idno" minOccurs="2" maxOccurs="2" />
+                        </sequence>
+                    </content>
                     <constraintSpec ident="publStmtIdnoType" scheme="schematron">
                         <desc>Restricts idno type within publicationStmt</desc>
                         <constraint>
@@ -109,7 +119,33 @@
                         </constraint>
                     </constraintSpec>
                 </elementSpec>
-                             
+                
+                <elementSpec ident="textClass" module="header" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="catRef" minOccurs="0" maxOccurs="unbounded" />
+                            <elementRef key="keywords" minOccurs="1" maxOccurs="unbounded" />
+                        </sequence>
+                    </content>
+                </elementSpec>
+                
+                <elementSpec ident="div" module="textstructure" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="head" minOccurs="0" maxOccurs="1" />
+                            <elementRef key="div" minOccurs="0" maxOccurs="unbounded" />
+                            <elementRef key="u" minOccurs="0" maxOccurs="unbounded" />
+                            <elementRef key="spanGrp" minOccurs="0" maxOccurs="1" />
+                        </sequence>
+                    </content>
+                    <constraintSpec ident="div-distinction" scheme="schematron">
+                        <constraint>
+                            <s:rule context="tei:div[@type='Situation']">
+                                <s:assert test="tei:head">a head element is required when div is of type Situation</s:assert>
+                            </s:rule>
+                        </constraint>
+                    </constraintSpec>
+                </elementSpec>
 
                 <elementSpec ident="w" module="analysis" mode="change">
                     <constraintSpec ident="msd-spec" scheme="schematron">
