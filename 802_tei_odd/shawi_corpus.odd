@@ -138,10 +138,14 @@
                             <elementRef key="spanGrp" minOccurs="0" maxOccurs="1" />
                         </sequence>
                     </content>
-                    <constraintSpec ident="div-distinction" scheme="schematron">
+                    <constraintSpec ident="div-distinction" mode="delete"/>
+                    <constraintSpec ident="div-distinction-without-translation" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:div[@type='Situation']">
                                 <s:assert test="tei:head">a head element is required when div is of type Situation</s:assert>
+                            </s:rule>
+                            <s:rule context="tei:div[@corresp]">
+                                <s:assert test="tei:u">a div without type Situation has to have utterances</s:assert>
                             </s:rule>
                         </constraint>
                     </constraintSpec>
