@@ -146,6 +146,16 @@
                             </s:rule>
                         </constraint>
                     </constraintSpec>
+                    <constraintSpec ident="uniqueIDs" scheme="schematron">
+                        <constraint>
+                            <s:rule context="tei:seg[@xml:id]">
+                                <s:assert test="count(root()//*[@xml:id = current()/@xml:id]) = 1">xml id of seg element must be unique</s:assert>
+                            </s:rule>
+                            <s:rule context="tei:w[@xml:id]">
+                                <s:assert test="count(root()//*[@xml:id = current()/@xml:id]) = 1">xml id of w element must be unique</s:assert>
+                            </s:rule>
+                        </constraint>
+                    </constraintSpec>
                 </elementSpec>
 
                 <elementSpec ident="w" module="analysis" mode="change">
