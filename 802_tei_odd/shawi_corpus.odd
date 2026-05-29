@@ -43,7 +43,7 @@
                     <constraint>
                         <s:pattern id="filename-check">
                             <s:rule context="/">
-                                <s:assert test="matches(tokenize(document-uri(/), '/')[last()], '^Urfa-\d{3}[a-z]?_[\w_]+-Harran-\d{4}\.xml$')">Filename must match a specific pattern: <s:value-of select="tokenize(document-uri(/), '/')[last()]"/></s:assert>
+                                <s:report test="not(matches(tokenize(document-uri(/), '/')[last()], '^Urfa-\d{3}[a-z]?_[\w_]+-Harran-\d{4}\.xml$'))">Filename does not match pattern: <s:value-of select="tokenize(document-uri(/), '/')[last()]"/> (expected: Urfa-XXX[a-z]?_[\w_]-Harran-XXXX.xml)</s:report>
                             </s:rule>
                         </s:pattern>
                     </constraint>
