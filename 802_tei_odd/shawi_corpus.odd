@@ -39,6 +39,17 @@
                 <moduleRef key="linking" include="anchor seg timeline when"/>
                 <moduleRef key="spoken" include="pause recording recordingStmt shift u vocal"></moduleRef>
                 
+                <constraintSpec ident="filenameCheck" scheme="schematron">
+                    <constraint>
+                        <s:pattern id="filename-check">
+                            <s:rule context="/">
+                                <s:assert test="matches(tokenize(document-uri(/), '/')[last()], '^Urfa-\d{3}[a-z]?_[\w_]+-Harran-\d{4}\.xml$')">Filename must match a specific pattern: <s:value-of select="tokenize(document-uri(/), '/')[last()]"/></s:assert>
+                            </s:rule>
+                        </s:pattern>
+                    </constraint>
+                </constraintSpec>
+                
+                
                 <!-- SHAWI specific rules -->
                 <elementSpec ident="fileDesc" module="header" mode="change">
                     <constraintSpec ident="rec-person-twice" scheme="schematron">
