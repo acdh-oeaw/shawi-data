@@ -93,7 +93,7 @@
                             </gramGrp>
                             <form type="variant">
                                 <usg type="geographic">
-                                    <name type="place">Bekaa</name>
+                                    <name type="place">Beqaa</name>
                                     <name type="tribe">Idin</name>
                                 </usg>
                                 <orth>ḅaġaḷ</orth>
@@ -110,7 +110,7 @@
                             <orth>bqaḷa</orth>
                             <form type="variant">
                                 <usg type="geographic">
-                                    <name type="place">Bekaa</name>
+                                    <name type="place">Beqaa</name>
                                     <name type="tribe">Idin</name>
                                 </usg>
                                 <orth>ḅġaḷa</orth>
@@ -510,13 +510,9 @@
             <div>
                 <head>Part 2: Formal Specification</head>
 
-<!--                <schemaSpec ident="shawi"
-                    source="https://raw.githubusercontent.com/acdh-oeaw/generic-dict-schema/main/schema/tmp/acdh-ch-dicts.compiled.odd">
-                    -->
-                     
                 <schemaSpec ident="shawi"
-                    source="file:\\\C:\Users\KMoerth\ch_data\_projects\generic-dict-schema\schema\tmp\acdh-ch-dicts__compiled.odd">
-                    
+                    source="https://raw.githubusercontent.com/acdh-oeaw/generic-dict-schema/main/schema/tmp/acdh-ch-dicts.compiled.odd">
+                   
                     <!-- We copy all modules from Generic dicts  -->
                     <moduleRef key="derived-module-TEILex0"/>
                     <moduleRef key="analysis"/>
@@ -744,7 +740,6 @@
                         </constraintSpec>
                     </elementSpec>
                     
-                    
                     <elementSpec ident="biblScope" mode="change" module="dictionaries">
                         <constraintSpec ident="biblScope-context" scheme="schematron">
                             <constraint>
@@ -858,7 +853,7 @@
                                         return
                                             (
                                                 ($zot = 'Lentin2013' and $place = 'Mayadin')
-                                                or ($zot = 'Younes2021' and $place = 'Bekaa')
+                                                or ($zot = 'Younes2021' and ($place = 'Beqaa' or $place = 'Idin' or $place = 'Abu Id'))
                                                 or ($zot = 'Bettini2006' and ($place = 'Jbur' or $place = 'Tayy'))
                                                 or not ($zot = ('Lentin2013', 'Younes2021', 'Bettini2006'))
                                              )
@@ -902,7 +897,19 @@
                         </attList>
                     </elementSpec>
 
-                  
+                    <elementSpec ident="bibl" mode="change" module="core">
+                        <constraintSpec ident="vicavBiblioCheck" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:bibl">
+                                    <s:let name="vicavBiblioFile" value="'../../vicav-library/vicav_biblio/vicav_biblio_tei_zotero.xml'"/>
+                                    <s:let name="vicavBiblioFileData" value="doc($vicavBiblioFile)"/>
+                                    <s:let name="biblSource" value="substring-after(tei:title/@ref, 'zot:')"/>
+                                    <s:assert test="some $b in $vicavBiblioFileData//tei:biblStruct/@n satisfies $b = $biblSource">The bibliographic source <s:value-of select="$biblSource"/> does not have an entry in the vicav biblio file</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+
                 </schemaSpec>
             </div>
         </body>
