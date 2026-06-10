@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-06-10T07:57:40Z. . 
+Schema generated from ODD source 2026-06-10T10:04:59Z. . 
 TEI Edition:  
 TEI Edition Location: https://www.tei-c.org/Vault/P5// 
   
@@ -3773,7 +3773,7 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:form">
-               <s:assert test="                                         every $sourceID in tokenize(@source,' ') satisfies                                         let $bibl :=                                             ancestor::tei:entry//tei:bibl[@xml:id = substring-after($sourceID, '#')],                                                 $zot := substring-after($bibl/tei:title/@ref, 'zot:'),                                                 $place := tei:usg[@type='geographic']/tei:name[@type='place']                                         return                                             (                                                 ($zot = 'Lentin2013' and $place = 'Mayadin')                                                 or ($zot = 'Younes2021' and ($place = 'Beqaa' or $place = 'Idin' or $place = 'Abu Id'))                                                 or ($zot = 'Bettini2006' and ($place = 'Jbur' or $place = 'Tayy'))                                                 or not ($zot = ('Lentin2013', 'Younes2021', 'Bettini2006'))                                              )                                              ">Invalid geographic usage for <s:value-of select="tokenize(@source,' ')"/>
+               <s:assert test="                                         every $sourceID in tokenize(@source,' ') satisfies                                         let $bibl :=                                             ancestor::tei:entry//tei:bibl[@xml:id = substring-after($sourceID, '#')],                                                 $zot := substring-after($bibl/tei:title/@ref, 'zot:'),                                                 $place := tei:usg[@type='geographic']/tei:name[@type='place'],                                                 $tribe := tei:usg[@type='geographic']/tei:name[@type='tribe']                                         return                                             (                                                 ($zot = 'Lentin2013' and ($place = 'Mayadin' or $place = 'Harran-Urfa'))                                                 or ($zot = 'Younes2021' and ($place = 'Beqaa' or $place = 'Harran-Urfa' or $tribe = 'Abu Id' or $tribe = 'Idin'))                                                 or ($zot = 'Bettini2006' and ($place = 'Jazira' or $place = 'al-Buwayr' or $place = 'Harran-Urfa' or $tribe = 'Jbur' or $tribe = 'Tayy'))                                                 or not ($zot = ('Lentin2013', 'Younes2021', 'Bettini2006'))                                              )                                              ">Invalid geographic usage for <s:value-of select="tokenize(@source,' ')"/>
                </s:assert>
             </s:rule>
          </pattern>

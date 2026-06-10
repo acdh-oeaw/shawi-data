@@ -846,12 +846,13 @@
                                         let $bibl :=
                                             ancestor::tei:entry//tei:bibl[@xml:id = substring-after($sourceID, '#')],
                                                 $zot := substring-after($bibl/tei:title/@ref, 'zot:'),
-                                                $place := tei:usg[@type='geographic']/tei:name[@type='place']
+                                                $place := tei:usg[@type='geographic']/tei:name[@type='place'],
+                                                $tribe := tei:usg[@type='geographic']/tei:name[@type='tribe']
                                         return
                                             (
-                                                ($zot = 'Lentin2013' and $place = 'Mayadin')
-                                                or ($zot = 'Younes2021' and ($place = 'Beqaa' or $place = 'Idin' or $place = 'Abu Id'))
-                                                or ($zot = 'Bettini2006' and ($place = 'Jbur' or $place = 'Tayy'))
+                                                ($zot = 'Lentin2013' and ($place = 'Mayadin' or $place = 'Harran-Urfa'))
+                                                or ($zot = 'Younes2021' and ($place = 'Beqaa' or $place = 'Harran-Urfa' or $tribe = 'Abu Id' or $tribe = 'Idin'))
+                                                or ($zot = 'Bettini2006' and ($place = 'Jazira' or $place = 'al-Buwayr' or $place = 'Harran-Urfa' or $tribe = 'Jbur' or $tribe = 'Tayy'))
                                                 or not ($zot = ('Lentin2013', 'Younes2021', 'Bettini2006'))
                                              )
                                              ">Invalid geographic usage for <s:value-of select="tokenize(@source,' ')"/>
