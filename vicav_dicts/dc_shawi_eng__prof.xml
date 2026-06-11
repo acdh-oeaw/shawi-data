@@ -484,6 +484,21 @@ Example (Fr):      cit[@type="example"]/cit[@type="translation"][@xml:lang="fr"]
     <xsl:template match="tei:div/@*"/>
 </xsl:stylesheet>
 </entryStyle>
+<redactForPublishing>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0">
+  <xsl:template match="/">
+    <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="tei:note"/><!-- remove -->
+  
+  <xsl:template match="@*|*|processing-instruction()|comment()">
+    <xsl:copy>
+      <xsl:apply-templates select="*|@*|text()|processing-instruction()|comment()"/>
+    </xsl:copy>
+  </xsl:template>
+</xsl:stylesheet>
+</redactForPublishing>
 <entryTemplates>//*********************************************************//
 //* ENTRY (lemma) - TEMPLATE ******************************//
 //*********************************************************//
