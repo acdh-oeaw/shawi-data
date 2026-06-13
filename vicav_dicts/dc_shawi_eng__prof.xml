@@ -1007,6 +1007,13 @@ z# = ž   //zhe alternative
    collection($__db__)//tei:cit[@type='example'][.//tei:quote[text() contains text "{subQuery}" using wildcards]]/@xml:id!db:attribute($__db__,("#"||.))/ancestor::tei:entry
 </queryTemplate>
 
+<queryTemplate label="ft_all_exact" type="complete">
+   declare namespace tei = 'http://www.tei-c.org/ns/1.0';
+   declare variable $__db__ external;
+   collection($__db__)//tei:entry/.//node()[text() contains text "{subQuery}" using wildcards using diacritics sensitive using case sensitive] | 
+   collection($__db__)//tei:cit[@type='example'][.//tei:quote[text() contains text "{subQuery}" using wildcards using diacritics sensitive using case sensitive]]/@xml:id!db:attribute($__db__,("#"||.))/ancestor::tei:entry
+</queryTemplate>
+
 <queryTemplate label="ft_lem">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
