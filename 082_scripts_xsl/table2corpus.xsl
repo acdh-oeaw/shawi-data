@@ -47,6 +47,9 @@
         <prefixDef ident="rend" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/tools/vicav_rendition.xml#$1">
             <p>Private URIs using the <code>rend</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>rendition</gi> element in <ref target="https://github.com/acdh-oeaw/vicav-content/blob/master/tools/vicav_rendition.xml">VICAV rendition library</ref>.</p>
         </prefixDef>
+        <prefixDef ident="vtc" matchPattern="^(.+)$" replacementPattern="../../vicav-library/vicav_textClasses.xml">
+            <p>Private URIs using the <code>vtc</code> prefix are pointers to the list of VICAV text classes.</p>
+        </prefixDef>
     </xsl:variable>
     
     <xsl:variable name="teiCorpusPrefix">corpus</xsl:variable>
@@ -275,6 +278,7 @@
                          </setting>
                     </settingDesc>
                     <textClass>
+                        <catRef target="vtc:datatypes.vicav.ums"/>
                         <keywords scheme="corpus:shawiSubjects">
                             <xsl:for-each select="$subjects_in_recording">
                                 <xsl:sort select="_:sortKey(tei:cell[1])"/>
