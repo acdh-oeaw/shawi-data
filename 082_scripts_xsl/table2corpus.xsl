@@ -47,6 +47,9 @@
         <prefixDef ident="rend" matchPattern="^(.+)$" replacementPattern="https://github.com/acdh-oeaw/vicav-content/blob/master/tools/vicav_rendition.xml#$1">
             <p>Private URIs using the <code>rend</code> prefix are pointers to the <att>xml:id</att> attribute on a <gi>rendition</gi> element in <ref target="https://github.com/acdh-oeaw/vicav-content/blob/master/tools/vicav_rendition.xml">VICAV rendition library</ref>.</p>
         </prefixDef>
+        <prefixDef ident="assets" matchPattern="^(.+)$" replacementPattern="https://shawi-assets.acdh.oeaw.ac.at/$1">
+            <p>Private URIs using the <code>assets</code> prefix are pointers to the location of the SHAWI media assets.</p>
+        </prefixDef>
         <prefixDef ident="vtc" matchPattern="^(.+)$" replacementPattern="../../vicav-library/vicav_textClasses.xml">
             <p>Private URIs using the <code>vtc</code> prefix are pointers to the list of VICAV text classes.</p>
         </prefixDef>

@@ -28,14 +28,6 @@
         <xsl:value-of select="concat('#',substring-before(substring-after($url,'/'),'.'),'-',$type)"/>
     </xsl:function>
     
-    <xsl:template match="tei:listPrefixDef">
-        <xsl:copy>
-            <xsl:apply-templates select="@*|node()"/>
-            <prefixDef ident="assets" matchPattern="^(.+)$" replacementPattern="https://shawi-assets.acdh.oeaw.ac.at/$1">
-                <p>Private URIs using the <code>assets</code> prefix are pointers to the location of the SHAWI media assets.</p>
-            </prefixDef>
-        </xsl:copy>
-    </xsl:template>
     <xsl:template match="tei:annotationBlock">
         <div corresp="{string-join(descendant::tei:media/_:idRefFromMediaUrl(.),' ')}">
             <xsl:apply-templates select="@* except (@start,@end)|node()"/>
