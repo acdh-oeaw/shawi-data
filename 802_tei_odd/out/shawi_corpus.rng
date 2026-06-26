@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-05-29T09:45:57Z. . 
+Schema generated from ODD source 2026-06-26T08:43:23Z. . 
 TEI Edition:  
 TEI Edition Location: https://www.tei-c.org/Vault/P5// 
   
@@ -3945,9 +3945,14 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
    <define name="textClass">
       <element name="textClass">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text classification) groups information which describes the nature or topic of a text in terms of a standard classification scheme, thesaurus, etc. [2.4.3. The Text Classification]</a:documentation>
-         <oneOrMore>
-            <ref name="keywords"/>
-         </oneOrMore>
+         <group>
+            <oneOrMore>
+               <ref name="catRef"/>
+            </oneOrMore>
+            <zeroOrMore>
+               <ref name="keywords"/>
+            </zeroOrMore>
+         </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
                   id="shawi_corpus-textClass-textclass-taxonomy-values-constraint-rule-20">
@@ -4708,27 +4713,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-div-uniqueIDs-constraint-rule-23">
-            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
-                    xmlns:math="http://www.w3.org/1998/Math/MathML"
-                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
-                    xmlns:svg="http://www.w3.org/2000/svg"
-                    xmlns:xi="http://www.w3.org/2001/XInclude"
-                    context="tei:seg[@xml:id]">
-               <s:assert test="count(root()//*[@xml:id = current()/@xml:id]) = 1">xml id of seg element must be unique</s:assert>
-            </s:rule>
-            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
-                    xmlns:math="http://www.w3.org/1998/Math/MathML"
-                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
-                    xmlns:svg="http://www.w3.org/2000/svg"
-                    xmlns:xi="http://www.w3.org/2001/XInclude"
-                    context="tei:w[@xml:id]">
-               <s:assert test="count(root()//*[@xml:id = current()/@xml:id]) = 1">xml id of w element must be unique</s:assert>
-            </s:rule>
-         </pattern>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-div-abstractModel-structure-div-in-l-constraint-rule-25">
+                  id="shawi_corpus-div-abstractModel-structure-div-in-l-constraint-rule-23">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -4743,7 +4728,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-div-abstractModel-structure-div-in-ab-or-p-constraint-rule-26">
+                  id="shawi_corpus-div-abstractModel-structure-div-in-ab-or-p-constraint-rule-24">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5175,7 +5160,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-w-msd-spec-constraint-rule-27">
+                  id="shawi_corpus-w-msd-spec-constraint-rule-25">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5190,7 +5175,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-w-lemmaRef-spec-constraint-rule-28">
+                  id="shawi_corpus-w-lemmaRef-spec-constraint-rule-26">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5205,7 +5190,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-w-rend-spec-constraint-rule-29">
+                  id="shawi_corpus-w-rend-spec-constraint-rule-27">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5336,7 +5321,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          <ref name="macro.phraseSeq.limited"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-span-span-target-check-constraint-rule-30">
+                  id="shawi_corpus-span-span-target-check-constraint-rule-28">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5350,7 +5335,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-span-target-from-constraint-rule-31">
+                  id="shawi_corpus-span-target-from-constraint-rule-29">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5365,7 +5350,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-span-targetto-constraint-rule-32">
+                  id="shawi_corpus-span-targetto-constraint-rule-30">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5380,7 +5365,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-span-tonotfrom-constraint-rule-33">
+                  id="shawi_corpus-span-tonotfrom-constraint-rule-31">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5395,7 +5380,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-span-tofrom-constraint-rule-34">
+                  id="shawi_corpus-span-tofrom-constraint-rule-32">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5867,6 +5852,26 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
                <ref name="w"/>
             </choice>
          </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                  id="shawi_corpus-u-uniqueIDs-constraint-rule-33">
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:seg[@xml:id]">
+               <s:assert test="count(root()//*[@xml:id = current()/@xml:id]) = 1">xml id of seg element must be unique</s:assert>
+            </s:rule>
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="//tei:w[@xml:id]">
+               <s:assert test="count(root()//*[@xml:id = current()/@xml:id]) = 1">xml id of w element must be unique</s:assert>
+            </s:rule>
+         </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
                   id="shawi_corpus-u-u-who-check-constraint-rule-35">
