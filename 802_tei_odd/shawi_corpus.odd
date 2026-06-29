@@ -132,12 +132,6 @@
                     </constraintSpec>
                 </elementSpec>
                 
-                <elementSpec ident="textClass" module="header" mode="change">
-                    <content>
-                        <elementRef key="keywords" minOccurs="1" maxOccurs="unbounded" />
-                    </content>
-                </elementSpec>
-                
                 <elementSpec ident="div" module="textstructure" mode="change">
                     <content>
                         <sequence>
@@ -158,12 +152,15 @@
                             </s:rule>
                         </constraint>
                     </constraintSpec>
+                </elementSpec>
+
+                <elementSpec ident="u" module="spoken" mode="change">
                     <constraintSpec ident="uniqueIDs" scheme="schematron">
                         <constraint>
                             <s:rule context="tei:seg[@xml:id]">
                                 <s:assert test="count(root()//*[@xml:id = current()/@xml:id]) = 1">xml id of seg element must be unique</s:assert>
                             </s:rule>
-                            <s:rule context="tei:w[@xml:id]">
+                            <s:rule context="//tei:w[@xml:id]">
                                 <s:assert test="count(root()//*[@xml:id = current()/@xml:id]) = 1">xml id of w element must be unique</s:assert>
                             </s:rule>
                         </constraint>
