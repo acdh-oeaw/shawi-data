@@ -572,7 +572,6 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
-                        
                     </elementSpec>
 
                     <elementSpec ident="gram" mode="change" module="dictionaries">
@@ -815,7 +814,7 @@
                                 <s:rule context="tei:form[@source]">
                                     <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
                                     <s:let name="biblID"
-                                        value="following-sibling::tei:listBibl/tei:bibl/@xml:id | parent::tei:form/following-sibling::tei:listBibl/tei:bibl/@xml:id | parent::tei:form/parent::tei:form/following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
+                                        value="ancestor::tei:entry//tei:listBibl/tei:bibl/@xml:id"/>
                                     <s:assert
                                         test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID"
                                         >If a form element has a source attribute there must be a
@@ -902,7 +901,7 @@
                                     <s:let name="vicavBiblioFile" value="'../../vicav-library/vicav_biblio/vicav_biblio_tei_zotero.xml'"/>
                                     <s:let name="vicavBiblioFileData" value="doc($vicavBiblioFile)"/>
                                     <s:let name="biblSource" value="substring-after(tei:title/@ref, 'zot:')"/>
-                                    <s:assert test="some $b in $vicavBiblioFileData//tei:biblStruct/@n satisfies $b = $biblSource">The bibliographic source <s:value-of select="$biblSource"/> does not have an entry in the vicav biblio file</s:assert>
+                                    <s:assert test="some $b in $vicavBiblioFileData//tei:biblStruct/@xml:id satisfies $b = $biblSource">The bibliographic source <s:value-of select="$biblSource"/> does not have an entry in the vicav biblio file</s:assert>
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
