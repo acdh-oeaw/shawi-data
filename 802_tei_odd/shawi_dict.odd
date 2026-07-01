@@ -714,13 +714,13 @@
                             <constraint>
                                 <s:rule context="tei:bibl/tei:title">
                                     <s:let name="pageNumber" value="tokenize(replace(following-sibling::tei:biblScope, '[^0-9]+', ' '), '\s+')[. != '']"/>
-                                    <s:assert test="if (./@ref='zot:Bettini2006') then every $p in $pageNumber satisfies number($p) gt 358 and number($p) lt 399 else true()">
+                                    <s:assert test="if (./@ref='zot:bettini_2006_0000') then every $p in $pageNumber satisfies number($p) gt 358 and number($p) lt 399 else true()">
                                         If Bettini2006 is the source, the following biblScope pages must be between 359 and 398.
                                     </s:assert>
-                                    <s:assert test="if (./@ref='zot:Lentin2013') then every $p in $pageNumber satisfies number($p) gt 150 and number($p) lt 172 else true()">
+                                    <s:assert test="if (./@ref='zot:de_jong_2013_1762') then every $p in $pageNumber satisfies number($p) gt 150 and number($p) lt 172 else true()">
                                         If Lentin2013 is the source, the following biblScope pages must be between 151 and 171.
                                     </s:assert>
-                                    <s:assert test="if (./@ref='zot:Younes2021') then every $p in $pageNumber satisfies number($p) gt 0 and number($p) lt 137 else true()">
+                                    <s:assert test="if (./@ref='zot:younes_2021_2948') then every $p in $pageNumber satisfies number($p) gt 0 and number($p) lt 137 else true()">
                                         If Younes2021 is the source, the following biblScope pages must be between 1 and 136.
                                     </s:assert>
                                 </s:rule>
@@ -849,10 +849,10 @@
                                                 $tribe := tei:usg[@type='geographic']/tei:name[@type='tribe']
                                         return
                                             (
-                                                ($zot = 'Lentin2013' and ($place = 'Mayadin' or $place = 'Harran-Urfa'))
-                                                or ($zot = 'Younes2021' and ($place = 'Beqaa' or $place = 'Harran-Urfa' or $tribe = 'Abu Id' or $tribe = 'Idin'))
-                                                or ($zot = 'Bettini2006' and ($place = 'Jazira' or $place = 'al-Buwayr' or $place = 'Harran-Urfa' or $tribe = 'Jbur' or $tribe = 'Tayy'))
-                                                or not ($zot = ('Lentin2013', 'Younes2021', 'Bettini2006'))
+                                            ($zot = 'de_jong_2013_1762' and ($place = 'Mayadin' or $place = 'Harran-Urfa'))
+                                            or ($zot = 'younes_2021_2948' and ($place = 'Beqaa' or $place = 'Harran-Urfa' or $tribe = 'Abu Id' or $tribe = 'Idin'))
+                                            or ($zot = 'bettini_2006_0000' and ($place = 'Jazira' or $place = 'al-Buwayr' or $place = 'Harran-Urfa' or $tribe = 'Jbur' or $tribe = 'Tayy'))
+                                            or not ($zot = ('de_jong_2013_1762', 'younes_2021_2948', 'bettini_2006_0000'))
                                              )
                                              ">Invalid geographic usage for <s:value-of select="tokenize(@source,' ')"/>
                                     </s:assert>
