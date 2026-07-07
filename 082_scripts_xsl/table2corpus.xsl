@@ -281,7 +281,8 @@
                          </setting>
                     </settingDesc>
                     <textClass>
-                        <catRef target="vtc:datatypes.vicav.ums"/>
+                        <catRef scheme="vtc:datatypes.vicav"
+                                target="vtc:datatypes.vicav.ums"/>
                         <keywords scheme="corpus:shawiSubjects">
                             <xsl:for-each select="$subjects_in_recording">
                                 <xsl:sort select="_:sortKey(tei:cell[1])"/>
