@@ -499,7 +499,7 @@
                         <!-- ... -->
                         <listBibl type="literature">
                             <bibl xml:id="d1e2995">
-                                <title ref="zot:Lentin2013"/>
+                                <title ref="zot:de_jong_2013_1762"/>
                                 <biblScope unit="page">p.159</biblScope>
                             </bibl>
                         </listBibl>
@@ -583,7 +583,6 @@
                                         and a direct grandchild of a form with a type
                                         attribute</s:assert>
                                 </s:rule>
-                                
                                 <s:rule context="tei:gram[@type = 'polarity']">
                                     <s:assert test="normalize-space(.) = 'negative'">'gram' elements with type 'polarity' can only have the value 'negative'</s:assert>
                                 </s:rule>
@@ -600,6 +599,9 @@
                                 <s:rule context="tei:gram[@type = 'subc'][normalize-space(.)=('fraction','ordinal')]">
                                     <s:assert test="../tei:gram[@type='pos'] = 'numeral'">​value "<s:value-of select="."/>" is not expected in gram[@type='subc'] ​when used in combination with in​ gram[@type='pos'][. = "<s:value-of select="../tei:gram[@type='pos']"/>"]. The expected value is "numeral".</s:assert>
                                 </s:rule>​
+                                <s:rule context="tei:gram[@xml:lang]">
+                                    <s:assert test="@xml:lang != 'ar'"></s:assert>
+                                </s:rule>
                             </constraint>
                         </constraintSpec>
                         <!-- 
@@ -628,6 +630,7 @@
                         <attList>
                             <attDef ident="xml:lang" mode="change">
                                 <valList type="closed" mode="replace">
+                                    <valItem ident="ar"/>
                                     <valItem ident="ar-acm-x-shawi-vicav"/>
                                     <valItem ident="ar-Latn"/>
                                     <valItem ident="de"/>
@@ -904,7 +907,6 @@
                             </constraint>
                         </constraintSpec>
                     </elementSpec>
-
                 </schemaSpec>
             </div>
         </body>
