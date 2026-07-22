@@ -860,6 +860,36 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="pointerCheck" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:bibl/tei:title/@ref | tei:usg/tei:name[@type='place']/@ref | tei:sense/@ana">
+                                    <s:let name="idRef" value="." />
+                                    <s:let name="localID" value="if (matches($idRef,'^#')) then substring-after($idRef,'#') else ()" />
+                                    <s:let name="prefixDefs" value="root()//tei:prefixDef" />
+                                    <s:let name="prefixRegex" value="concat('^(',string-join($prefixDefs/@ident,'|'),'):(.+)$')" />
+                                    <s:let name="prefixMatch" value="if (exists($prefixDefs)) then analyze-string($idRef, $prefixRegex)//*:group[1] else ()" />
+                                    <s:let name="referenceMatch" value="if (exists($prefixDefs)) then analyze-string($idRef, $prefixRegex)//*:group[2] else ()" />
+                                    <s:let name="prefixDef" value="if (exists($prefixMatch)) then $prefixDefs[@ident = $prefixMatch] else ()" />
+                                    <s:let name="prefixGroups" value="if (exists($prefixMatch)) then analyze-string($referenceMatch, $prefixDef/@matchPattern)//*:group else ()" />
+                                    <s:let name="grpr1" value="if (exists($prefixGroups[@nr = '1'])) then replace($prefixDef/@replacementPattern,'\$1', $prefixGroups[@nr = '1']) else $prefixDef/@replacementPattern" />
+                                    <s:let name="grpr2" value="if (exists($prefixGroups[@nr = '2'])) then replace($grpr1,'\$2', $prefixGroups[@nr = '2']) else $grpr1" />
+                                    <s:let name="grpr3" value="if (exists($prefixGroups[@nr = '3'])) then replace($grpr2,'\$3', $prefixGroups[@nr = '3']) else $grpr2" />
+                                    <s:let name="grpr4" value="if (exists($prefixGroups[@nr = '4'])) then replace($grpr3,'\$4', $prefixGroups[@nr = '4']) else $grpr3" />
+                                    <s:let name="grpr5" value="if (exists($prefixGroups[@nr = '5'])) then replace($grpr4,'\$5', $prefixGroups[@nr = '5']) else $grpr4" />
+                                    <s:let name="grpr6" value="if (exists($prefixGroups[@nr = '6'])) then replace($grpr5,'\$6', $prefixGroups[@nr = '6']) else $grpr5" />
+                                    <s:let name="grpr7" value="if (exists($prefixGroups[@nr = '7'])) then replace($grpr6,'\$7', $prefixGroups[@nr = '7']) else $grpr6" />
+                                    <s:let name="grpr8" value="if (exists($prefixGroups[@nr = '8'])) then replace($grpr7,'\$8', $prefixGroups[@nr = '8']) else $grpr7" />
+                                    <s:let name="grpr9" value="if (exists($prefixGroups[@nr = '9'])) then replace($grpr8,'\$9', $prefixGroups[@nr = '9']) else $grpr8" />
+                                    <s:let name="grpr10" value="if (exists($prefixGroups[@nr = '10'])) then replace($grpr9,'\$10', $prefixGroups[@nr = '10']) else $grpr9" />
+                                    <s:let name="targetRaw" value="if ($localID != '') then $idRef else if (exists($prefixDef)) then $grpr10 else $idRef" />
+                                    <s:let name="target" value="translate($targetRaw,'\','/')" />
+                                    <s:let name="targetResolves" value="if ($localID != '' ) then exists(root()//*[@xml:id = $localID]) else if (matches($idRef,'^(http|https)')) then true() else doc-available(resolve-uri($target, base-uri($idRef)))" />
+                                    <s:report test="$target = ''">unexpected target "<s:value-of select="$idRef" />" in reference <s:value-of select="local-name($idRef)" /></s:report>
+                                    <s:assert test="$targetResolves">the target "<s:value-of select="$target" />" of pointer "<s:value-of select="$idRef"/>" cannot be resolved</s:assert>
+                                    <s:report test="count(tokenize($idRef,' ')) gt 1">pointer "<s:value-of select="$idRef" />" contains more than one references (whitespace)</s:report>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
                     </elementSpec>
                     
                     <elementSpec ident="fs" mode="change" module="iso-fs">
