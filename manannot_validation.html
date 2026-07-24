@@ -3,26 +3,999 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;   /* horizontal centering */
-    align-items: center;       /* vertical centering */
-    background: #f9fafb;       /* soft background (optional) */
-    font-family: "Segoe UI", Roboto, sans-serif;
-}
 
-.center-message {
-    font-size: 1.5rem;
-    color: #333;
-    padding: 1rem 2rem;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+<style>
+table {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 6px;
+    text-align: left;
+}
+thead {
+    background: #eee;
 }
 </style>
-<p class="center-message">No validation errors found.</p>
+
+</head>
+<script>
+function filterTable() {
+    const input = document.getElementById("tableFilter");
+    const filter = input.value.toLowerCase();
+    const table = document.getElementById("myTable");
+    const rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {  // skip header (row 0)
+        let rowText = rows[i].innerText.toLowerCase();
+        rows[i].style.display = rowText.includes(filter) ? "" : "none";
+    }
+}
+</script>
+<body>
+<input
+    type="text"
+    id="tableFilter"
+    placeholder="Type to filter..."
+    onkeyup="filterTable()"
+    style="
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        width: 100%;
+        max-width: 400px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+        outline: none;
+        transition: border 0.2s;
+    "
+    onfocus="this.style.border='1px solid #007acc';"
+    onblur="this.style.border='1px solid #ccc';"
+/>
+<table border="1" class="dataframe" id="myTable">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>type</th>
+      <th>message</th>
+      <th>line</th>
+      <th>source</th>
+      <th>location</th>
+      <th>stage</th>
+      <th>exceptionType</th>
+      <th>link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>231</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[2]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L231">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>262</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[5]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L262">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>289</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[7]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L289">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>304</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[9]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L304">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>329</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[12]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L329">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>358</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[15]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L358">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>397</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[17]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L397">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>416</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[19]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L416">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>447</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[21]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L447">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>489</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[24]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L489">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>509</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[25]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L509">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>548</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[27]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L548">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>578</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[29]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L578">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>609</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[31]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L609">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>643</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[34]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L643">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>676</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[36]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L676">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>697</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[38]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L697">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>719</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[40]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L719">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>746</td>
+      <td>../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[42]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml#L746">../010_manannot/New/Urfa-421a_Kontorcus_Sheikhs_Crododile_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>159</td>
+      <td>../010_manannot/New/Urfa-416_Mezra_on_Conflict-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[2]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-416_Mezra_on_Conflict-Harran-2022.xml#L159">../010_manannot/New/Urfa-416_Mezra_on_Conflict-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>217</td>
+      <td>../010_manannot/New/Urfa-416_Mezra_on_Conflict-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[6]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-416_Mezra_on_Conflict-Harran-2022.xml#L217">../010_manannot/New/Urfa-416_Mezra_on_Conflict-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>537</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[2]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L537">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>557</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[4]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L557">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>611</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[8]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L611">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>649</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[11]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L649">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>655</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[12]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L655">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>669</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[14]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L669">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>684</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[16]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L684">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>710</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[18]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L710">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>765</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[21]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L765">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>798</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[24]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L798">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>861</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[28]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L861">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>896</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[30]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L896">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>931</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[32]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L931">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>960</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[34]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L960">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>990</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[36]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L990">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1012</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[38]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1012">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1048</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[41]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1048">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1088</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[44]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1088">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1118</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[47]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1118">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1186</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[51]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1186">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1224</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[53]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1224">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1241</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[55]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1241">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1311</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[58]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1311">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1365</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[62]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1365">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1381</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[64]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1381">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1414</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[66]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1414">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1461</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[69]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1461">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1479</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[71]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1479">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1496</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[72]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1496">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1527</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[75]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1527">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1576</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[78]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1576">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1708</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[84]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1708">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1745</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[87]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1745">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1789</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[90]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1789">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1849</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[94]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1849">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1876</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[96]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1876">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>1987</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[103]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L1987">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2095</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[109]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2095">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2135</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[112]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2135">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2202</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[116]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2202">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2259</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[120]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2259">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2298</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[123]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2298">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2442</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[130]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2442">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2511</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[134]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2511">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2558</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[137]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2558">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2601</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[140]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2601">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2629</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[143]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2629">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2636</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[144]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2636">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2733</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[150]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2733">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2758</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[152]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2758">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2856</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[157]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2856">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2938</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[162]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2938">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>2964</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[164]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L2964">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>3046</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[168]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L3046">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>3079</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[170]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L3079">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>3099</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[172]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L3099">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>3144</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[175]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L3144">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>3204</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[178]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L3204">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>3221</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[180]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L3221">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>3255</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[183]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L3255">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>3314</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[187]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L3314">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>3398</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[192]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L3398">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>error</td>
+      <td>The 'who' attribute of u must point to a person defined in the\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</td>
+      <td>3445</td>
+      <td>../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</td>
+      <td>/tei:TEI[1]/tei:text[1]/tei:body[1]/tei:div[1]/tei:div[195]/tei:u[1]</td>
+      <td>schematron</td>
+      <td>failed-assert</td>
+      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml#L3445">../010_manannot/New/Urfa-415_Mezra_Jail_Story-Harran-2022.xml</a></td>
+    </tr>
+  </tbody>
+</table>
 </body>
 </html>
