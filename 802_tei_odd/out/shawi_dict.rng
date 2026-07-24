@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-07-22T09:55:15Z. . 
+Schema generated from ODD source 2026-07-24T14:02:32Z. . 
 TEI Edition:  
 TEI Edition Location: https://www.tei-c.org/Vault/P5// 
   
@@ -82,6 +82,27 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5//
             <ref name="xr"/>
          </choice>
       </zeroOrMore>
+   </define>
+   <define name="anyElement_xenoData_1">
+      <element>
+         <anyName>
+            <except>
+               <nsName ns="http://www.tei-c.org/ns/1.0"/>
+               <name ns="http://www.tei-c.org/ns/Examples">egXML</name>
+            </except>
+         </anyName>
+         <zeroOrMore>
+            <attribute>
+               <anyName/>
+            </attribute>
+         </zeroOrMore>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="anyElement_xenoData_1"/>
+            </choice>
+         </zeroOrMore>
+      </element>
    </define>
    <define name="att.anchoring.attributes">
       <ref name="att.anchoring.attribute.anchored"/>
@@ -1298,28 +1319,40 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
    </define>
    <define name="model.segLike">
       <choice>
+         <ref name="c"/>
          <ref name="seg"/>
       </choice>
    </define>
    <define name="model.segLike_alternation">
       <choice>
+         <ref name="c"/>
          <ref name="seg"/>
       </choice>
    </define>
    <define name="model.segLike_sequence">
+      <ref name="c"/>
       <ref name="seg"/>
    </define>
    <define name="model.segLike_sequenceOptional">
+      <optional>
+         <ref name="c"/>
+      </optional>
       <optional>
          <ref name="seg"/>
       </optional>
    </define>
    <define name="model.segLike_sequenceOptionalRepeatable">
       <zeroOrMore>
+         <ref name="c"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="seg"/>
       </zeroOrMore>
    </define>
    <define name="model.segLike_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="c"/>
+      </oneOrMore>
       <oneOrMore>
          <ref name="seg"/>
       </oneOrMore>
@@ -3022,9 +3055,15 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
    <define name="item">
       <element name="item">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(item) contains one component of a list. [3.8. Lists 2.6. The Revision Description]</a:documentation>
-         <ref name="macro.specialPara"/>
+         <zeroOrMore>
+            <choice>
+               <ref name="macro.specialPara"/>
+               <oneOrMore>
+                  <ref name="c"/>
+               </oneOrMore>
+            </choice>
+         </zeroOrMore>
          <ref name="att.global.attributes"/>
-         <ref name="att.sortable.attributes"/>
          <empty/>
       </element>
    </define>
@@ -3548,6 +3587,18 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
          </attribute>
       </optional>
    </define>
+   <define name="c">
+      <element name="c">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(character) represents a character. [18.1. Linguistic Segment Categories]</a:documentation>
+         <ref name="macro.xtext"/>
+         <ref name="att.global.attributes"/>
+         <ref name="att.cmc.attributes"/>
+         <ref name="att.notated.attributes"/>
+         <ref name="att.segLike.attributes"/>
+         <ref name="att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="model.entryLike">
       <choice>
          <ref name="entry"/>
@@ -3818,11 +3869,15 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
                <s:let name="targetRaw"
                       value="if ($localID != '') then $idRef else if (exists($prefixDef)) then $grpr10 else $idRef"/>
                <s:let name="target" value="translate($targetRaw,'\','/')"/>
+               <s:let name="targetResolvesLocalOrRemote"
+                      value="if ($localID != '' ) then exists(root()//*[@xml:id = $localID]) else if (matches($idRef,'^(http|https)')) then true() else false()"/>
+               <s:let name="relativeTarget" value="resolve-uri($target, base-uri($idRef))"/>
                <s:let name="targetResolves"
-                      value="if ($localID != '' ) then exists(root()//*[@xml:id = $localID]) else if (matches($idRef,'^(http|https)')) then true() else doc-available(resolve-uri($target, base-uri($idRef)))"/>
+                      value="if ($targetResolvesLocalOrRemote) then $targetResolvesLocalOrRemote else doc-available($relativeTarget)"/>
                <s:report test="$target = ''">unexpected target "<s:value-of select="$idRef"/>" in reference <s:value-of select="local-name($idRef)"/>
                </s:report>
-               <s:assert test="$targetResolves">the target "<s:value-of select="$target"/>" of pointer "<s:value-of select="$idRef"/>" cannot be resolved</s:assert>
+               <s:assert test="$targetResolves">the target "<s:value-of select="$target"/>" of pointer "<s:value-of select="$idRef"/>" cannot be resolved <s:value-of select="if ($targetResolvesLocalOrRemote) then '' else '('||$relativeTarget||')'"/>
+               </s:assert>
                <s:report test="count(tokenize($idRef,' ')) gt 1">pointer "<s:value-of select="$idRef"/>" contains more than one references (whitespace)</s:report>
             </s:rule>
          </pattern>
@@ -4244,6 +4299,8 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <value>collocate</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <value>agreement</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <value>arguments</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">arguments to a verb (see above)</a:documentation>
                <value>constraint</value>
@@ -4259,20 +4316,30 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">derived verb class</a:documentation>
                <value>diaRoot</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">diachronic root</a:documentation>
+               <value>function</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">possible values: copulative (ShawiDict, isiZuluDict)</a:documentation>
                <value>morphPattern</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">morphological pattern</a:documentation>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">morphological pattern: for Semitic languages</a:documentation>
+               <value>morphStruct</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">This is used to indicate the distinct morphemes a word is made up of. It is used in isiZuluDict.</a:documentation>
                <value>msd</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The abbreviation stands for morphosyntactic description. The value of this gram-type can be "activeParticiple|passiveParticiple|determined"</a:documentation>
+               <value>nomClass</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Used for "nominal class" in isiZuluDict.</a:documentation>
                <value>nominalState</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Used for "status constructus"</a:documentation>
                <value>person</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <value>polarity</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">possible value: negative</a:documentation>
                <value>root</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">synchronous root</a:documentation>
+               <value>semType</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">values: inchoative</a:documentation>
                <value>state</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">construct</a:documentation>
+               <value>stem</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Used in isiZuluDict and farsiDict </a:documentation>
                <value>synRoot</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">synchronous root</a:documentation>
                <value>voice</value>
@@ -5457,6 +5524,9 @@ Sample values include: 1] Unicode (Unicode); 2] Bridwell (E. Nelson Bridwell); 3
             </optional>
             <ref name="profileDesc"/>
             <optional>
+               <ref name="xenoData"/>
+            </optional>
+            <optional>
                <ref name="revisionDesc"/>
             </optional>
          </group>
@@ -5980,6 +6050,21 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
             <ref name="model.profileDescPart"/>
          </oneOrMore>
          <ref name="att.global.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="xenoData">
+      <element name="xenoData">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(non-TEI metadata) provides a container element into which metadata in non-TEI formats may be placed. [2.5. Non-TEI Metadata]</a:documentation>
+         <choice>
+            <text/>
+            <oneOrMore>
+               <ref name="anyElement_xenoData_1"/>
+            </oneOrMore>
+         </choice>
+         <ref name="att.global.attributes"/>
+         <ref name="att.declarable.attributes"/>
+         <ref name="att.typed.attributes"/>
          <empty/>
       </element>
    </define>

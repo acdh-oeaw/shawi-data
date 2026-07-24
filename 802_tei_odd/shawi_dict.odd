@@ -883,9 +883,11 @@
                                     <s:let name="grpr10" value="if (exists($prefixGroups[@nr = '10'])) then replace($grpr9,'\$10', $prefixGroups[@nr = '10']) else $grpr9" />
                                     <s:let name="targetRaw" value="if ($localID != '') then $idRef else if (exists($prefixDef)) then $grpr10 else $idRef" />
                                     <s:let name="target" value="translate($targetRaw,'\','/')" />
-                                    <s:let name="targetResolves" value="if ($localID != '' ) then exists(root()//*[@xml:id = $localID]) else if (matches($idRef,'^(http|https)')) then true() else doc-available(resolve-uri($target, base-uri($idRef)))" />
+                                    <s:let name="targetResolvesLocalOrRemote" value="if ($localID != '' ) then exists(root()//*[@xml:id = $localID]) else if (matches($idRef,'^(http|https)')) then true() else false()" />
+                                    <s:let name="relativeTarget" value="resolve-uri($target, base-uri($idRef))"/>
+                                    <s:let name="targetResolves" value="if ($targetResolvesLocalOrRemote) then $targetResolvesLocalOrRemote else doc-available($relativeTarget)"/>
                                     <s:report test="$target = ''">unexpected target "<s:value-of select="$idRef" />" in reference <s:value-of select="local-name($idRef)" /></s:report>
-                                    <s:assert test="$targetResolves">the target "<s:value-of select="$target" />" of pointer "<s:value-of select="$idRef"/>" cannot be resolved</s:assert>
+                                    <s:assert test="$targetResolves">the target "<s:value-of select="$target" />" of pointer "<s:value-of select="$idRef"/>" cannot be resolved <s:value-of select="if ($targetResolvesLocalOrRemote) then '' else '('||$relativeTarget||')'"/></s:assert>
                                     <s:report test="count(tokenize($idRef,' ')) gt 1">pointer "<s:value-of select="$idRef" />" contains more than one references (whitespace)</s:report>
                                 </s:rule>
                             </constraint>
