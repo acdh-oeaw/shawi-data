@@ -162,6 +162,9 @@
 <add path="/shawi/shawi_standoff.xml">../shawi-data/010_manannot/shawi_standoff.xml</add>
 <add path="/shawi/standoff_comp.xml">../shawi-data/010_manannot/standoff_comp.xml</add>
         <optimize-all/>
+        <create-db name='vicav_biblio'/>
+        <add path="/shawi">../shawi-data/vicav-library/vicav_biblio</add>
+        <optimize-all/>
         <create-db name='vicav_geo'/>
         <add path="/">../shawi-data/vicav-library/vicav_geo/vicav_geodata.xml</add>
         <optimize-all/>
@@ -178,18 +181,17 @@
         <set option='attrindex'>true</set>
         <set option='attrinclude'></set>
         <set option='textinclude'></set>
-        <set option='ftinclude'></set>   
-        <create-db name='vicav_projects'>../shawi-data/vicav_projects</create-db>
+        <set option='ftinclude'></set>
         <create-db name='vicav_profiles'>../shawi-data/vicav_profiles</create-db>
         <create-db name='vicav_texts'>../shawi-data/vicav_texts</create-db>
         <add path="/shawi/shawi_corpus.odd">../shawi-data/802_tei_odd/shawi_corpus.odd</add>
         <add path="/shawi/shawi_corpus.html">../shawi-data/802_tei_odd/shawi_corpus.html</add>
         <add path="/shawi/shawi_dict.odd">../shawi-data/802_tei_odd/shawi_dict.odd</add>
         <add path="/shawi/shawi_dict.html">../shawi-data/802_tei_odd/shawi_dict.html</add>
-        <create-db name='vicav_biblio'>../shawi-data/vicav-library/vicav_biblio</create-db>
         <create-db name='vicav_samples'>../shawi-data/vicav_samples</create-db>
         <create-db name="dc_shawi_eng__prof">../shawi-data/vicav_dicts/dc_shawi_eng__prof.xml</create-db>
         <create-db name="dc_shawi_eng">../shawi-data/vicav_dicts/dc_shawi_eng.xml</create-db>
+        <create-db name='vicav_projects'>../shawi-data/vicav_projects</create-db>
         <close/>
         <set option="BINDINGS">colls=dc_shawi_eng</set>
         <run file="webapp/vicav-app/create_autocomplete_index.xq"/>
