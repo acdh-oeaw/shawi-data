@@ -53,12 +53,18 @@
         <prefixDef ident="vtc" matchPattern="^(.+)$" replacementPattern="../../vicav-library/vicav_textClasses.xml">
             <p>Private URIs using the <code>vtc</code> prefix are pointers to the list of VICAV text classes.</p>
         </prefixDef>
+        <prefixDef ident="pt" matchPattern="^(.+)$" replacementPattern="../vicav_texts/shawi/$1.xml">
+            <p>Private URIs using the <code>pt</code> prefix are pointers to a paratext data document.</p>
+        </prefixDef>
+        <prefixDef ident="p" matchPattern="^(.+)$" replacementPattern="../vicav_profiles/shawi/$1.xml">
+            <p>Private URIs using the <code>p</code> prefix are pointers to a VICAV Profile data document.</p>
+        </prefixDef>
     </xsl:variable>
     
-    <xsl:variable name="teiCorpusPrefix">corpus</xsl:variable>
-    <xsl:variable name="sharePrefix">share</xsl:variable>
-    <xsl:variable name="vicavGeoListPrefix">geo</xsl:variable>
-    <xsl:variable name="vicavZoteroGroupPrefix">zotid</xsl:variable>
+    <xsl:variable name="teiCorpusPrefix" select="$prefixDefs//tei:prefixDef[contains(@replacementPattern,'shawiCorpus.xml')]/@ident" as="attribute(ident)"/>
+    <xsl:variable name="sharePrefix" select="$prefixDefs//tei:prefixDef[contains(@replacementPattern,'share17.univie.ac.at')]/@ident" as="attribute(ident)"/>
+    <xsl:variable name="vicavGeoListPrefix" select="$prefixDefs//tei:prefixDef[contains(@replacementPattern,'vicav_geodata.xml')]/@ident" as="attribute(ident)"/>
+    <xsl:variable name="vicavZoteroGroupPrefix" select="$prefixDefs//tei:prefixDef[contains(@replacementPattern,'vicav_biblio_tei_zotero.xml')]/@ident" as="attribute(ident)"/>
        
     <xsl:variable name="cn" as="map(xs:string, map(xs:string, xs:integer))">
         <xsl:map>
