@@ -13,39 +13,38 @@
 			<dropdown xml:id="dropdown01" title="About">
 				<item xml:id="shawiAbout" target="shawi.paratexts.about" type="vicavTexts">About</item>
 				<item xml:id="shawiTeam" target="shawi.paratexts.team" type="vicavTexts">Team</item>
-				<item xml:id="shawiNews" target="shawi.paratexts.news" type="vicavTexts">News</item>
 			</dropdown>
 			<dropdown xml:id="dropdown02" title="Profiles">
 				<item xml:id="liProfilesExplanation" target="tunocentExplanationProfiles" type="vicavTexts">Explanation</item>
 				<separator/>
-				<item xml:id="navProfilesGeoRegMarkers">Show All Locations</item>
+				<!--<item xml:id="navProfilesGeoRegMarkers">Show All Locations</item>-->
 		        <item xml:id="liProfilesList" targetType="DataList" target="vicav_profiles">
-		        	List all entries
+		        	List all profiles
 		        	<params>
 		        		<dataTypes>
 							<_>Profile</_>
 						</dataTypes>
 		        	</params>
 		        </item>
-
-				<separator/>
-				<item xml:id="liVicavContributeProfile">Contribute a Profile</item>
+				<item xml:id="arabicPlaceNames" target="shawi.paratexts.shawi.paratexts.arabicNamesTürkiye" type="vicavTexts">Arabic place names</item>
+				<!--<separator/>
+				<item xml:id="liVicavContributeProfile">Contribute a Profile</item>-->
 			</dropdown>
 			
 	      	<dropdown xml:id="dropdown04" title="Corpus">
                 <item xml:id="allCorpusTexts" type="DataList" target="vicav_corpus">
-		        	List all entries
+		        	List all transcriptions
 		        	<params>
 		        		<dataTypes><_>CorpusText</_></dataTypes>
 		        	</params>
 		        </item>
                 <item xml:id="corpusQuery" type="CorpusQuery">Search the corpus</item>
          <separator/>
-         <item xml:id="liDictDetailedExplanation" target="shawi.corpus.odd" type="Text">Functional Requirements and Data Specification</item>
+         <item xml:id="liDictDetailedExplanation" target="shawi.corpus.odd" type="Text">Corpus Documentation</item>
 			</dropdown>            
 			<dropdown xml:id="dropdown05" title="Dictionary">
                 <item xml:id="dc_shawi_eng" type="DictQuery">
-                    Search for vocabulary in corpus texts
+                    Search the dictionary
                     <params>
                         <queryString>SHAWI Glossary</queryString>
                     </params>
@@ -55,9 +54,10 @@
             </dropdown>
 		</main>
 		<subnav>
-			<item xml:id="subNavProfilesGeoRegMarkers">Profiles</item>
+			<!-- do not render map navigation buttons -->
+			<!--<item xml:id="subNavProfilesGeoRegMarkers">Profiles</item>
 	    	<item xml:id="subNavFeaturesGeoRegMarkers">Features</item>
-	    	<item xml:id="subNavSamplesGeoRegMarkers">Samples</item>
+	    	<item xml:id="subNavSamplesGeoRegMarkers">Samples</item>-->
 		</subnav>
 	</menu>
 	<insert_list_of_corpus_characters/>
