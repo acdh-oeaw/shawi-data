@@ -231,6 +231,16 @@
         <!-- path to Audio files -->
         <xsl:variable name="relPath" select="tei:cell[$cn('Recordings')('Transcribed Audio-file')]"/>
         <xsl:variable name="fullPath" select="$pathToRecordings"/>
+
+        <xsl:variable name="recordingDate" select="
+            let $d := normalize-space(tei:cell[$cn('Recordings')('Date')])
+            return
+            if ($d castable as xs:int)
+            then _:excelSerialToISO(xs:int($d))
+            else ()
+        "/>
+        <xsl:variable name="recordingYear" select="year-from-date($recordingDate)" as="xs:integer?"/>
+        
         <TEI>
             <teiHeader>
                 <fileDesc>
@@ -246,7 +256,7 @@
                         <recordingStmt>
                             <!-- TODO parse duration and date -->
                             <recording dur-iso="{tei:cell[$cn('Recordings')('Length')]}" type="audio">
-                                <date when="{_:excelSerialToISO( tei:cell[$cn('Recordings')('Date')])}"/>
+                                <date when="{$recordingDate}"/>
                                 <respStmt>
                                     <persName ref="{$teiCorpusPrefix}:{_:personReferenceByName(tei:cell[$cn('Recordings')('Rec. person')])}"><xsl:value-of select="normalize-space(tei:cell[$cn('Recordings')('Rec. person')])"/></persName>
                                     <resp>recording</resp>
