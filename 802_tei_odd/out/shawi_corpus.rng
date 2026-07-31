@@ -5,11 +5,14 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-07-08T08:26:30Z. . 
+Schema generated from ODD source 2026-07-31T19:38:53Z. . 
 TEI Edition:  
 TEI Edition Location: https://www.tei-c.org/Vault/P5// 
   
 --><!---->
+   <sch:ns xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+           prefix="tei"
+           uri="http://www.tei-c.org/ns/1.0"/>
    <define name="macro.paraContent">
       <zeroOrMore>
          <choice>
@@ -569,7 +572,7 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
    <define name="att.global.rendition.attribute.rendition">
       <optional>
          <attribute name="rendition">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition reference) points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
             <list>
                <oneOrMore>
                   <data type="anyURI">
@@ -651,7 +654,7 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
          <sch:let name="srcs" value="tokenize( normalize-space(@source),' ')"/>
          <sch:report test="(   self::tei:classRef                                 | self::tei:dataRef                                 | self::tei:elementRef                                 | self::tei:macroRef                                 | self::tei:moduleRef                                 | self::tei:schemaSpec )                                   and                                   $srcs[2]">
               When used on a schema description element (like
-              <sch:value-of select="name(.)"/>), the @source attribute
+              &lt;<sch:value-of select="name(.)"/>&gt;), the @source attribute
               should have only 1 value. (This one has <sch:value-of select="count($srcs)"/>.)
             </sch:report>
       </sch:rule>
@@ -802,7 +805,7 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
                 xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:xi="http://www.w3.org/2001/XInclude"
                 context="tei:*[not(self::tei:schemaSpec)][@targetLang]">
-         <sch:assert test="@target">@targetLang should only be used on <sch:name/> if @target is specified.</sch:assert>
+         <sch:assert test="@target">@targetLang should only be used on &lt;<sch:name/>&gt; if @target is specified.</sch:assert>
       </sch:rule>
    </pattern>
    <define name="att.pointing.attribute.target">
@@ -958,7 +961,7 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
                 xmlns:xi="http://www.w3.org/2001/XInclude"
                 context="tei:*[ starts-with( @spanTo, '#') ]">
          <sch:assert test="id( substring( @spanTo, 2 ) ) &gt;&gt; .">
-	      The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow the current <sch:name/> element 
+              The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow the current &lt;<sch:name/>&gt; element.
             </sch:assert>
       </sch:rule>
    </pattern>
@@ -1004,7 +1007,7 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
                 xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:xi="http://www.w3.org/2001/XInclude"
                 context="tei:*[@schemeVersion]">
-         <sch:assert test="@scheme and not(@scheme = 'free')">
+         <sch:assert test="@scheme and not(@scheme eq 'free')">
               @schemeVersion can only be used if @scheme is specified.
             </sch:assert>
       </sch:rule>
@@ -1043,7 +1046,9 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
                 xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:xi="http://www.w3.org/2001/XInclude"
                 context="tei:*[@subtype]">
-         <sch:assert test="@type">The <sch:name/> element should not be categorized in detail with @subtype unless also categorized in general with @type</sch:assert>
+         <sch:assert test="@type">
+          The &lt;<sch:name/>&gt; element should not be categorized in detail with @subtype unless also categorized in general with @type.
+        </sch:assert>
       </sch:rule>
    </pattern>
    <define name="att.written.attributes">
@@ -2760,7 +2765,7 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
                 context="tei:*[@calendar]">
          <sch:assert test="string-length( normalize-space(.) ) gt 0"> @calendar indicates one or more
               systems or calendars to which the date represented by the content of this element belongs,
-              but this <sch:name/> element has no textual content.</sch:assert>
+              but this &lt;<sch:name/>&gt; element has no textual content.</sch:assert>
       </sch:rule>
    </pattern>
    <define name="att.duration.iso.attributes">
@@ -2833,7 +2838,7 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:p">
                <sch:report test="(ancestor::tei:ab or ancestor::tei:p) and                        not( ancestor::tei:floatingText                           | parent::tei:exemplum                           | parent::tei:item                           | parent::tei:note                           | parent::tei:q                           | parent::tei:quote                           | parent::tei:remarks                           | parent::tei:said                           | parent::tei:sp                           | parent::tei:stage                           | parent::tei:cell                           | parent::tei:figure )">
-          Abstract model violation: Paragraphs may not occur inside other paragraphs or ab elements.
+          Abstract model violation: Paragraphs may not occur inside other paragraphs or &lt;ab&gt; elements.
         </sch:report>
             </sch:rule>
          </pattern>
@@ -2848,7 +2853,7 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:l//tei:p">
                <sch:assert test="ancestor::tei:floatingText | parent::tei:figure | parent::tei:note">
-          Abstract model violation: Metrical lines may not contain higher-level structural elements such as div, p, or ab, unless p is a child of figure or note, or is a descendant of floatingText.
+          Abstract model violation: Metrical lines (&lt;l&gt; elements) may not contain higher-level structural elements such as &lt;div&gt;, &lt;p&gt;, or &lt;ab&gt;, unless &lt;p&gt; is a child of &lt;figure&gt; or &lt;note&gt;, or is a descendant of &lt;floatingText&gt;.
         </sch:assert>
             </sch:rule>
          </pattern>
@@ -3148,7 +3153,7 @@ Sample values include: 1] sender; 2] return; 3] recipient ; 4] work; 5] home; 6]
                       xmlns:svg="http://www.w3.org/2000/svg"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:ref">
-               <sch:report test="@target and @cRef">Only one of the attributes @target and @cRef may be supplied on <sch:name/>.</sch:report>
+               <sch:report test="@target and @cRef">Only one of the attributes @target and @cRef may be supplied on &lt;<sch:name/>&gt;.</sch:report>
             </sch:rule>
          </pattern>
          <ref name="att.global.attributes"/>
@@ -3196,10 +3201,14 @@ Sample values include: 1] sender; 2] return; 3] recipient ; 4] work; 5] home; 6]
                     xmlns:svg="http://www.w3.org/2000/svg"
                     xmlns:xi="http://www.w3.org/2001/XInclude"
                     context="tei:u/tei:note">
-               <s:assert test="parent::tei:u/tei:w/@xml:id = substring-after(@target, '#')">The target of note in u should point to a w element of the same
-                                    parent u element</s:assert>
-               <s:assert test="@resp">The note element must have a resp
-                                    attribute</s:assert>
+               <s:assert test="parent::tei:u/tei:w/@xml:id = substring-after(@target, '#')">                                    
+                                    The target of note in u should point to a w element of the same
+                                    parent u element
+                                </s:assert>
+               <s:assert test="@resp">                                    
+                                    The note element must have a resp
+                                    attribute
+                                </s:assert>
             </s:rule>
          </pattern>
          <ref name="att.global.attributes"/>
@@ -3446,8 +3455,10 @@ Elements]</a:documentation>
                     xmlns:svg="http://www.w3.org/2000/svg"
                     xmlns:xi="http://www.w3.org/2001/XInclude"
                     context="tei:respStmt">
-               <s:assert test="not(tei:resp[. != 'recording' and . != 'transcription check' and . != 'contributor' and . = preceding::tei:resp])">Each value inside 'respStmt' must be unique, except for
-                                    'recording', 'transcription check' and 'contributor'</s:assert>
+               <s:assert test="not(tei:resp[. != 'recording' and . != 'transcription check' and . != 'contributor' and . = preceding::tei:resp])">                                        
+                                        Each value inside 'respStmt' must be unique, except for
+                                        'recording', 'transcription check' and 'contributor'
+                                    </s:assert>
             </s:rule>
          </pattern>
          <ref name="att.global.attributes"/>
@@ -3686,8 +3697,10 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                     xmlns:svg="http://www.w3.org/2000/svg"
                     xmlns:xi="http://www.w3.org/2001/XInclude"
                     context="tei:funder/tei:idno">
-               <s:assert test="@type='projectNumber'">Only the type "projectNumber"
-                                    is permitted for idno inside funder</s:assert>
+               <s:assert test="@type='projectNumber'">                                        
+                                        Only the type "projectNumber"
+                                        is permitted for idno inside funder
+                                    </s:assert>
             </s:rule>
          </pattern>
          <ref name="att.global.attributes"/>
@@ -4054,9 +4067,9 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             <choice>
                <value>generated</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">status automatically generated by elan2tei conversion workflow</a:documentation>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">status automatically generated by elan2tei conversion workflow </a:documentation>
                <value>draft</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">after changes have been made manually in the 010_manannot folder</a:documentation>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">after changes have been made manually in the 010_manannot folder </a:documentation>
                <value>done</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">from here on validation with odd makes sense</a:documentation>
                <value>checked</value>
@@ -4528,7 +4541,53 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
                </choice>
             </zeroOrMore>
          </choice>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                  id="shawi_corpus-person-person-document-level-constraint-rule-21">
+            <s:rule xmlns="http://www.tei-c.org/ns/1.0"
+                    xmlns:math="http://www.w3.org/1998/Math/MathML"
+                    xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"
+                    context="tei:person[@sameAs]">
+               <s:let name="person-ref" value="@sameAs"/>
+               <s:let name="prefix" value="substring-before($person-ref, ':')"/>
+               <s:let name="person-id" value="substring-after($person-ref, ':')"/>
+               <s:let name="prefixDef" value="root()//tei:prefixDef[@ident = $prefix]"/>
+               <s:let name="replacementPattern" value="$prefixDef/@replacementPattern"/>
+               <s:let name="resolvedTarget"
+                      value="replace($replacementPattern, '\$1', $person-id)"/>
+               <s:let name="targetExists"
+                      value="doc-available(resolve-uri($resolvedTarget, base-uri($person-ref)))"/>
+               <s:let name="age-taxonomy-uri"
+                      value="'https://raw.githubusercontent.com/acdh-oeaw/vicav-library/main/vicav_ageGroups.xml'"/>
+               <s:let name="age-taxonomy"
+                      value="if (doc-available($age-taxonomy-uri)) then doc($age-taxonomy-uri)//tei:taxonomy[@xml:id = 'agegroups.vicav'][1] else ()"/>
+               <s:let name="age-valid-values"
+                      value="for $cat in $age-taxonomy//tei:category[@n] return normalize-space($cat/@n)"/>
+               <s:assert test="$targetExists">                                        
+                                        Person "
+                                    <s:value-of select="$person-id"/>                                        
+                                        " not found in corpus document.
+                                    </s:assert>
+               <s:assert test="normalize-space(@age) != ''">                                        
+                                        @age must be provided and non-empty on the local person.
+                                    </s:assert>
+               <s:assert test="exists($age-taxonomy)">                                        
+                                        The default ageGroup taxonomy at '
+                                    <s:value-of select="$age-taxonomy-uri"/>                                        
+                                        ' could not be loaded.
+                                    </s:assert>
+               <s:assert test="@age = $age-valid-values">                                        
+                                        @age value '
+                                    <s:value-of select="@age"/>
+                                        ' is not a valid ageGroup value.
+                                    </s:assert>
+            </s:rule>
+         </pattern>
          <ref name="att.global.attributes"/>
+         <ref name="att.datable.attributes"/>
          <ref name="att.editLike.attributes"/>
          <ref name="att.sortable.attributes"/>
          <optional>
@@ -4613,6 +4672,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
             </zeroOrMore>
          </group>
          <ref name="att.global.attributes"/>
+         <ref name="att.datable.attributes"/>
          <ref name="att.editLike.attributes"/>
          <ref name="att.sortable.attributes"/>
          <ref name="att.typed.attributes"/>
@@ -4696,7 +4756,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-div-div-distinction-without-translation-constraint-rule-21">
+                  id="shawi_corpus-div-div-distinction-without-translation-constraint-rule-22">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -4716,7 +4776,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-div-abstractModel-structure-div-in-l-constraint-rule-23">
+                  id="shawi_corpus-div-abstractModel-structure-div-in-l-constraint-rule-24">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -4725,13 +4785,13 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:l//tei:div">
                <sch:assert test="ancestor::tei:floatingText">
-          Abstract model violation: Metrical lines may not contain higher-level structural elements such as div, unless div is a descendant of floatingText.
+          Abstract model violation: Metrical lines (&lt;l&gt; elements) may not contain higher-level structural elements such as &lt;div&gt;, unless &lt;div&gt; is a descendant of &lt;floatingText&gt;.
         </sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-div-abstractModel-structure-div-in-ab-or-p-constraint-rule-24">
+                  id="shawi_corpus-div-abstractModel-structure-div-in-ab-or-p-constraint-rule-25">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -4740,7 +4800,7 @@ Sample values include: 1] TEI; 2] DBK (docbook); 3] XX (unknown); 4] Schematron;
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:div">
                <sch:report test="(ancestor::tei:p or ancestor::tei:ab) and not(ancestor::tei:floatingText)">
-          Abstract model violation: p and ab may not contain higher-level structural elements such as div, unless div is a descendant of floatingText.
+          Abstract model violation: &lt;p&gt; and &lt;ab&gt; may not contain higher-level structural elements such as &lt;div&gt;, unless &lt;div&gt; is a descendant of &lt;floatingText&gt;.
         </sch:report>
             </sch:rule>
          </pattern>
@@ -5163,7 +5223,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-w-msd-spec-constraint-rule-25">
+                  id="shawi_corpus-w-msd-spec-constraint-rule-26">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5178,7 +5238,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-w-lemmaRef-spec-constraint-rule-26">
+                  id="shawi_corpus-w-lemmaRef-spec-constraint-rule-27">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5193,7 +5253,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-w-rend-spec-constraint-rule-27">
+                  id="shawi_corpus-w-rend-spec-constraint-rule-28">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5204,8 +5264,10 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
                <s:let name="rendFile"
                       value="'https://raw.githubusercontent.com/acdh-oeaw/vicav-library/main/vicav_rendition.xml'"/>
                <s:let name="rend_values" value="doc($rendFile)//tei:rendition/@xml:id"/>
-               <s:assert test="every $r in tokenize(normalize-space(@rendition), '\s+') satisfies (replace(replace($r, '^rend:', ''), '^#', '') = $rend_values)">@rendition contains value(s) not found in vicav_rendition.xml:
-                                        '<s:value-of select="@rendition"/>'</s:assert>
+               <s:assert test="every $r in tokenize(normalize-space(@rendition), '\s+') satisfies (replace(replace($r, '^rend:', ''), '^#', '') = $rend_values)">                                    
+                                    @rendition contains value(s) not found in vicav_rendition.xml:
+                                    '
+                                <s:value-of select="@rendition"/>'</s:assert>
             </s:rule>
          </pattern>
          <ref name="att.global.attribute.n"/>
@@ -5324,7 +5386,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
          <ref name="macro.phraseSeq.limited"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-span-span-target-check-constraint-rule-28">
+                  id="shawi_corpus-span-span-target-check-constraint-rule-29">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5332,13 +5394,15 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
                     xmlns:svg="http://www.w3.org/2000/svg"
                     xmlns:xi="http://www.w3.org/2001/XInclude"
                     context="tei:span">
-               <s:assert test="parent::tei:spanGrp/parent::tei:div/@xml:id = substring-after(@target, '#')">target of span should point at xml:id of parent div
-                                    element</s:assert>
+               <s:assert test="parent::tei:spanGrp/parent::tei:div/@xml:id = substring-after(@target, '#')">                                    
+                                    target of span should point at xml:id of parent div
+                                    element
+                                </s:assert>
             </s:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-span-target-from-constraint-rule-29">
+                  id="shawi_corpus-span-target-from-constraint-rule-30">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5347,13 +5411,13 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:span">
                <sch:report test="@from and @target">
-          Only one of the attributes @target and @from may be supplied on <sch:name/>
-               </sch:report>
+          Only one of the attributes @target and @from may be supplied on &lt;<sch:name/>&gt;.
+        </sch:report>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-span-targetto-constraint-rule-30">
+                  id="shawi_corpus-span-targetto-constraint-rule-31">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5362,13 +5426,13 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:span">
                <sch:report test="@to and @target">
-          Only one of the attributes @target and @to may be supplied on <sch:name/>
-               </sch:report>
+          Only one of the attributes @target and @to may be supplied on &lt;<sch:name/>&gt;.
+        </sch:report>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-span-tonotfrom-constraint-rule-31">
+                  id="shawi_corpus-span-tonotfrom-constraint-rule-32">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5377,13 +5441,13 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:span">
                <sch:report test="@to and not(@from)">
-          If @to is supplied on <sch:name/>, @from must be supplied as well
+          If @to is supplied on &lt;<sch:name/>&gt;, @from must be supplied as well.
         </sch:report>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-span-tofrom-constraint-rule-32">
+                  id="shawi_corpus-span-tofrom-constraint-rule-33">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5392,7 +5456,7 @@ Suggested values include: 1] persuade; 2] express; 3] inform; 4] entertain</a:do
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:span">
                <sch:report test="contains(normalize-space(@to),' ') or contains(normalize-space(@from),' ')">
-          The attributes @to and @from on <sch:name/> may each contain only a single value
+          The attributes @to and @from on &lt;<sch:name/>&gt; may each contain only a single value.
         </sch:report>
             </sch:rule>
          </pattern>
@@ -5857,7 +5921,7 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-u-uniqueIDs-constraint-rule-33">
+                  id="shawi_corpus-u-uniqueIDs-constraint-rule-34">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5877,7 +5941,7 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-u-u-who-check-constraint-rule-35">
+                  id="shawi_corpus-u-u-who-check-constraint-rule-36">
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:math="http://www.w3.org/1998/Math/MathML"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -5885,10 +5949,14 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
                     xmlns:svg="http://www.w3.org/2000/svg"
                     xmlns:xi="http://www.w3.org/2001/XInclude"
                     context="tei:u">
-               <s:assert test="starts-with(@who, 'corpus:')">The 'who' attribute of
-                                    u has to start with 'corpus:'</s:assert>
-               <s:assert test="every $w in tokenize(@who, '\s+') satisfies //tei:person/@sameAs = $w">The 'who' attribute of u must point to a person defined in the
-                                    header</s:assert>
+               <s:assert test="starts-with(@who, 'corpus:')">                                    
+                                    The 'who' attribute of
+                                    u has to start with 'corpus:'
+                                </s:assert>
+               <s:assert test="every $w in tokenize(@who, '\s+') satisfies //tei:person/@sameAs = $w">                                    
+                                    The 'who' attribute of u must point to a person defined in the
+                                    header
+                                </s:assert>
             </s:rule>
          </pattern>
          <ref name="att.global.attribute.n"/>
@@ -5996,7 +6064,7 @@ Suggested values include: 1] d (days); 2] h (hours); 3] min (minutes); 4] s (sec
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="shawi_corpus-shift-shiftNew-constraint-rule-36">
+                  id="shawi_corpus-shift-shiftNew-constraint-rule-37">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:math="http://www.w3.org/1998/Math/MathML"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -6055,58 +6123,4 @@ Suggested values include: 1] tempo; 2] loud; 3] pitch; 4] tension; 5] rhythm; 6]
          <ref name="TEI"/>
       </choice>
    </start>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:math="http://www.w3.org/1998/Math/MathML"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:svg="http://www.w3.org/2000/svg"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="tei"
-           uri="http://www.tei-c.org/ns/1.0"/>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:math="http://www.w3.org/1998/Math/MathML"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:svg="http://www.w3.org/2000/svg"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="xs"
-           uri="http://www.w3.org/2001/XMLSchema"/>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:math="http://www.w3.org/1998/Math/MathML"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:svg="http://www.w3.org/2000/svg"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="rng"
-           uri="http://relaxng.org/ns/structure/1.0"/>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:math="http://www.w3.org/1998/Math/MathML"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:svg="http://www.w3.org/2000/svg"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="rna"
-           uri="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:math="http://www.w3.org/1998/Math/MathML"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:svg="http://www.w3.org/2000/svg"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="sch"
-           uri="http://purl.oclc.org/dsdl/schematron"/>
-   <sch:ns xmlns="http://www.tei-c.org/ns/1.0"
-           xmlns:math="http://www.w3.org/1998/Math/MathML"
-           xmlns:rng="http://relaxng.org/ns/structure/1.0"
-           xmlns:s="http://purl.oclc.org/dsdl/schematron"
-           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-           xmlns:svg="http://www.w3.org/2000/svg"
-           xmlns:xi="http://www.w3.org/2001/XInclude"
-           prefix="sch1x"
-           uri="http://www.ascc.net/xml/schematron"/>
 </grammar>
