@@ -92,6 +92,8 @@
     <xsl:variable name="allTeam" select="$t_Team//tei:row[position() gt 1]" as="element(tei:row)*"/>
     
     <xsl:variable name="t_Places" select="//tei:table[tei:head = 'Places']" as="element(tei:table)"/>
+
+    <xsl:variable name="ageGroups" select="//tei:table[tei:head = 'Age Groups']//tei:row[position() gt 1]" as="element(tei:row)*"/>
     
     <xsl:template match="/">
         <xsl:comment>THIS FILE WAS PROGRAMMATICALLY CREATED by table2corpus.xsl on/at <xsl:value-of select="current-dateTime()"/></xsl:comment>
@@ -280,7 +282,9 @@
                                 <xsl:comment>TODO Add Speakers to Speakers_in_Recording Table</xsl:comment>
                             </xsl:if>
                             <xsl:for-each select="$speakers_in_recording">
-                                <xsl:apply-templates select="." mode="teiInstanceDoc"/>
+                                <xsl:apply-templates select="." mode="teiInstanceDoc">
+                                    <xsl:with-param name="recordingYear" select="$recordingYear"/>
+                                </xsl:apply-templates>
                             </xsl:for-each>
                         </listPerson>
                     </particDesc>
@@ -378,7 +382,34 @@
             * "teiCorpusDoc": this generates the master list of speakers in the teiCorpus  
             * "teiInstanceDoc": this generates the list of speakers in one TEI instance, 
             thus not include all details but a @sameAs attribute pointing to the corpusHeader -->
-        <person sameAs="{$teiCorpusPrefix}:{tei:cell[1]}">
+        <xsl:param name="recordingYear" as="xs:integer?"/>
+        
+        <xsl:variable name="age" select="
+            if (exists($recordingYear) and tei:cell[3] castable as xs:integer)
+            then $recordingYear - xs:integer(tei:cell[3])
+            else ()
+        "/>
+
+<xsl:variable name="ageGroup"
+    select="
+        $ageGroups[
+            (
+                normalize-space(tei:cell[$cn('Age Groups')('At Least')]) = ''
+                or
+                $age ge xs:integer(tei:cell[$cn('Age Groups')('At Least')])
+            )
+            and
+            (
+                normalize-space(tei:cell[$cn('Age Groups')('At Most')]) = ''
+                or
+                $age le xs:integer(tei:cell[$cn('Age Groups')('At Most')])
+            )
+        ][1]
+    "/>
+
+        <person sameAs="{$teiCorpusPrefix}:{tei:cell[1]}" age="{if (exists($ageGroup))
+                then $ageGroup/tei:cell[$cn('Age Groups')('Age Group')]
+                else 'missing'}">
             <name type="pseudonym"><xsl:value-of select="tei:cell[1]"/></name>
         </person>
     </xsl:template>
