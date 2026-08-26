@@ -89,7 +89,7 @@
     <xsl:variable name="t_Subjects_in_Recordings" select="//tei:table[tei:head = 'Subjects_in_Recordings']" as="element(tei:table)"/>
     
     <xsl:variable name="t_Team" select="//tei:table[tei:head = 'Team']" as="element(tei:table)"/>
-    <xsl:variable name="allTeam" select="$t_Team//tei:row[position() gt 1]" as="element(tei:row)*"/>
+    <xsl:variable name="allTeam" select="$t_Team//tei:row[position() gt 1 and normalize-space(tei:cell[1]) != 'No Need']" as="element(tei:row)*"/>
     
     <xsl:variable name="t_Places" select="//tei:table[tei:head = 'Places']" as="element(tei:table)"/>
 
