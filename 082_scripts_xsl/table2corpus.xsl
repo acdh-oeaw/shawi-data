@@ -94,7 +94,7 @@
     <xsl:variable name="t_Places" select="//tei:table[tei:head = 'Places']" as="element(tei:table)"/>
 
     <xsl:variable name="ageGroups" select="//tei:table[tei:head = 'Age Groups']//tei:row[position() gt 1]" as="element(tei:row)*"/>
-    
+
     <xsl:template match="/">
         <xsl:comment>THIS FILE WAS PROGRAMMATICALLY CREATED by table2corpus.xsl on/at <xsl:value-of select="current-dateTime()"/></xsl:comment>
         <xsl:result-document method="json" href="table_cell_num_mapping.json">
@@ -142,7 +142,18 @@
             </xsl:if>
         </publicationStmt>
     </xsl:template>
-    
+
+    <xsl:template name="notesStmt">
+        <xsl:param name="has_trigger"/>
+        <xsl:param name="trigger_text"/>
+        <xsl:if test="$has_trigger = 'Yes'">
+            <notesStmt>
+                <note type="triggerWarning">
+                    <xsl:value-of select="$trigger_text"/>
+                </note>
+            </notesStmt>
+        </xsl:if>        
+    </xsl:template>
     <xsl:template name="titleStmt">
         <xsl:param name="textID"/>
         <xsl:param name="audioFile"/>
@@ -215,7 +226,7 @@
             <xsl:apply-templates select="tei:row[position() gt 1][tei:cell[1] != '']"/>
         </teiCorpus>
     </xsl:template>
-    
+
     <xsl:template match="tei:table[tei:head = 'Recordings']/tei:row[normalize-space(tei:cell[$cn('Recordings')('Rec. person')]) ne '']" priority="0">
         <xsl:variable name="textID" select="tei:cell[$cn('Recordings')('Text')]"/>
         <!-- find all rows with the matching text ID and take "the other" cell of the row, which is the speaker ID -->
@@ -243,6 +254,10 @@
         "/>
         <xsl:variable name="recordingYear" select="year-from-date($recordingDate)" as="xs:integer?"/>
         
+        <!-- Trigger Warning -->
+        <xsl:variable name="has_trigger" select="tei:cell[$cn('Recordings')('Trigger_Warning')]"/>
+        <xsl:variable name="trigger_text" select="tei:cell[$cn('Recordings')('Trigger_Warning_Note')]"/>
+
         <TEI>
             <teiHeader>
                 <fileDesc>
@@ -268,6 +283,10 @@
                             </recording>
                         </recordingStmt>
                     </sourceDesc>
+                    <xsl:call-template name="notesStmt">
+                        <xsl:with-param name="has_trigger" select="$has_trigger"/>
+                        <xsl:with-param name="trigger_text" select="$trigger_text"/>
+                    </xsl:call-template>
                 </fileDesc>
                 <encodingDesc>
                     <listPrefixDef>
