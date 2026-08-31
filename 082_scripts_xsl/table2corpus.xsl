@@ -194,7 +194,7 @@
                 </fileDesc>
                 <encodingDesc>
                     <classDecl>
-                        <taxonomy xml:id="shawiSubjects">
+                        <taxonomy xml:id="subjects.shawi">
                             <xsl:for-each select="$allSubjects[tei:cell[$cn('Subjects')('Label')] != '']">
                                 <xsl:sort select="_:sortKey(tei:cell[$cn('Subjects')('Label')])"/>
                                 <xsl:variable name="subjectID" select="_:ID(tei:cell[1])"/>
@@ -322,7 +322,7 @@
                     <textClass>
                         <catRef scheme="vtc:datatypes.vicav"
                                 target="vtc:datatypes.vicav.ums"/>
-                        <keywords scheme="corpus:shawiSubjects">
+                        <keywords scheme="corpus:subjects.shawi">
                             <xsl:for-each select="$subjects_in_recording">
                                 <xsl:sort select="_:sortKey(tei:cell[1])"/>
                                 <xsl:apply-templates select="." mode="teiInstanceDoc"/>
