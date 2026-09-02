@@ -113,14 +113,11 @@
         <xsl:value-of select="replace(lower-case($value),'^(a|the)\s','')"/>
     </xsl:function>
     
-    
-    
     <xsl:function name="_:personReferenceByName" as="element(tei:person)">
         <xsl:param name="persName" as="xs:string"/>
         <xsl:variable name="tei:row" select="($allTeam[normalize-space(tei:cell[$cn('Team')('Forename')]||' '||tei:cell[$cn('Team')('Surname')]) = $persName], $allSpeakers[tei:cell[$cn('Speakers')('Speaker')] = $persName])[1]"/>
         <xsl:apply-templates select="$tei:row" mode="teiInstanceDoc"/>
     </xsl:function>
-    
     
     <xsl:template name="publicationStmt">
         <xsl:param name="textID"/>
@@ -154,6 +151,7 @@
             </notesStmt>
         </xsl:if>        
     </xsl:template>
+    
     <xsl:template name="titleStmt">
         <xsl:param name="textID"/>
         <xsl:param name="audioFile"/>
@@ -374,17 +372,25 @@
         <keyword><term><xsl:value-of select="tei:cell[1]"/></term></keyword>
     </xsl:template>
     
-    
-    
     <xsl:template match="tei:table[tei:head = 'Speakers']/tei:row[tei:cell[1] != '']" mode="teiCorpusDoc">
         <!-- mode = what is the context of this run:
             * "teiCorpusDoc": this generates the master list of speakers in the teiCorpus  
             * "teiInstanceDoc": this generates the list of speakers in one TEI instance, 
-            thus not include all details but a @sameAs attribute pointing to the corpusHeader -->
+            thus not include all details but a @sameAs attribute pointing to the corpusHeader -->       
         <person xml:id="{tei:cell[1]}">
-            <name type="pseudonym"><xsl:value-of select="tei:cell[1]"/></name>
-            <sex><xsl:value-of select="tei:cell[2]"/></sex>
-            <birth><xsl:value-of select="tei:cell[3]"/></birth>
+            <xsl:attribute name="sex">
+                <xsl:choose>
+                    <xsl:when test="lower-case(tei:cell[2]) = ('f', 'm')">
+                        <xsl:value-of select="lower-case(tei:cell[2])"/>
+                    </xsl:when>
+                    <xsl:otherwise>missing</xsl:otherwise>
+                </xsl:choose>
+            </xsl:attribute>
+            <idno><xsl:value-of select="tei:cell[1]"/></idno>
+            <xsl:call-template name="parseBirth">
+                <xsl:with-param name="yearOfBirth" select="tei:cell[3]"/>
+                <xsl:with-param name="placeOfOrigin" select="tei:cell[5]"/>
+            </xsl:call-template>
             <xsl:if test="tei:cell[4] != ''">
                 <langKnowledge>
                     <xsl:for-each select="tokenize(tei:cell[4], ',')">
@@ -392,8 +398,71 @@
                     </xsl:for-each>
                 </langKnowledge>
             </xsl:if>
-            <note><xsl:value-of select="tei:cell[5]"/></note>
+            <xsl:if test="tei:cell[7] != 'N/A' and normalize-space(tei:cell[7]) != ''">
+                <xsl:for-each select="tokenize(tei:cell[7], ',')">
+                    <ptr type="participatedIn" target="{$teiCorpusPrefix}:{normalize-space(.)}"/>
+                </xsl:for-each>
+            </xsl:if>
+            <!-- ignore notes for now because they could contain sensitive information -->
+            <!-- <note><xsl:value-of select="tei:cell[6]"/></note> -->
         </person>
+    </xsl:template>
+
+    <xsl:template name="parseBirth">
+        <xsl:param name="yearOfBirth" />
+        <xsl:param name="placeOfOrigin"/>
+        <xsl:param name="placeID" select="$t_Places//tei:row[tei:cell[$cn('Places')('Placename')] = $placeOfOrigin]/tei:cell[$cn('Places')('ID')]"/>
+        <xsl:choose>
+            <xsl:when test="matches($yearOfBirth,'^\d+$')">
+                <birth>
+                    <date when="{$yearOfBirth}">
+                        <xsl:value-of select="$yearOfBirth" />
+                    </date>
+                    <xsl:if test="$placeOfOrigin != ''">
+                        <placeName sameAs="{$vicavGeoListPrefix}:{$placeID}">
+                            <xsl:value-of select="$placeOfOrigin" />
+                        </placeName>
+                    </xsl:if>
+                </birth>
+            </xsl:when>
+            <xsl:when test="matches($yearOfBirth, '^\d{4}s$')">
+                <xsl:variable name="int" select="xs:integer(substring($yearOfBirth,1,4))" />
+                <birth>
+                    <date notBefore="{$int}" notAfter="{$int+9}">
+                        <xsl:value-of select="$yearOfBirth" />
+                    </date>
+                    <xsl:if test="$placeOfOrigin != ''">
+                        <placeName sameAs="{$vicavGeoListPrefix}:{$placeID}">
+                            <xsl:value-of select="$placeOfOrigin" />
+                        </placeName>
+                    </xsl:if>
+                </birth>
+            </xsl:when>
+            <xsl:when test="$yearOfBirth = '' and $placeOfOrigin != ''">
+                <birth>
+                    <xsl:comment>no information on birth date</xsl:comment>
+                    <placeName sameAs="{$vicavGeoListPrefix}:{$placeID}">
+                        <xsl:value-of select="$placeOfOrigin" />
+                    </placeName>
+                </birth>
+            </xsl:when>
+            <xsl:when test="$yearOfBirth != '' and $placeOfOrigin != ''">
+                <xsl:comment>no information on birth date or origin</xsl:comment>
+            </xsl:when>
+            <xsl:otherwise>
+                <birth>
+                    <xsl:comment>Could not parse birth date</xsl:comment>
+                    <date>
+                        <xsl:value-of select="$yearOfBirth" />
+                    </date>
+                    <xsl:if test="$placeOfOrigin != ''">
+                        <placeName sameAs="{$vicavGeoListPrefix}:{$placeID}">
+                            <xsl:value-of select="$placeOfOrigin" />
+                        </placeName>
+                    </xsl:if>
+                </birth>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template match="tei:table[tei:head = 'Speakers']/tei:row[tei:cell[1] != '']" mode="teiInstanceDoc">
@@ -429,7 +498,7 @@
         <person sameAs="{$teiCorpusPrefix}:{tei:cell[1]}" age="{if (exists($ageGroup))
                 then $ageGroup/tei:cell[$cn('Age Groups')('Age Group')]
                 else 'missing'}">
-            <name type="pseudonym"><xsl:value-of select="tei:cell[1]"/></name>
+            <idno><xsl:value-of select="tei:cell[1]"/></idno>
         </person>
     </xsl:template>
     
@@ -556,8 +625,9 @@
             <resp><xsl:value-of select="tei:cell[4]"/></resp>
         </respStmt>
     </xsl:template>
-    
-    <xsl:template match="tei:table[tei:head = 'Team']/tei:row[tei:cell[1] != '']" mode="teiInstanceDoc">
+
+    <!-- this function is a helper for getting team member data -->
+    <xsl:template match="tei:table[tei:head = 'Team']/tei:row[tei:cell[1] != '']" mode="teiInstanceDoc"> 
         <!-- mode = what is the context of this run:
             * "teiCorpusDoc": this generates the master list of team members in the teiCorpus
             * "respStmts: generates a list of respStmts pointing to the list of team members 
