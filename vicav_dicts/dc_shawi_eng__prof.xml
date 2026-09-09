@@ -1000,6 +1000,18 @@ z# = ž   //zhe alternative
    collection($__db__)//tei:cit[@type='example'][.//tei:quote[text() contains text "{subQuery}" using wildcards]]/@xml:id!db:attribute($__db__,("#"||.))/ancestor::tei:entry[(.//*:fs[@type='change']/*[@name='status']/*/@value)[last()] = "released"]
 </queryTemplate>
 
+<indexTemplate label="ft_all">
+   declare namespace tei = 'http://www.tei-c.org/ns/1.0';
+   declare variable $__db__ external;
+   distinct-values((
+     collection($__db__)//tei:entry[(.//*:fs[@type='change']/*[@name='status']/*/@value)[last()] = "released"]//text() |
+     collection($__db__)//tei:cit[@type='example']//tei:quote/text())!
+     normalize-space(.)!
+     tokenize(., "[ ,.;:!?„“’‘()/]")
+     [not(. = ('', ' '))]
+   )
+</indexTemplate>
+
 <queryTemplate label="ft_all_complete" type="complete">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
@@ -1007,12 +1019,36 @@ z# = ž   //zhe alternative
    collection($__db__)//tei:cit[@type='example'][.//tei:quote[text() contains text "{subQuery}" using wildcards]]/@xml:id!db:attribute($__db__,("#"||.))/ancestor::tei:entry
 </queryTemplate>
 
+<indexTemplate label="ft_all_complete">
+   declare namespace tei = 'http://www.tei-c.org/ns/1.0';
+   declare variable $__db__ external;
+   distinct-values((
+     collection("dc_shawi_eng")//tei:entry//text() |
+     collection("dc_shawi_eng")//tei:cit[@type='example']//tei:quote/text())!
+     normalize-space(.)!
+     tokenize(., "[ ,.;:!?„“’‘()/]")
+     [not(. = ('', ' '))]
+   )
+</indexTemplate>
+
 <queryTemplate label="ft_all_exact" type="complete">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
    collection($__db__)//tei:entry/.//node()[text() contains text "{subQuery}" using wildcards using diacritics sensitive using case sensitive] | 
    collection($__db__)//tei:cit[@type='example'][.//tei:quote[text() contains text "{subQuery}" using wildcards using diacritics sensitive using case sensitive]]/@xml:id!db:attribute($__db__,("#"||.))/ancestor::tei:entry
 </queryTemplate>
+
+<indexTemplate label="ft_all_exact">
+   declare namespace tei = 'http://www.tei-c.org/ns/1.0';
+   declare variable $__db__ external;
+   distinct-values((
+     collection("dc_shawi_eng")//tei:entry//text() |
+     collection("dc_shawi_eng")//tei:cit[@type='example']//tei:quote/text())!
+     normalize-space(.)!
+     tokenize(., "[ ,.;:!?„“’‘()/]")
+     [not(. = ('', ' '))]
+   )
+</indexTemplate>
 
 <queryTemplate label="ft_lem">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
@@ -1044,8 +1080,19 @@ z# = ž   //zhe alternative
 <queryTemplate label="ft_ex">
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
-   collection($__db__)//tei:cit[@type='example'][.//tei:quote[text() contains text "{subQuery}" using wildcards]]
-</queryTemplate>                                                       
+   collection($__db__)//tei:cit[@type='example'][.//tei:quote[text() contains text "{subQuery}" using wildcards]]/@xml:id!db:attribute($__db__,("#"||.))/ancestor::tei:entry[(.//*:fs[@type='change']/*[@name='status']/*/@value)[last()] = "released"]
+</queryTemplate>
+
+<indexTemplate label="ft_ex">
+   declare namespace tei = 'http://www.tei-c.org/ns/1.0';
+   declare variable $__db__ external;
+   distinct-values((
+     collection($__db__)//tei:cit[@type='example' and exists(db:attribute($__db__,("#"||@xml:id))/ancestor::tei:entry)]//tei:quote/text())!
+     normalize-space(.)!
+     tokenize(., "[ ,.;:!?„“’‘()/]")
+     [not(. = ('', ' '))]
+   )
+</indexTemplate>                                                       
                                                      
 </queryTemplates>
 <requestContentType>application/xml</requestContentType>
