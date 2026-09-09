@@ -1005,7 +1005,7 @@ z# = ž   //zhe alternative
    declare variable $__db__ external;
    distinct-values((
      collection($__db__)//tei:entry[(.//*:fs[@type='change']/*[@name='status']/*/@value)[last()] = "released"]//text() |
-     collection($__db__)//tei:cit[@type='example']//tei:quote/text())!
+     collection($__db__)//tei:cit[@type='example' and exists(db:attribute($__db__,("#"||@xml:id))/ancestor::tei:entry[(.//*:fs[@type='change']/*[@name='status']/*/@value)[last()] = "released"])]//tei:quote/text())!
      normalize-space(.)!
      tokenize(., "[ ,.;:!?„“’‘()/]")
      [not(. = ('', ' '))]
@@ -1087,7 +1087,7 @@ z# = ž   //zhe alternative
    declare namespace tei = 'http://www.tei-c.org/ns/1.0';
    declare variable $__db__ external;
    distinct-values((
-     collection($__db__)//tei:cit[@type='example' and exists(db:attribute($__db__,("#"||@xml:id))/ancestor::tei:entry)]//tei:quote/text())!
+     collection($__db__)//tei:cit[@type='example' and exists(db:attribute($__db__,("#"||@xml:id))/ancestor::tei:entry[(.//*:fs[@type='change']/*[@name='status']/*/@value)[last()] = "released"])]//tei:quote/text())!
      normalize-space(.)!
      tokenize(., "[ ,.;:!?„“’‘()/]")
      [not(. = ('', ' '))]
