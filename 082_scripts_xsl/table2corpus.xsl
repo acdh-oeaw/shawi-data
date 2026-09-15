@@ -84,10 +84,10 @@
     <xsl:variable name="allSpeakers" select="$t_Speakers//tei:row[position() gt 1]" as="element(tei:row)*"/>
     <xsl:variable name="t_Speakers_in_Recordings" select="//tei:table[tei:head = 'Speakers_in_Recordings']" as="element(tei:table)"/>
     
-    <xsl:variable name="t_Subjects" select="//tei:table[tei:head = 'Subjects']" as="element(tei:table)"/>
-    <xsl:variable name="allSubjects" select="$t_Subjects//tei:row[position() gt 1]" as="element(tei:row)*"/>
+    <xsl:variable name="t_Subjects_simplified" select="//tei:table[tei:head = 'Subjects_simplified']" as="element(tei:table)"/>
+    <xsl:variable name="allSubjects_simplified" select="$t_Subjects_simplified//tei:row[position() gt 1]" as="element(tei:row)*"/>
     <xsl:variable name="t_Subjects_in_Recordings" select="//tei:table[tei:head = 'Subjects_in_Recordings']" as="element(tei:table)"/>
-    
+
     <xsl:variable name="t_Team" select="//tei:table[tei:head = 'Team']" as="element(tei:table)"/>
     <xsl:variable name="allTeam" select="$t_Team//tei:row[position() gt 1 and normalize-space(tei:cell[1]) != 'No Need']" as="element(tei:row)*"/>
     
@@ -193,11 +193,11 @@
                 <encodingDesc>
                     <classDecl>
                         <taxonomy xml:id="subjects.shawi">
-                            <xsl:for-each select="$allSubjects[tei:cell[$cn('Subjects')('Label')] != '']">
-                                <xsl:sort select="_:sortKey(tei:cell[$cn('Subjects')('Label')])"/>
-                                <xsl:variable name="subjectID" select="_:ID(tei:cell[1])"/>
-                                <category xml:id="{$subjectID}" n="{tei:cell[$cn('Subjects')('Label')]}">
-                                    <catDesc><xsl:value-of select="(tei:cell[$cn('Subjects')('Definition')][. != ''],'TODO ADD DESCRIPTION in Subjects table!')[1]"/></catDesc>
+                            <xsl:for-each select="$allSubjects_simplified[tei:cell[$cn('Subjects_simplified')('ID')] != '']">
+                                <xsl:sort select="_:sortKey(tei:cell[$cn('Subjects_simplified')('ID')])"/>
+                                <xsl:variable name="subjectID" select="tei:cell[$cn('Subjects_simplified')('ID')]"/>
+                                <category xml:id="{$subjectID}" n="{tei:cell[$cn('Subjects_simplified')('Label')]}">
+                                    <catDesc><xsl:value-of select="(tei:cell[$cn('Subjects_simplified')('Description')][. != ''],'TODO ADD DESCRIPTION in Subjects_simplified table!')[1]"/></catDesc>
                                 </category>
                             </xsl:for-each>
                         </taxonomy>
@@ -231,9 +231,9 @@
         <xsl:variable name="speakerIDs" select="$t_Speakers_in_Recordings//tei:row[tei:cell = $textID]/tei:cell[. != $textID]"/>
         <xsl:variable name="speakers_in_recording" select="$allSpeakers[tei:cell[$cn('Recordings')('Text')] = $speakerIDs]" as="element(tei:row)*"/>
         
-        <!--  -->
+        <!-- subjects -->
         <xsl:variable name="subjectIDs" select="$t_Subjects_in_Recordings//tei:row[tei:cell = $textID]/tei:cell[. != $textID]"/>
-        <xsl:variable name="subjects_in_recording" select="$allSubjects[tei:cell[$cn('Subjects')('Label')] = $subjectIDs]" as="element(tei:row)*"/>
+        <xsl:variable name="subjects_in_recording" select="$allSubjects_simplified[tei:cell[$cn('Subjects_simplified')('Label')] = $subjectIDs]" as="element(tei:row)*"/>
         
         <!-- place -->
         <xsl:variable name="placename" select="tei:cell[$cn('Recordings')('Place')]"/>
