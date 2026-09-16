@@ -320,7 +320,9 @@
                         <catRef scheme="vtc:datatypes.vicav"
                                 target="vtc:datatypes.vicav.ums"/>
                         <keywords scheme="corpus:subjects.shawi">
-                            <term><xsl:value-of select="$subjectID"/></term>
+                            <xsl:for-each select="$subjectID">
+                                <term><xsl:value-of select="."/></term>
+                            </xsl:for-each>
                         </keywords>
                     </textClass>
                 </profileDesc>
