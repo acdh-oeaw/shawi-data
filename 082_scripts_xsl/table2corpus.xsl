@@ -232,8 +232,7 @@
         <xsl:variable name="speakers_in_recording" select="$allSpeakers[tei:cell[$cn('Recordings')('Text')] = $speakerIDs]" as="element(tei:row)*"/>
         
         <!-- subjects -->
-        <xsl:variable name="subjectIDs" select="$t_Subjects_in_Recordings//tei:row[tei:cell = $textID]/tei:cell[. != $textID]"/>
-        <xsl:variable name="subjects_in_recording" select="$allSubjects_simplified[tei:cell[$cn('Subjects_simplified')('Label')] = $subjectIDs]" as="element(tei:row)*"/>
+        <xsl:variable name="subjectID" select="$t_Subjects_in_Recordings//tei:row[tei:cell = $textID]/tei:cell[3]"/>
         
         <!-- place -->
         <xsl:variable name="placename" select="tei:cell[$cn('Recordings')('Place')]"/>
@@ -321,10 +320,7 @@
                         <catRef scheme="vtc:datatypes.vicav"
                                 target="vtc:datatypes.vicav.ums"/>
                         <keywords scheme="corpus:subjects.shawi">
-                            <xsl:for-each select="$subjects_in_recording">
-                                <xsl:sort select="_:sortKey(tei:cell[1])"/>
-                                <xsl:apply-templates select="." mode="teiInstanceDoc"/>
-                            </xsl:for-each>
+                            <term><xsl:value-of select="$subjectID"/></term>
                         </keywords>
                     </textClass>
                 </profileDesc>
@@ -366,11 +362,6 @@
     </xsl:function>
     
     <xsl:template match="tei:table[tei:head = 'Recordings']/tei:row" priority="-2"/><!-- don't process rows that have no Rec. Person filled in -->    
-    
-    <xsl:template match="tei:table[tei:head = 'Subjects']/tei:row[tei:cell[1] != '']">
-        <xsl:variable name="subjectID"/>
-        <keyword><term><xsl:value-of select="tei:cell[1]"/></term></keyword>
-    </xsl:template>
     
     <xsl:template match="tei:table[tei:head = 'Speakers']/tei:row[tei:cell[1] != '']" mode="teiCorpusDoc">
         <!-- mode = what is the context of this run:
@@ -637,16 +628,5 @@
             <name type="pseudonym"><xsl:value-of select="tei:cell[1]"/></name>
         </person>
     </xsl:template>
-    
-    <xsl:template match="tei:table[tei:head = 'Subjects']/tei:row[tei:cell[1] != '']" mode="teiInstanceDoc">
-        <!-- mode = what is the context of this run:
-            * "teiCorpusDoc": this generates the master list of speakers in the teiCorpus  
-            * "teiInstanceDoc": this generates the list of speakers in one TEI instance, 
-            thus not include all details but a @sameAs attribute pointing to the corpusHeader -->
-        <term>
-            <xsl:value-of select="tei:cell[1]"/>
-        </term>
-    </xsl:template>
-    
-   
+
 </xsl:stylesheet>
