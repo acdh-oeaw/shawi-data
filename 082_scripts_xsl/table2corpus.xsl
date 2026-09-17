@@ -233,6 +233,7 @@
         
         <!-- subjects -->
         <xsl:variable name="subjectID" select="$t_Subjects_in_Recordings//tei:row[tei:cell = $textID]/tei:cell[3]"/>
+        <xsl:variable name="subject_label" select="$allSubjects_simplified[tei:cell[$cn('Subjects_simplified')('ID')] = $subjectID]/tei:cell[$cn('Subjects_simplified')('Label')]"/>
         
         <!-- place -->
         <xsl:variable name="placename" select="tei:cell[$cn('Recordings')('Place')]"/>
@@ -320,7 +321,7 @@
                         <catRef scheme="vtc:datatypes.vicav"
                                 target="vtc:datatypes.vicav.ums"/>
                         <keywords scheme="corpus:subjects.shawi">
-                            <xsl:for-each select="$subjectID">
+                            <xsl:for-each select="$subject_label">
                                 <term><xsl:value-of select="."/></term>
                             </xsl:for-each>
                         </keywords>
