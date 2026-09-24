@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-09-18T09:15:29Z. . 
+Schema generated from ODD source 2026-09-24T11:04:53Z. . 
 TEI Edition:  
 TEI Edition Location: https://www.tei-c.org/Vault/P5// 
   
@@ -2519,20 +2519,6 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
    <define name="model.divGenLike">
       <notAllowed/>
    </define>
-   <define name="model.applicationLike">
-      <notAllowed/>
-   </define>
-   <define name="model.encodingDescPart">
-      <choice>
-         <ref name="charDecl"/>
-         <ref name="projectDesc"/>
-         <ref name="editorialDecl"/>
-         <ref name="tagsDecl"/>
-         <ref name="classDecl"/>
-         <ref name="appInfo"/>
-         <ref name="listPrefixDef"/>
-      </choice>
-   </define>
    <define name="model.editorialDeclPart">
       <choice>
          <ref name="interpretation"/>
@@ -4735,21 +4721,6 @@ Sample values include: 1] Unicode (Unicode); 2] Bridwell (E. Nelson Bridwell); 3
          <empty/>
       </element>
    </define>
-   <define name="charDecl">
-      <element name="charDecl">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(character declarations) provides information about nonstandard characters and glyphs. [5.2. Markup Constructs for Representation of Characters and Glyphs]</a:documentation>
-         <group>
-            <oneOrMore>
-               <choice>
-                  <ref name="char"/>
-                  <ref name="glyph"/>
-               </choice>
-            </oneOrMore>
-         </group>
-         <ref name="att.global.attributes"/>
-         <empty/>
-      </element>
-   </define>
    <define name="char">
       <element name="char">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(character) provides descriptive information about a character. [5.2. Markup Constructs for Representation of Characters and Glyphs]</a:documentation>
@@ -5816,24 +5787,16 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
    <define name="encodingDesc">
       <element name="encodingDesc">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(encoding description) documents the relationship between an electronic text and the source or sources from which it was derived. [2.3. The Encoding Description 2.1.1. The TEI Header and Its Components]</a:documentation>
-         <oneOrMore>
+         <zeroOrMore>
             <choice>
-               <ref name="model.encodingDescPart"/>
-               <ref name="model.pLike"/>
+               <ref name="p"/>
+               <ref name="classDecl"/>
+               <ref name="editorialDecl"/>
+               <ref name="tagsDecl"/>
+               <ref name="listPrefixDef"/>
             </choice>
-         </oneOrMore>
+         </zeroOrMore>
          <ref name="att.global.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="projectDesc">
-      <element name="projectDesc">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(project description) describes in detail the aim or purpose for which an electronic file was encoded, together with any other relevant information concerning the process by which it was assembled or collected. [2.3.1. The Project Description 2.3. The Encoding Description 16.3.2. Declarable Elements]</a:documentation>
-         <oneOrMore>
-            <ref name="model.pLike"/>
-         </oneOrMore>
-         <ref name="att.global.attributes"/>
-         <ref name="att.declarable.attributes"/>
          <empty/>
       </element>
    </define>
@@ -6033,16 +5996,6 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
          <empty/>
       </element>
    </define>
-   <define name="appInfo">
-      <element name="appInfo">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(application information) records information about an application which has edited the TEI file. [2.3.11. The Application Information Element]</a:documentation>
-         <oneOrMore>
-            <ref name="model.applicationLike"/>
-         </oneOrMore>
-         <ref name="att.global.attributes"/>
-         <empty/>
-      </element>
-   </define>
    <define name="profileDesc">
       <element name="profileDesc">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text-profile description) provides a detailed description of non-bibliographic aspects of a text, specifically the languages and sublanguages used, the situation in which it was produced, the participants and their setting. [2.4. The Profile Description 2.1.1. The TEI Header and Its Components]</a:documentation>
@@ -6174,6 +6127,41 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
          <ref name="att.global.attributes"/>
          <ref name="att.declarable.attributes"/>
          <empty/>
+      </element>
+   </define>
+   <define name="prefixDef">
+      <element name="prefixDef">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <empty/>
+         <ref name="att.global.attributes"/>
+         <attribute name="ident">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            <data type="token">
+               <param name="pattern">[^\p{C}\p{Z}]+</param>
+            </data>
+         </attribute>
+         <attribute name="matchPattern">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            <data type="token"/>
+         </attribute>
+         <attribute name="replacementPattern">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            <data type="anyURI">
+               <param name="pattern">\S+</param>
+            </data>
+         </attribute>
+         <empty/>
+      </element>
+   </define>
+   <define name="listPrefixDef">
+      <element name="listPrefixDef">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <oneOrMore>
+            <choice>
+               <ref name="prefixDef"/>
+               <ref name="p"/>
+            </choice>
+         </oneOrMore>
       </element>
    </define>
    <define name="listChange">
@@ -6962,50 +6950,6 @@ Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged</a:doc
          </attribute>
          <empty/>
       </element>
-   </define>
-   <define name="listPrefixDef">
-      <element name="listPrefixDef">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(list of prefix definitions) contains a list of definitions of prefixing schemes used in teidata.pointer values, showing how abbreviated URIs using each scheme may be expanded into full URIs. []</a:documentation>
-         <group>
-            <oneOrMore>
-               <choice>
-                  <ref name="prefixDef"/>
-                  <ref name="listPrefixDef"/>
-               </choice>
-            </oneOrMore>
-         </group>
-         <ref name="att.global.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="prefixDef">
-      <element name="prefixDef">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(prefix definition) defines a prefixing scheme used in teidata.pointer values, showing how abbreviated URIs using the scheme may be expanded into full URIs. []</a:documentation>
-         <zeroOrMore>
-            <ref name="model.pLike"/>
-         </zeroOrMore>
-         <ref name="att.global.attributes"/>
-         <ref name="att.patternReplacement.attributes"/>
-         <attribute name="ident">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies a name which functions as the prefix for an abbreviated pointing scheme such as a private URI scheme. The prefix constitutes the text preceding the first colon.</a:documentation>
-         </attribute>
-         <empty/>
-      </element>
-   </define>
-   <define name="att.patternReplacement.attributes">
-      <ref name="att.patternReplacement.attribute.matchPattern"/>
-      <ref name="att.patternReplacement.attribute.replacementPattern"/>
-   </define>
-   <define name="att.patternReplacement.attribute.matchPattern">
-      <attribute name="matchPattern">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies a regular expression against which the values of other attributes can be matched.</a:documentation>
-      </attribute>
-   </define>
-   <define name="att.patternReplacement.attribute.replacementPattern">
-      <attribute name="replacementPattern">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies a replacement pattern, that is, the skeleton of a relative or absolute URI containing references to groups in the <code xmlns="http://www.w3.org/1999/xhtml"
-                  xmlns:rng="http://relaxng.org/ns/structure/1.0">@matchPattern</code> which, once subpattern substitution has been performed, complete the URI.</a:documentation>
-      </attribute>
    </define>
    <start>
       <ref name="TEI"/>
