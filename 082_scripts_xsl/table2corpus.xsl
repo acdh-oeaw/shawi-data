@@ -29,7 +29,7 @@
     
     
     <xsl:variable name="prefixDefs">
-        <prefixDef ident="corpus" matchPattern="^(.+)$" replacementPattern="../../103_tei_w/shawiCorpus.xml#$1">
+        <prefixDef ident="corpus" matchPattern="^(.+)$" replacementPattern="../103_tei_w/shawiCorpus.xml#$1">
             <p>Private URIs using the <code>teiCorpusHeader</code> prefix are pointers to any element in the <ref target="shawiCorpus.xml">SHAWI teiCorpus document</ref>.</p>
         </prefixDef>
         <prefixDef ident="share" matchPattern="^(.+)$" replacementPattern="\\share17.univie.ac.at\orientalistik\SHAWI\Recordings\*\*\$1.wav">
@@ -50,7 +50,7 @@
         <prefixDef ident="assets" matchPattern="^(.+)$" replacementPattern="https://shawi-assets.acdh.oeaw.ac.at/$1">
             <p>Private URIs using the <code>assets</code> prefix are pointers to the location of the SHAWI media assets.</p>
         </prefixDef>
-        <prefixDef ident="vtc" matchPattern="^(.+)$" replacementPattern="../../vicav-library/vicav_textClasses.xml">
+        <prefixDef ident="vtc" matchPattern="^(.+)$" replacementPattern="../vicav-library/vicav_textClasses.xml">
             <p>Private URIs using the <code>vtc</code> prefix are pointers to the list of VICAV text classes.</p>
         </prefixDef>
         <prefixDef ident="pt" matchPattern="^(.+)$" replacementPattern="../vicav_texts/shawi/$1.xml">
