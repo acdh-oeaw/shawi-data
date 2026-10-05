@@ -579,10 +579,7 @@
                         <constraintSpec ident="gram-constraints" scheme="schematron">
                             <constraint>
                                 <s:rule context="tei:gram[@type = 'morphPattern']">
-                                    <s:assert test="parent::tei:gramGrp/parent::tei:form[@type]">a
-                                        gram type morphPattern must be a direct child of a gramGrp
-                                        and a direct grandchild of a form with a type
-                                        attribute</s:assert>
+                                    <s:assert test="parent::tei:gramGrp/parent::tei:form[@type]">a gram type morphPattern must be a direct child of a gramGrp and a direct grandchild of a form with a type attribute</s:assert>
                                 </s:rule>
                                 <s:rule context="tei:gram[@type = 'polarity']">
                                     <s:assert test="normalize-space(.) = 'negative'">'gram' elements with type 'polarity' can only have the value 'negative'</s:assert>
@@ -671,10 +668,7 @@
                             <constraint>
                                 <s:rule
                                     context="tei:form[@type='lemma']/tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">
-                                    <s:assert test="parent::tei:form[@subtype = 'compound']">a form
-                                        type lemma with an orth that contains a space or a hyphen
-                                        (not at the beginning or end of a string) has to have a
-                                        subtype compound</s:assert>
+                                    <s:assert test="parent::tei:form[@subtype = 'compound']">a form type lemma with an orth that contains a space or a hyphen (not at the beginning or end of a string) has to have a subtype compound</s:assert>
                                 </s:rule>
                                 <s:rule context="tei:form[@subtype='compound']">
                                     <s:assert
@@ -815,13 +809,8 @@
                             <constraint>
                                 <s:rule context="tei:form[@source]">
                                     <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
-                                    <s:let name="biblID"
-                                        value="ancestor::tei:entry//tei:listBibl/tei:bibl/@xml:id"/>
-                                    <s:assert
-                                        test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID"
-                                        >If a form element has a source attribute there must be a
-                                        corresponding bibl element in listBibl ("<s:value-of
-                                            select="$biblID"/>")</s:assert>
+                                    <s:let name="biblID" value="ancestor::tei:entry//tei:listBibl/tei:bibl/@xml:id"/>
+                                    <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a form element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$sourceIDs"/>")</s:assert>
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
@@ -832,10 +821,7 @@
                                     <s:let name="biblID"
                                         value="following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
                                     <s:assert
-                                        test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID"
-                                        >If a sense element has a source attribute there must be a
-                                        corresponding bibl element in listBibl ("<s:value-of
-                                            select="$biblID"/>")</s:assert>
+                                        test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a sense element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$sourceIDs"/>")</s:assert>
                                 </s:rule>
                             </constraint>
                         </constraintSpec>

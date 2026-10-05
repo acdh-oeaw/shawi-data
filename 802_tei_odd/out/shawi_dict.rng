@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-09-24T11:04:53Z. . 
+Schema generated from ODD source 2026-10-05T11:00:03Z. . 
 TEI Edition:  
 TEI Edition Location: https://www.tei-c.org/Vault/P5// 
   
@@ -3786,8 +3786,7 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
                <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
                <s:let name="biblID"
                       value="ancestor::tei:entry//tei:listBibl/tei:bibl/@xml:id"/>
-               <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a form element has a source attribute there must be a
-                                        corresponding bibl element in listBibl ("<s:value-of select="$biblID"/>")</s:assert>
+               <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a form element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$sourceIDs"/>")</s:assert>
             </s:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3798,8 +3797,7 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
                     context="tei:sense[@source]">
                <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
                <s:let name="biblID" value="following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
-               <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a sense element has a source attribute there must be a
-                                        corresponding bibl element in listBibl ("<s:value-of select="$biblID"/>")</s:assert>
+               <s:assert test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a sense element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$sourceIDs"/>")</s:assert>
             </s:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -4011,10 +4009,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:form[@type='lemma']/tei:orth[contains(., ' ') or matches(., '\w+-\w+')]">
-               <s:assert test="parent::tei:form[@subtype = 'compound']">a form
-                                        type lemma with an orth that contains a space or a hyphen
-                                        (not at the beginning or end of a string) has to have a
-                                        subtype compound</s:assert>
+               <s:assert test="parent::tei:form[@subtype = 'compound']">a form type lemma with an orth that contains a space or a hyphen (not at the beginning or end of a string) has to have a subtype compound</s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -4189,10 +4184,7 @@ Suggested values include: 1] mainEntry; 2] wordFamily; 3] homonymicEntry; 4] rel
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     context="tei:gram[@type = 'morphPattern']">
-               <s:assert test="parent::tei:gramGrp/parent::tei:form[@type]">a
-                                        gram type morphPattern must be a direct child of a gramGrp
-                                        and a direct grandchild of a form with a type
-                                        attribute</s:assert>
+               <s:assert test="parent::tei:gramGrp/parent::tei:form[@type]">a gram type morphPattern must be a direct child of a gramGrp and a direct grandchild of a form with a type attribute</s:assert>
             </s:rule>
             <s:rule xmlns="http://www.tei-c.org/ns/1.0"
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
