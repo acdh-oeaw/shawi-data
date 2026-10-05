@@ -825,6 +825,17 @@
                                 </s:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="citSourceCheck" scheme="schematron">
+                            <constraint>
+                                <s:rule context="tei:cit[@source]">
+                                    <s:let name="sourceIDs" value="tokenize(@source,' ')"/>
+                                    <s:let name="biblID"
+                                        value="tei:listBibl/tei:bibl/@xml:id | following-sibling::tei:listBibl/tei:bibl/@xml:id | ../following-sibling::tei:listBibl/tei:bibl/@xml:id"/>
+                                    <s:assert
+                                        test="every $sourceID in $sourceIDs satisfies substring-after($sourceID, '#') = $biblID">If a cit element has a source attribute there must be a corresponding bibl element in listBibl ("<s:value-of select="$sourceIDs"/>")</s:assert>
+                                </s:rule>
+                            </constraint>
+                        </constraintSpec>
                         <constraintSpec ident="biblPlaceCheck" scheme="schematron">
                             <constraint>
                                 <s:rule context="tei:form">
