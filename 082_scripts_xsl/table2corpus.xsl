@@ -266,6 +266,10 @@
                     <xsl:call-template name="publicationStmt">
                         <xsl:with-param name="textID" select="$textID"/>
                     </xsl:call-template>
+                    <xsl:call-template name="notesStmt">
+                        <xsl:with-param name="has_trigger" select="$has_trigger"/>
+                        <xsl:with-param name="trigger_text" select="$trigger_text"/>
+                    </xsl:call-template>
                     <sourceDesc>
                         <!-- TODO reference source audio file to match with ELAN export. -->
                         <recordingStmt>
@@ -281,10 +285,6 @@
                             </recording>
                         </recordingStmt>
                     </sourceDesc>
-                    <xsl:call-template name="notesStmt">
-                        <xsl:with-param name="has_trigger" select="$has_trigger"/>
-                        <xsl:with-param name="trigger_text" select="$trigger_text"/>
-                    </xsl:call-template>
                 </fileDesc>
                 <encodingDesc>
                     <listPrefixDef>
