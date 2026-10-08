@@ -3,152 +3,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <style>
-table {
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    border-collapse: collapse;
-    width: 100%;
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;   /* horizontal centering */
+    align-items: center;       /* vertical centering */
+    background: #f9fafb;       /* soft background (optional) */
+    font-family: "Segoe UI", Roboto, sans-serif;
 }
-th, td {
-    border: 1px solid #ccc;
-    padding: 6px;
-    text-align: left;
-}
-thead {
-    background: #eee;
+
+.center-message {
+    font-size: 1.5rem;
+    color: #333;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 </style>
-
-</head>
-<script>
-function filterTable() {
-    const input = document.getElementById("tableFilter");
-    const filter = input.value.toLowerCase();
-    const table = document.getElementById("myTable");
-    const rows = table.getElementsByTagName("tr");
-
-    for (let i = 1; i < rows.length; i++) {  // skip header (row 0)
-        let rowText = rows[i].innerText.toLowerCase();
-        rows[i].style.display = rowText.includes(filter) ? "" : "none";
-    }
-}
-</script>
-<body>
-<input
-    type="text"
-    id="tableFilter"
-    placeholder="Type to filter..."
-    onkeyup="filterTable()"
-    style="
-        padding: 5px 10px;
-        margin-bottom: 5px;
-        width: 100%;
-        max-width: 400px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-        outline: none;
-        transition: border 0.2s;
-    "
-    onfocus="this.style.border='1px solid #007acc';"
-    onblur="this.style.border='1px solid #ccc';"
-/>
-<table border="1" class="dataframe" id="myTable">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>type</th>
-      <th>message</th>
-      <th>line</th>
-      <th>source</th>
-      <th>location</th>
-      <th>stage</th>
-      <th>exceptionType</th>
-      <th>link</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>error</td>
-      <td>ID URFA-379d_xSEG_000000 already defined, line 1577, column 122 (Urfa-379d_Tribe_History-Harran-2022.xml, line 1577)</td>
-      <td></td>
-      <td>../010_manannot/Urfa-379d_Tribe_History-Harran-2022.xml</td>
-      <td>NaN</td>
-      <td>relaxng</td>
-      <td>XMLSyntaxError</td>
-      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/Urfa-379d_Tribe_History-Harran-2022.xml">../010_manannot/Urfa-379d_Tribe_History-Harran-2022.xml</a></td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>error</td>
-      <td>ID URFA-136_xSEG_000000 already defined, line 685, column 120 (Urfa-136_Cigkofte_3-Harran-2013.xml, line 685)</td>
-      <td></td>
-      <td>../010_manannot/Urfa-136_Cigkofte_3-Harran-2013.xml</td>
-      <td>NaN</td>
-      <td>relaxng</td>
-      <td>XMLSyntaxError</td>
-      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/Urfa-136_Cigkofte_3-Harran-2013.xml">../010_manannot/Urfa-136_Cigkofte_3-Harran-2013.xml</a></td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>error</td>
-      <td>ID URFA-142_xSEG_000000 already defined, line 556, column 119 (Urfa-142_Chilli_Pepper-Harran-2013.xml, line 556)</td>
-      <td></td>
-      <td>../010_manannot/Urfa-142_Chilli_Pepper-Harran-2013.xml</td>
-      <td>NaN</td>
-      <td>relaxng</td>
-      <td>XMLSyntaxError</td>
-      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/Urfa-142_Chilli_Pepper-Harran-2013.xml">../010_manannot/Urfa-142_Chilli_Pepper-Harran-2013.xml</a></td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>error</td>
-      <td>Element w failed to validate attributes</td>
-      <td>0</td>
-      <td>../010_manannot/Urfa-443_Arabs_and_Kurds-Harran-2023.xml</td>
-      <td>n/a</td>
-      <td>relaxng</td>
-      <td>DocumentInvalid</td>
-      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/Urfa-443_Arabs_and_Kurds-Harran-2023.xml">../010_manannot/Urfa-443_Arabs_and_Kurds-Harran-2023.xml</a></td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>error</td>
-      <td>Invalid attribute lang for element w</td>
-      <td>1121</td>
-      <td>../010_manannot/Urfa-443_Arabs_and_Kurds-Harran-2023.xml</td>
-      <td>/*/*[2]/*[2]/*/*[55]/*/*[7]</td>
-      <td>relaxng</td>
-      <td>DocumentInvalid</td>
-      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/Urfa-443_Arabs_and_Kurds-Harran-2023.xml#L1121">../010_manannot/Urfa-443_Arabs_and_Kurds-Harran-2023.xml</a></td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>error</td>
-      <td>Invalid attribute text for element w</td>
-      <td>2107</td>
-      <td>../010_manannot/Urfa-463_Family_Story_2-Harran-2023.xml</td>
-      <td>/*/*[2]/*[2]/*/*[55]/*/*[3]</td>
-      <td>relaxng</td>
-      <td>DocumentInvalid</td>
-      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/Urfa-463_Family_Story_2-Harran-2023.xml#L2107">../010_manannot/Urfa-463_Family_Story_2-Harran-2023.xml</a></td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>error</td>
-      <td>Invalid attribute text for element w</td>
-      <td>286</td>
-      <td>../010_manannot/Urfa-526_Self-Pride-Harran-2024.xml</td>
-      <td>/*/*[2]/*[2]/*/*[2]/*/*[20]</td>
-      <td>relaxng</td>
-      <td>DocumentInvalid</td>
-      <td><a href="https://github.com/acdh-oeaw/shawi-data/tree/main/010_manannot/Urfa-526_Self-Pride-Harran-2024.xml#L286">../010_manannot/Urfa-526_Self-Pride-Harran-2024.xml</a></td>
-    </tr>
-  </tbody>
-</table>
+<p class="center-message">No validation errors found.</p>
 </body>
 </html>
