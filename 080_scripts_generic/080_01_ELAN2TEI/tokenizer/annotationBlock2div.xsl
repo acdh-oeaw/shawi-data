@@ -29,9 +29,15 @@
     </xsl:function>
     
     <xsl:template match="tei:annotationBlock">
-        <div corresp="{string-join(descendant::tei:media/_:idRefFromMediaUrl(.),' ')}">
-            <xsl:apply-templates select="@* except (@start,@end)|node()"/>
-        </div>
+    <div corresp="{string-join(descendant::tei:media/_:idRefFromMediaUrl(.), ' ')}">
+        <xsl:apply-templates select="@* except (@start, @end)"/>
+
+        <xsl:apply-templates select="node()[not(self::tei:spanGrp or self::tei:media)]"/>
+
+        <xsl:copy-of select="descendant::tei:media"/>
+
+        <xsl:apply-templates select="tei:spanGrp"/>
+    </div>
     </xsl:template>
     
     <xsl:template match="tei:annotationBlock/tei:u[1]">
@@ -43,6 +49,7 @@
             <xsl:apply-templates select="@*|node()"/>
         </xsl:copy>
     </xsl:template>
+
     <xsl:template match="tei:annotationBlock[count(tei:u) gt 1]/tei:u[last()]">
         <xsl:copy>
             <xsl:copy-of select="../@end"/>
@@ -54,5 +61,6 @@
         <xsl:attribute name="url" select="replace(.,'publicAssets','assets')"/>
     </xsl:template>
     
-    <xsl:template match="tei:annotationBlock/descendant::tei:media"/>
+<xsl:template match="tei:media[not(ancestor::tei:recording)]"/>
+
 </xsl:stylesheet>
