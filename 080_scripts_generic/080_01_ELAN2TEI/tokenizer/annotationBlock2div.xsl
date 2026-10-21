@@ -27,17 +27,26 @@
         </xsl:variable>
         <xsl:value-of select="concat('#',substring-before(substring-after($url,'/'),'.'),'-',$type)"/>
     </xsl:function>
-    
+
+    <xsl:template match="tei:recording">
+        <xsl:copy>
+            <xsl:apply-templates select="@*|node()"/>
+            <xsl:if test="count(.//tei:media) = 1">
+                <xsl:for-each select="//tei:annotationBlock/descendant::tei:media">
+                    <xsl:copy>
+                        <xsl:attribute name="xml:id" select="substring-after(_:idRefFromMediaUrl(.),'#')"/>
+                        <xsl:attribute name="type">fragment</xsl:attribute>
+                        <xsl:apply-templates select="@*|node()"/>
+                    </xsl:copy>
+                </xsl:for-each>
+            </xsl:if>
+        </xsl:copy>
+    </xsl:template>
+
     <xsl:template match="tei:annotationBlock">
-    <div corresp="{string-join(descendant::tei:media/_:idRefFromMediaUrl(.), ' ')}">
-        <xsl:apply-templates select="@* except (@start, @end)"/>
-
-        <xsl:apply-templates select="node()[not(self::tei:spanGrp or self::tei:media)]"/>
-
-        <xsl:copy-of select="descendant::tei:media"/>
-
-        <xsl:apply-templates select="tei:spanGrp"/>
-    </div>
+        <div corresp="{string-join(descendant::tei:media/_:idRefFromMediaUrl(.),' ')}">
+            <xsl:apply-templates select="@* except (@start,@end)|node()"/>
+        </div>
     </xsl:template>
     
     <xsl:template match="tei:annotationBlock/tei:u[1]">
@@ -61,6 +70,6 @@
         <xsl:attribute name="url" select="replace(.,'publicAssets','assets')"/>
     </xsl:template>
     
-<xsl:template match="tei:media[not(ancestor::tei:recording)]"/>
+<xsl:template match="tei:annotationBlock/descendant::tei:media"/>
 
 </xsl:stylesheet>
