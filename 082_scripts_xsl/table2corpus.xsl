@@ -386,10 +386,12 @@
                 <xsl:with-param name="yearOfBirth" select="tei:cell[3]"/>
                 <xsl:with-param name="placeOfOrigin" select="tei:cell[5]"/>
             </xsl:call-template>
-            <xsl:if test="tei:cell[4] != ''">
+            <xsl:if test="normalize-space(tei:cell[4]) != ''">
                 <langKnowledge>
                     <xsl:for-each select="tokenize(tei:cell[4], ',')">
-                        <langKnown tag="{.}"/>
+                        <xsl:if test="normalize-space(.) != ''">
+                            <langKnown tag="{normalize-space(.)}"/>
+                        </xsl:if>
                     </xsl:for-each>
                 </langKnowledge>
             </xsl:if>
